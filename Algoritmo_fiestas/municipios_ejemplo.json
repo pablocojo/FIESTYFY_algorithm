@@ -1,0 +1,22 @@
+[
+  {
+    "nombre": "Rivas-Vaciamadrid",
+    "barrios": []
+  },
+  {
+    "nombre": "Torrejón de Velasco",
+    "barrios": [],
+    "pueblos": []
+  },
+  {
+    "nombre": "Puentes Viejas",
+    "pueblos": ["Cinco Villas", "Mangirón", "Paredes de Buitrago"]
+  },
+  {
+    "nombre": "San Sebastián de los Reyes",
+    "barrios": ["Dehesa Vieja", "Tempranales"]
+  },
+  {
+    "nombre": "Valverde de Alcalá"
+  }
+]
