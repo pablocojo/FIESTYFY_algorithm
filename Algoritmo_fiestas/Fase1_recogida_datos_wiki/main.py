@@ -1,125 +1,229 @@
 # main.py
+"""
+Fase 1: recopilacion de municipios espanoles desde Wikipedia.
+
+Este programa solo construye los lugares raiz (municipios) y guarda
+municipios.json. No analiza distritos, barrios ni pedanias.
+"""
+
 import json
+import os
+import shutil
 import time
-from urllib.parse import urljoin
 
-from extractors import (
-    extract_municipios,
-    extract_municipio_structure,
-    extract_barrio_info_with_llm
+from config import (
+    MUNICIPIOS_JSON,
+    ERROR_LOG_FILE,
+    DELAY_BETWEEN_REQUESTS,
 )
-from scraper import fetch_url
-from config import ROOT_CATEGORY_URL, OUTPUT_JSON, ERROR_LOG_FILE, BASE_WIKI_URL
-from logger import dump_error_log, log_error
+from extractors import inferir_comunidad_por_provincia
+from logger import dump_error_log, log_error, safe_print
+from parte1_municipios import obtener_lugares_base, procesar_municipio_base
+from place_types import valida_dataset
 
-def main():
-    # 0) Preguntar si reanudar desde un municipio concreto
-    resume_input = input("¿Desde qué municipio (índice) quieres reanudar? (ENTER para 1): ").strip()
-    start_idx = int(resume_input) if resume_input.isdigit() and int(resume_input) > 0 else 1
 
-    # 1) Obtener lista de municipios
-    print("🔍 Extrayendo municipios de la categoría raíz...")
-    root_html = fetch_url(ROOT_CATEGORY_URL)
-    municipios = extract_municipios(root_html)
-    total_mun = len(municipios)
-    if start_idx > total_mun:
-        print(f"El índice {start_idx} excede el total de municipios ({total_mun}). Abortando.")
+MIN_ITEMS_RESTORE = 10
+RESPALDO_FUENTE = "munis_hasta1800_20_junio.json"
+
+
+def cargar_municipios_previos() -> list[dict]:
+    """
+    Carga municipios ya guardados para poder reanudar la fase 1.
+    """
+    if not os.path.exists(MUNICIPIOS_JSON):
+        return []
+
+    try:
+        with open(MUNICIPIOS_JSON, "r", encoding="utf-8") as f:
+            data = json.load(f)
+    except (json.JSONDecodeError, OSError) as e:
+        log_error(f"No se pudo cargar {MUNICIPIOS_JSON}: {e}")
+        return []
+
+    lugares = data.get("lugares", [])
+    return lugares if isinstance(lugares, list) else []
+
+
+def deduplicar_lugares(lugares: list[dict]) -> list[dict]:
+    """
+    Mantiene el primer lugar por id y evita duplicados al reanudar.
+    """
+    resultado = []
+    ids_vistos = set()
+
+    for lugar in lugares:
+        lugar_id = lugar.get("id")
+        if not lugar_id or lugar_id in ids_vistos:
+            continue
+        ids_vistos.add(lugar_id)
+        resultado.append(lugar)
+
+    return resultado
+
+
+def guardar_municipios(resultados: list[dict]) -> dict:
+    """
+    Guarda municipios.json con los lugares raiz ya procesados.
+    """
+    lugares = deduplicar_lugares(resultados)
+    for lugar in lugares:
+        if not lugar.get("comunidad"):
+            lugar["comunidad"] = inferir_comunidad_por_provincia(lugar.get("provincia")) or ""
+        lugar.setdefault("sitio_web", "")
+        lugar.setdefault("wikipedia_url", "")
+
+    output_data = {
+        "version": 2,
+        "lugares": lugares,
+    }
+
+    with open(MUNICIPIOS_JSON, "w", encoding="utf-8") as f:
+        json.dump(output_data, f, indent=2, ensure_ascii=False)
+
+    return output_data
+
+
+def restaurar_si_hace_falta() -> None:
+    """
+    Restaura un respaldo si municipios.json no existe o parece vacio/corrupto.
+    """
+    intentar_restaurar = False
+    if not os.path.exists(MUNICIPIOS_JSON):
+        intentar_restaurar = True
+    else:
+        try:
+            with open(MUNICIPIOS_JSON, "r", encoding="utf-8") as f:
+                data_test = json.load(f)
+            if len(data_test.get("lugares", [])) < MIN_ITEMS_RESTORE:
+                intentar_restaurar = True
+        except Exception:
+            intentar_restaurar = True
+
+    if not intentar_restaurar:
         return
 
-    print(f"➡️  {total_mun} municipios encontrados. Comenzando en el índice {start_idx}.\n")
+    if not os.path.exists(RESPALDO_FUENTE):
+        return
 
-    resultados = []
+    safe_print(f"Restaurando progreso desde {RESPALDO_FUENTE} a {MUNICIPIOS_JSON}...")
+    shutil.copyfile(RESPALDO_FUENTE, MUNICIPIOS_JSON)
+    safe_print("Restauracion completada.\n")
 
-    # 2) Para cada municipio, parsear distritos y barrios
-    for idx, mun in enumerate(municipios[start_idx-1:], start=start_idx):
-        nombre = mun.get('municipio_nombre')
-        url_cat = mun.get('municipio_category_url')
-        print(f"[{idx}/{total_mun}] Procesando municipio: {nombre}")
-        if not url_cat:
-            log_error(f"Sin URL categoría para {nombre}")
-            print("  ❌ Sin URL de categoría, saltando.\n")
-            continue
 
-        # Convertir a URL absoluta y bajar el HTML
-        full_cat_url = urljoin(BASE_WIKI_URL, url_cat)
-        html_cat = fetch_url(full_cat_url)
+def imprimir_validacion(output_data: dict) -> None:
+    """
+    Valida y muestra un resumen final del JSON.
+    """
+    safe_print("\nValidando estructura JSON...")
+    es_valido, errores = valida_dataset(output_data)
 
-        estructura = extract_municipio_structure(html_cat)
-        distritos = estructura.get('distritos', [])
-        barrios_directos = estructura.get('barrios', [])
-        print(f"   • Distritos encontrados: {len(distritos)}")
-        print(f"   • Barrios directos encontrados: {len(barrios_directos)}")
+    if es_valido:
+        safe_print("municipios.json valido y bien estructurado")
+        return
 
-        entry = {
-            'municipio_nombre': nombre,
-            'municipio_category_url': full_cat_url,
-            'distritos': distritos,
-            'barrios': []
-        }
+    safe_print(f"Errores encontrados ({len(errores)}):")
+    for err in errores[:10]:
+        safe_print(f"   - {err}")
+    if len(errores) > 10:
+        safe_print(f"   ... y {len(errores) - 10} mas")
 
-        # 3) Detalles de cada barrio
-        for jdx, barrio in enumerate(barrios_directos, start=1):
-            bname = barrio.get('nombre')
-            art_url = barrio.get('article_url')
-            print(f"    - [{jdx}/{len(barrios_directos)}] Barrio: {bname}")
-            if not art_url:
-                log_error(f"Sin URL de artículo para barrio {bname} en {nombre}")
-                print("       ❌ Sin URL de artículo, omitiendo.\n")
+
+def main():
+    """
+    Descarga y procesa municipios raiz uno a uno usando el LLM local configurado.
+    """
+    safe_print("\n" + "=" * 70)
+    safe_print(" FASE 1: RECOPILACION SECUENCIAL DE MUNICIPIOS")
+    safe_print("=" * 70 + "\n")
+
+    restaurar_si_hace_falta()
+
+    lugares_base = obtener_lugares_base()
+    total_lugares = len(lugares_base)
+
+    if not lugares_base:
+        safe_print("ERROR: No se encontraron municipios. Abortando.")
+        return
+
+    municipios_previos = cargar_municipios_previos()
+    sugerencia_idx = len(municipios_previos) + 1 if municipios_previos else 1
+
+    resume_input = input(
+        f"Desde que municipio (indice) quieres reanudar? (Recomendado: {sugerencia_idx}): "
+    ).strip()
+    start_idx = int(resume_input) if resume_input.isdigit() and int(resume_input) > 0 else sugerencia_idx
+
+    if start_idx > total_lugares:
+        safe_print(f"ERROR: El indice {start_idx} excede el total de lugares ({total_lugares}).")
+        return
+
+    resultados = cargar_municipios_previos() if start_idx > 1 else []
+    if resultados:
+        safe_print(f"{len(resultados)} municipios cargados desde {MUNICIPIOS_JSON}.")
+
+    safe_print(f"OK: {total_lugares} municipios encontrados. Comenzando en indice {start_idx}.")
+    safe_print("Modo secuencial: se procesa y guarda un municipio antes de pasar al siguiente.\n")
+
+    try:
+        for idx, lugar_base in enumerate(lugares_base[start_idx - 1 :], start=start_idx):
+            nombre = lugar_base.get("nombre", "?")
+            safe_print(f"[{idx}/{total_lugares}] Procesando municipio: {nombre}")
+
+            try:
+                lugar, _html = procesar_municipio_base(lugar_base)
+            except KeyboardInterrupt:
+                raise
+            except Exception as e:
+                safe_print(f"[{idx}/{total_lugares}] [ERROR] Procesando {nombre}: {e}")
+                log_error(f"Error procesando {nombre}: {e}")
                 continue
 
-            html_b = fetch_url(art_url)
-
-            # Reintentos si el modelo está caído
-            while True:
-                detalles = extract_barrio_info_with_llm(bname, html_b, nombre)
-                if detalles.get('error') == 'model_down':
-                    log_error(f"LLM caído procesando {bname}", 
-                              context={'municipio': nombre, 'barrio': bname})
-                    respuesta = input(
-                        "El modelo no responde. ¿Está operativo ahora? (s/n): "
-                    ).strip().lower()
-                    if respuesta == 's':
-                        continue  # reintentar mismo barrio
-                    else:
-                        print("Abortando ejecución.")
-                        dump_error_log(ERROR_LOG_FILE)
-                        return
-                break
-
-            # Si el LLM indica no es barrio válido, omitimos
-            if detalles.get('error') == 'not_a_barrio':
-                reason = detalles.get('reason')
-                log_error(
-                    f"Omitiendo {bname}: {reason}", 
-                    context={'municipio': nombre, 'barrio': bname}
-                )
-                print(f"       ⚠️ No es barrio válido: {reason}\n")
+            if not lugar:
+                safe_print(f"[{idx}/{total_lugares}] [ERROR] {nombre} saltado")
                 continue
 
-            # Merge de datos básicos y detalles
-            barrio_entry = {
-                'nombre': bname,
-                'article_url': art_url,
-                **detalles
-            }
-            entry['barrios'].append(barrio_entry)
-            print("       ✅ Detalles extraídos.\n")
-            time.sleep(1)
+            resultados.append(lugar)
+            output_data = guardar_municipios(resultados)
+            safe_print(
+                f"[{idx}/{total_lugares}] [OK] Guardado: {nombre} "
+                f"({len(output_data['lugares'])} municipios en {MUNICIPIOS_JSON})\n"
+            )
 
-        resultados.append(entry)
-        print(f"✅ Finalizado municipio: {nombre}\n")
-        time.sleep(2)
+            time.sleep(DELAY_BETWEEN_REQUESTS)
 
-    # 4) Guardar resultados finales
-    print("💾 Guardando JSON final...")
-    with open(OUTPUT_JSON, 'w', encoding='utf-8') as f:
-        json.dump(resultados, f, indent=2, ensure_ascii=False)
-    print(f"✅ Datos guardados en {OUTPUT_JSON}")
+    except KeyboardInterrupt:
+        output_data = guardar_municipios(resultados)
+        dump_error_log(ERROR_LOG_FILE)
+        safe_print("\n\nProceso interrumpido por el usuario.")
+        safe_print(f"Progreso guardado en {MUNICIPIOS_JSON} ({len(output_data['lugares'])} municipios).")
+        safe_print(f"Log guardado en {ERROR_LOG_FILE}")
+        return
 
-    # 5) Volcar log de errores
-    print("📋 Volcando log de errores...")
+    safe_print("\n" + "=" * 70)
+    safe_print("Guardando municipios finales...")
+
+    output_data = guardar_municipios(resultados)
+
+    safe_print(f"Datos guardados en {MUNICIPIOS_JSON}")
+    safe_print(f"Total de municipios: {len(output_data['lugares'])}")
+
+    imprimir_validacion(output_data)
+
+    safe_print("\nVolcando log de errores...")
     dump_error_log(ERROR_LOG_FILE)
-    print(f"✅ Errores (si hay) en {ERROR_LOG_FILE}")
+    safe_print(f"Log guardado en {ERROR_LOG_FILE}")
 
-if __name__ == '__main__':
-    main()
+    safe_print("\n" + "=" * 70)
+    safe_print(" FASE 1 FINALIZADA")
+    safe_print("=" * 70 + "\n")
+
+
+if __name__ == "__main__":
+    try:
+        main()
+    except KeyboardInterrupt:
+        safe_print("\n\nProceso interrumpido antes de poder guardar el progreso.")
+    except Exception as e:
+        safe_print(f"\n\nError no esperado: {e}")
+        log_error(f"Error no esperado en main: {e}")
+        dump_error_log(ERROR_LOG_FILE)

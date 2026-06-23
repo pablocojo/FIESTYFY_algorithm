@@ -1,0 +1,23 @@
+# Python caches
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Log files
+*.log
+*log.txt
+
+# Backup files
+*backup.json
+*pre_revalidacion.json
+
+# Data folders and datasets in wiki scraper
+Algoritmo_fiestas/Fase1_recogida_datos_wiki/datos_municipios/
+Algoritmo_fiestas/Fase1_recogida_datos_wiki/parte1_municipios/
+Algoritmo_fiestas/Fase1_recogida_datos_wiki/parte2_distritos_pedanias/
+Algoritmo_fiestas/Fase1_recogida_datos_wiki/compuestos_revision_manual.jsonl
+Algoritmo_fiestas/Fase1_recogida_datos_wiki/ejemplo_completo.json
+Algoritmo_fiestas/Fase1_recogida_datos_wiki/lugares_espana.json
+Algoritmo_fiestas/Fase1_recogida_datos_wiki/municipios.json
+Algoritmo_fiestas/Fase1_recogida_datos_wiki/munis_hasta1800_20_junio.json

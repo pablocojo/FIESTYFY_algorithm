@@ -1,16 +1,19 @@
 # scraper.py
 import requests
 from bs4 import BeautifulSoup
+import urllib.parse
 from config import REQUEST_TIMEOUT
 from logger import log_error
 
 
 def fetch_url(url: str) -> str:
-    """
-    Obtiene el contenido HTML de una URL con manejo de errores.
-    """
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                      "AppleWebKit/537.36 (KHTML, like Gecko) "
+                      "Chrome/124.0.0.0 Safari/537.36"
+    }
     try:
-        resp = requests.get(url, timeout=REQUEST_TIMEOUT)
+        resp = requests.get(url, headers=headers, timeout=REQUEST_TIMEOUT)
         resp.raise_for_status()
         return resp.text
     except Exception as e:
@@ -53,3 +56,38 @@ def get_snippet(html: str, type: str = 'category') -> str:
     else:
         log_error(f"Tipo de snippet desconocido: {type}")
         return html
+
+
+def get_wikidata_p18_url(wikipedia_url: str) -> str:
+    """Extrae la URL de la imagen de la propiedad P18 de Wikidata dado un enlace a Wikipedia."""
+    if not wikipedia_url or '/wiki/' not in wikipedia_url:
+        return ""
+    
+    title = wikipedia_url.split('/wiki/')[-1]
+    title = urllib.parse.unquote(title)
+    
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                      "AppleWebKit/537.36 (KHTML, like Gecko) "
+                      "Chrome/124.0.0.0 Safari/537.36"
+    }
+    wd_url = f"https://www.wikidata.org/w/api.php?action=wbgetentities&sites=eswiki&titles={urllib.parse.quote(title)}&props=claims&format=json"
+    
+    try:
+        resp = requests.get(wd_url, headers=headers, timeout=REQUEST_TIMEOUT)
+        resp.raise_for_status()
+        data = resp.json()
+        
+        entities = data.get("entities", {})
+        for entity_id, entity_data in entities.items():
+            if entity_id != "-1":
+                p18_claims = entity_data.get("claims", {}).get("P18", [])
+                if p18_claims:
+                    image_name = p18_claims[0].get("mainsnak", {}).get("datavalue", {}).get("value")
+                    if image_name:
+                        image_name_encoded = urllib.parse.quote(image_name.replace(" ", "_"))
+                        return f"https://commons.wikimedia.org/wiki/Special:FilePath/{image_name_encoded}"
+        return ""
+    except Exception as e:
+        log_error(f"Error extrayendo Wikidata P18 para {title}: {e}")
+        return ""
