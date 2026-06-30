@@ -1,0 +1,452 @@
+[
+  {
+    "id": "vitoria",
+    "tipo": "municipio_compuesto",
+    "nombre": "Vitoria",
+    "provincia": "Álava",
+    "comunidad": "País Vasco",
+    "poblacion": 260699,
+    "lat": 42.84666666666667,
+    "lng": -2.6730555555555555,
+    "descripcion_corta": "Vitoria, capital de la provincia de Álava y del País Vasco, es una ciudad con una importante historia y un population de 260 699 habitantes.",
+    "descripcion": "Vitoria, conocida como 'muy noble y muy leal', es la capital de la provincia de Álava y del País Vasco. Ha sido Capital Verde Europea en 2012 y se encuentra en un cruce estratégico que une la Meseta Central con Francia. Su rica historia y patrimonio monumental, incluyendo títulos como 'Gasteiz', la hacen una ciudad de importancia histórica y cultural, ubicada en un punto crucial del plan geográfico.",
+    "imagenes": {
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Gasteiz%2C_Euskal_Herria.jpg",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Escudo_de_Vitoria.svg/120px-Escudo_de_Vitoria.svg.png"
+    },
+    "sitio_web": "https://www.vitoria-gasteiz.org/",
+    "wikipedia_url": "https://es.wikipedia.org/wiki/Vitoria"
+  },
+  {
+    "id": "albacete",
+    "tipo": "ciudad_grande",
+    "nombre": "Albacete",
+    "provincia": "Albacete",
+    "comunidad": "Castilla-La Mancha",
+    "poblacion": 175400,
+    "lat": 38.995555555555555,
+    "lng": -1.8558333333333334,
+    "descripcion_corta": "Albacete es una ciudad moderna y verde en Castilla-La Mancha, conocida por su centro histórico, zonas de fiesta como la Zona y la Torre del Agua, y por ser el centro economico y cultural de la provincia. Es ampliamente visitable y cuenta con multitudes de edificios emblemáticos y ferias anuales.",
+    "descripcion": "Albacete es una ciudad de importancia estratégica en Castilla-La Mancha, situada en un entorno natural de alta valoración. Su centro histórico reúne monumentos de gran相对来说, como la Catedral de San Juan Bautista y el Teatro Circo. Además, Albacete es un destino turístico destacado por su Feria de Albacete, celebrada del 7 al 17 de septiembre, y por las Fiestas de San Juan de Albacete. La ciudad también es un reflejo de su diversidad cultural, con ferias como la Feria de Artes Escénicas y la Feria Internacional del Queso. Su situación estratégica geográfica lo convierte en un nudo logístico importante para el sureste de España.",
+    "imagenes": {
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Albacete_Cathedral_2021_-_west_fa%C3%A7ade.jpg",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Escudo_de_Albacete.svg/120px-Escudo_de_Albacete.svg.png"
+    },
+    "sitio_web": "https://albacete.es/es",
+    "wikipedia_url": "https://es.wikipedia.org/wiki/Albacete"
+  },
+  {
+    "id": "alicante",
+    "tipo": "ciudad_grande",
+    "nombre": "Alicante",
+    "provincia": "Alicante",
+    "comunidad": "Comunidad Valenciana",
+    "poblacion": 366221,
+    "lat": 38.34527777777778,
+    "lng": -0.48305555555555557,
+    "descripcion_corta": "Alicante es una ciudad española y municiípio grande ubicada en la Comunidad Valenciana, con una population de más de 366,221 habitantes. Está situada en la costa mediterránea y es un destino turístico destacado con ferias como las Hogueras de San Juan. Tiene infrastructure como puerto y aeropuerto, y destaca por su ciudad de la luz e museos culturales.",
+    "descripcion": "Alicante es una ciudad española y municiípio grande ubicada en la Comunidad Valenciana, con una population de más de 366,221 habitantes. Está situada en la costa mediterránea y es un destino turístico destacado con ferias como las Hogueras de San Juan. Tiene infrastructure como puerto y aeropuerto, y destaca por su ciudad de la luz e museos culturales. Su ubicación estratégica y diversidad cultural la convierten en una de las ciudades más importantes de España.",
+    "imagenes": {
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Vista_de_Alicante%2C_Espa%C3%B1a%2C_2014-07-04%2C_DD_49.JPG",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Escudo_de_Alicante_corona_abierta.svg/120px-Escudo_de_Alicante_corona_abierta.svg.png"
+    },
+    "sitio_web": "https://www.alicante.es/",
+    "wikipedia_url": "https://es.wikipedia.org/wiki/Alicante"
+  },
+  {
+    "id": "elche",
+    "tipo": "municipio_compuesto",
+    "nombre": "Elche",
+    "provincia": "Alicante",
+    "comunidad": "Comunidad Valenciana",
+    "poblacion": 245557,
+    "lat": 38.26694444444444,
+    "lng": -0.6983333333333334,
+    "descripcion_corta": "El Che, ciudad de Alicante, España, con una población de 245.557 habitantes, es la segunda ciudad más populousa en la provincia y la cuarta mayor del país sin rango de capital de provincia. Su área metropolitana supera 870.000 habitantes.",
+    "descripcion": "El Che, ubicado en la provincia de Alicante y la Comunidad Valenciana, es una ciudad de gran importancia histórica y cultural. Fue fundada como una colonia ibera y desarrolló durante el periodo roman a través de colonia Iulia Illici Augusta. Posteriormente, durante la reconquista cristiana en 1250, pertubó la Corona de Castilla y fue expulsada del Reino de Valencia en 1305. Actualmente, es conocida por su legado industrial, siendo un centro de producción de calzado europea, con marcas como Pura López y Panama Jack. Su área metropolitana, incluyendo la ciudad y las localidades próximas, tiene más de 870.000 habitantes. El Che también es un punto de interés por su patrimonio histórico, como los monumentos de la Humanidad (Palmeral y Elx Mystery) y el Museo Escolar de Puçol, así como su importante neochristianismo en la Semana Santa.",
+    "imagenes": {
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Elx_panoramica.jpg",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Escut_d%27Elx.svg/120px-Escut_d%27Elx.svg.png"
+    },
+    "sitio_web": "https://www.elche.es/",
+    "wikipedia_url": "https://es.wikipedia.org/wiki/Elche"
+  },
+  {
+    "id": "almeria",
+    "tipo": "municipio_compuesto",
+    "nombre": "Almería",
+    "provincia": "Almería",
+    "comunidad": "Andalucía",
+    "poblacion": 205468,
+    "lat": 36.84166666666667,
+    "lng": -2.463888888888889,
+    "descripcion_corta": "Almería, municiípio de Andalucía, es el centro neurálgico de la Comarca Metropolitana de Almería, ubicado en el sureste de la península ibérica. Es conocida por su rica gastronomía, su antigüedad y su papel actual en la economía y la cultura de España.",
+    "descripcion": "Almería es una ciudad y municiípio compuesto de la provincia homónima en Andalucía, ubicada en el sureste de la península ibérica. Su geografía incluye la sierra de Gádor al oeste, la sierra Alhamilla al norte, y el valle y delta del río Andarax al este. A su lejos se prolonga un collado que termina en la sierra de Cabo de Gata. Su puerto y litoral abren una amplia bahía sobre el mar Mediterráneo. Almería ha sido fundada en 955 d.C. por Abderramán III y ha jugado un papel fundamental durante el califato de Córdoba, convirtiéndose en un centro comercial y cultural. Actualmente es una de las treinta localidades más pobladas de España, con una población de 203.741 habitantes en 2024. Es un nudo de comunicaciones gracias a su puerto y aeropuerto internacional, y se encuentran desarrollando planes urbanísticos para su integración en la red de ferrocarriles de Alta Velocidad (AVE).",
+    "imagenes": {
+      "banner": "https://picsum.photos/seed/almeria/1200/400",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Escudo_ciudad_de_Almer%C3%ADa.svg/120px-Escudo_ciudad_de_Almer%C3%ADa.svg.png"
+    },
+    "sitio_web": "https://www.almeriaciudad.es/",
+    "wikipedia_url": "https://es.wikipedia.org/wiki/Almería_(Almería)"
+  },
+  {
+    "id": "gijon",
+    "tipo": "ciudad_grande",
+    "nombre": "Gijón",
+    "provincia": "Asturias",
+    "comunidad": "Principado de Asturias",
+    "poblacion": 269894,
+    "lat": 43.529444444444444,
+    "lng": -5.677222222222222,
+    "descripcion_corta": "Gijón, una ciudad española en Asturias, cuenta con más de 269.894 habitantes y se encuentra cerca de Oviedo y Avilés. Es el centro de un área metropolitana con una población de 835.053 habitantes, la séptima más grande de España.",
+    "descripcion": "La ciudad de Gijón, ubicada en Asturias, ha evolucionado de manera significativa. Fue fundada por el legio romano y pasó por ser un centro industrial antes de convertirse en un destino turístico y de I+D+i actualmente. Gijón cuenta con una red de carreteras y ferrocarriles, lo que la hace un punto de encuentro estratégico. Su población de más de 269.894 habitantes (INE 2025) la convierte en una ciudad importante de Asturias. Además, Gijón es conocida por ser el centro de la provincia marítima y la capital de la provincia marina de Gijón. Actualmente, Gijón es un lugar de interés cultural, con la Milla del Conocimiento Margarita Salas, una mezcla de museos, universidades, parques científicos y tecnológicos.",
+    "imagenes": {
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Playa_San_Lorenzo_Cimadevilla_13-09-2005.jpg",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Escudo_de_Gij%C3%B3n.svg/60px-Escudo_de_Gij%C3%B3n.svg.png"
+    },
+    "sitio_web": "https://www.gijon.es",
+    "wikipedia_url": "https://es.wikipedia.org/wiki/Gijón"
+  },
+  {
+    "id": "oviedo",
+    "tipo": "municipio_compuesto",
+    "nombre": "Oviedo",
+    "provincia": "Asturias",
+    "comunidad": "Principado de Asturias",
+    "poblacion": 223968,
+    "lat": 43.362500000000004,
+    "lng": -5.8502777777777775,
+    "descripcion_corta": "Oviedo es una ciudad española de alta calidad de vida en Asturias, conocida por ser el centro geográfico y administrativo del regione. Con una población de 224,000 habitantes, está ubicada en la provincia de Varejón, a 28 km de Gijón y 27 km de Avilés, formando un área metropolitana de 800,000 habitantes.",
+    "descripcion": "Oviedo es una ciudad española de Asturias ubicada en la provincia de Varejón, con una población de aproximadamente 224,000 habitantes. Como capital del concejo homónimo y del parroquial de Oviedo, es el centro geográfico, universitario, religioso, político y administrativo de Asturias. Con una calidad de vida reconocida en Europa por la Comisión Europea, Oviedo es el centro de la provincia y forma parte del área metropolitana central de Asturias, que incluye a 800,000 habitantes junto con las ciudades de Gijón y Avilés. Su ubicación estratégica y su rica historia historical la convierten en una ciudad importante del país.",
+    "imagenes": {
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Vistageneraldeoviedo.JPG",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Escudo_de_Oviedo.svg/60px-Escudo_de_Oviedo.svg.png"
+    },
+    "sitio_web": "https://www.oviedo.es",
+    "wikipedia_url": "https://es.wikipedia.org/wiki/Oviedo"
+  },
+  {
+    "id": "badajoz",
+    "tipo": "municipio_compuesto",
+    "nombre": "Badajoz",
+    "provincia": "Badajoz",
+    "comunidad": "Extremadura",
+    "poblacion": 150209,
+    "lat": 38.87777777777778,
+    "lng": -6.970555555555555,
+    "descripcion_corta": "Badajoz es una ciudad de Extremadura, España, con 150.209 habitantes. Es la capital de su provincia, ubicada en la orilla oeste del río Guadiana y conocida por su importancia histórica y cultural. Dotada de multitud de edificios históricos y fiestas nacionales e internacionales, incluyendo la Semana Santa y el Carnaval.",
+    "descripcion": "Badajoz, una ciudad de Extremadura en España con una población de aproximadamente 150.209 habitantes, se encuentra en la orilla oeste del río Guadiana, cerca de Portugal. Es la capital de su provincia y el centro economico de Extremadura. La ciudad es emblemática de su importancia histórica, geográfica y cultural, con multitud de edificios y ferias nacionales e internacionales como la Semana Santa, el Carnaval, y la Fiesta de Los Palomos. Su rica historia, influencia en Portugal durante el siglo XIX, y su ubicación estratégica la convierten en un punto de reference turistico. Badajoz es también un centro histórico con edificios como el Alcazaba, la Catedral de San Juan Bautista, y el Real Monasterio de Santa Ana, testifying a su riqueza cultural y arquitectónica.",
+    "imagenes": {
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Vista_de_Badajoz_desde_la_Torre_Espantaperros.jpg",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Coat_of_Arms_of_Badajoz.svg/60px-Coat_of_Arms_of_Badajoz.svg.png"
+    },
+    "sitio_web": "https://www.aytobadajoz.es",
+    "wikipedia_url": "https://es.wikipedia.org/wiki/Badajoz"
+  },
+  {
+    "id": "palma-de-mallorca",
+    "tipo": "municipio_compuesto",
+    "nombre": "Palma de Mallorca",
+    "provincia": "Baleares",
+    "comunidad": "Islas Baleares",
+    "poblacion": 434786,
+    "lat": 39.56666666666667,
+    "lng": 2.649722222222222,
+    "descripcion_corta": "La ciudad de Palma de Mallorca, capital de la isla de Mallorca y del autonómico distrito de las Islas Baleares, es una metrópolis con más de 416.065 habitantes. Situada en el sureste del mar Mediterráneo, alrededor de 250 km al este de la península ibérica, y a unos 13 m sobre el nivel del mar, Palma combina rurales y urbanos con una área metropolitana de 1.015.88 km².",
+    "descripcion": "La ciudad de Palma de Mallorca, capital de la isla de Mallorca y del distrito autonómico de las Islas Baleares, es una metrópolis de más de 416.065 habitantes ubicada en el sureste del mar Mediterráneo a unos 250 km del este de la península ibérica y a unos 13 metros sobre el nivel del mar. Su extensión metropolitana cubre una área de 1.015.88 km², incluyendo nueve localidades. Historialmente fundada con el nombre de Palma por Quinto Cecilio Metelo Baleárico en el año 123 A.C., la ciudad fue conquistada por los árabes en 903 y posteriormente por los aragóneses en 1229, convirtiéndose en una importante metrópolis que pertubó durante su incorporación a la Corona de Aragón en 1279. En el siglo XX, Palma se convirtió en un centro turístico emblemático durante las décadas de 1960 y 1970, destacando su papel como centro económico y cultural autonómico y nacional. Actualmente, Palma de Mallorca combina una ruraleza rica con una urbanización intensa, conocida por su diversidad, su herencia romana y su importancia histórica, convirtiéndose en un punto de reference geográfico, turístico y cultural en el mar Menor.",
+    "imagenes": {
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Palma_von_Castell_de_Bellver.jpg",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Escudo_de_Palma_de_Mallorca.svg/120px-Escudo_de_Palma_de_Mallorca.svg.png"
+    },
+    "sitio_web": "https://www.palma.es/es/",
+    "wikipedia_url": "https://es.wikipedia.org/wiki/Palma_de_Mallorca"
+  },
+  {
+    "id": "badalona",
+    "tipo": "municipio_compuesto",
+    "nombre": "Badalona",
+    "provincia": "Barcelona",
+    "comunidad": "Cataluña",
+    "poblacion": 231542,
+    "lat": 41.43333333333333,
+    "lng": 2.2333333333333334,
+    "descripcion_corta": "Badalona es una ciudad de Cataluña situada en la costa del mar Mediterráneo, con una population de 231.542 habitantes y ubicada a 10 km del centro de Barcelona.",
+    "descripcion": "La ciudad de Badalona, fundada el año 100 a.C., se convirtió en una metrópolis alrededor del año 1897 con una population de 231.542 habitantes. Localizada en la comarca del Barcelonés y rodeada por la sierra de Marina, el delta del Besós y la costa marina, Badalona disfruta de un clima mediterráneo sufrido con veranos húmedos y cálidos y winos más fríos en invierno. La ciudad es conocida por sus montañas y rieras, incluyendo la colina de la Coscollada y las rias de Canyet, Ràfs, Juan y Matamoros.",
+    "imagenes": {
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Badalona_-_La_Rambla.jpg",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Coat_of_arms_of_badalona_domenech_colors.svg/120px-Coat_of_arms_of_badalona_domenech_colors.svg.png"
+    },
+    "sitio_web": "https://www.badalona.cat/",
+    "wikipedia_url": "https://es.wikipedia.org/wiki/Badalona"
+  },
+  {
+    "id": "barcelona",
+    "tipo": "ciudad_grande",
+    "nombre": "Barcelona",
+    "provincia": "Barcelona",
+    "comunidad": "Cataluña",
+    "poblacion": 1731649,
+    "lat": 41.3825,
+    "lng": 2.176944444444444,
+    "descripcion_corta": "Barcelona es una gran ciudad de Cataluña con más de 17 millones de habitantes, conocida por ser la segunda ciudad más populouse de España y la Península ibérica, y una de las más turísticas del mundo con más de 37 millones de noches de estancia en 2025.",
+    "descripcion": "Barcelona, capital de Cataluña y segunda ciudad más populouse de España y la Unión Europea, cuenta con más de 1.731.649 habitantes y un PIB nominal de 95.000 millones de euros. Es una ciudad global de turismo, con más de 16 millones de visitantes y 37 millones de noches de estancia anuales. Situada a la orilla del mar Mediterráneo, a unos 120 km al sur de la cadena montañosa de los Pirineos y de Occitania, Barcelona combina su rica historia, economico y cultural con una vibrante vida turística. Su antigüedad remonta a más de 4.000 años, con influencias romanas, bizantinas, musulmanas y cristianas. Actualmente, es sede del secretariado de la Unión para el Mediterráneo, ha sido host city de eventos internacionales como la Exposición Universal de 1888, los Juegos Olímpicos de 1992 y ha ganado el Premio Turístico de Mundial 2016.",
+    "imagenes": {
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Aerial_view_of_La_Sagrada_Familia%2C_Barcelona%2C_Spain_%2851227006134%29.jpg",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Escudo_de_Barcelona.svg/120px-Escudo_de_Barcelona.svg.png"
+    },
+    "sitio_web": "https://www.barcelona.cat/",
+    "wikipedia_url": "https://es.wikipedia.org/wiki/Barcelona"
+  },
+  {
+    "id": "hospitalet-de-llobregat",
+    "tipo": "ciudad_grande",
+    "nombre": "Hospitalet de Llobregat",
+    "provincia": "Barcelona",
+    "comunidad": "Cataluña",
+    "poblacion": 289510,
+    "lat": 41.35888888888889,
+    "lng": 2.0991666666666666,
+    "descripcion_corta": "Hospitalet de Llobregat, una ciudad de Cataluña con 289.510 habitantes y una den­sidad popu­la­ri­za­da de 20.754/hab/km², se encuentra a 6 km del centro de Barcelona y al­re­den­dor de un hospital de peregrinos.",
+    "descripcion": "La ciudad de Hospitalet de Llobregat, en la comarca del Barcelonés, Cataluña, cuenta con una po­pula­ción de 289.510 habitantes y una den­sidad popu­la­ri­za­da de 20.754/hab/km², un rango que la hace una de las ciudades más densamente po­pule­das de España y Europa. Situada a 6 km del centro de Barcelona, es un municipio con una richi­za­ histórica ligada a la vi­sión de viajeros y peregrinos, y cuya log­ra­da­sión se re­presenta en su Ofi­ci­al­mente de Cataluña y su den­sa­ble ecológica. El escudo de Hospitalet de Llobregat, con su armas de catánu­la, refleja su conexión con Barcelona y su herencia­ históri­ca.",
+    "imagenes": {
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/L%27Hospitalet_de_Llobregat.jpg",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Escut_de_L%27Hospitalet_de_Llobregat.svg/120px-Escut_de_L%27Hospitalet_de_Llobregat.svg.png"
+    },
+    "sitio_web": "https://www.l-h.cat/",
+    "wikipedia_url": "https://es.wikipedia.org/wiki/Hospitalet_de_Llobregat"
+  },
+  {
+    "id": "mataro",
+    "tipo": "ciudad_grande",
+    "nombre": "Mataró",
+    "provincia": "Barcelona",
+    "comunidad": "Cataluña",
+    "poblacion": 131683,
+    "lat": 41.53333333333333,
+    "lng": 2.45,
+    "descripcion_corta": "Mataró es una ciudad de Cataluña ubicada cerca de Barcelona, conocida por su rica historia, economy y cultura. Fue la capital de un área de dynamismo y ha tenido relevancees roles en el comercio, el transporte y el desarrollo urbano.",
+    "descripcion": "Mataró, ubicada en el norte de Cataluña y cerca de Barcelona, es una ciudad de importancia histórica y económica. Su ubicación estratégica y su rica historia, que remonta a tiempos romanos y incluye actores ilustres como Josep Puig i Cadafalch, la Horta del Mar, han donevolgiven la ciudad en un punto de reference. Actualmente, Mataró es emblemática de la economy del conocimiento, con la universidad TEC y la festeja anual de Les Santes, que la convierte en un centro cultural y turístico de interés nacional.",
+    "imagenes": {
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Mataro_playa.jpg",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Escut_de_Matar%C3%B3.svg/120px-Escut_de_Matar%C3%B3.svg.png"
+    },
+    "sitio_web": "https://www.mataro.cat",
+    "wikipedia_url": "https://es.wikipedia.org/wiki/Mataró"
+  },
+  {
+    "id": "sabadell",
+    "tipo": "ciudad_grande",
+    "nombre": "Sabadell",
+    "provincia": "Barcelona",
+    "comunidad": "Cataluña",
+    "poblacion": 225368,
+    "lat": 41.54833333333333,
+    "lng": 2.1075,
+    "descripcion_corta": "Sabadell es una ciudad de Cataluña, actualmente la capital del valle Occidental, conocida por su herencia textil y su diversificación hacia servicios. Fue pionera en el sector textil y ha evolucionado en una ciudad importante de España.",
+    "descripcion": "Sabadell, actualmente la capital de la comarca del Vallés Occidental, pertenece a Cataluña y está ubicada en el corazón de la provincia de Barcelona. Con 225,368 habitantes según el INE 2025, fue una ciudad histórica de gran importance industrial, conocida como «la Mánchester catalana» durante la Segunda Mitad del Siglo XIX. Actualmente, su identidad cultural y urbana se refleja en sus herederos de origen industrial y su diversificación hacia servicios, incluyendo convertidos chimeneas en espacios comunitarios. Su coat de armas heraldico, diseñado en 1928, combina dos franjas: blanca encima de verde travesada por otra amarilla. Historialmente, la ciudad fue vendida multiple veces durante el Reino de Aragón y del Catalán, finalmente perteneciendo a España en 1473.",
+    "imagenes": {
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Sabadell_-_Eix_Maci%C3%A0.jpg",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Escut_de_Sabadell_THV-ES.svg/120px-Escut_de_Sabadell_THV-ES.svg.png"
+    },
+    "sitio_web": "https://web.sabadell.cat/",
+    "wikipedia_url": "https://es.wikipedia.org/wiki/Sabadell"
+  },
+  {
+    "id": "santa-coloma-de-gramanet",
+    "tipo": "ciudad_grande",
+    "nombre": "Santa Coloma de Gramanet",
+    "provincia": "Barcelona",
+    "comunidad": "Cataluña",
+    "poblacion": 123981,
+    "lat": 41.45388888888889,
+    "lng": 2.2111111111111112,
+    "descripcion_corta": "Ciudad grande de la provincia de Barcelona, situada al norte del río Besós entre la Serralada de Marina y el llano de Badalona.",
+    "descripcion": "La ciudad de Santa Coloma de Gramanet, ubicada en la provincia de Barcelona y comarca del Barcelonés, es conocida por ser una de las ciudades más populouses de Cataluña. Situada al norte del río Besós entre la Serralada de Marina y el valle de Badalona, cuenta con una undécima parte de las estaciones de tren de Barcelona, incluyendo la línea 1 y el ramal colomense de la línea 9. Su entorno natural incluye tres sierras urbanizadas: la Sierra de San Mateo, la Sierra de les Mosques d'Ase y la Sierra d'en Mena, que forman dos valles: el valle de Carcereña y el valle de Sistrells. El punto más alto del municipio es el antiguo poblado íbero Puig Castellar, con una altura de 303 metros.",
+    "imagenes": {
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Ayto_SCG.jpg",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Escut_de_Santa_Coloma_de_Gramenet.svg/120px-Escut_de_Santa_Coloma_de_Gramenet.svg.png"
+    },
+    "sitio_web": "https://www.gramenet.cat",
+    "wikipedia_url": "https://es.wikipedia.org/wiki/Santa_Coloma_de_Gramanet"
+  },
+  {
+    "id": "tarrasa",
+    "tipo": "municipio_compuesto",
+    "nombre": "Tarrasa",
+    "provincia": "Barcelona",
+    "comunidad": "Cataluña",
+    "poblacion": 233270,
+    "lat": 41.56111111111111,
+    "lng": 2.0080555555555555,
+    "descripcion_corta": "Tarrasa es una ciudad y municiípio de Cataluña ubicada al sur del centro geográfico de Barcelona, con una población de más de 230.000 habitantes. Es conocida por ser un punto de comunicación importante y por pertenecer a la comarca del Vallés Occidental, cercana a Sabadell.",
+    "descripcion": "Tarrasa, ciudad y municiípio de Cataluña, se encuentra al sur del centro geográfico de Barcelona, con una población de más de 233.270 habitantes (Registro Nacional 2025). Es un punto de comunicación estratégico por carretera y ferrocarril, ubicado a 18 km del centro de la ciudad de Barcelona. La ciudad se asienta en el macizo de San Lorenzo del Munt sobre la ría de las Arenas, dentro de la fosa tectónica del Vallés-Penedés. Tarrasa es conocida por ser una ciudad concluyente de la comarca del Vallés Occidental, y se asienta al sur de la zona boscosa que extiende hacia el norte y al oeste, integrándose en los parques naturales de la provincia. El clima de Tarrasa es Mediterranean, con inviernos suaves y veranos calurosos y secos, y una precipitation constante anual con picos en primavera y otoño.",
+    "imagenes": {
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Egara._Conjunt_episcopal.jpg",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Escudo_de_Terrassa.svg/120px-Escudo_de_Terrassa.svg.png"
+    },
+    "sitio_web": "https://www.terrassa.cat/",
+    "wikipedia_url": "https://es.wikipedia.org/wiki/Tarrasa"
+  },
+  {
+    "id": "burgos",
+    "tipo": "municipio_compuesto",
+    "nombre": "Burgos",
+    "provincia": "Burgos",
+    "comunidad": "Castilla y León",
+    "poblacion": 177402,
+    "lat": 42.340833333333336,
+    "lng": -3.6997222222222224,
+    "descripcion_corta": "Burgos es el segundo municipality más poblado de Castilla y León, conocido por su posición histórica como capital múltiple y su ubicación estratégica cerca del Camino de Santiago.",
+    "descripcion": "Burgos, ciudad y municiípio de Castilla y León, ha sido el segundo más poblado del autónomato después de Valladolid. Su relevancia histórica lo convierte en la capital del condado hasta 1939. La ciudad se encuentra cerca del Camino de Santiago y al yacimiento de Atapuerca a 15 km. Entre sus landmarks destacan la Catedral de Santa María, el Monasterio de Santa María la Real de las Huelgas y el zóno verde alrededor de los ríos Arlanzón y Vena. Burgos ha experimentado una fuerte industrialización durante el siglo XX, especialmente en la sector alimentario y automotriz. Actualmente, es un centro educativo con la Universidad de Burgos y albergue de eventos como iRedes y la Pasarela de la Moda. Su topónimo antiguo proviene del término burgus, relacionado con torres de vigilancia en el cerro del Castillo.",
+    "imagenes": {
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Burgos_city_view_facing_south_east.jpg",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Escudo_de_Burgos.svg/120px-Escudo_de_Burgos.svg.png"
+    },
+    "sitio_web": "https://www.aytoburgos.es/",
+    "wikipedia_url": "https://es.wikipedia.org/wiki/Burgos"
+  },
+  {
+    "id": "caceres",
+    "tipo": "ciudad_grande",
+    "nombre": "Cáceres",
+    "provincia": "Cáceres",
+    "comunidad": "Extremadura",
+    "poblacion": 96651,
+    "lat": 39.473055555555554,
+    "lng": -6.3711111111111105,
+    "descripcion_corta": "Ciudad capital de Extremadura, sede del Tribunal Superior de Justicia y Patrimonio de la Humanidad.",
+    "descripcion": "Cáceres es una ciudad capital en Extremadura que alberga la sede del Tribunal Superior de Justicia. Conocida como Patrimonio de la Humanidad, su casco antiguo es uno de los conjuntos urbanos medievales más completos del mundo.",
+    "imagenes": {
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/C%C3%A1ceres_panor%C3%A1mica_-_panoramio_%28cropped%29.jpg",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/C%C3%A1ceres_-_Escudo.svg/120px-C%C3%A1ceres_-_Escudo.svg.png"
+    },
+    "sitio_web": "https://www.ayto-caceres.es",
+    "wikipedia_url": "https://es.wikipedia.org/wiki/Cáceres"
+  },
+  {
+    "id": "algeciras",
+    "tipo": "ciudad_grande",
+    "nombre": "Algeciras",
+    "provincia": "Cádiz",
+    "comunidad": "Andalucía",
+    "poblacion": 126589,
+    "lat": 36.1275,
+    "lng": -5.453888888888889,
+    "descripcion_corta": "Ciudad y municipio andaluz del Campo de Gibraltar, con un importante puerto marítimo.",
+    "descripcion": "Algeciras es una ciudad y municipio español ubicado en la provincia de Cádiz, Andalucía. Conocida por su estratégica bahía y el mayor puerto marítimo de mercancías de España, Algeciras ha sido un importante nodo de comunicaciones entre Europa y África desde tiempos romanos.",
+    "imagenes": {
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Vista_A%C3%A9rea_del_Puerto_de_Algeciras.jpg",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Escudo_de_Algeciras_%28C%C3%A1diz%29.svg/120px-Escudo_de_Algeciras_%28C%C3%A1diz%29.svg.png"
+    },
+    "sitio_web": "https://www.algeciras.es/",
+    "wikipedia_url": "https://es.wikipedia.org/wiki/Algeciras"
+  },
+  {
+    "id": "cadiz",
+    "tipo": "ciudad_grande",
+    "nombre": "Cádiz",
+    "provincia": "Cádiz",
+    "comunidad": "Andalucía",
+    "poblacion": 109950,
+    "lat": 36.535,
+    "lng": -6.2975,
+    "descripcion_corta": "Ciudad andaluza y capital de la provincia homónima, situada en el extremo sur de la península ibérica.",
+    "descripcion": "Cádiz es una ciudad andaluza y capital de la provincia que forma parte del área metropolitana de la Bahía de Cádiz-Jerez. Situada al frente del océano Atlántico, en el extremo sur de la península ibérica, esta ciudad histórica ha sido bautizada como 'Sirena del Océano' y es conocida por su importancia histórica y su economía basada en comercio y turismo.",
+    "imagenes": {
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Cadiz_aerea.jpg",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Escudo_de_C%C3%A1diz_%28oval%29.svg/120px-Escudo_de_C%C3%A1diz_%28oval%29.svg.png"
+    },
+    "sitio_web": "https://www.cadiz.es/",
+    "wikipedia_url": "https://es.wikipedia.org/wiki/Cádiz"
+  },
+  {
+    "id": "jerez-de-la-frontera",
+    "tipo": "ciudad_grande",
+    "nombre": "Jerez de la Frontera",
+    "provincia": "Cádiz",
+    "comunidad": "Andalucía",
+    "poblacion": 213634,
+    "lat": 36.7,
+    "lng": -6.116666666666666,
+    "descripcion_corta": "Ciudad andaluza con una población de 213 634 habitantes, situada al sur de la península ibérica.",
+    "descripcion": "Jerez de la Frontera es un importante municipio y ciudad española ubicado en la provincia de Cádiz, Andalucía. Con una extensa población, se encuentra estratégicamente cerca del océano Atlántico y el estrecho de Gibraltar, convirtiéndose en un nudo crucial de comunicaciones y logística regional.",
+    "imagenes": {
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/HDR_Panorama_%288265946396%29.jpg",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Coat_of_Arms_of_Jerez_de_la_Frontera.svg/120px-Coat_of_Arms_of_Jerez_de_la_Frontera.svg.png"
+    },
+    "sitio_web": "https://www.jerez.es/",
+    "wikipedia_url": "https://es.wikipedia.org/wiki/Jerez_de_la_Frontera"
+  },
+  {
+    "id": "santander",
+    "tipo": "ciudad_grande",
+    "nombre": "Santander",
+    "provincia": "Cantabria",
+    "comunidad": "Cantabria",
+    "poblacion": 175425,
+    "lat": 43.46666666666667,
+    "lng": -3.8,
+    "descripcion_corta": "Ciudad costera del norte de España, capital de Cantabria, con un clima oceánico suave todo el año.",
+    "descripcion": "Santander es una ciudad situada en la costa noroeste de España y capital de Cantabria. Conocida por su clima oceánico suave, la ciudad está rodeada por el mar Cantábrico y cuenta con un relieve definido por pequeñas playas y montes como Peñacastillo. Su casco histórico se sitúa a solo 6 metros sobre el nivel del mar.",
+    "imagenes": {
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Muelle_de_Albareda%2C_Santander.jpg",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Escudo_de_Santander.svg/120px-Escudo_de_Santander.svg.png"
+    },
+    "sitio_web": "https://santander.es/",
+    "wikipedia_url": "https://es.wikipedia.org/wiki/Santander_(España)"
+  },
+  {
+    "id": "castellon-de-la-plana",
+    "tipo": "ciudad_grande",
+    "nombre": "Castellón de la Plana",
+    "provincia": "Castellón",
+    "comunidad": "Comunidad Valenciana",
+    "poblacion": 183711,
+    "lat": 39.986111111111114,
+    "lng": -0.0375,
+    "descripcion_corta": "Ciudad y capital de la provincia de Castellón, situada en la comarca de la Plana Alta.",
+    "descripcion": "Castellón de la Plana es una ciudad importante y capital de la provincia homónima, ubicada en la comarca de la Plana Alta. Geográficamente se asienta sobre un terreno llano, rodeado por distintas sierras y el Mar Mediterráneo. Su historia data del siglo XIII, cuando el rey Jaime I otorgó permiso para trasladarse al llano desde el cerro de la Magdalena. La ciudad ha evolucionado significativamente, pasando de ser una zona agrícola a un importante centro industrial y cultural.",
+    "imagenes": {
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Castell%C3%B3n_a%C3%A9reo_2_%2836985918570%29.jpg",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Escut_de_Castell%C3%B3_ornamentat-2.svg/120px-Escut_de_Castell%C3%B3_ornamentat-2.svg.png"
+    },
+    "sitio_web": "https://www.castello.es",
+    "wikipedia_url": "https://es.wikipedia.org/wiki/Castellón_de_la_Plana"
+  },
+  {
+    "id": "cordoba",
+    "tipo": "ciudad_grande",
+    "nombre": "Córdoba",
+    "provincia": "Córdoba",
+    "comunidad": "Andalucía",
+    "poblacion": 323262,
+    "lat": 0.0,
+    "lng": 0.0,
+    "descripcion_corta": "Ciudad andaluza capital de Córdoba, con una población de 323 262 habitantes y conocida por su patrimonio histórico.",
+    "descripcion": "Córdoba es una importante ciudad andaluza, capital del mismo nombre, ubicada en la depresión del Guadalquivir. Conocida por ser la tercera más poblada de Andalucía y la duodécima de España, alberga el histórico centro declarado Patrimonio de la Humanidad junto con Medina Azahara y los Patios Cordobeses.",
+    "imagenes": {
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Centro_Hist%C3%B3rico%2C_16.9_--_2023_--_C%C3%B3rdoba%2C_Espa%C3%B1a.jpg",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Escudo_oficial_de_C%C3%B3rdoba_%28Espa%C3%B1a%29.svg/120px-Escudo_oficial_de_C%C3%B3rdoba_%28Espa%C3%B1a%29.svg.png"
+    },
+    "sitio_web": "https://www.cordoba.es/",
+    "wikipedia_url": "https://es.wikipedia.org/wiki/Córdoba_(España)"
+  },
+  {
+    "id": "la-corua",
+    "tipo": "ciudad_grande",
+    "nombre": "La Coruña",
+    "provincia": "La Coruña",
+    "comunidad": "Galicia",
+    "poblacion": 251543,
+    "lat": 43.37388888888889,
+    "lng": -8.4,
+    "descripcion_corta": "Ciudad y capital de Galicia, La Coruña se asienta en la costa noroeste con un importante puerto y una densidad poblacional alta.",
+    "descripcion": "La Coruña es una ciudad y capital de Galicia situada en el noroeste peninsular. Conocida por su importante puerto histórico y su clima oceánico, presenta dos fachadas marítimas distintas. La ciudad destaca por su densidad poblacional alta y su skyline urbano con edificios de altura. Es la segunda ciudad española con mayor proporción de edificios de diez pisos o más.",
+    "imagenes": {
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Enseada_do_Orz%C3%A1n.jpg",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Escudo_de_A_Coru%C3%B1a.svg/120px-Escudo_de_A_Coru%C3%B1a.svg.png"
+    },
+    "sitio_web": "https://www.coruna.gal",
+    "wikipedia_url": "https://es.wikipedia.org/wiki/La_Coruña"
+  }
+]

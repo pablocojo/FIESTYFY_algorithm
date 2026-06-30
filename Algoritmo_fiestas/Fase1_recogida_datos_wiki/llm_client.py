@@ -4,7 +4,8 @@ import time
 
 import requests
 
-from config import LMSTUDIO_API, HEADERS, LLM_MODEL_NAME, LLM_TEMPERATURE, MAX_LLM_RETRIES
+from config import LMSTUDIO_API, HEADERS, LLM_TEMPERATURE, MAX_LLM_RETRIES
+import config
 from logger import log_error
 
 
@@ -40,7 +41,7 @@ def call_llm(system_prompt: str, user_prompt: str, context_info: dict = {}) -> s
     No hay alternancia de modelos ni llamadas paralelas desde este cliente.
     """
     payload = {
-        "model": LLM_MODEL_NAME,
+        "model": config.LLM_MODEL_NAME,
         "messages": [
             {"role": "system", "content": system_prompt},
             {"role": "user", "content": user_prompt},
@@ -49,7 +50,7 @@ def call_llm(system_prompt: str, user_prompt: str, context_info: dict = {}) -> s
         "stream": False,
     }
 
-    timeout_seconds = 120
+    timeout_seconds = 300
     retries = MAX_LLM_RETRIES or 3
 
     for attempt in range(1, retries + 1):
@@ -62,7 +63,7 @@ def call_llm(system_prompt: str, user_prompt: str, context_info: dict = {}) -> s
         except Exception as e:
             log_error(
                 f"Error al llamar al LLM (intento {attempt}/{retries}): {e}",
-                context={**context_info, "model": LLM_MODEL_NAME},
+                context={**context_info, "model": config.LLM_MODEL_NAME},
             )
             if attempt < retries:
                 time.sleep(2 * attempt)

@@ -7,18 +7,27 @@ from logger import log_error
 
 
 def fetch_url(url: str) -> str:
+    import time
     headers = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-                      "AppleWebKit/537.36 (KHTML, like Gecko) "
-                      "Chrome/124.0.0.0 Safari/537.36"
+        "User-Agent": "FiestyfyBot/1.0 (sainzmartinp@gmail.com) - Project Fiestyfy Data Collection"
     }
-    try:
-        resp = requests.get(url, headers=headers, timeout=REQUEST_TIMEOUT)
-        resp.raise_for_status()
-        return resp.text
-    except Exception as e:
-        log_error(f"Error fetching URL {url}: {e}")
-        return ""
+    max_retries = 3
+    for attempt in range(max_retries):
+        try:
+            resp = requests.get(url, headers=headers, timeout=REQUEST_TIMEOUT)
+            if resp.status_code == 429:
+                wait_time = int(resp.headers.get("Retry-After", 2 ** attempt))
+                log_error(f"429 Too Many Requests para {url}. Reintentando en {wait_time}s...")
+                time.sleep(wait_time)
+                continue
+            resp.raise_for_status()
+            return resp.text
+        except Exception as e:
+            if attempt == max_retries - 1:
+                log_error(f"Error fetching URL {url}: {e}")
+            else:
+                time.sleep(2 ** attempt)
+    return ""
 
 
 def get_soup(html: str) -> BeautifulSoup:
@@ -67,27 +76,85 @@ def get_wikidata_p18_url(wikipedia_url: str) -> str:
     title = urllib.parse.unquote(title)
     
     headers = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-                      "AppleWebKit/537.36 (KHTML, like Gecko) "
-                      "Chrome/124.0.0.0 Safari/537.36"
+        "User-Agent": "FiestyfyBot/1.0 (sainzmartinp@gmail.com) - Project Fiestyfy Data Collection"
     }
     wd_url = f"https://www.wikidata.org/w/api.php?action=wbgetentities&sites=eswiki&titles={urllib.parse.quote(title)}&props=claims&format=json"
     
+    max_retries = 3
+    for attempt in range(max_retries):
+        try:
+            import time
+            resp = requests.get(wd_url, headers=headers, timeout=REQUEST_TIMEOUT)
+            if resp.status_code == 429:
+                wait_time = int(resp.headers.get("Retry-After", 2 ** attempt))
+                log_error(f"429 Too Many Requests para Wikidata {title}. Reintentando en {wait_time}s...")
+                time.sleep(wait_time)
+                continue
+            resp.raise_for_status()
+            data = resp.json()
+            
+            entities = data.get("entities", {})
+            for entity_id, entity_data in entities.items():
+                if entity_id != "-1":
+                    p18_claims = entity_data.get("claims", {}).get("P18", [])
+                    if p18_claims:
+                        image_name = p18_claims[0].get("mainsnak", {}).get("datavalue", {}).get("value")
+                        if image_name:
+                            image_name_encoded = urllib.parse.quote(image_name.replace(" ", "_"))
+                            return f"https://commons.wikimedia.org/wiki/Special:FilePath/{image_name_encoded}"
+            return ""
+        except Exception as e:
+            if attempt == max_retries - 1:
+                log_error(f"Error extrayendo Wikidata P18 para {title}: {e}")
+            else:
+                time.sleep(2 ** attempt)
+    return ""
+
+
+def buscar_titulos_relacionados_api(ciudad: str) -> list[str]:
+    """
+    Consulta la API de Wikipedia para ver si existen páginas o categorías 
+    maestras relacionadas con barrios/distritos/pedanías de una ciudad.
+    """
+    if not ciudad:
+        return []
+
+    url = "https://es.wikipedia.org/w/api.php"
+    headers = {"User-Agent": "FiestyfyBot/1.0 (sainzmartinp@gmail.com) - Project Fiestyfy"}
+    
+    titulos_posibles = [
+        f"Anexo:Barrios de {ciudad}",
+        f"Categoría:Barrios de {ciudad}",
+        f"Barrios de {ciudad}",
+        f"Anexo:Distritos de {ciudad}",
+        f"Categoría:Distritos de {ciudad}",
+        f"Distritos de {ciudad}",
+        f"Anexo:Pedanías de {ciudad}",
+        f"Categoría:Pedanías de {ciudad}",
+        f"Pedanías de {ciudad}",
+        f"Organización territorial de {ciudad}"
+    ]
+    
+    params = {
+        "action": "query",
+        "titles": "|".join(titulos_posibles),
+        "format": "json"
+    }
+    
     try:
-        resp = requests.get(wd_url, headers=headers, timeout=REQUEST_TIMEOUT)
+        resp = requests.get(url, params=params, headers=headers, timeout=REQUEST_TIMEOUT)
         resp.raise_for_status()
         data = resp.json()
         
-        entities = data.get("entities", {})
-        for entity_id, entity_data in entities.items():
-            if entity_id != "-1":
-                p18_claims = entity_data.get("claims", {}).get("P18", [])
-                if p18_claims:
-                    image_name = p18_claims[0].get("mainsnak", {}).get("datavalue", {}).get("value")
-                    if image_name:
-                        image_name_encoded = urllib.parse.quote(image_name.replace(" ", "_"))
-                        return f"https://commons.wikimedia.org/wiki/Special:FilePath/{image_name_encoded}"
-        return ""
+        results = []
+        for page_id, page_info in data.get("query", {}).get("pages", {}).items():
+            if "missing" not in page_info:
+                title = page_info["title"]
+                # Convert to full URL
+                title_encoded = urllib.parse.quote(title.replace(" ", "_"))
+                results.append(f"https://es.wikipedia.org/wiki/{title_encoded}")
+                
+        return results
     except Exception as e:
-        log_error(f"Error extrayendo Wikidata P18 para {title}: {e}")
-        return ""
+        log_error(f"Error consultando API de Wikipedia para {ciudad}: {e}")
+        return []

@@ -37,10 +37,10 @@ ROOT_CATEGORY_URL = (
 # ============================================================================
 # PARÁMETROS DE LLM
 # ============================================================================
-LLM_MODEL_NAME = "deepseek-r1-distill-qwen-7b"
+LLM_MODEL_NAME = "qwen2.5-7b-instruct"
 LLM_TEMPERATURE = 0.4
 # Máximo tokens de snippet que enviamos al LLM para evitar overflow de contexto
-MAX_SNIPPET_TOKENS = 6000
+MAX_SNIPPET_TOKENS = 18000
 
 
 # ============================================================================

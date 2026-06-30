@@ -57,6 +57,36 @@ def _normalizar_nombre_provincia(provincia: str) -> str:
     """
     return _normalizar(provincia)
 
+def limpiar_nombre_ine(nombre_ine: str) -> list[str]:
+    """
+    Recibe un nombre bruto del INE y devuelve una lista de posibles nombres limpios.
+    Ej: "RETES DE TUDELA/ERRETES TUDELA" -> ["RETES DE TUDELA", "ERRETES TUDELA"]
+    Ej: "CAMPILLAR (EL)" -> ["EL CAMPILLAR"]
+    Ej: "ETXAGUEN (ZIGOITIA)" -> ["ETXAGUEN"]
+    """
+    partes = [p.strip() for p in nombre_ine.split('/')]
+    resultados = []
+    for p in partes:
+        # Detectar artículo pospuesto: "Nombre (El)"
+        match_art = re.search(r'\(\s*(EL|LA|LOS|LAS|L\'|ES|SA|SES)\s*\)$', p, re.IGNORECASE)
+        if match_art:
+            art = match_art.group(1).strip()
+            nombre_base = p[:match_art.start()].strip()
+            if art.upper() == "L'":
+                resultados.append(f"{art}{nombre_base}")
+            else:
+                resultados.append(f"{art} {nombre_base}")
+            continue
+            
+        # Detectar paréntesis de aclaración
+        p_sin_parentesis = re.sub(r'\(.*?\)', '', p).strip()
+        if p_sin_parentesis:
+            resultados.append(p_sin_parentesis)
+            if p_sin_parentesis != p:
+                resultados.append(p)
+            
+    return resultados
+
 
 # ============================================================================
 # CARGA DE TABLAS
@@ -170,6 +200,20 @@ def cargar_datos_ine() -> dict:
         filas_procesadas += 1
 
     wb_loc.close()
+
+    # Deduplicar pedanías con el mismo nombre dentro del mismo municipio
+    for clave, lista_locs in localidades.items():
+        locs_dedup = {}
+        for loc in lista_locs:
+            nombre_norm = _normalizar(loc['nombre'])
+            if nombre_norm not in locs_dedup:
+                locs_dedup[nombre_norm] = loc
+            else:
+                # Si hay conflicto, nos quedamos con la de mayor población
+                if loc['poblacion'] > locs_dedup[nombre_norm]['poblacion']:
+                    locs_dedup[nombre_norm] = loc
+        localidades[clave] = list(locs_dedup.values())
+
     total_locs = sum(len(v) for v in localidades.values())
     safe_print(f"  OK: {total_locs} localidades en {len(localidades)} municipios.")
 
@@ -186,7 +230,35 @@ def cargar_datos_ine() -> dict:
 # BÚSQUEDA
 # ============================================================================
 
-def buscar_municipio_ine(nombre_municipio: str, provincia: str, datos_ine: dict) -> dict | None:
+def _consultar_nombre_ine_llm(nombre_wiki: str, provincia: str, html_municipio: str) -> str | None:
+    """Extrae el nombre oficial del INE del primer parrafo de Wikipedia usando el LLM."""
+    try:
+        from scraper import get_soup
+        import re
+        
+        soup = get_soup(html_municipio)
+        parrafos = [p.get_text(strip=True) for p in soup.find_all('p') if p.get_text(strip=True)]
+        texto_intro = " ".join(parrafos[:3])
+        
+        if not texto_intro:
+            return None
+            
+        from llm_client import call_llm
+        prompt = (
+            f"Lee la introduccion de Wikipedia para el municipio '{nombre_wiki}' de '{provincia}':\n\n"
+            f"\"{texto_intro}\"\n\n"
+            "Dime cual es su nombre oficial o cooficial (el que usaria el INE). "
+            "Responde SOLO con el nombre, sin mas palabras ni puntuacion extra."
+        )
+        respuesta = call_llm("Eres un asistente experto en toponimia española.", prompt, context_info={"stage": "consultar_nombre_ine"})
+        if not respuesta: return None
+        
+        return respuesta.strip()
+    except Exception as e:
+        print(f"Error en LLM municipio: {e}")
+    return None
+
+def buscar_municipio_ine(nombre_municipio: str, provincia: str, datos_ine: dict, html_municipio: str = None) -> dict | None:
     """
     Busca un municipio en las tablas INE por nombre y provincia.
 
@@ -214,9 +286,43 @@ def buscar_municipio_ine(nombre_municipio: str, provincia: str, datos_ine: dict)
         # Ejemplo: "San Martín de Oscos" vs "San Martin de Oscos"
         for nombre_ine_norm, claves in datos_ine['indice_nombre'].items():
             if nombre_norm in nombre_ine_norm or nombre_ine_norm in nombre_norm:
-                candidatos.extend(claves)
+                # FILTRO: solo aceptar si la provincia coincide
+                for cpro, cmun, prov_orig in claves:
+                    prov_norm_ine = _normalizar_nombre_provincia(prov_orig)
+                    partes_prov = re.split(r'[/,]', prov_norm_ine)
+                    if (provincia_norm and 
+                        (provincia_norm in prov_norm_ine or prov_norm_ine in provincia_norm or
+                         any(provincia_norm in p.strip() or p.strip() in provincia_norm for p in partes_prov))):
+                        candidatos.append((cpro, cmun, prov_orig))
         # Deduplicar
         candidatos = list(set(candidatos))
+
+    if not candidatos:
+        # Usar Fuzzy Matching (difflib) entre los municipios de la misma provincia
+        # Útil para traducir topónimos (ej. Aramayona -> Aramaio)
+        import difflib
+        candidatos_prov = {}
+        for (cpro, cmun), info in datos_ine['municipios'].items():
+            prov_norm = _normalizar_nombre_provincia(info['provincia'])
+            # Filtro flexible de provincia
+            partes_prov = re.split(r'[/,]', prov_norm)
+            if provincia_norm in prov_norm or prov_norm in provincia_norm or any(provincia_norm in p.strip() for p in partes_prov):
+                for p_limpio in limpiar_nombre_ine(info['nombre']):
+                    candidatos_prov[_normalizar(p_limpio)] = (cpro, cmun, info['provincia'])
+
+        if candidatos_prov:
+            matches = difflib.get_close_matches(nombre_norm, list(candidatos_prov.keys()), n=1, cutoff=0.85)
+            if matches:
+                candidatos.append(candidatos_prov[matches[0]])
+                
+        # TERCER FALLBACK: Si no hay match matematico y tenemos HTML, usar LLM
+        if not candidatos and html_municipio and candidatos_prov:
+            nombre_oficial_llm = _consultar_nombre_ine_llm(nombre_municipio, provincia, html_municipio)
+            if nombre_oficial_llm:
+                matches_llm = difflib.get_close_matches(_normalizar(nombre_oficial_llm), list(candidatos_prov.keys()), n=1, cutoff=0.6)
+                if matches_llm:
+                    print(f"     -> [LLM] Alias encontrado: '{nombre_municipio}' = '{matches_llm[0]}'")
+                    candidatos.append(candidatos_prov[matches_llm[0]])
 
     if not candidatos:
         return None
@@ -237,17 +343,14 @@ def buscar_municipio_ine(nombre_municipio: str, provincia: str, datos_ine: dict)
             break
 
     if not mejor:
-        # Si solo hay un candidato, usarlo igualmente
-        if len(candidatos) == 1:
-            mejor = (candidatos[0][0], candidatos[0][1])
-        else:
-            return None
+        return None
 
     info_mun = datos_ine['municipios'].get(mejor)
     locs = datos_ine['localidades'].get(mejor, [])
 
-    # Comprobar si el nombre del municipio coincide con alguna localidad
-    nombre_en_locs = _nombre_coincide_con_localidad(nombre_municipio, locs)
+    # Comprobar si el nombre oficial del municipio (INE) coincide con alguna localidad (INE)
+    nombre_base_ine = info_mun['nombre'] if info_mun else nombre_municipio
+    nombre_en_locs = _nombre_coincide_con_localidad(nombre_base_ine, locs)
 
     return {
         'clave': mejor,
@@ -262,20 +365,38 @@ def _nombre_coincide_con_localidad(nombre_municipio: str, localidades: list[dict
     """
     Comprueba si el nombre del municipio coincide con alguna localidad del INE.
 
-    Hace comparación normalizada (sin tildes, minúsculas).
+    Hace comparación normalizada (sin tildes, minúsculas) y divide los nombres bilingües separados por '/'.
     """
     nombre_norm = _normalizar(nombre_municipio)
-
+    # También probar con las variantes limpias del nombre del municipio
+    variantes_mun = {nombre_norm}
+    # Sin artículos
+    sin_art = re.sub(r"^(?:el|la|los|las|l'|es|sa|ses)\s+", '', nombre_norm)
+    if sin_art: variantes_mun.add(sin_art)
+    # Partes bilingües
+    for parte in nombre_municipio.split('/'):
+        variantes_mun.add(_normalizar(parte.strip()))
+    
     for loc in localidades:
-        loc_norm = _normalizar(loc['nombre'])
-        if nombre_norm == loc_norm:
+        partes_loc = limpiar_nombre_ine(loc['nombre'])
+        variantes_loc = set()
+        for p_loc in partes_loc:
+            loc_norm = _normalizar(p_loc)
+            variantes_loc.add(loc_norm)
+            loc_sin_art = re.sub(r"^(?:el|la|los|las|l'|es|sa|ses)\s+", '', loc_norm)
+            if loc_sin_art: variantes_loc.add(loc_sin_art)
+        
+        # Match: cualquier variante del municipio coincide con cualquier variante de la localidad
+        if variantes_mun & variantes_loc:
             return True
-        # También comprobar sin artículos comunes (El, La, Los, Las, L')
-        nombre_sin_art = re.sub(r"^(?:el|la|los|las|l'|es|sa|ses)\s+", '', nombre_norm)
-        loc_sin_art = re.sub(r"^(?:el|la|los|las|l'|es|sa|ses)\s+", '', loc_norm)
-        if nombre_sin_art and loc_sin_art and nombre_sin_art == loc_sin_art:
-            return True
-
+        
+        # Match parcial (contenido) solo para nombres largos
+        for vm in variantes_mun:
+            for vl in variantes_loc:
+                if len(vm) > 4 and len(vl) > 4:
+                    if vm in vl or vl in vm:
+                        return True
+    
     return False
 
 

@@ -25,17 +25,22 @@ cambia la etiqueta y de quién cuelga). La jerarquía se expresa con `padre_id`.
     ├─ Obtiene imágenes (banner + logo)
   4. Guardar municipios.json
   5. El programa termina sin analizar subdivisiones
+--Fase 1.5: Revalidación estricta de municipios compuestos--
+1. Usuario ejecuta: python revalidar_compuestos.py
+2. Carga `municipios.json` y cruza TODOS los lugares con las tablas del INE (`pobmun25` y `nomdef2025`).
+3. Aplica regla estricta: Si el municipio NO tiene una localidad/pedanía con exactamente su mismo nombre en el padrón, lo reclasifica como `municipio_compuesto`. Si la tiene, lo marca como lugar físico.
+4. Genera `municipios_revisados.json` y un informe detallado.
 --Fase 2: añadir al json distritos, barrios y pedanías--
 1. Usuario ejecuta: python main2.py
 2. Se carga municipios.json como base
-3. se inicia un bucle para ir anlizando uno a uno los municipios
-4. para cada municipio:
-  ├─Si es ciudad_grande busca distritos, barrios y pedanías
-  ├─Si es ciudad_pequeña busca barrios y pedanías 
-  ├─Si es municipio_compuesto busca el núcleo(por defecto en el ayuntamiento) y las distintas pedanías internas
-  ├─Si es pueblo está ya listo (no se cambia nada)
+3. Se inicia un bucle para analizar uno a uno los municipios
+4. Para cada municipio (sea del tipo que sea):
+  ├─ 1º Extrae sus **pedanías directamente del INE** (Fuzzy matching con Wikipedia y API).
+  ├─ 2º Si es `ciudad_grande`, busca distritos y luego barrios.
+  ├─ 3º Si es `ciudad_pequena`, busca barrios adicionales.
+  ├─ 4º Deduplica por ID, nombre y URL de Wikipedia priorizando **siempre** la Pedanía frente al Distrito o Barrio.
 5. Guardar lugares_espana.json con los municipios y las subdivisiones
-6. Validar estructura y relaciones
+6. Validar estructura, relaciones e imágenes (El `banner` siempre se extrae de la propiedad P18 de Wikidata, y el `logo` de Wikipedia).
 
 ## Tipos de lugar
 
@@ -91,6 +96,7 @@ cambia la etiqueta y de quién cuelga). La jerarquía se expresa con `padre_id`.
       "id": "madrid-centro-sol",
       "tipo": "barrio",
       "padre_id": "madrid-centro",
+      "abuelo_id": "madrid",
       "nombre": "Sol",
       ...
     }
@@ -101,6 +107,7 @@ cambia la etiqueta y de quién cuelga). La jerarquía se expresa con `padre_id`.
 ### Reglas
 - **ids** = slug (minúsculas, sin acentos, guiones); para hijos, **prefija con el padre** (`madrid-centro-sol`).
 - `padre_id` solo en distritos/barrios/pedanías y **debe existir** en el fichero. Máx. 3 niveles cuando haya barrio (`ciudad_grande` → `distrito` → `barrio`).
+- **abuelo_id**: Opcional. Los barrios que cuelgan de un `distrito` deben incluir este campo con el ID del municipio raíz.
 - Un `distrito` solo cuelga de `ciudad_grande`.
 - Un `barrio` cuelga de un `distrito` si pertenece a una ciudad grande con distritos, o directamente de una `ciudad_pequena` si no hay distrito intermedio.
 - Una `pedania` cuelga de un municipio raíz (`pueblo`, `ciudad_pequena`, `ciudad_grande`) o de un `municipio_compuesto`.

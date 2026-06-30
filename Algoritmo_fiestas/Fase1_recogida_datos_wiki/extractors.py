@@ -684,206 +684,7 @@ def _recoger_senales_compuesto(html: str, nombre: str) -> dict:
     return senales
 
 
-def es_municipio_compuesto(
-    html: str,
-    nombre: str,
-) -> tuple[bool, str]:
-    """
-    Determina si un municipio es compuesto usando senales + LLM.
 
-    Args:
-        html: HTML del articulo de Wikipedia.
-        nombre: Nombre del municipio.
-
-    Returns:
-        (es_compuesto: bool, razon: str)
-    """
-    from config import COMPUESTO_MIN_CONFIDENCE
-
-    senales = _recoger_senales_compuesto(html, nombre)
-
-    # --- Pre-filtro: si no hay NINGUN indicio, no molestar al LLM ---
-    hay_indicios = (
-        senales['capital_diferente_al_nombre']
-        or senales['frase_agrupacion_nucleos']
-        or senales['tiene_seccion_localidades']
-        or senales['tiene_seccion_entidades_poblacion']
-        or senales['tiene_seccion_parroquias']
-        or senales['tiene_seccion_concejos']
-        or senales['tipo_entidad_infobox'] in ('concejo', 'parroquia')
-        or len(senales.get('categorias_relevantes', [])) > 0
-    )
-
-    # Si se autodefine como lugar fisico Y no hay ningun indicio de agrupacion
-    if senales['se_autodefine_lugar_fisico'] and not hay_indicios:
-        return False, f'Se autodefine como lugar fisico y sin indicios de agrupacion.'
-
-    # Si no se autodefine como fisico pero tampoco hay indicios de nada
-    if not hay_indicios and not senales['texto_contexto']:
-        return False, 'Sin indicios de compuesto ni contexto para analizar.'
-
-    # --- Hay indicios: consultar al LLM ---
-    senales_resumen = (
-        f"SENALES ESTRUCTURALES DETECTADAS:\n"
-        f"- El articulo define a {nombre} como un lugar fisico (pueblo/villa/ciudad): "
-        f"{'SI' if senales['se_autodefine_lugar_fisico'] else 'NO'}\n"
-        f"- La capital del municipio tiene nombre diferente a {nombre}: "
-        f"{'SI' if senales['capital_diferente_al_nombre'] else 'NO'}\n"
-        f"- Tiene seccion de Localidades: "
-        f"{'SI' if senales['tiene_seccion_localidades'] else 'NO'}\n"
-        f"- Tiene seccion de Entidades de poblacion / Nucleos: "
-        f"{'SI' if senales['tiene_seccion_entidades_poblacion'] else 'NO'}\n"
-        f"- Tiene seccion de Parroquias: "
-        f"{'SI' if senales['tiene_seccion_parroquias'] else 'NO'}\n"
-        f"- Tiene seccion de Concejos: "
-        f"{'SI' if senales['tiene_seccion_concejos'] else 'NO'}\n"
-        f"- Tiene seccion de Pedanias: "
-        f"{'SI' if senales['tiene_seccion_pedanias'] else 'NO'}\n"
-        f"- Tiene seccion de Barrios: "
-        f"{'SI' if senales['tiene_seccion_barrios'] else 'NO'}\n"
-        f"- Tiene seccion de Distritos: "
-        f"{'SI' if senales['tiene_seccion_distritos'] else 'NO'}\n"
-        f"- Frase de agrupacion de nucleos en parrafos iniciales: "
-        f"{'SI' if senales['frase_agrupacion_nucleos'] else 'NO'}\n"
-        f"- Tipo de entidad en infobox: "
-        f"{senales['tipo_entidad_infobox'] or 'no detectado'}\n"
-        f"- Categorias y subpaginas relevantes: "
-        f"{', '.join(senales['categorias_relevantes']) if senales.get('categorias_relevantes') else 'Ninguna detectada'}\n"
-    )
-
-    system_prompt = (
-        "Eres un clasificador experto de geografia administrativa espanola. "
-        "Tu UNICA tarea es decidir si un municipio es un municipio_compuesto "
-        "para un dataset de fiestas locales. Responde SOLO JSON valido."
-    )
-
-    user_prompt = (
-        f"MUNICIPIO A CLASIFICAR: {nombre}\n\n"
-        "===== DEFINICION =====\n"
-        "Un municipio_compuesto es una entidad PURAMENTE ADMINISTRATIVA que NO "
-        "corresponde a un lugar fisico real. No es un pueblo, villa ni ciudad "
-        "donde puedas ir y decir 'estoy en X'. Es una agrupacion administrativa "
-        "de varias localidades/nucleos/parroquias/aldeas.\n\n"
-        "===== REGLAS DE DECISION =====\n"
-        "1. Si el articulo describe a este municipio como un pueblo, villa, ciudad "
-        "o localidad fisica, NO es compuesto, aunque tenga pedanias, barrios, "
-        "aldeas o nucleos asociados. Un pueblo con pedanias sigue siendo un pueblo.\n"
-        "2. Si tiene seccion de Barrios o Distritos, eso REFUERZA que es un "
-        "lugar fisico (ciudades/pueblos reales se dividen en barrios/distritos).\n"
-        "3. Solo es compuesto si el nombre del municipio designa al CONJUNTO "
-        "ADMINISTRATIVO y la realidad fisica se reparte entre varias localidades, "
-        "sin que exista un nucleo principal con el mismo nombre.\n"
-        "4. Si un nucleo/localidad dentro del municipio tiene el mismo nombre "
-        "que el municipio, NO es compuesto: es un lugar fisico con hijos.\n"
-        "5. Que tenga seccion de Localidades o Entidades de poblacion NO basta "
-        "por si solo: muchos pueblos reales listan sus aldeas y pedanias asi.\n"
-        "6. ANTE LA DUDA, responde false. La inmensa mayoria de municipios "
-        "espanoles SI son lugares fisicos. El compuesto es la EXCEPCION.\n\n"
-        "===== EJEMPLOS =====\n"
-        "COMPUESTO (true):\n"
-        "- Puentes Viejas: municipio formado por Cinco Villas, Mangirón, etc. "
-        "No existe un pueblo llamado 'Puentes Viejas'.\n"
-        "- El Barco de Ávila: si el articulo dice que es 'un municipio que "
-        "comprende las localidades de...' y no existe como nucleo propio.\n\n"
-        "NO COMPUESTO (false):\n"
-        "- Alcoy: 'es una ciudad espanola...' → es un lugar fisico real.\n"
-        "- Torrox: 'es un municipio y pueblo...' → lugar fisico con pedanias.\n"
-        "- Madrid: ciudad grande con distritos → lugar fisico.\n"
-        "- Un pueblo con seccion 'Localidades' que lista aldeas → lugar fisico "
-        "con nucleos dependientes.\n\n"
-        f"{senales_resumen}\n"
-        "===== TEXTO DE WIKIPEDIA =====\n"
-        f"{senales['texto_contexto']}\n\n"
-        "===== FORMATO DE RESPUESTA (JSON) =====\n"
-        "{\"es_municipio_compuesto\": boolean, \"confianza\": number (0-1), "
-        "\"razon\": \"explicacion breve\"}\n"
-        "Usa confianza >= 0.90 SOLO si hay evidencia clara e inequivoca."
-    )
-
-    resp = call_llm(
-        system_prompt,
-        user_prompt,
-        context_info={'stage': 'clasificar_municipio_compuesto', 'lugar': nombre},
-    )
-
-    # --- Ante cualquier error del LLM: duda = pueblo ---
-    if not resp or not resp.strip():
-        razon = 'LLM sin respuesta; duda -> pueblo.'
-        _registrar_evaluacion_compuesto(nombre, False, 0, razon, 'LLM_SIN_RESPUESTA')
-        return False, razon
-
-    try:
-        data = json.loads(resp)
-    except json.JSONDecodeError:
-        razon = 'Respuesta LLM invalida; duda -> pueblo.'
-        _registrar_evaluacion_compuesto(nombre, False, 0, razon, 'JSON_INVALIDO')
-        return False, razon
-
-    valor_compuesto = data.get('es_municipio_compuesto')
-    if isinstance(valor_compuesto, bool):
-        es_compuesto_val = valor_compuesto
-    elif isinstance(valor_compuesto, str):
-        es_compuesto_val = valor_compuesto.strip().lower() == 'true'
-    else:
-        es_compuesto_val = False
-
-    try:
-        confidence = float(data.get('confianza') or data.get('confidence') or 0)
-    except (TypeError, ValueError):
-        confidence = 0
-
-    razon_llm = str(data.get('razon') or data.get('reason') or '')
-
-    if es_compuesto_val and confidence >= COMPUESTO_MIN_CONFIDENCE:
-        razon = f'LLM: compuesto (confianza {confidence:.2f}). {razon_llm}'
-        _registrar_evaluacion_compuesto(nombre, True, confidence, razon, 'COMPUESTO_CONFIRMADO')
-        return True, razon
-
-    if es_compuesto_val:
-        # LLM dijo compuesto pero con poca confianza => duda => pueblo
-        razon = f'LLM dijo compuesto pero confianza baja ({confidence:.2f} < {COMPUESTO_MIN_CONFIDENCE}). Duda -> pueblo. {razon_llm}'
-        _registrar_evaluacion_compuesto(nombre, False, confidence, razon, 'DUDA_BAJA_CONFIANZA')
-        return False, razon
-
-    razon = f'LLM: NO compuesto (confianza {confidence:.2f}). {razon_llm}'
-    _registrar_evaluacion_compuesto(nombre, False, confidence, razon, 'NO_COMPUESTO')
-    return False, razon
-
-
-# Fichero de revision manual de evaluaciones de compuesto
-_COMPUESTOS_REVIEW_FILE = 'compuestos_revision_manual.jsonl'
-
-
-def _registrar_evaluacion_compuesto(
-    nombre: str,
-    es_compuesto: bool,
-    confianza: float,
-    razon: str,
-    categoria: str,
-) -> None:
-    """
-    Registra cada evaluacion de municipio compuesto en un fichero JSONL
-    para revision manual posterior.
-    """
-    import datetime
-    registro = {
-        'timestamp': datetime.datetime.now().isoformat(),
-        'nombre': nombre,
-        'resultado': 'municipio_compuesto' if es_compuesto else 'pueblo',
-        'confianza': round(confianza, 3),
-        'categoria': categoria,
-        'razon': razon,
-    }
-    try:
-        with open(_COMPUESTOS_REVIEW_FILE, 'a', encoding='utf-8') as f:
-            f.write(json.dumps(registro, ensure_ascii=False) + '\n')
-    except Exception:
-        pass  # No fallar el proceso principal por un log
-
-
-# ============================================================================
-# EXTRACCIÓN DE DESCRIPCIONES
-# ============================================================================
 
 def _fallback_descripciones_desde_wikipedia(html: str) -> dict:
     """
@@ -968,33 +769,23 @@ def extract_descripciones(html: str, nombre_lugar: str = "", tipo: str = None) -
         return {'descripcion_corta': '', 'descripcion': ''}
 
     system_prompt = (
-        "Eres redactor de Fiestyfy, una app de fiestas locales de España. "
-        "Tu tarea es escribir descripciones de lugares en ESPAÑOL CORRECTO. "
+        "Eres un redactor experto para una app de turismo en España (Fiestyfy). "
+        "Tu tarea es crear una descripción de este lugar basándote en el texto proporcionado. "
         "REGLAS OBLIGATORIAS:\n"
-        "1. IDIOMA: Escribe SOLO en español castellano. PROHIBIDO usar palabras en inglés "
-        "(no: population, municipality, altitude, economy, agriculture, around, until, "
-        "located, between, known). Usa SIEMPRE el equivalente español.\n"
-        "2. ORTOGRAFIA: Usa tildes correctamente (á, é, í, ó, ú). "
-        "Escribe 'municipio' (no 'municĩpio'), 'posición' (no 'posicion'), "
-        "'población' (no 'population'), 'altitud' (no 'altitude').\n"
-        "3. NO menciones Wikipedia, INE, censos, fuentes, ni años de datos.\n"
-        "4. NO menciones la cantidad de población ni número de habitantes.\n"
-        "5. NO inventes datos, fiestas, gentilicios ni valoraciones turísticas "
-        "que no aparezcan en el texto original.\n"
-        "6. Responde SOLO JSON válido: "
-        "{\"descripcion_corta\": str, \"descripcion\": str}"
+        "1. RESPONDE ÚNICAMENTE CON UN JSON VÁLIDO. DEBES ASEGURARTE DE CERRAR LA ÚLTIMA LLAVE '}' DEL JSON.\n"
+        "2. NO escribas NINGÚN texto fuera del JSON.\n"
+        "3. NO menciones la población, ni el censo, ni la cantidad de habitantes. Enfócate en geografía, historia, cultura, fiestas o monumentos.\n"
+        "4. Idioma: Español castellano correcto (usa tildes y eñes correctamente).\n"
+        "5. NO incluyas ninguna coma al final del último elemento del JSON.\n"
     )
     user_prompt = (
         f"Lugar: {nombre_lugar or 'desconocido'}\n"
         f"Tipo: {tipo or 'desconocido'}\n\n"
-        "FORMATO REQUERIDO:\n"
-        f"- descripcion_corta: UNA SOLA FRASE de entre 12 y {DESC_CORTA_MAX_WORDS} palabras. "
-        "Debe ser un resumen directo del lugar. Ejemplo: "
-        "\"Pueblo de la provincia de Ávila situado en la sierra de Gredos.\"\n"
-        f"- descripcion: Texto fluido de entre 50 y {DESC_LARGA_MAX_WORDS} palabras. "
-        "Describe ubicación, características principales y algún dato relevante. "
-        "NO uses listas, viñetas, citas ni markdown.\n\n"
-        "RECUERDA: Todo en español correcto, con tildes, sin palabras en inglés.\n\n"
+        "FORMATO REQUERIDO ESTRICTO:\n"
+        "{\n"
+        f"  \"descripcion_corta\": \"Una sola frase de entre 12 y {DESC_CORTA_MAX_WORDS} palabras resumiendo qué es y dónde está el lugar.\",\n"
+        f"  \"descripcion\": \"Texto fluido de entre 50 y {DESC_LARGA_MAX_WORDS} palabras. SIN MENCIONAR HABITANTES NI POBLACIÓN. Habla del entorno natural, cultura o historia.\"\n"
+        "}\n\n"
         f"Texto fuente:\n{texto_wiki}"
     )
 
@@ -1006,7 +797,21 @@ def extract_descripciones(html: str, nombre_lugar: str = "", tipo: str = None) -
 
     if resp and resp.strip():
         try:
-            data = json.loads(resp)
+            resp_clean = resp.strip()
+            # Heurística para JSON truncado
+            if not resp_clean.endswith("}"):
+                if resp_clean.endswith("\""):
+                    resp_clean += "\n}"
+                elif resp_clean.endswith("."):
+                    resp_clean += "\"\n}"
+                else:
+                    resp_clean += ".\"\n}"
+                    
+            # Limpiar comillas markdown
+            resp_clean = re.sub(r'^```json\s*', '', resp_clean)
+            resp_clean = re.sub(r'\s*```$', '', resp_clean)
+            
+            data = json.loads(resp_clean)
             desc_corta = str(data.get('descripcion_corta') or '').strip()
             desc_larga = str(data.get('descripcion') or '').strip()
             if desc_corta and desc_larga:
@@ -1075,8 +880,10 @@ def extract_imagenes(html: str, lugar_id: str, wikipedia_url: str = None) -> dic
             
             # Términos que indican escudo (alta prioridad)
             escudo_keywords = ['escudo', 'escut', 'heraldica', 'heráldica', 'coa', 'coat of arms', 'shield']
-            # Términos que indican bandera (baja prioridad)
+            # Términos que indican bandera (rechazo total)
             bandera_keywords = ['bandera', 'flag', 'bandeira']
+            
+            es_bandera = False
             
             if any(k in alt for k in escudo_keywords) or any(k in src_lower for k in escudo_keywords) or any(k in parent_title for k in escudo_keywords):
                 score += 100
@@ -1084,9 +891,13 @@ def extract_imagenes(html: str, lugar_id: str, wikipedia_url: str = None) -> dic
                 score += 50
                 
             if any(k in alt for k in bandera_keywords) or any(k in src_lower for k in bandera_keywords) or any(k in parent_title for k in bandera_keywords):
-                score -= 100
+                es_bandera = True
             if any(k in td_text for k in ['bandera', 'bandeira']):
-                score -= 50
+                es_bandera = True
+                
+            # Si es claramente una bandera, la ignoramos por completo
+            if es_bandera:
+                continue
                 
             if score > best_logo_score:
                 best_logo_score = score
@@ -1206,16 +1017,7 @@ def construir_lugar(
     
     # Inferir tipo si no se pasó
     if not tipo:
-        if not padre_id:
-            # Clasificacion de municipio compuesto via LLM (unico decisor)
-            es_compuesto, _razon = es_municipio_compuesto(html, nombre)
-            if es_compuesto:
-                tipo = 'municipio_compuesto'
-            else:
-                tipo = clasificar_por_poblacion(info['poblacion']) or 'pueblo'
-        else:
-            tipo = clasificar_por_poblacion(info['poblacion']) or 'pueblo'
-    
+        tipo = clasificar_por_poblacion(info['poblacion']) or 'pueblo'
     descripciones = extract_descripciones(html, nombre_lugar=nombre, tipo=tipo)
     imagenes = extract_imagenes(html, lugar_id, wikipedia_url)
     sitio_web = extract_sitio_web(html)
