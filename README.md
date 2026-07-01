@@ -1,39 +1,76 @@
-# FIESTYFY_algorithm
+# 🎊 FIESTYFY Algorithm
 
-Este repositorio contiene el algoritmo de recolección y estructuración de datos para la base de datos de fiestas locales de España.
+<p align="center">
+  <em>Motor de recolección, estructuración y enriquecimiento de datos para la plataforma definitiva de fiestas locales de España.</em>
+</p>
 
-## Objetivo Principal
-Elaborar un archivo JSON ordenado y libre de errores que contenga todos los lugares de España susceptibles de tener fiestas propias, sirviendo como esqueleto para el portal web.
+---
 
-## Arquitectura de Datos (INE-First)
-El proyecto confía plenamente en los datos del Instituto Nacional de Estadística (INE):
-- **Municipios (`pobmun25.xlsx`)**: El padrón sirve como base para definir los municipios raíz.
-- **Pedanías (`nomdef2025.xlsx`)**: La extracción de pedanías y subdivisiones rurales se basa 100% en esta tabla. Wikipedia se utiliza únicamente para enriquecer estas pedanías con descripciones y URLs, validando los enlaces mediante un sistema combinado heurístico y LLM.
+## 📖 Visión General
 
-## Tipos de Lugar y Estructura
-- `municipio`: Nodo raíz estructural que agrupa a sus entidades de población. Representa la demarcación administrativa (ID de 11 dígitos del INE) y contiene datos generales (imágenes, descripciones), pero no tiene `padre_id`.
-- `pueblo` / `ciudad_pequena` / `ciudad_grande`: Entidades de población extraídas al 100% desde el INE (`ENTIDADES.csv`). Tienen fiestas propias y cuelgan siempre de un `municipio` (como `padre_id`). Una de estas entidades dentro de cada municipio se marca con `es_capital: true`.
-- `distrito` / `barrio`: Divisiones de nivel inferior obtenidas de Wikipedia. Solo cuelgan de las ciudades (una ciudad grande puede tener distritos y barrios; una pequeña puede tener barrios). Todos los lugares, incluidos distritos y barrios, tienen el campo `es_capital` (los barrios/distritos siempre son `false`).
+El **Algoritmo FIESTYFY** es el corazón tecnológico detrás de la plataforma Fiestyfy. Su propósito es orquestar la creación de una base de datos exhaustiva, estructurada y libre de errores, que documente todos los lugares de España susceptibles de albergar fiestas propias.
 
-Nota: Ya no existe el concepto de "municipio_compuesto" ni el tipo "pedania". Todos los municipios se comportan como contenedores, y todas las antiguas pedanías ahora son entidades tipificadas por población (`pueblo`, etc.).
+Este proyecto automatiza la recopilación de entidades territoriales, su enriquecimiento mediático y descriptivo, y la posterior extracción inteligente de programas festivos mediante técnicas de **Web Scraping**, **RAG (Retrieval-Augmented Generation)** y el uso de **Modelos de Lenguaje Locales (LLMs)**.
 
-## Fases del Algoritmo
-- **Fase 1 (Recogida de Lugares)**: Construye la estructura territorial completa. 
-  - **Paso 1 (`main.py`)**: Extrae los municipios raíz desde Wikipedia.
-  - **Paso 2 (`main2.py`)**: Cruza la información obtenida con los datos del INE (`ENTIDADES.csv`) para extraer el 100% de las entidades menores (pueblos, ciudades). Posteriormente usa un LLM para extraer su descripción y extraer posibles subdivisiones urbanas (distritos y barrios) desde Wikipedia.
-- **Fase 2 (Extracción de Fiestas)**: Toma las entidades generadas en la Fase 1 y utiliza un orquestador asíncrono con un pipeline de Web Scraping, RAG y un LLM local para rastrear la web (búsquedas y web del ayuntamiento), identificar programas de actos y construir las fichas completas de las fiestas.
+---
 
-## Configuración y Rendimiento (LM Studio)
+## 🎯 Objetivo Principal
 
-El algoritmo hace un uso intensivo de modelos de IA locales ejecutados a través de **LM Studio**. Dependiendo del hardware (CPU/GPU) donde se ejecute, es posible ajustar los modelos o parámetros de concurrencia:
+Construir un archivo JSON estructurado, validado jerárquicamente y de alta fidelidad que actúe como el **esqueleto central** de toda la plataforma web, garantizando:
+- Cobertura total del territorio español (0% omisiones).
+- Cero clasificaciones erróneas.
+- Alta fidelidad en la información cultural y descriptiva de las festividades.
 
-### Modelos Utilizados
-- **Modelo de Lenguaje Principal**: `qwen2.5-7b-instruct`. Se encarga tanto de resumir descripciones (Fase 1) como de extraer el programa estructurado de las fiestas (Fase 2).
-- **Modelo de Embeddings**: `text-embedding-nomic-embed-text-v1.5`. Se usa exclusivamente en la Fase 2 (RAG) para buscar los fragmentos de texto más relevantes antes de enviarlos al LLM.
+---
 
-### Dónde cambiar los parámetros
-Si la máquina tiene menor o mayor capacidad, puedes cambiar el nombre del modelo, el número de municipios en paralelo o el timeout de las peticiones en los siguientes archivos de configuración:
-- **Fase 1 (Lugares)**: Los parámetros del LLM se definen en `Algoritmo_fiestas/Fase1_recogida_datos_wiki/config.py` (buscar `LLM_MODEL_NAME`).
-- **Fase 2 (Fiestas)**: Los parámetros del LLM se definen en `Algoritmo_fiestas/Fase2_Extraccion_Fiestas/config.py` (buscar `LLM_MODEL_NAME`, `EMBEDDING_MODEL_NAME` y `PARALLEL_MUNICIPALITIES`).
+## 🏗 Arquitectura de Datos (Enfoque *INE-First*)
 
-*Nota: Asegúrate de que los modelos que configures coincidan exactamente con el nombre de los modelos cargados en tu servidor local de LM Studio.*
+Para garantizar la máxima fiabilidad, el sistema confía como fuente principal y absoluta en los datos oficiales del **Instituto Nacional de Estadística (INE)**:
+
+1. **Base Municipal (`MUNICIPIOS.csv` / `pobmun25.xlsx`)**: Define el padrón y establece los nodos raíz de toda la geografía española.
+2. **Entidades Poblacionales (`ENTIDADES.csv` / `nomdef2025.xlsx`)**: Proporciona el 100% de las entidades menores y pedanías oficiales. 
+
+**Rol de Wikipedia**: Se relega a una función secundaria de *enriquecimiento*. Se utiliza para obtener URLs, generar descripciones mediante LLMs y extraer estructuras puramente urbanas (como **distritos** y **barrios**) que no constan en el INE.
+
+---
+
+## 🗂 Estructura Jerárquica y Tipología de Lugares
+
+El algoritmo organiza el territorio en un árbol relacional estricto. (Nota: Se ha eliminado la figura de *municipio compuesto* y *pedanía* como tipos de datos; todo se estructura en base a población y jerarquía).
+
+* **`municipio`**: Nodo raíz estructural (ID INE 11 dígitos). Actúa como contenedor logístico y administrativo. Contiene metadatos generales pero **no** tiene fiestas propias ni el campo `padre_id`.
+* **`pueblo` / `ciudad_pequena` / `ciudad_grande`**: Entidades habitadas reales. Poseen fiestas propias y cuelgan directamente de un `municipio` a través del campo `padre_id`. Una de estas entidades en cada municipio se marca siempre con `es_capital: true`.
+* **`distrito` / `barrio`**: Subdivisiones de nivel inferior (extraídas de Wikipedia). Sólo cuelgan de entidades urbanas (ciudades grandes o pequeñas). Siempre tienen `es_capital: false`. En el caso de los barrios que cuelgan de distritos, incluyen un `abuelo_id` que apunta a la ciudad principal.
+
+---
+
+## ⚙️ Fases del Algoritmo
+
+El procesamiento se divide en dos fases secuenciales y altamente especializadas:
+
+### 📍 Fase 1: Estructuración Territorial (`Fase1_recogida_datos_wiki`)
+Construye el esqueleto relacional y poblacional completo.
+* **Paso 1 (`main.py`)**: Inicialización y extracción de los municipios raíz.
+* **Paso 2 (`main2.py`)**: Cruce masivo con los datos del INE (`ENTIDADES.csv`) para extraer todas las entidades menores. Posteriormente, un agente LLM extrae descripciones resumidas e identifica distritos y barrios desde Wikipedia.
+
+### 🎊 Fase 2: Extracción y Procesamiento de Fiestas (`Fase2_Extraccion_Fiestas`)
+Recorre el esqueleto generado en la Fase 1 para nutrir de contenido festivo a las entidades.
+* Utiliza un orquestador asíncrono impulsado por **LLMs locales** y **RAG**.
+* Realiza búsquedas inteligentes, procesa webs de ayuntamientos, filtra ruido y estructura en formato JSON las fechas, descripciones y programas de actos de cada festividad.
+
+---
+
+## 🧠 Configuración de Inteligencia Artificial (LM Studio)
+
+El sistema está diseñado para ejecutarse de forma autónoma utilizando modelos de IA open-source alojados localmente mediante **LM Studio**, garantizando privacidad y control de costes.
+
+### Modelos Recomendados
+- **LLM Principal**: `qwen2.5-7b-instruct` (o superior). Encargado de tareas complejas de razonamiento: resumir contextos históricos, identificar relaciones territoriales y parsear programas de fiestas.
+- **Modelo de Embeddings**: `text-embedding-nomic-embed-text-v1.5`. Utilizado en el sistema RAG de la Fase 2 para vectorizar documentos web y extraer los bloques de texto más relevantes antes del prompt final.
+
+### 🔧 Ajuste de Rendimiento
+Para adaptar el algoritmo al hardware disponible (CPU/GPU), se pueden modificar los parámetros de concurrencia y modelos en:
+- **Fase 1**: `Algoritmo_fiestas/Fase1_recogida_datos_wiki/config.py` (`LLM_MODEL_NAME`)
+- **Fase 2**: `Algoritmo_fiestas/Fase2_Extraccion_Fiestas/config.py` (`LLM_MODEL_NAME`, `EMBEDDING_MODEL_NAME`, `PARALLEL_MUNICIPALITIES`)
+
+> ⚠️ **Importante**: El nombre asignado a las variables en `config.py` debe coincidir exactamente con el identificador del modelo cargado en el servidor local de LM Studio.

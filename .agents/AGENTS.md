@@ -1,43 +1,46 @@
 # FIESTYFY_algorithm - Reglas del Proyecto y Objetivos
 
 ## Objetivo Principal
-El objetivo fundamental del proyecto es elaborar un archivo JSON ordenado y libre de errores que contenga todos los lugares de España susceptibles de tener fiestas propias. Este archivo será el **esqueleto estructural** de una página web dedicada a las fiestas de localidades en España.
+El objetivo fundamental del proyecto es elaborar un archivo JSON ordenado, validado y libre de errores que contenga la totalidad de los lugares de España susceptibles de tener fiestas propias. Este archivo es el **esqueleto estructural central** de la plataforma web de Fiestyfy.
 
-## Prioridades y Calidad de los Datos
-- **Sin errores de omisión o clasificación**: Es crítico no dejar fuera ninguna localidad, garantizar que las descripciones se generen correctamente, y evitar clasificar erróneamente un municipio como compuesto cuando no lo es.
-- **Fuentes de Datos (Las dos tablas del INE)**: Los datos del **INE** son la fuente de mayor calidad y precisión ("los mejores datos"). El proyecto se basa en dos tablas fundamentales:
-  1. **Tabla de Municipios (`pobmun25.xlsx`)**: Contiene el padrón base de todos los municipios raíz de España.
-  2. **Tabla de Unidades Poblacionales (`nomdef2025.xlsx`)**: Contiene las subdivisiones y núcleos de los municipios. **Regla muy importante:** Las unidades de población que se obtienen de esta tabla **solo son pedanías**. Esta tabla **no** contiene ni trata sobre barrios ni distritos.
+## 1. Prioridades Absolutas y Calidad de los Datos
+- **Tolerancia Cero a Omisiones**: Es crítico no dejar fuera a ninguna localidad real. Todas las pedanías, pueblos y subdivisiones deben estar mapeados.
+- **Fuente de Verdad (Enfoque INE-First)**: El Instituto Nacional de Estadística (INE) es la máxima autoridad. El proyecto se basa obligatoriamente en dos tablas:
+  1. **Municipios (`MUNICIPIOS.csv` / `pobmun25.xlsx`)**: Define el padrón base de todos los municipios raíz (nodos padre).
+  2. **Unidades Poblacionales (`ENTIDADES.csv` / `nomdef2025.xlsx`)**: Proporciona todas las subdivisiones y núcleos. **CRÍTICO:** Esta tabla *solo* proporciona pedanías/núcleos poblacionales. No contiene ni distritos ni barrios.
 
-## Generación de IDs y Repeticiones
-- **Repetición de pedanías en el INE**: En la tabla de unidades poblacionales, pueden aparecer pedanías con el mismo nombre (o nombres que se normalizan al mismo string) **dentro del mismo municipio**. 
-- **Resolución de Repeticiones**: Si dentro de un mismo municipio hay pedanías con el mismo nombre, se debe resolver comparando la población: **se elimina la de menor población y se deja solo una**. Si la población es igual, se elimina cualquiera de ellas. Es perfectamente válido y normal que existan pedanías con el mismo nombre si pertenecen a municipios diferentes.
+## 2. Detección de Jerarquías y Nomenclaturas (Nuevas Reglas)
+- **Eliminación de Tipos Obsoletos**: El sistema confía íntegramente en el INE. **Ya NO existe** el concepto de `municipio_compuesto` ni el tipo `pedania`.
+- **Estructura del Municipio**: Todo `municipio` es ahora un contenedor raíz (con su ID del INE de 11 dígitos) que agrupa bajo sí entidades de población clasificadas por tamaño (`pueblo`, `ciudad_pequena`, `ciudad_grande`). Los municipios en sí **NO** tienen fiestas propias; las fiestas pertenecen a sus entidades hijas.
+- **Capitalidad**: Una de las entidades dentro de cada municipio siempre debe estar marcada con `es_capital: true`.
 
-## Regla de Población Mínima (Subdivisiones)
-- **Umbral de 20 habitantes**: Por regla general, los barrios, distritos y pedanías extraídos de Wikipedia deben superar los 20 habitantes para ser añadidos.
-- **Excepción de Pedanías INE**: Si un lugar tiene `<= 20` habitantes (y su población es `>= 1`), NO se descarta. Si su nombre coincide con el de una pedanía en el INE y se consigue validar contra una URL de Wikipedia válida, se aceptará y registrará automáticamente saltándose el límite de los 20 habitantes.
-- **Descarte absoluto**: Si tiene exactamente `0` habitantes, se elimina siempre, independientemente de si está o no en el INE.
-
-## Deduplicación y Prioridades
-- Si una subdivisión coincide en nombre o en URL de Wikipedia con otra, el sistema las deduplica y prevalece **siempre** la pedanía. El orden de prioridad en la puntuación es: `Pedanía > Distrito > Barrio`.
-- La extracción en Fase 2 (para cualquier tipo de municipio) siempre arranca extrayendo primero las **pedanías del padrón INE**.
-
-## Desafíos Conocidos a Resolver
-1. **Detección de Jerarquías NGMEP**: El sistema ahora confía íntegramente en las tablas del INE (`pobmun25` y `nomdef2025` a través de `MUNICIPIOS.csv` y `ENTIDADES.csv`). Ya no existe el concepto de "municipio_compuesto" ni el tipo "pedania". Todo `municipio` raíz agrupa bajo sí entidades de población (`pueblo`, `ciudad_pequena`, `ciudad_grande`).
-2. **Entidades extraídas del INE (Paso 2 de la Fase 1 / `main2.py`)**: Para garantizar el objetivo de no dejar fuera a ninguna entidad, **las unidades poblacionales se extraen siempre y en un 100% desde la tabla ENTIDADES.csv del INE**. Wikipedia se utiliza únicamente como un sistema secundario para intentar asignarles una URL, generar descripciones resumidas y extraer estructuras puramente urbanas (barrios/distritos).
-3. **Uso de Modelos de IA (LM Studio)**: El proyecto hace un uso intensivo de LLMs locales. Se asume por defecto el uso del modelo de lenguaje **`qwen2.5-7b-instruct`** y el modelo de embeddings **`text-embedding-nomic-embed-text-v1.5`**. Estos pueden configurarse en los respectivos archivos `config.py` de cada fase si el hardware lo requiere.
-
-## Tipos de Lugar y Reglas Clave
-- **municipio**: Nodo raíz estructural (ID INE 11 dígitos). Contiene metadatos (descripciones, imágenes, urls) pero **NO** tiene el campo `padre_id`. No tiene fiestas propias.
-- **pueblo / ciudad_pequena / ciudad_grande**: Tienen fiestas propias. Cuelgan siempre de un `municipio` (mediante `padre_id`). Una de las entidades dentro de cada municipio siempre es la capital (`es_capital: true`).
-- **distrito / barrio**: Divisiones de nivel inferior obtenidas de Wikipedia. Tienen `es_capital: false`.
-- **Hijos permitidos**:
-  - *Municipio*: Tiene `pueblo`, `ciudad_pequena`, `ciudad_grande`.
+## 3. Tipos de Lugar Permitidos e Hijos
+- **`municipio`**: Nodo raíz. Tiene metadatos (descripciones, imágenes) pero NUNCA tiene el campo `padre_id`. Contiene: `pueblo`, `ciudad_pequena`, `ciudad_grande`.
+- **`pueblo` / `ciudad_pequena` / `ciudad_grande`**: Tienen fiestas. Cuelgan siempre de un `municipio` mediante `padre_id`. 
+- **`distrito` / `barrio`**: Extraídos secundariamente de Wikipedia. Cuelgan de ciudades o distritos. Siempre tienen `es_capital: false`.
   - *Ciudad grande*: Puede tener distritos y/o barrios.
   - *Ciudad pequeña*: Puede tener barrios.
   - *Distrito*: Tiene barrios.
-- **Jerarquía de Barrios con Distritos**: Si un `barrio` pertenece a un `distrito`, debe tener un campo opcional `abuelo_id` que referencie directamente al ID de la entidad capital (ej. si el padre es un distrito de Alicante, el `abuelo_id` debe ser el id de Alicante).
+- **Jerarquía de Abuelos**: Si un `barrio` pertenece a un `distrito`, obligatoriamente debe tener un campo `abuelo_id` que referencie directamente al ID de la entidad capital principal (ej. el ID de la ciudad de Alicante).
 
-## Instrucciones Especiales para el Asistente
-- Tratar siempre de inferir de manera conservadora y reportar al usuario los casos anómalos o dudosos (municipios que podrían ser compuestos, desajustes con el INE) para que sean revisados manualmente, ya que es preferible derivar la decisión al usuario antes que generar datos erróneos en el JSON.
-- Mantener la estructura del JSON estrictamente validada según las especificaciones del proyecto.
+## 4. Reglas de Extracción y Filtros de Población
+- **Garantía INE (Fase 1 - `main2.py`)**: Para asegurar el 100% de cobertura, las entidades se extraen íntegramente desde `ENTIDADES.csv`. Wikipedia se usa *solo* como apoyo para encontrar la URL, generar descripciones resumidas y localizar estructuras urbanas (distritos/barrios).
+- **Filtro de 20 Habitantes**: Los barrios y distritos extraídos de Wikipedia deben superar los **20 habitantes** para registrarse.
+- **Excepción INE para Pedanías**: Si un núcleo poblacional extraído del INE tiene `<= 20` habitantes pero `> 0`, NO se descarta. Si se logra validar con una URL de Wikipedia, se incorpora ignorando el umbral de los 20 habitantes.
+- **Descarte Absoluto**: Cualquier lugar con **0 habitantes** se elimina, sin excepciones (esté o no en el INE).
+
+## 5. Duplicados y Resoluciones
+- **Mismo Nombre en el INE**: En `ENTIDADES.csv` pueden aparecer pedanías con el mismo nombre dentro del *mismo municipio*. Para resolverlo, se compara la población: **prevalece el de mayor población y se elimina el otro**. Si empatan, se elimina cualquiera. (Es normal que haya nombres repetidos en municipios distintos, eso no se elimina).
+- **Prioridad Deduplicación**: Si hay un choque de nombre o URL de Wikipedia entre subdivisiones, prevalece el nivel administrativo más alto. El orden de prioridad es: `Pueblo/Entidad INE > Distrito > Barrio`.
+
+## 6. Configuración de IA y Flujos
+- El sistema utiliza **LM Studio** para interactuar con LLMs locales.
+- Modelos por defecto:
+  - LLM: `qwen2.5-7b-instruct` (Razonamiento, extracción de fiestas, parseo).
+  - Embeddings: `text-embedding-nomic-embed-text-v1.5` (RAG en Fase 2).
+- Estas configuraciones deben respetarse y ajustarse en los respectivos `config.py` si hay problemas de memoria/hardware.
+
+## Instrucciones Especiales para el Asistente AI
+1. Tratar la estructura de datos jerárquica con extremada precaución. Si dudas sobre cómo encajar un lugar, pregúntale al usuario.
+2. Si detectas anomalías en los datos del INE o desajustes graves con Wikipedia, **no inventes jerarquías**. Reporta la anomalía al usuario para una revisión manual.
+3. Valida estrictamente cada JSON generado contra las reglas de este documento. La consistencia de `padre_id` (y `abuelo_id` en barrios) es innegociable.
