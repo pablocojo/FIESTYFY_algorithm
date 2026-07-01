@@ -23,8 +23,9 @@ El objetivo fundamental del proyecto es elaborar un archivo JSON ordenado y libr
 - La extracción en Fase 2 (para cualquier tipo de municipio) siempre arranca extrayendo primero las **pedanías del padrón INE**.
 
 ## Desafíos Conocidos a Resolver
-1. **Detección de Jerarquías NGMEP**: El sistema ahora confía íntegramente en las tablas del INE (`MUNICIPIOS.csv` y `ENTIDADES.csv`). Ya no existe el concepto de "municipio_compuesto" ni el tipo "pedania". Todo `municipio` raíz agrupa bajo sí entidades de población (`pueblo`, `ciudad_pequena`, `ciudad_grande`).
-2. **Entidades extraídas del INE**: Para garantizar el objetivo de no dejar fuera a ninguna entidad, **las unidades poblacionales se extraen siempre y en un 100% desde la tabla ENTIDADES.csv del INE**. Wikipedia se utiliza únicamente como un sistema secundario para intentar asignarles una URL y extraer su descripción (validando este cruce mediante un sistema heurístico combinado con un LLM).
+1. **Detección de Jerarquías NGMEP**: El sistema ahora confía íntegramente en las tablas del INE (`pobmun25` y `nomdef2025` a través de `MUNICIPIOS.csv` y `ENTIDADES.csv`). Ya no existe el concepto de "municipio_compuesto" ni el tipo "pedania". Todo `municipio` raíz agrupa bajo sí entidades de población (`pueblo`, `ciudad_pequena`, `ciudad_grande`).
+2. **Entidades extraídas del INE (Paso 2 de la Fase 1 / `main2.py`)**: Para garantizar el objetivo de no dejar fuera a ninguna entidad, **las unidades poblacionales se extraen siempre y en un 100% desde la tabla ENTIDADES.csv del INE**. Wikipedia se utiliza únicamente como un sistema secundario para intentar asignarles una URL, generar descripciones resumidas y extraer estructuras puramente urbanas (barrios/distritos).
+3. **Uso de Modelos de IA (LM Studio)**: El proyecto hace un uso intensivo de LLMs locales. Se asume por defecto el uso del modelo de lenguaje **`qwen2.5-7b-instruct`** y el modelo de embeddings **`text-embedding-nomic-embed-text-v1.5`**. Estos pueden configurarse en los respectivos archivos `config.py` de cada fase si el hardware lo requiere.
 
 ## Tipos de Lugar y Reglas Clave
 - **municipio**: Nodo raíz estructural (ID INE 11 dígitos). Contiene metadatos (descripciones, imágenes, urls) pero **NO** tiene el campo `padre_id`. No tiene fiestas propias.

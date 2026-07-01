@@ -14,33 +14,26 @@ cambia la etiqueta y de quién cuelga). La jerarquía se expresa con `padre_id`.
 | `ejemplo_completo.json` | Plantilla con los casos principales (pueblo, ciudad pequeña con barrios, ciudad grande con distritos y barrios, municipio compuesto + pedanías, ciudad grande sin distritos + pedanía). |
 
 ## Flujo
---Fase 1: obtener todos los municipios--
+--Paso 1: obtener los municipios base de Wikipedia--
   1. Usuario ejecuta: python main.py
   2. Sistema descarga Categoría:Municipios de España
   3. Para cada municipio:
-    ├─ Extrae información (población, provincia, comunidad, coords,...)
-    ├─ Clasifica por tipo (pueblo/ciudad_pequeña/ciudad_grande,          municipio_compuesto)
-    ├─ Extrae descripciones (corta y larga)
-    ├─Extrae sitio web y direccion en wikipedia
-    ├─ Obtiene imágenes (banner + logo)
+    ├─ Extrae información básica (provincia, comunidad, coords,...)
+    ├─ Extrae sitio web y direccion en wikipedia
   4. Guardar municipios.json
-  5. El programa termina sin analizar subdivisiones
---Fase 1.5: Revalidación estricta de municipios compuestos--
-1. Usuario ejecuta: python revalidar_compuestos.py
-2. Carga `municipios.json` y cruza TODOS los lugares con las tablas del INE (`pobmun25` y `nomdef2025`).
-3. Aplica regla estricta: Si el municipio NO tiene una localidad/pedanía con exactamente su mismo nombre en el padrón, lo reclasifica como `municipio_compuesto`. Si la tiene, lo marca como lugar físico.
-4. Genera `municipios_revisados.json` y un informe detallado.
---Fase 2: añadir al json distritos, barrios y pedanías--
+  5. El programa termina sin analizar subdivisiones ni cruzar con el INE
+
+--Paso 2: Completar estructura territorial con el INE y subdivisiones urbanas--
 1. Usuario ejecuta: python main2.py
-2. Se carga municipios.json como base
-3. Se inicia un bucle para analizar uno a uno los municipios
-4. Para cada municipio (sea del tipo que sea):
-  ├─ 1º Extrae sus **pedanías directamente del INE** (Fuzzy matching con Wikipedia y API).
-  ├─ 2º Si es `ciudad_grande`, busca distritos y luego barrios.
-  ├─ 3º Si es `ciudad_pequena`, busca barrios adicionales.
-  ├─ 4º Deduplica por ID, nombre y URL de Wikipedia priorizando **siempre** la Pedanía frente al Distrito o Barrio.
-5. Guardar lugares_espana.json con los municipios y las subdivisiones
-6. Validar estructura, relaciones e imágenes (El `banner` siempre se extrae de la propiedad P18 de Wikidata, y el `logo` de Wikipedia).
+2. Se carga municipios.json como base y se cargan las tablas del INE (ENTIDADES.csv, MUNICIPIOS.csv)
+3. Se inicia un bucle para procesar uno a uno los municipios base:
+  ├─ 1º Obtiene su identificador INE real (11 dígitos) y población.
+  ├─ 2º Extrae TODAS las unidades poblacionales (hijas) **directamente del INE**.
+  ├─ 3º Por cada hija, busca en Wikipedia (usando un LLM local, por defecto `qwen2.5-7b-instruct`) para obtener descripciones e imágenes.
+  ├─ 4º Si la hija es de tamaño `ciudad_grande` o `ciudad_pequena`, busca su estructura interna de distritos y barrios puramente en Wikipedia.
+  ├─ 5º Se eliminan duplicados y se validan identificadores.
+4. Guardar `lugares_espana.json` (o `municipios_actualizado.json`) con los lugares completos.
+5. Validar estructura, relaciones e imágenes.
 
 ## Tipos de lugar
 

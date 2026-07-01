@@ -66316,14 +66316,15 @@
       "poblacion": 224,
       "lat": 42.166666666666664,
       "lng": -0.4666666666666667,
-      "descripcion_corta": "Pueblo de la comarca Hoya de Huesca en la provincia de Huesca, conocido por su agricultura y fiesta del Rosario.",
-      "descripcion": "Alerre, situado en la comarca Hoya de Huesca, es un pueblo con una importante tradición agrícola. Cada primer domingo de octubre se celebra la fiesta del Rosario en memoria de la Batalla de Lepanto.",
+      "descripcion_corta": "Descubre el encanto rural de Alerre, rodeado de naturaleza y rica historia.",
+      "descripcion": "Alerre combina entorno natural impresionante con una rica cultura y tradiciones. Su agricultura es su principal actividad económica, mientras que la fiesta del Rosario celebra la Batalla de Lepanto en octubre.",
       "imagenes": {
         "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Iglesia_Alerre.JPG",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Escudo_de_Alerre.svg/120px-Escudo_de_Alerre.svg.png"
       },
       "sitio_web": "http://www.alerre.es/",
-      "wikipedia_url": "https://es.wikipedia.org/wiki/Alerre"
+      "wikipedia_url": "https://es.wikipedia.org/wiki/Alerre",
+      "desc_actualizada": true
     },
     {
       "id": "alfantega",
@@ -66334,14 +66335,15 @@
       "poblacion": 125,
       "lat": 41.82972222222222,
       "lng": 0.1486111111111111,
-      "descripcion_corta": "Pueblo de Aragón en la comarca del Cinca Medio con 125 habitantes.",
-      "descripcion": "Alfántega es un pueblo de la provincia de Huesca, en la comunidad autónoma de Aragón, ubicado en la comarca del Cinca Medio. Cuenta con una población de 125 habitantes según los datos del INE y alberga una iglesia dedicada a Santa Magdalena.",
+      "descripcion_corta": "Pueblo encantador rodeado de naturaleza y patrimonio histórico en Aragón",
+      "descripcion": "Alfántega se encuentra en el Cinca Medio, rodeado de montañas y ríos. La iglesia de Santa Magdalena es un punto de interés cultural y turístico. El pueblo ofrece una experiencia auténtica y tranquila para conocer su historia y naturaleza.",
       "imagenes": {
         "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/ALFANTEGA_Huesca_-01.jpg",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Escudo_de_Alf%C3%A1ntega.svg/120px-Escudo_de_Alf%C3%A1ntega.svg.png"
       },
       "sitio_web": "http://www.alfantega.es/",
-      "wikipedia_url": "https://es.wikipedia.org/wiki/Alfántega"
+      "wikipedia_url": "https://es.wikipedia.org/wiki/Alfántega",
+      "desc_actualizada": true
     },
     {
       "id": "almudevar",
@@ -66352,14 +66354,15 @@
       "poblacion": 2462,
       "lat": 42.04416666666666,
       "lng": -0.5805555555555555,
-      "descripcion_corta": "Pueblo aragonés situado en la comarca de Hoya de Huesca, cerca de la capital provincial.",
-      "descripcion": "Almudévar es un pueblo ubicado en la comarca de Hoya de Huesca, a unos 20 km de Huesca. Su relieve llano y su superficie de 201,5 km² se extienden entre altitudes que oscilan desde los 390 m hasta los 603 m. El pueblo hereda el nombre del castillo visigodo y la Vía Lata romana, con una historia que data del siglo V. En 1083, Alfonso I conquistó definitivamente el lugar, incorporándolo a Aragón.",
+      "descripcion_corta": "Descubre el encanto del pueblo de Almudévar, rodeado de Llanos de la Violada y con una rica historia romana e islámica.",
+      "descripcion": "Almudévar es un pueblo llano con una rica historia que se remonta a la época romana. Su actual núcleo urbano se basa en la mansión romana de Bortina, mientras que su topónimo árabe significa 'el redondo', probablemente en alusión a la forma ovalada del lugar donde se asienta el castillo. El pueblo ha sido testigo de la conquista musulmana y la lucha por su independencia, y hoy ofrece una rica experiencia cultural y natural para visitantes.",
       "imagenes": {
         "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Ermita_de_La_Virgen_de_la_Corona.JPG",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Escudo_de_Almud%C3%A9var.svg/120px-Escudo_de_Almud%C3%A9var.svg.png"
       },
       "sitio_web": "https://www.almudevar.es/",
-      "wikipedia_url": "https://es.wikipedia.org/wiki/Almudévar"
+      "wikipedia_url": "https://es.wikipedia.org/wiki/Almudévar",
+      "desc_actualizada": true
     },
     {
       "id": "almunia-de-san-juan",
@@ -66370,14 +66373,15 @@
       "poblacion": 733,
       "lat": 41.93722222222222,
       "lng": 0.24638888888888888,
-      "descripcion_corta": "Pueblo aragonés situado en el noreste de la comarca del Cinca Medio, con ríos y sierras.",
-      "descripcion": "Almunia de San Juan es un pueblo aragonés ubicado al noreste de la comarca del Cinca Medio. Forma parte de una región orográficamente compleja, con ríos como el Cinca y su afluente el Sosa, así como sierras como las Vedades. Su clima mediterráneo continental y su geografía variada han moldeado la historia y la economía local, que se basa en la agricultura y ganadería.",
+      "descripcion_corta": "Descubre la belleza rural de Almunia de San Juan, rodeado de montañas y ríos.",
+      "descripcion": "Almunia de San Juan es un pueblo encantador situado en una comarca del Cinca Medio, rodeado por la Sierra de Los Vedades y el Río Sosa. Su historia se remonta a la Edad de Bronce, con vestigios arqueológicos como silos de almacenamiento y torres medievales. La villa también cuenta con un molino de la Ortilla y aljibes, y su clima mediterráneo continental ofrece paisajes naturales impresionantes. Visita este pueblo rural para experimentar la auténtica cultura y belleza de la región.",
       "imagenes": {
         "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Almunia_de_San_Juan_-_Ayuntamiento_e_Iglesia_de_San_Pedro_Apostol.jpg",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Escudo_de_Almunia_de_San_Juan.svg/120px-Escudo_de_Almunia_de_San_Juan.svg.png"
       },
       "sitio_web": "https://www.almuniadesanjuan.es/",
-      "wikipedia_url": "https://es.wikipedia.org/wiki/Almunia_de_San_Juan"
+      "wikipedia_url": "https://es.wikipedia.org/wiki/Almunia_de_San_Juan",
+      "desc_actualizada": true
     },
     {
       "id": "almuniente",
@@ -66388,14 +66392,15 @@
       "poblacion": 448,
       "lat": 41.950833333333335,
       "lng": -0.4102777777777778,
-      "descripcion_corta": "Pueblo de la provincia de Huesca, en Aragón, con una población de 571 habitantes.",
-      "descripcion": "Almuniente es un pueblo situado en la provincia de Huesca, comunidad autónoma de Aragón, con una superficie de 37,77 km² y una población de 571 habitantes. El nombre del lugar proviene del árabe y hace referencia a las dos almunias o casas de campo.",
+      "descripcion_corta": "Descubre el encanto de Almuniente, un pueblo con un entorno natural impresionante",
+      "descripcion": "Almuniente se encuentra rodeado de montañas y ríos, ofreciendo paisajes naturales espectaculares. Su patrimonio cultural y histórico es una joya para visitar, con monumentos y ruinas que narran su pasado árabe. La tranquilidad y la belleza del lugar invitan a desconectar y disfrutar de la naturaleza",
       "imagenes": {
         "banner": "https://picsum.photos/seed/almuniente/1200/400",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Escudo_de_Almuniente_%28Huesca%29.svg/120px-Escudo_de_Almuniente_%28Huesca%29.svg.png"
       },
       "sitio_web": "http://www.almuniente.es/",
-      "wikipedia_url": "https://es.wikipedia.org/wiki/Almuniente"
+      "wikipedia_url": "https://es.wikipedia.org/wiki/Almuniente",
+      "desc_actualizada": true
     },
     {
       "id": "alquezar",
@@ -66406,14 +66411,15 @@
       "poblacion": 328,
       "lat": 42.17388888888889,
       "lng": 0.027222222222222224,
-      "descripcion_corta": "Pueblo del Somontano de Barbastro en Huesca, parte del Parque Natural de la Sierra y los Cañones de Guara.",
-      "descripcion": "Alquézar, situado en el Somontano de Barbastro, provincia de Huesca, forma parte del Parque Natural de la Sierra y los Cañones de Guara. Conocido como uno de los pueblos más bellos de España, Alquézar tiene un nombre que remonta al dominio musulmán y al castillo construido en el siglo IX.",
+      "descripcion_corta": "Disfruta del encanto medieval de este pueblo en la Somontano de Barbastro",
+      "descripcion": "Alquézar, con su entorno natural impresionante, ofrece una rica cultura y historia. El río Vero y las sierras de Balcez y Olsón crean un paisaje único. Explora el parque natural de la Sierra y los Cañones de Guara y descubre la arquitectura medieval, patrimonio del pueblo.",
       "imagenes": {
         "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Alquezar_m1.jpg",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Escudo_de_Alqu%C3%A9zar.svg/120px-Escudo_de_Alqu%C3%A9zar.svg.png"
       },
       "sitio_web": "http://www.alquezar.es/",
-      "wikipedia_url": "https://es.wikipedia.org/wiki/Alquézar"
+      "wikipedia_url": "https://es.wikipedia.org/wiki/Alquézar",
+      "desc_actualizada": true
     },
     {
       "id": "altorricon",
@@ -66424,14 +66430,15 @@
       "poblacion": 1504,
       "lat": 41.80416666666667,
       "lng": 0.41472222222222227,
-      "descripcion_corta": "Pueblo de la provincia de Huesca en la comarca de la Litera, con una historia que remonta a la prehistoria.",
-      "descripcion": "Altorricón, situado en la provincia de Huesca y la comarca de la Litera, es un pueblo con raíces prehistóricas que se separó del municipio de Tamarite de Litera en 1932. Su historia se extiende desde el hombre primitivo hasta la Edad Media, reflejada en su rico patrimonio arqueológico.",
+      "descripcion_corta": "Descubre la rica historia y entorno natural de Altorricón, un pueblo con una gran presencia prehistórica.",
+      "descripcion": "Altorricón combina su entorno natural pintoresco con restos arqueológicos de épocas neolíticas y medievales, ofreciendo una experiencia única para los visitantes. El pueblo cuenta con una rica historia que se remonta a más de 100.000 años atrás, con piezas líticas encontradas en varias partidas rurales que forman parte del patrimonio arqueológico más antiguo de la región. Además, su ubicación en el valle de la Litera ofrece un paisaje natural impresionante, con llanos y montañas que ofrecen oportunidades para practicar deportes al aire libre y disfrutar de la naturaleza.",
       "imagenes": {
         "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Iglesia_altorricon.jpg",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Escut_del_Torric%C3%B3.svg/120px-Escut_del_Torric%C3%B3.svg.png"
       },
       "sitio_web": "https://www.altorricon.org/",
-      "wikipedia_url": "https://es.wikipedia.org/wiki/Altorricón"
+      "wikipedia_url": "https://es.wikipedia.org/wiki/Altorricón",
+      "desc_actualizada": true
     },
     {
       "id": "anges",
@@ -66442,14 +66449,15 @@
       "poblacion": 350,
       "lat": 42.11666666666667,
       "lng": -0.15,
-      "descripcion_corta": "Pueblo aragonés en la Hoya de Huesca con tres núcleos de población y una iglesia románica.",
-      "descripcion": "Angüés es un pueblo situado en la comarca de la Hoya de Huesca, provincia de Huesca, Aragón. El municipio está formado por tres núcleos de población y cuenta con una iglesia románica del siglo XII que conserva la nave central y el ábside semicircular.",
+      "descripcion_corta": "Disfruta del románico templo en el corazón de Angüés, con arquitectura medieval impresionante.",
+      "descripcion": "Angüés ofrece un entorno natural pintoresco y una rica historia cultural, con un templo románico del siglo XII que conserva su esencia medieval. Explora sus calles empedradas y descubre la auténtica Aragón.",
       "imagenes": {
         "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Basa_en_Ang%C3%BC%C3%A9s.jpg",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Calle_de_Ang%C3%BCes.jpg/330px-Calle_de_Ang%C3%BCes.jpg"
       },
       "sitio_web": "http://www.angues.es/",
-      "wikipedia_url": "https://es.wikipedia.org/wiki/Angüés"
+      "wikipedia_url": "https://es.wikipedia.org/wiki/Angüés",
+      "desc_actualizada": true
     },
     {
       "id": "anso",
@@ -66460,14 +66468,15 @@
       "poblacion": 409,
       "lat": 42.75,
       "lng": -0.8166666666666667,
-      "descripcion_corta": "Pueblo de la provincia de Huesca en el Pirineo occidental, perteneciente a Los Pueblos Más Bonitos de España.",
-      "descripcion": "Ansó es un municipio situado en el valle del río Veral, en el Pirineo occidental aragonés. Conocido por su acreditación como uno de los pueblos más bellos de España desde 2015, limita con Francia y abarca una extensa franja fronteriza. Forma parte del parque natural de los Valles Occidentales.",
+      "descripcion_corta": "Descubre la belleza de Ansó, un pueblo en el corazón de Aragón",
+      "descripcion": "Ubicado en el valle del río Veral, Ansó combina entorno natural impresionante con patrimonio cultural y paisajes protegidos. Explora sus ruinas históricas, disfruta del camping en Zuriza o aprovecha la belleza de los Valles Occidentales y las Fozes de Fago y Biniés.",
       "imagenes": {
         "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Anso.jpg",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Escudo_de_Ans%C3%B3.svg/120px-Escudo_de_Ans%C3%B3.svg.png"
       },
       "sitio_web": "http://www.anso.es/",
-      "wikipedia_url": "https://es.wikipedia.org/wiki/Ansó"
+      "wikipedia_url": "https://es.wikipedia.org/wiki/Ansó",
+      "desc_actualizada": true
     },
     {
       "id": "antillon",
@@ -66478,14 +66487,15 @@
       "poblacion": 127,
       "lat": 42.03333333333333,
       "lng": -0.16666666666666666,
-      "descripcion_corta": "Pueblo de la provincia de Huesca en Aragón con población de 127 habitantes y actividades agrícolas.",
-      "descripcion": "Antillón es un pueblo situado en la provincia de Huesca, Aragón. Con una población de 127 habitantes, destaca por sus actividades agrícolas, especialmente ganadería ovina, y producción vinícola.",
+      "descripcion_corta": "Descubre la tranquilidad de Antillón, rodeado de montañas y ríos naturales",
+      "descripcion": "En el corazón de una zona geográfica pintoresca, Antillón ofrece paisajes naturales impresionantes. Visita su castillo medieval, explora sus calles empedradas y disfruta de su cocina regional, como el postre de calabaza y el cocido antillones.",
       "imagenes": {
         "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Ayuntamiento_de_Antill%C3%B3n%2C_Huesca_02.jpg",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Ayuntamiento_de_Antill%C3%B3n%2C_Huesca_02.jpg/330px-Ayuntamiento_de_Antill%C3%B3n%2C_Huesca_02.jpg"
       },
       "sitio_web": "http://www.antillon.es/",
-      "wikipedia_url": "https://es.wikipedia.org/wiki/Antillón"
+      "wikipedia_url": "https://es.wikipedia.org/wiki/Antillón",
+      "desc_actualizada": true
     },
     {
       "id": "arages-del-puerto",
@@ -66496,14 +66506,15 @@
       "poblacion": 123,
       "lat": 42.706944444444446,
       "lng": -0.6697222222222222,
-      "descripcion_corta": "Pueblo situado en la comarca de Jacetania, en el valle de Aragüés, con casas tradicionales y acceso a zonas de esquí.",
-      "descripcion": "Aragüés del Puerto es un pueblo ubicado en la comarca de Jacetania, dentro del valle de Aragüés, en los Pirineos. Este municipio conserva edificios tradicionales y ofrece acceso a áreas de esquí de fondo, además de permitir el disfrute de hermosos bosques y zonas recreativas.",
+      "descripcion_corta": "Descubre el encanto de Aragüés del Puerto en la cordillera de los Pirineos",
+      "descripcion": "Aragüés del Puerto, un pueblo de tradicional arquitectura y paisajes naturales impresionantes, rodeado por bosques de hayas y montañas de alta intensidad. Accede a actividades de esquí de fondo y deporte de montaña en el refugio de Lizara.",
       "imagenes": {
         "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Arag%C3%BC%C3%A9s_del_Puerto_%28cropped%29.jpeg",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Arag%C3%BC%C3%A9s_del_Puerto_%281982%29_01.jpg/330px-Arag%C3%BC%C3%A9s_del_Puerto_%281982%29_01.jpg"
       },
       "sitio_web": "http://www.araguesdelpuerto.es/",
-      "wikipedia_url": "https://es.wikipedia.org/wiki/Aragüés_del_Puerto"
+      "wikipedia_url": "https://es.wikipedia.org/wiki/Aragüés_del_Puerto",
+      "desc_actualizada": true
     },
     {
       "id": "aren",
@@ -66514,14 +66525,15 @@
       "poblacion": 309,
       "lat": 42.26,
       "lng": 0.7222222222222222,
-      "descripcion_corta": "Pueblo situado en la provincia de Huesca, Ribagorza, junto al río Noguera Ribagorzana.",
-      "descripcion": "Arén es un municipio de la provincia de Huesca, en el corazón del Prepirineo aragonés. Limita con Cataluña y se encuentra a orillas del río Noguera Ribagorzana, formando parte de la denominada Franja. Su economía tradicionalmente depende de la ganadería y la agricultura, aunque ahora también apoya el turismo.",
+      "descripcion_corta": "Arén: un pueblo pintoresco en el valle del río Noguera Ribagorzana con gran importancia histórica y natural.",
+      "descripcion": "Ubicado en la Franja, Arén ofrece paisajes naturales impresionantes, rutas de senderismo y una rica historia militar. Su economía se basa en la ganadería y el turismo, ofreciendo experiencias únicas a los visitantes.",
       "imagenes": {
         "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Ar%C3%A9n.jpg",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Ar%C3%A9n.jpg/330px-Ar%C3%A9n.jpg"
       },
       "sitio_web": "https://www.arén.es/",
-      "wikipedia_url": "https://es.wikipedia.org/wiki/Arén"
+      "wikipedia_url": "https://es.wikipedia.org/wiki/Arén",
+      "desc_actualizada": true
     },
     {
       "id": "argavieso",
@@ -66532,14 +66544,15 @@
       "poblacion": 109,
       "lat": 42.05416666666667,
       "lng": -0.2772222222222222,
-      "descripcion_corta": "Pueblo aragonés situado en la provincia de Huesca, con una mención histórica desde 1097.",
-      "descripcion": "Argavieso es un pequeño pueblo ubicado en la provincia de Huesca, Aragón, España. Su historia remonta al año 1097, cuando se mencionó por primera vez a Fortún de Valle como tenente en el lugar. El escudo del municipio refleja su nombre con Aqua Versus y dos leones.",
+      "descripcion_corta": "Descubre el encanto de Argavieso, rodeado de montañas y ríos naturales",
+      "descripcion": "En este pueblo aragonés, explora la historia y cultura en un entorno natural impresionante con ríos y montañas que te rodean. Aprovecha la oportunidad de conocer su hermoso paisaje y disfrutar de actividades al aire libre.",
       "imagenes": {
         "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Argavieso_-_Iglesia_parroquial_de_la_Natividad_-_Torre.jpg",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Argavieso_-_Iglesia_parroquial_de_la_Natividad_-_Torre.jpg/330px-Argavieso_-_Iglesia_parroquial_de_la_Natividad_-_Torre.jpg"
       },
       "sitio_web": "https://www.argavieso.es/",
-      "wikipedia_url": "https://es.wikipedia.org/wiki/Argavieso"
+      "wikipedia_url": "https://es.wikipedia.org/wiki/Argavieso",
+      "desc_actualizada": true
     },
     {
       "id": "arguis",
@@ -66550,14 +66563,15 @@
       "poblacion": 167,
       "lat": 42.316111111111105,
       "lng": -0.43777777777777777,
-      "descripcion_corta": "Pueblo situado en la comarca de Hoya de Huesca, a orillas del río Isuela y al norte de las sierras de Gratal.",
-      "descripcion": "Arguis es un pueblo ubicado en la comarca de Hoya de Huesca, a orillas del río Isuela y al norte de las sierras de Gratal. Se extiende por valles y sierras prepirenaicas, incluyendo el pico del Águila, con una altitud que oscila entre 900 y 1609 metros sobre el nivel del mar.",
+      "descripcion_corta": "Descubre la naturaleza y riqueza histórica en este pueblo escondido en las sierras de Aragón.",
+      "descripcion": "Ubicado en un valle rodeado de sierras prepirenaicas, Arguis ofrece paisajes impresionantes, parques naturales y una rica historia medieval. Explora el pantano de Arguis, el más antiguo de Aragón, y disfruta del entorno natural único de este pueblo.",
       "imagenes": {
         "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/ArguisPueblo.JPG",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/ArguisPueblo.JPG/330px-ArguisPueblo.JPG"
       },
       "sitio_web": "http://www.arguis.es/",
-      "wikipedia_url": "https://es.wikipedia.org/wiki/Arguis"
+      "wikipedia_url": "https://es.wikipedia.org/wiki/Arguis",
+      "desc_actualizada": true
     },
     {
       "id": "ayerbe",
@@ -66568,14 +66582,15 @@
       "poblacion": 1050,
       "lat": 42.276666666666664,
       "lng": -0.6891666666666667,
-      "descripcion_corta": "Pueblo de la provincia de Huesca en la comarca de la Hoya de Huesca, con una población de 1050 habitantes.",
-      "descripcion": "Ayerbe es un municipio y villa situado en la provincia de Huesca, dentro de la comarca de la Hoya de Huesca. Ubicado a orillas del río Gállego, cuenta con una población de 1050 habitantes y se extiende sobre 6329 hectáreas. Su territorio presenta terreno apto para regadío y se caracteriza por la presencia de encinas, almendros, viñas y olivos, además de fauna como conejos y liebres.",
+      "descripcion_corta": "Descubre el encanto de Ayerbe, un pueblo con un entorno natural único y una rica biodiversidad.",
+      "descripcion": "Ayerbe se encuentra en la comarca de la Hoya de Huesca, rodeado por montes y sierras que ofrecen paisajes naturales impresionantes. La localidad es conocida por su variedad de biotopos, desde crestas de sierras hasta fondos de barrancos, lo que la convierte en un paraíso para los amantes de la naturaleza y la observación de la vida silvestre. Además, el pueblo cuenta con una rica historia y cultura, con estancias de ferrocarril y carreteras autonómicas que conectan con otras localidades del área.",
       "imagenes": {
         "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Ayerbe.vistaaerea.jpg",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Escudo_de_Ayerbe.svg/120px-Escudo_de_Ayerbe.svg.png"
       },
       "sitio_web": "http://www.ayerbe.es/",
-      "wikipedia_url": "https://es.wikipedia.org/wiki/Ayerbe"
+      "wikipedia_url": "https://es.wikipedia.org/wiki/Ayerbe",
+      "desc_actualizada": true
     },
     {
       "id": "azanuy-alins",
@@ -66586,14 +66601,15 @@
       "poblacion": 184,
       "lat": 41.97416666666667,
       "lng": 0.31222222222222223,
-      "descripcion_corta": "Pueblo situado en la comarca de la Litera, provincia de Huesca, con limitaciones a otros municipios.",
-      "descripcion": "Azanuy-Alins es un pueblo ubicado en la comarca de la Litera, provincia de Huesca, perteneciente a la comunidad autónoma de Aragón. Limita con varios municipios y se encuentra al sur de la sierra de la Carrodilla, a doce kilómetros de Monzón y quince de Binéfar.",
+      "descripcion_corta": "Descubre la belleza natural y cultural de Azanuy-Alins en la sierra de la Carrodilla",
+      "descripcion": "Ubicado al sur de la sierra de la Carrodilla, Azanuy-Alins combina un entorno natural impresionante con atractivos culturales y históricos, como el molino de aceite del siglo XVI y las tradicionales casas rurales. El pueblo también ofrece una variedad de actividades al aire libre, como senderismo y observación de la vida silvestre.",
       "imagenes": {
         "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Azanuy%2C_Huesca%2C_Espa%C3%B1a%2C_2015-12-23%2C_DD_19.JPG",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Escudo_de_Azanuy-Alins.svg/120px-Escudo_de_Azanuy-Alins.svg.png"
       },
       "sitio_web": "https://www.azanuy.es/",
-      "wikipedia_url": "https://es.wikipedia.org/wiki/Azanuy-Alins"
+      "wikipedia_url": "https://es.wikipedia.org/wiki/Azanuy-Alins",
+      "desc_actualizada": true
     },
     {
       "id": "azara",
@@ -66604,14 +66620,15 @@
       "poblacion": 167,
       "lat": 42.06666666666667,
       "lng": -0.03333333333333333,
-      "descripcion_corta": "Pueblo del Somontano de Barbastro, Huesca, rodeado por piedras areniscas y la Peña de Santa Margarita.",
-      "descripcion": "Azara es un pueblo ubicado en el Somontano de Barbastro, provincia de Huesca, circundado por piedras areniscas y dominado por la Peña de Santa Margarita. Se encuentra a 40 km de Huesca y se caracteriza por su entorno natural y su población de 167 habitantes.",
+      "descripcion_corta": "Descubre el encanto de Azara, rodeado de valles y montañas areniscas",
+      "descripcion": "En el corazón del Somontano de Barbastro, Azara ofrece paisajes naturales impresionantes, con la Peña de Santa Margarita como icono. Explora su historia y cultura en un entorno tranquilo y pintoresco",
       "imagenes": {
         "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Iglesia_de_Azara.jpg",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Escudo_de_Azara_%28Huesca%29.svg/120px-Escudo_de_Azara_%28Huesca%29.svg.png"
       },
       "sitio_web": "http://www.azara.es/",
-      "wikipedia_url": "https://es.wikipedia.org/wiki/Azara_(Huesca)"
+      "wikipedia_url": "https://es.wikipedia.org/wiki/Azara_(Huesca)",
+      "desc_actualizada": true
     },
     {
       "id": "azlor",
@@ -66622,14 +66639,15 @@
       "poblacion": 155,
       "lat": 42.09722222222222,
       "lng": -0.043611111111111114,
-      "descripcion_corta": "Pueblo situado en la comarca Somontano de Barbastro, provincia de Huesca, con una torre accesible por cuarenta escalones.",
-      "descripcion": "Azlor es un pueblo ubicado en la comarca Somontano de Barbastro, provincia de Huesca. Se encuentra a la entrada del valle de Alferche y al lado del barranco de La Clamor. Su principal característica es una torre que se accede por cuarenta escalones tallados directamente en una roca arenisca.",
+      "descripcion_corta": "Descubre el encanto de Azlor, rodeado de valles y barrancos naturales.",
+      "descripcion": "Azlor se encuentra en un valle denominado Val de Alferche, junto al barranco de La Clamor, sobre terreno cubierto de piedras areniscas. Su entorno natural es característico, con una torre de piedra que facilita su entrada. El pueblo cuenta con un escudo cuadrilongo y una bandera con franjas horizontales y verticales en colores azul, blanca, amarilla y roja.",
       "imagenes": {
         "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Azlor_Huesca_-01.jpg",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Escudo_de_Azlor-Huesca.svg/120px-Escudo_de_Azlor-Huesca.svg.png"
       },
       "sitio_web": "http://www.azlor.es/",
-      "wikipedia_url": "https://es.wikipedia.org/wiki/Azlor"
+      "wikipedia_url": "https://es.wikipedia.org/wiki/Azlor",
+      "desc_actualizada": true
     },
     {
       "id": "baells",
@@ -66640,14 +66658,15 @@
       "poblacion": 89,
       "lat": 41.95416666666667,
       "lng": 0.4588888888888889,
-      "descripcion_corta": "Pueblo situado en el somontano pirenaico, perteneciente a la Comarca de la Litera, provincia de Huesca.",
-      "descripcion": "Baélls es un pueblo ubicado en el somontano pirenaico, dentro de la Comarca de la Litera, al este de la provincia de Huesca. Su historia remonta a la época ibérica y romana, pasando por períodos musulmanes y cristianos, hasta su conquista en 1096 por Ponç Guerau de Cabrera. Actualmente tiene una población de 89 habitantes (INE 2025).",
+      "descripcion_corta": "Pueblo pintoresco en el somontano pirenaico con historia romana e islamica.",
+      "descripcion": "Baélls, un pueblo de gran belleza natural, se encuentra rodeado de montañas y ríos. Su historia es rica y variada, desde la época ibérica hasta la conquista musulmana y la reconquista cristiana. La fortaleza del municipio ha sido propiedad de varias familias nobles a lo largo de los siglos, incluyendo los Desvalls y los Maull. Hoy en día, Baélls es un destino turístico popular para aquellos que buscan explorar su entorno natural y descubrir su rica historia y cultura.",
       "imagenes": {
         "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/El_poble_de_la_Ba%C3%A9lls_%28cropped%29.jpeg",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fuerte-Castillo-Palacio-de-Baells.JPG/330px-Fuerte-Castillo-Palacio-de-Baells.JPG"
       },
       "sitio_web": "http://www.baells.es/",
-      "wikipedia_url": "https://es.wikipedia.org/wiki/Baélls"
+      "wikipedia_url": "https://es.wikipedia.org/wiki/Baélls",
+      "desc_actualizada": true
     },
     {
       "id": "bailo",
@@ -66658,14 +66677,15 @@
       "poblacion": 265,
       "lat": 42.51083333333333,
       "lng": -0.81,
-      "descripcion_corta": "Pueblo de la provincia de Huesca en la comarca de la Jacetania, con varios núcleos y una historia milenaria.",
-      "descripcion": "Bailo es un pueblo situado en la provincia de Huesca, dentro de la comarca de la Jacetania. Incluye varios núcleos como Alastuey, Arbués y Arrrés. Su territorio, protegido parcialmente por el Paisaje Protegido de San Juan de la Peña y Monte Oroel, ha sido colonizado desde hace mil años, optimizando la explotación agrícola y ganadera en su comarca natural e histórica, el Bailés.",
+      "descripcion_corta": "Descubre la belleza natural y rica historia de Bailo en las montañas de Jacetania",
+      "descripcion": "Bailo combina un entorno natural impresionante con una rica cultura y historia, desde el paisaje protegido de San Juan de la Peña hasta los núcleos de población tradicionales, rodeado de valles y montañas de gran belleza",
       "imagenes": {
         "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Bailo_5369.JPG",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Bailo_panor%C3%A1mica.jpg/330px-Bailo_panor%C3%A1mica.jpg"
       },
       "sitio_web": "https://www.bailo.es",
-      "wikipedia_url": "https://es.wikipedia.org/wiki/Bailo"
+      "wikipedia_url": "https://es.wikipedia.org/wiki/Bailo",
+      "desc_actualizada": true
     },
     {
       "id": "baldellou",
@@ -66676,14 +66696,15 @@
       "poblacion": 81,
       "lat": 41.91888888888889,
       "lng": 0.5480555555555555,
-      "descripcion_corta": "Pueblo de Aragón situado en la Litera Alta, junto al río del Molí del Pubill.",
-      "descripcion": "Baldellou es un pueblo de Aragón ubicado en la comarca de la Litera Alta, junto al río del Molí del Pubill. Limita con varios municipios y se encuentra a unos 114 km de Huesca, a una altitud de aproximadamente 460 m sobre el nivel del mar. Su estructura urbana, con calles como Abajo, Medio y Arriba, destaca por su arquitectura románica y señorial, incluyendo la iglesia de la Asunción de Nuestra Señora.",
+      "descripcion_corta": "Baldellou, pueblo románico con calles estrechas y una panorámica impresionante al poniente",
+      "descripcion": "Ubicado en la Litera Alta, Baldellou combina entorno natural con cultura y historia en su conjunto urbano notable, destacando la torre señorial y la iglesia románica, así como el Portalet magnífico mirador orientado a poniente",
       "imagenes": {
         "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/VALDELLOU._VISTA_GENERAL.jpg",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/VALDELLOU._VISTA_GENERAL.jpg/330px-VALDELLOU._VISTA_GENERAL.jpg"
       },
       "sitio_web": "https://www.baldellou.es/",
-      "wikipedia_url": "https://es.wikipedia.org/wiki/Baldellou"
+      "wikipedia_url": "https://es.wikipedia.org/wiki/Baldellou",
+      "desc_actualizada": true
     },
     {
       "id": "ballobar",
@@ -66694,14 +66715,15 @@
       "poblacion": 862,
       "lat": 41.620555555555555,
       "lng": 0.19194444444444442,
-      "descripcion_corta": "Pueblo de Huesca junto al río Alcanadre, a orillas del Cinca y con historia y lengua aragonesa.",
-      "descripcion": "Ballobar es un municipio de la provincia de Huesca situado en el valle del Cinca, cerca del río Alcanadre. Conocido por su historia y lengua aragonesa, comparte su entorno con el pantano de Ribarroja a través de los ríos que se unen allí.",
+      "descripcion_corta": "Descubre el encanto del pueblo de Ballobar, rodeado de ríos y valles naturales.",
+      "descripcion": "Ballobar se encuentra en un valle del río Cinca, donde se unen los ríos Alcanadre y Cinca. Su entorno natural es ideal para practicar deportes acuáticos o simplemente disfrutar de la paz. La historia y cultura del pueblo se reflejan en sus monumentos y tradiciones, mientras que su lengua aragonesa es un tesoro para los amantes de la idioma regional.",
       "imagenes": {
         "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Ballobar%28Huesca%29.jpg",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Escudo_de_Ballobar.svg/120px-Escudo_de_Ballobar.svg.png"
       },
       "sitio_web": "http://www.ballobar.es/",
-      "wikipedia_url": "https://es.wikipedia.org/wiki/Ballobar"
+      "wikipedia_url": "https://es.wikipedia.org/wiki/Ballobar",
+      "desc_actualizada": true
     },
     {
       "id": "banastas",

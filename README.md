@@ -18,5 +18,22 @@ El proyecto confía plenamente en los datos del Instituto Nacional de Estadísti
 Nota: Ya no existe el concepto de "municipio_compuesto" ni el tipo "pedania". Todos los municipios se comportan como contenedores, y todas las antiguas pedanías ahora son entidades tipificadas por población (`pueblo`, etc.).
 
 ## Fases del Algoritmo
-- **Fase 1**: Extrae los municipios desde Wikipedia.
-- **Fase 2**: Añade la estructura territorial interna (Barrios y distritos desde Wikipedia; Pedanías directamente desde el INE).
+- **Fase 1 (Recogida de Lugares)**: Construye la estructura territorial completa. 
+  - **Paso 1 (`main.py`)**: Extrae los municipios raíz desde Wikipedia.
+  - **Paso 2 (`main2.py`)**: Cruza la información obtenida con los datos del INE (`ENTIDADES.csv`) para extraer el 100% de las entidades menores (pueblos, ciudades). Posteriormente usa un LLM para extraer su descripción y extraer posibles subdivisiones urbanas (distritos y barrios) desde Wikipedia.
+- **Fase 2 (Extracción de Fiestas)**: Toma las entidades generadas en la Fase 1 y utiliza un orquestador asíncrono con un pipeline de Web Scraping, RAG y un LLM local para rastrear la web (búsquedas y web del ayuntamiento), identificar programas de actos y construir las fichas completas de las fiestas.
+
+## Configuración y Rendimiento (LM Studio)
+
+El algoritmo hace un uso intensivo de modelos de IA locales ejecutados a través de **LM Studio**. Dependiendo del hardware (CPU/GPU) donde se ejecute, es posible ajustar los modelos o parámetros de concurrencia:
+
+### Modelos Utilizados
+- **Modelo de Lenguaje Principal**: `qwen2.5-7b-instruct`. Se encarga tanto de resumir descripciones (Fase 1) como de extraer el programa estructurado de las fiestas (Fase 2).
+- **Modelo de Embeddings**: `text-embedding-nomic-embed-text-v1.5`. Se usa exclusivamente en la Fase 2 (RAG) para buscar los fragmentos de texto más relevantes antes de enviarlos al LLM.
+
+### Dónde cambiar los parámetros
+Si la máquina tiene menor o mayor capacidad, puedes cambiar el nombre del modelo, el número de municipios en paralelo o el timeout de las peticiones en los siguientes archivos de configuración:
+- **Fase 1 (Lugares)**: Los parámetros del LLM se definen en `Algoritmo_fiestas/Fase1_recogida_datos_wiki/config.py` (buscar `LLM_MODEL_NAME`).
+- **Fase 2 (Fiestas)**: Los parámetros del LLM se definen en `Algoritmo_fiestas/Fase2_Extraccion_Fiestas/config.py` (buscar `LLM_MODEL_NAME`, `EMBEDDING_MODEL_NAME` y `PARALLEL_MUNICIPALITIES`).
+
+*Nota: Asegúrate de que los modelos que configures coincidan exactamente con el nombre de los modelos cargados en tu servidor local de LM Studio.*

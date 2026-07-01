@@ -20,7 +20,7 @@ flowchart TD
     J --> K["1. Spider Web Municipal"]
     K --> L["2. Búsqueda Externa<br/>(DDG + Yahoo + Bing)"]
     L --> M["3. RAG<br/>(Embeddings + Filtrado)"]
-    M --> N["4. LLM Local<br/>(llama-3.2-3b-instruct)"]
+    M --> N["4. LLM Local<br/>(qwen2.5-7b-instruct)"]
     N --> O["5. Validación"]
     O --> P["fiestas_espana.json"]
 ```
@@ -98,7 +98,7 @@ Todo el texto recopilado (del spider + búsquedas) puede ser enorme (>100.000 ca
 ### Paso 4: Inferencia LLM (IA Local) 🤖
 **Archivo:** [text_analyzer.py](file:///c:/Users/Usuario/PROYECTOS/DEV-FIESTYFY_0426/FIESTYFY_algorithm/Algoritmo_fiestas/Fase2_Extraccion_Fiestas/llm_processor/text_analyzer.py) — función `analyze_festivals_for_locality`
 
-Se envía el texto filtrado al modelo **llama-3.2-3b-instruct:2** en LM Studio con un prompt que incluye:
+Se envía el texto filtrado al modelo **qwen2.5-7b-instruct** en LM Studio con un prompt que incluye:
 
 - **System prompt** con el criterio de fiestas (qué cuenta como fiesta y qué no)
 - **Regla de exclusividad**: si es la capital del municipio, solo extraer fiestas del núcleo principal; si es una pedanía, solo fiestas de esa pedanía específica
@@ -155,7 +155,7 @@ El `StateManager` permite parar y reanudar el script sin perder progreso:
 
 | Parámetro | Valor | Descripción |
 |---|---|---|
-| Modelo LLM | `llama-3.2-3b-instruct:2` | Modelo de chat en LM Studio |
+| Modelo LLM | `qwen2.5-7b-instruct` | Modelo de chat en LM Studio |
 | Modelo Embeddings | `text-embedding-nomic-embed-text-v1.5` | Modelo de vectorización |
 | Paralelismo | 2 municipios | Municipios procesados simultáneamente |
 | Spider páginas | 1.000 | Páginas máximas rastreadas por web municipal |
