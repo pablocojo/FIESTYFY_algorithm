@@ -65370,14 +65370,15 @@
       "poblacion": 436,
       "lat": 37.903888888888886,
       "lng": -6.621111111111111,
-      "descripcion_corta": "Pueblo andaluz del centro de la sierra de Huelva con una altitud de 718 metros.",
-      "descripcion": "Los Marines es un municipio español situado en el corazón de la sierra de Huelva, a 718 metros de altitud. Conocido por su economía basada en la producción de castañas y ganadería, este pueblo mantiene vínculos históricos con la visita del rey Felipe II.",
+      "descripcion_corta": "Descubre el encanto de Los Marines, pueblo rodeado de montañas y castaños.",
+      "descripcion": "En el corazón de la sierra de Huelva, Los Marines ofrece un entorno natural impresionante con castaños, olivares y alcornocales. La rica historia del municipio se refleja en su nombre, que data de una visita del rey Felipe II, mientras que su economía se basa en la producción de castañas y cría de ganado porcino.",
       "imagenes": {
         "banner": "https://picsum.photos/seed/los-marines/1200/400",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Escudo_de_Los_Marines.svg/120px-Escudo_de_Los_Marines.svg.png"
       },
       "sitio_web": "https://www.losmarines.es/",
-      "wikipedia_url": "https://es.wikipedia.org/wiki/Los_Marines_(Huelva)"
+      "wikipedia_url": "https://es.wikipedia.org/wiki/Los_Marines_(Huelva)",
+      "desc_actualizada": true
     },
     {
       "id": "minas-de-riotinto",
@@ -65388,14 +65389,15 @@
       "poblacion": 3698,
       "lat": 37.69472222222222,
       "lng": -6.594166666666666,
-      "descripcion_corta": "Pueblo situado en la provincia de Huelva, Andalucía, con una historia minera rica y una altitud de 416 metros.",
-      "descripcion": "Minas de Riotinto es un municipio de la provincia de Huelva, en la región de Andalucía, conocido por su rica historia minera. Se encuentra a una altitud de 416 metros sobre el nivel del mar y ha sido un importante distrito minero desde la antigüedad hasta el siglo XX.",
+      "descripcion_corta": "Descubre la rica historia y paisajes únicos del Minas de Riotinto",
+      "descripcion": "Ubicado en el corazón de la Cuenca Minera, este pueblo ofrece una mezcla única de entorno natural, cultura y historia. Explora sus ruinas mineras, descubre su pasado romano y disfruta del paisaje pintoresco, con cerros, colinas y ríos que te transportarán a un mundo primitivo. ¡Descubre el encanto de Minas de Riotinto!",
       "imagenes": {
         "banner": "https://picsum.photos/seed/minas-de-riotinto/1200/400",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Minas_de_Riotinto.svg/120px-Minas_de_Riotinto.svg.png"
       },
       "sitio_web": "https://www.aytoriotinto.es/",
-      "wikipedia_url": "https://es.wikipedia.org/wiki/Minas_de_Riotinto_(Huelva)"
+      "wikipedia_url": "https://es.wikipedia.org/wiki/Minas_de_Riotinto_(Huelva)",
+      "desc_actualizada": true
     },
     {
       "id": "moguer",
@@ -65406,14 +65408,15 @@
       "poblacion": 24083,
       "lat": 37.27472222222222,
       "lng": -6.838611111111111,
-      "descripcion_corta": "Pueblo andaluz capital de su municipio, importante en viticultura y con relevancia histórica en el descubrimiento de América.",
-      "descripcion": "Moguer es un municipio español de la provincia de Huelva, en Andalucía, conocido por su actividad agrícola centrada en la producción de fresas y berries. Tiene una historia significativa en la preparación del viaje de Cristóbal Colón, siendo declarado BIC de los Lugares Colombinos. Ubicado al sudoeste de la península ibérica, a 20 km de Huelva y 88 km de Sevilla, Moguer mantiene su importancia económica y cultural.",
+      "descripcion_corta": "Moguer, ciudad histórica con riqueza cultural y natural en la Tierra Llana de Andalucía.",
+      "descripcion": "Moguer se destaca por su patrimonio histórico y cultural, incluyendo el Monasterio de Santa Clara y el Museo Juan Ramón Jiménez. Su entorno natural es característico de la región, con ríos como el Tinto y playas cercanas a Palos de la Frontera. La ciudad también cuenta con una rica tradición vitivinícola y es conocida por su producción de fresas y berries.",
       "imagenes": {
         "banner": "https://picsum.photos/seed/moguer/1200/400",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Escudo_de_Moguer_%28Huelva%29.svg/120px-Escudo_de_Moguer_%28Huelva%29.svg.png"
       },
       "sitio_web": "https://www.moguer.es/",
-      "wikipedia_url": "https://es.wikipedia.org/wiki/Moguer_(Huelva)"
+      "wikipedia_url": "https://es.wikipedia.org/wiki/Moguer_(Huelva)",
+      "desc_actualizada": true
     },
     {
       "id": "la-nava",
@@ -65424,14 +65427,15 @@
       "poblacion": 271,
       "lat": 37.96277777777778,
       "lng": -6.745,
-      "descripcion_corta": "Pueblo andaluz de la provincia de Huelva, situado en Sierra Morena con una altitud de 418 metros.",
-      "descripcion": "La Nava es un municipio de la provincia de Huelva, en Andalucía, ubicado en Sierra Morena a 418 metros sobre el nivel del mar. Se halla a 112 kilómetros de Huelva y está atravesado por carreteras nacionales e interestatales, integrándose en la comarca de Sierra de Huelva.",
+      "descripcion_corta": "Pueblo encantador rodeado de montañas y ríos en la Sierra de Huelva",
+      "descripcion": "La Nava se alza a 417 metros sobre el nivel del mar, rodeada de paisajes naturales impresionantes. El pueblo ofrece una rica historia y cultura, con un entorno natural que invita a explorar sus caminos y ríos. Disfruta de la belleza de Sierra Morena y el parque natural de Sierra de Aracena y Picos de Aroche.",
       "imagenes": {
         "banner": "https://picsum.photos/seed/la-nava/1200/400",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Escudo_de_la_Nava.svg/120px-Escudo_de_la_Nava.svg.png"
       },
       "sitio_web": "http://www.lanava.es/",
-      "wikipedia_url": "https://es.wikipedia.org/wiki/La_Nava_(Huelva)"
+      "wikipedia_url": "https://es.wikipedia.org/wiki/La_Nava_(Huelva)",
+      "desc_actualizada": true
     },
     {
       "id": "nerva",
@@ -65442,14 +65446,15 @@
       "poblacion": 5087,
       "lat": 37.69555555555555,
       "lng": -6.5488888888888885,
-      "descripcion_corta": "Pueblo andaluz de la provincia de Huelva, conocido por su historia minera y paisaje protegido.",
-      "descripcion": "Nerva es un municipio de la provincia de Huelva en Andalucía, famoso por su pasado minero y actualmente parte del Paisaje Protegido del río Tinto. Su nombre deriva de una placa romana descubierta en la zona.",
+      "descripcion_corta": "Descubre la rica historia minera y el paisaje natural de Nerva, un pueblo con encanto en la Cuenca Minera.",
+      "descripcion": "Nerva se destaca por sus instalaciones mineras como Cerro Colorado y la Peña del Hierro, junto al nacimiento del río Tinto. El municipio cuenta con un patrimonio histórico y cultural notable, incluyendo una placa romana dedicada a Marco Coceyo Nerva.",
       "imagenes": {
         "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Torre_del_ayuntamiento_de_Nerva_%28Huelva%29.jpg",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Escudo_de_Nerva.svg/120px-Escudo_de_Nerva.svg.png"
       },
       "sitio_web": "http://www.nerva.es/",
-      "wikipedia_url": "https://es.wikipedia.org/wiki/Nerva_(Huelva)"
+      "wikipedia_url": "https://es.wikipedia.org/wiki/Nerva_(Huelva)",
+      "desc_actualizada": true
     },
     {
       "id": "niebla",
@@ -65460,14 +65465,15 @@
       "poblacion": 4268,
       "lat": 37.36138888888889,
       "lng": -6.677777777777778,
-      "descripcion_corta": "Pueblo andaluz de Huelva con rica historia y patrimonio histórico-monumental.",
-      "descripcion": "Niebla es un municipio español ubicado en la provincia de Huelva, Andalucía. Con una extensión de 223,62 km² y situado a unos 45 m sobre el nivel del mar, Niebla cuenta con un importante conjunto histórico-monumental incluyendo su recinto amurallado. Su historia se remonta a la Edad del Hierro y ha sido capital de diversas coras y taifas, manteniendo importancia económica y administrativa durante siglos.",
+      "descripcion_corta": "Niebla: un pueblo histórico con una rica tradición y paisajes naturales impresionantes.",
+      "descripcion": "En Niebla se puede recorrer su recinto amurallado, un importante conjunto histórico-monumental que alberga la ciudad. El municipio cuenta con una larga tradición histórica, siendo capital de la cora homónima durante el Califato de Córdoba y centro de la Taifa de Niebla en los primeros reinos taifas. La ciudad se encuentra a orillas del río Tinto, que bordea por el este y el sur, marcando el límite de la expansión urbana en estas áreas. En época contemporánea, Niebla ha recuperado parte de su importancia gracias al ferrocarril y la instalación de industrias. El paisaje natural es impresionante, con la llanura de transición entre la costa y El Andévalo, y el río Tinto que atraviesa el municipio.",
       "imagenes": {
         "banner": "https://picsum.photos/seed/niebla/1200/400",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Escudo_de_Niebla_%28Huelva%29.svg/120px-Escudo_de_Niebla_%28Huelva%29.svg.png"
       },
       "sitio_web": "http://www.aytoniebla.es/",
-      "wikipedia_url": "https://es.wikipedia.org/wiki/Niebla_(Huelva)"
+      "wikipedia_url": "https://es.wikipedia.org/wiki/Niebla_(Huelva)",
+      "desc_actualizada": true
     },
     {
       "id": "la-palma-del-condado",
@@ -65478,14 +65484,15 @@
       "poblacion": 10841,
       "lat": 37.384166666666665,
       "lng": -6.551666666666667,
-      "descripcion_corta": "Pueblo andaluz con tradición vinícola, en el Condado-campiña, cerca de Huelva.",
-      "descripcion": "La Palma del Condado es un municipio situado en la provincia de Huelva, Andalucía, conocido por su rica tradición vinícola. Limita con Niebla y Bollullos Par del Condado, y se encuentra a 93 metros sobre el nivel del mar. Cuenta con importantes monumentos como la iglesia parroquial de San Juan Bautista y el Castillo de la Reina, protegido por la Declaración genérica del Decreto de 1949.",
+      "descripcion_corta": "Descubre la historia y tradición vinícola de una localidad con un valle de depresión y colinas suaves en el corazón de Andalucía.",
+      "descripcion": "La Palma del Condado combina entorno natural, cultura y patrimonio histórico en un valle de depresión rodeado de colinas suaves, con iglesias, castillos y ermitas que narran su rica historia.",
       "imagenes": {
         "banner": "https://picsum.photos/seed/la-palma-del-condado/1200/400",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Escudo_La_Palma_del_Condado.svg/120px-Escudo_La_Palma_del_Condado.svg.png"
       },
       "sitio_web": "http://www.lapalmadelcondado.org/",
-      "wikipedia_url": "https://es.wikipedia.org/wiki/La_Palma_del_Condado_(Huelva)"
+      "wikipedia_url": "https://es.wikipedia.org/wiki/La_Palma_del_Condado_(Huelva)",
+      "desc_actualizada": true
     },
     {
       "id": "palos-de-la-frontera",
@@ -65496,14 +65503,15 @@
       "poblacion": 12938,
       "lat": 37.22777777777778,
       "lng": -6.893333333333333,
-      "descripcion_corta": "Ciudad de la provincia de Huelva, Andalucía, conocida como cuna del descubrimiento de América.",
-      "descripcion": "Palos de la Frontera es una ciudad en la provincia de Huelva, Andalucía, famosa por ser el lugar donde partió Cristóbal Colón hacia las Indias. Su historia está ligada a las labores marítimas y al descubrimiento geográfico, siendo hoy un importante centro agropecuario e industrial.",
+      "descripcion_corta": "Descubre la cuna del descubrimiento de América en esta ciudad costera con rica historia marítima y patrimonio colonial.",
+      "descripcion": "Palos de la Frontera es una ciudad con un entorno natural que combina ríos y montañas, donde se puede disfrutar de la cultura y la historia de su pasado marítimo. La ciudad cuenta con fábricas e industrias que almacenan y regasanifica gas natural licuado, y también explora el fresón como principal motor económico. El lugar es conocido por ser la cuna del descubrimiento de América, gracias a Cristóbal Colón, quien se preparó en su puerto para su primer viaje hacia las Indias.",
       "imagenes": {
         "banner": "https://picsum.photos/seed/palos-de-la-frontera/1200/400",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Escudo_de_Palos_de_la_Frontera_pergamino_normal.svg/120px-Escudo_de_Palos_de_la_Frontera_pergamino_normal.svg.png"
       },
       "sitio_web": "https://www.palosfrontera.com/",
-      "wikipedia_url": "https://es.wikipedia.org/wiki/Palos_de_la_Frontera_(Huelva)"
+      "wikipedia_url": "https://es.wikipedia.org/wiki/Palos_de_la_Frontera_(Huelva)",
+      "desc_actualizada": true
     },
     {
       "id": "paterna-del-campo",
@@ -65514,14 +65522,15 @@
       "poblacion": 3382,
       "lat": 37.41888888888889,
       "lng": -6.402500000000001,
-      "descripcion_corta": "Pueblo andaluz situado en la provincia de Huelva, con una altitud de 186 metros.",
-      "descripcion": "Paterna del Campo es un pueblo ubicado en la provincia de Huelva, Andalucía, a una altitud de 186 metros. Conocido por su clima mediterráneo y rica historia romana, incluyendo la ciudad de Itucci, el pueblo ha evolucionado desde pequeñas alquerías hasta convertirse en una villa con importancia ferroviaria.",
+      "descripcion_corta": "Descubre la belleza natural y cultural de Paterna del Campo, un pueblo con encanto mediterráneo.",
+      "descripcion": "Paterna del Campo combina un entorno natural pintoresco con una rica historia y cultura. Su clima mediterráneo y paisajes naturales te invitan a explorar sus calles empedradas, visitar la Estación de Manantiales y descubrir los monumentos que reflejan su pasado romano y árabe.",
       "imagenes": {
         "banner": "https://picsum.photos/seed/paterna-del-campo/1200/400",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Escudo_de_Paterna_del_Campo.svg/120px-Escudo_de_Paterna_del_Campo.svg.png"
       },
       "sitio_web": "http://www.paternadelcampo.es/",
-      "wikipedia_url": "https://es.wikipedia.org/wiki/Paterna_del_Campo_(Huelva)"
+      "wikipedia_url": "https://es.wikipedia.org/wiki/Paterna_del_Campo_(Huelva)",
+      "desc_actualizada": true
     },
     {
       "id": "paymogo",
@@ -65532,14 +65541,15 @@
       "poblacion": 1132,
       "lat": 37.74055555555556,
       "lng": -7.346111111111111,
-      "descripcion_corta": "Pueblo andaluz en la provincia de Huelva, limitado por Portugal y con ríos y suelos erosionados.",
-      "descripcion": "Paymogo es un pueblo situado en la provincia de Huelva, Andalucía, limitando al oeste con Portugal. Se caracteriza por su topografía acolinada y suelos erosionados, especialmente en las zonas de Pagos. Limita al este con Santa Bárbara de Casa y al sur con Puebla de Guzmán, siendo parte del Andévalo onubense.",
+      "descripcion_corta": "Disfruta de paisajes naturales en Paymogo, un pueblo con una rica geología y un entorno acolinado.",
+      "descripcion": "Paymogo es un pueblo ubicado en la parte suroeste de la península ibérica, rodeado por ríos y montañas. Su entorno natural es característico, con cabezos abruptos y accidentados que se van haciendo cada vez más acolados hacia el centro del término. El pueblo cuenta con una rica geología, con suelos de pizarras devónicas y carboníferas que presentan un alto grado de degradación por la erosión. Los arroyos y barrancos que recorren el terreno son cauces encajonados entre cabezos de gran pendiente, y las aguas subterráneas son pequeños acuíferos asociados a fracturas de pequeña significación. En el pueblo se pueden encontrar terrazas construidas para contener el agua y proteger la tierra, y también pequeños embalses artificiales con muros de tierra que han sido creados gracias a la topografía y la naturaleza del suelo.",
       "imagenes": {
         "banner": "https://picsum.photos/seed/paymogo/1200/400",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Escudo_de_Paymogo.svg/120px-Escudo_de_Paymogo.svg.png"
       },
       "sitio_web": "http://www.paymogo.es/",
-      "wikipedia_url": "https://es.wikipedia.org/wiki/Paymogo_(Huelva)"
+      "wikipedia_url": "https://es.wikipedia.org/wiki/Paymogo_(Huelva)",
+      "desc_actualizada": true
     },
     {
       "id": "puebla-de-guzman",

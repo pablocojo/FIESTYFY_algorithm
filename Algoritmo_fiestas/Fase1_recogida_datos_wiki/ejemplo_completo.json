@@ -1,0 +1,365 @@
+{
+  "version": 2,
+  "_comentario": "Dataset de demostración con lugares y fiestas REALES de España. Cubre TODOS los casos del modelo. REGLAS DE DATOS: (1) las fiestas NO tienen imágenes propias (se muestra la del lugar); (2) toda fiesta lleva 'programa'; (3) el 'tipo' de fiesta es barrio|pueblo|ciudad_pequena|ciudad (no hay 'tamano'); (4) TODOS los lugares (incl. distritos, pedanías y compuestos) tienen banner y logo; (5) 'descripcion_corta' = breve (lugares 12-15 palabras, fiestas 15-20) y 'descripcion' = larga (máx 100 palabras, recomendado 50-70). Imágenes: placeholders picsum salvo algún escudo real.",
+
+  "lugares": [
+    {
+      "id": "madrid",
+      "tipo": "ciudad_grande",
+      "nombre": "Madrid",
+      "provincia": "Madrid",
+      "comunidad": "Comunidad de Madrid",
+      "poblacion": 3280000,
+      "lat": 40.4168,
+      "lng": -3.7038,
+      "descripcion_corta": "Capital de España, ciudad grande dividida en distritos, con intensa vida cultural y festiva.",
+      "descripcion": "Capital de España y una de las grandes urbes europeas. Madrid es una ciudad grande que SÍ se divide en distritos, cada uno con su carácter propio. Combina el patrimonio histórico de los Austrias y los Borbones con una vida cultural y nocturna inagotable. Sus calles laten todo el año entre museos, mercados, terrazas y, por supuesto, verbenas castizas que llenan los barrios de chotis, organillos y mantones de Manila.",
+      "imagenes": {
+        "banner": "https://picsum.photos/seed/madrid-banner/1200/400",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Escudo_de_Madrid.svg/240px-Escudo_de_Madrid.svg.png"
+      }
+    },
+    {
+      "id": "madrid-centro",
+      "tipo": "distrito",
+      "padre_id": "madrid",
+      "nombre": "Centro",
+      "poblacion": 135000,
+      "lat": 40.4156,
+      "lng": -3.7039,
+      "descripcion_corta": "Corazón histórico de Madrid: Sol, La Latina, Lavapiés y Malasaña, cuna de las verbenas.",
+      "descripcion": "El distrito Centro es el corazón histórico de Madrid: la Puerta del Sol, La Latina, Lavapiés y Malasaña. Aquí se concentran los monumentos, los teatros y el bullicio del Madrid más castizo. Sus calles estrechas y plazas guardan tabernas centenarias y la memoria viva de las verbenas populares. En agosto es el escenario de las fiestas más tradicionales de la ciudad, con organillos, claveles y bailes al aire libre.",
+      "imagenes": {
+        "banner": "https://picsum.photos/seed/madrid-centro-banner/1200/400",
+        "logo": "https://picsum.photos/seed/madrid-centro-logo/160/160"
+      }
+    },
+    {
+      "id": "madrid-chamberi",
+      "tipo": "distrito",
+      "padre_id": "madrid",
+      "nombre": "Chamberí",
+      "poblacion": 137000,
+      "lat": 40.4357,
+      "lng": -3.6985,
+      "descripcion_corta": "Distrito señorial del centro-norte de Madrid, elegante, comerciante y de ambiente de barrio.",
+      "descripcion": "Chamberí es un distrito elegante y señorial del centro-norte de Madrid, de calles ordenadas y edificios de principios del siglo XX. Mantiene un fuerte ambiente de barrio, con mercados, comercios de toda la vida y plazas tranquilas. Es ejemplo de un distrito que, de momento, no tiene fiestas propias registradas en la plataforma: sirve para mostrar que no todos los distritos celebran fiestas catalogadas.",
+      "imagenes": {
+        "banner": "https://picsum.photos/seed/madrid-chamberi-banner/1200/400",
+        "logo": "https://picsum.photos/seed/madrid-chamberi-logo/160/160"
+      }
+    },
+
+    {
+      "id": "valencia",
+      "tipo": "ciudad_grande",
+      "nombre": "València",
+      "provincia": "Valencia",
+      "comunidad": "Comunitat Valenciana",
+      "poblacion": 800000,
+      "lat": 39.4699,
+      "lng": -0.3763,
+      "descripcion_corta": "Ciudad grande del Mediterráneo, capital de las Fallas, la pólvora y la huerta.",
+      "descripcion": "Tercera ciudad de España, a orillas del Mediterráneo y del antiguo cauce del Turia. València es una ciudad grande dividida en distritos, capital mundial de las Fallas y de la pólvora. Une la Ciutat Vella gótica con la vanguardia de la Ciudad de las Artes y las Ciencias. Su huerta, su paella y su clima la convierten en destino de fiesta durante todo el año, con la primavera fallera como gran estallido de fuego y ninots.",
+      "imagenes": {
+        "banner": "https://picsum.photos/seed/valencia-banner/1200/400",
+        "logo": "https://picsum.photos/seed/valencia-logo/160/160"
+      }
+    },
+    {
+      "id": "valencia-russafa",
+      "tipo": "distrito",
+      "padre_id": "valencia",
+      "nombre": "Russafa",
+      "poblacion": 25000,
+      "lat": 39.4561,
+      "lng": -0.3760,
+      "descripcion_corta": "Barrio bohemio y fallero de València, al sur de la estación del Norte.",
+      "descripcion": "Russafa es el barrio más bohemio y cosmopolita de València, al sur de la estación del Norte. Antiguo arrabal de huerta, hoy mezcla mercado tradicional, galerías, librerías y una vibrante escena gastronómica. Es también uno de los epicentros falleros de la ciudad: sus comisiones plantan monumentos premiados y llenan las calles de verbenas, almuerzos populares y mascletàs durante el mes de marzo.",
+      "imagenes": {
+        "banner": "https://picsum.photos/seed/russafa-banner/1200/400",
+        "logo": "https://picsum.photos/seed/russafa-logo/160/160"
+      }
+    },
+
+    {
+      "id": "sevilla",
+      "tipo": "ciudad_grande",
+      "nombre": "Sevilla",
+      "provincia": "Sevilla",
+      "comunidad": "Andalucía",
+      "poblacion": 680000,
+      "lat": 37.3891,
+      "lng": -5.9845,
+      "descripcion_corta": "Capital andaluza del Guadalquivir, ciudad grande de feria, flamenco y Semana Santa.",
+      "descripcion": "Capital de Andalucía a orillas del Guadalquivir, Sevilla es una ciudad grande con distritos donde el sur se vuelve arte. La Giralda, el Alcázar y la Catedral conviven con barrios de azulejos, naranjos y patios encalados. Es tierra de Semana Santa, flamenco y de la feria más famosa de España. La primavera la transforma en un escenario de farolillos, casetas, caballos y sevillanas que se baila hasta el amanecer.",
+      "imagenes": {
+        "banner": "https://picsum.photos/seed/sevilla-banner/1200/400",
+        "logo": "https://picsum.photos/seed/sevilla-logo/160/160"
+      }
+    },
+    {
+      "id": "sevilla-triana",
+      "tipo": "distrito",
+      "padre_id": "sevilla",
+      "nombre": "Triana",
+      "poblacion": 120000,
+      "lat": 37.3826,
+      "lng": -6.0028,
+      "descripcion_corta": "El arrabal más flamenco de Sevilla, al otro lado del río, cuna de ceramistas.",
+      "descripcion": "Triana es el arrabal más flamenco de Sevilla, al otro lado del Guadalquivir. Barrio de ceramistas, marineros, toreros y cantaores, presume de personalidad propia frente al centro histórico. Sus calles de azulejos, su mercado y la capilla del Carmen guardan siglos de tradición alfarera y cofrade. En julio celebra su gran fiesta, la Velá de Santa Ana, con casetas, música y las célebres cucañas sobre el río.",
+      "imagenes": {
+        "banner": "https://picsum.photos/seed/triana-banner/1200/400",
+        "logo": "https://picsum.photos/seed/triana-logo/160/160"
+      }
+    },
+
+    {
+      "id": "torrevieja",
+      "tipo": "ciudad_grande",
+      "nombre": "Torrevieja",
+      "provincia": "Alicante",
+      "comunidad": "Comunitat Valenciana",
+      "poblacion": 83000,
+      "lat": 37.9784,
+      "lng": -0.6817,
+      "descripcion_corta": "Ciudad costera de la Costa Blanca, famosa por sus salinas y sus habaneras.",
+      "descripcion": "Ciudad costera de la Costa Blanca alicantina, Torrevieja vive del mar, del turismo y de sus famosas salinas, cuyas lagunas rosadas son parque natural. Es una ciudad grande SIN distritos: demuestra que no toda ciudad grande se divide en distritos. Sí cuenta con una pedanía costera, La Mata. Su seña de identidad cultural son las habaneras, que cada verano reúnen coros de todo el mundo junto a las eras de la sal.",
+      "imagenes": {
+        "banner": "https://picsum.photos/seed/torrevieja-banner/1200/400",
+        "logo": "https://picsum.photos/seed/torrevieja-logo/160/160"
+      }
+    },
+    {
+      "id": "torrevieja-la-mata",
+      "tipo": "pedania",
+      "padre_id": "torrevieja",
+      "nombre": "La Mata",
+      "poblacion": 5000,
+      "lat": 38.0213,
+      "lng": -0.6519,
+      "descripcion_corta": "Pedanía costera de Torrevieja, junto a la laguna y el parque natural de La Mata.",
+      "descripcion": "La Mata es la pedanía costera de Torrevieja, situada junto a la laguna y el parque natural que le dan nombre. Conserva el aire de antiguo pueblo de pescadores, con su playa abierta, su torre vigía y un paseo marítimo tranquilo. Lejos del bullicio del centro, vive sus propias fiestas patronales en agosto, en honor a la Virgen del Rosario, con verbenas, paellas populares y fuegos artificiales sobre el mar.",
+      "imagenes": {
+        "banner": "https://picsum.photos/seed/lamata-banner/1200/400",
+        "logo": "https://picsum.photos/seed/lamata-logo/160/160"
+      }
+    },
+
+    {
+      "id": "pamplona",
+      "tipo": "ciudad_grande",
+      "nombre": "Pamplona",
+      "provincia": "Navarra",
+      "comunidad": "Comunidad Foral de Navarra",
+      "poblacion": 203000,
+      "lat": 42.8125,
+      "lng": -1.6458,
+      "descripcion_corta": "Capital de Navarra, ciudad grande sin subdivisiones, conocida mundialmente por los Sanfermines.",
+      "descripcion": "Capital de Navarra, Pamplona es una ciudad amurallada de origen romano que guarda un casco histórico monumental y un cinturón verde de parques. Es ejemplo de ciudad grande sin distritos ni pedanías registradas: solo cuenta con sus fiestas propias. Y qué fiestas: los Sanfermines, conocidos en todo el mundo por sus encierros, hacen que cada julio la ciudad se vista de blanco y rojo y se convierta en un hervidero de peñas, música y tradición.",
+      "imagenes": {
+        "banner": "https://picsum.photos/seed/pamplona-banner/1200/400",
+        "logo": "https://picsum.photos/seed/pamplona-logo/160/160"
+      }
+    },
+
+    {
+      "id": "puentes-viejas",
+      "tipo": "municipio_compuesto",
+      "nombre": "Puentes Viejas",
+      "provincia": "Madrid",
+      "comunidad": "Comunidad de Madrid",
+      "poblacion": 600,
+      "lat": 40.9181,
+      "lng": -3.6099,
+      "descripcion_corta": "Municipio compuesto de la sierra norte de Madrid que agrupa varias pedanías.",
+      "descripcion": "Puentes Viejas es un municipio compuesto de la sierra norte de Madrid, junto al embalse del mismo nombre. No es un núcleo físico único: agrupa varias pedanías dispersas por el valle y, por eso, NO tiene fiestas propias, solo las de cada una de sus aldeas. Su sede administrativa está en Mangirón. Es un territorio de montaña media, robledales y pueblos pequeños donde la vida se reparte entre el campo, el agua y la tradición serrana.",
+      "imagenes": {
+        "banner": "https://picsum.photos/seed/puentesviejas-banner/1200/400",
+        "logo": "https://picsum.photos/seed/puentesviejas-logo/160/160"
+      }
+    },
+    {
+      "id": "puentes-viejas-mangiron",
+      "tipo": "pedania",
+      "padre_id": "puentes-viejas",
+      "nombre": "Mangirón",
+      "poblacion": 200,
+      "lat": 40.9258,
+      "lng": -3.5931,
+      "descripcion_corta": "Pedanía y sede administrativa de Puentes Viejas, en plena sierra norte madrileña.",
+      "descripcion": "Mangirón es la pedanía que ejerce de sede administrativa de Puentes Viejas, en plena sierra norte de Madrid. Es un pueblo pequeño y tranquilo, de casas de piedra y calles empinadas, rodeado de robledales y pastos. La vida transcurre al ritmo del campo y de la montaña, con el embalse cerca y senderos que invitan a caminar. En agosto celebra sus fiestas patronales, el gran momento de reencuentro de vecinos y visitantes.",
+      "imagenes": {
+        "banner": "https://picsum.photos/seed/mangiron-banner/1200/400",
+        "logo": "https://picsum.photos/seed/mangiron-logo/160/160"
+      }
+    },
+    {
+      "id": "puentes-viejas-paredes",
+      "tipo": "pedania",
+      "padre_id": "puentes-viejas",
+      "nombre": "Paredes de Buitrago",
+      "poblacion": 55,
+      "lat": 40.9372,
+      "lng": -3.6486,
+      "descripcion_corta": "Pequeña pedanía serrana de Puentes Viejas, junto al embalse, de apenas medio centenar de vecinos.",
+      "descripcion": "Paredes de Buitrago es una de las pedanías más pequeñas de Puentes Viejas, asomada al embalse en plena sierra de Madrid. Apenas medio centenar de personas mantienen vivo este núcleo de arquitectura serrana, con su iglesia, sus fuentes y sus calles de piedra. El silencio, los robledales y las vistas al agua son su mayor tesoro. En septiembre, sus fiestas de verano reúnen a vecinos y a quienes regresan al pueblo en las vacaciones.",
+      "imagenes": {
+        "banner": "https://picsum.photos/seed/paredesbuitrago-banner/1200/400",
+        "logo": "https://picsum.photos/seed/paredesbuitrago-logo/160/160"
+      }
+    },
+    {
+      "id": "puentes-viejas-cincovillas",
+      "tipo": "pedania",
+      "padre_id": "puentes-viejas",
+      "nombre": "Cinco Villas",
+      "poblacion": 70,
+      "lat": 40.9001,
+      "lng": -3.6301,
+      "descripcion_corta": "Pedanía serrana de Puentes Viejas, ejemplo de aldea aún sin fiestas registradas.",
+      "descripcion": "Cinco Villas es otra de las pequeñas pedanías que forman Puentes Viejas, en la sierra norte madrileña. De población escasa y marcado carácter rural, conserva el trazado y la calma de las aldeas de montaña, entre prados, muros de piedra y robledales. Sirve aquí como ejemplo de pedanía que todavía no tiene fiestas registradas en la plataforma, mostrando que no todos los núcleos cuentan con celebraciones catalogadas.",
+      "imagenes": {
+        "banner": "https://picsum.photos/seed/cincovillas-banner/1200/400",
+        "logo": "https://picsum.photos/seed/cincovillas-logo/160/160"
+      }
+    },
+
+    {
+      "id": "haro",
+      "tipo": "ciudad_pequena",
+      "nombre": "Haro",
+      "provincia": "La Rioja",
+      "comunidad": "La Rioja",
+      "poblacion": 11000,
+      "lat": 42.5769,
+      "lng": -2.8497,
+      "descripcion_corta": "Capital del Rioja Alta y de su vino, con casco histórico monumental y bodegas centenarias.",
+      "descripcion": "Haro es la capital del Rioja Alta y del vino que lleva su nombre. Ciudad pequeña de casco histórico monumental, presume de palacios, soportales y la iglesia de Santo Tomás. Su Barrio de la Estación reúne algunas de las bodegas centenarias más prestigiosas del mundo. Aquí el vino no es solo economía, es cultura y fiesta: cada verano, miles de personas se citan en los riscos de Bilibio para librar la célebre y húmeda Batalla del Vino.",
+      "imagenes": {
+        "banner": "https://picsum.photos/seed/haro-banner/1200/400",
+        "logo": "https://picsum.photos/seed/haro-logo/160/160"
+      }
+    },
+
+    {
+      "id": "alcoi",
+      "tipo": "ciudad_pequena",
+      "nombre": "Alcoi",
+      "provincia": "Alicante",
+      "comunidad": "Comunitat Valenciana",
+      "poblacion": 59000,
+      "lat": 38.6984,
+      "lng": -0.4736,
+      "descripcion_corta": "Ciudad industrial del interior de Alicante, entre montañas y puentes, cuna de los Moros y Cristianos.",
+      "descripcion": "Alcoi es una ciudad pequeña del interior montañoso de Alicante, marcada por su pasado industrial y por los espectaculares puentes que salvan sus barrancos. Rodeada por la sierra de Mariola, mezcla arquitectura modernista con tradición fabril. Es, sobre todo, la cuna de las fiestas de Moros y Cristianos más antiguas y monumentales de España, que cada abril, en honor a San Jorge, llenan sus calles de boato, música festera y pólvora.",
+      "imagenes": {
+        "banner": "https://picsum.photos/seed/alcoi-banner/1200/400",
+        "logo": "https://picsum.photos/seed/alcoi-logo/160/160"
+      }
+    },
+
+    {
+      "id": "sitges",
+      "tipo": "ciudad_pequena",
+      "nombre": "Sitges",
+      "provincia": "Barcelona",
+      "comunidad": "Cataluña",
+      "poblacion": 29000,
+      "lat": 41.2371,
+      "lng": 1.8055,
+      "descripcion_corta": "Villa marinera y cosmopolita al sur de Barcelona, famosa por su carnaval y su cine.",
+      "descripcion": "Sitges es una villa marinera y cosmopolita al sur de Barcelona, de casas blancas asomadas al Mediterráneo. Cuna del modernismo catalán y refugio de artistas, hoy es un destino abierto y vibrante, conocido por su ambiente, sus playas y su festival internacional de cine fantástico. Pero si por algo destaca en el calendario es por su carnaval, uno de los más espectaculares y desinhibidos de Cataluña, con desfiles, plumas y purpurina a orillas del mar.",
+      "imagenes": {
+        "banner": "https://picsum.photos/seed/sitges-banner/1200/400",
+        "logo": "https://picsum.photos/seed/sitges-logo/160/160"
+      }
+    },
+
+    {
+      "id": "donostia",
+      "tipo": "ciudad_grande",
+      "nombre": "Donostia-San Sebastián",
+      "provincia": "Gipuzkoa",
+      "comunidad": "País Vasco",
+      "poblacion": 188000,
+      "lat": 43.3183,
+      "lng": -1.9812,
+      "descripcion_corta": "Ciudad grande del Cantábrico, célebre por la bahía de La Concha y su gastronomía.",
+      "descripcion": "Donostia-San Sebastián es una elegante ciudad grande del Cantábrico, abrazada por la bahía de La Concha, una de las playas urbanas más bellas del mundo. Capital gastronómica, suma estrellas Michelin y barras de pintxos en su Parte Vieja. De arquitectura señorial y ambiente abierto, vive el mar y la cultura durante todo el año. Su día grande es la Tamborrada, cuando miles de tambores y barriles toman las calles durante veinticuatro horas.",
+      "imagenes": {
+        "banner": "https://picsum.photos/seed/donostia-banner/1200/400",
+        "logo": "https://picsum.photos/seed/donostia-logo/160/160"
+      }
+    },
+
+    {
+      "id": "zaragoza",
+      "tipo": "ciudad_grande",
+      "nombre": "Zaragoza",
+      "provincia": "Zaragoza",
+      "comunidad": "Aragón",
+      "poblacion": 675000,
+      "lat": 41.6488,
+      "lng": -0.8891,
+      "descripcion_corta": "Capital de Aragón a orillas del Ebro, presidida por la basílica del Pilar.",
+      "descripcion": "Capital de Aragón y cuarta ciudad de España, Zaragoza se extiende a orillas del Ebro presidida por la imponente basílica del Pilar. Ciudad bimilenaria, conserva huellas romanas, musulmanas, mudéjares y renacentistas, de la Aljafería al puente de Piedra. Es una ciudad grande de fuerte identidad propia. Cada octubre, las Fiestas del Pilar la convierten en epicentro de jotas, gigantes y cabezudos y de la multitudinaria Ofrenda de Flores a la Virgen.",
+      "imagenes": {
+        "banner": "https://picsum.photos/seed/zaragoza-banner/1200/400",
+        "logo": "https://picsum.photos/seed/zaragoza-logo/160/160"
+      }
+    },
+
+    {
+      "id": "bunol",
+      "tipo": "pueblo",
+      "nombre": "Buñol",
+      "provincia": "Valencia",
+      "comunidad": "Comunitat Valenciana",
+      "poblacion": 9000,
+      "lat": 39.4206,
+      "lng": -0.7914,
+      "descripcion_corta": "Pueblo del interior de Valencia, a los pies de su castillo, famoso por La Tomatina.",
+      "descripcion": "Buñol es un pueblo del interior de la provincia de Valencia, asentado a los pies de un castillo medieval y atravesado por el río que le da vida. De entorno montañoso y tradición industrial y musical —presume de dos grandes bandas—, sería un tranquilo municipio del interior si no fuera por una fiesta que lo ha hecho mundialmente famoso: cada último miércoles de agosto, La Tomatina tiñe de rojo sus calles con la mayor batalla de tomates del planeta.",
+      "imagenes": {
+        "banner": "https://picsum.photos/seed/bunol-banner/1200/400",
+        "logo": "https://picsum.photos/seed/bunol-logo/160/160"
+      }
+    },
+
+    {
+      "id": "sabucedo",
+      "tipo": "pueblo",
+      "nombre": "Sabucedo",
+      "provincia": "Pontevedra",
+      "comunidad": "Galicia",
+      "poblacion": 200,
+      "lat": 42.5167,
+      "lng": -8.3012,
+      "descripcion_corta": "Pequeña aldea gallega del concello de A Estrada, escenario de la Rapa das Bestas.",
+      "descripcion": "Sabucedo es una pequeña aldea gallega del concello de A Estrada, en plena tierra de montes y caballos salvajes. De apenas un puñado de casas y rodeada de monte bajo, vive ligada a una tradición milenaria. Cada verano, los vecinos suben a la sierra para bajar a las bestas que viven libres y enfrentarse a ellas a mano limpia en el curro. La Rapa das Bestas convierte por unos días esta aldea en un símbolo de la Galicia más ancestral.",
+      "imagenes": {
+        "banner": "https://picsum.photos/seed/sabucedo-banner/1200/400",
+        "logo": "https://picsum.photos/seed/sabucedo-logo/160/160"
+      }
+    },
+
+    {
+      "id": "navarrete",
+      "tipo": "pueblo",
+      "nombre": "Navarrete",
+      "provincia": "La Rioja",
+      "comunidad": "La Rioja",
+      "poblacion": 2900,
+      "lat": 42.4295,
+      "lng": -2.5611,
+      "descripcion_corta": "Pueblo riojano del Camino de Santiago, conocido por su alfarería y su vino.",
+      "descripcion": "Navarrete es un pueblo riojano enclavado en el Camino de Santiago, conocido por su tradición alfarera, su buen vino y su rico patrimonio. Su casco histórico, presidido por la iglesia de la Asunción, recibe cada año a miles de peregrinos. Los talleres de cerámica mantienen vivo un oficio centenario que es seña de identidad local. En julio, sus fiestas patronales en honor a la Virgen y a San Roque llenan las calles de música, alfarería y tradición.",
+      "imagenes": {
+        "banner": "https://picsum.photos/seed/navarrete-banner/1200/400",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Escudo_de_Navarrete_%28La_Rioja%29.svg/240px-Escudo_de_Navarrete_%28La_Rioja%29.svg.png"
+      }
+    }
+  ]
+
+}
