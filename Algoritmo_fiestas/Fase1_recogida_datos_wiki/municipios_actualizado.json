@@ -65560,14 +65560,15 @@
       "poblacion": 3071,
       "lat": 37.61277777777778,
       "lng": -7.247777777777777,
-      "descripcion_corta": "Pueblo andaluz en la provincia de Huelva, con orígenes prerromanos y minerales.",
-      "descripcion": "Puebla de Guzmán es un municipio de la provincia de Huelva, Andalucía, con una extensión de 337 km². Su historia data del período prerromano, donde se han encontrado tumbas y vestigios mineros romanos. La comarca del Andévalo, con influencias islámicas, dejó su huella en la localidad a través de restos arqueológicos y fortificaciones.",
+      "descripcion_corta": "Puebla de Guzmán, un pueblo con ricas raíces históricas y paisajes naturales impresionantes.",
+      "descripcion": "Ubicado en una zona geográfica estratégica, Puebla de Guzmán combina entornos naturales como ríos y montañas con atractivos culturales como castillos y minas romanas. La localidad cuenta con un rico patrimonio histórico, desde la civilización prerromana hasta la Edad Media, donde se mencionan dos poblados denominados Alquería de la Vaca y Alquería de Juan Pérez. El pueblo también es conocido por sus minas romanas, como las de Las Cabezas del Pasto y Las Herrerías, que extraían cobre, hierro y plata. En el término se encuentran restos de tumbas árabes y un castillo-fortificación en la finca Zurita, que testimonian la huella de diferentes culturas en este lugar.",
       "imagenes": {
         "banner": "https://picsum.photos/seed/puebla-de-guzman/1200/400",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Escudo_de_Puebla_de_Guzm%C3%A1n_%28Huelva%29.svg/120px-Escudo_de_Puebla_de_Guzm%C3%A1n_%28Huelva%29.svg.png"
       },
       "sitio_web": "https://www.puebladeguzman.es/",
-      "wikipedia_url": "https://es.wikipedia.org/wiki/Puebla_de_Guzmán_(Huelva)"
+      "wikipedia_url": "https://es.wikipedia.org/wiki/Puebla_de_Guzmán_(Huelva)",
+      "desc_actualizada": true
     },
     {
       "id": "puerto-moral",
@@ -65578,14 +65579,15 @@
       "poblacion": 276,
       "lat": 37.891666666666666,
       "lng": -6.479722222222223,
-      "descripcion_corta": "Pueblo andaluz situado en la provincia de Huelva, con una altitud de 518 metros.",
-      "descripcion": "Puerto Moral es un pueblo andaluz ubicado en la provincia de Huelva, a una altitud de 518 metros. Se extiende por 20 km² y cuenta con una población de 276 habitantes, situada a 119 kilómetros de Huelva.",
+      "descripcion_corta": "Descubre el encanto de Puerto Moral, rodeado de naturaleza y rica historia.",
+      "descripcion": "Ubicado en una zona geográfica estratégica, Puerto Moral combina un entorno natural impresionante con atractivos culturales y históricos. Su paisaje ondulado y montañoso ofrece oportunidades para practicar deportes al aire libre, mientras que su rica historia y patrimonio cultural invitan a explorar sus calles empedradas y visitar sus monumentos históricos.",
       "imagenes": {
         "banner": "https://picsum.photos/seed/puerto-moral/1200/400",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Escudo_de_Puerto_Moral.svg/120px-Escudo_de_Puerto_Moral.svg.png"
       },
       "sitio_web": "http://www.puertomoral.es/",
-      "wikipedia_url": "https://es.wikipedia.org/wiki/Puerto_Moral_(Huelva)"
+      "wikipedia_url": "https://es.wikipedia.org/wiki/Puerto_Moral_(Huelva)",
+      "desc_actualizada": true
     },
     {
       "id": "punta-umbria",
@@ -65596,14 +65598,15 @@
       "poblacion": 16281,
       "lat": 37.18222222222222,
       "lng": -6.966944444444445,
-      "descripcion_corta": "Pueblo de Huelva con extensas playas y riqueza natural, declarada reserva de la biosfera.",
-      "descripcion": "Punta Umbría es un municipio de Huelva en Andalucía, conocido por sus extensas playas y riqueza natural. Es famosa por ser una de las mejores playas del sur de España, con servicios turísticos como bares y chiringuitos. Además, alberga tres espacios naturales protegidos y es una reserva de la biosfera.",
+      "descripcion_corta": "Punta Umbría, un destino de playa y naturaleza en Andalucía",
+      "descripcion": "Con su ría y mar adentro, Punta Umbría ofrece una variedad de actividades al aire libre, como el windsurf y parapente, además de disfrutar de playas urbanizadas con amplias zonas para pasear y actividades típicas veraniegas. El humedal cuenta con especies únicas y espacios naturales protegidos, como la laguna de El Portil y las Marismas del Odiel, declarada reserva de la biosfera por la Unesco.",
       "imagenes": {
         "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Punta_Umbr%C3%ADa%2C_en_Huelva_%28Espa%C3%B1a%29.jpg",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Escudo_de_Punta_Umbr%C3%ADa_%28Huelva%29.svg/120px-Escudo_de_Punta_Umbr%C3%ADa_%28Huelva%29.svg.png"
       },
       "sitio_web": "https://www.ayto-puntaumbria.es",
-      "wikipedia_url": "https://es.wikipedia.org/wiki/Punta_Umbría"
+      "wikipedia_url": "https://es.wikipedia.org/wiki/Punta_Umbría",
+      "desc_actualizada": true
     },
     {
       "id": "rociana-del-condado",
@@ -65614,14 +65617,15 @@
       "poblacion": 8024,
       "lat": 37.30833333333333,
       "lng": -6.597777777777777,
-      "descripcion_corta": "Pueblo andaluz situado en la provincia de Huelva, con una altitud de 107 m s.n.m., declarado bien de interés cultural.",
-      "descripcion": "Rociana del Condado es un pueblo andaluz ubicado en la provincia de Huelva, a 64 km de Sevilla y a 37 km de Huelva. Con una altitud de 107 metros sobre el nivel del mar, este municipio fue declarado bien de interés cultural en 2002. Su historia se remonta a civilizaciones neolíticas y calcolíticas, con un importante legado vitivinícola local.",
+      "descripcion_corta": "Rociana del Condado: pueblo histórico con restos arqueológicos y cultura medievales.",
+      "descripcion": "Ubicada en un valle rodeado de montañas, Rociana del Condado combina entorno natural con patrimonio cultural, desde restos neolíticos hasta señoríos medievales, ofreciendo una rica experiencia turística.",
       "imagenes": {
         "banner": "https://picsum.photos/seed/rociana-del-condado/1200/400",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Escudo_Rociana_del_Condado.svg/120px-Escudo_Rociana_del_Condado.svg.png"
       },
       "sitio_web": "https://www.rocianadelcondado.es/",
-      "wikipedia_url": "https://es.wikipedia.org/wiki/Rociana_del_Condado_(Huelva)"
+      "wikipedia_url": "https://es.wikipedia.org/wiki/Rociana_del_Condado_(Huelva)",
+      "desc_actualizada": true
     },
     {
       "id": "rosal-de-la-frontera",
@@ -65632,14 +65636,15 @@
       "poblacion": 1676,
       "lat": 37.968611111111116,
       "lng": -7.219722222222222,
-      "descripcion_corta": "Pueblo andaluz en la provincia de Huelva, limitado por Portugal y con una población de 1676 habitantes.",
-      "descripcion": "Rosal de la Frontera es un pueblo andaluz situado en la provincia de Huelva, limitando con Portugal. Con una población de 1676 habitantes, se extiende sobre 210 km² a una altitud de 216 metros, siendo conocido por su historia y cultura serrana.",
+      "descripcion_corta": "Descubre el encanto de Rosal de la Frontera, un pueblo serrano con historia y cultura rica.",
+      "descripcion": "Ubicado en una zona geográfica estratégica, Rosal de la Frontera combina un entorno natural pintoresco con atractivos culturales, como la prisión donde se encarceló Miguel Hernández y el centro de interpretación de su vida. El pueblo disfruta de platos típicos serranos elaborados con ingredientes frescos, como la matanza del cerdo y las setas de temporada.",
       "imagenes": {
         "banner": "https://picsum.photos/seed/rosal-de-la-frontera/1200/400",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Escudo_de_Rosal_de_la_Frontera.svg/120px-Escudo_de_Rosal_de_la_Frontera.svg.png"
       },
       "sitio_web": "https://www.rosaldelafrontera.es/",
-      "wikipedia_url": "https://es.wikipedia.org/wiki/Rosal_de_la_Frontera_(Huelva)"
+      "wikipedia_url": "https://es.wikipedia.org/wiki/Rosal_de_la_Frontera_(Huelva)",
+      "desc_actualizada": true
     },
     {
       "id": "san-bartolome-de-la-torre",
@@ -65650,14 +65655,15 @@
       "poblacion": 4072,
       "lat": 37.44611111111111,
       "lng": -7.1066666666666665,
-      "descripcion_corta": "Pueblo andaluz situado en la provincia de Huelva, con una superficie de 56,61 km² y cerca de Huelva.",
-      "descripcion": "San Bartolomé de la Torre es un pueblo andaluz de la provincia de Huelva, con una extensión de 56,61 km² y a 29 km de Huelva. Su historia se remonta a la época prehistórica y cuenta con monumentos megalíticos. Logró su independencia en 1549 mediante la camaradería de sus conciudadanos. Aunque históricamente vinculado al marquesado de Gibraleon, pasó a formar parte de Huelva tras la reforma administrativa de 1833. En 1871 se inauguró una estación ferroviaria que prestó servicio durante más de un siglo.",
+      "descripcion_corta": "Descubre el encanto de San Bartolomé de la Torre, un pueblo con una rica historia y paisajes naturales impresionantes",
+      "descripcion": "Ubicado en un valle rodeado de montañas y ríos, San Bartolomé de la Torre ofrece una mezcla única de cultura, historia y belleza natural. Explora sus ruinas prehistóricas, visita su estación de ferrocarril abandonada o disfruta de su gastronomía local, que combina tradición y innovación. Un destino perfecto para aquellos que buscan desconectar y conectarse con la naturaleza",
       "imagenes": {
         "banner": "https://picsum.photos/seed/san-bartolome-de-la-torre/1200/400",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Escudo_de_San_Bartolom%C3%A9_de_la_Torre_%28Huelva%29.svg/120px-Escudo_de_San_Bartolom%C3%A9_de_la_Torre_%28Huelva%29.svg.png"
       },
       "sitio_web": "http://www.sanbartolomedelatorre.es/",
-      "wikipedia_url": "https://es.wikipedia.org/wiki/San_Bartolomé_de_la_Torre_(Huelva)"
+      "wikipedia_url": "https://es.wikipedia.org/wiki/San_Bartolomé_de_la_Torre_(Huelva)",
+      "desc_actualizada": true
     },
     {
       "id": "san-juan-del-puerto",
@@ -65668,14 +65674,15 @@
       "poblacion": 9969,
       "lat": 37.314166666666665,
       "lng": -6.840833333333333,
-      "descripcion_corta": "Pueblo de la provincia de Huelva, en Andalucía, con una población de 9969 habitantes.",
-      "descripcion": "San Juan del Puerto es un pueblo ubicado en la provincia de Huelva, Andalucía, situado a 14 metros sobre el nivel del mar. Su término municipal se extiende por la Tierra Llana de Huelva y está atravesado por diversas carreteras importantes. La economía local se basa en sectores industriales y agrícolas.",
+      "descripcion_corta": "Descubre la riqueza histórica y natural de San Juan del Puerto, un pueblo costero con encanto y belleza.",
+      "descripcion": "Ubicado en una zona geográfica estratégica, San Juan del Puerto combina entorno natural impresionante con atractivos culturales y históricos. Su puerto mercancías es un testimonio de su riqueza comercial, mientras que la influencia nobiliaria de la familia Colón y Medina Sidonia se refleja en sus monumentos y tradiciones. El pueblo está rodeado de marismas y esteros del río Tinto, creando un paisaje único y pintoresco. Visita San Juan del Puerto para explorar su historia, disfrutar de su belleza natural y experimentar la auténtica cultura de esta villa costera.",
       "imagenes": {
         "banner": "https://picsum.photos/seed/san-juan-del-puerto/1200/400",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Escudo_de_San_Juan_del_Puerto.svg/120px-Escudo_de_San_Juan_del_Puerto.svg.png"
       },
       "sitio_web": "http://www.sanjuandelpuerto.es/",
-      "wikipedia_url": "https://es.wikipedia.org/wiki/San_Juan_del_Puerto_(Huelva)"
+      "wikipedia_url": "https://es.wikipedia.org/wiki/San_Juan_del_Puerto_(Huelva)",
+      "desc_actualizada": true
     },
     {
       "id": "san-silvestre-de-guzman",
@@ -65686,14 +65693,15 @@
       "poblacion": 649,
       "lat": 37.38944444444444,
       "lng": -7.347777777777777,
-      "descripcion_corta": "Pueblo andaluz en El Andévalo, limitado por Portugal y Ayamonte.",
-      "descripcion": "San Silvestre de Guzmán es un pueblo andaluz situado en el norte de la comarca de la Costa Occidental, en El Andévalo. Limita con Portugal al oeste y con Ayamonte al sur. Se encuentra a 134 metros de altitud y sus 649 habitantes se distribuyen por un área de 49 km².",
+      "descripcion_corta": "Pueblo rodeado de ríos y montañas en el suroeste de Andalucía",
+      "descripcion": "San Silvestre de Guzmán ofrece un entorno natural impresionante, rodeado de ríos y montañas. Su cultura es rica y su historia está lleno de leyendas y tradiciones. Visita sus paisajes naturales y descubre la auténtica esencia del Andévalo.",
       "imagenes": {
         "banner": "https://picsum.photos/seed/san-silvestre-de-guzman/1200/400",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Escudo_de_San_Silvestre_de_Guzm%C3%A1n_%28Huelva%29.svg/120px-Escudo_de_San_Silvestre_de_Guzm%C3%A1n_%28Huelva%29.svg.png"
       },
       "sitio_web": "http://www.sansilvestredeguzman.es",
-      "wikipedia_url": "https://es.wikipedia.org/wiki/San_Silvestre_de_Guzmán_(Huelva)"
+      "wikipedia_url": "https://es.wikipedia.org/wiki/San_Silvestre_de_Guzmán_(Huelva)",
+      "desc_actualizada": true
     },
     {
       "id": "sanlucar-de-guadiana",
@@ -65704,14 +65712,15 @@
       "poblacion": 418,
       "lat": 37.471944444444446,
       "lng": -7.465833333333333,
-      "descripcion_corta": "Pueblo andaluz situado en la comarca del Andévalo, protegido por fortalezas y afectado por inundaciones.",
-      "descripcion": "Sanlúcar de Guadiana es un municipio español de la provincia de Huelva, en la comarca del Andévalo. Protegida por fortalezas como el baluarte de San Gerónimo, ha sufrido inundaciones severas pero también se benefició de su posición estratégica en rutas comerciales durante el siglo XIX.",
+      "descripcion_corta": "Descubre el encanto de Sanlúcar de Guadiana, un pueblo con rica historia y paisajes naturales impresionantes.",
+      "descripcion": "Ubicado en una zona geográfica estratégica, Sanlúcar de Guadiana combina entorno natural pintoresco con atractivos culturales y históricos. Su arquitectura medieval y el baluarte de San Gerónimo son solo algunos de los lugares que visitar. El río Guadiana, que atraviesa la villa, ha influido en su historia, causando inundaciones devastadoras, pero también permitiendo el desarrollo de un centro comercial próspero.",
       "imagenes": {
         "banner": "https://picsum.photos/seed/sanlucar-de-guadiana/1200/400",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Escudo_de_Sanlucar_del_Guadiana.svg/120px-Escudo_de_Sanlucar_del_Guadiana.svg.png"
       },
       "sitio_web": "https://www.sanlucardeguadiana.es",
-      "wikipedia_url": "https://es.wikipedia.org/wiki/Sanlúcar_de_Guadiana_(Huelva)"
+      "wikipedia_url": "https://es.wikipedia.org/wiki/Sanlúcar_de_Guadiana_(Huelva)",
+      "desc_actualizada": true
     },
     {
       "id": "santa-ana-la-real",
@@ -65722,14 +65731,15 @@
       "poblacion": 466,
       "lat": 37.86388888888889,
       "lng": -6.724444444444445,
-      "descripcion_corta": "Pueblo andaluz situado en Sierra de Huelva, a 631 metros de altitud y con 466 habitantes.",
-      "descripcion": "Santa Ana la Real es un pueblo de la provincia de Huelva, en Andalucía, ubicado en la sierra de Huelva a una altitud de 631 metros. Cuenta con 466 habitantes y se extiende sobre varias aldeas. Forma parte del parque natural de Sierra de Aracena y Picos de Aroche, con numerosos arroyos y barrancos.",
+      "descripcion_corta": "Descubre el encanto de Santa Ana la Real, rodeado de Sierra Morena y arroyos cristalinos.",
+      "descripcion": "En este pueblo montañoso, explora ríos, barrancos y paisajes naturales impresionantes. Disfruta de la cultura local en fiestas tradicionales como el Día de los Quintos, con guisos populares y bailes animados.",
       "imagenes": {
         "banner": "https://picsum.photos/seed/santa-ana-la-real/1200/400",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Escudo_de_Santa_Ana_la_Real.svg/120px-Escudo_de_Santa_Ana_la_Real.svg.png"
       },
       "sitio_web": "https://www.santaanalareal.es/",
-      "wikipedia_url": "https://es.wikipedia.org/wiki/Santa_Ana_la_Real_(Huelva)"
+      "wikipedia_url": "https://es.wikipedia.org/wiki/Santa_Ana_la_Real_(Huelva)",
+      "desc_actualizada": true
     },
     {
       "id": "santa-barbara-de-casa",
@@ -65740,14 +65750,15 @@
       "poblacion": 1144,
       "lat": 37.79555555555555,
       "lng": -7.188611111111111,
-      "descripcion_corta": "Pueblo andaluz en la provincia de Huelva, limitado por municipios vecinos y adscrito al partido judicial de Valverde del Camino.",
-      "descripcion": "Santa Bárbara de Casa es un pueblo situado en la provincia de Huelva, Andalucía. Limita con Rosal de la Frontera, Puebla de Guzmán, Cabezas Rubias y Paymogo. Adscrito al partido judicial número 4 de Huelva, este municipio tiene una población de 1144 habitantes y es conocido por sus orígenes megalíticos.",
+      "descripcion_corta": "Descubre la historia y el encanto de Santa Bárbara de Casa en Andalucía",
+      "descripcion": "Ubicado en la comarca del Andévalo, este pueblo ofrece una rica cultura y un entorno natural impresionante. Disfruta de su plaza central, casas tradicionales y el Museo Provincial de Huelva, que alberga una colección arqueológica megalítica única.",
       "imagenes": {
         "banner": "https://picsum.photos/seed/santa-barbara-de-casa/1200/400",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Escudo_de_Santa_B%C3%A1rbara_de_Casa.svg/120px-Escudo_de_Santa_B%C3%A1rbara_de_Casa.svg.png"
       },
       "sitio_web": "http://www.santabarbaradecasa.es/",
-      "wikipedia_url": "https://es.wikipedia.org/wiki/Santa_Bárbara_de_Casa_(Huelva)"
+      "wikipedia_url": "https://es.wikipedia.org/wiki/Santa_Bárbara_de_Casa_(Huelva)",
+      "desc_actualizada": true
     },
     {
       "id": "santa-olalla-del-cala",
@@ -65758,14 +65769,15 @@
       "poblacion": 2039,
       "lat": 37.906666666666666,
       "lng": -6.229444444444445,
-      "descripcion_corta": "Pueblo andaluz situado en las estribaciones de Sierra Morena, en la sierra de Aracena.",
-      "descripcion": "Santa Olalla del Cala es un municipio andaluz ubicado en la sierra de Aracena, en las estribaciones de Sierra Morena. Se encuentra en la comarca de Sierra de Huelva y forma parte de la Ruta de la Plata, con una altitud que oscila entre 793 metros (Alto del Viso) y 300 metros al sur. Su historia se remonta a la Edad de Bronce y está ligada a la Ruta de la Plata y los importantes enclaves mineros cercanos.",
+      "descripcion_corta": "Descubre el encanto de Santa Olalla del Cala, un pueblo de gran belleza natural y rica historia",
+      "descripcion": "Ubicado en la estribación de Sierra Morena, este pueblo cuenta con un entorno natural impresionante, rodeado de montañas y arroyos. La Rivera de Cala es su límite norte, mientras que el río Huelva lo baña. La historia de Santa Olalla se remonta a la Edad de Bronce, y su nombre actual proviene de la patrona del pueblo, Santa Eulalia de Mérida. En el siglo XIII, el pueblo fue conquistado por Sancho II de Portugal, y desde entonces ha sido un lugar estratégico en la región.",
       "imagenes": {
         "banner": "https://picsum.photos/seed/santa-olalla-del-cala/1200/400",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Escudo_de_Santa_Olalla_del_Cala_%28Huelva%29.svg/120px-Escudo_de_Santa_Olalla_del_Cala_%28Huelva%29.svg.png"
       },
       "sitio_web": "https://www.santaolalladelcala.es/",
-      "wikipedia_url": "https://es.wikipedia.org/wiki/Santa_Olalla_del_Cala_(Huelva)"
+      "wikipedia_url": "https://es.wikipedia.org/wiki/Santa_Olalla_del_Cala_(Huelva)",
+      "desc_actualizada": true
     },
     {
       "id": "trigueros",
@@ -65776,14 +65788,15 @@
       "poblacion": 8159,
       "lat": 37.38305555555556,
       "lng": -6.833611111111111,
-      "descripcion_corta": "Pueblo andaluz de Huelva, situado entre los ríos Tinto y Odiel, cerca de la capital provincial.",
-      "descripcion": "Trigueros es un municipio de la provincia de Huelva en Andalucía, ubicado entre los ríos Tinto y Odiel. A 19 kilómetros de Huelva, limita con varios pueblos y está atravesado por varias carreteras importantes. Su relieve es llano y su altitud media es de 76 metros.",
+      "descripcion_corta": "Descubre la belleza natural y rica historia de este pueblo llano en Andalucía",
+      "descripcion": "Ubicado a orillas del río Tinto y Odiel, Trigueros ofrece paisajes naturales impresionantes y una rica cultura íbera. Explora el Pilar de la Media Legua, arqueológico romano con inscripciones en las puertas del Carmen, y disfruta del entorno natural que lo rodea.",
       "imagenes": {
         "banner": "https://picsum.photos/seed/trigueros/1200/400",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Escudo_de_Trigueros.svg/120px-Escudo_de_Trigueros.svg.png"
       },
       "sitio_web": "http://www.trigueros.es/",
-      "wikipedia_url": "https://es.wikipedia.org/wiki/Trigueros_(Huelva)"
+      "wikipedia_url": "https://es.wikipedia.org/wiki/Trigueros_(Huelva)",
+      "desc_actualizada": true
     },
     {
       "id": "valdelarco",
@@ -65794,14 +65807,15 @@
       "poblacion": 239,
       "lat": 37.95055555555556,
       "lng": -6.683333333333334,
-      "descripcion_corta": "Pueblo andaluz en la provincia de Huelva, con 239 habitantes y situado a 623 metros sobre el nivel del mar.",
-      "descripcion": "Valdelarco es un municipio de la provincia de Huelva, Andalucía, ubicado a 623 metros sobre el nivel del mar. A pesar de contar actualmente con solo 239 habitantes, en el siglo XIX su población llegó a alcanzar 603 personas. La localidad destaca por su iglesia parroquial dedicada al Salvador.",
+      "descripcion_corta": "Disfruta de un entorno natural pintoresco en este pueblo andaluz con historia y cultura",
+      "descripcion": "Valdelarco ofrece paisajes naturales impresionantes, una iglesia parroquial del siglo XIX y rutas para explorar su entorno rural",
       "imagenes": {
         "banner": "https://picsum.photos/seed/valdelarco/1200/400",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Escudo_de_Valdelarco.svg/120px-Escudo_de_Valdelarco.svg.png"
       },
       "sitio_web": "https://www.valdelarco.es/",
-      "wikipedia_url": "https://es.wikipedia.org/wiki/Valdelarco_(Huelva)"
+      "wikipedia_url": "https://es.wikipedia.org/wiki/Valdelarco_(Huelva)",
+      "desc_actualizada": true
     },
     {
       "id": "valverde-del-camino",
@@ -65812,14 +65826,15 @@
       "poblacion": 12631,
       "lat": 37.573888888888895,
       "lng": -6.754444444444444,
-      "descripcion_corta": "Pueblo andaluz situado entre los ríos Tinto y Odiel, capital de la comarca del Andévalo.",
-      "descripcion": "Valverde del Camino es un municipio español ubicado en la provincia de Huelva, en el corazón de la comarca del Andévalo. Entre los valles de los ríos Tinto y Odiel, este pueblo ejerce como capital regional, atravesado por importantes vías de comunicación que lo conectan con otras localidades. Su historia se remonta a épocas medievales, cuando fue un paso obligado para viajeros y comerciantes.",
+      "descripcion_corta": "Descubre el encanto de Valverde del Camino, rodeado de valles y ríos en el corazón de Andalucía.",
+      "descripcion": "Valverde del Camino es un pueblo pintoresco situado entre los valles de los ríos Tinto y Odiel, donde la naturaleza y la historia se entrelazan. Pasea por las calles empedradas y descubre la arquitectura tradicional, el patrimonio cultural y la rica historia del lugar. La colonia inglesa que se instaló en Valverde del Camino durante la época minera dejó su huella en la localidad, y hoy puedes apreciar sus influencias en la arquitectura y la cultura. Explora el pueblo, visita las ruinas de la estación ferroviaria y disfruta del paisaje natural que lo rodea.",
       "imagenes": {
         "banner": "https://picsum.photos/seed/valverde-del-camino/1200/400",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Escudo_de_Valverde_del_Camino_%28Huelva%29.svg/120px-Escudo_de_Valverde_del_Camino_%28Huelva%29.svg.png"
       },
       "sitio_web": "http://www.valverdedelcamino.eu/",
-      "wikipedia_url": "https://es.wikipedia.org/wiki/Valverde_del_Camino_(Huelva)"
+      "wikipedia_url": "https://es.wikipedia.org/wiki/Valverde_del_Camino_(Huelva)",
+      "desc_actualizada": true
     },
     {
       "id": "villablanca",
@@ -65830,14 +65845,15 @@
       "poblacion": 2939,
       "lat": 37.30416666666667,
       "lng": -7.340833333333333,
-      "descripcion_corta": "Pueblo andaluz situado en la provincia de Huelva, con un trazado urbano único y una historia que data del siglo XVI.",
-      "descripcion": "Villablanca es un pueblo andaluz ubicado en la provincia de Huelva, en la comarca de la Costa Occidental. Su trazado urbano, único en la provincia, se asienta sobre una planicie y consta de calles principales que forman un damero, similar al estilo urbanístico de ciudades coloniales españolas en América. Fundada en 1531 por orden de los marqueses de Ayamonte, la villa ha mantenido su trazado original, convirtiéndose en un punto de cruce entre la Costa Occidental y el Andévalo.",
+      "descripcion_corta": "Descubre la villa de Villablanca, un pueblo con historia y cultura única en el suroeste de Huelva.",
+      "descripcion": "Villablanca es un pueblo con un pasado fascinante, desde el Dolmen de la Tenencia hasta el estilo urbanístico colonial. Disfruta del entorno natural, la arquitectura única y la rica historia de este destino turístico.",
       "imagenes": {
         "banner": "https://picsum.photos/seed/villablanca/1200/400",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Escudo_de_Villablanca_%28Huelva%29.svg/120px-Escudo_de_Villablanca_%28Huelva%29.svg.png"
       },
       "sitio_web": "https://www.villablanca.es/",
-      "wikipedia_url": "https://es.wikipedia.org/wiki/Villablanca_(Huelva)"
+      "wikipedia_url": "https://es.wikipedia.org/wiki/Villablanca_(Huelva)",
+      "desc_actualizada": true
     },
     {
       "id": "villalba-del-alcor",
@@ -65848,14 +65864,15 @@
       "poblacion": 3303,
       "lat": 37.396388888888886,
       "lng": -6.475555555555555,
-      "descripcion_corta": "Pueblo andaluz situado en la provincia de Huelva, conocido por su agricultura y fiestas tradicionales.",
-      "descripcion": "Villalba del Alcor es un municipio andaluz de la provincia de Huelva, con una economía basada en la agricultura y la restauración. Destaca por sus fiestas como las Cruces de Mayo y la festividad de Santa Águeda, así como su historia que remonta al siglo XI con el Castillo de Ostilia.",
+      "descripcion_corta": "Descubre el encanto de Villalba del Alcor, un pueblo con riqueza histórica y cultura.",
+      "descripcion": "Ubicado en un valle rodeado de sierras, Villalba del Alcor combina entorno natural impresionante con patrimonio cultural vibrante. Explora su castillo medieval, conventos históricos y paisajes pintorescos. Disfruta de la gastronomía local y vinos, y descubre las obras de artistas como Pármulo y Carmelo del Toro.",
       "imagenes": {
         "banner": "https://picsum.photos/seed/villalba-del-alcor/1200/400",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Escudo_de_Villalba_del_Alcor.svg/120px-Escudo_de_Villalba_del_Alcor.svg.png"
       },
       "sitio_web": "http://www.villalbadelalcor.es/",
-      "wikipedia_url": "https://es.wikipedia.org/wiki/Villalba_del_Alcor_(Huelva)"
+      "wikipedia_url": "https://es.wikipedia.org/wiki/Villalba_del_Alcor_(Huelva)",
+      "desc_actualizada": true
     },
     {
       "id": "villanueva-de-las-cruces",
@@ -65866,14 +65883,15 @@
       "poblacion": 379,
       "lat": 37.62861111111111,
       "lng": -7.0247222222222225,
-      "descripcion_corta": "Pueblo andaluz de Huelva, con una historia minera y actualmente basada en la agricultura.",
-      "descripcion": "Villanueva de las Cruces es un municipio de la provincia de Huelva, Andalucía, fundado en el siglo I a.C. como asentamiento romano. Su economía histórica se centró en la minería, especialmente con la llegada de Tharsis Sulphur and Copper Company Limited en 1866, aunque actualmente se basa en la agricultura. Ubicado en un valle bajo del Andévalo, presenta un clima mediterráneo con veranos muy calurosos.",
+      "descripcion_corta": "Descubre el encanto rural de Villanueva de las Cruces, rodeado de valles y ríos.",
+      "descripcion": "Villanueva de las Cruces es un pueblo pintoresco situado en una comarca del Andévalo, conocido por su clima mediterráneo y su historia minera. Explora sus calles empedradas, visita la estación de ferrocarril abandonada y disfruta del paisaje natural que lo rodea. La actividad agrícola es la base de su economía, con ganaderías ovinas y porcinas destacadas.",
       "imagenes": {
         "banner": "https://picsum.photos/seed/villanueva-de-las-cruces/1200/400",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Escudo_de_Villanueva_de_las_Cruces_%28Huelva%29.svg/120px-Escudo_de_Villanueva_de_las_Cruces_%28Huelva%29.svg.png"
       },
       "sitio_web": "https://www.villanuevadelascruces.es",
-      "wikipedia_url": "https://es.wikipedia.org/wiki/Villanueva_de_las_Cruces_(Huelva)"
+      "wikipedia_url": "https://es.wikipedia.org/wiki/Villanueva_de_las_Cruces_(Huelva)",
+      "desc_actualizada": true
     },
     {
       "id": "villanueva-de-los-castillejos",
@@ -65884,14 +65902,15 @@
       "poblacion": 2967,
       "lat": 37.49916666666667,
       "lng": -7.2725,
-      "descripcion_corta": "Pueblo andaluz situado en el Andévalo, con una población de 2967 habitantes.",
-      "descripcion": "Villanueva de los Castillejos es un pueblo andaluz ubicado en el Andévalo, con una extensión de 264 km² y una altitud de 224 metros. Su economía se basa en la agricultura y la industria cárnicas, destacando la producción de cítricos, fresas y productos del cerdo ibérico. La localidad cuenta con un importante núcleo urbano que, junto a El Almendro, forma la segunda agrupación más poblada del Andévalo.",
+      "descripcion_corta": "Descubre la riqueza cultural y gastronómica de este pintoresco pueblo andaluz.",
+      "descripcion": "Ubicado en un valle rodeado de montañas, Villanueva de los Castillejos ofrece una experiencia única. Disfruta de su cerdo ibérico, repostería local y tradiciones vivas durante la feria agroganadera. Explora sus calles empedradas y descubre secretos gastronómicos y culturales que se han mantenido a lo largo de los siglos.",
       "imagenes": {
         "banner": "https://picsum.photos/seed/villanueva-de-los-castillejos/1200/400",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Escudo_de_Villanueva_de_los_Castillejos_%28Huelva%29.svg/120px-Escudo_de_Villanueva_de_los_Castillejos_%28Huelva%29.svg.png"
       },
       "sitio_web": "https://www.villanuevadeloscastillejos.es/",
-      "wikipedia_url": "https://es.wikipedia.org/wiki/Villanueva_de_los_Castillejos_(Huelva)"
+      "wikipedia_url": "https://es.wikipedia.org/wiki/Villanueva_de_los_Castillejos_(Huelva)",
+      "desc_actualizada": true
     },
     {
       "id": "villarrasa",
@@ -65902,14 +65921,15 @@
       "poblacion": 2103,
       "lat": 37.38805555555555,
       "lng": -6.605555555555555,
-      "descripcion_corta": "Pueblo andaluz de la provincia de Huelva, situado en campiña fértile y con rica historia cultural.",
-      "descripcion": "Villarrasa es un municipio español ubicado en la provincia de Huelva, Andalucía. Situado en campiña fértile, este pueblo mantiene viva su tradición agrícola a través de sus viviendas de una planta y doblados. Su historia se remonta al calcolítico y ha sido influenciada por diversas culturas como cartagineses, romanos, visigodos y musulmanes.",
+      "descripcion_corta": "Descubre el encanto de Villarrasa, un pueblo con una rica historia y entorno natural impresionante",
+      "descripcion": "Ubicado en la campiña andaluza, Villarrasa combina arquitectura tradicional con ruinas romanas y musulmanas, ofreciendo una experiencia única para los visitantes. Explora sus calles empedradas, visita el Museo Arqueológico Provincial y descubre la rica historia de este pueblo. Con una situación estratégica en la provincia de Huelva, Villarrasa es un destino perfecto para aquellos que buscan desconectar de la ciudad y conectarse con la naturaleza y la cultura.",
       "imagenes": {
         "banner": "https://picsum.photos/seed/villarrasa/1200/400",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Escudo_de_Villarrasa.svg/120px-Escudo_de_Villarrasa.svg.png"
       },
       "sitio_web": "http://www.villarrasa.es/",
-      "wikipedia_url": "https://es.wikipedia.org/wiki/Villarrasa_(Huelva)"
+      "wikipedia_url": "https://es.wikipedia.org/wiki/Villarrasa_(Huelva)",
+      "desc_actualizada": true
     },
     {
       "id": "zalamea-la-real",
@@ -65920,14 +65940,15 @@
       "poblacion": 2968,
       "lat": 37.680277777777775,
       "lng": -6.659166666666667,
-      "descripcion_corta": "Pueblo minero situado en la comarca de la Cuenca Minera, Huelva.",
-      "descripcion": "Zalamea la Real es un municipio andaluz de la provincia de Huelva, históricamente vinculado a la minería y a la cuenca minera de Riotinto-Nerva. Se encuentra en la comarca de la Cuenca Minera, cerca del centro geográfico de Huelva, con una altitud de 412 metros.",
+      "descripcion_corta": "Descubre el encanto de Zalamea la Real, un pueblo minero con una rica historia y paisajes naturales impresionantes.",
+      "descripcion": "Zalamea la Real se encuentra en el corazón de la Cuenca Minera, rodeado de montañas y valles que ofrecen oportunidades para explorar y disfrutar de la naturaleza. El pueblo cuenta con una rica historia minera que data desde la Antigüedad, y su patrimonio cultural es un testimonio de la importancia de esta actividad en el pasado. Visita las ruinas del ferrocarril abandonado, explora los núcleos menores como Marigenta o Las Delgadas, y disfruta del paisaje natural que rodea al pueblo.",
       "imagenes": {
         "banner": "https://picsum.photos/seed/zalamea-la-real/1200/400",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Escudo_Zalamea_la_Real.svg/120px-Escudo_Zalamea_la_Real.svg.png"
       },
       "sitio_web": "https://www.zalamealareal.es/",
-      "wikipedia_url": "https://es.wikipedia.org/wiki/Zalamea_la_Real_(Huelva)"
+      "wikipedia_url": "https://es.wikipedia.org/wiki/Zalamea_la_Real_(Huelva)",
+      "desc_actualizada": true
     },
     {
       "id": "la-zarza-perrunal",
@@ -65992,14 +66013,15 @@
       "poblacion": 162,
       "lat": 42.24388888888889,
       "lng": 0.1986111111111111,
-      "descripcion_corta": "Pueblo medieval en Sobrarbe con torreón del siglo XI y pantano de El Grado.",
-      "descripcion": "Abizanda, pueblo medieval situado en el Prepirineo aragonés, ofrece vistas panorámicas desde su torreón del siglo XI. Rodeado por montes de pinares y encinas, cuenta con un pantano apto para actividades acuáticas como el baño.",
+      "descripcion_corta": "Pueblo medieval rodeado de montes y ríos en el Prepirineo aragonés.",
+      "descripcion": "Ubicado en el Sobrarbe, Abizanda combina entorno natural con patrimonio románico y árabe. El pantano de El Grado ofrece espacios para bañarse y divertirse acuáticamente, mientras que la torreón medieval del siglo XI y restos románicos y árabes ofrecen una visión única de la historia local. La zona también cuenta con el castillo de Abizanda, construido por Sancho Garcés III de Pamplona, y la baronía de Antillón, que abarcaba el condado de Urgel y otras posesiones.",
       "imagenes": {
         "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/005.Abizanda_02b.JPG",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Abizanda_foto_a%C3%A9rea_2.jpg/330px-Abizanda_foto_a%C3%A9rea_2.jpg"
       },
       "sitio_web": "http://www.abizanda.es/",
-      "wikipedia_url": "https://es.wikipedia.org/wiki/Abizanda"
+      "wikipedia_url": "https://es.wikipedia.org/wiki/Abizanda",
+      "desc_actualizada": true
     },
     {
       "id": "adahuesca",
@@ -66028,14 +66050,15 @@
       "poblacion": 142,
       "lat": 42.35638888888889,
       "lng": -0.7930555555555555,
-      "descripcion_corta": "Pueblo de Huesca en la provincia de Aragón, España, situado frente a los mallos y con importante historia medieval.",
-      "descripcion": "Agüero es un municipio de la provincia de Huesca, en Aragón, España. Asentado frente a los mallos, estas formaciones geológicas son su principal característica. La localidad, con una población de 142 habitantes, tiene una rica historia que remonta al siglo X y ha sido objeto de conquistas y donaciones reales durante la Edad Media.",
+      "descripcion_corta": "Pueblo pintoresco en la montaña pirenaica con vistas impresionantes",
+      "descripcion": "Agüero se encuentra asentada frente a los mallos, una estribación de la sierra de Santo Domingo, rodeado de un valle dominado por la montaña prepirenaica. El pueblo cuenta con una rica historia y cultura, desde la conquista medieval hasta el poderoso señorío de los Gurrea en el siglo XIV. La localidad también incluye la aldea de San Felices y ofrece vistas panorámicas impresionantes del entorno natural.",
       "imagenes": {
         "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Ag%C3%BCero%2C_Uesca%2C_Arag%C3%B3n.jpg",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Escudo_de_Ag%C3%BCero.svg/120px-Escudo_de_Ag%C3%BCero.svg.png"
       },
       "sitio_web": "https://www.agüero.es//",
-      "wikipedia_url": "https://es.wikipedia.org/wiki/Agüero_(Huesca)"
+      "wikipedia_url": "https://es.wikipedia.org/wiki/Agüero_(Huesca)",
+      "desc_actualizada": true
     },
     {
       "id": "ainsa-sobrarbe",
@@ -66046,14 +66069,15 @@
       "poblacion": 2335,
       "lat": 42.41722222222222,
       "lng": 0.1375,
-      "descripcion_corta": "Pueblo aragonés situado en la comarca de Sobrarbe, capital de Aínsa y con extenso término municipal.",
-      "descripcion": "Aínsa-Sobrarbe es un pueblo aragonés que sirve como capital del municipio de Aínsa. Ubicado en la comarca de Sobrarbe, este lugar cuenta con un término municipal amplio que abarca una superficie de 284,8 km² y alberga a más de 2315 habitantes. La zona se caracteriza por valles y sierras, con altitudes que oscilan entre los 530 y 1300 metros.",
+      "descripcion_corta": "Descubre la belleza natural de Aínsa-Sobrarbe, rodeado de valles y sierras en un paisaje único.",
+      "descripcion": "Aínsa-Sobrarbe es un destino turístico que combina entorno natural impresionante con cultura y historia. El pueblo se alza a 592 metros sobre el nivel del mar y ofrece vistas panorámicas de la comarca altoaragonesa. La zona está dividida en dos zonas bien diferenciadas, con valles y sierras que desembocan en ríos como el Cinca y el Ara. El pueblo tiene un núcleo principal con una villa histórica y varias aldeas y pueblos rodeados, como Arcusa y Arro. La práctica totalidad de las pequeñas poblaciones se integran bajo la denominación de Aínsa-Sobrarbe, creando un paisaje único y auténtico que atrae a visitantes que buscan descubrir la belleza natural y cultural de esta zona.",
       "imagenes": {
         "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Ainsa_m1.jpg",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Escudo_de_l%27A%C3%ADnsa.svg/120px-Escudo_de_l%27A%C3%ADnsa.svg.png"
       },
       "sitio_web": "https://www.xn--ansa-sobrarbe-wib.es/",
-      "wikipedia_url": "https://es.wikipedia.org/wiki/Aínsa-Sobrarbe"
+      "wikipedia_url": "https://es.wikipedia.org/wiki/Aínsa-Sobrarbe",
+      "desc_actualizada": true
     },
     {
       "id": "aisa",
@@ -66064,14 +66088,15 @@
       "poblacion": 326,
       "lat": 42.68277777777777,
       "lng": -0.6169444444444445,
-      "descripcion_corta": "Pueblo aragonés situado en la comarca de La Jacetania con estación de esquí y valle pirineo.",
-      "descripcion": "Aísa es un pueblo aragonés ubicado en la comarca de La Jacetania, conocido por su estación de esquí de Candanchú y sus valles pirineos. Se extiende a altitudes que oscilan entre los 820 y 2640 metros sobre el nivel del mar, limitando con picos como el pico Aspe. El pueblo, fundado probablemente en el siglo XI o XII durante la repoblación del Pirineo, es la cabecera de un municipio que incluye los núcleos de Esposa y Sinués.",
+      "descripcion_corta": "Descubre la belleza del Pirineo aragonés en este pueblo escondido.",
+      "descripcion": "Aísa se alza a 1046 metros sobre el nivel del mar y ofrece paisajes impresionantes de suelos pardos calizos forestales. La estación de esquí de Candanchú y la Trilogía del Aspe, formada por picos como el pico de Aspe y el Llana de la Garganta, son atractivos naturales imperdibles.",
       "imagenes": {
         "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/A%C3%ADsa%2C_vista_general.jpg",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Escudo_de_A%C3%ADsa.svg/120px-Escudo_de_A%C3%ADsa.svg.png"
       },
       "sitio_web": "http://www.aytoaisa.es/",
-      "wikipedia_url": "https://es.wikipedia.org/wiki/Aísa"
+      "wikipedia_url": "https://es.wikipedia.org/wiki/Aísa",
+      "desc_actualizada": true
     },
     {
       "id": "albalate-de-cinca",
@@ -66082,14 +66107,15 @@
       "poblacion": 1080,
       "lat": 41.72361111111111,
       "lng": 0.1463888888888889,
-      "descripcion_corta": "Pueblo de la provincia de Huesca en Aragón, con una población de 1080 habitantes.",
-      "descripcion": "Albalate de Cinca es un pueblo situado en la comarca del Cinca Medio, provincia de Huesca, Aragón. Cuenta con una población de 1080 habitantes y celebra sus fiestas locales el 29 de septiembre y el 11 de noviembre.",
+      "descripcion_corta": "Disfruta la tranquilidad en este encantador pueblo rodeado de naturaleza y ríos.",
+      "descripcion": "Albalate de Cinca combina un entorno natural impresionante con una rica cultura y tradiciones. Ríos y montañas rodean este pueblo, mientras que sus fiestas y celebraciones ofrecen una visión única de la vida local. Explora su patrimonio histórico y disfruta del paisaje natural que lo rodea.",
       "imagenes": {
         "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Albalate_de_Cinca_-_Palacio_ducal_de_Solferino_22.jpg",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Escudo_de_Albalate_de_Cinca.svg/120px-Escudo_de_Albalate_de_Cinca.svg.png"
       },
       "sitio_web": "http://www.albalatedecinca.es",
-      "wikipedia_url": "https://es.wikipedia.org/wiki/Albalate_de_Cinca"
+      "wikipedia_url": "https://es.wikipedia.org/wiki/Albalate_de_Cinca",
+      "desc_actualizada": true
     },
     {
       "id": "albalatillo",
@@ -66100,14 +66126,15 @@
       "poblacion": 220,
       "lat": 41.73777777777778,
       "lng": -0.14944444444444444,
-      "descripcion_corta": "Pueblo de Albalatillo, en la provincia de Huesca, junto al río Flumen, con una población de 220 habitantes.",
-      "descripcion": "Albalatillo es un municipio de la provincia de Huesca, situado en la confluencia del río Alcanadre y el Flumen. Conocido por su actividad agrícola-ganadera, alberga una iglesia parroquial barroca clasicista y una modesta ermita gótica. La localidad, que cuenta con 220 habitantes, enfrenta la problemática de la despoblación rural en los Monegros.",
+      "descripcion_corta": "Descubre la historia y cultura de Albalatillo, un pueblo con un pasado árabe en el corazón de Los Monegros.",
+      "descripcion": "Albalatillo combina entorno natural impresionante con patrimonio cultural, desde su iglesia barroca hasta la modesta ermita gótica de Nuestra Señora de la Xarea, rodeada de piedras sillares y paisajes naturales únicos.",
       "imagenes": {
         "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Albalatillo_30.jpg",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Escudo_de_Albalatillo.svg/120px-Escudo_de_Albalatillo.svg.png"
       },
       "sitio_web": "https://www.albalatillo.es/",
-      "wikipedia_url": "https://es.wikipedia.org/wiki/Albalatillo"
+      "wikipedia_url": "https://es.wikipedia.org/wiki/Albalatillo",
+      "desc_actualizada": true
     },
     {
       "id": "albelda",
@@ -66118,14 +66145,15 @@
       "poblacion": 728,
       "lat": 41.86666666666667,
       "lng": 0.46194444444444444,
-      "descripcion_corta": "Pueblo situado en la provincia de Huesca, entre montañas y depresión del Ebro.",
-      "descripcion": "Albelda es un pueblo ubicado en la provincia de Huesca, al borde nororiental de la depresión del Ebro, limitando con Alcampell y Castillonroy. Entre dos formaciones montañosas, este lugar presenta un clima templado-medio con inviernos moderados y veranos cálidos y secos.",
+      "descripcion_corta": "Descubre el encanto de Albelda, un pueblo en la comarca de la Litera, rodeado de montañas y valles.",
+      "descripcion": "Albelda se encuentra en una llanura entre dos montañas, rodeada por una formación de yeso característica. El clima templado-medio ofrece temperaturas cálidas durante el verano y moderadas en invierno. La zona es conocida por sus paisajes naturales y su patrimonio histórico, con un casco urbano bien conservado. Visita Albelda para disfrutar de su entorno natural y cultural única.",
       "imagenes": {
         "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Fiuesta_del_TOCI_de_Albelda_%2812190562424%29.jpg",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Escudo_de_Albelda.svg/120px-Escudo_de_Albelda.svg.png"
       },
       "sitio_web": "https://www.albelda.es/",
-      "wikipedia_url": "https://es.wikipedia.org/wiki/Albelda"
+      "wikipedia_url": "https://es.wikipedia.org/wiki/Albelda",
+      "desc_actualizada": true
     },
     {
       "id": "albero-alto",
@@ -66136,14 +66164,15 @@
       "poblacion": 123,
       "lat": 42.05,
       "lng": -0.33694444444444444,
-      "descripcion_corta": "Pueblo situado en la Hoya de Huesca, al pie de un monte, con importancia estratégica en el siglo XII.",
-      "descripcion": "Albero Alto es un pueblo de la provincia de Huesca, en la comarca Hoya de Huesca, ubicado en llano al pie de un monte. Durante el siglo XII, su posición estratégica permitía vigilar los caminos entre Sariñena y Huesca, formando parte de una cadena de fortalezas importantes en la región.",
+      "descripcion_corta": "Pueblo en el valle del río Cinca, rodeado de montañas y con una rica historia militar.",
+      "descripcion": "Albero Alto se encuentra en un llano al pie de un monte escabroso, rodeado por la cadena de fortalezas del Somontano. Su historia militar es destacada, siendo estratégicamente importante durante el siglo XII. El pueblo cuenta con una arquitectura única y un entorno natural pintoresco, ideal para aquellos que buscan descubrir la rica cultura y patrimonio de esta zona.",
       "imagenes": {
         "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Albero_Alto_%28_Huesca_%29_._-_panoramio.jpg",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Escudo_de_Albero_Alto_%28Huesca%29.svg/120px-Escudo_de_Albero_Alto_%28Huesca%29.svg.png"
       },
       "sitio_web": "http://www.albero-alto.es/",
-      "wikipedia_url": "https://es.wikipedia.org/wiki/Albero_Alto"
+      "wikipedia_url": "https://es.wikipedia.org/wiki/Albero_Alto",
+      "desc_actualizada": true
     },
     {
       "id": "albero-bajo",
@@ -66154,14 +66183,15 @@
       "poblacion": 109,
       "lat": 42.025,
       "lng": -0.37777777777777777,
-      "descripcion_corta": "Pueblo de la comarca de Los Monegros, provincia de Huesca, con una población de 134 habitantes.",
-      "descripcion": "Albero Bajo es un pueblo situado en la comarca de Los Monegros, provincia de Huesca. Con una extensión de 22,08 km² y una población de 134 habitantes, se encuentra cerca del canal del Flumen. Su historia data del siglo XI, pasando por diversas tenencias hasta el siglo XIII.",
+      "descripcion_corta": "Descubre el encanto rural de Albero Bajo en la comarca de Los Monegros.",
+      "descripcion": "Ubicado cerca de un importante canal fluvial, este pueblo aragonés ofrece una rica historia y un entorno natural impresionante con restos arqueológicos de la Edad de los Metales. Explora sus calles empedradas y descubre la auténtica cultura rural de esta localidad.",
       "imagenes": {
         "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Pintoresca_edificaci%C3%B3n_en_Albero_Bajo._-_panoramio.jpg",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Pintoresca_edificaci%C3%B3n_en_Albero_Bajo._-_panoramio.jpg/330px-Pintoresca_edificaci%C3%B3n_en_Albero_Bajo._-_panoramio.jpg"
       },
       "sitio_web": "http://www.alberobajo.es/",
-      "wikipedia_url": "https://es.wikipedia.org/wiki/Albero_Bajo"
+      "wikipedia_url": "https://es.wikipedia.org/wiki/Albero_Bajo",
+      "desc_actualizada": true
     },
     {
       "id": "alberuela-de-tubo",
@@ -66172,14 +66202,15 @@
       "poblacion": 270,
       "lat": 41.909444444444446,
       "lng": -0.21305555555555555,
-      "descripcion_corta": "Pueblo de la provincia de Huesca, en Aragón, con casco urbano fortificado y economía basada en agricultura y ganadería.",
-      "descripcion": "Alberuela de Tubo es un pueblo situado en la provincia de Huesca, Aragón, donde el casco urbano se asienta al pie de una roca escarpada y fue fortificado durante la dominación islámica. Su economía gira en torno a la agricultura y ganadería, con mayor diversificación gracias a la construcción del canal del Flumen.",
+      "descripcion_corta": "Descubre el encanto de Alberuela de Tubo, un pueblo aragonés con una rica historia y paisajes naturales impresionantes",
+      "descripcion": "Alberuela de Tubo se encuentra rodeado de pinares y montañas, con un casco urbano caracterizado por calles estrechas y edificios de materiales uniformes. La plaza mayor es el corazón del pueblo, con la iglesia de San Juan Evangelista y la herrería como atracciones destacadas. El entorno natural ofrece oportunidades para practicar deportes al aire libre y disfrutar de la tranquilidad del lugar.",
       "imagenes": {
         "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Alberuela_de_Tubo_Huesca_-01.jpg",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Escuela_y_Ayuntamiento_de_Alberuela_de_Tubo_01.jpg/330px-Escuela_y_Ayuntamiento_de_Alberuela_de_Tubo_01.jpg"
       },
       "sitio_web": "http://www.alberueladetubo.es/",
-      "wikipedia_url": "https://es.wikipedia.org/wiki/Alberuela_de_Tubo"
+      "wikipedia_url": "https://es.wikipedia.org/wiki/Alberuela_de_Tubo",
+      "desc_actualizada": true
     },
     {
       "id": "alcala-de-gurrea",
@@ -66190,14 +66221,15 @@
       "poblacion": 265,
       "lat": 42.06777777777778,
       "lng": -0.6844444444444444,
-      "descripcion_corta": "Pueblo situado en la comarca de Hoya de Huesca, junto al río Sotón y con características climáticas mediterráneas.",
-      "descripcion": "Alcalá de Gurrea es un municipio de la provincia de Huesca, España, ubicado a orillas del río Sotón. Se extiende sobre una colina con capas yesosas que dan color al paisaje y ofrece vistas panorámicas hacia las llanuras hasta el Pantano de la Sotonera. Su clima mediterráneo, influenciado por el Atlántico y el Mediterráneo, presenta inviernos fríos y veranos cálidos con precipitaciones moderadas.",
+      "descripcion_corta": "Descubre el encanto de Alcalá de Gurrea, rodeado de estepas y colinas yesosas.",
+      "descripcion": "Alcalá de Gurrea, un pueblo situado en una colina con capas yesosas, ofrece vistas panorámicas del paisaje circundante. La zona es conocida por su vegetación mediterránea y su variedad de aves, como aguiluchos, cernícalos y halcones. El clima es mediterráneo, con inviernos fríos y veranos cálidos, y se caracteriza por lluvias torrenciales en algunos años.",
       "imagenes": {
         "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Iglesia_Tormos.JPG",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Escudo_de_Alcal%C3%A1_de_Gurrea.svg/60px-Escudo_de_Alcal%C3%A1_de_Gurrea.svg.png"
       },
       "sitio_web": "http://www.alcaladegurrea.es/",
-      "wikipedia_url": "https://es.wikipedia.org/wiki/Alcalá_de_Gurrea"
+      "wikipedia_url": "https://es.wikipedia.org/wiki/Alcalá_de_Gurrea",
+      "desc_actualizada": true
     },
     {
       "id": "alcala-del-obispo",
@@ -66208,14 +66240,15 @@
       "poblacion": 394,
       "lat": 42.07833333333333,
       "lng": -0.29083333333333333,
-      "descripcion_corta": "Pueblo situado en Huesca, limitado por varios municipios y con una iglesia del siglo XVII.",
-      "descripcion": "Alcalá del Obispo es un pueblo español ubicado en la provincia de Huesca, limitado por múltiples municipios. Destaca por su iglesia del siglo XVII, actualmente bajo proceso de restauración, y alberga el aeropuerto Huesca-Pirineos inaugurado en 2007.",
+      "descripcion_corta": "Descubre el encanto de Alcalá del Obispo, un pueblo mediterráneo con historia y naturaleza",
+      "descripcion": "Alcalá del Obispo combina entorno natural pintoresco con la arquitectura medieval de su iglesia del siglo XVII. En un clima mediterráneo, explora las colinas y ríos que rodean este pueblo aragonés",
       "imagenes": {
         "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Alcal%C3%A1_del_Obispo_-_Casa_%2823%29.jpg",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Alcal%C3%A1_del_Obispo_-_Iglesia_de_San_Miguel_%2805%29.jpg/330px-Alcal%C3%A1_del_Obispo_-_Iglesia_de_San_Miguel_%2805%29.jpg"
       },
       "sitio_web": "http://www.alcaladelobispo.es/",
-      "wikipedia_url": "https://es.wikipedia.org/wiki/Alcalá_del_Obispo"
+      "wikipedia_url": "https://es.wikipedia.org/wiki/Alcalá_del_Obispo",
+      "desc_actualizada": true
     },
     {
       "id": "alcampell",
@@ -66226,14 +66259,15 @@
       "poblacion": 650,
       "lat": 41.906666666666666,
       "lng": 0.43472222222222223,
-      "descripcion_corta": "Pueblo situado en la comarca de La Litera, Aragón, con influencia árabe y topónimo que significa 'campo pequeño'.",
-      "descripcion": "Alcampell es un pueblo ubicado en la comarca de La Litera, Aragón, donde se refleja la influencia histórica árabe. Su nombre, derivado del catalán, significa 'campo pequeño'. El municipio, elevado a 499 metros sobre el nivel del mar, limita con varios pueblos y alberga un enclavado despoblado, reflejando su rica historia y geografía.",
+      "descripcion_corta": "Descubre el encanto de este pueblo rodeado de montañas y ríos en un valle verde.",
+      "descripcion": "Alcampell se encuentra en una comarca con paisajes naturales impresionantes, rodeado por ríos y montañas. Su historia musulmana y cristiana se refleja en su arquitectura y cultura. Explora sus calles empedradas y descubre la belleza de este pueblo en el corazón de Aragón.",
       "imagenes": {
         "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Alcampell%2C_Huesca%2C_Arag%C3%B3n.jpg",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Escut_del_Campell.svg/120px-Escut_del_Campell.svg.png"
       },
       "sitio_web": "https://www.alcampell.net/",
-      "wikipedia_url": "https://es.wikipedia.org/wiki/Alcampell"
+      "wikipedia_url": "https://es.wikipedia.org/wiki/Alcampell",
+      "desc_actualizada": true
     },
     {
       "id": "alcolea-de-cinca",
@@ -66244,14 +66278,15 @@
       "poblacion": 1127,
       "lat": 41.721944444444446,
       "lng": 0.11750000000000001,
-      "descripcion_corta": "Pueblo aragonés situado en la orilla derecha del río Cinca, con una antigua historia y numerosas casas señoriales.",
-      "descripcion": "Alcolea de Cinca es un pueblo aragonés ubicado en la orilla derecha del río Cinca. Su historia data desde el año 1089 y se destaca por su plano urbanístico medieval, con calles estrechas y numerosas casas señoriales construidas durante los siglos XVII y XVIII. Además, cuenta con una iglesia renacentista aragonés y una cofradía de gran antigüedad.",
+      "descripcion_corta": "Descubre la encantadora Alcolea de Cinca, rodeada por ríos y montañas.",
+      "descripcion": "Alcolea de Cinca es un pueblo con una rica historia y cultura, rodeado por el río Cinca y bajo las Ripas, una montaña que ofrece vistas impresionantes. La ciudad cuenta con una arquitectura renacentista y un patrimonio arqueológico significativo, incluyendo el Conjunto Arqueológico de La Codera, donde se pueden encontrar restos de la Edad del Bronce a la época ibérica. El pueblo también es conocido por su iglesia de San Juan Bautista y su Casa Pitarque, una de las casas señoriales más destacadas de la región. Alcolea de Cinca es un destino ideal para aquellos que buscan descubrir la historia y cultura de esta encantadora localidad.",
       "imagenes": {
         "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Alcolea_de_Cinca_-_Plaza_Mos%C3%A9n_Ram%C3%B3n_Salas_-_Casa_Junquera_04.jpg",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Escudo_de_Alcolea_del_Cinca.svg/120px-Escudo_de_Alcolea_del_Cinca.svg.png"
       },
       "sitio_web": "http://www.alcoleadecinca.es/",
-      "wikipedia_url": "https://es.wikipedia.org/wiki/Alcolea_de_Cinca"
+      "wikipedia_url": "https://es.wikipedia.org/wiki/Alcolea_de_Cinca",
+      "desc_actualizada": true
     },
     {
       "id": "alcubierre",
@@ -66262,14 +66297,15 @@
       "poblacion": 401,
       "lat": 41.80833333333333,
       "lng": -0.45166666666666666,
-      "descripcion_corta": "Pueblo de Los Monegros, provincia de Huesca, donde nació Juan de Ester y George Orwell combatió en la Guerra Civil.",
-      "descripcion": "Alcubierre, situado en los Monegros, provincia de Huesca, es un municipio con una población de 372 habitantes. Nació aquí el teólogo Juan de Ester, y George Orwell combatió allí durante la Guerra Civil española. El emperador Carlos I estuvo tres veces en este lugar, mientras que Francisco Espoz y Mina realizó importantes acciones militares cercanas.",
+      "descripcion_corta": "Descubre la riqueza cultural y natural de un pueblo en el corazón de Los Monegros.",
+      "descripcion": "Alcubierre combina paisajes naturales impresionantes con una rica historia que cuenta con figuras destacadas como Carlos I, Juan de Ester y George Orwell. Explora sus yacimientos íberos, ruinas históricas y trincheras de la Guerra Civil.",
       "imagenes": {
         "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Alcubierre_-_Iglesia_de_Santa_Ana_01.png",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Escudo_de_Alcubierre.svg/120px-Escudo_de_Alcubierre.svg.png"
       },
       "sitio_web": "http://www.alcubierre.es",
-      "wikipedia_url": "https://es.wikipedia.org/wiki/Alcubierre"
+      "wikipedia_url": "https://es.wikipedia.org/wiki/Alcubierre",
+      "desc_actualizada": true
     },
     {
       "id": "alerre",
