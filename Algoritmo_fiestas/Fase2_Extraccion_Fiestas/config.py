@@ -61,7 +61,7 @@ LMSTUDIO_EMBEDDING_URL = f"{LMSTUDIO_BASE_URL}/v1/embeddings"
 LMSTUDIO_CHAT_URL = f"{LMSTUDIO_BASE_URL}/v1/chat/completions"
 
 LMSTUDIO_EMBEDDING_MODEL = "text-embedding-nomic-embed-text-v1.5"
-LMSTUDIO_CHAT_MODEL = "llama-3.2-3b-instruct:2"
+LMSTUDIO_CHAT_MODEL = "qwen2.5-7b-instruct"
 LMSTUDIO_CHAT_TIMEOUT = 900           # Timeout para peticiones de chat (segundos)
 LMSTUDIO_EMBEDDING_TIMEOUT = 30       # Timeout para embeddings (segundos)
 LMSTUDIO_CHAT_TEMPERATURE = 0.0       # Temperatura 0.0 para evitar alucinaciones

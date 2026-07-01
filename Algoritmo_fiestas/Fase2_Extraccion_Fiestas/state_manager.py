@@ -26,6 +26,7 @@ class StateManager:
             "anno": anno,
             "ultimo_municipio_procesado": None,
             "municipios_completados": [],
+            "localidades_completadas": [],
             "fiestas": [],
         }
 
@@ -41,6 +42,10 @@ class StateManager:
                         data["version"] = 2
                         if data.get("ultimo_municipio_procesado"):
                             data["municipios_completados"].append(data["ultimo_municipio_procesado"])
+                    
+                    if "localidades_completadas" not in data:
+                        data["localidades_completadas"] = []
+                    
                     self.state = data
                     logger.info(
                         f"Estado cargado: {len(self.state['fiestas'])} fiestas, "
@@ -81,6 +86,33 @@ class StateManager:
                 )
             except Exception as e:
                 logger.error(f"Error guardando estado: {e}")
+
+    async def guardar_estado_localidad(self, fiestas_nuevas: list, localidad_id: str):
+        """Guarda progreso intermedio de una localidad de forma atómica."""
+        async with self._lock:
+            existing_ids = {f.get("id") for f in self.state["fiestas"]}
+            nuevas_unicas = 0
+            for f in fiestas_nuevas:
+                fiesta_id = f.get("id", "")
+                if fiesta_id and fiesta_id not in existing_ids:
+                    self.state["fiestas"].append(f)
+                    existing_ids.add(fiesta_id)
+                    nuevas_unicas += 1
+
+            if localidad_id not in self.state.get("localidades_completadas", []):
+                self.state.setdefault("localidades_completadas", []).append(localidad_id)
+
+            temp_file = f"{self.output_file}.tmp"
+            try:
+                with open(temp_file, "w", encoding="utf-8") as f:
+                    json.dump(self.state, f, ensure_ascii=False, indent=2)
+                os.replace(temp_file, self.output_file)
+                logger.info(
+                    f"  [VOLCADO TEMPORAL] +{nuevas_unicas} fiestas. "
+                    f"Localidad completada: {localidad_id}"
+                )
+            except Exception as e:
+                logger.error(f"Error guardando estado temporal: {e}")
 
     def obtener_indice_reanudacion(self, municipios_raiz: list) -> int:
         """Calcula desde qué índice reanudar basado en municipios completados."""

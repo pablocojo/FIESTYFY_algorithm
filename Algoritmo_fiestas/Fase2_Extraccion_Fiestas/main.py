@@ -38,7 +38,7 @@ def setup_logging():
     console_handler.setLevel(logging.INFO)
 
     file_handler = logging.FileHandler(log_filename, encoding="utf-8")
-    file_handler.setLevel(logging.DEBUG)
+    file_handler.setLevel(logging.INFO)
 
     formatter = logging.Formatter(LOG_FORMAT, datefmt=LOG_DATE_FORMAT)
     console_handler.setFormatter(formatter)
@@ -46,11 +46,12 @@ def setup_logging():
 
     # Configurar root logger
     root = logging.getLogger()
-    root.setLevel(logging.DEBUG)
+    root.setLevel(logging.INFO)
     root.addHandler(console_handler)
     root.addHandler(file_handler)
 
     logging.getLogger("aiohttp").setLevel(logging.WARNING)
+    logging.getLogger("urllib3").setLevel(logging.WARNING)
 
     return logging.getLogger("main")
 
@@ -122,14 +123,31 @@ async def process_locality(
         f"(Tipo: {localidad.get('tipo', 'localidad')})"
     )
 
-    # 1. Spider web municipal (centrado en la localidad)
+    # 1. Spider web (centrado en la localidad)
     texto_municipal = ""
-    if municipio.get("sitio_web"):
+    sitios_a_rastrear = []
+    
+    sitio_mun = municipio.get("sitio_web", "").strip()
+    sitio_loc = localidad.get("sitio_web", "").strip()
+    
+    if sitio_mun:
+        sitios_a_rastrear.append(sitio_mun)
+    
+    if sitio_loc and sitio_loc != sitio_mun:
+        # A veces la URL viene con "/" final y otra sin él, normalizamos antes de descartar
+        sitio_mun_norm = sitio_mun.rstrip("/")
+        sitio_loc_norm = sitio_loc.rstrip("/")
+        if sitio_loc_norm != sitio_mun_norm:
+            sitios_a_rastrear.append(sitio_loc)
+
+    if sitios_a_rastrear:
         spider = AsyncTwoPassSpider()
-        texto_municipal = await spider.crawl(
-            municipio["sitio_web"],
-            [localidad["nombre"]],
-        )
+        textos_crawleados = []
+        for sitio in sitios_a_rastrear:
+            logger.info(f"    --> Araña explorando: {sitio}")
+            texto = await spider.crawl(sitio, [localidad["nombre"]])
+            textos_crawleados.append(texto)
+        texto_municipal = "\n".join(textos_crawleados)
 
     # 2. Búsqueda externa DDG (en paralelo con spider ya terminado)
     texto_busquedas = await search_locality_web(localidad, municipio, anno)
@@ -184,18 +202,27 @@ async def process_municipio(
     capitales, otros = separar_por_tipo(descendientes)
     fiestas_municipio = []
 
+    locs_completadas = state_mgr.state.get("localidades_completadas", [])
+
     # Procesar localidades secuencialmente (comparten el mismo sitio web municipal)
     todas_localidades = capitales + otros
     for j, loc in enumerate(todas_localidades):
+        if loc["id"] in locs_completadas:
+            logger.info(f"  [{j + 1}/{len(todas_localidades)}] {loc['nombre']} (Omitiendo, ya procesada temporalmente)")
+            continue
+            
         logger.info(f"  [{j + 1}/{len(todas_localidades)}] {loc['nombre']}")
         try:
             fiestas_loc = await process_locality(loc, municipio, anno, rag_processor, logger)
             fiestas_municipio.extend(fiestas_loc)
+            # Volcado temporal tras finalizar esta localidad
+            await state_mgr.guardar_estado_localidad(fiestas_loc, loc["id"])
         except Exception as e:
             logger.error(f"  [ERROR] Fallo procesando {loc['nombre']}: {e}")
 
     # Guardar progreso al finalizar el municipio completo
-    await state_mgr.guardar_estado(fiestas_municipio, municipio["id"])
+    # Se pasa lista vacía de fiestas porque ya se han guardado todas progresivamente
+    await state_mgr.guardar_estado([], municipio["id"])
 
 
 # ──────────────────────────────────────────

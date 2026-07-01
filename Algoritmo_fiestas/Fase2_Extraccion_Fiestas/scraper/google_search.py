@@ -31,12 +31,31 @@ def _build_queries(localidad: dict, municipio: dict, anno: int) -> list[str]:
     nombre_loc = localidad["nombre"]
     nombre_mun = municipio["nombre"]
     provincia = municipio.get("provincia", "")
+    sitio_web_mun = municipio.get("sitio_web", "").strip()
+    sitio_web_loc = localidad.get("sitio_web", "").strip()
 
     queries = [
         f"fiestas patronales {nombre_loc} {nombre_mun} {anno}",
         f"programa fiestas {nombre_loc} {anno}",
         f"fiestas {nombre_loc} {provincia} {anno}",
     ]
+    
+    sitios_site = []
+    if sitio_web_mun:
+        sitios_site.append(sitio_web_mun)
+    
+    if sitio_web_loc and sitio_web_loc != sitio_web_mun:
+        sitio_mun_norm = sitio_web_mun.rstrip("/")
+        sitio_loc_norm = sitio_web_loc.rstrip("/")
+        if sitio_loc_norm != sitio_mun_norm:
+            sitios_site.append(sitio_web_loc)
+
+    for sitio in sitios_site:
+        url_to_parse = sitio if sitio.startswith("http") else "http://" + sitio
+        domain = urllib.parse.urlparse(url_to_parse).netloc
+        if domain:
+            queries.append(f"fiestas {nombre_loc} {anno} site:{domain}")
+
     return queries
 
 import urllib.request

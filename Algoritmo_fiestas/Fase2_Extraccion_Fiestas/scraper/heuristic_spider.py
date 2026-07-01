@@ -9,6 +9,8 @@ import asyncio
 import urllib.parse
 import logging
 import re
+import heapq
+import itertools
 from collections import deque
 from bs4 import BeautifulSoup
 
@@ -19,6 +21,7 @@ from scraper.document_extractor import (
     is_promising_pdf,
     extract_text_from_image,
     extract_text_from_pdf,
+    ocr_executor,
 )
 from config import (
     SPIDER_MAX_MAPPING_PAGES,
@@ -36,6 +39,12 @@ from config import (
 
 logger = logging.getLogger("spider")
 
+URL_BLACKLIST = [
+    "/transparencia", "/urbanismo", "/actas", "/plenos", "/perfil-contratante",
+    "/sede-electronica", "/empleo", "/boe", "/bop", "/presupuestos",
+    "/contratacion", "/ordenanzas", "/licencias", "/padron", "/censo",
+    "mailto:", "javascript:", "tel:", "#"
+]
 
 class AsyncTwoPassSpider:
     """Crawler async de dos pasadas centrado en una localidad."""
@@ -66,6 +75,14 @@ class AsyncTwoPassSpider:
         parsed = urllib.parse.urlparse(url)
         clean = parsed._replace(fragment="")
         return urllib.parse.urlunparse(clean)
+
+    @staticmethod
+    def _get_url_priority(url: str) -> int:
+        url_lower = url.lower()
+        strong_kws = ["fiesta", "festejo", "programa", "cartel", "evento", "feria", "cultura"]
+        if any(kw in url_lower for kw in strong_kws):
+            return 2
+        return 4
 
     @staticmethod
     def _score_page(url: str, title: str, page_text: str, locality_names: list[str]) -> int:
@@ -180,27 +197,46 @@ class AsyncTwoPassSpider:
     # ───── Pasada 1: Mapeo y puntuación ─────
 
     async def pass_1_map_and_score(self, start_url: str, locality_names: list[str]) -> list:
-        """Pasada 1: BFS concurrente, descarga HTML y puntúa relevancia."""
+        """Pasada 1: Best-First Search concurrente, descarga HTML y puntúa relevancia."""
         logger.info(f"[Pasada 1] Mapeo desde: {start_url}")
 
         if not start_url.startswith("http"):
             start_url = "http://" + start_url
 
         visited = set()
-        # Cola: (url, profundidad, es_interno)
-        queue = deque([(start_url, 0, True)])
+        counter = itertools.count()
+        # Cola: (prioridad, contador, url, profundidad, es_interno)
+        queue = []
+        heapq.heappush(queue, (3, next(counter), start_url, 0, True))
         scored_pages = []  # (score, url, html_text, pdf_links, img_infos)
         semaphore = asyncio.Semaphore(self.concurrency)
+        early_stop_triggered = False
 
         headers = {"User-Agent": USER_AGENT}
         connector = aiohttp.TCPConnector(limit=self.concurrency, ssl=False)
 
         async with aiohttp.ClientSession(headers=headers, connector=connector) as session:
+            # 1. Intentar inyectar sitemap.xml
+            sitemap_url = urllib.parse.urljoin(start_url, "/sitemap.xml")
+            try:
+                async with session.get(sitemap_url, timeout=aiohttp.ClientTimeout(total=5), ssl=False) as resp:
+                    if resp.status == 200:
+                        sitemap_text = await resp.text()
+                        locs = re.findall(r"<loc>(.*?)</loc>", sitemap_text)
+                        for loc in locs:
+                            loc_clean = self._clean_url(loc)
+                            if any(b in loc_clean.lower() for b in URL_BLACKLIST):
+                                continue
+                            if self._get_url_priority(loc_clean) <= 2:
+                                heapq.heappush(queue, (1, next(counter), loc_clean, 0, True))
+            except Exception as e:
+                logger.debug(f"Sitemap no disponible o error: {e}")
+
             while queue and len(visited) < self.max_mapping_pages:
                 # Procesar en batch: sacar hasta N URLs de la cola
                 batch = []
                 while queue and len(batch) < self.concurrency and len(visited) + len(batch) < self.max_mapping_pages:
-                    url, depth, is_internal = queue.popleft()
+                    priority, _, url, depth, is_internal = heapq.heappop(queue)
                     url = self._clean_url(url)
                     if url in visited:
                         continue
@@ -236,6 +272,12 @@ class AsyncTwoPassSpider:
                         page_text = soup.get_text(separator=" ", strip=True)
 
                         score = self._score_page(url, title, page_text[:3000], locality_names)
+                        
+                        if score > 800 and not early_stop_triggered:
+                            logger.info(f"    [!] Early Stop Triggered: Página muy relevante encontrada ({score} pts): {url}")
+                            early_stop_triggered = True
+                            # Reducimos drásticamente el máximo de páginas para terminar pronto
+                            self.max_mapping_pages = min(self.max_mapping_pages, len(visited) + self.concurrency * 3)
 
                         # Recopilar enlaces a PDFs en esta página
                         pdf_links = []
@@ -257,22 +299,29 @@ class AsyncTwoPassSpider:
 
                         scored_pages.append((score, url, page_text, pdf_links, img_infos))
 
-                        # Extraer enlaces para continuar BFS
+                        # Extraer enlaces para continuar
                         for a in soup.find_all("a", href=True):
                             link_href = a["href"]
                             if link_href.lower().endswith(".pdf"):
                                 continue
                             link_url = self._clean_url(urllib.parse.urljoin(url, link_href))
-                            # Filtrar enlaces inútiles
+                            
+                            # Filtrar enlaces inútiles por Blacklist
                             if link_url in visited:
                                 continue
-                            if any(skip in link_url.lower() for skip in ["mailto:", "tel:", "javascript:", "#"]):
+                            if any(skip in link_url.lower() for skip in URL_BLACKLIST):
                                 continue
 
                             is_internal_next = self._is_internal(start_url, link_url)
-                            # Solo añadir externos si la página actual tiene buen score
+                            
                             if is_internal_next or score > 100:
-                                queue.append((link_url, depth + 1, is_internal_next))
+                                # Prioridad absoluta si encontramos una página altísimamente relevante
+                                if early_stop_triggered and score > 800:
+                                    link_priority = 0
+                                else:
+                                    link_priority = self._get_url_priority(link_url)
+                                
+                                heapq.heappush(queue, (link_priority, next(counter), link_url, depth + 1, is_internal_next))
 
                     except Exception as e:
                         logger.warning(f"Error procesando HTML de {url}: {e}")
@@ -333,9 +382,9 @@ class AsyncTwoPassSpider:
         """Descarga y extrae texto de un PDF."""
         pdf_bytes = await self._fetch_bytes(session, pdf_url, semaphore)
         if pdf_bytes:
-            # Ejecutar extracción CPU-intensiva en un thread
+            # Ejecutar extracción CPU-intensiva en el pool dedicado
             loop = asyncio.get_event_loop()
-            return await loop.run_in_executor(None, extract_text_from_pdf, pdf_bytes)
+            return await loop.run_in_executor(ocr_executor, extract_text_from_pdf, pdf_bytes)
         return ""
 
     async def _extract_image(self, session, img_url, semaphore):
@@ -353,7 +402,7 @@ class AsyncTwoPassSpider:
         img_bytes = await self._fetch_bytes(session, img_url, semaphore, max_size=15_000_000)
         if img_bytes and len(img_bytes) >= IMAGE_MIN_SIZE_BYTES:
             loop = asyncio.get_event_loop()
-            return await loop.run_in_executor(None, extract_text_from_image, img_bytes)
+            return await loop.run_in_executor(ocr_executor, extract_text_from_image, img_bytes)
         return ""
 
     # ───── Interfaz pública ─────

@@ -7,6 +7,12 @@ logos, iconos y documentos irrelevantes.
 import io
 import re
 import logging
+from concurrent.futures import ThreadPoolExecutor
+
+logger = logging.getLogger("document_extractor")
+
+# Pool dedicado para tareas OCR para no saturar CPU global
+ocr_executor = ThreadPoolExecutor(max_workers=4)
 
 try:
     from PIL import Image
@@ -30,8 +36,6 @@ from config import (
     IMAGE_VALID_EXTENSIONS,
     PDF_MAX_PAGES_OCR,
 )
-
-logger = logging.getLogger("document_extractor")
 
 # ─────────────────────────────────────────────
 # Filtros de relevancia (pre-descarga)
