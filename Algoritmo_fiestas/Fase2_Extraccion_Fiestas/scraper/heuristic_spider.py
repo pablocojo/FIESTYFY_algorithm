@@ -214,6 +214,10 @@ class AsyncTwoPassSpider:
                 if not batch:
                     break
 
+                # Mostrar progreso de vez en cuando (o al principio) para evitar sensación de congelamiento
+                if len(visited) % (self.concurrency * 3) <= self.concurrency:
+                    logger.info(f"    [Spider] Progreso: {len(visited)}/{self.max_mapping_pages} páginas escaneadas (En cola: {len(queue)})...")
+
                 # Descargar en paralelo
                 tasks = [self._fetch_html(session, url, semaphore) for url, _, _ in batch]
                 results = await asyncio.gather(*tasks, return_exceptions=True)

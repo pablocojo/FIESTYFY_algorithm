@@ -34,14 +34,15 @@ def isolate_json(text: str) -> str:
     return text[start : end + 1].strip()
 
 
-def call_llm(system_prompt: str, user_prompt: str, context_info: dict = {}) -> str:
+def call_llm(system_prompt: str, user_prompt: str, context_info: dict = {}, model_name: str = None, json_mode: bool = True) -> str:
     """
-    Envia prompts al unico LLM configurado y devuelve solo el JSON puro.
+    Envia prompts al unico LLM configurado.
+    Si json_mode es True, aísla y devuelve solo el JSON puro.
 
     No hay alternancia de modelos ni llamadas paralelas desde este cliente.
     """
     payload = {
-        "model": config.LLM_MODEL_NAME,
+        "model": model_name or config.LLM_MODEL_NAME,
         "messages": [
             {"role": "system", "content": system_prompt},
             {"role": "user", "content": user_prompt},
@@ -59,7 +60,9 @@ def call_llm(system_prompt: str, user_prompt: str, context_info: dict = {}) -> s
             resp.raise_for_status()
             data = resp.json()
             content = data.get("choices", [{}])[0].get("message", {}).get("content", "")
-            return isolate_json(content)
+            if json_mode:
+                return isolate_json(content)
+            return content.strip()
         except Exception as e:
             log_error(
                 f"Error al llamar al LLM (intento {attempt}/{retries}): {e}",

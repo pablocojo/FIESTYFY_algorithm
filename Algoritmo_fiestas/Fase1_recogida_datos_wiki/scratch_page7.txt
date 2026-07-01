@@ -1,0 +1,18 @@
+Correo electrónico: toponimia.ign@transportes.gob.es 8
+forma anual consecuencia de la variación del padrón
+municipal.
+HOJA_MTN25 Hoja u hojas del Mapa Topográfico Nacional a escala
+1/25.000 en la que se ubica la población
+LONGITUD_ETRS89/
+REGCAN95Coordenada geográfica en el sistema ETRS89 para la
+Península e Islas Baleares, REGCAN95 para las Islas
+Canarias.
+LATITUD_ETRS89/
+REGCAN95Coordenada geográfica en el sistema ETRS89 para la
+Península e Islas Baleares, REGCAN95 para las Islas
+Canarias.
+ORIGENCOOR Fuente de la que se han obtenido las coordenadas, [longitud,
+latitud].
+ALTITUD Altitud correspondiente a las coordenadas [longitud, latitud]
+anteriores.
+ORIGENALTITUD Fuente de la que se ha obtenido el dato altitud.

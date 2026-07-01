@@ -42,73 +42,131 @@ def _build_queries(localidad: dict, municipio: dict, anno: int) -> list[str]:
 import urllib.request
 import urllib.parse
 import time
+import random
 
-def _sync_fetch_bing(query: str) -> list[dict]:
-    """
-    Realiza la llamada síncrona a Bing Search vía urllib.
-    """
+USER_AGENTS = [
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.2 Safari/605.1.15",
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:121.0) Gecko/20100101 Firefox/121.0",
+    "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Edge/120.0.0.0 Safari/537.36"
+]
+
+def _get_random_headers() -> dict:
+    return {
+        "User-Agent": random.choice(USER_AGENTS),
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+        "Accept-Language": "es-ES,es;q=0.9,en;q=0.8",
+    }
+
+def _sync_fetch_ddg(query: str) -> list[dict]:
     encoded_query = urllib.parse.quote_plus(query)
-    url = f"https://www.bing.com/search?q={encoded_query}"
+    url = f"https://html.duckduckgo.com/html/?q={encoded_query}"
     
-    req = urllib.request.Request(
-        url,
-        headers={
-            "User-Agent": USER_AGENT,
-            "Accept-Language": "es-ES,es;q=0.9",
-        }
-    )
-    
+    req = urllib.request.Request(url, headers=_get_random_headers())
     try:
-        time.sleep(1.5) # Espera obligatoria entre búsquedas para evitar bloqueos
         with urllib.request.urlopen(req, timeout=DDG_REQUEST_TIMEOUT) as resp:
             if resp.status != 200:
-                logger.warning(f"Buscador devolvió status {resp.status} para: {query}")
                 return []
             html = resp.read()
     except Exception as e:
-        logger.warning(f"Error urllib en Buscador: {e}")
+        logger.debug(f"DDG Error: {e}")
         return []
 
     soup = BeautifulSoup(html, "html.parser")
     results = []
-    
-    for li in soup.find_all("li", class_="b_algo"):
-        h2 = li.find("h2")
-        a_tag = h2.find("a") if h2 else None
-        if not a_tag:
-            continue
-            
+    for div in soup.find_all("div", class_="result"):
+        a_tag = div.find("a", class_="result__url")
+        if not a_tag: continue
+        titulo_tag = div.find("h2", class_="result__title")
+        titulo = titulo_tag.get_text(strip=True) if titulo_tag else ""
+        result_url = a_tag.get("href", "")
+        if result_url.startswith("//duckduckgo.com/l/?uddg="):
+            parsed = urllib.parse.parse_qs(urllib.parse.urlparse(result_url).query)
+            if "uddg" in parsed: result_url = parsed["uddg"][0]
+        snippet_a = div.find("a", class_="result__snippet")
+        snippet = snippet_a.get_text(strip=True) if snippet_a else ""
+        results.append({"titulo": titulo, "snippet": snippet, "url": result_url})
+    return results
+
+def _sync_fetch_yahoo(query: str) -> list[dict]:
+    encoded_query = urllib.parse.quote_plus(query)
+    url = f"https://es.search.yahoo.com/search?p={encoded_query}"
+    req = urllib.request.Request(url, headers=_get_random_headers())
+    try:
+        with urllib.request.urlopen(req, timeout=DDG_REQUEST_TIMEOUT) as resp:
+            if resp.status != 200:
+                return []
+            html = resp.read()
+    except Exception as e:
+        logger.debug(f"Yahoo Error: {e}")
+        return []
+
+    soup = BeautifulSoup(html, "html.parser")
+    results = []
+    for div in soup.find_all("div", class_="compTitle"):
+        h3 = div.find("h3", class_="title")
+        if not h3: continue
+        a_tag = h3.find("a")
+        if not a_tag: continue
+        
         titulo = a_tag.get_text(strip=True)
         result_url = a_tag.get("href", "")
         
+        parent = div.find_parent("div")
+        snippet = ""
+        if parent:
+            text_div = parent.find("div", class_="compText")
+            if text_div: snippet = text_div.get_text(strip=True)
+            
+        results.append({"titulo": titulo, "snippet": snippet, "url": result_url})
+    return results
+
+def _sync_fetch_bing(query: str) -> list[dict]:
+    encoded_query = urllib.parse.quote_plus(query)
+    url = f"https://www.bing.com/search?q={encoded_query}"
+    req = urllib.request.Request(url, headers=_get_random_headers())
+    try:
+        with urllib.request.urlopen(req, timeout=DDG_REQUEST_TIMEOUT) as resp:
+            if resp.status != 200:
+                return []
+            html = resp.read()
+    except Exception as e:
+        logger.debug(f"Bing Error: {e}")
+        return []
+
+    soup = BeautifulSoup(html, "html.parser")
+    results = []
+    for li in soup.find_all("li", class_="b_algo"):
+        h2 = li.find("h2")
+        a_tag = h2.find("a") if h2 else None
+        if not a_tag: continue
+        titulo = a_tag.get_text(strip=True)
+        result_url = a_tag.get("href", "")
         snippet_div = li.find("div", class_="b_caption")
         snippet = ""
         if snippet_div:
             p = snippet_div.find("p")
-            if p:
-                snippet = p.get_text(strip=True)
-                
-        results.append({
-            "titulo": titulo,
-            "snippet": snippet,
-            "url": result_url,
-        })
-
-    logger.info(f"  Buscador: {len(results)} resultados para '{query[:50]}...'")
+            if p: snippet = p.get_text(strip=True)
+        results.append({"titulo": titulo, "snippet": snippet, "url": result_url})
     return results
 
-
-async def _fetch_ddg_results(session: aiohttp.ClientSession, query: str) -> list[dict]:
-    """
-    Busca delegando en un hilo síncrono.
-    """
+async def _fetch_search_results(session: aiohttp.ClientSession, query: str) -> list[dict]:
+    """Busca delegando en hilos síncronos rotando motores."""
+    engines = [("DuckDuckGo", _sync_fetch_ddg), ("Yahoo", _sync_fetch_yahoo), ("Bing", _sync_fetch_bing)]
+    
     for attempt in range(DDG_MAX_RETRIES):
-        results = await asyncio.to_thread(_sync_fetch_bing, query)
+        jitter = random.uniform(1.0, 3.5)
+        await asyncio.sleep(jitter)
+        
+        engine_name, engine_func = random.choice(engines)
+        
+        results = await asyncio.to_thread(engine_func, query)
         if results:
+            logger.info(f"  [{engine_name}] {len(results)} resultados para '{query[:50]}...'")
             return results
         
-        # Fallback/retry si falló o retornó vacío
-        logger.warning(f"Buscador vacío/timeout (intento {attempt + 1}/{DDG_MAX_RETRIES}): {query}")
+        logger.warning(f"  [{engine_name}] Vacío/Timeout (intento {attempt + 1}/{DDG_MAX_RETRIES}): {query}")
         await asyncio.sleep(DDG_RETRY_BACKOFF * (attempt + 1))
     
     return []
@@ -175,7 +233,7 @@ async def search_locality_web(localidad: dict, municipio: dict, anno: int) -> st
         # 1. Ejecutar las 3 queries secuencialmente (respetar DDG rate limits)
         for query in queries:
             logger.info(f"  Buscando: {query}")
-            results = await _fetch_ddg_results(session, query)
+            results = await _fetch_search_results(session, query)
 
             for r in results:
                 # Acumular snippets

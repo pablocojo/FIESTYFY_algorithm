@@ -10,10 +10,12 @@ El proyecto confía plenamente en los datos del Instituto Nacional de Estadísti
 - **Municipios (`pobmun25.xlsx`)**: El padrón sirve como base para definir los municipios raíz.
 - **Pedanías (`nomdef2025.xlsx`)**: La extracción de pedanías y subdivisiones rurales se basa 100% en esta tabla. Wikipedia se utiliza únicamente para enriquecer estas pedanías con descripciones y URLs, validando los enlaces mediante un sistema combinado heurístico y LLM.
 
-## Tipos de Lugar
-- `pueblo` / `ciudad_pequena` / `ciudad_grande`: Poseen fiestas propias y pueden tener subdivisiones (barrios/distritos para ciudades; pedanías para cualquier tipo).
-- `municipio_compuesto`: Un agrupamiento puramente administrativo que carece de núcleo homónimo. No tiene fiestas propias, pero delega en sus pedanías hijas. Se detecta en tiempo real cruzando el nombre del municipio con el listado del INE.
-- `distrito` / `barrio` / `pedania`: Divisiones de nivel inferior obtenidas de Wikipedia y del INE.
+## Tipos de Lugar y Estructura
+- `municipio`: Nodo raíz estructural que agrupa a sus entidades de población. Representa la demarcación administrativa (ID de 11 dígitos del INE) y contiene datos generales (imágenes, descripciones), pero no tiene `padre_id`.
+- `pueblo` / `ciudad_pequena` / `ciudad_grande`: Entidades de población extraídas al 100% desde el INE (`ENTIDADES.csv`). Tienen fiestas propias y cuelgan siempre de un `municipio` (como `padre_id`). Una de estas entidades dentro de cada municipio se marca con `es_capital: true`.
+- `distrito` / `barrio`: Divisiones de nivel inferior obtenidas de Wikipedia. Solo cuelgan de las ciudades (una ciudad grande puede tener distritos y barrios; una pequeña puede tener barrios). Todos los lugares, incluidos distritos y barrios, tienen el campo `es_capital` (los barrios/distritos siempre son `false`).
+
+Nota: Ya no existe el concepto de "municipio_compuesto" ni el tipo "pedania". Todos los municipios se comportan como contenedores, y todas las antiguas pedanías ahora son entidades tipificadas por población (`pueblo`, etc.).
 
 ## Fases del Algoritmo
 - **Fase 1**: Extrae los municipios desde Wikipedia.

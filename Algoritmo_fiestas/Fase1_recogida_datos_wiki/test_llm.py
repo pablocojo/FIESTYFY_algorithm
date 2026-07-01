@@ -1,20 +1,25 @@
-﻿import json
-from llm_client import call_llm
-from scraper import fetch_url, get_soup
+import sys
+sys.stdout.reconfigure(encoding='utf-8')
 
-system_prompt = (
-    "Eres un verificador experto. Lee el fragmento del articulo de Wikipedia y decide "
-    "SI EL TEMA PRINCIPAL DEL ARTICULO es exactamente una localidad, aldea, pedania o barrio "
-    "perteneciente al municipio indicado. Si el articulo es sobre un monumento (ermita, iglesia), accidente geografico, "
-    "persona o edificio situado en esa pedania, debes responder aceptar: false. "
-    "Responde SOLO JSON valido con: {\"aceptar\": bool, \"motivo\": \"explicacion corta\"}."
-)
+from config import MUNICIPIOS_JSON
+from main2 import cargar_json_lugares
+from datos_ine import cargar_datos_ine, buscar_municipio_ine
+from scraper import fetch_url
 
-for url, lugar in [('https://es.wikipedia.org/wiki/Gordoa', 'Gordoa'), ('https://es.wikipedia.org/wiki/Ibarguren', 'Ibarguren')]:
-    html = fetch_url(url)
-    soup = get_soup(html)
-    content = soup.find(id='mw-content-text')
-    texto = content.get_text(' ', strip=True)[:2000] if content else ''
-    user_prompt = f"Lugar: {lugar}\nMunicipio esperado: Aspárrena\n\nTexto del articulo:\n{texto}"
-    resp = call_llm(system_prompt, user_prompt)
-    print(f"{lugar} LLM:", resp)
+datos_ine = cargar_datos_ine()
+m = cargar_json_lugares(MUNICIPIOS_JSON)[0]
+print(f"Procesando: {m['nombre']}")
+
+# Sin HTML
+info = buscar_municipio_ine(m['nombre'], m['provincia'], datos_ine)
+print(f"Info exacta: {bool(info)}")
+
+# Con HTML (LLM fallback con lista de candidatos)
+wiki_url = m.get('wikipedia_url')
+print(f"URL: {wiki_url}")
+html = fetch_url(wiki_url)
+info = buscar_municipio_ine(m['nombre'], m['provincia'], datos_ine, html)
+print(f"Info con LLM: {bool(info)}")
+if info:
+    print(f"  nombre_ine: {info['nombre_ine']}")
+    print(f"  clave: {info['clave']}")

@@ -15,7 +15,8 @@ from typing import Optional
 
 from config import (
     BASE_WIKI_URL, MAX_SNIPPET_TOKENS, COMMONS_FALLBACK_IMAGE,
-    COMMONS_FALLBACK_LOGO, DESC_CORTA_MAX_WORDS, DESC_LARGA_MAX_WORDS
+    COMMONS_FALLBACK_LOGO, DESC_CORTA_MAX_WORDS, DESC_LARGA_MAX_WORDS,
+    DESC_CORTA_MIN_WORDS, DESC_LARGA_MIN_WORDS
 )
 from llm_client import call_llm, contar_tokens
 from scraper import get_soup, fetch_url, get_wikidata_p18_url
@@ -757,7 +758,7 @@ def _extraer_texto_wikipedia_para_descripcion(html: str) -> str:
     return texto_wiki
 
 
-def extract_descripciones(html: str, nombre_lugar: str = "", tipo: str = None) -> dict:
+def extract_descripciones(html: str, nombre_lugar: str = "", tipo: str = None, model_name: str = None) -> dict:
     """
     Crea descripciones corta y larga usando el LLM con informacion de Wikipedia.
     """
@@ -770,21 +771,23 @@ def extract_descripciones(html: str, nombre_lugar: str = "", tipo: str = None) -
 
     system_prompt = (
         "Eres un redactor experto para una app de turismo en España (Fiestyfy). "
-        "Tu tarea es crear una descripción de este lugar basándote en el texto proporcionado. "
+        "Tu tarea es crear una descripción de este lugar orientada al turismo y a conocer rápidamente el lugar. "
         "REGLAS OBLIGATORIAS:\n"
         "1. RESPONDE ÚNICAMENTE CON UN JSON VÁLIDO. DEBES ASEGURARTE DE CERRAR LA ÚLTIMA LLAVE '}' DEL JSON.\n"
         "2. NO escribas NINGÚN texto fuera del JSON.\n"
-        "3. NO menciones la población, ni el censo, ni la cantidad de habitantes. Enfócate en geografía, historia, cultura, fiestas o monumentos.\n"
-        "4. Idioma: Español castellano correcto (usa tildes y eñes correctamente).\n"
-        "5. NO incluyas ninguna coma al final del último elemento del JSON.\n"
+        "3. PROHIBIDO mencionar la población, el censo o la cantidad de habitantes.\n"
+        "4. PROHIBIDO mencionar la ubicación exacta, el municipio al que pertenece, la provincia, la comunidad autónoma o que es de España/español. (Sí puedes hablar de la situación geográfica general, como ríos o montañas, sin nombres de las regiones).\n"
+        "5. Enfócate en turismo: qué ver, entorno natural, cultura o historia para conocer rápidamente el lugar.\n"
+        "6. Idioma: Español castellano correcto (usa tildes y eñes correctamente).\n"
+        "7. NO incluyas ninguna coma al final del último elemento del JSON.\n"
     )
     user_prompt = (
         f"Lugar: {nombre_lugar or 'desconocido'}\n"
         f"Tipo: {tipo or 'desconocido'}\n\n"
         "FORMATO REQUERIDO ESTRICTO:\n"
         "{\n"
-        f"  \"descripcion_corta\": \"Una sola frase de entre 12 y {DESC_CORTA_MAX_WORDS} palabras resumiendo qué es y dónde está el lugar.\",\n"
-        f"  \"descripcion\": \"Texto fluido de entre 50 y {DESC_LARGA_MAX_WORDS} palabras. SIN MENCIONAR HABITANTES NI POBLACIÓN. Habla del entorno natural, cultura o historia.\"\n"
+        f"  \"descripcion_corta\": \"Una sola frase muy turística de entre {DESC_CORTA_MIN_WORDS} y {DESC_CORTA_MAX_WORDS} palabras para conocer rápidamente el lugar.\",\n"
+        f"  \"descripcion\": \"Texto fluido y turístico de entre {DESC_LARGA_MIN_WORDS} y {DESC_LARGA_MAX_WORDS} palabras. SIN MENCIONAR HABITANTES, PROVINCIAS NI COMUNIDADES. Habla del entorno natural, cultura o atractivos.\"\n"
         "}\n\n"
         f"Texto fuente:\n{texto_wiki}"
     )
@@ -793,6 +796,7 @@ def extract_descripciones(html: str, nombre_lugar: str = "", tipo: str = None) -
         system_prompt,
         user_prompt,
         context_info={'stage': 'extract_descripciones', 'lugar': nombre_lugar},
+        model_name=model_name
     )
 
     if resp and resp.strip():

@@ -1,0 +1,45 @@
+Correo electrónico: toponimia.ign@transportes.gob.es 14
+ANEXO I: CLASIFICACIÓN DEL TIPO DE ENTIDAD EMPLEADA
+En el Nomenclátor Geográfico de Municipios y Entidades de Población, concretamente en la tabla
+denominada «Entidades», se ha establecido una clasificación de las entidades de población que permite
+su categorización. Para la materialización de esta clasificación se ha tenido en cuenta tanto la
+clasificación empleada para las unidades poblacionales del Instituto Nacional de Estadística como la
+empleada en el Registro de Entidades Locales.
+Campo Descripción
+Municipio Entidad local básica de la organización territorial del Estado. El origen
+de esta información es el Registro de Entidades Locales
+Capital de municipio Entidad en la que está ubicado el Ayuntamiento del municipio. El
+origen de esta información es el Registro de Entidades Locales.
+Habitualmente las capitalidades de municipio coinciden con núcleos
+de población perfectamente identificados por el INE. Hay algunos
+casos en los que la capitalidad se corresponde con una entidad
+singular INE y otros casos, excepcionales, para los que el INE no tiene
+recogida su existencia (por lo que se les ha otorgado un código INE
+ficticio).
+Entidad Colectiva El INE da esta definición para esta división estadística: «Unidad
+intermedia entre la entidad singular de población y el municipio
+existen, en algunas regiones, agrupaciones de entidades singulares,
+(parroquias, hermandades, concejos, diputaciones, y otras), que
+conforman una entidad colectiva de población con personalidad
+propia y un origen marcadamente histórico» .
+Entidad Singular El INE da esta definición para esta división estadística: «Cualquier
+área habitable del término municipal, habitada o excepcionalmente
+deshabitada, claramente diferenciada dentro del mismo, y que es
+conocida por una denominación específica que la identifica sin
+posibilidad de confusión» .
+Otras entidades En esta categoría se encuentran los denominados núcleos INE.
+El INE da esta definición para esta división estadística: «Se considera
+núcleo de población a un conjunto de al menos diez edificaciones,
+que están formando calles, plazas y otras vías urbanas. Por
+excepción, el número de edificaciones podrá ser inferior a 10, siempre
+que la población que habita las mismas supere los 50 habitantes. Se
+incluyen en el núcleo aquellas edificaciones que, estando aisladas,
+distan menos de 200 metros de los límites exteriores del mencionado
+conjunto, si bien en la determinación de dicha distancia han de
+excluirse los terrenos ocupados por instalaciones industriales o
+comerciales, parques, jardines, zonas deportivas, cementerios,
+aparcamientos y otros, así como los canales o ríos que puedan ser
+cruzados por puentes» .
+Diseminado Definición procedente del INE: «Edificaciones o viviendas de una
+entidad singular de población que no pueden ser incluidas en el
+concepto de núcleo se consideran en diseminado».

@@ -1,0 +1,23 @@
+Correo electrónico: toponimia.ign@transportes.gob.es 6
+PROVINCIAS
+La provincia es una entidad local determinada por la agrupación de municipios2. El territorio de
+la nación española se divide en cincuenta provincias y dos ciudades autónomas. Sólo mediante
+Ley aprobada por las Cortes Generales puede modificarse la denominación y capitalidad3de las
+provincias.
+El Nomenclátor Geográfico de Municipios y Entidades de Población recoge en la tabla
+denominada «Provincias» las denominaciones de las provincias y ciudades autónomas
+españolas y la de sus capitalidades, junto a su código provincial y la comunidad o ciudad
+autónoma a la que pertenecen. Las denominaciones son las que figuran en el Registro de
+Entidades Locales4y los códigos son los proporcionados por el Instituto Nacional de Estadística5.
+Campo Descripción
+COD_PROV Identificador de la provincia.
+PROVINCIA Nombre de la provincia tal y como aparece recogido en el
+Registro de Entidades Locales.
+COD_CA Identificador de la comunidad ociudad autónoma.
+COMUNIDAD AUTÓNOMA Nombre de la comunidad o ciudad autónoma.
+CAPITAL Nombre de la capitalidad de la provincia.
+2Ley 7/1985, de 2 de abril, Reguladora de las Bases del Régimen Local.
+3Real Decreto Legislativo 781/1986, de 18 de abril, por el que se aprueba el texto refundido de las disposiciones legales vigentes en materia
+de Régimen Local.
+4https://ssweb.seap.minhap.es/REL/frontend/inicio/provincias/all
+5https://www.ine.es/daco/daco42/codmun/cod_ccaa_provincia.htm

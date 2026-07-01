@@ -94,130 +94,53 @@ def limpiar_nombre_ine(nombre_ine: str) -> list[str]:
 
 def cargar_datos_ine() -> dict:
     """
-    Carga ambas tablas del INE en memoria.
-
-    Returns:
-        dict con claves:
-            'municipios': {(cpro, cmun): {'nombre': str, 'poblacion': int, 'provincia': str}}
-            'localidades': {(cpro, cmun): [{'nombre': str, 'poblacion': int}, ...]}
-            'indice_nombre': {nombre_normalizado: [(cpro, cmun, provincia_original), ...]}
+    Carga ambas tablas del INE en memoria usando NGMEP (Mock legacy).
     """
-    import openpyxl
+    safe_print("Cargando tablas INE desde CSV NGMEP...")
+    muni_ngmep = cargar_municipios_ngmep()
+    enti_ngmep = cargar_entidades_ngmep()
+    provs_ngmep = cargar_provincias_ngmep()
 
-    safe_print("Cargando tablas INE...")
-
-    # --- Cargar municipios (pobmun25.xlsx) ---
-    safe_print("  Leyendo pobmun25.xlsx (municipios)...")
     municipios = {}
-    indice_nombre = {}  # nombre_norm -> lista de (cpro, cmun, provincia_orig)
+    localidades = {}
+    indice_nombre = {}
 
-    wb_mun = openpyxl.load_workbook(_POBMUN_FILE, read_only=True, data_only=True)
-    ws_mun = wb_mun.active
+    for cod_ine, data in muni_ngmep.items():
+        if len(cod_ine) >= 5:
+            cpro = cod_ine[:2]
+            cmun = cod_ine[2:5]
+            clave = (cpro, cmun)
+            
+            prov_data = provs_ngmep.get(cpro, {})
+            provincia_orig = prov_data.get('provincia', '')
 
-    fila_datos = False
-    for row in ws_mun.iter_rows(values_only=True):
-        # Detectar la fila de cabecera real (CPRO, PROVINCIA, ...)
-        if row and str(row[0]).strip() == 'CPRO':
-            fila_datos = True
-            continue
-        if not fila_datos:
-            continue
+            municipios[clave] = {
+                'nombre': data['nombre'],
+                'poblacion': data['poblacion'],
+                'provincia': provincia_orig,
+            }
 
-        cpro = str(row[0]).strip() if row[0] else ''
-        provincia_orig = str(row[1]).strip() if row[1] else ''
-        cmun = str(row[2]).strip() if row[2] else ''
-        nombre = str(row[3]).strip() if row[3] else ''
-        poblacion = int(row[4]) if row[4] is not None else 0
+            nombre_norm = _normalizar(data['nombre'])
+            if nombre_norm not in indice_nombre:
+                indice_nombre[nombre_norm] = []
+            indice_nombre[nombre_norm].append((cpro, cmun, provincia_orig))
 
-        if not cpro or not cmun:
-            continue
-
-        clave = (cpro, cmun)
-        municipios[clave] = {
-            'nombre': nombre,
-            'poblacion': poblacion,
-            'provincia': provincia_orig,
-        }
-
-        # Índice por nombre normalizado
-        nombre_norm = _normalizar(nombre)
-        if nombre_norm not in indice_nombre:
-            indice_nombre[nombre_norm] = []
-        indice_nombre[nombre_norm].append((cpro, cmun, provincia_orig))
-
-    wb_mun.close()
-    safe_print(f"  OK: {len(municipios)} municipios cargados.")
-
-    # --- Cargar localidades (nomdef2025.xlsx) ---
-    safe_print("  Leyendo nomdef2025.xlsx (localidades)... [fichero grande, puede tardar]")
-    localidades = {}  # (cpro, cmun) -> [{'nombre': str, 'poblacion': int}, ...]
-
-    wb_loc = openpyxl.load_workbook(_NOMDEF_FILE, read_only=True, data_only=True)
-    ws_loc = wb_loc.active
-
-    filas_procesadas = 0
-    for row in ws_loc.iter_rows(min_row=2, values_only=True):
-        # Columnas: Provincia, Municipio, Unidad Poblacional, Total 2025, Hombres, Mujeres
-        cpro = str(row[0]).strip() if row[0] else ''
-        cmun = str(row[1]).strip() if row[1] else ''
-        unidad_raw = str(row[2]).strip() if row[2] else ''
-        total_pob = int(row[3]) if row[3] is not None else 0
-
-        if not cpro or not cmun or not unidad_raw:
-            continue
-
-        # Parsear código y nombre de la unidad poblacional
-        # Formato: "CCCCCC NOMBRE" (6 dígitos + espacio + nombre)
-        match = re.match(r'^(\d{6})\s+(.+)$', unidad_raw)
-        if not match:
-            continue
-
-        codigo_up = match.group(1)
-        nombre_up = match.group(2).strip()
-
-        # Filtrar:
-        # - 000000 = total del municipio (skip)
-        # - XXXX00 (excepto 000000) = entidades/localidades (INCLUIR)
-        # - XXXX01, XXXX02... = núcleos dentro de la entidad (skip, ya tenemos la entidad)
-        # - *DISEMINADO* = skip
-        if codigo_up == '000000':
-            continue
-        if '*DISEMINADO*' in nombre_up:
-            continue
-        # Solo incluir filas de nivel entidad (últimos 2 dígitos = 00)
-        if codigo_up[-2:] != '00':
-            continue
-
-        clave = (cpro, cmun)
-        if clave not in localidades:
+    for inemuni, entidades in enti_ngmep.items():
+        if len(inemuni) >= 5:
+            cpro = inemuni[:2]
+            cmun = inemuni[2:5]
+            clave = (cpro, cmun)
+            
             localidades[clave] = []
-
-        localidades[clave].append({
-            'nombre': nombre_up,
-            'poblacion': total_pob,
-        })
-
-        filas_procesadas += 1
-
-    wb_loc.close()
-
-    # Deduplicar pedanías con el mismo nombre dentro del mismo municipio
-    for clave, lista_locs in localidades.items():
-        locs_dedup = {}
-        for loc in lista_locs:
-            nombre_norm = _normalizar(loc['nombre'])
-            if nombre_norm not in locs_dedup:
-                locs_dedup[nombre_norm] = loc
-            else:
-                # Si hay conflicto, nos quedamos con la de mayor población
-                if loc['poblacion'] > locs_dedup[nombre_norm]['poblacion']:
-                    locs_dedup[nombre_norm] = loc
-        localidades[clave] = list(locs_dedup.values())
+            for ent in entidades:
+                localidades[clave].append({
+                    'nombre': ent['nombre'],
+                    'poblacion': ent['poblacion']
+                })
 
     total_locs = sum(len(v) for v in localidades.values())
     safe_print(f"  OK: {total_locs} localidades en {len(localidades)} municipios.")
-
-    safe_print("Tablas INE cargadas correctamente.\n")
+    safe_print("Tablas INE cargadas correctamente (NGMEP).\n")
 
     return {
         'municipios': municipios,
@@ -226,12 +149,16 @@ def cargar_datos_ine() -> dict:
     }
 
 
+
 # ============================================================================
 # BÚSQUEDA
 # ============================================================================
 
-def _consultar_nombre_ine_llm(nombre_wiki: str, provincia: str, html_municipio: str) -> str | None:
-    """Extrae el nombre oficial del INE del primer parrafo de Wikipedia usando el LLM."""
+def _consultar_nombre_ine_llm(nombre_wiki: str, provincia: str, html_municipio: str, candidatos_ine: list[str] = None) -> str | None:
+    """Extrae el nombre oficial del INE del primer parrafo de Wikipedia usando el LLM.
+    
+    Si se proporciona candidatos_ine, le pide al LLM que elija de esa lista.
+    """
     try:
         from scraper import get_soup
         import re
@@ -244,16 +171,31 @@ def _consultar_nombre_ine_llm(nombre_wiki: str, provincia: str, html_municipio: 
             return None
             
         from llm_client import call_llm
-        prompt = (
-            f"Lee la introduccion de Wikipedia para el municipio '{nombre_wiki}' de '{provincia}':\n\n"
-            f"\"{texto_intro}\"\n\n"
-            "Dime cual es su nombre oficial o cooficial (el que usaria el INE). "
-            "Responde SOLO con el nombre, sin mas palabras ni puntuacion extra."
-        )
-        respuesta = call_llm("Eres un asistente experto en toponimia española.", prompt, context_info={"stage": "consultar_nombre_ine"})
+        
+        if candidatos_ine:
+            lista_str = "\n".join(f"- {c}" for c in candidatos_ine)
+            prompt = (
+                f"El municipio '{nombre_wiki}' de la provincia de '{provincia}' tiene esta introduccion en Wikipedia:\n\n"
+                f"\"{texto_intro}\"\n\n"
+                f"De la siguiente lista de municipios del INE en esa provincia, ¿cual corresponde a este municipio?\n\n"
+                f"{lista_str}\n\n"
+                "Responde SOLO con el nombre exacto de la lista, copiado tal cual. Si ninguno corresponde, responde NINGUNO."
+            )
+        else:
+            prompt = (
+                f"Lee la introduccion de Wikipedia para el municipio '{nombre_wiki}' de '{provincia}':\n\n"
+                f"\"{texto_intro}\"\n\n"
+                "Dime cual es su nombre oficial o cooficial (el que usaria el INE). "
+                "Responde SOLO con el nombre, sin mas palabras ni puntuacion extra."
+            )
+        
+        respuesta = call_llm("Eres un asistente experto en toponimia española.", prompt, context_info={"stage": "consultar_nombre_ine"}, json_mode=False)
         if not respuesta: return None
         
-        return respuesta.strip()
+        respuesta = respuesta.strip()
+        if respuesta.upper() == "NINGUNO":
+            return None
+        return respuesta
     except Exception as e:
         print(f"Error en LLM municipio: {e}")
     return None
@@ -317,12 +259,27 @@ def buscar_municipio_ine(nombre_municipio: str, provincia: str, datos_ine: dict,
                 
         # TERCER FALLBACK: Si no hay match matematico y tenemos HTML, usar LLM
         if not candidatos and html_municipio and candidatos_prov:
-            nombre_oficial_llm = _consultar_nombre_ine_llm(nombre_municipio, provincia, html_municipio)
+            # Construir lista legible de nombres INE de la provincia
+            nombres_ine_legibles = {}
+            for (cpro, cmun), info in datos_ine['municipios'].items():
+                prov_norm = _normalizar_nombre_provincia(info['provincia'])
+                partes_prov = re.split(r'[/,]', prov_norm)
+                if provincia_norm in prov_norm or prov_norm in provincia_norm or any(provincia_norm in p.strip() for p in partes_prov):
+                    nombres_ine_legibles[info['nombre']] = (cpro, cmun, info['provincia'])
+            
+            lista_nombres = list(nombres_ine_legibles.keys())
+            nombre_oficial_llm = _consultar_nombre_ine_llm(nombre_municipio, provincia, html_municipio, lista_nombres)
             if nombre_oficial_llm:
-                matches_llm = difflib.get_close_matches(_normalizar(nombre_oficial_llm), list(candidatos_prov.keys()), n=1, cutoff=0.6)
-                if matches_llm:
-                    print(f"     -> [LLM] Alias encontrado: '{nombre_municipio}' = '{matches_llm[0]}'")
-                    candidatos.append(candidatos_prov[matches_llm[0]])
+                # Buscar match directo primero
+                if nombre_oficial_llm in nombres_ine_legibles:
+                    print(f"     -> [LLM] Match directo: '{nombre_municipio}' = '{nombre_oficial_llm}'")
+                    candidatos.append(nombres_ine_legibles[nombre_oficial_llm])
+                else:
+                    # Fuzzy match contra la respuesta del LLM
+                    matches_llm = difflib.get_close_matches(_normalizar(nombre_oficial_llm), list(candidatos_prov.keys()), n=1, cutoff=0.6)
+                    if matches_llm:
+                        print(f"     -> [LLM] Alias encontrado: '{nombre_municipio}' = '{matches_llm[0]}'")
+                        candidatos.append(candidatos_prov[matches_llm[0]])
 
     if not candidatos:
         return None
@@ -415,3 +372,94 @@ def formatear_localidades_para_prompt(localidades: list[dict]) -> str:
         lineas.append(f"  - {loc['nombre']} ({loc['poblacion']} hab.)")
 
     return f"Localidades/entidades registradas ({len(localidades)}):\n" + "\n".join(lineas)
+
+# ============================================================================
+# CARGA DE TABLAS NGMEP (NUEVAS)
+# ============================================================================
+import csv
+
+def cargar_provincias_ngmep() -> dict:
+    provincias = {}
+    path = os.path.join(_DATOS_DIR, "PROVINCIAS.csv")
+    if not os.path.exists(path): return {}
+    with open(path, 'r', encoding='latin-1') as f:
+        reader = csv.DictReader(f, delimiter=';')
+        for row in reader:
+            provincias[row['COD_PROV'].strip()] = {
+                'provincia': row['PROVINCIA'].strip(),
+                'comunidad': row['COMUNIDAD_AUTONOMA'].strip()
+            }
+    return provincias
+
+def cargar_municipios_ngmep() -> dict:
+    municipios = {}
+    path = os.path.join(_DATOS_DIR, "MUNICIPIOS.csv")
+    if not os.path.exists(path): return {}
+    with open(path, 'r', encoding='latin-1') as f:
+        reader = csv.DictReader(f, delimiter=';')
+        for row in reader:
+            try: lat = float(row['LATITUD_ETRS89_REGCAN95'].replace(',', '.')) if row['LATITUD_ETRS89_REGCAN95'] else 0.0
+            except: lat = 0.0
+            try: lng = float(row['LONGITUD_ETRS89_REGCAN95'].replace(',', '.')) if row['LONGITUD_ETRS89_REGCAN95'] else 0.0
+            except: lng = 0.0
+            
+            pob = 0
+            try: pob = int(row['POBLACION_MUNI'])
+            except: pass
+            
+            municipios[row['COD_INE'].strip()] = {
+                'nombre': row['NOMBRE_ACTUAL'].strip(),
+                'poblacion': pob,
+                'lat': lat,
+                'lng': lng,
+                'cod_prov': row['COD_PROV'].strip()
+            }
+    return municipios
+
+def cargar_entidades_ngmep() -> dict:
+    entidades_por_muni = {}
+    path = os.path.join(_DATOS_DIR, "ENTIDADES.csv")
+    if not os.path.exists(path): return {}
+    with open(path, 'r', encoding='latin-1') as f:
+        reader = csv.DictReader(f, delimiter=';')
+        for row in reader:
+            tipo = row['TIPO'].strip()
+            if tipo not in ('Capital de municipio', 'Otras entidades'):
+                continue
+            
+            try: pob = int(row['POBLACION'])
+            except: pob = 0
+            
+            if pob <= 0:
+                continue
+
+            inemuni = row['INEMUNI'].strip()
+            if inemuni not in entidades_por_muni:
+                entidades_por_muni[inemuni] = []
+                
+            try: lat = float(row['LATITUD_ETRS89_REGCAN95'].replace(',', '.')) if row['LATITUD_ETRS89_REGCAN95'] else 0.0
+            except: lat = 0.0
+            try: lng = float(row['LONGITUD_ETRS89_REGCAN95'].replace(',', '.')) if row['LONGITUD_ETRS89_REGCAN95'] else 0.0
+            except: lng = 0.0
+            
+            entidades_por_muni[inemuni].append({
+                'id': row['CODIGOINE'].strip(),
+                'nombre': row['NOMBRE'].strip(),
+                'poblacion': pob,
+                'lat': lat,
+                'lng': lng,
+                'es_capital': (tipo == 'Capital de municipio')
+            })
+            
+    for inemuni, entidades in entidades_por_muni.items():
+        unicas = {}
+        for ent in entidades:
+            nombre_norm = _normalizar(ent['nombre'])
+            if nombre_norm not in unicas:
+                unicas[nombre_norm] = ent
+            else:
+                if ent['poblacion'] > unicas[nombre_norm]['poblacion']:
+                    unicas[nombre_norm] = ent
+        entidades_por_muni[inemuni] = list(unicas.values())
+        
+    return entidades_por_muni

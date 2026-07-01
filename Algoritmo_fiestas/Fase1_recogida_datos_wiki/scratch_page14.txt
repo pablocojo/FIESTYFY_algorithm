@@ -1,0 +1,87 @@
+Correo electrónico: toponimia.ign@transportes.gob.es 15
+ANEXO II: CÓDIGO INE
+El Instituto Nacional de Estadística (INE) proporciona una relación detallada de las unidades
+poblacionales (entidades, núcleos y diseminados) de cada municipio con sus denominaciones y códigos,
+con fecha 1 de enero de cada año.
+El código asignado por el Instituto Nacional de Estadística a cada una de las entidades poblacionales y que
+es publicado en el «Nomenclátor: Población del Padrón Continuo por Unidad Poblacional», se caracteriza
+por ser un código único e intransferible formado por 11 dígitos con el siguiente significado:
+ Los dos primeros hacen referencia a la provincia a la que pertenece la unidad poblacional. El INE
+publica una serie de listas estándares entrelas que se encuentrala lista de provincias con sus códigos:
+https://www.ine.es/daco/daco42/clasificaciones/codprov.xls
+Relación de provincias con sus códigos
+CÓDIGO LITERAL
+02 Albacete
+03 Alicante/Alacant
+04 Almería
+01 Araba/Álava
+33 Asturias
+05 Ávila
+06 Badajoz
+07 Balears, Illes
+08 Barcelona
+48 Bizkaia
+09 Burgos
+10 Cáceres
+11 Cádiz
+39 Cantabria
+12 Castellón/Castelló
+13 Ciudad Real
+14 Córdoba15 Coruña, A
+16 Cuenca
+20 Gipuzkoa
+17 Girona
+18 Granada
+19 Guadalajara
+21 Huelva
+22 Huesca
+23 Jaén
+24 León
+25 Lleida
+27 Lugo
+28 Madrid
+29 Málaga
+30 Murcia
+31 Navarra
+32 Ourense
+34 Palencia35 Palmas, Las
+36 Pontevedra
+26 Rioja, La
+37 Salamanca
+38 Santa Cruz de Tenerife
+40 Segovia
+41 Sevilla
+42 Soria
+43 Tarragona
+44 Teruel
+45 Toledo
+46 Valencia/València
+47 Valladolid
+49 Zamora
+50 Zaragoza
+51 Ceuta
+52 Melilla
+ Los tres siguientes identifican el número del municipio dentro de la provincia.
+ Los dos siguientes indican si es o no entidad colectiva.
+ Los dos siguientes indican si es entidad singular.
+ Los dos finales indican si la población se corresponde con la de un núcleo poblacional o es población
+diseminada por el término municipal.
+Ejemplos:
+ En el caso particular de los municipios, el código estará compuesto por los dos dígitos de la provincia,
+los tres que identifican al municipio dentro de la provincia seguidos de 6 ceros.
+Ejemplo: municipio de Brazuelo código INE = 24023 000000(provincia 24 = León, número del municipio
+dentro de la provincia = 023).
+ Si dentro del municipio existen una o varias entidades colectivas8, el código estará compuesto por los
+dos dígitos de la provincia, los tres que identifican al municipio dentro de la provincia, dos dígitos
+(desde 01 hasta 99) para indicar la existencia de la entidad colectiva (00 si no existe) finalizando con 4
+ceros.
+Ejemplo, entidad colectiva «Pradorrey-Requejo» dentro del municipio de Brazuelo. Código INE =
+24023 010000(provincia 24 = León, número del municipio dentro de la provincia = 023, número de la
+entidad colectiva=01).
+8Definición INE: « Como unidad intermedia entre la entidad singular de población y el municipio existen, en algunas
+regiones, agrupaciones de entidades singulares, (parroquias, hermandades, concejos, diputaciones, y otras), que
+conforman una entidad colectiva de población con personalidad propia y un origen marcadamente histórico»
+PP
+MMM
+ EC
+ESND

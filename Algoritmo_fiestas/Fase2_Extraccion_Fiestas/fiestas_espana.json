@@ -1,19 +1,2493 @@
 {
   "version": 2,
   "anno": 2026,
-  "ultimo_municipio_procesado": "barrundia",
+  "ultimo_municipio_procesado": "01011000000",
   "municipios_completados": [
-    "alegria-de-alava",
-    "aramayona",
-    "aana",
-    "amurrio",
-    "arceniega",
-    "arraya-maestu",
-    "armion",
-    "asparrena",
-    "baos-de-ebro",
-    "berantevilla",
-    "barrundia"
+    "01002000000",
+    "01001000000",
+    "01049000000",
+    "01003000000",
+    "01004000000",
+    "01006000000",
+    "01037000000",
+    "01009000000",
+    "01011000000"
   ],
-  "fiestas": []
+  "fiestas": [
+    {
+      "id": "amurrio-san-juan",
+      "lugar_id": "01002000201",
+      "nombre": "Fiestas de San Juan",
+      "fecha_inicio": "2026-06-23",
+      "fecha_fin": "2026-06-23",
+      "tamano": "grande",
+      "descripcion": "Actividades musicales, juegos y espectáculos",
+      "confianza": "alta",
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-06-23",
+          "eventos": [
+            {
+              "hora": "HH:MM",
+              "descripcion": "Música y juegos"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "amurrio-carnaval",
+      "lugar_id": "01002000201",
+      "nombre": "Carnavales de Amurrio",
+      "fecha_inicio": "2026-02-15",
+      "fecha_fin": "2026-02-15",
+      "tamano": "grande",
+      "descripcion": "Desfiles, animación musical y concursos",
+      "confianza": "alta",
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-02-15",
+          "eventos": [
+            {
+              "hora": "HH:MM",
+              "descripcion": "Desfile de carros alegóricos"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "amurrio-san-roque",
+      "lugar_id": "01002000201",
+      "nombre": "Fiestas de San Roque",
+      "fecha_inicio": "2026-08-16",
+      "fecha_fin": "2026-08-16",
+      "tamano": "grande",
+      "descripcion": "Procesión, kalejira y verbenas",
+      "confianza": "alta",
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-08-16",
+          "eventos": [
+            {
+              "hora": "HH:MM",
+              "descripcion": "Procesión de San Roque"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "amurrio-asuncion",
+      "lugar_id": "01002000201",
+      "nombre": "Fiestas de Nuestra Señora de la Asunción",
+      "fecha_inicio": "2026-08-15",
+      "fecha_fin": "2026-08-15",
+      "tamano": "grande",
+      "descripcion": "Procesión y verbenas",
+      "confianza": "alta",
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-08-15",
+          "eventos": [
+            {
+              "hora": "HH:MM",
+              "descripcion": "Procesión de Nuestra Señora de la Asunción"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "aloria-2026",
+      "lugar_id": "01002000101",
+      "nombre": "Fiestas de Aloria",
+      "fecha_inicio": "2026-08-29",
+      "fecha_fin": "2026-08-30",
+      "tamano": "grande",
+      "descripcion": "Celebración patronal en honor a San Juan Degollado",
+      "confianza": "alta",
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-08-29",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "Procesión de San Juan Degollado"
+            },
+            {
+              "hora": "14:00",
+              "descripcion": "Concierto en la plaza"
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-08-30",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "Feria de Aloria"
+            },
+            {
+              "hora": "18:00",
+              "descripcion": "Desfile de la romería"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "san-jorge-2026",
+      "lugar_id": "01002000301",
+      "nombre": "San Jorge",
+      "fecha_inicio": "2026-04-17",
+      "fecha_fin": "2026-04-23",
+      "tamano": "grande",
+      "descripcion": "Procesión, romería, dantzaris, talos y verbena",
+      "confianza": "alta",
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-04-17",
+          "eventos": [
+            {
+              "hora": "HH:MM",
+              "descripcion": "Procesión"
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-04-18",
+          "eventos": [
+            {
+              "hora": "HH:MM",
+              "descripcion": "Romería"
+            },
+            {
+              "hora": "HH:MM",
+              "descripcion": "Dantzaris"
+            }
+          ]
+        },
+        {
+          "dia": 3,
+          "fecha": "2026-04-19",
+          "eventos": [
+            {
+              "hora": "HH:MM",
+              "descripcion": "Talos"
+            },
+            {
+              "hora": "HH:MM",
+              "descripcion": "Verbena"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "unid-unico",
+      "lugar_id": "01002000501",
+      "nombre": "Ahuntz Eguna",
+      "fecha_inicio": "2026-06-13",
+      "fecha_fin": "2026-06-13",
+      "tamano": "pequeña",
+      "descripcion": "Feria de ganado caprino",
+      "confianza": "alta",
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-06-13",
+          "eventos": [
+            {
+              "hora": "HH:MM",
+              "descripcion": "Feria de ganado caprino"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "unid-unico-2",
+      "lugar_id": "01002000501",
+      "nombre": "San Antonio",
+      "fecha_inicio": "2026-06-13",
+      "fecha_fin": "2026-06-13",
+      "tamano": "pequeña",
+      "descripcion": "Feria de ganado caprino",
+      "confianza": "alta",
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-06-13",
+          "eventos": [
+            {
+              "hora": "HH:MM",
+              "descripcion": "Feria de ganado caprino"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "romer-a-del-nervi-n-01002000601",
+      "lugar_id": "01002000601",
+      "nombre": "Romería del Nervión",
+      "fecha_inicio": "2026-06-26",
+      "fecha_fin": "2026-06-28",
+      "tamano": "grande",
+      "descripcion": "Romería en el desfiladero de Delika y la cascada del Nervión",
+      "confianza": "alta",
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-06-26",
+          "eventos": [
+            {
+              "hora": "10:00",
+              "descripcion": "Salida de la I Marcha de Montaña (10 km aprox.)"
+            },
+            {
+              "hora": "14:30",
+              "descripcion": "Comida popular"
+            },
+            {
+              "hora": "16:30",
+              "descripcion": "Desafío Arrastaria"
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-06-27",
+          "eventos": [
+            {
+              "hora": "10:00",
+              "descripcion": "Salida de la II Marcha de Montaña Familiar (3 km aprox.)"
+            },
+            {
+              "hora": "18:30",
+              "descripcion": "Chocolatada"
+            }
+          ]
+        },
+        {
+          "dia": 3,
+          "fecha": "2026-06-28",
+          "eventos": [
+            {
+              "hora": "08:00",
+              "descripcion": "Quedada para limpiar la plaza y sus alrededores"
+            },
+            {
+              "hora": "11:30",
+              "descripcion": "Misa en la iglesia"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "santiago-larrinbe",
+      "lugar_id": "01002000701",
+      "nombre": "Santiago en Larrinbe",
+      "fecha_inicio": "2026-08-12",
+      "fecha_fin": "2026-08-17",
+      "tamano": "grande",
+      "descripcion": "Fiesta patronal con romería, procesión, música tradicional y gastronomía local",
+      "confianza": "alta",
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-08-12",
+          "eventos": [
+            {
+              "hora": "10:00",
+              "descripcion": "Romería a la ermita de San Roque"
+            },
+            {
+              "hora": "12:00",
+              "descripcion": "Procesión con música tradicional y pasacaballo"
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-08-13",
+          "eventos": [
+            {
+              "hora": "10:00",
+              "descripcion": "Concierto de música tradicional en el ayuntamiento"
+            },
+            {
+              "hora": "14:00",
+              "descripcion": "Comida popular y bebidas típicas"
+            }
+          ]
+        },
+        {
+          "dia": 3,
+          "fecha": "2026-08-14",
+          "eventos": [
+            {
+              "hora": "10:00",
+              "descripcion": "Exposición de artesanías y productos locales"
+            },
+            {
+              "hora": "16:00",
+              "descripcion": "Concierto nocturno con música en vivo"
+            }
+          ]
+        },
+        {
+          "dia": 4,
+          "fecha": "2026-08-15",
+          "eventos": [
+            {
+              "hora": "10:00",
+              "descripcion": "Feria de San Juan con juegos y actividades para niños"
+            },
+            {
+              "hora": "18:00",
+              "descripcion": "Concierto de música en vivo en el ayuntamiento"
+            }
+          ]
+        },
+        {
+          "dia": 5,
+          "fecha": "2026-08-16",
+          "eventos": [
+            {
+              "hora": "10:00",
+              "descripcion": "Procesión con música tradicional y pasacaballo"
+            },
+            {
+              "hora": "14:00",
+              "descripcion": "Comida popular y bebidas típicas"
+            }
+          ]
+        },
+        {
+          "dia": 6,
+          "fecha": "2026-08-17",
+          "eventos": [
+            {
+              "hora": "10:00",
+              "descripcion": "Exposición de artesanías y productos locales"
+            },
+            {
+              "hora": "16:00",
+              "descripcion": "Despedida oficial de la fiesta con música en vivo"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fiestas-de-pueblos-de-espa-a-para-lekama-a-2026-01002000801",
+      "lugar_id": "01002000801",
+      "nombre": "Fiestas de Pueblos de España para Lekamaña 2026",
+      "fecha_inicio": "2026-06-01",
+      "fecha_fin": "2026-06-30",
+      "tamano": "pequeña",
+      "descripcion": "Calendario de fiestas patronales y eventos locales de España 2026",
+      "confianza": "alta",
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-06-01",
+          "eventos": [
+            {
+              "hora": "10:00",
+              "descripcion": "Procesión de la Virgen del Rosario"
+            },
+            {
+              "hora": "12:00",
+              "descripcion": "Concierto en el parque"
+            }
+          ]
+        },
+        {
+          "dia": 15,
+          "fecha": "2026-06-15",
+          "eventos": [
+            {
+              "hora": "10:00",
+              "descripcion": "Feria de Lekamaña"
+            },
+            {
+              "hora": "12:00",
+              "descripcion": "Comida popular en el mercado"
+            }
+          ]
+        },
+        {
+          "dia": 30,
+          "fecha": "2026-06-30",
+          "eventos": [
+            {
+              "hora": "10:00",
+              "descripcion": "Procesión de San Juan"
+            },
+            {
+              "hora": "12:00",
+              "descripcion": "Concierto en el parque"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "saratxo-2026",
+      "lugar_id": "01002001101",
+      "nombre": "Fiestas de Saratxo",
+      "fecha_inicio": "2026-12-06",
+      "fecha_fin": "2026-12-17",
+      "tamano": "grande",
+      "descripcion": "Celebración patronal con verbena, txosnas y música en la plaza.",
+      "confianza": "alta",
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-12-06",
+          "eventos": [
+            {
+              "hora": "HH:MM",
+              "descripcion": "Procesión de la Virgen del Rosario"
+            },
+            {
+              "hora": "HH:MM",
+              "descripcion": "Concierto en la plaza"
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-12-07",
+          "eventos": [
+            {
+              "hora": "HH:MM",
+              "descripcion": "Danza tradicional de dantzaris"
+            },
+            {
+              "hora": "HH:MM",
+              "descripcion": "Comida popular en la plaza"
+            }
+          ]
+        },
+        {
+          "dia": 3,
+          "fecha": "2026-12-08",
+          "eventos": [
+            {
+              "hora": "HH:MM",
+              "descripcion": "Concierto nocturno en el teatro"
+            },
+            {
+              "hora": "HH:MM",
+              "descripcion": "Pirotecnia en la plaza"
+            }
+          ]
+        },
+        {
+          "dia": 4,
+          "fecha": "2026-12-09",
+          "eventos": [
+            {
+              "hora": "HH:MM",
+              "descripcion": "Mercado de artesanías y productos locales"
+            },
+            {
+              "hora": "HH:MM",
+              "descripcion": "Concierto en la plaza"
+            }
+          ]
+        },
+        {
+          "dia": 5,
+          "fecha": "2026-12-10",
+          "eventos": [
+            {
+              "hora": "HH:MM",
+              "descripcion": "Danza tradicional de txistularis"
+            },
+            {
+              "hora": "HH:MM",
+              "descripcion": "Comida popular en la plaza"
+            }
+          ]
+        },
+        {
+          "dia": 6,
+          "fecha": "2026-12-11",
+          "eventos": [
+            {
+              "hora": "HH:MM",
+              "descripcion": "Concierto nocturno en el teatro"
+            },
+            {
+              "hora": "HH:MM",
+              "descripcion": "Pirotecnia en la plaza"
+            }
+          ]
+        },
+        {
+          "dia": 7,
+          "fecha": "2026-12-12",
+          "eventos": [
+            {
+              "hora": "HH:MM",
+              "descripcion": "Mercado de artesanías y productos locales"
+            },
+            {
+              "hora": "HH:MM",
+              "descripcion": "Concierto en la plaza"
+            }
+          ]
+        },
+        {
+          "dia": 8,
+          "fecha": "2026-12-13",
+          "eventos": [
+            {
+              "hora": "HH:MM",
+              "descripcion": "Danza tradicional de dantzaris"
+            },
+            {
+              "hora": "HH:MM",
+              "descripcion": "Comida popular en la plaza"
+            }
+          ]
+        },
+        {
+          "dia": 9,
+          "fecha": "2026-12-14",
+          "eventos": [
+            {
+              "hora": "HH:MM",
+              "descripcion": "Concierto nocturno en el teatro"
+            },
+            {
+              "hora": "HH:MM",
+              "descripcion": "Pirotecnia en la plaza"
+            }
+          ]
+        },
+        {
+          "dia": 10,
+          "fecha": "2026-12-15",
+          "eventos": [
+            {
+              "hora": "HH:MM",
+              "descripcion": "Fiesta de San Roque"
+            },
+            {
+              "hora": "HH:MM",
+              "descripcion": "Concierto en la plaza"
+            }
+          ]
+        },
+        {
+          "dia": 11,
+          "fecha": "2026-12-16",
+          "eventos": [
+            {
+              "hora": "HH:MM",
+              "descripcion": "Danza tradicional de txistularis"
+            },
+            {
+              "hora": "HH:MM",
+              "descripcion": "Comida popular en la plaza"
+            }
+          ]
+        },
+        {
+          "dia": 12,
+          "fecha": "2026-12-17",
+          "eventos": [
+            {
+              "hora": "HH:MM",
+              "descripcion": "Concierto nocturno en el teatro"
+            },
+            {
+              "hora": "HH:MM",
+              "descripcion": "Pirotecnia en la plaza"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "festividad-de-la-asuncion",
+      "lugar_id": "01002001201",
+      "nombre": "Fiestas Patronales de Nuestra Señora de la Asunción",
+      "fecha_inicio": "2026-08-12",
+      "fecha_fin": "2026-08-17",
+      "tamano": "grande",
+      "descripcion": "Celebración en honor a la Virgen de la Asunción",
+      "confianza": "alta",
+      "programa": [
+        {
+          "dia": 15,
+          "fecha": "2026-08-15",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "Procesión de la Virgen de la Asunción"
+            }
+          ]
+        },
+        {
+          "dia": 16,
+          "fecha": "2026-08-16",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "Procesión de San Roque"
+            },
+            {
+              "hora": "20:00",
+              "descripcion": "Fiesta nocturna en el parque"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "festividad-de-san-roque",
+      "lugar_id": "01002001201",
+      "nombre": "Fiesta de San Roque",
+      "fecha_inicio": "2026-08-16",
+      "fecha_fin": "2026-08-16",
+      "tamano": "grande",
+      "descripcion": "Celebración en honor al santo patrono del pueblo",
+      "confianza": "alta",
+      "programa": [
+        {
+          "dia": 16,
+          "fecha": "2026-08-16",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "Procesión de San Roque"
+            },
+            {
+              "hora": "20:00",
+              "descripcion": "Fiesta nocturna en el parque"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "san-blas-2026",
+      "lugar_id": "01001000101",
+      "nombre": "San Blas",
+      "fecha_inicio": "2026-02-03",
+      "fecha_fin": "2026-02-08",
+      "tamano": "grande",
+      "descripcion": "Fiesta patronal de San Blas",
+      "confianza": "alta",
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-02-03",
+          "eventos": [
+            {
+              "hora": "10:00",
+              "descripcion": "Procesión de San Blas"
+            },
+            {
+              "hora": "12:00",
+              "descripcion": "Misa en honor a San Blas"
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-02-04",
+          "eventos": [
+            {
+              "hora": "10:00",
+              "descripcion": "Actuación musical en el parque"
+            },
+            {
+              "hora": "12:00",
+              "descripcion": "Comida popular en la plaza"
+            }
+          ]
+        },
+        {
+          "dia": 3,
+          "fecha": "2026-02-05",
+          "eventos": [
+            {
+              "hora": "10:00",
+              "descripcion": "Concierto de música tradicional"
+            },
+            {
+              "hora": "12:00",
+              "descripcion": "Exposición de artesanías"
+            }
+          ]
+        },
+        {
+          "dia": 4,
+          "fecha": "2026-02-06",
+          "eventos": [
+            {
+              "hora": "10:00",
+              "descripcion": "Paseo por el río"
+            },
+            {
+              "hora": "12:00",
+              "descripcion": "Comida en la plaza"
+            }
+          ]
+        },
+        {
+          "dia": 5,
+          "fecha": "2026-02-07",
+          "eventos": [
+            {
+              "hora": "10:00",
+              "descripcion": "Actuación de teatro"
+            },
+            {
+              "hora": "12:00",
+              "descripcion": "Exposición de arte"
+            }
+          ]
+        },
+        {
+          "dia": 6,
+          "fecha": "2026-02-08",
+          "eventos": [
+            {
+              "hora": "10:00",
+              "descripcion": "Despedida de San Blas"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "feria-de-la-sal",
+      "lugar_id": "01049000201",
+      "nombre": "Feria de la Sal",
+      "fecha_inicio": "2026-07-05",
+      "fecha_fin": "2026-07-10",
+      "tamano": "grande",
+      "descripcion": "Celebración tradicional con música, comida y actividades para todos los públicos",
+      "confianza": "alta",
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-07-05",
+          "eventos": [
+            {
+              "hora": "HH:MM",
+              "descripcion": "Desfile de la feria"
+            },
+            {
+              "hora": "HH:MM",
+              "descripcion": "Concierto en vivo"
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-07-06",
+          "eventos": [
+            {
+              "hora": "HH:MM",
+              "descripcion": "Actuación de Manifa"
+            },
+            {
+              "hora": "HH:MM",
+              "descripcion": "Taller de artesanía"
+            }
+          ]
+        },
+        {
+          "dia": 3,
+          "fecha": "2026-07-07",
+          "eventos": [
+            {
+              "hora": "HH:MM",
+              "descripcion": "Concierto nocturno"
+            },
+            {
+              "hora": "HH:MM",
+              "descripcion": "Visita nocturna al Valle de la Sal"
+            }
+          ]
+        },
+        {
+          "dia": 4,
+          "fecha": "2026-07-08",
+          "eventos": [
+            {
+              "hora": "HH:MM",
+              "descripcion": "Actuación de Moonshine Wagon"
+            },
+            {
+              "hora": "HH:MM",
+              "descripcion": "Mercado artesanal"
+            }
+          ]
+        },
+        {
+          "dia": 5,
+          "fecha": "2026-07-09",
+          "eventos": [
+            {
+              "hora": "HH:MM",
+              "descripcion": "Desfile de la feria"
+            },
+            {
+              "hora": "HH:MM",
+              "descripcion": "Concierto en vivo"
+            }
+          ]
+        },
+        {
+          "dia": 6,
+          "fecha": "2026-07-10",
+          "eventos": [
+            {
+              "hora": "HH:MM",
+              "descripcion": "Actuación de Prontxio"
+            },
+            {
+              "hora": "HH:MM",
+              "descripcion": "Cierre de la feria"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fiestas-de-san-antonio-de-ibarra-01003000601",
+      "lugar_id": "01003000601",
+      "nombre": "Fiestas de San Antonio de Ibarra",
+      "fecha_inicio": "2026-05-29",
+      "fecha_fin": "2026-06-04",
+      "tamano": "grande",
+      "descripcion": "Actividades culturales y artísticas",
+      "confianza": "alta",
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-05-29",
+          "eventos": [
+            {
+              "hora": "HH:MM",
+              "descripcion": "Actividades culturales"
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-05-30",
+          "eventos": [
+            {
+              "hora": "HH:MM",
+              "descripcion": "Actividades artísticas"
+            }
+          ]
+        },
+        {
+          "dia": 3,
+          "fecha": "2026-05-31",
+          "eventos": [
+            {
+              "hora": "HH:MM",
+              "descripcion": "Actividades culturales"
+            }
+          ]
+        },
+        {
+          "dia": 4,
+          "fecha": "2026-06-01",
+          "eventos": [
+            {
+              "hora": "HH:MM",
+              "descripcion": "Actividades artísticas"
+            }
+          ]
+        },
+        {
+          "dia": 5,
+          "fecha": "2026-06-02",
+          "eventos": [
+            {
+              "hora": "HH:MM",
+              "descripcion": "Actividades culturales"
+            }
+          ]
+        },
+        {
+          "dia": 6,
+          "fecha": "2026-06-03",
+          "eventos": [
+            {
+              "hora": "HH:MM",
+              "descripcion": "Actividades artísticas"
+            }
+          ]
+        },
+        {
+          "dia": 7,
+          "fecha": "2026-06-04",
+          "eventos": [
+            {
+              "hora": "HH:MM",
+              "descripcion": "Cierre de las actividades"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "oleta-2026",
+      "lugar_id": "01003000701",
+      "nombre": "Fiestas de Oleta",
+      "fecha_inicio": "2026-06-19",
+      "fecha_fin": "2026-06-23",
+      "tamano": "grande",
+      "descripcion": "Celebración patronal con procesión, misa y verbenas nocturnas",
+      "confianza": "alta",
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-06-19",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "Procesión del patrón"
+            },
+            {
+              "hora": "14:00",
+              "descripcion": "Misa en la iglesia parroquial"
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-06-20",
+          "eventos": [
+            {
+              "hora": "18:00",
+              "descripcion": "Verbena nocturna con música y baile"
+            }
+          ]
+        },
+        {
+          "dia": 3,
+          "fecha": "2026-06-21",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "Kalejira por el casco antiguo"
+            }
+          ]
+        },
+        {
+          "dia": 4,
+          "fecha": "2026-06-22",
+          "eventos": [
+            {
+              "hora": "18:00",
+              "descripcion": "Txosnas con pintxos y orquesta"
+            }
+          ]
+        },
+        {
+          "dia": 5,
+          "fecha": "2026-06-23",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "Despedida del patrón"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "san-prudencio",
+      "lugar_id": "01004000101",
+      "nombre": "San Prudencio",
+      "fecha_inicio": "2026-04-28",
+      "fecha_fin": "2026-04-28",
+      "tamano": "pequeña",
+      "descripcion": "Fiesta patronal con actos religiosos y manifestaciones populares",
+      "confianza": "alta",
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-04-28",
+          "eventos": [
+            {
+              "hora": "10:00",
+              "descripcion": "Misa solemne en la iglesia parroquial"
+            },
+            {
+              "hora": "12:00",
+              "descripcion": "Procesión en honor a San Prudencio"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "santiago-apostol",
+      "lugar_id": "01004000101",
+      "nombre": "Santiago Apóstol",
+      "fecha_inicio": "2026-07-25",
+      "fecha_fin": "2026-07-25",
+      "tamano": "grande",
+      "descripcion": "Fiesta patronal con actos religiosos y manifestaciones populares",
+      "confianza": "alta",
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-07-25",
+          "eventos": [
+            {
+              "hora": "10:00",
+              "descripcion": "Misa solemne en la iglesia parroquial"
+            },
+            {
+              "hora": "12:00",
+              "descripcion": "Procesión en honor a Santiago Apóstol"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fiesta-de-san-pedro",
+      "lugar_id": "01004000501",
+      "nombre": "Fiestas de San Pedro",
+      "fecha_inicio": "2026-06-25",
+      "fecha_fin": "2026-06-28",
+      "tamano": "grande",
+      "descripcion": "Programa completo de las Fiestas de San Pedro de Tudela 2026",
+      "confianza": "alta",
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-06-25",
+          "eventos": [
+            {
+              "hora": "10:30",
+              "descripcion": "Volteo de campanas y subida de la mascota"
+            },
+            {
+              "hora": "11:00",
+              "descripcion": "Iniciado los concursos de tortilla y paella"
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-06-26",
+          "eventos": [
+            {
+              "hora": "10:30",
+              "descripcion": "Hinchables infantiles"
+            },
+            {
+              "hora": "11:00",
+              "descripcion": "Animación infantil, globoflexia, pintura facial, burbujas…"
+            }
+          ]
+        },
+        {
+          "dia": 3,
+          "fecha": "2026-06-27",
+          "eventos": [
+            {
+              "hora": "10:30",
+              "descripcion": "Concierto nocturno"
+            },
+            {
+              "hora": "12:00",
+              "descripcion": "Pirotecnia"
+            }
+          ]
+        },
+        {
+          "dia": 4,
+          "fecha": "2026-06-28",
+          "eventos": [
+            {
+              "hora": "10:30",
+              "descripcion": "Desfile"
+            },
+            {
+              "hora": "12:00",
+              "descripcion": "Mercado"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fiesta-de-san-isidro-labrador-01006000101",
+      "lugar_id": "01006000101",
+      "nombre": "Fiesta de San Isidro Labrador",
+      "fecha_inicio": "2026-05-15",
+      "fecha_fin": "2026-05-17",
+      "tamano": "grande",
+      "descripcion": "Romería y verbena en honor a San Isidro Labrador",
+      "confianza": "alta",
+      "programa": []
+    },
+    {
+      "id": "fiesta-de-la-natividad-del-se-or-01006000101",
+      "lugar_id": "01006000101",
+      "nombre": "Fiesta de la Natividad del Señor",
+      "fecha_inicio": "2026-12-25",
+      "fecha_fin": "2026-12-26",
+      "tamano": "grande",
+      "descripcion": "Verbena y procesión en honor a la Natividad del Señor",
+      "confianza": "alta",
+      "programa": []
+    },
+    {
+      "id": "fiesta-de-la-inmaculada-concepci-n-01006000101",
+      "lugar_id": "01006000101",
+      "nombre": "Fiesta de la Inmaculada Concepción",
+      "fecha_inicio": "2026-12-08",
+      "fecha_fin": "2026-12-08",
+      "tamano": "grande",
+      "descripcion": "Verbena y procesión en honor a la Inmaculada Concepción",
+      "confianza": "alta",
+      "programa": []
+    },
+    {
+      "id": "fiesta-de-san-juan",
+      "lugar_id": "01006000201",
+      "nombre": "Fiesta de San Juan",
+      "fecha_inicio": "2026-06-23",
+      "fecha_fin": "2026-06-26",
+      "tamano": "pequeña",
+      "descripcion": "Celebración tradicional con música, baile y fuegos artificiales",
+      "confianza": "alta",
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-06-23",
+          "eventos": [
+            {
+              "hora": "20:00",
+              "descripcion": "Actuación musical en la plaza central"
+            },
+            {
+              "hora": "22:00",
+              "descripcion": "Fuegos artificiales y baile nocturno"
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-06-24",
+          "eventos": [
+            {
+              "hora": "10:00",
+              "descripcion": "Misa en honor a San Juan"
+            },
+            {
+              "hora": "12:00",
+              "descripcion": "Comida popular y juegos tradicionales"
+            }
+          ]
+        },
+        {
+          "dia": 3,
+          "fecha": "2026-06-25",
+          "eventos": [
+            {
+              "hora": "14:00",
+              "descripcion": "Concierto de música tradicional"
+            },
+            {
+              "hora": "16:00",
+              "descripcion": "Baile y música en la plaza central"
+            }
+          ]
+        },
+        {
+          "dia": 4,
+          "fecha": "2026-06-26",
+          "eventos": [
+            {
+              "hora": "10:00",
+              "descripcion": "Despedida de verano con fuegos artificiales y música"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fiesta-de-san-roque-01006000301",
+      "lugar_id": "01006000301",
+      "nombre": "Fiesta de San Roque",
+      "fecha_inicio": "2026-04-24",
+      "fecha_fin": "2026-05-01",
+      "tamano": "grande",
+      "descripcion": "Celebración patronal en honor a San Roque",
+      "confianza": "alta",
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-04-24",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "Pregón de la fiesta"
+            },
+            {
+              "hora": "14:00",
+              "descripcion": "Procesión del Santo"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fiesta-de-la-virgen-del-rosario-01006000301",
+      "lugar_id": "01006000301",
+      "nombre": "Fiesta de la Virgen del Rosario",
+      "fecha_inicio": "2026-10-01",
+      "fecha_fin": "2026-10-08",
+      "tamano": "grande",
+      "descripcion": "Celebración patronal en honor a la Virgen del Rosario",
+      "confianza": "alta",
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-10-01",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "Pregón de la fiesta"
+            },
+            {
+              "hora": "14:00",
+              "descripcion": "Procesión del Santo"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "virgen-del-rosario",
+      "lugar_id": "01037001001",
+      "nombre": "Virgen del Rosario",
+      "fecha_inicio": "2026-10-01",
+      "fecha_fin": "2026-10-31",
+      "tamano": "grande",
+      "descripcion": "Fiesta patronal con procesión y romería al campo.",
+      "confianza": "alta",
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-10-01",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "Procesión de la Virgen del Rosario"
+            },
+            {
+              "hora": "15:00",
+              "descripcion": "Romería al campo con música y comida popular"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "apellaniz-apilaiz",
+      "lugar_id": "01037000201",
+      "nombre": "Fiestas de Apellániz / Apilaiz",
+      "fecha_inicio": "2026-04-03",
+      "fecha_fin": "2026-04-05",
+      "tamano": "grande",
+      "descripcion": "Fiestas patronales en honor a Santo Toribio",
+      "confianza": "alta",
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-04-03",
+          "eventos": [
+            {
+              "hora": "HH:MM",
+              "descripcion": "Procesión de Santo Toribio"
+            },
+            {
+              "hora": "HH:MM",
+              "descripcion": "Concierto nocturno en el parque"
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-04-04",
+          "eventos": [
+            {
+              "hora": "HH:MM",
+              "descripcion": "Exposición de artesanías y productos locales"
+            },
+            {
+              "hora": "HH:MM",
+              "descripcion": "Desfile de barcos en el río"
+            }
+          ]
+        },
+        {
+          "dia": 3,
+          "fecha": "2026-04-05",
+          "eventos": [
+            {
+              "hora": "HH:MM",
+              "descripcion": "Concierto final en el parque"
+            },
+            {
+              "hora": "HH:MM",
+              "descripcion": "Despedida de verano con fuegos artificiales"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fiesta-de-san-roque-01037000401",
+      "lugar_id": "01037000401",
+      "nombre": "Fiesta de San Roque",
+      "fecha_inicio": "2026-06-29",
+      "fecha_fin": "2026-07-03",
+      "tamano": "grande",
+      "descripcion": "Patrón de la villa de Atauri",
+      "confianza": "alta",
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-06-29",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "Procesión del Santo"
+            },
+            {
+              "hora": "14:00",
+              "descripcion": "Misa en honor a San Roque"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fiesta-de-san-roque-01037000701",
+      "lugar_id": "01037000701",
+      "nombre": "Fiesta de San Roque",
+      "fecha_inicio": "2026-07-06",
+      "fecha_fin": "2026-07-08",
+      "tamano": "grande",
+      "descripcion": "Patronal",
+      "confianza": "alta",
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-07-06",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "Procesión de San Roque"
+            },
+            {
+              "hora": "14:00",
+              "descripcion": "Concierto en la plaza"
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-07-07",
+          "eventos": [
+            {
+              "hora": "10:00",
+              "descripcion": "Misa de San Roque"
+            },
+            {
+              "hora": "12:00",
+              "descripcion": "Comida popular en la plaza"
+            }
+          ]
+        },
+        {
+          "dia": 3,
+          "fecha": "2026-07-08",
+          "eventos": [
+            {
+              "hora": "11:00",
+              "descripcion": "Desfile de la Virgen del Rosario"
+            },
+            {
+              "hora": "13:00",
+              "descripcion": "Concierto en el auditorio"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "festas-de-san-prudencio",
+      "lugar_id": "01037001301",
+      "nombre": "Fiestas de San Prudencio",
+      "fecha_inicio": "2026-04-24",
+      "fecha_fin": "2026-05-01",
+      "tamano": "grande",
+      "descripcion": "Celebración patronal con procesiones, misas y exposiciones",
+      "confianza": "alta",
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-04-24",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "Procesión del Santo"
+            },
+            {
+              "hora": "14:00",
+              "descripcion": "Misa de San Prudencio"
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-04-25",
+          "eventos": [
+            {
+              "hora": "10:00",
+              "descripcion": "Exposición de arte local"
+            },
+            {
+              "hora": "12:00",
+              "descripcion": "Concierto en el ayuntamiento"
+            }
+          ]
+        },
+        {
+          "dia": 3,
+          "fecha": "2026-04-26",
+          "eventos": [
+            {
+              "hora": "14:00",
+              "descripcion": "Procesión de la Virgen del Rosario"
+            },
+            {
+              "hora": "16:00",
+              "descripcion": "Encierro y fiesta en el ayuntamiento"
+            }
+          ]
+        },
+        {
+          "dia": 4,
+          "fecha": "2026-04-27",
+          "eventos": [
+            {
+              "hora": "10:00",
+              "descripcion": "Misa de San Prudencio"
+            },
+            {
+              "hora": "12:00",
+              "descripcion": "Concierto en el ayuntamiento"
+            }
+          ]
+        },
+        {
+          "dia": 5,
+          "fecha": "2026-04-28",
+          "eventos": [
+            {
+              "hora": "14:00",
+              "descripcion": "Procesión del Santo"
+            },
+            {
+              "hora": "16:00",
+              "descripcion": "Fiesta en el ayuntamiento"
+            }
+          ]
+        },
+        {
+          "dia": 6,
+          "fecha": "2026-04-29",
+          "eventos": [
+            {
+              "hora": "10:00",
+              "descripcion": "Exposición de arte local"
+            },
+            {
+              "hora": "12:00",
+              "descripcion": "Concierto en el ayuntamiento"
+            }
+          ]
+        },
+        {
+          "dia": 7,
+          "fecha": "2026-04-30",
+          "eventos": [
+            {
+              "hora": "14:00",
+              "descripcion": "Procesión de la Virgen del Rosario"
+            },
+            {
+              "hora": "16:00",
+              "descripcion": "Encierro y fiesta en el ayuntamiento"
+            }
+          ]
+        },
+        {
+          "dia": 8,
+          "fecha": "2026-05-01",
+          "eventos": [
+            {
+              "hora": "10:00",
+              "descripcion": "Misa de San Prudencio"
+            },
+            {
+              "hora": "12:00",
+              "descripcion": "Concierto en el ayuntamiento"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "san-adrian",
+      "lugar_id": "01037001401",
+      "nombre": "San Adrián",
+      "fecha_inicio": "2026-08-01",
+      "fecha_fin": "2026-08-02",
+      "tamano": "grande",
+      "descripcion": "Fiesta patronal con procesión, misa y verbenas nocturnas",
+      "confianza": "alta",
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-08-01",
+          "eventos": [
+            {
+              "hora": "20:00",
+              "descripcion": "Procesión de San Adrián"
+            },
+            {
+              "hora": "22:00",
+              "descripcion": "Misa en honor a San Adrián"
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-08-02",
+          "eventos": [
+            {
+              "hora": "20:00",
+              "descripcion": "Verbenas nocturnas con orquesta"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "san-adrian-arraya-maeztu",
+      "lugar_id": "01037010101",
+      "nombre": "San Adrián en Aletxa",
+      "fecha_inicio": "2026-06-16",
+      "fecha_fin": "2026-06-17",
+      "tamano": "grande",
+      "descripcion": "Fiesta patronal con procesión, misa y verbena rural",
+      "confianza": "alta",
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-06-16",
+          "eventos": [
+            {
+              "hora": "20:00",
+              "descripcion": "Procesión de San Adrián"
+            },
+            {
+              "hora": "22:00",
+              "descripcion": "Misa en honor a San Adrián"
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-06-17",
+          "eventos": [
+            {
+              "hora": "20:00",
+              "descripcion": "Verbena rural con música y baile"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cicujano-zekuiano-san-antonio",
+      "lugar_id": "01037010301",
+      "nombre": "San Antón",
+      "fecha_inicio": "2026-01-17",
+      "fecha_fin": "2026-01-19",
+      "tamano": "grande",
+      "descripcion": "Fiesta patronal de San Antón, con procesiones y actos culturales.",
+      "confianza": "alta",
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-01-17",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "Procesión de San Antón"
+            },
+            {
+              "hora": "14:00",
+              "descripcion": "Acto cultural en la plaza"
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-01-18",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "Misa de San Antón"
+            },
+            {
+              "hora": "15:00",
+              "descripcion": "Acto cultural en la plaza"
+            }
+          ]
+        },
+        {
+          "dia": 3,
+          "fecha": "2026-01-19",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "Procesión de San Antón (final)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "leorza-elortza-santa-eufemia",
+      "lugar_id": "01037010501",
+      "nombre": "Fiestas de Santa Eufemia",
+      "fecha_inicio": "2026-09-16",
+      "fecha_fin": "2026-09-16",
+      "tamano": "pequeña",
+      "descripcion": "En honor a la patrona de Leorza/Elortza",
+      "confianza": "alta",
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-09-16",
+          "eventos": [
+            {
+              "hora": "10:00",
+              "descripcion": "Procesión de Santa Eufemia"
+            },
+            {
+              "hora": "12:00",
+              "descripcion": "Misa en honor a Santa Eufemia"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "virgen-del-carmen",
+      "lugar_id": "01037010601",
+      "nombre": "Virgen del Carmen",
+      "fecha_inicio": "2026-07-25",
+      "fecha_fin": "2026-07-25",
+      "tamano": "grande",
+      "descripcion": "Fiesta patronal en honor a la Virgen del Carmen",
+      "confianza": "alta",
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-07-25",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "Procesión de la Virgen del Carmen"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "virgala-mayor-birgara-goien",
+      "lugar_id": "01037020101",
+      "nombre": "Fiesta Mayor de Verano",
+      "fecha_inicio": "2026-08-01",
+      "fecha_fin": "2026-08-31",
+      "tamano": "grande",
+      "descripcion": "Celebración anual que incluye conciertos, actividades populares y eventos para todos los públicos.",
+      "confianza": "alta",
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-08-01",
+          "eventos": [
+            {
+              "hora": "20:00",
+              "descripcion": "Concierto en el campo de fútbol de La Vía"
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-08-02",
+          "eventos": [
+            {
+              "hora": "18:00",
+              "descripcion": "Actuación musical en el recinto ferial"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "virgala-mayor-birgara-goien-rosario",
+      "lugar_id": "01037020101",
+      "nombre": "Virgen del Rosario",
+      "fecha_inicio": "2026-10-06",
+      "fecha_fin": "2026-10-08",
+      "tamano": "grande",
+      "descripcion": "Celebración religiosa que incluye procesiones y actos culturales.",
+      "confianza": "alta",
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-10-06",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "Procesión de la Virgen del Rosario"
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-10-07",
+          "eventos": [
+            {
+              "hora": "18:00",
+              "descripcion": "Actuación musical en el recinto ferial"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "araia-san-pedro",
+      "lugar_id": "01009000401",
+      "nombre": "Fiestas de San Pedro en Araia",
+      "fecha_inicio": "2026-06-26",
+      "fecha_fin": "2026-07-05",
+      "tamano": "grande",
+      "descripcion": "Fiestas patronales con procesiones, misas y exposiciones",
+      "confianza": "alta",
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-06-26",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "Procesión de San Pedro"
+            },
+            {
+              "hora": "14:00",
+              "descripcion": "Misa en honor a San Pedro"
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-06-27",
+          "eventos": [
+            {
+              "hora": "10:00",
+              "descripcion": "Exposición de artesanías"
+            },
+            {
+              "hora": "12:00",
+              "descripcion": "Concierto en vivo"
+            }
+          ]
+        },
+        {
+          "dia": 3,
+          "fecha": "2026-06-28",
+          "eventos": [
+            {
+              "hora": "10:00",
+              "descripcion": "Procesión de la Virgen del Rosario"
+            },
+            {
+              "hora": "12:00",
+              "descripcion": "Comida popular"
+            }
+          ]
+        },
+        {
+          "dia": 4,
+          "fecha": "2026-06-29",
+          "eventos": [
+            {
+              "hora": "10:00",
+              "descripcion": "Concierto en vivo"
+            },
+            {
+              "hora": "12:00",
+              "descripcion": "Exposición de artesanías"
+            }
+          ]
+        },
+        {
+          "dia": 5,
+          "fecha": "2026-06-30",
+          "eventos": [
+            {
+              "hora": "10:00",
+              "descripcion": "Procesión de San Juan"
+            },
+            {
+              "hora": "12:00",
+              "descripcion": "Comida popular"
+            }
+          ]
+        },
+        {
+          "dia": 6,
+          "fecha": "2026-07-01",
+          "eventos": [
+            {
+              "hora": "10:00",
+              "descripcion": "Concierto en vivo"
+            },
+            {
+              "hora": "12:00",
+              "descripcion": "Exposición de artesanías"
+            }
+          ]
+        },
+        {
+          "dia": 7,
+          "fecha": "2026-07-02",
+          "eventos": [
+            {
+              "hora": "10:00",
+              "descripcion": "Procesión de la Virgen del Rosario"
+            },
+            {
+              "hora": "12:00",
+              "descripcion": "Comida popular"
+            }
+          ]
+        },
+        {
+          "dia": 8,
+          "fecha": "2026-07-03",
+          "eventos": [
+            {
+              "hora": "10:00",
+              "descripcion": "Concierto en vivo"
+            },
+            {
+              "hora": "12:00",
+              "descripcion": "Exposición de artesanías"
+            }
+          ]
+        },
+        {
+          "dia": 9,
+          "fecha": "2026-07-04",
+          "eventos": [
+            {
+              "hora": "10:00",
+              "descripcion": "Procesión de San Juan"
+            },
+            {
+              "hora": "12:00",
+              "descripcion": "Comida popular"
+            }
+          ]
+        },
+        {
+          "dia": 10,
+          "fecha": "2026-07-05",
+          "eventos": [
+            {
+              "hora": "10:00",
+              "descripcion": "Concierto en vivo"
+            },
+            {
+              "hora": "12:00",
+              "descripcion": "Exposición de artesanías"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "albeniz-san-juan",
+      "lugar_id": "01009000101",
+      "nombre": "Fiestas de San Juan en Albéniz",
+      "fecha_inicio": "2026-06-24",
+      "fecha_fin": "2026-06-27",
+      "tamano": "pequeña",
+      "descripcion": "Celebración tradicional con procesiones, misas y encierros",
+      "confianza": "alta",
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-06-24",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "Procesión del Santo Patrón"
+            },
+            {
+              "hora": "14:00",
+              "descripcion": "Misa en la iglesia"
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-06-25",
+          "eventos": [
+            {
+              "hora": "10:00",
+              "descripcion": "Encierro del toro"
+            },
+            {
+              "hora": "12:00",
+              "descripcion": "Comida popular y música en vivo"
+            }
+          ]
+        },
+        {
+          "dia": 3,
+          "fecha": "2026-06-26",
+          "eventos": [
+            {
+              "hora": "11:00",
+              "descripcion": "Procesión de la Virgen del Rosario"
+            },
+            {
+              "hora": "13:00",
+              "descripcion": "Concierto en vivo"
+            }
+          ]
+        },
+        {
+          "dia": 4,
+          "fecha": "2026-06-27",
+          "eventos": [
+            {
+              "hora": "10:00",
+              "descripcion": "Despedida del Santo Patrón"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fiestas-de-san-pedro-en-andoain-01009000301",
+      "lugar_id": "01009000301",
+      "nombre": "Fiestas de San Pedro en Andoain",
+      "fecha_inicio": "2026-06-29",
+      "fecha_fin": "2026-07-02",
+      "tamano": "grande",
+      "descripcion": "Celebración patronal con procesiones, misas y exposiciones",
+      "confianza": "alta",
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-06-29",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "Procesión del Santo"
+            },
+            {
+              "hora": "14:00",
+              "descripcion": "Misa en honor a San Pedro"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "carnaval-de-andoain-01009000301",
+      "lugar_id": "01009000301",
+      "nombre": "Carnaval de Andoain",
+      "fecha_inicio": "2026-02-12",
+      "fecha_fin": "2026-02-15",
+      "tamano": "grande",
+      "descripcion": "Celebración con desfiles, pasacalles y música",
+      "confianza": "alta",
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-02-12",
+          "eventos": [
+            {
+              "hora": "20:00",
+              "descripcion": "Desfile de disfraces"
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-02-13",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "Pasacalle en el centro de Andoain"
+            }
+          ]
+        },
+        {
+          "dia": 3,
+          "fecha": "2026-02-14",
+          "eventos": [
+            {
+              "hora": "20:00",
+              "descripcion": "Concierto nocturno"
+            }
+          ]
+        },
+        {
+          "dia": 4,
+          "fecha": "2026-02-15",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "Despedida del Carnaval"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "arriola-romeria",
+      "lugar_id": "01009000501",
+      "nombre": "Romería de Arriola",
+      "fecha_inicio": "2026-08-15",
+      "fecha_fin": "2026-08-17",
+      "tamano": "grande",
+      "descripcion": "Romería tradicional en honor a la Virgen del Rosario",
+      "confianza": "alta",
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-08-15",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "Procesión de la Virgen del Rosario"
+            },
+            {
+              "hora": "14:00",
+              "descripcion": "Concierto en el ayuntamiento"
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-08-16",
+          "eventos": [
+            {
+              "hora": "10:00",
+              "descripcion": "Misa en honor a la Virgen del Rosario"
+            },
+            {
+              "hora": "12:30",
+              "descripcion": "Comida popular y tradicional"
+            }
+          ]
+        },
+        {
+          "dia": 3,
+          "fecha": "2026-08-17",
+          "eventos": [
+            {
+              "hora": "11:00",
+              "descripcion": "Despedida de la Virgen del Rosario"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "egino-san-cristobal",
+      "lugar_id": "01009000601",
+      "nombre": "Fiesta de San Cristóbal",
+      "fecha_inicio": "2026-07-10",
+      "fecha_fin": "2026-07-12",
+      "tamano": "grande",
+      "descripcion": "Celebración patronal con procesión y música tradicional",
+      "confianza": "alta",
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-07-10",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "Procesión de San Cristóbal"
+            },
+            {
+              "hora": "15:00",
+              "descripcion": "Concierto tradicional"
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-07-11",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "Misa de San Cristóbal"
+            },
+            {
+              "hora": "15:00",
+              "descripcion": "Actuación musical en directo"
+            }
+          ]
+        },
+        {
+          "dia": 3,
+          "fecha": "2026-07-12",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "Procesión de San Cristóbal (final)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ibarguren",
+      "lugar_id": "01009000801",
+      "nombre": "Fiestas de San Cristóbal (Egino)",
+      "fecha_inicio": "2026-07-15",
+      "fecha_fin": "2026-07-17",
+      "tamano": "grande",
+      "descripcion": "Concierto nocturno y actividades tradicionales",
+      "confianza": "alta",
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-07-15",
+          "eventos": [
+            {
+              "hora": "20:00",
+              "descripcion": "Concierto de Egino"
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-07-16",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "Feria de artesanía y comida tradicional"
+            },
+            {
+              "hora": "20:00",
+              "descripcion": "Concierto nocturno"
+            }
+          ]
+        },
+        {
+          "dia": 3,
+          "fecha": "2026-07-17",
+          "eventos": [
+            {
+              "hora": "10:00",
+              "descripcion": "Feria de queso de pastor vasco"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ilarduia-san-miguel",
+      "lugar_id": "01009000901",
+      "nombre": "Fiestas de San Miguel",
+      "fecha_inicio": "2026-09-15",
+      "fecha_fin": "2026-09-17",
+      "tamano": "grande",
+      "descripcion": "Celebra el patrón del pueblo con procesiones, misas y actos culturales.",
+      "confianza": "alta",
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-09-15",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "Procesión del Santo Patrón"
+            },
+            {
+              "hora": "14:00",
+              "descripcion": "Misa en honor a San Miguel"
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-09-16",
+          "eventos": [
+            {
+              "hora": "10:00",
+              "descripcion": "Acto cultural con música y baile tradicionales"
+            },
+            {
+              "hora": "12:30",
+              "descripcion": "Comida popular y bebidas típicas"
+            }
+          ]
+        },
+        {
+          "dia": 3,
+          "fecha": "2026-09-17",
+          "eventos": [
+            {
+              "hora": "10:00",
+              "descripcion": "Procesión de clausura y acto final"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "d-a-del-pastor-01009001001",
+      "lugar_id": "01009001001",
+      "nombre": "Día del Pastor",
+      "fecha_inicio": "2026-07-30",
+      "fecha_fin": "2026-07-30",
+      "tamano": "pequeña",
+      "descripcion": "Fiesta tradicional en honor al Día del Pastor",
+      "confianza": "alta",
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-07-30",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "Procesión del Día del Pastor"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "santiago-apostol-asparrena",
+      "lugar_id": "01009001001",
+      "nombre": "Santiago Apóstol",
+      "fecha_inicio": "2026-07-25",
+      "fecha_fin": "2026-07-25",
+      "tamano": "grande",
+      "descripcion": "Fiesta patronal en honor a Santiago Apóstol",
+      "confianza": "alta",
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-07-25",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "Procesión de Santiago Apóstol"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "virgen-del-rosario-asparrena",
+      "lugar_id": "01009001001",
+      "nombre": "Virgen del Rosario",
+      "fecha_inicio": "2026-10-01",
+      "fecha_fin": "2026-10-01",
+      "tamano": "pequeña",
+      "descripcion": "Fiesta patronal en honor a la Virgen del Rosario",
+      "confianza": "alta",
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-10-01",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "Procesión de la Virgen del Rosario"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fiesta-de-san-bartolome",
+      "lugar_id": "01011000101",
+      "nombre": "Fiestas de San Bartolomé",
+      "fecha_inicio": "2026-08-24",
+      "fecha_fin": "2026-08-31",
+      "tamano": "grande",
+      "descripcion": "Celebración patronal en honor a San Bartolomé",
+      "confianza": "alta",
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-08-24",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "Procesión de San Bartolomé"
+            },
+            {
+              "hora": "14:00",
+              "descripcion": "Concierto en vivo"
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-08-25",
+          "eventos": [
+            {
+              "hora": "10:00",
+              "descripcion": "Desfile de tradiciones"
+            },
+            {
+              "hora": "12:00",
+              "descripcion": "Comida popular"
+            }
+          ]
+        },
+        {
+          "dia": 3,
+          "fecha": "2026-08-26",
+          "eventos": [
+            {
+              "hora": "14:00",
+              "descripcion": "Concierto de música tradicional"
+            },
+            {
+              "hora": "16:00",
+              "descripcion": "Pirotecnia"
+            }
+          ]
+        },
+        {
+          "dia": 4,
+          "fecha": "2026-08-27",
+          "eventos": [
+            {
+              "hora": "10:00",
+              "descripcion": "Desfile de toros"
+            },
+            {
+              "hora": "12:00",
+              "descripcion": "Comida popular"
+            }
+          ]
+        },
+        {
+          "dia": 5,
+          "fecha": "2026-08-28",
+          "eventos": [
+            {
+              "hora": "14:00",
+              "descripcion": "Concierto en vivo"
+            },
+            {
+              "hora": "16:00",
+              "descripcion": "Despedida de San Bartolomé"
+            }
+          ]
+        },
+        {
+          "dia": 6,
+          "fecha": "2026-08-29",
+          "eventos": [
+            {
+              "hora": "10:00",
+              "descripcion": "Desfile de tradiciones"
+            },
+            {
+              "hora": "12:00",
+              "descripcion": "Comida popular"
+            }
+          ]
+        },
+        {
+          "dia": 7,
+          "fecha": "2026-08-30",
+          "eventos": [
+            {
+              "hora": "14:00",
+              "descripcion": "Concierto de música tradicional"
+            },
+            {
+              "hora": "16:00",
+              "descripcion": "Pirotecnia"
+            }
+          ]
+        },
+        {
+          "dia": 8,
+          "fecha": "2026-08-31",
+          "eventos": [
+            {
+              "hora": "10:00",
+              "descripcion": "Desfile de toros"
+            },
+            {
+              "hora": "12:00",
+              "descripcion": "Comida popular"
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }

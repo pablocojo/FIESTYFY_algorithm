@@ -46,18 +46,16 @@ cambia la etiqueta y de quién cuelga). La jerarquía se expresa con `padre_id`.
 
 | `tipo` | Etiqueta | Cuelga de | Fiestas propias | Hijos |
 |---|---|---|---|---|
-| `pueblo` | Pueblo | — | Sí | — |
-| `ciudad_pequena` | Ciudad pequeña | — | Sí | Barrios y/o pedanías (opcional) |
-| `ciudad_grande` | Ciudad grande | — | Sí | Distritos y/o pedanías (**opcional**) |
-| `municipio_compuesto` | Municipio compuesto | — | **No** (solo muestra sus pedanías) | Pedanías |
+| `municipio` | Municipio | — | **No** | `pueblo`, `ciudad_pequena`, `ciudad_grande` |
+| `pueblo` | Pueblo | `municipio` | Sí | — |
+| `ciudad_pequena` | Ciudad pequeña | `municipio` | Sí | Barrios (opcional) |
+| `ciudad_grande` | Ciudad grande | `municipio` | Sí | Distritos y/o barrios (**opcional**) |
 | `distrito` | Distrito | `ciudad_grande` | Sí | Barrios (opcional) |
 | `barrio` | Barrio | `distrito` o `ciudad_pequena` | Sí | — |
-| `pedania` | Pedanía | cualquier municipio o compuesto | Sí | — |
 
-> ⚠️ **Tener distritos es opcional.** No toda ciudad grande se divide en
+> ℹ️ **Tener distritos es opcional.** No toda ciudad grande se divide en
 > distritos: p. ej. **Torrevieja** es `ciudad_grande` y **no** tiene distritos
-> (solo una pedanía, La Mata). Solo una `ciudad_grande` puede tener distritos;
-> las pedanías puede tenerlas cualquier municipio raíz.
+> (solo una entidad). Solo una `ciudad_grande` puede tener distritos.
 >
 > Los **barrios** se añaden en una segunda capa de detalle: si la ciudad grande
 > tiene distritos, cada barrio cuelga de su `distrito`; si es una ciudad pequeña,
@@ -67,17 +65,30 @@ cambia la etiqueta y de quién cuelga). La jerarquía se expresa con `padre_id`.
 
 ```jsonc
 {
-  "version": 2,
+  "version": 3,
   "lugares": [
     {
-      "id": "madrid",
-      "tipo": "ciudad_grande",
+      "id": "28079000000",
+      "tipo": "municipio",
       "nombre": "Madrid",
       "provincia": "Madrid",
       "comunidad": "Comunidad de Madrid",
-      "poblacion": 3280000,
+      "poblacion": 3332035,
       "lat": 40.4168,
       "lng": -3.7038,
+      "es_capital": false
+    },
+    {
+      "id": "28079000101",
+      "tipo": "ciudad_grande",
+      "padre_id": "28079000000",
+      "nombre": "Madrid",
+      "provincia": "Madrid",
+      "comunidad": "Comunidad de Madrid",
+      "poblacion": 3332035,
+      "lat": 40.4168,
+      "lng": -3.7038,
+      "es_capital": true,
       "descripcion_corta": "...",
       "descripcion": "...",
       "imagenes": {
@@ -86,33 +97,41 @@ cambia la etiqueta y de quién cuelga). La jerarquía se expresa con `padre_id`.
       }
     },
     {
-      "id": "madrid-centro",
+      "id": "28079000101-centro",
       "tipo": "distrito",
-      "padre_id": "madrid",
+      "padre_id": "28079000101",
       "nombre": "Centro",
-      ...
+      "descripcion_corta": "...",
+      "descripcion": "...",
+      "imagenes": {
+        "banner": "...",
+        "logo": "..."
+      }
     },
     {
-      "id": "madrid-centro-sol",
+      "id": "28079000101-centro-sol",
       "tipo": "barrio",
-      "padre_id": "madrid-centro",
-      "abuelo_id": "madrid",
+      "padre_id": "28079000101-centro",
+      "abuelo_id": "28079000101",
       "nombre": "Sol",
-      ...
+      "descripcion_corta": "...",
+      "descripcion": "...",
+      "imagenes": {
+        "banner": "...",
+        "logo": "..."
+      }
     }
   ]
 }
 ```
 
 ### Reglas
-- **ids** = slug (minúsculas, sin acentos, guiones); para hijos, **prefija con el padre** (`madrid-centro-sol`).
-- `padre_id` solo en distritos/barrios/pedanías y **debe existir** en el fichero. Máx. 3 niveles cuando haya barrio (`ciudad_grande` → `distrito` → `barrio`).
-- **abuelo_id**: Opcional. Los barrios que cuelgan de un `distrito` deben incluir este campo con el ID del municipio raíz.
+- **ids** = Código INE de 11 dígitos para el municipio y sus entidades base. Para distritos y barrios, se concatena un slug al ID de su entidad padre (`28079000101-centro`).
+- `padre_id` solo en hijos y **debe existir** en el fichero. 
+- **abuelo_id**: Opcional. Los barrios que cuelgan de un `distrito` deben incluir este campo con el ID de su entidad raíz (`ciudad_grande`).
 - Un `distrito` solo cuelga de `ciudad_grande`.
-- Un `barrio` cuelga de un `distrito` si pertenece a una ciudad grande con distritos, o directamente de una `ciudad_pequena` si no hay distrito intermedio.
-- Una `pedania` cuelga de un municipio raíz (`pueblo`, `ciudad_pequena`, `ciudad_grande`) o de un `municipio_compuesto`.
-- Un `municipio_compuesto` **no** puede tener fiestas propias.
-- **Provincia/comunidad**: obligatorias en lugares raíz; los hijos las **heredan** del padre.
+- Un `barrio` cuelga de un `distrito` si pertenece a una ciudad grande con distritos, o directamente de una `ciudad_pequena` (o `ciudad_grande` sin distritos).
+- Las entidades base (`pueblo`, `ciudad_pequena`, `ciudad_grande`) cuelgan siempre de un `municipio`.
 - **Fechas** ISO `YYYY-MM-DD`; **horas** 24h `HH:MM`.
 - **Imágenes** por URL. El escudo de la ficha de fiesta sale del `logo` del lugar.
 - **Coordenadas** numéricas.

@@ -70,7 +70,7 @@ def cargar_lugares(ruta_json: str) -> list[dict]:
 
 def agrupar_municipios_y_descendientes(lugares: list[dict]) -> tuple:
     """Agrupa localidades por municipio raíz, contemplando padre_id y abuelo_id."""
-    tipos_raiz = {"pueblo", "ciudad_pequena", "ciudad_grande", "municipio_compuesto"}
+    tipos_raiz = {"municipio"}
     municipios_raiz = []
     mapa_descendientes = {}
 
@@ -92,15 +92,17 @@ def agrupar_municipios_y_descendientes(lugares: list[dict]) -> tuple:
 
 
 def separar_por_tipo(descendientes: list[dict]) -> tuple:
-    barrios_distritos = []
-    pedanias = []
+    tipos_validos = {"pueblo", "ciudad_pequena", "ciudad_grande", "distrito", "barrio"}
+    capitales = []
+    otros = []
     for d in descendientes:
-        tipo = d.get("tipo", "")
-        if tipo in ("barrio", "distrito"):
-            barrios_distritos.append(d)
-        elif tipo == "pedania":
-            pedanias.append(d)
-    return barrios_distritos, pedanias
+        if d.get("tipo") not in tipos_validos:
+            continue
+        if d.get("es_capital"):
+            capitales.append(d)
+        else:
+            otros.append(d)
+    return capitales, otros
 
 
 # ──────────────────────────────────────────
@@ -172,18 +174,18 @@ async def process_municipio(
     logger: logging.Logger,
 ):
     """Procesa todas las localidades de un municipio secuencialmente."""
-    logger.info(f"\n[{indice + 1}/{total}] ═══ Procesando: {municipio['nombre']} ═══")
+    logger.info(f"\n[{indice + 1}/{total}] === Procesando: {municipio['nombre']} ===")
 
     if not descendientes:
         logger.info(f"  -> Omitiendo: No tiene localidades hijas.")
         await state_mgr.guardar_estado([], municipio["id"])
         return
 
-    barrios_distritos, pedanias = separar_por_tipo(descendientes)
+    capitales, otros = separar_por_tipo(descendientes)
     fiestas_municipio = []
 
     # Procesar localidades secuencialmente (comparten el mismo sitio web municipal)
-    todas_localidades = barrios_distritos + pedanias
+    todas_localidades = capitales + otros
     for j, loc in enumerate(todas_localidades):
         logger.info(f"  [{j + 1}/{len(todas_localidades)}] {loc['nombre']}")
         try:

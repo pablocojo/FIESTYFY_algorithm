@@ -40,7 +40,7 @@ ROOT_CATEGORY_URL = (
 LLM_MODEL_NAME = "qwen2.5-7b-instruct"
 LLM_TEMPERATURE = 0.4
 # Máximo tokens de snippet que enviamos al LLM para evitar overflow de contexto
-MAX_SNIPPET_TOKENS = 18000
+MAX_SNIPPET_TOKENS = 7800
 
 
 # ============================================================================
@@ -73,13 +73,14 @@ COMPUESTO_MIN_CONFIDENCE = 0.90
 # Umbral mínimo de población para considerar un lugar válido
 POBLACION_MINIMA = 100
 
-# Tamaño mínimo de descripción corta (palabras)
-DESC_CORTA_MIN_WORDS = 12
-DESC_CORTA_MAX_WORDS = 15
+# Parametros para validaciones
+MIN_POBLACION_BARRIO = 20
+MIN_WIKIPEDIA_HTML_LENGTH = 100
 
-# Tamaño recomendado de descripción larga (palabras)
-DESC_LARGA_MIN_WORDS = 50
-DESC_LARGA_MAX_WORDS = 70
+DESC_CORTA_MIN_WORDS = 10
+DESC_CORTA_MAX_WORDS = 15
+DESC_LARGA_MIN_WORDS = 30
+DESC_LARGA_MAX_WORDS = 40
 
 # ============================================================================
 # PATHS DE SALIDA

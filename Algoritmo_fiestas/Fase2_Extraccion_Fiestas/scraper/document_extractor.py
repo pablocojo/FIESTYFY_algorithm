@@ -109,6 +109,17 @@ def is_promising_image(url: str, alt_text: str, locality_names: list[str]) -> bo
 # Extracción de texto
 # ─────────────────────────────────────────────
 
+def _run_ocr(image) -> str:
+    """Intenta ejecutar OCR en español, con fallback al idioma por defecto si falta el paquete."""
+    try:
+        return pytesseract.image_to_string(image, lang="spa")
+    except Exception as e:
+        if "Failed loading language" in str(e) or "TESSDATA_PREFIX" in str(e):
+            logger.debug("Idioma 'spa' no encontrado en Tesseract. Usando idioma por defecto.")
+            return pytesseract.image_to_string(image)
+        raise e
+
+
 def extract_text_from_image(image_bytes: bytes) -> str:
     """Extrae texto de una imagen usando Tesseract OCR, con filtrado por dimensiones."""
     try:
@@ -121,7 +132,7 @@ def extract_text_from_image(image_bytes: bytes) -> str:
             return ""
 
         # Aplicar OCR
-        text = pytesseract.image_to_string(image, lang="spa")
+        text = _run_ocr(image)
         text = text.strip()
 
         # Si el OCR no extrajo texto significativo, descartar
@@ -154,7 +165,7 @@ def extract_text_from_pdf(pdf_bytes: bytes) -> str:
                     try:
                         im = page.to_image(resolution=150)
                         pil_img = im.original
-                        page_text_ocr = pytesseract.image_to_string(pil_img, lang="spa")
+                        page_text_ocr = _run_ocr(pil_img)
                         if page_text_ocr and len(page_text_ocr.strip()) > 20:
                             text += page_text_ocr + "\n"
                             ocr_pages_count += 1

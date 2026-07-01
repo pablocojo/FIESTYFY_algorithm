@@ -23,26 +23,19 @@ El objetivo fundamental del proyecto es elaborar un archivo JSON ordenado y libr
 - La extracción en Fase 2 (para cualquier tipo de municipio) siempre arranca extrayendo primero las **pedanías del padrón INE**.
 
 ## Desafíos Conocidos a Resolver
-1. **Detección de Municipios Compuestos**: Es uno de los mayores retos descubrir si un municipio es de tipo compuesto (`municipio_compuesto`) o no. Para ello:
-   - Se realiza una **detección al vuelo en la Fase 2**: al consultar la tabla del INE, si un municipio no cuenta con un núcleo o localidad con su mismo nombre, se clasifica automáticamente y de forma garantizada como municipio compuesto.
-   - Ya no es estrictamente necesario depender de un script a posteriori, el proceso está integrado en la asignación de pedanías.
-2. **Pedanías extraídas del INE**: Para garantizar el objetivo de no dejar fuera a ninguna pedanía, **las pedanías se extraen siempre y en un 100% desde la tabla del INE**. Wikipedia se utiliza únicamente como un sistema secundario para intentar asignarles una URL y extraer su descripción (validando este cruce mediante un sistema heurístico combinado con un LLM).
+1. **Detección de Jerarquías NGMEP**: El sistema ahora confía íntegramente en las tablas del INE (`MUNICIPIOS.csv` y `ENTIDADES.csv`). Ya no existe el concepto de "municipio_compuesto" ni el tipo "pedania". Todo `municipio` raíz agrupa bajo sí entidades de población (`pueblo`, `ciudad_pequena`, `ciudad_grande`).
+2. **Entidades extraídas del INE**: Para garantizar el objetivo de no dejar fuera a ninguna entidad, **las unidades poblacionales se extraen siempre y en un 100% desde la tabla ENTIDADES.csv del INE**. Wikipedia se utiliza únicamente como un sistema secundario para intentar asignarles una URL y extraer su descripción (validando este cruce mediante un sistema heurístico combinado con un LLM).
 
-## Flujo de Trabajo y Revisión Humana
-- **Intervención Humana (El Usuario)**: El usuario (tú) asume la responsabilidad de **revisar manualmente** los casos problemáticos detectados por el algoritmo.
-- Esto incluye revisar:
-  - Municipios a los que les falte alguna pedanía según la tabla del INE.
-  - El informe generado por `revalidar_compuestos.py` (`municipios_revisados.json` e informe asociado), donde se listan los que el INE marca como compuestos porque no hay una localidad homónima exacta, revisando si se trata de un simple fallo ortográfico o si realmente no tienen núcleo propio.
-
-## Tipos de Lugar y Reglas Clave (Resumen del README)
-- **pueblo / ciudad_pequena / ciudad_grande**: Tienen fiestas propias.
-- **municipio_compuesto**: Solo muestra sus pedanías y **no** tiene fiestas propias.
+## Tipos de Lugar y Reglas Clave
+- **municipio**: Nodo raíz estructural (ID INE 11 dígitos). Contiene metadatos (descripciones, imágenes, urls) pero **NO** tiene el campo `padre_id`. No tiene fiestas propias.
+- **pueblo / ciudad_pequena / ciudad_grande**: Tienen fiestas propias. Cuelgan siempre de un `municipio` (mediante `padre_id`). Una de las entidades dentro de cada municipio siempre es la capital (`es_capital: true`).
+- **distrito / barrio**: Divisiones de nivel inferior obtenidas de Wikipedia. Tienen `es_capital: false`.
 - **Hijos permitidos**:
-  - *Ciudad grande*: Puede tener distritos y/o pedanías.
-  - *Ciudad pequeña / Pueblo*: Pueden tener pedanías (y barrios en el caso de ciudad_pequeña).
-  - *Municipio compuesto*: Tiene pedanías.
+  - *Municipio*: Tiene `pueblo`, `ciudad_pequena`, `ciudad_grande`.
+  - *Ciudad grande*: Puede tener distritos y/o barrios.
+  - *Ciudad pequeña*: Puede tener barrios.
   - *Distrito*: Tiene barrios.
-- **Jerarquía de Barrios con Distritos**: Si un `barrio` pertenece a un `distrito`, debe tener un campo opcional `abuelo_id` que referencie directamente al ID del municipio raíz (ej. si el padre es `alicante_distrito-distrito1`, el `abuelo_id` debe ser `alicante`).
+- **Jerarquía de Barrios con Distritos**: Si un `barrio` pertenece a un `distrito`, debe tener un campo opcional `abuelo_id` que referencie directamente al ID de la entidad capital (ej. si el padre es un distrito de Alicante, el `abuelo_id` debe ser el id de Alicante).
 
 ## Instrucciones Especiales para el Asistente
 - Tratar siempre de inferir de manera conservadora y reportar al usuario los casos anómalos o dudosos (municipios que podrían ser compuestos, desajustes con el INE) para que sean revisados manualmente, ya que es preferible derivar la decisión al usuario antes que generar datos erróneos en el JSON.

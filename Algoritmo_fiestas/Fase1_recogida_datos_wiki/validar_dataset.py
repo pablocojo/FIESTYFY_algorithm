@@ -134,12 +134,12 @@ def main():
     print("=" * 70 + "\n")
     
     # 1) Cargar JSON
-    print(f"📂 Cargando {OUTPUT_JSON}...")
+    print(f"[ ] Cargando {OUTPUT_JSON}...")
     dataset = cargar_json(OUTPUT_JSON)
-    print("✅ JSON cargado correctamente\n")
+    print("[OK] JSON cargado correctamente\n")
     
     # 2) Validación estructural
-    print("🔍 Validando estructura...\n")
+    print("[ ] Validando estructura...\n")
     es_valido, errores = valida_dataset(dataset)
     
     if es_valido:
