@@ -37,7 +37,7 @@ ROOT_CATEGORY_URL = (
 # ============================================================================
 # PARÁMETROS DE LLM
 # ============================================================================
-LLM_MODEL_NAME = "qwen2.5-7b-instruct"
+LLM_MODEL_NAME = "qwen2.5-14b-instruct"
 LLM_TEMPERATURE = 0.4
 # Máximo tokens de snippet que enviamos al LLM para evitar overflow de contexto
 MAX_SNIPPET_TOKENS = 7800
