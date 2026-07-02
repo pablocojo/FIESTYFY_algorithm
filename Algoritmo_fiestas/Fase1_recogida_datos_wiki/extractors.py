@@ -795,52 +795,86 @@ def extract_descripciones(html: str, nombre_lugar: str = "", tipo: str = None, m
         f"Texto fuente:\n{texto_wiki}"
     )
 
-    resp = call_llm(
-        system_prompt,
-        user_prompt,
-        context_info={'stage': 'extract_descripciones', 'lugar': nombre_lugar},
-        model_name=model_name
-    )
-
-    if resp and resp.strip():
-        try:
-            resp_clean = resp.strip()
-            # Heurística para JSON truncado
-            if not resp_clean.endswith("}"):
-                if resp_clean.endswith("\""):
-                    resp_clean += "\n}"
-                elif resp_clean.endswith("."):
-                    resp_clean += "\"\n}"
-                else:
-                    resp_clean += ".\"\n}"
-                    
-            # Limpiar comillas markdown
-            resp_clean = re.sub(r'^```json\s*', '', resp_clean)
-            resp_clean = re.sub(r'\s*```$', '', resp_clean)
-            
-            data = json.loads(resp_clean)
-            desc_corta = str(data.get('descripcion_corta') or '').strip()
-            desc_larga = str(data.get('descripcion') or '').strip()
-            
-            if desc_corta and desc_larga:
-                # Limpieza de espacios y capitalización
-                desc_corta = re.sub(r'\s+', ' ', desc_corta)
-                desc_larga = re.sub(r'\s+', ' ', desc_larga)
-                desc_corta = desc_corta[0].upper() + desc_corta[1:] if desc_corta else desc_corta
-                desc_larga = desc_larga[0].upper() + desc_larga[1:] if desc_larga else desc_larga
+    max_retries = 3
+    prohibidas = ["pueblo", "municipio", "ciudad", "pedanía", "distrito", "barrio"]
+    
+    for intento in range(max_retries):
+        resp = call_llm(
+            system_prompt,
+            user_prompt,
+            context_info={'stage': 'extract_descripciones', 'lugar': nombre_lugar},
+            model_name=model_name
+        )
+    
+        if resp and resp.strip():
+            try:
+                resp_clean = resp.strip()
+                # Heurística para JSON truncado
+                if not resp_clean.endswith("}"):
+                    if resp_clean.endswith("\""):
+                        resp_clean += "\n}"
+                    elif resp_clean.endswith("."):
+                        resp_clean += "\"\n}"
+                    else:
+                        resp_clean += ".\"\n}"
+                        
+                # Limpiar comillas markdown
+                resp_clean = re.sub(r'^```json\s*', '', resp_clean)
+                resp_clean = re.sub(r'\s*```$', '', resp_clean)
                 
-                return {
-                    'descripcion_corta': desc_corta,
-                    'descripcion': desc_larga
-                }
-        except (json.JSONDecodeError, TypeError):
-            log_error(
-                "Respuesta LLM invalida generando descripciones",
-                context={'stage': 'extract_descripciones', 'lugar': nombre_lugar, 'response': resp[:500]}
-            )
-
+                data = json.loads(resp_clean)
+                desc_corta = str(data.get('descripcion_corta') or '').strip()
+                desc_larga = str(data.get('descripcion') or '').strip()
+                
+                if desc_corta and desc_larga:
+                    # Limpieza de espacios y capitalización
+                    desc_corta = re.sub(r'\s+', ' ', desc_corta)
+                    desc_larga = re.sub(r'\s+', ' ', desc_larga)
+                    desc_corta = desc_corta[0].upper() + desc_corta[1:] if desc_corta else desc_corta
+                    desc_larga = desc_larga[0].upper() + desc_larga[1:] if desc_larga else desc_larga
+                    
+                    # Validacion de longitudes y palabras
+                    len_c = len(desc_corta.split())
+                    len_l = len(desc_larga.split())
+                    
+                    fallo_validacion = None
+                    if len_c < DESC_CORTA_MIN_WORDS or len_c > DESC_CORTA_MAX_WORDS:
+                        fallo_validacion = f"La descripción corta tiene {len_c} palabras, debe tener entre {DESC_CORTA_MIN_WORDS} y {DESC_CORTA_MAX_WORDS}."
+                    elif len_l < DESC_LARGA_MIN_WORDS or len_l > DESC_LARGA_MAX_WORDS:
+                        fallo_validacion = f"La descripción larga tiene {len_l} palabras, debe tener entre {DESC_LARGA_MIN_WORDS} y {DESC_LARGA_MAX_WORDS}."
+                    
+                    palabra_prohibida_detectada = next((p for p in prohibidas if p in desc_corta.lower() or p in desc_larga.lower()), None)
+                    if palabra_prohibida_detectada:
+                        fallo_validacion = f"Has usado la palabra prohibida '{palabra_prohibida_detectada}'. No uses tipos de entidad."
+                    
+                    # Si falla, y tenemos reintentos, modificamos prompt y reintentamos
+                    if fallo_validacion and intento < max_retries - 1:
+                        user_prompt = user_prompt + f"\n\nATENCIÓN, INTENTO ANTERIOR FALLIDO: {fallo_validacion} Corrige tu respuesta y cuenta bien las palabras."
+                        continue
+                        
+                    # Filtrado programatico seguro al final
+                    for p in prohibidas:
+                        # Reemplazo case-insensitive con delimitadores de palabra
+                        desc_corta = re.sub(rf'\b{p}\b', 'lugar', desc_corta, flags=re.IGNORECASE)
+                        desc_larga = re.sub(rf'\b{p}\b', 'lugar', desc_larga, flags=re.IGNORECASE)
+                        
+                    # Capitalizar por si 'lugar' quedó a principio de frase
+                    desc_corta = desc_corta[0].upper() + desc_corta[1:]
+                    desc_larga = desc_larga[0].upper() + desc_larga[1:]
+                    
+                    return {
+                        'descripcion_corta': desc_corta,
+                        'descripcion': desc_larga
+                    }
+            except (json.JSONDecodeError, TypeError):
+                if intento == max_retries - 1:
+                    log_error(
+                        "Respuesta LLM invalida generando descripciones",
+                        context={'stage': 'extract_descripciones', 'lugar': nombre_lugar, 'response': resp[:500]}
+                    )
+    
     log_error(
-        "LLM sin respuesta valida; usando fallback local de descripciones",
+        "LLM sin respuesta valida tras reintentos; usando fallback local de descripciones",
         context={'stage': 'extract_descripciones', 'lugar': nombre_lugar}
     )
     return _fallback_descripciones_desde_wikipedia(html)

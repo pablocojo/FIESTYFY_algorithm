@@ -86,15 +86,15 @@ def main():
     resultados = cargar_json_lugares(OUTPUT_JSON)
     ultimos_municipios = [l for l in resultados if l.get("tipo") == "municipio"]
     
-    start_idx = 1
+    # Crear un set con los IDs de los municipios ya procesados en lugares_espana.json
+    ids_procesados = set()
     if ultimos_municipios:
-        ultimo = ultimos_municipios[-1]
-        ultimo_id = ultimo.get("original_id")
-        ultimo_nombre = ultimo.get("nombre")
-        for i, m in enumerate(municipios_wiki):
-            if (ultimo_id and m.get("id") == ultimo_id) or (not ultimo_id and m.get("nombre") == ultimo_nombre):
-                start_idx = i + 2  # i es 0-indexed, start_idx es 1-indexed, y queremos el siguiente (+1)
-                break
+        for m in ultimos_municipios:
+            m_id = m.get("original_id") or m.get("id")
+            if m_id:
+                ids_procesados.add(m_id)
+                
+    start_idx = 1 # Para mantener la compatibilidad con el print del idx
 
 
     datos_ine = cargar_datos_ine()
@@ -104,8 +104,14 @@ def main():
     import parte2_distritos_pedanias.distritos_pedanias as dp_module
     dp_module.DATOS_INE_GLOBAL = datos_ine
 
-    for idx, municipio in enumerate(municipios_wiki[start_idx - 1 :], start=start_idx):
+    for idx, municipio in enumerate(municipios_wiki, start=1):
         nombre_wiki = municipio.get("nombre", "?")
+        
+        # Saltar si ya está procesado
+        m_id = municipio.get("id")
+        if m_id in ids_procesados or (m_id and any(m_id == k for k in ids_procesados)):
+            continue
+            
         print(f"\n[{idx}/{len(municipios_wiki)}] Procesando: {nombre_wiki}")
         
         nombre_buscar = municipio.get("nombre_oficial", nombre_wiki)
