@@ -1,7 +1,7 @@
 {
   "version": 2,
   "anno": 2026,
-  "ultimo_municipio_procesado": "01011000000",
+  "ultimo_municipio_procesado": "01013000000",
   "municipios_completados": [
     "01002000000",
     "01001000000",
@@ -11,7 +11,8 @@
     "01006000000",
     "01037000000",
     "01009000000",
-    "01011000000"
+    "01011000000",
+    "01013000000"
   ],
   "fiestas": [
     {
@@ -2488,6 +2489,461 @@
           ]
         }
       ]
+    },
+    {
+      "id": "fiestas-ozaeta-2026-1",
+      "lugar_id": "01013001401",
+      "nombre": "Fiestas de Ozaeta 2026",
+      "fecha_inicio": "2026-06-19",
+      "fecha_fin": "2026-06-24",
+      "tamano": "grande",
+      "descripcion": "Celebración de las fiestas patronales en honor a San Juan Bautista con diversos actos festivos.",
+      "confianza": "alta",
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-06-19",
+          "eventos": [
+            {
+              "hora": "20:45",
+              "descripcion": "Txupinazo e inicio de fiestas"
+            },
+            {
+              "hora": "22:00",
+              "descripcion": "Cena popular (25 €)"
+            },
+            {
+              "hora": "00:15",
+              "descripcion": "Cohetes y traca de comienzo de fiestas"
+            },
+            {
+              "hora": "00:30",
+              "descripcion": "Fiesta temática ‘Olimpiadas’"
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-06-20",
+          "eventos": [
+            {
+              "hora": "21:00",
+              "descripcion": "Romería con el grupo JOXE MENDIZABAL"
+            }
+          ]
+        },
+        {
+          "dia": 3,
+          "fecha": "2026-06-21",
+          "eventos": [
+            {
+              "hora": "19:00",
+              "descripcion": "Txupinazo e inicio de fiestas"
+            },
+            {
+              "hora": "22:00",
+              "descripcion": "Cena popular (25 €)"
+            },
+            {
+              "hora": "00:30",
+              "descripcion": "Fiesta temática ‘Olimpiadas’"
+            }
+          ]
+        },
+        {
+          "dia": 4,
+          "fecha": "2026-06-22",
+          "eventos": [
+            {
+              "hora": "19:00",
+              "descripcion": "Txupinazo e inicio de fiestas"
+            },
+            {
+              "hora": "22:00",
+              "descripcion": "Cena popular (25 €)"
+            },
+            {
+              "hora": "00:30",
+              "descripcion": "Fiesta temática ‘Olimpiadas’"
+            }
+          ]
+        },
+        {
+          "dia": 5,
+          "fecha": "2026-06-23",
+          "eventos": [
+            {
+              "hora": "19:00",
+              "descripcion": "Txupinazo e inicio de fiestas"
+            },
+            {
+              "hora": "22:00",
+              "descripcion": "Cena popular (25 €)"
+            },
+            {
+              "hora": "00:30",
+              "descripcion": "Fiesta temática ‘Olimpiadas’"
+            }
+          ]
+        },
+        {
+          "dia": 6,
+          "fecha": "2026-06-24",
+          "eventos": [
+            {
+              "hora": "19:00",
+              "descripcion": "Txupinazo e inicio de fiestas"
+            },
+            {
+              "hora": "22:00",
+              "descripcion": "Cena popular (25 €)"
+            },
+            {
+              "hora": "00:30",
+              "descripcion": "Fiesta temática ‘Olimpiadas’"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fiesta-patronal-hermua",
+      "lugar_id": "01013000901",
+      "nombre": "Fiestas Patronales de Hermua",
+      "fecha_inicio": "2026-07-01",
+      "fecha_fin": "2026-07-01",
+      "tamano": "grande",
+      "descripcion": "Celebración patronal tradicional en Hermua, con música tradicional (txistu y trikitixa), dantzaris que bailan el aurresku, verbenas nocturnas con orquesta, degustaciones de pintxos y talo con chistorra.",
+      "confianza": "alta",
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-07-01",
+          "eventos": [
+            {
+              "hora": "09:00",
+              "descripcion": "Misa solemne en la iglesia parroquial de San Pedro"
+            },
+            {
+              "hora": "10:30",
+              "descripcion": "Procesión en torno a la iglesia parroquial"
+            },
+            {
+              "hora": "23:00",
+              "descripcion": "Concierto nocturno con orquesta y DJ en la plaza principal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fiesta-san-prudencio-2026",
+      "lugar_id": "01010001401",
+      "nombre": "Fiestas Patronales de San Prudencio",
+      "fecha_inicio": "2026-04-28",
+      "fecha_fin": "2026-04-29",
+      "tamano": "pequeña",
+      "descripcion": "Fiestas en honor a San Prudencio celebradas en Menagarai.",
+      "confianza": "alta",
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-04-28",
+          "eventos": [
+            {
+              "hora": "18:00",
+              "descripcion": "Zinema feminista eta kulturartekoa"
+            },
+            {
+              "hora": "00:00",
+              "descripcion": "Amantalen tailerra"
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-04-29",
+          "eventos": [
+            {
+              "hora": "18:30",
+              "descripcion": "Amantalen taile"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fiesta-patronal-larrea-2026",
+      "lugar_id": "01013001001",
+      "nombre": "Fiestas Patronales de Larrea",
+      "fecha_inicio": "2026-11-10",
+      "fecha_fin": "2026-11-10",
+      "tamano": "grande",
+      "descripcion": "Celebración patronal con romería, procesión religiosa, música tradicional y verbena nocturna.",
+      "confianza": "alta",
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-11-10",
+          "eventos": [
+            {
+              "hora": "09:00",
+              "descripcion": "Romería hacia la ermita"
+            },
+            {
+              "hora": "11:00",
+              "descripcion": "Procesión religiosa en honor al patrón"
+            },
+            {
+              "hora": "12:00",
+              "descripcion": "Comidas populares y reparto de talos o bocadillos"
+            },
+            {
+              "hora": "14:00",
+              "descripcion": "Concurso de repostería o pintxos"
+            },
+            {
+              "hora": "20:00",
+              "descripcion": "Verbena nocturna con orquesta y DJ"
+            },
+            {
+              "hora": "23:00",
+              "descripcion": "Fuegos artificiales de cierre"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "santiago-apostol-menoio",
+      "lugar_id": "01010001501",
+      "nombre": "Fiesta de Santiago Apóstol",
+      "fecha_inicio": "2026-07-25",
+      "fecha_fin": "2026-07-31",
+      "tamano": "grande",
+      "descripcion": "Celebración del patrón local, con actividades y eventos variados.",
+      "confianza": "alta",
+      "programa": [
+        {
+          "dia": 25,
+          "fecha": "2026-07-25",
+          "eventos": [
+            {
+              "hora": "18:00",
+              "descripcion": "Misa de inicio"
+            },
+            {
+              "hora": "20:30",
+              "descripcion": "Concierto nocturno"
+            }
+          ]
+        },
+        {
+          "dia": 26,
+          "fecha": "2026-07-26",
+          "eventos": [
+            {
+              "hora": "19:00",
+              "descripcion": "Verbenas y bailes populares"
+            }
+          ]
+        },
+        {
+          "dia": 31,
+          "fecha": "2026-07-31",
+          "eventos": [
+            {
+              "hora": "21:00",
+              "descripcion": "Fiesta final con pirotecnia"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "asuncion-virgen-menoio",
+      "lugar_id": "01010001501",
+      "nombre": "Asunción de la Virgen",
+      "fecha_inicio": "2026-08-15",
+      "fecha_fin": "2026-08-17",
+      "tamano": "grande",
+      "descripcion": "Celebración religiosa importante con procesiones y misas.",
+      "confianza": "alta",
+      "programa": [
+        {
+          "dia": 15,
+          "fecha": "2026-08-15",
+          "eventos": [
+            {
+              "hora": "10:00",
+              "descripcion": "Procesión de la Virgen"
+            },
+            {
+              "hora": "13:00",
+              "descripcion": "Misa en la iglesia parroquial"
+            }
+          ]
+        },
+        {
+          "dia": 16,
+          "fecha": "2026-08-16",
+          "eventos": [
+            {
+              "hora": "19:30",
+              "descripcion": "Concierto de música clásica"
+            }
+          ]
+        },
+        {
+          "dia": 17,
+          "fecha": "2026-08-17",
+          "eventos": [
+            {
+              "hora": "15:00",
+              "descripcion": "Fiesta final con verbena y bailes populares"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fiesta-nacional-menoio",
+      "lugar_id": "01010001501",
+      "nombre": "Fiesta Nacional de España",
+      "fecha_inicio": "2026-10-12",
+      "fecha_fin": "2026-10-12",
+      "tamano": "pequeña",
+      "descripcion": "Celebración del día nacional con actos y actividades.",
+      "confianza": "alta",
+      "programa": [
+        {
+          "dia": 12,
+          "fecha": "2026-10-12",
+          "eventos": [
+            {
+              "hora": "11:00",
+              "descripcion": "Desfile militar"
+            },
+            {
+              "hora": "15:30",
+              "descripcion": "Concierto popular en la plaza principal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fiestas-maturana-2026",
+      "lugar_id": "01013001201",
+      "nombre": "Fiesta Patronal de Maturana",
+      "fecha_inicio": "2026-11-11",
+      "fecha_fin": "2026-11-11",
+      "tamano": "grande",
+      "descripcion": "Celebración patronal con romería, dianas y pasacalles con txistularis, bailes tradicionales (aurresku y dantzaris) y verbenas con orquesta.",
+      "confianza": "alta",
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-11-11",
+          "eventos": [
+            {
+              "hora": "19:30",
+              "descripcion": "Txupinazo e inicio de fiestas"
+            },
+            {
+              "hora": "22:00",
+              "descripcion": "Cena popular (25 €)"
+            },
+            {
+              "hora": "00:15",
+              "descripcion": "Cohetes y traca de comienzo de fiestas"
+            },
+            {
+              "hora": "00:30",
+              "descripcion": "Fiesta temática 'Olimpiadas'"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fiestas-san-juan-murga",
+      "lugar_id": "01010001601",
+      "nombre": "Fiestas de San Juan",
+      "fecha_inicio": "2026-06-23",
+      "fecha_fin": "2026-06-24",
+      "tamano": "pequeña",
+      "descripcion": "Actividades infantiles, música, deporte y una gran hoguera. La localidad ayalesa vivirá dos jornadas festivas los días 23 y 24 de junio con propuestas para todas las edades.",
+      "confianza": "alta",
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-06-23",
+          "eventos": [
+            {
+              "hora": "17:00",
+              "descripcion": "Actividades infantiles"
+            },
+            {
+              "hora": "18:00",
+              "descripcion": "Taller de circo"
+            },
+            {
+              "hora": "19:30",
+              "descripcion": "Morcillada popular"
+            },
+            {
+              "hora": "20:00",
+              "descripcion": "Concierto nocturno a cargo de DJ Alboka"
+            },
+            {
+              "hora": "21:00",
+              "descripcion": "Encendido de la hoguera de San Juan"
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-06-24",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "Misa y actuación de la coral Zankueta"
+            },
+            {
+              "hora": "13:00",
+              "descripcion": "Rendición homenaje a las personas mayores del pueblo"
+            },
+            {
+              "hora": "14:00",
+              "descripcion": "Celebración de un lunch amenizado por el trikitilari Rubén Isasi"
+            }
+          ]
+        }
+      ]
     }
+  ],
+  "localidades_completadas": [
+    "01013001401",
+    "01010002001",
+    "01013000101",
+    "01013000201",
+    "01010000701",
+    "01013000301",
+    "01013000501",
+    "01010001001",
+    "01013000701",
+    "01010001101",
+    "01013000801",
+    "01013000901",
+    "01010001401",
+    "01013001001",
+    "01013001101",
+    "01010001501",
+    "01013001201",
+    "01010001601",
+    "01013001301",
+    "01010002101",
+    "01010002201"
   ]
 }

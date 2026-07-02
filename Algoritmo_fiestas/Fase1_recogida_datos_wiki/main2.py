@@ -108,7 +108,8 @@ def main():
         nombre_wiki = municipio.get("nombre", "?")
         print(f"\n[{idx}/{len(municipios_wiki)}] Procesando: {nombre_wiki}")
         
-        info_ine = buscar_municipio_ine(nombre_wiki, municipio.get("provincia", ""), datos_ine)
+        nombre_buscar = municipio.get("nombre_oficial", nombre_wiki)
+        info_ine = buscar_municipio_ine(nombre_buscar, municipio.get("provincia", ""), datos_ine)
         if not info_ine:
             # Fallback con LLM si no se encuentra
             wiki_url = municipio.get("wikipedia_url")
@@ -116,7 +117,7 @@ def main():
                 print(f"   -> No encontrado por nombre exacto. Intentando LLM fallback con Wikipedia...")
                 html_muni = fetch_url(wiki_url)
                 if html_muni:
-                    info_ine = buscar_municipio_ine(nombre_wiki, municipio.get("provincia", ""), datos_ine, html_muni)
+                    info_ine = buscar_municipio_ine(nombre_buscar, municipio.get("provincia", ""), datos_ine, html_muni)
 
         if not info_ine:
             print(f"   -> NO ENCONTRADO EN INE (ni con LLM). Saltando.")

@@ -778,8 +778,10 @@ def extract_descripciones(html: str, nombre_lugar: str = "", tipo: str = None, m
         "3. PROHIBIDO mencionar la población, el censo o la cantidad de habitantes.\n"
         "4. PROHIBIDO mencionar la ubicación exacta, el municipio al que pertenece, la provincia, la comunidad autónoma o que es de España/español. (Sí puedes hablar de la situación geográfica general, como ríos o montañas, sin nombres de las regiones).\n"
         "5. Enfócate en turismo: qué ver, entorno natural, cultura o historia para conocer rápidamente el lugar.\n"
-        "6. Idioma: Español castellano correcto (usa tildes y eñes correctamente).\n"
+        "6. TODO el texto generado DEBE estar estrictamente en idioma ESPAÑOL CASTELLANO. Traduce palabras de otros idiomas (inglés, catalán, euskera, gallego) al castellano. Las únicas excepciones son los topónimos oficiales.\n"
         "7. NO incluyas ninguna coma al final del último elemento del JSON.\n"
+        "8. PROHIBIDO mencionar el tipo de entidad administrativa que es el lugar (por ejemplo: municipio, ciudad, pueblo, pedanía, distrito, barrio, etc.). Sólo describe sus características base.\n"
+        "9. EXTREMADAMENTE IMPORTANTE: Cuenta las palabras antes de generar el JSON. La descripción corta DEBE tener estrictamente entre 10 y 15 palabras. La descripción larga DEBE tener estrictamente entre 40 y 50 palabras. Ni una más, ni una menos.\n"
     )
     user_prompt = (
         f"Lugar: {nombre_lugar or 'desconocido'}\n"
@@ -789,6 +791,7 @@ def extract_descripciones(html: str, nombre_lugar: str = "", tipo: str = None, m
         f"  \"descripcion_corta\": \"Una sola frase muy turística de entre {DESC_CORTA_MIN_WORDS} y {DESC_CORTA_MAX_WORDS} palabras para conocer rápidamente el lugar.\",\n"
         f"  \"descripcion\": \"Texto fluido y turístico de entre {DESC_LARGA_MIN_WORDS} y {DESC_LARGA_MAX_WORDS} palabras. SIN MENCIONAR HABITANTES, PROVINCIAS NI COMUNIDADES. Habla del entorno natural, cultura o atractivos.\"\n"
         "}\n\n"
+        f"ATENCIÓN: Céntrate exclusivamente en describir '{nombre_lugar}'. Si el texto habla de otro municipio o concejo, ignóralo o úsalo solo para dar contexto sin cambiar el protagonista.\n\n"
         f"Texto fuente:\n{texto_wiki}"
     )
 
@@ -818,7 +821,14 @@ def extract_descripciones(html: str, nombre_lugar: str = "", tipo: str = None, m
             data = json.loads(resp_clean)
             desc_corta = str(data.get('descripcion_corta') or '').strip()
             desc_larga = str(data.get('descripcion') or '').strip()
+            
             if desc_corta and desc_larga:
+                # Limpieza de espacios y capitalización
+                desc_corta = re.sub(r'\s+', ' ', desc_corta)
+                desc_larga = re.sub(r'\s+', ' ', desc_larga)
+                desc_corta = desc_corta[0].upper() + desc_corta[1:] if desc_corta else desc_corta
+                desc_larga = desc_larga[0].upper() + desc_larga[1:] if desc_larga else desc_larga
+                
                 return {
                     'descripcion_corta': desc_corta,
                     'descripcion': desc_larga
@@ -1022,7 +1032,22 @@ def construir_lugar(
     # Inferir tipo si no se pasó
     if not tipo:
         tipo = clasificar_por_poblacion(info['poblacion']) or 'pueblo'
-    descripciones = extract_descripciones(html, nombre_lugar=nombre, tipo=tipo)
+        
+    tiene_wiki_propia = True
+    if padre_info:
+        padre_url = padre_info.get('wikipedia_url')
+        if not wikipedia_url or wikipedia_url == padre_url:
+            tiene_wiki_propia = False
+            
+    if not tiene_wiki_propia:
+        padre_nombre = padre_info.get('nombre', 'su municipio')
+        descripciones = {
+            'descripcion_corta': f"Entidad de población que forma parte integrante del municipio de {padre_nombre}.",
+            'descripcion': f"Este lugar forma parte integral del municipio de {padre_nombre}. Al carecer de registros históricos independientes, comparte plenamente el entorno natural, la cultura y la administración del municipio principal."
+        }
+    else:
+        descripciones = extract_descripciones(html, nombre_lugar=nombre, tipo=tipo)
+        
     imagenes = extract_imagenes(html, lugar_id, wikipedia_url)
     sitio_web = extract_sitio_web(html)
     
