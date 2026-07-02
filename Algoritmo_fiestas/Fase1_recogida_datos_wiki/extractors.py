@@ -796,12 +796,15 @@ def extract_descripciones(html: str, nombre_lugar: str = "", tipo: str = None, m
     )
 
     max_retries = 3
-    prohibidas = ["pueblo", "municipio", "ciudad", "pedanía", "distrito", "barrio"]
+    
+    mejor_respuesta = None
+    menor_distancia = float('inf')
+    prompt_actual = user_prompt
     
     for intento in range(max_retries):
         resp = call_llm(
             system_prompt,
-            user_prompt,
+            prompt_actual,
             context_info={'stage': 'extract_descripciones', 'lugar': nombre_lugar},
             model_name=model_name
         )
@@ -843,36 +846,46 @@ def extract_descripciones(html: str, nombre_lugar: str = "", tipo: str = None, m
                     elif len_l < DESC_LARGA_MIN_WORDS or len_l > DESC_LARGA_MAX_WORDS:
                         fallo_validacion = f"La descripción larga tiene {len_l} palabras, debe tener entre {DESC_LARGA_MIN_WORDS} y {DESC_LARGA_MAX_WORDS}."
                     
-                    palabra_prohibida_detectada = next((p for p in prohibidas if p in desc_corta.lower() or p in desc_larga.lower()), None)
-                    if palabra_prohibida_detectada:
-                        fallo_validacion = f"Has usado la palabra prohibida '{palabra_prohibida_detectada}'. No uses tipos de entidad."
+                    # Guardamos la mejor respuesta si falla, calculando distancia al centro de la longitud larga (45)
+                    distancia = abs(len_l - 45)
+                        
+                    if distancia < menor_distancia:
+                        menor_distancia = distancia
+                        mejor_respuesta = (desc_corta, desc_larga)
                     
                     # Si falla, y tenemos reintentos, modificamos prompt y reintentamos
-                    if fallo_validacion and intento < max_retries - 1:
-                        user_prompt = user_prompt + f"\n\nATENCIÓN, INTENTO ANTERIOR FALLIDO: {fallo_validacion} Corrige tu respuesta y cuenta bien las palabras."
-                        continue
+                    if fallo_validacion:
+                        print(f"      [REINTENTO {intento+1}/{max_retries}] {fallo_validacion}")
+                        if intento < max_retries - 1:
+                            prompt_actual = user_prompt + f"\n\nATENCIÓN, INTENTO ANTERIOR FALLIDO: {fallo_validacion} Corrige tu respuesta y cuenta bien las palabras."
+                            continue
+                        else:
+                            # Hemos agotado intentos y sigue fallando. Salimos del bucle.
+                            print("      [AVISO] Se agotaron los intentos para LLM. Se usará la mejor respuesta generada tal cual.")
+                            break
                         
-                    # Filtrado programatico seguro al final
-                    for p in prohibidas:
-                        # Reemplazo case-insensitive con delimitadores de palabra
-                        desc_corta = re.sub(rf'\b{p}\b', 'lugar', desc_corta, flags=re.IGNORECASE)
-                        desc_larga = re.sub(rf'\b{p}\b', 'lugar', desc_larga, flags=re.IGNORECASE)
-                        
-                    # Capitalizar por si 'lugar' quedó a principio de frase
-                    desc_corta = desc_corta[0].upper() + desc_corta[1:]
-                    desc_larga = desc_larga[0].upper() + desc_larga[1:]
-                    
-                    return {
-                        'descripcion_corta': desc_corta,
-                        'descripcion': desc_larga
-                    }
+                    # Si todo es perfecto (no hay fallo_validacion), salimos del bucle con el éxito
+                    mejor_respuesta = (desc_corta, desc_larga)
+                    break
             except (json.JSONDecodeError, TypeError):
-                if intento == max_retries - 1:
+                if intento < max_retries - 1:
+                    prompt_actual = user_prompt + "\n\nATENCIÓN, INTENTO ANTERIOR FALLIDO: No devolviste un JSON válido."
+                else:
                     log_error(
-                        "Respuesta LLM invalida generando descripciones",
+                        "Respuesta LLM invalida generando descripciones tras reintentos",
                         context={'stage': 'extract_descripciones', 'lugar': nombre_lugar, 'response': resp[:500]}
                     )
     
+    # Si tenemos alguna respuesta almacenada (la perfecta o la que mas se acerco)
+    if mejor_respuesta:
+        dc, dl = mejor_respuesta
+        dc = dc[0].upper() + dc[1:] if dc else dc
+        dl = dl[0].upper() + dl[1:] if dl else dl
+        
+        return {
+            'descripcion_corta': dc,
+            'descripcion': dl
+        }
     log_error(
         "LLM sin respuesta valida tras reintentos; usando fallback local de descripciones",
         context={'stage': 'extract_descripciones', 'lugar': nombre_lugar}
