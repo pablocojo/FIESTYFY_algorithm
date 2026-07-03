@@ -114,12 +114,12 @@ def is_promising_image(url: str, alt_text: str, locality_names: list[str]) -> bo
 # ─────────────────────────────────────────────
 
 def _run_ocr(image) -> str:
-    """Intenta ejecutar OCR en español, con fallback al idioma por defecto si falta el paquete."""
+    """Intenta ejecutar OCR multilingüe, con fallback al idioma por defecto si falta el paquete."""
     try:
-        return pytesseract.image_to_string(image, lang="spa")
+        return pytesseract.image_to_string(image, lang="spa+eus+cat+glg")
     except Exception as e:
         if "Failed loading language" in str(e) or "TESSDATA_PREFIX" in str(e):
-            logger.debug("Idioma 'spa' no encontrado en Tesseract. Usando idioma por defecto.")
+            logger.debug("Idiomas solicitados no encontrados en Tesseract. Usando idioma por defecto.")
             return pytesseract.image_to_string(image)
         raise e
 

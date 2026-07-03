@@ -1,0 +1,781 @@
+{
+    "version": 2,
+    "anno": 2026,
+    "ultimo_municipio_procesado": "01006000000",
+    "municipios_completados": [
+        "01049000000",
+        "01003000000",
+        "01002000000",
+        "01001000000",
+        "01004000000",
+        "01006000000"
+    ],
+    "localidades_completadas": [
+        "01049000201",
+        "01003000601",
+        "01002000201",
+        "01002000101",
+        "01002000301",
+        "01002000501",
+        "01002000601",
+        "01001000101",
+        "01002000701",
+        "01002000801",
+        "01002001101",
+        "01003000701",
+        "01002001201",
+        "01001000201",
+        "01004000101",
+        "01006000101",
+        "01004000501",
+        "01006000201",
+        "01006000301",
+        "01037001001",
+        "01037000201",
+        "01009000401",
+        "01037000401",
+        "01037000501",
+        "01037000701",
+        "01009000101",
+        "01037001201",
+        "01037001301",
+        "01037001401",
+        "01009000201",
+        "01037010101",
+        "01037010301"
+    ],
+    "fiestas": [
+        {
+            "id": "ibarra-sanantonpatronales",
+            "lugar_id": "01003000601",
+            "nombre": "Fiestas patronales de San Antonio",
+            "fecha_inicio": "2026-05-01",
+            "fecha_fin": "2026-07-31",
+            "tamano": "grande",
+            "descripcion": "Cinco semanas llenas de actividades culturales.",
+            "confianza": "alta",
+            "programa": [
+                {
+                    "dia": 1,
+                    "fecha": "2026-05-01",
+                    "eventos": []
+                },
+                {
+                    "dia": 30,
+                    "fecha": "2026-07-31",
+                    "eventos": []
+                }
+            ]
+        },
+        {
+            "id": "fiestas-patronales-2026",
+            "lugar_id": "01002000201",
+            "nombre": "Fiestas Patronales de Nuestra Señora de la Asunción y San Roque 2026",
+            "fecha_inicio": "2026-08-12",
+            "fecha_fin": "2026-08-17",
+            "tamano": "grande",
+            "descripcion": "Celebración de las Fiestas Patronales en torno a la Festividad de Nuestra Señora de la Asunción, el día 15 de agosto, y el día de San Roque, día 16 de agosto.",
+            "confianza": "alta",
+            "programa": [
+                {
+                    "dia": 1,
+                    "fecha": "2026-08-12",
+                    "eventos": []
+                },
+                {
+                    "dia": 2,
+                    "fecha": "2026-08-13",
+                    "eventos": []
+                },
+                {
+                    "dia": 3,
+                    "fecha": "2026-08-14",
+                    "eventos": []
+                },
+                {
+                    "dia": 4,
+                    "fecha": "2026-08-15",
+                    "eventos": [
+                        {
+                            "hora": "15:00",
+                            "descripcion": "Procesión"
+                        }
+                    ]
+                },
+                {
+                    "dia": 5,
+                    "fecha": "2026-08-16",
+                    "eventos": []
+                },
+                {
+                    "dia": 6,
+                    "fecha": "2026-08-17",
+                    "eventos": [
+                        {
+                            "hora": "20:00",
+                            "descripcion": "Suelta de vaquillas"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "fiestas-de-delika-2026",
+            "lugar_id": "01002000201",
+            "nombre": "Fiestas de Delika 2026",
+            "fecha_inicio": "2026-06-26",
+            "fecha_fin": "2026-07-28",
+            "tamano": "pequeña",
+            "descripcion": "Celebración con diversos actos como chupinazo, concursos de tortilla, fiesta temática y más.",
+            "confianza": "alta",
+            "programa": [
+                {
+                    "dia": 1,
+                    "fecha": "2026-06-26",
+                    "eventos": [
+                        {
+                            "hora": "21:00",
+                            "descripcion": "Chupinazo"
+                        },
+                        {
+                            "hora": "21:30",
+                            "descripcion": "Concurso de tortilla de patata"
+                        },
+                        {
+                            "hora": "22:00 - 01:00",
+                            "descripcion": "Fiesta temática Cowboy"
+                        }
+                    ]
+                },
+                {
+                    "dia": 2,
+                    "fecha": "2026-06-27",
+                    "eventos": [
+                        {
+                            "hora": "10:00",
+                            "descripcion": "Marcha de montaña"
+                        },
+                        {
+                            "hora": "14:00",
+                            "descripcion": "Comida popular"
+                        },
+                        {
+                            "hora": "16:30",
+                            "descripcion": "Desafío arrastaria"
+                        },
+                        {
+                            "hora": "20:00",
+                            "descripcion": "Suelta de vaquillas (mayores de 16 años)"
+                        }
+                    ]
+                },
+                {
+                    "dia": 3,
+                    "fecha": "2026-07-28",
+                    "eventos": [
+                        {
+                            "hora": "20:00",
+                            "descripcion": "Verbena con Zutik y DJ Varro"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "carnavales-de-amurrio-2026",
+            "lugar_id": "01002000201",
+            "nombre": "Carnavales 2026",
+            "fecha_inicio": "2026-02-15",
+            "fecha_fin": "2026-02-15",
+            "tamano": "pequeña",
+            "descripcion": "Amurrio celebrará sus Carnavales con un amplio programa de actividades.",
+            "confianza": "alta",
+            "programa": [
+                {
+                    "dia": 1,
+                    "fecha": "2026-02-15",
+                    "eventos": []
+                }
+            ]
+        },
+        {
+            "id": "san-juan-de-amurrio-2026",
+            "lugar_id": "01002000201",
+            "nombre": "Fiestas de San Juan 2026",
+            "fecha_inicio": "2026-06-23",
+            "fecha_fin": "2026-06-23",
+            "tamano": "pequeña",
+            "descripcion": "Celebración con música, juegos y espectáculos.",
+            "confianza": "alta",
+            "programa": [
+                {
+                    "dia": 1,
+                    "fecha": "2026-06-23",
+                    "eventos": []
+                }
+            ]
+        },
+        {
+            "id": "fiestas-patronales-aloria",
+            "lugar_id": "01002000101",
+            "nombre": "Fiestas Patronales de Aloria",
+            "fecha_inicio": "2026-08-30",
+            "fecha_fin": "2026-08-31",
+            "tamano": "pequeña",
+            "descripcion": "Celebración en honor a San Juan Degollado, con un amplio y variado programa de actividades para todas las edades.",
+            "confianza": "alta",
+            "programa": [
+                {
+                    "dia": 1,
+                    "fecha": "2026-08-30",
+                    "eventos": [
+                        {
+                            "hora": "10:00",
+                            "descripcion": "Musica en diferentes bares"
+                        },
+                        {
+                            "hora": "18:30",
+                            "descripcion": "Verbenas y pintxos con vinos de Rioja Alavesa"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "fiesta-delika-2026",
+            "lugar_id": "01002000601",
+            "nombre": "Fiestas de Delika",
+            "fecha_inicio": "2026-06-26",
+            "fecha_fin": "2026-07-01",
+            "tamano": "grande",
+            "descripcion": "Celebración local que combina romería en el entorno del desfiladero y la cascada del Nervión con música tradicional vasca, bailes populares y una verbena para vecinos y visitantes.",
+            "confianza": "alta",
+            "programa": [
+                {
+                    "dia": 1,
+                    "fecha": "2026-06-26",
+                    "eventos": [
+                        {
+                            "hora": "21:00",
+                            "descripcion": "Chupinazo"
+                        },
+                        {
+                            "hora": "21:30",
+                            "descripcion": "Concurso de tortilla de patata casera"
+                        },
+                        {
+                            "hora": "22:00-01:00",
+                            "descripcion": "Fiesta temática cowboy"
+                        }
+                    ]
+                },
+                {
+                    "dia": 2,
+                    "fecha": "2026-06-27",
+                    "eventos": [
+                        {
+                            "hora": "10:00",
+                            "descripcion": "Salida de la I Marcha de Montaña (10 km aprox.)"
+                        },
+                        {
+                            "hora": "10:30",
+                            "descripcion": "Salida de la II Marcha de Montaña Familiar (3 km aprox.)"
+                        },
+                        {
+                            "hora": "14:30",
+                            "descripcion": "Comida popular"
+                        },
+                        {
+                            "hora": "16:30",
+                            "descripcion": "Desafío Arrastaria"
+                        },
+                        {
+                            "hora": "20:00",
+                            "descripcion": "Suelta de vaquillas (para mayores de 16 años)"
+                        },
+                        {
+                            "hora": "23:00",
+                            "descripcion": "Verbena con Zutik y DJ Varro"
+                        }
+                    ]
+                },
+                {
+                    "dia": 3,
+                    "fecha": "2026-06-28",
+                    "eventos": [
+                        {
+                            "hora": "08:00",
+                            "descripcion": "Quedada para limpiar la plaza y sus alrededores"
+                        },
+                        {
+                            "hora": "11:30",
+                            "descripcion": "Misa en la iglesia"
+                        },
+                        {
+                            "hora": "12:30",
+                            "descripcion": "Pintxo pote"
+                        },
+                        {
+                            "hora": "15:00-20:00",
+                            "descripcion": "Toro mecánico e hinchables"
+                        },
+                        {
+                            "hora": "18:30",
+                            "descripcion": "Chocolatada"
+                        },
+                        {
+                            "hora": "19:00",
+                            "descripcion": "Concierto de Eriz & Totum Revolutum"
+                        },
+                        {
+                            "hora": "20:00",
+                            "descripcion": "Parrillada"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "fiesta-saratxo-2026",
+            "lugar_id": "01002001101",
+            "nombre": "Fiestas de Saratxo",
+            "fecha_inicio": "2026-06-04",
+            "fecha_fin": "2026-06-08",
+            "tamano": "grande",
+            "descripcion": "Tradiciones, verbenas, dantzaris y gastronomía local.",
+            "confianza": "alta",
+            "programa": [
+                {
+                    "dia": 1,
+                    "fecha": "2026-06-04",
+                    "eventos": []
+                },
+                {
+                    "dia": 2,
+                    "fecha": "2026-06-05",
+                    "eventos": []
+                },
+                {
+                    "dia": 3,
+                    "fecha": "2026-06-06",
+                    "eventos": []
+                },
+                {
+                    "dia": 4,
+                    "fecha": "2026-06-07",
+                    "eventos": []
+                },
+                {
+                    "dia": 5,
+                    "fecha": "2026-06-08",
+                    "eventos": []
+                }
+            ]
+        },
+        {
+            "id": "fiesta-oleta-2026",
+            "lugar_id": "01003000701",
+            "nombre": "Fiestas de Oleta 2026",
+            "fecha_inicio": "2026-06-19",
+            "fecha_fin": "2026-06-23",
+            "tamano": "grande",
+            "descripcion": "Celebración tradicional que combina actos religiosos y verbenas populares, incluyendo procesión y misa, kalejira, txosnas con pintxos y orquestas hasta la madrugada.",
+            "confianza": "alta",
+            "programa": [
+                {
+                    "dia": 1,
+                    "fecha": "2026-06-19",
+                    "eventos": [
+                        {
+                            "hora": "18:15",
+                            "descripcion": "Musicalización Kalakanen eskutik"
+                        },
+                        {
+                            "hora": "14:00",
+                            "descripcion": "Txapelketa ZY se"
+                        }
+                    ]
+                },
+                {
+                    "dia": 2,
+                    "fecha": "2026-06-20",
+                    "eventos": [
+                        {
+                            "hora": "20:00",
+                            "descripcion": "Aurrera 17:00etan Txosnan eta Tabernan Ondoren"
+                        }
+                    ]
+                },
+                {
+                    "dia": 3,
+                    "fecha": "2026-06-21",
+                    "eventos": [
+                        {
+                            "hora": "18:15",
+                            "descripcion": "Musicalización Kalakanen eskutik"
+                        },
+                        {
+                            "hora": "14:00",
+                            "descripcion": "Txapelketa ZY se"
+                        }
+                    ]
+                },
+                {
+                    "dia": 4,
+                    "fecha": "2026-06-22",
+                    "eventos": [
+                        {
+                            "hora": "20:30",
+                            "descripcion": "Aurrera 17:00etan Afari Herrikoia"
+                        }
+                    ]
+                },
+                {
+                    "dia": 5,
+                    "fecha": "2026-06-23",
+                    "eventos": [
+                        {
+                            "hora": "21:30",
+                            "descripcion": "Konzertuak (ZOLETAKON CTU @ 13:00etan"
+                        },
+                        {
+                            "hora": "20:30",
+                            "descripcion": "Techno Gaua Tabernan afaltzeko zerbitzua"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "fiestas-tertanga-2026",
+            "lugar_id": "01002001201",
+            "nombre": "Fiestas de Tertanga del 10 al 12 de julio",
+            "fecha_inicio": "2026-07-10",
+            "fecha_fin": "2026-07-12",
+            "tamano": "grande",
+            "descripcion": "PASACALLE de gigantes a cargo de Bergarako Erraldoi",
+            "confianza": "alta",
+            "programa": [
+                {
+                    "dia": 1,
+                    "fecha": "2026-07-10",
+                    "eventos": []
+                },
+                {
+                    "dia": 2,
+                    "fecha": "2026-07-11",
+                    "eventos": []
+                },
+                {
+                    "dia": 3,
+                    "fecha": "2026-07-12",
+                    "eventos": [
+                        {
+                            "hora": "18:30",
+                            "descripcion": "PASACALLE de gigantes a cargo de Bergarako Erraldoi"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "san-juan-arminon",
+            "lugar_id": "01006000101",
+            "nombre": "Fiestas Patronales de San Andrés",
+            "fecha_inicio": "2026-08-27",
+            "fecha_fin": "2026-08-29",
+            "tamano": "pequeña",
+            "descripcion": "Las fiestas patronales de la localidad de Armiñón son en honor a San Andrés. Como el día de San Andrés es el 30 de noviembre y estas no son fechas muy adecuadas para la celebración de fiestas, se suelen trasladar al verano, el último fin de semana de agosto.",
+            "confianza": "alta",
+            "programa": [
+                {
+                    "dia": 1,
+                    "fecha": "2026-08-27",
+                    "eventos": [
+                        {
+                            "hora": "19:00",
+                            "descripcion": "Misa en la parroquia"
+                        },
+                        {
+                            "hora": "20:30",
+                            "descripcion": "Aurresku y baile tradicional"
+                        }
+                    ]
+                },
+                {
+                    "dia": 2,
+                    "fecha": "2026-08-28",
+                    "eventos": [
+                        {
+                            "hora": "19:00",
+                            "descripcion": "Concursos de gastronomía local"
+                        },
+                        {
+                            "hora": "21:30",
+                            "descripcion": "Verbenas y actuaciones musicales"
+                        }
+                    ]
+                },
+                {
+                    "dia": 3,
+                    "fecha": "2026-08-29",
+                    "eventos": [
+                        {
+                            "hora": "17:00",
+                            "descripcion": "Procesión de la Virgen del Rosario"
+                        },
+                        {
+                            "hora": "19:00",
+                            "descripcion": "Fiesta final con pirotecnia y baile"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "san-adrian-2026",
+            "lugar_id": "01037001001",
+            "nombre": "Fiestas en honor a San Adrián",
+            "fecha_inicio": "2026-06-16",
+            "fecha_fin": "2026-06-16",
+            "tamano": "pequeña",
+            "descripcion": "Celebración tradicional en Maeztu/Maestu en honor a San Adrián.",
+            "confianza": "alta",
+            "programa": [
+                {
+                    "dia": 1,
+                    "fecha": "2026-06-16",
+                    "eventos": [
+                        {
+                            "hora": "No especificado",
+                            "descripcion": "Celebración tradicional en honor a San Adrián."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "udalerriko-adineko-eguna-2026",
+            "lugar_id": "01037001001",
+            "nombre": "Arraia-Maeztu udalerriko Adinekoen Eguna",
+            "fecha_inicio": "2026-06-04",
+            "fecha_fin": "2026-06-04",
+            "tamano": "pequeña",
+            "descripcion": "Día de las Personas Mayores del Municipio de Arraia-Maeztu.",
+            "confianza": "alta",
+            "programa": [
+                {
+                    "dia": 1,
+                    "fecha": "2026-06-04",
+                    "eventos": [
+                        {
+                            "hora": "No especificado",
+                            "descripcion": "Actividades en el Centro de Jubilados de Maestu."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "kzgunea-2026",
+            "lugar_id": "01037001001",
+            "nombre": "ARRAIA-MAEZTU KZgunea",
+            "fecha_inicio": "2026-06-13",
+            "fecha_fin": "2026-06-20",
+            "tamano": "pequeña",
+            "descripcion": "Fiesta de verano con actividades durante varias noches.",
+            "confianza": "alta",
+            "programa": [
+                {
+                    "dia": 1,
+                    "fecha": "2026-06-13",
+                    "eventos": [
+                        {
+                            "hora": "16:00 - 20:00",
+                            "descripcion": "Actividades durante la tarde y noche."
+                        }
+                    ]
+                },
+                {
+                    "dia": 7,
+                    "fecha": "2026-06-19",
+                    "eventos": [
+                        {
+                            "hora": "16:00 - 20:00",
+                            "descripcion": "Actividades durante la tarde y noche."
+                        }
+                    ]
+                },
+                {
+                    "dia": 8,
+                    "fecha": "2026-06-20",
+                    "eventos": [
+                        {
+                            "hora": "16:00 - 20:00",
+                            "descripcion": "Actividades durante la tarde y noche."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "fiestas-apellaniz-2026",
+            "lugar_id": "01037000201",
+            "nombre": "Fiestas de Apellániz / Apilaiz",
+            "fecha_inicio": "2026-04-03",
+            "fecha_fin": "2026-04-05",
+            "tamano": "pequeña",
+            "descripcion": "Fiestas celebradas en honor a Santo Toribio, trasladadas al fin de semana de Semana Santa.",
+            "confianza": "alta",
+            "programa": [
+                {
+                    "dia": 1,
+                    "fecha": "2026-04-03",
+                    "eventos": []
+                },
+                {
+                    "dia": 2,
+                    "fecha": "2026-04-04",
+                    "eventos": []
+                },
+                {
+                    "dia": 3,
+                    "fecha": "2026-04-05",
+                    "eventos": []
+                }
+            ]
+        },
+        {
+            "id": "araia-fiestas-2026",
+            "lugar_id": "01009000401",
+            "nombre": "Fiestas de Araia 2026",
+            "fecha_inicio": "2026-06-26",
+            "fecha_fin": "2026-07-05",
+            "tamano": "grande",
+            "descripcion": "Araia celebrará sus fiestas 2026 entre el 26 de junio al 5 de julio.",
+            "confianza": "alta",
+            "programa": [
+                {
+                    "dia": 1,
+                    "fecha": "2026-06-26",
+                    "eventos": [
+                        {
+                            "hora": "11:00",
+                            "descripcion": "PARTIDOS Escuela de pelota de Araia en Iturbero."
+                        },
+                        {
+                            "hora": "12:00",
+                            "descripcion": "DIANAS por las calles del pueblo a cargo de panderojoles y trikitixas de la Escuela de Musica de Araia."
+                        },
+                        {
+                            "hora": "13:00",
+                            "descripcion": "CONCIERTO de ARAIAKO BANDA en la Herriko enparantza."
+                        }
+                    ]
+                },
+                {
+                    "dia": 2,
+                    "fecha": "2026-06-27",
+                    "eventos": [
+                        {
+                            "hora": "15:00",
+                            "descripcion": "HERRI BAZKARIA organizada por Txaparron. Los tickets de la comida se compran en el Casino, Zubigain y Bene."
+                        }
+                    ]
+                },
+                {
+                    "dia": 3,
+                    "fecha": "2026-06-28",
+                    "eventos": [
+                        {
+                            "hora": "15:00",
+                            "descripcion": "HERRI BAZKARIA organizada por Txaparron. Los tickets de la comida se compran en el Casino, Zubigain y Bene."
+                        }
+                    ]
+                },
+                {
+                    "dia": 4,
+                    "fecha": "2026-06-29",
+                    "eventos": [
+                        {
+                            "hora": "15:00",
+                            "descripcion": "HERRI BAZKARIA organizada por Txaparron. Los tickets de la comida se compran en el Casino, Zubigain y Bene."
+                        }
+                    ]
+                },
+                {
+                    "dia": 5,
+                    "fecha": "2026-07-01",
+                    "eventos": [
+                        {
+                            "hora": "20:00",
+                            "descripcion": "Animacién musical a cargo del grupo KAOS RUR."
+                        }
+                    ]
+                },
+                {
+                    "dia": 6,
+                    "fecha": "2026-07-02",
+                    "eventos": [
+                        {
+                            "hora": "20:00",
+                            "descripcion": "Animacién musical a cargo del grupo KAOS RUR."
+                        }
+                    ]
+                },
+                {
+                    "dia": 7,
+                    "fecha": "2026-07-03",
+                    "eventos": [
+                        {
+                            "hora": "20:00",
+                            "descripcion": "Animacién musical a cargo del grupo KAOS RUR."
+                        }
+                    ]
+                },
+                {
+                    "dia": 8,
+                    "fecha": "2026-07-04",
+                    "eventos": [
+                        {
+                            "hora": "20:00",
+                            "descripcion": "Animacién musical a cargo del grupo KAOS RUR."
+                        }
+                    ]
+                },
+                {
+                    "dia": 9,
+                    "fecha": "2026-07-05",
+                    "eventos": [
+                        {
+                            "hora": "20:00",
+                            "descripcion": "Animacién musical a cargo del grupo KAOS RUR."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "festa-san-esteban",
+            "lugar_id": "01037010101",
+            "nombre": "Fiesta en honor a San Esteban",
+            "fecha_inicio": "2026-12-26",
+            "fecha_fin": "2026-12-26",
+            "tamano": "pequeña",
+            "descripcion": "Celebración de la fiesta en honor a San Esteban.",
+            "confianza": "alta",
+            "programa": [
+                {
+                    "dia": 1,
+                    "fecha": "2026-12-26",
+                    "eventos": [
+                        {
+                            "hora": "No especificada",
+                            "descripcion": "Celebración de la fiesta en honor a San Esteban."
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

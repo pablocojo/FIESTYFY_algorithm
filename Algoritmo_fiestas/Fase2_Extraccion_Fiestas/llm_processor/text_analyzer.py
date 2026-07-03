@@ -33,6 +33,30 @@ from config import (
 
 logger = logging.getLogger("text_analyzer")
 
+# Diccionario de pre-mapeo para idiomas cooficiales
+DICCIONARIO_FESTIVO = {
+    r'\bjaiak\b': 'fiestas',
+    r'\bherri bazkaria\b': 'comida popular',
+    r'\bkalejira\b': 'pasacalles',
+    r'\btxapelketa\b': 'campeonato',
+    r'\bmeza\b': 'misa',
+    r'\btxupinazoa?\b': 'chupinazo',
+    r'\bdantza\b': 'baile',
+    r'\bkontzertua?\b': 'concierto',
+    r'\bumeen eguna\b': 'día del niño',
+    r'\bfestes\b': 'fiestas',
+    r'\bcorrefoc\b': 'pasacalles con fuego',
+    r'\bcercavila\b': 'pasacalles',
+    r'\bfestas\b': 'fiestas',
+    r'\bverbena\b': 'verbena',
+    r'\bgau-jai\b': 'fiesta nocturna',
+    r'\btxosna\b': 'caseta',
+    r'\bbertso\b': 'versos',
+    r'\bpilota\b': 'pelota',
+    r'\berromeria\b': 'romería',
+    r'\bdesfilea\b': 'desfile',
+}
+
 
 # ──────────────────────────────────────────────────
 # CRITERIO DE FIESTAS (condensado para el LLM)
@@ -325,6 +349,8 @@ AÑO: {anno}. Todas las fechas deben ser del año {anno}.
 
 REGLA DE ORO: SI EL TEXTO NO MENCIONA NINGUNA FIESTA DE FORMA EXPLÍCITA PARA ESTA LOCALIDAD, DEBES DEVOLVER ESTRICTAMENTE '{{"fiestas": []}}' SIN AÑADIR NINGUNA EXPLICACIÓN.
 
+TRADUCCIÓN: Los textos pueden estar en castellano, euskera, catalán o gallego. Extrae los eventos sin importar el idioma, pero TRADUCE la descripción y el nombre al castellano en el JSON.
+
 Devuelve SOLO JSON estricto con esta estructura (no escribas markdown, ni saludos, ni confirmaciones):
 {{
   "fiestas": [
@@ -344,9 +370,14 @@ Devuelve SOLO JSON estricto con esta estructura (no escribas markdown, ni saludo
   ]
 }}"""
 
+    # Pre-procesado: traducir palabras clave para facilitar la labor del LLM
+    texto_traducido = texto_filtrado
+    for patron, reemplazo in DICCIONARIO_FESTIVO.items():
+        texto_traducido = re.sub(patron, reemplazo, texto_traducido, flags=re.IGNORECASE)
+
     user_prompt = (
         f"AÑO: {anno}\n\n"
-        f"TEXTO RECUPERADO:\n{texto_filtrado}\n\n"
+        f"TEXTO RECUPERADO:\n{texto_traducido}\n\n"
         f"Extrae las fiestas en formato JSON exclusivamente para {localidad['nombre']}. Recuerda, responde SOLO con JSON:\n```json\n"
     )
 

@@ -60,7 +60,7 @@ LMSTUDIO_BASE_URL = "http://localhost:1234"
 LMSTUDIO_EMBEDDING_URL = f"{LMSTUDIO_BASE_URL}/v1/embeddings"
 LMSTUDIO_CHAT_URL = f"{LMSTUDIO_BASE_URL}/v1/chat/completions"
 
-LMSTUDIO_EMBEDDING_MODEL = "text-embedding-nomic-embed-text-v1.5"
+LMSTUDIO_EMBEDDING_MODEL = "text-embedding-baai-bge-m3-568m"
 LMSTUDIO_CHAT_MODEL = "qwen2.5-7b-instruct"
 LMSTUDIO_CHAT_TIMEOUT = 900           # Timeout para peticiones de chat (segundos)
 LMSTUDIO_EMBEDDING_TIMEOUT = 30       # Timeout para embeddings (segundos)
