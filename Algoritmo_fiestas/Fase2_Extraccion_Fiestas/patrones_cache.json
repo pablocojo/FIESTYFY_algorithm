@@ -1,0 +1,71 @@
+{
+ "06045000201": null,
+ "05130000101": {
+  "nombre": "Virgen del Mironcillo",
+  "dia": 15,
+  "mes": 8,
+  "fuente": "llm",
+  "confianza": "media"
+ },
+ "06045000101": null,
+ "01049000201": null,
+ "01001000101": null,
+ "01002000201": {
+  "nombre": "Nuestra Señora\ny\nSan Roque",
+  "dia": 16,
+  "mes": 8,
+  "fuente": "busqueda",
+  "confianza": "media"
+ },
+ "01003000601": {
+  "nombre": "San Martín",
+  "dia": 11,
+  "mes": 11,
+  "fuente": "busqueda",
+  "confianza": "alta"
+ },
+ "01003000701": null,
+ "01002000101": {
+  "nombre": "San Juan Degollado",
+  "dia": 29,
+  "mes": 8,
+  "fuente": "llm",
+  "confianza": "alta"
+ },
+ "01002000301": {
+  "nombre": "San Jorge vuelven a incluir este",
+  "dia": 23,
+  "mes": 4,
+  "fuente": "busqueda",
+  "confianza": "alta"
+ },
+ "01001000201": {
+  "nombre": "San Román",
+  "dia": 18,
+  "mes": 11,
+  "fuente": "llm",
+  "confianza": "alta"
+ },
+ "01002000501": {
+  "nombre": "San Antonio Abad",
+  "dia": 17,
+  "mes": 1,
+  "fuente": "llm",
+  "confianza": "alta"
+ },
+ "01002000601": {
+  "nombre": "San Pedro",
+  "dia": 29,
+  "mes": 6,
+  "fuente": "llm",
+  "confianza": "media"
+ },
+ "01002000701": null,
+ "01002000801": {
+  "nombre": "San Mig",
+  "dia": null,
+  "mes": null,
+  "fuente": "busqueda",
+  "confianza": "baja"
+ }
+}

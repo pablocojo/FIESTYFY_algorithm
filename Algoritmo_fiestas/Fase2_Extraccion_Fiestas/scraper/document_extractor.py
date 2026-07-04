@@ -5,23 +5,100 @@ logos, iconos y documentos irrelevantes.
 """
 
 import io
-import re
 import logging
+import os
+import re
+import shutil
 from concurrent.futures import ThreadPoolExecutor
+from pathlib import Path
 
 logger = logging.getLogger("document_extractor")
 
 # Pool dedicado para tareas OCR para no saturar CPU global
 ocr_executor = ThreadPoolExecutor(max_workers=4)
 
+
+def _discover_tesseract_path() -> str | None:
+    """Busca un ejecutable de Tesseract en rutas locales del proyecto, PATH y ubicaciones comunes."""
+    candidates: list[str] = []
+
+    env_path = os.environ.get("TESSERACT_PATH")
+    if env_path:
+        candidates.append(env_path)
+
+    current_file = Path(__file__).resolve()
+    project_roots = [
+        current_file.parent.parent,  # Fase2_Extraccion_Fiestas
+        current_file.parent.parent.parent,  # carpeta Algoritmo_fiestas
+        current_file.parents[2],  # carpeta superior a Algoritmo_fiestas
+    ]
+
+    for project_root in project_roots:
+        for relative_path in [
+            Path("tools/tesseract/tesseract.exe"),
+            Path("tools/Tesseract-OCR/tesseract.exe"),
+            Path("Tesseract-OCR/tesseract.exe"),
+        ]:
+            candidates.append(str(project_root / relative_path))
+
+    for path_entry in os.environ.get("PATH", "").split(os.pathsep):
+        if path_entry:
+            candidates.append(os.path.join(path_entry, "tesseract.exe"))
+
+    for common_path in [
+        r"C:\Program Files\Tesseract-OCR\tesseract.exe",
+        r"C:\Program Files (x86)\Tesseract-OCR\tesseract.exe",
+        r"C:\Users\%USERNAME%\AppData\Local\Programs\Tesseract-OCR\tesseract.exe",
+    ]:
+        candidates.append(os.path.expandvars(common_path))
+
+    for candidate in candidates:
+        if candidate and os.path.isfile(candidate):
+            return os.path.normpath(candidate)
+
+    return shutil.which("tesseract") or shutil.which("tesseract.exe")
+
+
+def _discover_tessdata_prefix(tesseract_cmd: str | None) -> str | None:
+    """Intenta localizar la carpeta tessdata cercana al ejecutable de Tesseract."""
+    env_prefix = os.environ.get("TESSDATA_PREFIX")
+    if env_prefix and os.path.isdir(env_prefix):
+        return env_prefix
+
+    if not tesseract_cmd:
+        return None
+
+    tesseract_dir = Path(tesseract_cmd).resolve().parent
+    for candidate_dir in [
+        tesseract_dir / "tessdata",
+        tesseract_dir.parent / "tessdata",
+        Path(r"C:\Program Files\Tesseract-OCR\tessdata"),
+        Path(r"C:\Program Files (x86)\Tesseract-OCR\tessdata"),
+        Path(r"C:\Users\%USERNAME%\AppData\Local\Programs\Tesseract-OCR\tessdata"),
+    ]:
+        resolved = os.path.expandvars(str(candidate_dir))
+        if os.path.isdir(resolved):
+            return resolved
+
+    return None
+
+
 try:
     from PIL import Image
-    import os
-    os.environ["TESSDATA_PREFIX"] = r'C:\Program Files\Tesseract-OCR\tessdata'
-    import pytesseract
-    pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+
+    tesseract_cmd = _discover_tesseract_path()
+    if tesseract_cmd:
+        tessdata_prefix = _discover_tessdata_prefix(tesseract_cmd)
+        if tessdata_prefix:
+            os.environ["TESSDATA_PREFIX"] = tessdata_prefix
+
+        import pytesseract
+
+        pytesseract.pytesseract.tesseract_cmd = tesseract_cmd
+    else:
+        pytesseract = None
 except ImportError:
-    pass  # Dependencias que el usuario debe instalar
+    pytesseract = None  # Dependencias que el usuario debe instalar
 
 try:
     import pdfplumber
@@ -115,6 +192,10 @@ def is_promising_image(url: str, alt_text: str, locality_names: list[str]) -> bo
 
 def _run_ocr(image) -> str:
     """Intenta ejecutar OCR multilingüe, con fallback al idioma por defecto si falta el paquete."""
+    if not pytesseract:
+        logger.warning("pytesseract no disponible: Tesseract OCR no está configurado correctamente.")
+        return ""
+
     try:
         return pytesseract.image_to_string(image, lang="spa+eus+cat+glg")
     except Exception as e:

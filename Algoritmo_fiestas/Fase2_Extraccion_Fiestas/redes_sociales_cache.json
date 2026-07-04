@@ -1,0 +1,42 @@
+{
+ "01049000000": {
+  "instagram": null,
+  "facebook": null,
+  "twitter": null,
+  "verificado_por": "web_oficial",
+  "fecha_verificacion": "2026-07-04",
+  "pendiente_apps": true
+ },
+ "01003000000": {
+  "instagram": null,
+  "facebook": null,
+  "twitter": null,
+  "verificado_por": "web_oficial",
+  "fecha_verificacion": "2026-07-04",
+  "pendiente_apps": true
+ },
+ "01002000000": {
+  "instagram": null,
+  "facebook": "https://www.facebook.com/amurrioudalaayuntamiento",
+  "twitter": "https://x.com/amurriohauxeda",
+  "verificado_por": "web_oficial",
+  "fecha_verificacion": "2026-07-04",
+  "pendiente_apps": true
+ },
+ "01001000000": {
+  "instagram": null,
+  "facebook": "https://www.facebook.com/deportekirolaaytoalegriadulantzikoudala",
+  "twitter": null,
+  "verificado_por": "web_oficial",
+  "fecha_verificacion": "2026-07-04",
+  "pendiente_apps": true
+ },
+ "01003000701": {
+  "instagram": "https://www.instagram.com/dssgazteria",
+  "facebook": "https://www.facebook.com/dssgazteria",
+  "twitter": "https://x.com/dssgazteria",
+  "verificado_por": "web_oficial",
+  "fecha_verificacion": "2026-07-04",
+  "pendiente_apps": false
+ }
+}

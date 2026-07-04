@@ -16,9 +16,14 @@ from datetime import datetime
 from state_manager import StateManager
 from scraper.heuristic_spider import AsyncTwoPassSpider
 from scraper.google_search import search_locality_web
+from scraper.social_content import cargar_documentos_rrss
+from scraper.social_finder import registrar_perfiles_web
 from llm_processor.text_analyzer import AsyncRAGProcessor, analyze_festivals_for_locality
+from llm_processor.patron_finder import obtener_patron, integrar_patron, fecha_del_patron
+from fuentes import FUENTE_WEB_LOCALIDAD, FUENTE_WEB_MUNICIPIO, fuente_base
 from config import (
     PARALLEL_MUNICIPALITIES,
+    PATRON_SEARCH_ENABLED,
     LOG_FORMAT,
     LOG_DATE_FORMAT,
     LOG_LEVEL,
@@ -117,62 +122,100 @@ async def process_locality(
     rag_processor: AsyncRAGProcessor,
     logger: logging.Logger,
 ) -> list[dict]:
-    """Pipeline completo para una localidad: Spider + DDG + RAG + LLM."""
+    """
+    Pipeline completo para una localidad, en orden de fiabilidad de fuentes:
+    web localidad → web municipio → RRSS (caché) → búsqueda browser → RAG → LLM.
+    """
     logger.info(
         f"    --> Buscando fiestas para: {localidad['nombre']} "
         f"(Tipo: {localidad.get('tipo', 'localidad')})"
     )
 
-    # 1. Spider web (centrado en la localidad)
-    texto_municipal = ""
-    sitios_a_rastrear = []
-    
+    # 0. Santo patrón (en paralelo con el scraping)
+    patron_task = None
+    if PATRON_SEARCH_ENABLED:
+        patron_task = asyncio.create_task(obtener_patron(localidad, municipio))
+
+    async def _esperar_patron() -> dict | None:
+        if patron_task is None:
+            return None
+        try:
+            return await patron_task
+        except Exception as e:
+            logger.warning(f"    [!] Error buscando el patrón de {localidad['nombre']}: {e}")
+            return None
+
+    documentos: list[dict] = []
+    visited_urls: set[str] = set()  # compartido entre TODAS las fuentes: nada se lee dos veces
+
     sitio_mun = municipio.get("sitio_web", "").strip()
     sitio_loc = localidad.get("sitio_web", "").strip()
-    
-    if sitio_mun:
-        sitios_a_rastrear.append(sitio_mun)
-    
-    if sitio_loc and sitio_loc != sitio_mun:
-        # A veces la URL viene con "/" final y otra sin él, normalizamos antes de descartar
-        sitio_mun_norm = sitio_mun.rstrip("/")
-        sitio_loc_norm = sitio_loc.rstrip("/")
-        if sitio_loc_norm != sitio_mun_norm:
-            sitios_a_rastrear.append(sitio_loc)
+    # La web de la localidad solo cuenta si NO está vacía y es distinta de la del padre
+    loc_tiene_web_propia = bool(sitio_loc) and sitio_loc.rstrip("/") != sitio_mun.rstrip("/")
 
-    if sitios_a_rastrear:
+    # 1. Web oficial de la LOCALIDAD (fiabilidad máxima)
+    if loc_tiene_web_propia:
+        logger.info(f"    --> [1/5] Araña en web de la localidad: {sitio_loc}")
         spider = AsyncTwoPassSpider()
-        textos_crawleados = []
-        for sitio in sitios_a_rastrear:
-            logger.info(f"    --> Araña explorando: {sitio}")
-            texto = await spider.crawl(sitio, [localidad["nombre"]])
-            textos_crawleados.append(texto)
-        texto_municipal = "\n".join(textos_crawleados)
+        documentos += await spider.crawl(
+            sitio_loc, [localidad["nombre"]], FUENTE_WEB_LOCALIDAD, visited_urls
+        )
+        # Perfiles RRSS enlazados desde la web propia de la localidad
+        await registrar_perfiles_web(localidad, spider.social_links)
 
-    # 2. Búsqueda externa DDG (en paralelo con spider ya terminado)
-    texto_busquedas = await search_locality_web(localidad, municipio, anno)
+    # 2. Web oficial del MUNICIPIO
+    if sitio_mun:
+        logger.info(f"    --> [2/5] Araña en web del municipio: {sitio_mun}")
+        spider = AsyncTwoPassSpider()
+        documentos += await spider.crawl(
+            sitio_mun, [localidad["nombre"]], FUENTE_WEB_MUNICIPIO, visited_urls
+        )
+        # Perfiles RRSS del municipio (la caché evita repetir por cada pedanía)
+        await registrar_perfiles_web(municipio, spider.social_links)
 
-    texto_total = texto_municipal + "\n" + texto_busquedas
+    # 3-4. RRSS de la localidad y del municipio (desde la caché del runner de apps)
+    documentos += cargar_documentos_rrss(localidad, municipio)
 
-    if not texto_total.strip():
+    # 5. Búsqueda browser (la menos fiable; no relee URLs de los pasos anteriores)
+    logger.info(f"    --> [5/5] Búsqueda en buscadores...")
+    documentos += await search_locality_web(localidad, municipio, anno, visited_urls)
+
+    # El patrón ya debería estar resuelto (corría en paralelo con el scraping)
+    patron = await _esperar_patron()
+    fecha_patron = fecha_del_patron(patron, anno)
+
+    documentos = [d for d in documentos if (d.get("texto") or "").strip()]
+    if not documentos:
         logger.warning(f"    [!] No se extrajo ningún texto para {localidad['nombre']}.")
-        return []
+        return integrar_patron([], patron, anno, localidad)
 
-    logger.info(f"    Texto total recopilado: {len(texto_total)} caracteres")
+    # Métrica: documentos por fuente
+    conteo_fuentes = {}
+    for d in documentos:
+        base = fuente_base(d["fuente"])
+        conteo_fuentes[base] = conteo_fuentes.get(base, 0) + 1
+    total_chars = sum(len(d["texto"]) for d in documentos)
+    logger.info(f"    Recopilados {len(documentos)} documentos ({total_chars} chars): {conteo_fuentes}")
 
-    # 3. RAG: Saturar contexto con límite para Qwen 2.5 7B
+    # RAG: chunking por documento + selección por cuotas de fuente
     query_rag = (
         f"Fiestas, carteles y programas de actos en {municipio['nombre']} "
         f"para la localidad de {localidad['nombre']} en el año {anno}"
     )
-    texto_filtrado = await rag_processor.saturate_context(texto_total, query_rag)
+    contexto, fuentes_contexto = await rag_processor.saturate_context_docs(documentos, query_rag)
 
-    if not texto_filtrado.strip():
+    if not contexto.strip():
         logger.warning(f"    [!] RAG no seleccionó texto relevante para {localidad['nombre']}.")
-        return []
+        return integrar_patron([], patron, anno, localidad)
 
-    # 4. LLM Generation + Validación
-    fiestas = await analyze_festivals_for_locality(municipio, localidad, texto_filtrado, anno)
+    # LLM + validación (filtro adaptativo con el día del patrón + fuentes)
+    fiestas = await analyze_festivals_for_locality(
+        municipio, localidad, contexto, anno, fecha_patron, fuentes_contexto
+    )
+
+    # Marcar fiestas que incluyen el día del patrón / añadir estimada si no está cubierto
+    fiestas = integrar_patron(fiestas, patron, anno, localidad)
+
     logger.info(f"    -- Resultado: {len(fiestas)} fiestas para {localidad['nombre']}")
     return fiestas
 

@@ -22,6 +22,7 @@ from config import (
     DDG_CONTENT_MAX_CHARS,
     USER_AGENT,
 )
+from fuentes import crear_documento, FUENTE_BUSQUEDA
 
 logger = logging.getLogger("search")
 
@@ -221,9 +222,10 @@ async def _fetch_page_content(session: aiohttp.ClientSession, url: str) -> str:
             for tag in soup(["script", "style", "nav", "footer", "header", "aside", "noscript"]):
                 tag.extract()
 
-            text = soup.get_text(separator=" ", strip=True)
-            # Limpiar espacios múltiples
-            text = re.sub(r"\s+", " ", text)
+            # Conservar saltos de línea (importantes para no partir programas al chunkear)
+            text = soup.get_text(separator="\n", strip=True)
+            text = re.sub(r"[ \t]+", " ", text)
+            text = re.sub(r"\n{2,}", "\n", text)
 
             # Limitar tamaño
             return text[:DDG_CONTENT_MAX_CHARS]
@@ -233,15 +235,24 @@ async def _fetch_page_content(session: aiohttp.ClientSession, url: str) -> str:
         return ""
 
 
-async def search_locality_web(localidad: dict, municipio: dict, anno: int) -> str:
+async def search_locality_web(
+    localidad: dict,
+    municipio: dict,
+    anno: int,
+    visited_urls: set | None = None,
+) -> list[dict]:
     """
-    Busca información de fiestas de una localidad usando DuckDuckGo.
-    - Lanza 3 queries distintas
-    - Extrae snippets
+    Busca información de fiestas de una localidad usando buscadores.
+    - Lanza 3 queries distintas y extrae snippets
     - Sigue las top N URLs para obtener contenido completo
+    - visited_urls: set compartido — NO se releen URLs ya leídas por pasos
+      anteriores (webs oficiales), y las leídas aquí quedan registradas.
+
+    Devuelve documentos etiquetados con fuente 'busqueda_web'.
     """
     queries = _build_queries(localidad, municipio, anno)
-    texto_recolectado = ""
+    documentos = []
+    texto_snippets = ""
     all_urls_seen = set()
     urls_to_follow = []
 
@@ -249,32 +260,45 @@ async def search_locality_web(localidad: dict, municipio: dict, anno: int) -> st
     connector = aiohttp.TCPConnector(limit=5, ssl=False)
 
     async with aiohttp.ClientSession(headers=headers, connector=connector) as session:
-        # 1. Ejecutar las 3 queries secuencialmente (respetar DDG rate limits)
+        # 1. Ejecutar las queries secuencialmente (respetar rate limits)
         for query in queries:
             logger.info(f"  Buscando: {query}")
             results = await _fetch_search_results(session, query)
 
             for r in results:
                 # Acumular snippets
-                texto_recolectado += f"TITULO: {r['titulo']} | CONTENIDO: {r['snippet']}\n"
+                texto_snippets += f"TITULO: {r['titulo']} | CONTENIDO: {r['snippet']}\n"
 
-                # Recopilar URLs únicas para seguir
+                # Recopilar URLs únicas para seguir (saltando las ya leídas)
                 result_url = r.get("url", "")
-                if result_url and result_url.startswith("http") and result_url not in all_urls_seen:
-                    all_urls_seen.add(result_url)
-                    urls_to_follow.append(result_url)
+                if not result_url or not result_url.startswith("http"):
+                    continue
+                if result_url in all_urls_seen:
+                    continue
+                if visited_urls is not None and result_url in visited_urls:
+                    logger.debug(f"  URL ya leída por una fuente anterior, se omite: {result_url}")
+                    continue
+                all_urls_seen.add(result_url)
+                urls_to_follow.append(result_url)
 
             await asyncio.sleep(DDG_DELAY_BETWEEN_QUERIES)
+
+        if texto_snippets.strip():
+            documentos.append(
+                crear_documento(FUENTE_BUSQUEDA, "buscadores:snippets", texto_snippets, tipo="snippets")
+            )
 
         # 2. Seguir las top N URLs para obtener contenido completo
         urls_to_fetch = urls_to_follow[:DDG_MAX_URLS_TO_FOLLOW]
         if urls_to_fetch:
             logger.info(f"  Siguiendo {len(urls_to_fetch)} URLs de resultados...")
+            if visited_urls is not None:
+                visited_urls.update(urls_to_fetch)
             tasks = [_fetch_page_content(session, url) for url in urls_to_fetch]
             page_contents = await asyncio.gather(*tasks, return_exceptions=True)
 
             for url, content in zip(urls_to_fetch, page_contents):
                 if isinstance(content, str) and content.strip():
-                    texto_recolectado += f"\n--- FUENTE EXTERNA: {url} ---\n{content}\n"
+                    documentos.append(crear_documento(FUENTE_BUSQUEDA, url, content, tipo="pagina"))
 
-    return texto_recolectado
+    return documentos

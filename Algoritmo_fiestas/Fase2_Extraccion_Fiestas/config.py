@@ -39,11 +39,14 @@ DDG_DELAY_BETWEEN_QUERIES = 2.0       # Delay entre queries (segundos)
 # ─────────────────────────────────────────────
 # Configuración de Extracción Web y RAG
 # ─────────────────────────────────────────────
-RAG_MAX_TOKENS = 8000                 # Balance ideal: rápido para un 7B, pero suficiente contexto
-RAG_CHARS_PER_TOKEN = 3.3             # Aproximación de caracteres por token
-RAG_CHUNK_SIZE = 1200
-RAG_CHUNK_OVERLAP = 200
+RAG_MAX_TOKENS = 7000                 # Coherente con n_ctx 10240 (deja margen a prompt + respuesta)
+RAG_CHARS_PER_TOKEN = 2.6             # Ratio real medido con texto web scrapeado (URLs y números tokenizan mal)
+RAG_CHUNK_SIZE = 1200                 # Tamaño objetivo de chunk (los cortes respetan frases/líneas)
+RAG_CHUNK_OVERLAP = 200               # (ya no se usa para cortar a ciegas; se mantiene por compatibilidad)
 RAG_EMBEDDING_BATCH_SIZE = 20
+RAG_PROGRAMA_MAX_CHARS = 8000         # Un bloque de programa de fiestas se mantiene íntegro hasta este tope
+RAG_UMBRAL_SIMILITUD = 0.35           # Similitud mínima para considerar relevante un chunk
+RAG_MIN_OFICIALES_SIN_UMBRAL = 5      # Si ningún chunk oficial supera el umbral, incluir al menos los N mejores
 
 # Configuración DuckDuckGo / Yahoo Scraper
 DDG_MAX_RESULTS = 7
@@ -61,11 +64,63 @@ LMSTUDIO_EMBEDDING_URL = f"{LMSTUDIO_BASE_URL}/v1/embeddings"
 LMSTUDIO_CHAT_URL = f"{LMSTUDIO_BASE_URL}/v1/chat/completions"
 
 LMSTUDIO_EMBEDDING_MODEL = "text-embedding-baai-bge-m3-568m"
-LMSTUDIO_CHAT_MODEL = "qwen2.5-7b-instruct"
+LMSTUDIO_CHAT_MODEL = "qwen2.5-14b-instruct@q4_k_m"
 LMSTUDIO_CHAT_TIMEOUT = 900           # Timeout para peticiones de chat (segundos)
 LMSTUDIO_EMBEDDING_TIMEOUT = 30       # Timeout para embeddings (segundos)
 LMSTUDIO_CHAT_TEMPERATURE = 0.0       # Temperatura 0.0 para evitar alucinaciones
 LMSTUDIO_CHAT_MAX_TOKENS = 1500       # Límite duro para truncar bucles
+
+# ─────────────────────────────────────────────
+# SANTO PATRÓN
+# ─────────────────────────────────────────────
+PATRON_SEARCH_ENABLED = True          # Buscar el santo patrón de cada localidad
+PATRON_CACHE_FILE = "patrones_cache.json"  # Caché de patrones (en la carpeta Fase2)
+PATRON_MAX_URLS = 3                   # URLs de buscadores a seguir para hallar el patrón
+PATRON_LLM_MAX_TOKENS = 200           # Tokens máximos para la extracción LLM del patrón
+
+# ─────────────────────────────────────────────
+# FILTRO ADAPTATIVO DE FIESTAS
+# ─────────────────────────────────────────────
+FIESTA_MAX_DURACION_DIAS = 30         # Duración máxima razonable de una fiesta (días)
+FILTRO_MIN_EVENTOS_PROGRAMA = 2       # Eventos mínimos del programa para aceptar multi-día sin señales
+
+# ─────────────────────────────────────────────
+# REDES SOCIALES
+# ─────────────────────────────────────────────
+SOCIAL_CONTENT_CACHE_FILE = "rrss_contenido_cache.json"      # Caché de posts leídos de las apps (Etapa C)
+SOCIAL_PROFILE_DISCOVERY_ENABLED = True                      # Cosechar perfiles oficiales desde las webs
+SOCIAL_PROFILE_CACHE_FILE = "redes_sociales_cache.json"      # Caché de perfiles (fuente de verdad; se
+                                                             # vuelca a lugares_espana.json con sync_redes_a_lugares.py)
+
+# ─────────────────────────────────────────────
+# RUNNER DE APPS DE ESCRITORIO (social_apps_runner.py — PC dedicado)
+# ─────────────────────────────────────────────
+# Localización de las ventanas de las apps YA ABIERTAS (el runner nunca lanza
+# ni cierra aplicaciones). Ajustar con `py social_apps_runner.py --modo diagnostico`.
+# NOTA: las apps de Instagram/Facebook de la Microsoft Store son PWAs que corren
+# bajo msedge.exe (verificado con --modo diagnostico el 04-07-2026).
+SOCIAL_APPS_VENTANAS = {
+    "instagram": {
+        "titulo_re": r"(?i)instagram",
+        "procesos": ["msedge.exe", "chrome.exe", "instagram.exe", "applicationframehost.exe"],
+    },
+    "facebook": {
+        "titulo_re": r"(?i)facebook",
+        "procesos": ["msedge.exe", "chrome.exe", "facebook.exe", "fbwin32.exe", "applicationframehost.exe"],
+    },
+    "twitter": {  # X instalada como app web (PWA de Edge/Chrome)
+        "titulo_re": r"(?i)(^x$|[\s/]x$|x\.com|twitter)",
+        "procesos": ["msedge.exe", "chrome.exe", "msedgewebview2.exe"],
+    },
+}
+SOCIAL_MAX_POSTS_PER_PROFILE = 30     # Posts máximos a leer por perfil
+SOCIAL_MAX_SCROLLS = 15               # Scrolls máximos por perfil
+SOCIAL_MAX_MINUTES_PER_PROFILE = 3    # Tiempo máximo por perfil (minutos)
+SOCIAL_POST_MONTHS_BACK = 10          # Ventana temporal de posts (meses hacia atrás desde hoy)
+SOCIAL_CONTENT_TTL_DIAS = 30          # No releer un perfil leído hace menos de N días
+SOCIAL_CAPTURAS_DIR = "rrss_capturas" # Carpeta de capturas de posts (para el VLM de la Etapa D)
+SOCIAL_GUARD_MAX_ANOMALIAS = 8        # Cambios de foco tolerados antes de abortar la fase
+SOCIAL_GUARD_MAX_ESPERA_FOCO = 600    # Segundos máximos en pausa esperando recuperar el foco
 
 # ─────────────────────────────────────────────
 # ORQUESTADOR

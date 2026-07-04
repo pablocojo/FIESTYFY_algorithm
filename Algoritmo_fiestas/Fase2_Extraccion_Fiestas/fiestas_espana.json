@@ -1,74 +1,594 @@
 {
   "version": 2,
   "anno": 2026,
-  "ultimo_municipio_procesado": "01049000000",
+  "ultimo_municipio_procesado": "01001000000",
   "municipios_completados": [
-    "01049000000"
+    "01049000000",
+    "01003000000",
+    "01001000000"
   ],
   "localidades_completadas": [
     "01049000201",
-    "01003000601"
+    "01003000601",
+    "01002000201",
+    "01002000101",
+    "01001000101",
+    "01002000301",
+    "01002000501",
+    "01002000601",
+    "01003000701",
+    "01002000701",
+    "01001000201"
   ],
   "fiestas": [
     {
-      "id": "fiestas-salinas-de-anana-2026",
-      "lugar_id": "01049000201",
-      "nombre": "Fiestas de Salinas de Añana 2026",
-      "fecha_inicio": "2026-10-03",
-      "fecha_fin": "2026-10-07",
-      "tamano": "grande",
-      "descripcion": "Celebración con música, conciertos y actividades populares.",
-      "confianza": "alta",
+      "id": "patron-san-martin-01003000601",
+      "lugar_id": "01003000601",
+      "nombre": "Fiestas de San Martín (estimada)",
+      "fecha_inicio": "2026-11-11",
+      "fecha_fin": "2026-11-11",
+      "tamano": "pequeña",
+      "descripcion": "Fiesta anual estimada a partir del día del santo patrón de Ibarra (San Martín, 11 de noviembre). No se encontró programa ni confirmación para este año.",
+      "confianza": "baja",
+      "origen": "santo_patron",
+      "es_estimada": true,
+      "incluye_dia_patron": true,
+      "fuentes": [],
+      "solo_fuentes_no_oficiales": false,
+      "patron": {
+        "nombre": "San Martín",
+        "dia": 11,
+        "mes": 11,
+        "fuente": "busqueda"
+      },
+      "programa": []
+    },
+    {
+      "id": "patron-nuestra-senora-y-san-roque-01002000201",
+      "lugar_id": "01002000201",
+      "nombre": "Fiestas de Nuestra Señora\ny\nSan Roque (estimada)",
+      "fecha_inicio": "2026-08-16",
+      "fecha_fin": "2026-08-16",
+      "tamano": "pequeña",
+      "descripcion": "Fiesta anual estimada a partir del día del santo patrón de Amurrio (Nuestra Señora\ny\nSan Roque, 16 de agosto). No se encontró programa ni confirmación para este año.",
+      "confianza": "baja",
+      "origen": "santo_patron",
+      "es_estimada": true,
+      "incluye_dia_patron": true,
+      "fuentes": [],
+      "solo_fuentes_no_oficiales": false,
+      "patron": {
+        "nombre": "Nuestra Señora\ny\nSan Roque",
+        "dia": 16,
+        "mes": 8,
+        "fuente": "busqueda"
+      },
+      "programa": []
+    },
+    {
+      "id": "aloria-fiestas-patronales-2026",
+      "lugar_id": "01002000101",
+      "nombre": "Fiestas Patronales de Aloria en honor a San Juan Degollado",
+      "fecha_inicio": "2026-08-29",
+      "fecha_fin": "2026-08-30",
+      "tamano": "pequeña",
+      "descripcion": "Las Fiestas Patronales de Aloria en honor a San Juan Degollado incluyen procesión, misa, dantzaris y txistularis en la plaza, romería a la ermita y largas noches de orquesta con pintxos.",
+      "confianza": "baja",
+      "fuentes": [
+        "busqueda_web"
+      ],
+      "solo_fuentes_no_oficiales": true,
       "programa": [
         {
-          "dia": 3,
-          "fecha": "2026-10-03",
+          "dia": 1,
+          "fecha": "2026-08-29",
           "eventos": [
             {
-              "hora": "19:00",
-              "descripcion": "Apertura de caseta y foto oficial de blusas y neskas en la plaza"
+              "hora": "",
+              "descripcion": "Procesión y misa en torno a la iglesia del pueblo"
             },
             {
-              "hora": "20:00",
-              "descripcion": "Elektrotxaranga Orkresta Elektrotuna"
-            },
-            {
-              "hora": "21:00",
-              "descripcion": "Chupinazo, pregón y bajada del «Prontxio»"
-            },
-            {
-              "hora": "22:00",
-              "descripcion": "CENA POPULAR -> HAMBURGUESAS"
-            },
-            {
-              "hora": "23:00",
-              "descripcion": "Conciertos HAMMOND YORK, MANGO WOOD, DIRTY OLD GASTEIZ eta MAZEDONIA KIMIKA"
-            },
-            {
-              "hora": "05:00",
-              "descripcion": "Gaupasa en las txosnas"
+              "hora": "",
+              "descripcion": "Dantzaris y txistularis en la plaza"
             }
           ]
         },
         {
-          "dia": 4,
-          "fecha": "2026-10-04",
+          "dia": 2,
+          "fecha": "2026-08-30",
           "eventos": [
             {
-              "hora": "12:00",
-              "descripcion": "Castillos hinchables en la plaza"
+              "hora": "",
+              "descripcion": "Romería a la ermita"
             },
             {
-              "hora": "13:00",
-              "descripcion": "Triki-poteo por el pueblo"
-            },
-            {
-              "hora": "17:30",
-              "descripcion": "Campeonato de PEL"
+              "hora": "",
+              "descripcion": "Largas noches de orquesta con pintxos"
             }
           ]
         }
-      ]
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": true,
+      "patron": {
+        "nombre": "San Juan Degollado",
+        "dia": 29,
+        "mes": 8,
+        "fuente": "llm"
+      }
+    },
+    {
+      "id": "aloria-fiestas-san-prudencio-2026",
+      "lugar_id": "01002000101",
+      "nombre": "Fiestas de San Prudencio y Nuestra Señora de Estíbaliz",
+      "fecha_inicio": "2026-04-24",
+      "fecha_fin": "2026-05-01",
+      "tamano": "pequeña",
+      "descripcion": "Fiestas que combinan tradición, cultura y música con actividades para todos los públicos.",
+      "confianza": "baja",
+      "fuentes": [
+        "busqueda_web"
+      ],
+      "solo_fuentes_no_oficiales": true,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-04-24",
+          "eventos": [
+            {
+              "hora": "",
+              "descripcion": "Pregón de Antonio Altarriba"
+            }
+          ]
+        },
+        {
+          "dia": 8,
+          "fecha": "2026-05-01",
+          "eventos": [
+            {
+              "hora": "",
+              "descripcion": "Romería de Estíbaliz Vitoria-Gasteiz"
+            }
+          ]
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false
+    },
+    {
+      "id": "festival-teatro-amateur-2026",
+      "lugar_id": "01001000101",
+      "nombre": "Festival de Teatro Amateur",
+      "fecha_inicio": "2026-11-01",
+      "fecha_fin": "2026-11-30",
+      "tamano": "grande",
+      "descripcion": "El Festival de Teatro Amateur celebra su 20ª edición en Alegría-Dulantzi, destacando por su buen funcionamiento y acogida del público.",
+      "confianza": "alta",
+      "fuentes": [
+        "web_municipio"
+      ],
+      "solo_fuentes_no_oficiales": false,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-11-01",
+          "eventos": [
+            {
+              "hora": "",
+              "descripcion": "Inauguración del Festival"
+            }
+          ]
+        },
+        {
+          "dia": 30,
+          "fecha": "2026-11-30",
+          "eventos": [
+            {
+              "hora": "",
+              "descripcion": "Gala final con entrega de premios y diplomas"
+            }
+          ]
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false
+    },
+    {
+      "id": "artomana-san-jorge-2026",
+      "lugar_id": "01002000301",
+      "nombre": "Fiestas de San Jorge en Artomaña",
+      "fecha_inicio": "2026-04-17",
+      "fecha_fin": "2026-04-23",
+      "tamano": "grande",
+      "descripcion": "Celebración anual en honor a San Jorge con música, gastronomía y actividades para todos los públicos.",
+      "confianza": "baja",
+      "fuentes": [
+        "busqueda_web"
+      ],
+      "solo_fuentes_no_oficiales": true,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-04-17",
+          "eventos": [
+            {
+              "hora": "20:00",
+              "descripcion": "Chupinazo y cena popular"
+            },
+            {
+              "hora": "21:00",
+              "descripcion": "Concierto Kesonikete"
+            },
+            {
+              "hora": "23:00",
+              "descripcion": "Inicio del asado de ternera"
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-04-18",
+          "eventos": [
+            {
+              "hora": "14:00",
+              "descripcion": "Degustación de ternera asada ambientado con trikitixa"
+            },
+            {
+              "hora": "17:00",
+              "descripcion": "Duelo entre los pueblos de Arrastaria"
+            },
+            {
+              "hora": "19:00",
+              "descripcion": "Zumba (música y baile)"
+            },
+            {
+              "hora": "22:00",
+              "descripcion": "Concierto con Eriz & Totum Revolutum"
+            },
+            {
+              "hora": "24:00",
+              "descripcion": "DJ Varro"
+            }
+          ]
+        },
+        {
+          "dia": 3,
+          "fecha": "2026-04-19",
+          "eventos": [
+            {
+              "hora": "11:00",
+              "descripcion": "Hinchables infantiles"
+            },
+            {
+              "hora": "12:30",
+              "descripcion": "Misa"
+            },
+            {
+              "hora": "13:30",
+              "descripcion": "Euskal Dantzak de la mano de Erauntsi baile Taldea"
+            },
+            {
+              "hora": "16:00",
+              "descripcion": "Hinchables infantiles"
+            },
+            {
+              "hora": "17:30",
+              "descripcion": "Chocolatada / Campeonato de brisca"
+            }
+          ]
+        },
+        {
+          "dia": 7,
+          "fecha": "2026-04-23",
+          "eventos": [
+            {
+              "hora": "13:00",
+              "descripcion": "Misa en honor a San Jorge, seguido de lunch amenizado con trikitixa en la herriko taberna"
+            }
+          ]
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": true,
+      "patron": {
+        "nombre": "San Jorge vuelven a incluir este",
+        "dia": 23,
+        "mes": 4,
+        "fuente": "busqueda"
+      }
+    },
+    {
+      "id": "fiestas-de-san-anonio",
+      "lugar_id": "01002000501",
+      "nombre": "Fiestas de San Antonio",
+      "fecha_inicio": "2026-06-08",
+      "fecha_fin": "2026-06-10",
+      "tamano": "pequeña",
+      "descripcion": "Celebración anual con misa, procesión y verbena.",
+      "confianza": "baja",
+      "fuentes": [
+        "busqueda_web"
+      ],
+      "solo_fuentes_no_oficiales": true,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-06-08",
+          "eventos": [
+            {
+              "hora": "",
+              "descripcion": "Misa y procesión"
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-06-09",
+          "eventos": [
+            {
+              "hora": "",
+              "descripcion": "Dantzaris"
+            }
+          ]
+        },
+        {
+          "dia": 3,
+          "fecha": "2026-06-10",
+          "eventos": [
+            {
+              "hora": "",
+              "descripcion": "Romería y verbena"
+            }
+          ]
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false
+    },
+    {
+      "id": "patron-san-antonio-abad-01002000501",
+      "lugar_id": "01002000501",
+      "nombre": "Fiestas de San Antonio Abad (estimada)",
+      "fecha_inicio": "2026-01-17",
+      "fecha_fin": "2026-01-17",
+      "tamano": "pequeña",
+      "descripcion": "Fiesta anual estimada a partir del día del santo patrón de Baranbio (San Antonio Abad, 17 de enero). No se encontró programa ni confirmación para este año.",
+      "confianza": "baja",
+      "origen": "santo_patron",
+      "es_estimada": true,
+      "incluye_dia_patron": true,
+      "fuentes": [],
+      "solo_fuentes_no_oficiales": false,
+      "patron": {
+        "nombre": "San Antonio Abad",
+        "dia": 17,
+        "mes": 1,
+        "fuente": "llm"
+      },
+      "programa": []
+    },
+    {
+      "id": "delika-fiestas-2026",
+      "lugar_id": "01002000601",
+      "nombre": "Fiestas de Delika",
+      "fecha_inicio": "2026-06-26",
+      "fecha_fin": "2026-06-28",
+      "tamano": "pequeña",
+      "descripcion": "Las fiestas de Delika incluyen música, concursos y actividades para toda la familia.",
+      "confianza": "alta",
+      "fuentes": [
+        "busqueda_web",
+        "web_municipio"
+      ],
+      "solo_fuentes_no_oficiales": false,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-06-26",
+          "eventos": [
+            {
+              "hora": "21:00",
+              "descripcion": "Chupinazo."
+            },
+            {
+              "hora": "21:30",
+              "descripcion": "Concurso de tortilla de patata casera."
+            },
+            {
+              "hora": "22:00-01:00",
+              "descripcion": "Fiesta temática cowboy."
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-06-27",
+          "eventos": [
+            {
+              "hora": "10:00",
+              "descripcion": "Salida de la I Marcha de Montaña (10 km aprox.)."
+            },
+            {
+              "hora": "10:30",
+              "descripcion": "Salida de la II Marcha de Montaña Familiar (3 km aprox.)."
+            },
+            {
+              "hora": "14:30",
+              "descripcion": "Comida popular."
+            },
+            {
+              "hora": "16:30",
+              "descripcion": "Desafío Arrastaria."
+            },
+            {
+              "hora": "20:00",
+              "descripcion": "Suelta de vaquillas (para mayores de 16 años)."
+            },
+            {
+              "hora": "23:00",
+              "descripcion": "Verbena con Zutik y DJ Varro."
+            }
+          ]
+        },
+        {
+          "dia": 3,
+          "fecha": "2026-06-28",
+          "eventos": [
+            {
+              "hora": "08:00",
+              "descripcion": "Quedada para limpiar la plaza y sus alrededores."
+            },
+            {
+              "hora": "11:30",
+              "descripcion": "Misa en la iglesia."
+            },
+            {
+              "hora": "12:30",
+              "descripcion": "Pintxo pote."
+            },
+            {
+              "hora": "15:00-20:00",
+              "descripcion": "Toro mecánico e hinchables."
+            },
+            {
+              "hora": "18:30",
+              "descripcion": "Chocolatada."
+            },
+            {
+              "hora": "19:00",
+              "descripcion": "Concierto de Eriz & Totum Revolutum."
+            },
+            {
+              "hora": "20:00",
+              "descripcion": "Parrillada."
+            }
+          ]
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false
+    },
+    {
+      "id": "patron-san-pedro-01002000601",
+      "lugar_id": "01002000601",
+      "nombre": "Fiestas de San Pedro (estimada)",
+      "fecha_inicio": "2026-06-29",
+      "fecha_fin": "2026-06-29",
+      "tamano": "pequeña",
+      "descripcion": "Fiesta anual estimada a partir del día del santo patrón de Delika (San Pedro, 29 de junio). No se encontró programa ni confirmación para este año.",
+      "confianza": "baja",
+      "origen": "santo_patron",
+      "es_estimada": true,
+      "incluye_dia_patron": true,
+      "fuentes": [],
+      "solo_fuentes_no_oficiales": false,
+      "patron": {
+        "nombre": "San Pedro",
+        "dia": 29,
+        "mes": 6,
+        "fuente": "llm"
+      },
+      "programa": []
+    },
+    {
+      "id": "santiago-larrinbe-2026",
+      "lugar_id": "01002000701",
+      "nombre": "Fiestas de Santiago en Larrinbe",
+      "fecha_inicio": "2026-07-24",
+      "fecha_fin": "2026-07-25",
+      "tamano": "pequeña",
+      "descripcion": "Celebración patronal con romería, procesión y música tradicional.",
+      "confianza": "baja",
+      "fuentes": [
+        "busqueda_web"
+      ],
+      "solo_fuentes_no_oficiales": true,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-07-24",
+          "eventos": [
+            {
+              "hora": "",
+              "descripcion": "Misa solemne en la iglesia de Santiago"
+            },
+            {
+              "hora": "",
+              "descripcion": "Procesión por las calles del pueblo"
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-07-25",
+          "eventos": [
+            {
+              "hora": "",
+              "descripcion": "Música tradicional y gastronomía local"
+            }
+          ]
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false
+    },
+    {
+      "id": "san-mames-larrinbe-2026",
+      "lugar_id": "01002000701",
+      "nombre": "Fiestas de San Mamés en Larrinbe",
+      "fecha_inicio": "2026-08-07",
+      "fecha_fin": "2026-08-07",
+      "tamano": "pequeña",
+      "descripcion": "Celebración patronal con actos religiosos y culturales.",
+      "confianza": "baja",
+      "fuentes": [
+        "busqueda_web"
+      ],
+      "solo_fuentes_no_oficiales": true,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-08-07",
+          "eventos": [
+            {
+              "hora": "",
+              "descripcion": "Actos religiosos y culturales en honor a San Mamés"
+            }
+          ]
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false
+    },
+    {
+      "id": "patron-san-roman-01001000201",
+      "lugar_id": "01001000201",
+      "nombre": "Fiestas de San Román (estimada)",
+      "fecha_inicio": "2026-11-18",
+      "fecha_fin": "2026-11-18",
+      "tamano": "pequeña",
+      "descripcion": "Fiesta anual estimada a partir del día del santo patrón de Egileta (San Román, 18 de noviembre). No se encontró programa ni confirmación para este año.",
+      "confianza": "baja",
+      "origen": "santo_patron",
+      "es_estimada": true,
+      "incluye_dia_patron": true,
+      "fuentes": [],
+      "solo_fuentes_no_oficiales": false,
+      "patron": {
+        "nombre": "San Román",
+        "dia": 18,
+        "mes": 11,
+        "fuente": "llm"
+      },
+      "programa": []
     }
   ]
 }

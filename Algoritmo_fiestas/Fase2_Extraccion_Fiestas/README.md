@@ -28,6 +28,10 @@ Segunda fase del algoritmo Fiestyfy. Extrae fiestas de las subdivisiones (distri
               │
               ▼
      ┌─────────────────────────────────────────────┐
+     │  0. Santo Patrón (paralelo al scraping)     │
+     │     - Caché → Wikipedia → buscadores → LLM  │
+     │     - Fecha fija resuelta contra SANTORAL   │
+     ├─────────────────────────────────────────────┤
      │  1. AsyncTwoPassSpider (aiohttp, sem=10)    │
      │     - Pasada 1: BFS concurrente, puntúa     │
      │     - Pasada 2: OCR/PDF con filtro smart    │
@@ -39,15 +43,54 @@ Segunda fase del algoritmo Fiestyfy. Extrae fiestas de las subdivisiones (distri
      │     - Chunks 1200 chars, overlap 200        │
      │     - Saturación por similitud coseno       │
      ├─────────────────────────────────────────────┤
-     │  4. Qwen 2.5 7B (LM Studio)                │
+     │  4. LLM local (LM Studio)                   │
      │     - Criterio de fiestas inyectado         │
      │     - JSON estructurado con programa        │
      ├─────────────────────────────────────────────┤
      │  5. Validación post-LLM                     │
      │     - lugar_id, fechas, año, slug           │
+     │     - Saneado (nombre, duración, programa)  │
+     │     - Filtro adaptativo por duración        │
      │     - Deduplicación                         │
+     ├─────────────────────────────────────────────┤
+     │  6. Integración del patrón                  │
+     │     - Marca fiestas que incluyen su día     │
+     │     - Fiesta estimada si no está cubierto   │
      └─────────────────────────────────────────────┘
 ```
+
+---
+
+## 🙏 Paso del Santo Patrón
+
+Para cada localidad se busca su santo patrón (Wikipedia → buscadores → LLM local como
+fallback) y se resuelve su **día fijo del calendario** contra un santoral estático de
++200 patrones comunes de España (`llm_processor/patron_finder.py`). Si la fecha del texto
+discrepa del santoral, prevalece el santoral. El resultado se guarda en
+`patrones_cache.json` (incluidos los "no encontrado") para no repetir búsquedas.
+
+Con el día del patrón en el año objetivo:
+- Toda fiesta extraída cuyo rango de fechas **incluya el día del patrón** se marca con
+  `incluye_dia_patron: true` y el objeto `patron`.
+- Si **ninguna** fiesta cubre ese día (incluido el caso de 0 fiestas), se añade una
+  **fiesta estimada** de un día (`origen: "santo_patron"`, `es_estimada: true`,
+  `confianza: "baja"`), garantizando que casi toda localidad tenga al menos la fecha
+  en que suele celebrar sus fiestas.
+
+---
+
+## 🚦 Filtro adaptativo por duración (`llm_processor/festival_filter.py`)
+
+- **Multi-día** (`fecha_inicio < fecha_fin`) — filtro regular: basta una señal de tipo
+  fiesta (patronales, feria, carnaval...), una señal nocturna o un programa con ≥2 eventos.
+- **Un solo día** — filtro estricto: requiere señal nocturna fuerte (orquesta, verbena,
+  DJ, discomóvil, concierto...). Excepción: nombre claramente patronal o coincidencia
+  con el día del patrón → se acepta con `confianza: "baja"`. Así se eliminan procesiones,
+  misas y exposiciones sueltas.
+- **Eventos privados** (discoteca, pub, sala de fiestas como local): rechazados. Solo
+  celebraciones populares de la localidad abiertas a todo el mundo.
+- **Saneado**: nombres genéricos ("Fiesta"), duraciones > 30 días y días de programa
+  fuera del rango de la fiesta se corrigen o descartan.
 
 ---
 
@@ -58,12 +101,16 @@ Fase2_Extraccion_Fiestas/
 ├── main.py                  # Orquestador async
 ├── config.py                # Constantes configurables
 ├── state_manager.py         # Persistencia thread-safe
+├── patrones_cache.json      # Caché de santos patrones (autogenerado)
 ├── scraper/
 │   ├── heuristic_spider.py  # Spider async de 2 pasadas
 │   ├── document_extractor.py # OCR + PDF con filtrado smart
 │   └── google_search.py     # Búsqueda DDG multi-query
-└── llm_processor/
-    └── text_analyzer.py     # RAG + LLM + validación
+├── llm_processor/
+│   ├── text_analyzer.py     # RAG + LLM + validación
+│   ├── festival_filter.py   # Filtro adaptativo + saneado de fiestas
+│   └── patron_finder.py     # Santo patrón: santoral + Wikipedia + buscadores
+└── tests_fase2/             # Tests unitarios (pytest)
 ```
 
 ---
@@ -80,6 +127,14 @@ Fase2_Extraccion_Fiestas/
   "tamano": "grande",
   "descripcion": "...",
   "confianza": "alta",
+  "origen": "extraccion",          // "extraccion" | "santo_patron"
+  "es_estimada": false,            // true si es la fiesta estimada por el día del patrón
+  "incluye_dia_patron": true,      // true si el día del patrón cae dentro del rango
+  "patron": {                      // presente solo si se halló el patrón
+    "nombre": "Virgen de la Paloma",
+    "dia": 15, "mes": 8,
+    "fuente": "wikipedia"          // "wikipedia" | "busqueda" | "llm"
+  },
   "programa": [
     {
       "dia": 1,
@@ -92,6 +147,10 @@ Fase2_Extraccion_Fiestas/
   ]
 }
 ```
+
+Cuando ninguna fiesta cubre el día del patrón, se añade un registro estimado de un día:
+`nombre: "Fiestas de <Patrón> (estimada)"`, `fecha_inicio == fecha_fin`, `programa: []`,
+`origen: "santo_patron"`, `es_estimada: true`, `confianza: "baja"`.
 
 ---
 
@@ -113,7 +172,7 @@ pip install aiohttp beautifulsoup4 pytesseract pdfplumber Pillow requests
 ## 🚀 Ejecución
 
 ```bash
-python main.py --anno 2026 --input ../lugares_espana.json --output fiestas_espana.json --parallel 4
+python main.py --anno 2026 --input ../Fase1_recogida_datos_wiki/lugares_espana.json --output fiestas_espana.json --parallel 4
 ```
 
 | Flag | Default | Descripción |
@@ -124,6 +183,11 @@ python main.py --anno 2026 --input ../lugares_espana.json --output fiestas_espan
 | `--parallel` | 4 | Municipios procesados en paralelo |
 
 El orquestador reanuda automáticamente desde el último municipio procesado si el archivo de salida ya existe.
+
+**Tests unitarios** (filtro adaptativo, santoral, integración del patrón):
+```bash
+python -m pytest tests_fase2/ -q
+```
 
 ---
 

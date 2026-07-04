@@ -11,10 +11,12 @@ import logging
 import re
 import heapq
 import itertools
-from collections import deque
+from collections import deque, Counter
 from bs4 import BeautifulSoup
 
 import aiohttp
+
+from scraper.social_finder import normalizar_link_social
 
 from scraper.document_extractor import (
     is_promising_image,
@@ -23,6 +25,7 @@ from scraper.document_extractor import (
     extract_text_from_pdf,
     ocr_executor,
 )
+from fuentes import crear_documento
 from config import (
     SPIDER_MAX_MAPPING_PAGES,
     SPIDER_MAX_EXTRACTION_PAGES,
@@ -62,6 +65,9 @@ class AsyncTwoPassSpider:
         self.max_internal_depth = max_internal_depth
         self.max_external_depth = max_external_depth
         self.concurrency = concurrency
+        # Perfiles sociales cosechados de las páginas INTERNAS del sitio:
+        # Counter {(red, url_canonica): apariciones}
+        self.social_links: Counter = Counter()
 
     # ───── Utilidades ─────
 
@@ -196,14 +202,19 @@ class AsyncTwoPassSpider:
 
     # ───── Pasada 1: Mapeo y puntuación ─────
 
-    async def pass_1_map_and_score(self, start_url: str, locality_names: list[str]) -> list:
-        """Pasada 1: Best-First Search concurrente, descarga HTML y puntúa relevancia."""
+    async def pass_1_map_and_score(self, start_url: str, locality_names: list[str], visited_urls: set | None = None) -> list:
+        """
+        Pasada 1: Best-First Search concurrente, descarga HTML y puntúa relevancia.
+        visited_urls (opcional) es un set COMPARTIDO entre fuentes: las URLs ya
+        leídas por otro paso no se vuelven a descargar, y las leídas aquí quedan
+        registradas para los pasos siguientes.
+        """
         logger.info(f"[Pasada 1] Mapeo desde: {start_url}")
 
         if not start_url.startswith("http"):
             start_url = "http://" + start_url
 
-        visited = set()
+        visited = visited_urls if visited_urls is not None else set()
         counter = itertools.count()
         # Cola: (prioridad, contador, url, profundidad, es_interno)
         queue = []
@@ -232,10 +243,13 @@ class AsyncTwoPassSpider:
             except Exception as e:
                 logger.debug(f"Sitemap no disponible o error: {e}")
 
-            while queue and len(visited) < self.max_mapping_pages:
+            # Contador local: el set visited puede venir compartido (ya poblado)
+            paginas_este_crawl = 0
+
+            while queue and paginas_este_crawl < self.max_mapping_pages:
                 # Procesar en batch: sacar hasta N URLs de la cola
                 batch = []
-                while queue and len(batch) < self.concurrency and len(visited) + len(batch) < self.max_mapping_pages:
+                while queue and len(batch) < self.concurrency and paginas_este_crawl + len(batch) < self.max_mapping_pages:
                     priority, _, url, depth, is_internal = heapq.heappop(queue)
                     url = self._clean_url(url)
                     if url in visited:
@@ -249,10 +263,11 @@ class AsyncTwoPassSpider:
 
                 if not batch:
                     break
+                paginas_este_crawl += len(batch)
 
                 # Mostrar progreso de vez en cuando (o al principio) para evitar sensación de congelamiento
-                if len(visited) % (self.concurrency * 3) <= self.concurrency:
-                    logger.info(f"    [Spider] Progreso: {len(visited)}/{self.max_mapping_pages} páginas escaneadas (En cola: {len(queue)})...")
+                if paginas_este_crawl % (self.concurrency * 3) <= self.concurrency:
+                    logger.info(f"    [Spider] Progreso: {paginas_este_crawl}/{self.max_mapping_pages} páginas escaneadas (En cola: {len(queue)})...")
 
                 # Descargar en paralelo
                 tasks = [self._fetch_html(session, url, semaphore) for url, _, _ in batch]
@@ -266,18 +281,21 @@ class AsyncTwoPassSpider:
                         soup = BeautifulSoup(html_result, "html.parser")
                         title = soup.title.string if soup.title else ""
 
-                        # Extraer texto visible rápido
+                        # Extraer texto visible rápido, conservando saltos de línea
+                        # (importantes para no partir programas de fiestas al chunkear)
                         for tag in soup(["script", "style", "nav", "footer", "noscript"]):
                             tag.extract()
-                        page_text = soup.get_text(separator=" ", strip=True)
+                        page_text = soup.get_text(separator="\n", strip=True)
+                        page_text = re.sub(r"[ \t]+", " ", page_text)
+                        page_text = re.sub(r"\n{2,}", "\n", page_text)
 
                         score = self._score_page(url, title, page_text[:3000], locality_names)
-                        
+
                         if score > 800 and not early_stop_triggered:
                             logger.info(f"    [!] Early Stop Triggered: Página muy relevante encontrada ({score} pts): {url}")
                             early_stop_triggered = True
                             # Reducimos drásticamente el máximo de páginas para terminar pronto
-                            self.max_mapping_pages = min(self.max_mapping_pages, len(visited) + self.concurrency * 3)
+                            self.max_mapping_pages = min(self.max_mapping_pages, paginas_este_crawl + self.concurrency * 3)
 
                         # Recopilar enlaces a PDFs en esta página
                         pdf_links = []
@@ -305,7 +323,15 @@ class AsyncTwoPassSpider:
                             if link_href.lower().endswith(".pdf"):
                                 continue
                             link_url = self._clean_url(urllib.parse.urljoin(url, link_href))
-                            
+
+                            # Cosechar perfiles sociales (solo desde páginas internas
+                            # del sitio oficial → cero falsos positivos) y no rastrearlos
+                            if is_internal:
+                                perfil_social = normalizar_link_social(link_url)
+                                if perfil_social:
+                                    self.social_links[perfil_social] += 1
+                                    continue
+
                             # Filtrar enlaces inútiles por Blacklist
                             if link_url in visited:
                                 continue
@@ -332,12 +358,18 @@ class AsyncTwoPassSpider:
 
     # ───── Pasada 2: Extracción profunda ─────
 
-    async def pass_2_heavy_extraction(self, scored_pages: list, locality_names: list[str]) -> str:
-        """Pasada 2: OCR y PDFs del Top N, con filtrado inteligente."""
+    async def pass_2_heavy_extraction(
+        self,
+        scored_pages: list,
+        locality_names: list[str],
+        fuente: str,
+        visited_urls: set | None = None,
+    ) -> list[dict]:
+        """Pasada 2: OCR y PDFs del Top N. Devuelve documentos etiquetados con la fuente."""
         logger.info(f"[Pasada 2] Extracción profunda del Top {self.max_extraction_pages}...")
         top_pages = scored_pages[: self.max_extraction_pages]
 
-        extracted_content = ""
+        documentos = []
         semaphore = asyncio.Semaphore(self.concurrency)
         headers = {"User-Agent": USER_AGENT}
         connector = aiohttp.TCPConnector(limit=self.concurrency, ssl=False)
@@ -348,35 +380,41 @@ class AsyncTwoPassSpider:
                     break  # Ignorar páginas irrelevantes
 
                 logger.info(f"  [Top {rank + 1} / Score: {score}] {url[:70]}...")
-                extracted_content += f"\n--- URL: {url} ---\n{page_text}\n"
+                documentos.append(crear_documento(fuente, url, page_text, tipo="pagina"))
 
                 # ─── PDFs: filtrar por relevancia antes de descargar ───
                 pdf_tasks = []
+                pdf_urls_pedidas = []
                 for pdf_url, link_text in pdf_links:
                     if is_promising_pdf(pdf_url, link_text, page_text[:500]):
                         pdf_tasks.append(self._extract_pdf(session, pdf_url, semaphore))
+                        pdf_urls_pedidas.append(pdf_url)
+                        if visited_urls is not None:
+                            visited_urls.add(self._clean_url(pdf_url))
 
                 if pdf_tasks:
                     logger.info(f"    Descargando {len(pdf_tasks)} PDFs prometedores...")
                     pdf_results = await asyncio.gather(*pdf_tasks, return_exceptions=True)
-                    for pdf_url_text in pdf_results:
-                        if isinstance(pdf_url_text, str) and pdf_url_text:
-                            extracted_content += f"\n[TEXTO PDF]:\n{pdf_url_text}\n"
+                    for pdf_url, pdf_text in zip(pdf_urls_pedidas, pdf_results):
+                        if isinstance(pdf_text, str) and pdf_text:
+                            documentos.append(crear_documento(fuente, pdf_url, pdf_text, tipo="pdf"))
 
                 # ─── Imágenes: filtrar agresivamente antes de OCR ───
                 img_tasks = []
+                img_urls_pedidas = []
                 for img_url, alt_text in img_infos:
                     if is_promising_image(img_url, alt_text, locality_names):
                         img_tasks.append(self._extract_image(session, img_url, semaphore))
+                        img_urls_pedidas.append(img_url)
 
                 if img_tasks:
                     logger.info(f"    OCR en {len(img_tasks)} imágenes prometedoras...")
                     img_results = await asyncio.gather(*img_tasks, return_exceptions=True)
-                    for ocr_text in img_results:
+                    for img_url, ocr_text in zip(img_urls_pedidas, img_results):
                         if isinstance(ocr_text, str) and ocr_text.strip():
-                            extracted_content += f"\n[TEXTO CARTEL]:\n{ocr_text}\n"
+                            documentos.append(crear_documento(fuente, img_url, ocr_text, tipo="cartel"))
 
-        return extracted_content
+        return documentos
 
     async def _extract_pdf(self, session, pdf_url, semaphore):
         """Descarga y extrae texto de un PDF."""
@@ -407,11 +445,22 @@ class AsyncTwoPassSpider:
 
     # ───── Interfaz pública ─────
 
-    async def crawl(self, start_url: str, locality_names: list[str]) -> str:
-        """Ejecuta el crawl completo de 2 pasadas para una localidad."""
-        scored_pages = await self.pass_1_map_and_score(start_url, locality_names)
+    async def crawl(
+        self,
+        start_url: str,
+        locality_names: list[str],
+        fuente: str,
+        visited_urls: set | None = None,
+    ) -> list[dict]:
+        """
+        Ejecuta el crawl completo de 2 pasadas para una localidad.
+        Devuelve una lista de documentos etiquetados: {fuente, url, texto, tipo, es_calendario}.
+        visited_urls es un set compartido entre fuentes para no releer URLs.
+        Los perfiles sociales cosechados quedan en self.social_links.
+        """
+        self.social_links = Counter()
+        scored_pages = await self.pass_1_map_and_score(start_url, locality_names, visited_urls)
         if not scored_pages:
             logger.warning(f"No se encontraron páginas en {start_url}")
-            return ""
-        final_text = await self.pass_2_heavy_extraction(scored_pages, locality_names)
-        return final_text
+            return []
+        return await self.pass_2_heavy_extraction(scored_pages, locality_names, fuente, visited_urls)
