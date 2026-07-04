@@ -48,6 +48,10 @@ def main():
     try:
         for i in range(start_idx, total):
             lugar = lugares[i]
+            
+            if lugar.get("desc_actualizada", False):
+                continue
+                
             nombre = lugar.get("nombre", "?")
             url = lugar.get("wikipedia_url")
 
