@@ -11270,15 +11270,16 @@
       "poblacion": 79,
       "lat": 40.43944444444444,
       "lng": -5.617500000000001,
-      "descripcion_corta": "Descubre la naturaleza y patrimonio de Medinilla en el Alto Tormes, cerca del Berrueco",
-      "descripcion": "Medinilla ofrece un entorno natural con especies animales únicas como abubillas y jabalí, junto a un patrimonio cultural con un museo de lavaderos antiguos que datan del Imperio Romano",
+      "descripcion_corta": "Medinilla es un lugar con patrimonio natural y cultural en relieve montañoso.",
+      "descripcion": "Enclavado en la comarca del Alto Tormes, Medinilla destaca por su entorno montañoso, con elevaciones como 'la teta Gilbuena' y 'el Cerro del Berrueco'. Su patrimonio incluye un museo de lavaderos antiguos y abundante fauna silvestre.",
       "imagenes": {
         "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Medinilla_21.jpg",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Escudo_de_Medinilla.svg/120px-Escudo_de_Medinilla.svg.png"
       },
       "sitio_web": "https://www.medinilla.es/",
       "wikipedia_url": "https://es.wikipedia.org/wiki/Medinilla",
-      "nombre_oficial": "Medinilla"
+      "nombre_oficial": "Medinilla",
+      "desc_actualizada": true
     },
     {
       "id": "mengamuoz",
@@ -11289,15 +11290,16 @@
       "poblacion": 60,
       "lat": 0.0,
       "lng": 0.0,
-      "descripcion_corta": "Pueblo montañoso en la sierra de la Paramera con paisajes naturales impresionantes",
-      "descripcion": "Mengamuñoz se encuentra en un valle rodeado por la sierra de la Paramera y La Serrota, con paisajes naturales impresionantes y una rica historia. El pueblo está atravesado por la antigua calzada romana y cuenta con el Puerto de Menga, un paso natural que conecta el valle de Amblés con el Alto Valle del Alberche. La localidad ofrece oportunidades para practicar deportes al aire libre, como senderismo y cabalgata, y su entorno natural es ideal para disfrutar de la naturaleza y la tranquilidad.",
+      "descripcion_corta": "Mengamuñoz, un pueblo al pie del Puerto de Menga con riqueza histórica trashumante.",
+      "descripcion": "Enclavado entre la sierra de La Serrota y la Paramera, este lugar guarda el paso de una calzada romana. Su entorno natural es ideal para los amantes de la montaña, con el río Aulaque como elemento distintivo.",
       "imagenes": {
         "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Mengamu%C3%B1oz_puente_en_la_carretera.jpg",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Escudo_de_Mengamu%C3%B1oz.svg/120px-Escudo_de_Mengamu%C3%B1oz.svg.png"
       },
       "sitio_web": "https://www.mengamunoz.es",
       "wikipedia_url": "https://es.wikipedia.org/wiki/Mengamuñoz",
-      "nombre_oficial": "Mengamuñoz"
+      "nombre_oficial": "Mengamuñoz",
+      "desc_actualizada": true
     },
     {
       "id": "mesegar-de-corneja",
@@ -11308,15 +11310,16 @@
       "poblacion": 62,
       "lat": 40.50277777777778,
       "lng": -5.301666666666667,
-      "descripcion_corta": "Pueblo rodeado de montañas y ríos, con historia y cultura en su entorno natural.",
-      "descripcion": "Mesegar de Corneja es un pueblo situado a una altitud de 1018 m sobre el nivel del mar, rodeado por montañas y ríos. Su historia se remonta a la Edad Moderna, con documentos de ley de vecindad que datan de 1516. El lugar cuenta con un entorno natural impresionante y una cultura rica en tradiciones y costumbres. Visitar Mesegar de Corneja es descubrir un pueblo auténtico y pintoresco, rodeado de belleza natural.",
+      "descripcion_corta": "Pueblo enclavado en un paisaje montañoso con riqueza histórica de la Edad Moderna.",
+      "descripcion": "Mesegar de Corneja se encuentra a una altitud elevada, rodeado por impresionantes vistas montañosas. Su historia data del siglo XVI, destacando documentos legales que reflejan sus relaciones con otras localidades cercanas. La tranquilidad y el encanto rural invitan al visitante a sumergirse en su pasado medieval.",
       "imagenes": {
         "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Mesegar_de_Corneja-puerta_verde.jpg",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Escudo_de_Mesegar_de_Corneja.svg/120px-Escudo_de_Mesegar_de_Corneja.svg.png"
       },
       "sitio_web": "http://www.mesegardecorneja.es/",
       "wikipedia_url": "https://es.wikipedia.org/wiki/Mesegar_de_Corneja",
-      "nombre_oficial": "Mesegar de Corneja"
+      "nombre_oficial": "Mesegar de Corneja",
+      "desc_actualizada": true
     },
     {
       "id": "mijares",
@@ -11327,15 +11330,16 @@
       "poblacion": 718,
       "lat": 40.2975,
       "lng": -4.836666666666666,
-      "descripcion_corta": "Mijares, un pueblo en el valle del Tiétar con paisajes naturales impresionantes",
-      "descripcion": "Mijares se encuentra rodeado de montañas y ríos, ofreciendo una rica experiencia cultural y natural. La cooperativa El Mogote es famosa por sus productos frescos y artesanales.",
+      "descripcion_corta": "Encantador pueblo en el valle del Tiétar con tradición agrícola y naturaleza espectacular.",
+      "descripcion": "Mijares, encantador lugar en el valle del Tiétar, ofrece una rica tradición agrícola destacada por su cooperativa local. Su entorno natural es impresionante, con vistas panorámicas a montañas cercanas y un paisaje de bosques de castaños.",
       "imagenes": {
         "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Mijares%2C_Avila_-_50104694648.jpg",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Escudo_de_Mijares.svg/120px-Escudo_de_Mijares.svg.png"
       },
       "sitio_web": "http://www.mijares.es/",
       "wikipedia_url": "https://es.wikipedia.org/wiki/Mijares_(Ávila)",
-      "nombre_oficial": "Mijares"
+      "nombre_oficial": "Mijares",
+      "desc_actualizada": true
     },
     {
       "id": "mingorria",
@@ -11346,15 +11350,16 @@
       "poblacion": 422,
       "lat": 40.75083333333333,
       "lng": -4.665277777777778,
-      "descripcion_corta": "Descubre el pueblo rojo de Mingorría, rodeado de montañas y clima continental.",
-      "descripcion": "Mingorría es un pueblo de granito rodeado de cerros y valles, con un clima continental que ofrece inviernos largos y veranos cálidos. La vegetación predominante es la encina, y el pueblo se encuentra a 1032 m sobre el nivel del mar, comunicado con la capital provincial y las carreteras Madrid-Hendaya y N-403.",
+      "descripcion_corta": "Mingorría, un lugar misterioso con raíces vascas y paisajes graníticos.",
+      "descripcion": "Mingorría es un enclave histórico con influencias vascas y una geografía marcada por rocas graníticas. Su entorno natural invita a explorar la Meseta Norte, donde el clima continental y la vegetación de encinas crean un paisaje único.",
       "imagenes": {
         "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Mingorria32.jpg",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Escudo_de_Mingorr%C3%ADa.svg/120px-Escudo_de_Mingorr%C3%ADa.svg.png"
       },
       "sitio_web": "https://www.mingorria.com",
       "wikipedia_url": "https://es.wikipedia.org/wiki/Mingorría",
-      "nombre_oficial": "Mingorría"
+      "nombre_oficial": "Mingorría",
+      "desc_actualizada": true
     },
     {
       "id": "el-miron",
@@ -11365,15 +11370,16 @@
       "poblacion": 93,
       "lat": 40.53194444444444,
       "lng": -5.405277777777778,
-      "descripcion_corta": "Descubre el encanto de El Mirón, con su castillo medieval y paisajes naturales impresionantes.",
-      "descripcion": "El Mirón ofrece una rica historia y cultura, con las ruinas del Castillo de los Moros y un entorno natural que combina montañas y valles. Visita este destino turístico para experimentar la auténtica esencia de Castilla y León.",
+      "descripcion_corta": "Ruinas medievales y paisajes montañosos invitan a explorar su historia.",
+      "descripcion": "El Mirón alberga las ruinosas murallas del antiguo castillo, conocido como Castillo de los Moros. Sus paisajes montañosos ofrecen un entorno natural ideal para senderismo y contemplación de la belleza rural.",
       "imagenes": {
         "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/El_Mir%C3%B3n_015%E2%80%94View.jpg",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Escudo_de_El_Mir%C3%B3n.svg/120px-Escudo_de_El_Mir%C3%B3n.svg.png"
       },
       "sitio_web": "http://www.elmiron.es/",
       "wikipedia_url": "https://es.wikipedia.org/wiki/El_Mirón",
-      "nombre_oficial": "El Mirón"
+      "nombre_oficial": "El Mirón",
+      "desc_actualizada": true
     },
     {
       "id": "mironcillo",
@@ -11384,15 +11390,16 @@
       "poblacion": 110,
       "lat": 40.555,
       "lng": -4.825555555555555,
-      "descripcion_corta": "Descubre el encanto de Mironcillo, un pueblo rodeado de naturaleza y rica historia.",
-      "descripcion": "Mironcillo se encuentra en un valle rodeado de sierras, con paisajes escarpados y llanos. El castillo de Aunqueospese y la iglesia de San Sebastián son puntos de interés. La zona es conocida por su rica historia y su conexión con la cultura gallega y asturiana.",
+      "descripcion_corta": "Mironcillo es un lugar encantador rodeado de montañas y ríos con una historia fascinante.",
+      "descripcion": "Enclavada en la Sierra de la Paramera, Mironcillo ofrece un paisaje escarpado y boscoso. Su castillo y la iglesia de San Sebastián son testimonio de su rica historia. El río Garganta fluye a través del pueblo, reflejando el encinar en la sierra de las Yemas.",
       "imagenes": {
         "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Mironcillo_%C3%81vila.JPG",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Mironcillo_%C3%81vila.JPG/330px-Mironcillo_%C3%81vila.JPG"
       },
       "sitio_web": "",
       "wikipedia_url": "https://es.wikipedia.org/wiki/Mironcillo",
-      "nombre_oficial": "Mironcillo"
+      "nombre_oficial": "Mironcillo",
+      "desc_actualizada": true
     },
     {
       "id": "miruea-de-los-infanzones",
@@ -11403,15 +11410,16 @@
       "poblacion": 86,
       "lat": 40.737500000000004,
       "lng": -5.090833333333333,
-      "descripcion_corta": "Mirueña de los Infanzones, un pueblo escondido en las montañas con paisajes naturales impresionantes.",
-      "descripcion": "Ubicado en una zona de transición entre el clima mediterráneo y oceánico, Mirueña de los Infanzones ofrece paisajes naturales impresionantes rodeados de ríos Navazamplón y Almar. Su entorno natural es ideal para practicar deportes al aire libre y disfrutar de la tranquilidad del pueblo. La localidad cuenta con un patrimonio cultural rico, con una historia que se remonta al siglo XIX, y ofrece atracciones como su escudo heráldico y bandera, aprobados oficialmente en 1994.",
+      "descripcion_corta": "Pequeño pueblo enclavado a orillas del río Navazamplón, con encantadoras vistas montañosas.",
+      "descripcion": "Mirueña de los Infanzones es un lugar tranquilo situado a más de mil metros sobre el nivel del mar. Sus paisajes naturales son impresionantes, rodeados por majestuosas montañas y flanqueado por el río Navazamplón. La localidad conserva una arquitectura tradicional que invita al visitante a sumergirse en su historia y cultura.",
       "imagenes": {
         "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Mirue%C3%B1a_de_los_Infanzones_01.jpg",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Escudo_de_Mirue%C3%B1a_de_los_Infanzones.svg/120px-Escudo_de_Mirue%C3%B1a_de_los_Infanzones.svg.png"
       },
       "sitio_web": "http://www.miruenadelosinfanzones.es/",
       "wikipedia_url": "https://es.wikipedia.org/wiki/Mirueña_de_los_Infanzones",
-      "nombre_oficial": "Mirueña de los Infanzones"
+      "nombre_oficial": "Mirueña de los Infanzones",
+      "desc_actualizada": true
     },
     {
       "id": "mombeltran",
@@ -11422,15 +11430,16 @@
       "poblacion": 922,
       "lat": 40.26,
       "lng": -5.017777777777778,
-      "descripcion_corta": "Descubre el encanto de Mombeltrán en la sierra de Gredos, rodeado de naturaleza y cultura.",
-      "descripcion": "Mombeltrán es un pueblo montañoso con una rica historia y paisajes paradisíacos. En su valle se encuentra el barranco de las Cinco Villas, rodeado de praderas, pinares y huertas escalonadas. La sierra de Gredos ofrece ventisqueros y vistas impresionantes. Explora la localidad y descubre su diversidad cultural y natural.",
+      "descripcion_corta": "Pueblo encantador en la sierra de Gredos, rodeado de naturaleza y ríos.",
+      "descripcion": "Mombeltrán es un encantador pueblo situado en plena sierra de Gredos, con paisajes montañosos y praderas. Su entorno natural incluye el barranco de las Cinco Villas y los ríos Ramacastañas y Tiétar. La historia medieval se refleja en sus nombres antiguos y en la cercana mina de hierro.",
       "imagenes": {
         "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Mombeltr%C3%A1n_udsigt_over_dalen_4.JPG",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Escudo_de_Mombeltr%C3%A1n_%28%C3%81vila%29.svg/120px-Escudo_de_Mombeltr%C3%A1n_%28%C3%81vila%29.svg.png"
       },
       "sitio_web": "https://www.mombeltran.es",
       "wikipedia_url": "https://es.wikipedia.org/wiki/Mombeltrán",
-      "nombre_oficial": "Mombeltrán"
+      "nombre_oficial": "Mombeltrán",
+      "desc_actualizada": true
     },
     {
       "id": "monsalupe",
@@ -11441,15 +11450,16 @@
       "poblacion": 64,
       "lat": 40.76861111111111,
       "lng": -4.781111111111111,
-      "descripcion_corta": "Descubre la belleza natural de Monsalupe, rodeado por cerros y bosques.",
-      "descripcion": "Monsalupe es un pueblo situado en el corazón de la sierra de Ávila, rodeado por una naturaleza impresionante. Su entorno se caracteriza por grandes encinares, pinares y tierras de cultivo, ofreciendo oportunidades para practicar deportes al aire libre como senderismo y ciclismo. La zona también es rica en historia, con restos medievales y monumentos arqueológicos que testimonian la presencia de celtas vetones y otros pueblos antiguos. Visita Monsalupe para disfrutar de su tranquilidad y conexión con la naturaleza.",
+      "descripcion_corta": "Monsalupe, un encantador lugar rodeado de cerros y bosques donde la historia medieval se hace presente.",
+      "descripcion": "Enclavado entre cerros y bosques, Monsalupe ofrece una mezcla única de naturaleza virgen y riqueza histórica. Descubre su pasado en el cementerio medieval del siglo XI-XVI y sumérgete en un entorno natural excepcional.",
       "imagenes": {
         "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Llegada_a_Monsalupe_%28ruta_Daganzo-Narros%29_-_panoramio.jpg",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Escudo_de_Monsalupe_%28%C3%81vila%29.svg/120px-Escudo_de_Monsalupe_%28%C3%81vila%29.svg.png"
       },
       "sitio_web": "https://www.monsalupe.es/",
       "wikipedia_url": "https://es.wikipedia.org/wiki/Monsalupe",
-      "nombre_oficial": "Monsalupe"
+      "nombre_oficial": "Monsalupe",
+      "desc_actualizada": true
     },
     {
       "id": "moraleja-de-matacabras",
@@ -11460,15 +11470,16 @@
       "poblacion": 55,
       "lat": 41.10722222222223,
       "lng": -4.9575000000000005,
-      "descripcion_corta": "Descubre el encanto rural de Moraleja de Matacabras en Castilla y León",
-      "descripcion": "Moraleja de Matacabras ofrece un entorno natural impresionante con una iglesia románico-mudéjar, rodeado de paisajes rurales y naturaleza",
+      "descripcion_corta": "Descubre un pueblo con encanto y una histórica iglesia románico-mudéjar.",
+      "descripcion": "Moraleja de Matacabras es un lugar tranquilo situado a más de 700 metros sobre el nivel del mar, destacando por su antigua iglesia románico-mudéjar dedicada a la Asunción. La arquitectura religiosa y el paisaje rural invitan al turista a sumergirse en un ambiente sereno.",
       "imagenes": {
         "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Iglesia_de_la_Asunci%C3%B3n_de_Nuestra_Se%C3%B1ora%2C_Moraleja_de_Matacabras_02.jpg",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Escudo_de_Moraleja_de_Matacabras_%28%C3%81vila%29.svg/120px-Escudo_de_Moraleja_de_Matacabras_%28%C3%81vila%29.svg.png"
       },
       "sitio_web": "https://www.moralejadematacabras.es/",
       "wikipedia_url": "https://es.wikipedia.org/wiki/Moraleja_de_Matacabras",
-      "nombre_oficial": "Moraleja de Matacabras"
+      "nombre_oficial": "Moraleja de Matacabras",
+      "desc_actualizada": true
     },
     {
       "id": "muana",
@@ -11479,15 +11490,16 @@
       "poblacion": 499,
       "lat": 40.59055555555556,
       "lng": -5.014444444444444,
-      "descripcion_corta": "Descubre el encanto rural de Muñana, rodeado de sierras y valles naturales.",
-      "descripcion": "Ubicado en la comarca de Ávila, este municipio ofrece paisajes impresionantes y una rica historia cultural. Camina por sus calles empedradas y descubre la auténtica vida rural española. El pueblo se alza a 1278 m sobre el nivel del mar y cuenta con un centro rural agrupado que preserva la tradición local.",
+      "descripcion_corta": "Muñana, un lugar encantador rodeado de sierras y valles con rutas históricas.",
+      "descripcion": "Muñana, situado en una región montañosa entre la Sierra de Ávila y el valle de Amblés, ofrece paisajes impresionantes. Sus elevaciones incluyen las cumbres Cabeza Mesa y Alto de las Fuentes. Camilo José Cela recorrió estas tierras en sus viajes literarios.",
       "imagenes": {
         "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Mu%C3%B1ana.jpg",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Escudo_de_Mu%C3%B1ana.svg/120px-Escudo_de_Mu%C3%B1ana.svg.png"
       },
       "sitio_web": "http://www.munana.es",
       "wikipedia_url": "https://es.wikipedia.org/wiki/Muñana",
-      "nombre_oficial": "Muñana"
+      "nombre_oficial": "Muñana",
+      "desc_actualizada": true
     },
     {
       "id": "muico",
@@ -11498,15 +11510,16 @@
       "poblacion": 77,
       "lat": 40.70472222222222,
       "lng": -5.026666666666666,
-      "descripcion_corta": "Descubre el encanto rural de Muñico en Castilla y León",
-      "descripcion": "Ubicado a 1088 m sobre el nivel del mar, Muñico ofrece un entorno natural impresionante con una iglesia histórica y paisajes rurales auténticos",
+      "descripcion_corta": "Pequeño pueblo con una iglesia antigua en un entorno montañoso.",
+      "descripcion": "Muñico es un encantador lugar situado a más de mil metros sobre el nivel del mar, rodeado por impresionantes paisajes montañosos. Destaca su antigua iglesia dedicada a Santo Domingo, que invita a los visitantes a sumergirse en la historia y la cultura local.",
       "imagenes": {
         "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Iglesia_de_Mu%C3%B1ico.JPG",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Escudo_de_Mu%C3%B1ico.svg/120px-Escudo_de_Mu%C3%B1ico.svg.png"
       },
       "sitio_web": "http://www.munico.es/",
       "wikipedia_url": "https://es.wikipedia.org/wiki/Muñico",
-      "nombre_oficial": "Muñico"
+      "nombre_oficial": "Muñico",
+      "desc_actualizada": true
     },
     {
       "id": "muogalindo",
@@ -11517,15 +11530,16 @@
       "poblacion": 299,
       "lat": 40.6025,
       "lng": -4.895,
-      "descripcion_corta": "Descubre el encanto rural de Muñogalindo, rodeado de sierras y valles naturales.",
-      "descripcion": "Muñogalindo es un pueblo situado en una subcomarca de Valle de Amblés, rodeado por la sierra de Ávila, con paisajes naturales impresionantes. Su historia medieval se refleja en sus yacimientos arqueológicos y edificios históricos, como el Tumbadero de las Vacas romana. El pueblo ha sido testigo de eventos importantes, como la visita del rey Juan II y los Reyes Católicos, y ha sido influenciado por la repoblación vasca, navarra y aragonesa. En la actualidad, Muñogalindo ofrece una experiencia única de conexión con el pasado, rodeada de naturaleza y cultura.",
+      "descripcion_corta": "Pequeño pueblo con historia antigua y paisajes montañosos.",
+      "descripcion": "Ubicado en las estribaciones de una sierra, Muñogalindo ofrece un entorno natural impresionante. Sus raíces históricas se remontan a la época prerromana, destacando por su arqueología y leyendas medievales. Visita el Tumbadero de las Vacas y sumérgete en sus tradiciones ancestrales.",
       "imagenes": {
         "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Mu%C3%B1ogalindo-cruceros_1.jpg",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Escudo_de_Mu%C3%B1ogalindo.svg/120px-Escudo_de_Mu%C3%B1ogalindo.svg.png"
       },
       "sitio_web": "https://www.ayuntamientodemunogalindo.es/",
       "wikipedia_url": "https://es.wikipedia.org/wiki/Muñogalindo",
-      "nombre_oficial": "Muñogalindo"
+      "nombre_oficial": "Muñogalindo",
+      "desc_actualizada": true
     },
     {
       "id": "muogrande",
@@ -11536,8 +11550,8 @@
       "poblacion": 76,
       "lat": 40.821111111111115,
       "lng": -4.921944444444445,
-      "descripcion_corta": "Muñogrande es un lugar elevado con encanto rural y hermosos paisajes de montaña.",
-      "descripcion": "Ubicada a más de 900 metros sobre el nivel del mar, Muñogrande ofrece un entorno natural privilegiado. Sus calles empedradas y casas tradicionales invitan al descubrimiento de la cultura rural española, rodeada por majestuosos paisajes montañosos que cautivan a todo visitante.",
+      "descripcion_corta": "Pequeño pueblo rodeado de bosques y prados en la sierra.",
+      "descripcion": "Muñogrande es un lugar tranquilo situado a más de 900 metros de altitud, rodeado de bellos paisajes naturales. Sus alrededores están llenos de bosques y prados ideales para senderismo y disfrutar de la tranquilidad rural.",
       "imagenes": {
         "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Iglesia_de_San_Andr%C3%A9s_Ap%C3%B3stol%2C_Mu%C3%B1ogrande_04.jpg",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Iglesia_de_San_Andr%C3%A9s_Ap%C3%B3stol%2C_Mu%C3%B1ogrande_04.jpg/330px-Iglesia_de_San_Andr%C3%A9s_Ap%C3%B3stol%2C_Mu%C3%B1ogrande_04.jpg"
@@ -11556,8 +11570,8 @@
       "poblacion": 113,
       "lat": 40.85861111111111,
       "lng": -4.880277777777779,
-      "descripcion_corta": "Muñomer del Peco, un pueblo medieval con encanto y una hermosa iglesia gótica.",
-      "descripcion": "Muñomer del Peco es un asentamiento medieval donde la historia se mezcla con la naturaleza. Su iglesia de Nuestra Señora de la Asunción, del siglo XVI, destaca por su retablo mayor y arquitectura en mampostería. La ermita de Nuestra Señora del Campo completa el patrimonio religioso. Los habitantes mantienen tradiciones agrícolas y ganaderas.",
+      "descripcion_corta": "Un pueblo medieval con una iglesia del siglo XVI y hermosas vistas.",
+      "descripcion": "Muñomer del Peco es un asentamiento medieval conocido por su iglesia de Nuestra Señora de la Asunción, del siglo XVI. La ermita de Nuestra Señora del Campo y las actividades agrícolas y ganaderas completan el paisaje.",
       "imagenes": {
         "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Crucero_o_cruz%2C_Iglesia_de_Nuestra_Se%C3%B1ora_de_la_Asunci%C3%B3n%2C_Mu%C3%B1omer_del_Peco%2C_02.jpg",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Escudo_de_Mu%C3%B1omer_del_Peco.svg/120px-Escudo_de_Mu%C3%B1omer_del_Peco.svg.png"
@@ -11576,8 +11590,8 @@
       "poblacion": 95,
       "lat": 40.635555555555555,
       "lng": -4.8180555555555555,
-      "descripcion_corta": "Muñopepe, un pueblo en las estribaciones de sierras con pinturas rupestres y tradición herrera.",
-      "descripcion": "Muñopepe se asoma a las estribaciones de la Sierra de Ávila. Destaca por su cueva con pinturas rupestres y el museo de la fragua, que recuerda al oficio del herrería. La iglesia de San Vicente Mártir es un lugar emblemático para visitar.",
+      "descripcion_corta": "Muñopepe, un pueblo enclavado entre montañas con pinturas rupestres y tradición herrera.",
+      "descripcion": "Muñopepe es un lugar encantador situado en las estribaciones de una sierra. Destaca por su riqueza arqueológica, incluyendo pinturas rupestres en La Atalaya, y conserva el oficio ancestral del herrería con su museo dedicado a este arte.",
       "imagenes": {
         "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Mu%C3%B1opepe_%28cropped%29.JPG",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Mu%C3%B1opepe_%28cropped%29.JPG/330px-Mu%C3%B1opepe_%28cropped%29.JPG"
@@ -11596,8 +11610,8 @@
       "poblacion": 87,
       "lat": 40.92194444444444,
       "lng": -5.035833333333334,
-      "descripcion_corta": "Muñosancho, un lugar escondido en montañas con encanto rural.",
-      "descripcion": "Muñosancho es un pueblo de montaña que ofrece paisajes espectaculares y una tranquila vida rural. Sus calles estrechas y sus casas tradicionales invitan a descubrir su historia y cultura.",
+      "descripcion_corta": "Pueblo encantador en la sierra con una arquitectura tradicional y paisajes espectaculares.",
+      "descripcion": "Muñosancho, un lugar tranquilo situado en las estribaciones de la Sierra de Gredos, ofrece una arquitectura típica castellana junto a impresionantes vistas panorámicas. Su entorno natural es ideal para practicar senderismo y descubrir los encantos de la montaña.",
       "imagenes": {
         "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Mu%C3%B1osancho_-_cartel.jpg",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Mu%C3%B1osancho_-_cartel.jpg/330px-Mu%C3%B1osancho_-_cartel.jpg"
@@ -11616,8 +11630,8 @@
       "poblacion": 50,
       "lat": 40.543055555555554,
       "lng": -5.0408333333333335,
-      "descripcion_corta": "Muñotello, un pueblo medieval rodeado de montañas donde la historia se vive en cada rincón.",
-      "descripcion": "Muñotello es un encantador pueblo fundado en el siglo XI, situado a los pies de La Serrota. Su iglesia del siglo XVI y leyendas como la de la salamandra hacen de este lugar una visita única.",
+      "descripcion_corta": "Pueblo fundado en el siglo XI con una encantadora iglesia del XVI.",
+      "descripcion": "Muñotello, fundado por la familia Tello, alberga una histórica iglesia del siglo XVI y cuenta con un fascinante relato sobre su origen. Ubicado a los pies de La Serrota, ofrece paisajes montañosos y un entorno natural privilegiado.",
       "imagenes": {
         "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Mu%C3%B1otello_vista_desde_pandero_mozas.jpg",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Vista_general_Mu%C3%B1otello.jpg/330px-Vista_general_Mu%C3%B1otello.jpg"
