@@ -13,7 +13,11 @@
   "twitter": null,
   "verificado_por": "web_oficial",
   "fecha_verificacion": "2026-07-04",
-  "pendiente_apps": true
+  "pendiente_apps": true,
+  "apps_sin_resultado": {
+   "instagram": "2026-07-04",
+   "facebook": "2026-07-04"
+  }
  },
  "01002000000": {
   "instagram": null,
@@ -21,7 +25,10 @@
   "twitter": "https://x.com/amurriohauxeda",
   "verificado_por": "web_oficial",
   "fecha_verificacion": "2026-07-04",
-  "pendiente_apps": true
+  "pendiente_apps": false,
+  "apps_sin_resultado": {
+   "instagram": "2026-07-04"
+  }
  },
  "01001000000": {
   "instagram": null,
@@ -29,7 +36,11 @@
   "twitter": null,
   "verificado_por": "web_oficial",
   "fecha_verificacion": "2026-07-04",
-  "pendiente_apps": true
+  "pendiente_apps": false,
+  "apps_sin_resultado": {
+   "instagram": "2026-07-04",
+   "twitter": "2026-07-04"
+  }
  },
  "01003000701": {
   "instagram": "https://www.instagram.com/dssgazteria",

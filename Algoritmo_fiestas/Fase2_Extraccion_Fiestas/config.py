@@ -116,11 +116,22 @@ SOCIAL_APPS_VENTANAS = {
 SOCIAL_MAX_POSTS_PER_PROFILE = 30     # Posts máximos a leer por perfil
 SOCIAL_MAX_SCROLLS = 15               # Scrolls máximos por perfil
 SOCIAL_MAX_MINUTES_PER_PROFILE = 3    # Tiempo máximo por perfil (minutos)
-SOCIAL_POST_MONTHS_BACK = 10          # Ventana temporal de posts (meses hacia atrás desde hoy)
+SOCIAL_POST_MONTHS_BACK = 12          # Ventana temporal de posts: NADA de hace 1 año o más
 SOCIAL_CONTENT_TTL_DIAS = 30          # No releer un perfil leído hace menos de N días
 SOCIAL_CAPTURAS_DIR = "rrss_capturas" # Carpeta de capturas de posts (para el VLM de la Etapa D)
 SOCIAL_GUARD_MAX_ANOMALIAS = 8        # Cambios de foco tolerados antes de abortar la fase
 SOCIAL_GUARD_MAX_ESPERA_FOCO = 600    # Segundos máximos en pausa esperando recuperar el foco
+
+# ─────────────────────────────────────────────
+# VISIÓN (VLM local para capturas de RRSS — Etapa D)
+# Solo interpreta imágenes procedentes de las apps de RRSS; las webs siguen con Tesseract.
+# ─────────────────────────────────────────────
+VISION_ENABLED = True
+VISION_MODEL = "qwen/qwen2.5-vl-7b"   # Identificador del modelo de visión en LM Studio
+VISION_TIMEOUT = 180                  # Timeout por imagen (segundos)
+VISION_MAX_TOKENS = 1200              # Respuesta máxima (los programas largos necesitan espacio)
+VISION_MAX_IMAGES_PER_PROFILE = 10    # Tope de imágenes por perfil y red
+VISION_MAX_DIM = 1280                 # Redimensionado máximo antes de enviar al VLM
 
 # ─────────────────────────────────────────────
 # ORQUESTADOR

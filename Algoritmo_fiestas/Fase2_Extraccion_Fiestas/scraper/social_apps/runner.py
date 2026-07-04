@@ -21,7 +21,7 @@ from config import (
 )
 from scraper.social_apps.cola import construir_cola, REDES
 from scraper.social_apps.contenido_cache import ContenidoCache
-from scraper.social_apps.util import url_de_handle
+from scraper.social_apps.util import url_de_handle, dominio_base
 from scraper.social_apps.app_controller import (
     localizar_app,
     listar_ventanas,
@@ -189,9 +189,57 @@ class RunnerApps:
     def _dir_capturas(self, lugar_id: str) -> str:
         return os.path.join(self.dir_capturas, lugar_id)
 
+    def _dominios_del_lugar(self, lugar_id: str) -> set:
+        """Dominios oficiales conocidos del lugar y de su municipio padre."""
+        dominios = set()
+        lugar = self.lugares_por_id.get(lugar_id) or {}
+        padre = self.lugares_por_id.get(lugar.get("padre_id")) or {}
+        for lug in (lugar, padre):
+            dom = dominio_base(lug.get("sitio_web") or "")
+            if dom:
+                dominios.add(dom)
+        return dominios
+
+    def _procesar_ficha(self, driver, tarea) -> bool:
+        """
+        Extrae la ficha del perfil abierto (bio, webs, emails, seguidores) y la
+        cruza con el sitio_web del lugar/municipio:
+        - coincide → confirmación máxima (bio_web_match);
+        - contradice → perfil SOSPECHOSO: no se lee nada (cero falsos positivos).
+        Devuelve True si se puede continuar leyendo el perfil.
+        """
+        lugar_id, red = tarea["lugar_id"], tarea["red"]
+        ficha = driver.extraer_ficha()
+        entrada = self.redes_cache.setdefault(lugar_id, {})
+        entrada.setdefault("fichas", {})[red] = ficha
+
+        dominios_lugar = self._dominios_del_lugar(lugar_id)
+        dominios_bio = {dominio_base(w) for w in ficha.get("webs", [])}
+        dominios_bio |= {dominio_base(e.split("@", 1)[1]) for e in ficha.get("emails", [])}
+        dominios_bio.discard(None)
+
+        continuar = True
+        if dominios_lugar and dominios_bio:
+            if dominios_lugar & dominios_bio:
+                entrada.setdefault("bio_web_match", {})[red] = True
+                logger.info(f"  [FICHA] Confirmado por web de la bio: {sorted(dominios_lugar & dominios_bio)}")
+            else:
+                entrada.setdefault("bio_web_match", {})[red] = False
+                entrada.setdefault("sospechosos", {})[red] = date.today().isoformat()
+                logger.warning(
+                    f"  [FICHA] SOSPECHOSO: la bio enlaza {sorted(dominios_bio)} pero el lugar "
+                    f"usa {sorted(dominios_lugar)}. No se lee este perfil."
+                )
+                continuar = False
+
+        _guardar_json_atomico(self.ruta_redes_cache, self.redes_cache)
+        return continuar
+
     def _tarea_leer(self, driver, tarea) -> bool:
         if not driver.abrir_perfil(tarea["handle"], tarea["nombre"] or ""):
             return False
+        if not self._procesar_ficha(driver, tarea):
+            return True  # tarea resuelta: el perfil queda marcado sospechoso, sin lectura
         posts = driver.leer_perfil_abierto(
             tarea["lugar_id"], self._dir_capturas(tarea["lugar_id"]), self.anno
         )
@@ -204,6 +252,9 @@ class RunnerApps:
             # Se registra el "no existe" para no repetir la búsqueda cada sesión
             self._actualizar_redes_cache(tarea["lugar_id"], tarea["red"], sin_resultado=True)
             return True  # la tarea terminó correctamente: la respuesta es "no hay perfil"
+
+        if not self._procesar_ficha(driver, tarea):
+            return True  # perfil sospechoso: ni se registra su URL ni se lee
 
         handle = driver.extraer_handle_visible()
         if handle:

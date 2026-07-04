@@ -65,6 +65,23 @@ def _nombre_proceso(pid: int) -> str:
         return ""
 
 
+def nombre_elemento_con_foco() -> str | None:
+    """
+    Nombre accesible del elemento CON FOCO (vía IUIAutomation.GetFocusedElement).
+    Clave del fallback por teclado: el foco obliga a Chromium a materializar el
+    nodo aunque el árbol UIA del contenido web esté vacío.
+    """
+    if not PYWINAUTO_DISPONIBLE:
+        return None
+    try:
+        from pywinauto.uia_defines import IUIA
+        from pywinauto.uia_element_info import UIAElementInfo
+        elemento = IUIA().iuia.GetFocusedElement()
+        return (UIAElementInfo(elemento).name or "").strip()
+    except Exception:
+        return None
+
+
 def listar_ventanas() -> list[dict]:
     """Todas las ventanas top-level visibles con título (para el modo diagnóstico)."""
     if not PYWINAUTO_DISPONIBLE:

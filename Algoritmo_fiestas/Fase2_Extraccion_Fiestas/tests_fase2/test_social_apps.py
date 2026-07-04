@@ -75,6 +75,21 @@ def test_fecha_relativa():
     assert parsear_fecha_post("ayer", HOY) == date(2026, 7, 3)
 
 
+def test_fecha_relativa_corta_instagram():
+    # Formato corto de IG/X: "1 sem", "3 d", "5 h"
+    assert parsear_fecha_post("dssgazteria 1 sem", HOY) == date(2026, 6, 27)
+    assert parsear_fecha_post("publicado 3 d", HOY) == date(2026, 7, 1)
+    assert parsear_fecha_post("5 h", HOY) == HOY
+
+
+def test_fecha_absoluta_no_confundida_con_corta():
+    # "8 de agosto" NO debe interpretarse como el formato corto "8 d"
+    # (al ser futura y sin año, como fecha de post se asume del año pasado)
+    assert parsear_fecha_post("publicado el 8 de agosto", HOY) == date(2025, 8, 8)
+    # "22 de junio" (caption real de IG) → absoluta del año en curso
+    assert parsear_fecha_post("34 Me gusta 22 de junio", HOY) == date(2026, 6, 22)
+
+
 def test_fecha_ilegible():
     assert parsear_fecha_post("texto sin fecha alguna", HOY) is None
 
@@ -173,6 +188,99 @@ def test_contenido_cache_guardar_y_vigencia(tmp_path):
     # Releer desde disco
     cache2 = ContenidoCache(str(tmp_path / "c.json"))
     assert cache2.entrada("l1", "facebook")["posts"] == posts
+
+
+# ──────────────────────────────────────────────
+# Similitud difusa handle ↔ nombre mostrado
+# ──────────────────────────────────────────────
+
+def test_similitud_handle_nombre_de_pagina():
+    from scraper.social_apps.drivers import similitud_handle
+    # Caso real de la sesión supervisada: FB muestra el nombre, no el handle
+    assert similitud_handle("Donostiako Gazteria", "dssgazteria") >= 0.55
+    assert similitud_handle("Ayuntamiento de Albacete", "aytoalbacete") >= 0.55
+    # Contención directa
+    assert similitud_handle("Ayto La Adrada @ayto.laadrada", "ayto.laadrada") == 1.0
+    # Nada que ver → por debajo del umbral
+    assert similitud_handle("Peluquería Loli", "aytoalbacete") < 0.55
+
+
+# ──────────────────────────────────────────────
+# Verificación de perfil abierto (por título de ventana)
+# ──────────────────────────────────────────────
+
+class _VentanaStub:
+    def __init__(self, titulo):
+        self._titulo = titulo
+
+    def window_text(self):
+        return self._titulo
+
+    def descendants(self, **kwargs):
+        return []
+
+
+class _GuardStub:
+    def verificar(self):
+        pass
+
+
+def _driver_con_titulo(titulo):
+    from scraper.social_apps.drivers import DriverBase
+    return DriverBase(_VentanaStub(titulo), guard=_GuardStub())
+
+
+def test_perfil_abierto_facebook_por_nombre():
+    d = _driver_con_titulo("(1) Ayuntamiento de Torrejón de Velasco | Facebook")
+    assert d._perfil_abierto(None, "Ayuntamiento de Torrejón de Velasco")
+
+
+def test_resultados_de_busqueda_no_es_perfil():
+    d = _driver_con_titulo("(1) torrejón de velasco - Resultados de búsqueda | Facebook")
+    assert not d._perfil_abierto(None, "Torrejón de Velasco")
+
+
+def test_perfil_abierto_instagram_por_handle():
+    d = _driver_con_titulo("Ayto La Adrada (@ayto.laadrada) • Fotos y videos de Instagram")
+    assert d._perfil_abierto("ayto.laadrada", None)
+
+
+def test_otro_titulo_no_es_perfil():
+    d = _driver_con_titulo("X - Explore / X")
+    assert not d._perfil_abierto("aytoalbacete", "Albacete")
+
+
+def test_filas_de_historial_no_son_candidatos():
+    # Caso real del log: 'dssgazteria Eliminar dssgazteria del historial'
+    from scraper.social_apps.drivers import es_fila_historial
+    assert es_fila_historial("dssgazteria Eliminar dssgazteria del historial")
+    assert es_fila_historial("Recent searches")
+    assert not es_fila_historial("Donostia Gazteria")
+    assert not es_fila_historial("Ayuntamiento de Amurrio")
+
+
+def test_enlaces_externos_no_son_candidatos():
+    # Caso real: el panel Detalles de FB expone la web del ayuntamiento;
+    # clicarla sacaba al driver del perfil
+    from scraper.social_apps.drivers import es_link_externo
+    assert es_link_externo("donostia.eus/Gazteria")
+    assert es_link_externo("gazteria@donostia.eus")
+    assert es_link_externo("https://www.ayto-ejemplo.es")
+    assert es_link_externo("www.aytoalbacete.es")
+    # Nombres de página normales NO se filtran
+    assert not es_link_externo("Donostia Gazteria")
+    assert not es_link_externo("Ayuntamiento de Torrejón de Velasco")
+
+
+def test_verificacion_por_nombre_de_pagina():
+    # FB no muestra el handle en el perfil: se acepta el nombre del candidato
+    # clicado en el título (ya pre-validado contra el handle)
+    d = _driver_con_titulo("(1) Donostia Gazteria | Facebook")
+    assert d._verificar_perfil_con_handle("dssgazteria", "Donostia Gazteria") is True
+    # Sin candidato y sin handle visible → NO se verifica (no se lee nada)
+    # (_texto_visible necesita guard; con título no-resultados y sin nombre debe fallar antes)
+    d2 = _driver_con_titulo("(1) dssgazteria - Resultados de búsqueda | Facebook")
+    assert d2._verificar_perfil_con_handle("dssgazteria", "Donostia Gazteria") is False
 
 
 def test_social_content_lee_formato_runner(monkeypatch):
