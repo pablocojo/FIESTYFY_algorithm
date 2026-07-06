@@ -216,6 +216,11 @@ async def process_locality(
     # Marcar fiestas que incluyen el día del patrón / añadir estimada si no está cubierto
     fiestas = integrar_patron(fiestas, patron, anno, localidad)
 
+    for f in fiestas:
+        if "lat" in localidad and "lng" in localidad:
+            f["lat"] = localidad["lat"]
+            f["lng"] = localidad["lng"]
+
     logger.info(f"    -- Resultado: {len(fiestas)} fiestas para {localidad['nombre']}")
     return fiestas
 

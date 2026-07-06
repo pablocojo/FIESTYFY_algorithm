@@ -44,9 +44,11 @@ def guardar_lugares(resultados: list[dict]) -> dict:
         json.dump(output_data, f, indent=2, ensure_ascii=False)
     return output_data
 
-def buscar_wikipedia_url_api(nombre: str, provincia: str) -> str:
+def buscar_wikipedia_url_api(nombre: str, provincia: str, lat: float = None, lng: float = None) -> str:
     from urllib.parse import quote
     import urllib.request
+    import math
+    
     query = quote(f"{nombre} {provincia}")
     url = f"https://es.wikipedia.org/w/api.php?action=query&list=search&format=json&srlimit=1&srsearch={query}"
     try:
@@ -55,8 +57,44 @@ def buscar_wikipedia_url_api(nombre: str, provincia: str) -> str:
             data = json.loads(response.read().decode('utf-8'))
             results = data.get("query", {}).get("search", [])
             if results:
-                title = results[0]["title"].replace(" ", "_")
-                return f"https://es.wikipedia.org/wiki/{title}"
+                title = results[0]["title"]
+                title_encoded = title.replace(" ", "_")
+                wiki_url = f"https://es.wikipedia.org/wiki/{title_encoded}"
+                
+                if lat is not None and lng is not None:
+                    try:
+                        t_query = quote(title)
+                        c_url = f"https://es.wikipedia.org/w/api.php?action=query&prop=coordinates&titles={t_query}&format=json"
+                        c_req = urllib.request.Request(c_url, headers={'User-Agent': 'Mozilla/5.0'})
+                        with urllib.request.urlopen(c_req) as c_response:
+                            c_data = json.loads(c_response.read().decode('utf-8'))
+                            pages = c_data.get("query", {}).get("pages", {})
+                            w_lat = None
+                            w_lon = None
+                            for _, page_info in pages.items():
+                                coords = page_info.get("coordinates")
+                                if coords and len(coords) > 0:
+                                    w_lat = coords[0].get("lat")
+                                    w_lon = coords[0].get("lon")
+                                    
+                            if w_lat is None:
+                                return "" # Descartar si no hay coordenadas
+                            
+                            R = 6371.0
+                            lat1_rad, lon1_rad = math.radians(lat), math.radians(lng)
+                            lat2_rad, lon2_rad = math.radians(w_lat), math.radians(w_lon)
+                            dlat = lat2_rad - lat1_rad
+                            dlon = lon2_rad - lon1_rad
+                            a = math.sin(dlat / 2)**2 + math.cos(lat1_rad) * math.cos(lat2_rad) * math.sin(dlon / 2)**2
+                            c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
+                            dist = R * c
+                            
+                            if dist > 2.5:
+                                return "" # Descartar si excede distancia
+                    except Exception as e:
+                        return ""
+                
+                return wiki_url
     except Exception as e:
         log_error(f"Error en buscar_wikipedia_url_api para {nombre}: {e}")
     return ""
@@ -180,7 +218,7 @@ def main():
                 "imagenes": {"banner": "", "logo": ""}
             }
             
-            wiki_url = buscar_wikipedia_url_api(ent["nombre"], municipio.get("provincia", ""))
+            wiki_url = buscar_wikipedia_url_api(ent["nombre"], municipio.get("provincia", ""), ent["lat"], ent["lng"])
             if wiki_url:
                 lugar_hija["wikipedia_url"] = wiki_url
                 html_hija = fetch_url(wiki_url)
