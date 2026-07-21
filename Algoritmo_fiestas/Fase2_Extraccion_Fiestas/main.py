@@ -21,6 +21,7 @@ from scraper.social_finder import registrar_perfiles_web
 from llm_processor.text_analyzer import AsyncRAGProcessor, analyze_festivals_for_locality
 from llm_processor.patron_finder import obtener_patron, integrar_patron, fecha_del_patron
 from fuentes import FUENTE_WEB_LOCALIDAD, FUENTE_WEB_MUNICIPIO, fuente_base
+from config_idiomas import get_language_profile
 from config import (
     PARALLEL_MUNICIPALITIES,
     PATRON_SEARCH_ENABLED,
@@ -198,8 +199,13 @@ async def process_locality(
     logger.info(f"    Recopilados {len(documentos)} documentos ({total_chars} chars): {conteo_fuentes}")
 
     # RAG: chunking por documento + selección por cuotas de fuente
+    comunidad = municipio.get("comunidad_autonoma", "")
+    provincia = municipio.get("provincia", "")
+    perfil_data = get_language_profile(comunidad, provincia)
+    terminos_rag = perfil_data["perfil_principal"]["terminos_rag"]
+
     query_rag = (
-        f"Fiestas, carteles y programas de actos en {municipio['nombre']} "
+        f"{terminos_rag} en {municipio['nombre']} "
         f"para la localidad de {localidad['nombre']} en el año {anno}"
     )
     contexto, fuentes_contexto = await rag_processor.saturate_context_docs(documentos, query_rag)

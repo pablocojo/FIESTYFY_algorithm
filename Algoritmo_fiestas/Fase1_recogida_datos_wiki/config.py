@@ -107,3 +107,18 @@ MAX_LLM_RETRIES = 3
 # Verbosity
 DEBUG_MODE = False  # Si True, imprime más detalles
 SAVE_INTERMEDIATE = False  # Si True, guarda snapshots cada N lugares
+
+# ============================================================================
+# PARÁMETROS DE BÚSQUEDA DE WIKIPEDIA PARA ENTIDADES HIJAS
+# ============================================================================
+# Número de resultados a evaluar por query de búsqueda (antes era 1)
+WIKI_SEARCH_SRLIMIT = 3
+# Máximo de reintentos ante errores HTTP transitorios (429, timeout, etc.)
+WIKI_SEARCH_MAX_RETRIES = 3
+# Delay mínimo entre peticiones a la API de Wikipedia (segundos)
+WIKI_SEARCH_DELAY = 0.3
+# Umbral de distancia (km) entre coordenadas INE y Wikipedia para aceptar una URL.
+# Para ciudades (ciudad_grande, ciudad_pequena) NO se valida distancia:
+# basta con que el artículo tenga coordenadas en España.
+WIKI_DISTANCIA_PUEBLOS_KM = 2.5
+

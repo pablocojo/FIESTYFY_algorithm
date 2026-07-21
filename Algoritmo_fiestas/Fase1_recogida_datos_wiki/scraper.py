@@ -141,20 +141,34 @@ def buscar_titulos_relacionados_api(ciudad: str) -> list[str]:
         "format": "json"
     }
     
-    try:
-        resp = requests.get(url, params=params, headers=headers, timeout=REQUEST_TIMEOUT)
-        resp.raise_for_status()
-        data = resp.json()
-        
-        results = []
-        for page_id, page_info in data.get("query", {}).get("pages", {}).items():
-            if "missing" not in page_info:
-                title = page_info["title"]
-                # Convert to full URL
-                title_encoded = urllib.parse.quote(title.replace(" ", "_"))
-                results.append(f"https://es.wikipedia.org/wiki/{title_encoded}")
-                
-        return results
-    except Exception as e:
-        log_error(f"Error consultando API de Wikipedia para {ciudad}: {e}")
-        return []
+    max_retries = 3
+    for attempt in range(max_retries):
+        try:
+            resp = requests.get(url, params=params, headers=headers, timeout=REQUEST_TIMEOUT)
+            if resp.status_code == 429:
+                wait_time = int(resp.headers.get("Retry-After", 2 ** attempt))
+                log_error(f"429 Too Many Requests para API Wikipedia (relacionados). Reintentando en {wait_time}s...")
+                time.sleep(wait_time)
+                continue
+            resp.raise_for_status()
+            data = resp.json()
+            
+            results = []
+            for page_id, page_info in data.get("query", {}).get("pages", {}).items():
+                if "missing" not in page_info:
+                    title = page_info["title"]
+                    # Convert to full URL
+                    title_encoded = urllib.parse.quote(title.replace(" ", "_"))
+                    results.append(f"https://es.wikipedia.org/wiki/{title_encoded}")
+                    
+            return results
+        except requests.exceptions.RequestException as e:
+            if attempt == max_retries - 1:
+                log_error(f"Error consultando API de Wikipedia para {ciudad}: {e}")
+            else:
+                time.sleep(2 ** attempt)
+        except Exception as e:
+            log_error(f"Error inesperado consultando API de Wikipedia para {ciudad}: {e}")
+            break
+            
+    return []

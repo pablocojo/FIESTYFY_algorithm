@@ -4,7 +4,11 @@ import time
 import urllib.parse
 import threading
 
-from config import MUNICIPIOS_JSON, OUTPUT_JSON, ERROR_LOG_FILE, DELAY_BETWEEN_REQUESTS
+from config import (
+    MUNICIPIOS_JSON, OUTPUT_JSON, ERROR_LOG_FILE, DELAY_BETWEEN_REQUESTS,
+    WIKI_SEARCH_SRLIMIT, WIKI_SEARCH_MAX_RETRIES, WIKI_SEARCH_DELAY,
+    WIKI_DISTANCIA_PUEBLOS_KM,
+)
 import config
 config.LLM_MODEL_NAME = "qwen2.5-7b-instruct"
 from extractors import inferir_comunidad_por_provincia, construir_lugar
@@ -44,60 +48,162 @@ def guardar_lugares(resultados: list[dict]) -> dict:
         json.dump(output_data, f, indent=2, ensure_ascii=False)
     return output_data
 
-def buscar_wikipedia_url_api(nombre: str, provincia: str, lat: float = None, lng: float = None) -> str:
-    from urllib.parse import quote
+def _wiki_api_get(params: dict) -> dict | None:
+    """Llamada GET a la API de Wikipedia con reintentos ante HTTP 429."""
     import urllib.request
+    params["format"] = "json"
+    query_string = urllib.parse.urlencode(params)
+    url = f"https://es.wikipedia.org/w/api.php?{query_string}"
+    ua = "FiestyfyBot/1.0 (sainzmartinp@gmail.com)"
+
+    for attempt in range(WIKI_SEARCH_MAX_RETRIES):
+        try:
+            req = urllib.request.Request(url, headers={"User-Agent": ua})
+            with urllib.request.urlopen(req, timeout=15) as resp:
+                data = json.loads(resp.read().decode("utf-8"))
+                time.sleep(WIKI_SEARCH_DELAY)
+                return data
+        except urllib.error.HTTPError as e:
+            if e.code == 429:
+                wait = 2 ** (attempt + 1)
+                print(f"      [429] Rate limit. Esperando {wait}s...")
+                time.sleep(wait)
+            else:
+                break
+        except Exception:
+            if attempt < WIKI_SEARCH_MAX_RETRIES - 1:
+                time.sleep(2 ** attempt)
+    return None
+
+
+def _es_desambiguacion(title: str) -> bool:
+    """Comprueba si un artículo es una página de desambiguación."""
+    data = _wiki_api_get({
+        "action": "query", "prop": "pageprops",
+        "ppprop": "disambiguation", "titles": title,
+    })
+    if not data:
+        return False
+    pages = data.get("query", {}).get("pages", {})
+    for _, info in pages.items():
+        if "pageprops" in info and "disambiguation" in info["pageprops"]:
+            return True
+    return False
+
+
+def _obtener_coords_wiki(title: str) -> tuple:
+    """Obtiene (lat, lon) de un artículo de Wikipedia, o (None, None)."""
+    data = _wiki_api_get({"action": "query", "prop": "coordinates", "titles": title})
+    if not data:
+        return None, None
+    pages = data.get("query", {}).get("pages", {})
+    for _, info in pages.items():
+        coords = info.get("coordinates")
+        if coords and len(coords) > 0:
+            return coords[0].get("lat"), coords[0].get("lon")
+    return None, None
+
+
+def _haversine(lat1, lon1, lat2, lon2) -> float:
     import math
-    
-    query = quote(f"{nombre} {provincia}")
-    url = f"https://es.wikipedia.org/w/api.php?action=query&list=search&format=json&srlimit=1&srsearch={query}"
-    try:
-        req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
-        with urllib.request.urlopen(req) as response:
-            data = json.loads(response.read().decode('utf-8'))
-            results = data.get("query", {}).get("search", [])
-            if results:
-                title = results[0]["title"]
-                title_encoded = title.replace(" ", "_")
-                wiki_url = f"https://es.wikipedia.org/wiki/{title_encoded}"
-                
-                if lat is not None and lng is not None:
-                    try:
-                        t_query = quote(title)
-                        c_url = f"https://es.wikipedia.org/w/api.php?action=query&prop=coordinates&titles={t_query}&format=json"
-                        c_req = urllib.request.Request(c_url, headers={'User-Agent': 'Mozilla/5.0'})
-                        with urllib.request.urlopen(c_req) as c_response:
-                            c_data = json.loads(c_response.read().decode('utf-8'))
-                            pages = c_data.get("query", {}).get("pages", {})
-                            w_lat = None
-                            w_lon = None
-                            for _, page_info in pages.items():
-                                coords = page_info.get("coordinates")
-                                if coords and len(coords) > 0:
-                                    w_lat = coords[0].get("lat")
-                                    w_lon = coords[0].get("lon")
-                                    
-                            if w_lat is None:
-                                return "" # Descartar si no hay coordenadas
-                            
-                            R = 6371.0
-                            lat1_rad, lon1_rad = math.radians(lat), math.radians(lng)
-                            lat2_rad, lon2_rad = math.radians(w_lat), math.radians(w_lon)
-                            dlat = lat2_rad - lat1_rad
-                            dlon = lon2_rad - lon1_rad
-                            a = math.sin(dlat / 2)**2 + math.cos(lat1_rad) * math.cos(lat2_rad) * math.sin(dlon / 2)**2
-                            c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
-                            dist = R * c
-                            
-                            if dist > 2.5:
-                                return "" # Descartar si excede distancia
-                    except Exception as e:
-                        return ""
-                
-                return wiki_url
-    except Exception as e:
-        log_error(f"Error en buscar_wikipedia_url_api para {nombre}: {e}")
-    return ""
+    R = 6371.0
+    la1, lo1 = math.radians(lat1), math.radians(lon1)
+    la2, lo2 = math.radians(lat2), math.radians(lon2)
+    dl, dn = la2 - la1, lo2 - lo1
+    a = math.sin(dl/2)**2 + math.cos(la1)*math.cos(la2)*math.sin(dn/2)**2
+    return R * 2 * math.atan2(math.sqrt(a), math.sqrt(1-a))
+
+
+def _parte_castellana(nombre: str) -> str:
+    """'Elx/Elche' → 'Elche'. Si no hay '/', devuelve el original."""
+    if "/" not in nombre:
+        return nombre
+    partes = [p.strip() for p in nombre.split("/")]
+    partes.sort(key=lambda s: sum(1 for c in s if c.isascii() and c.isalpha()) / max(len(s), 1), reverse=True)
+    return partes[0]
+
+
+def _generar_queries(nombre, provincia, comunidad=""):
+    """Genera hasta 4 queries de búsqueda adaptativas."""
+    queries = [f"{nombre} {provincia}"]
+    cast = _parte_castellana(nombre)
+    if cast != nombre:
+        queries.append(f"{cast} {provincia}")
+    q3 = f"{nombre} España"
+    if q3 not in queries:
+        queries.append(q3)
+    if comunidad:
+        q4 = f"{nombre} {comunidad} {provincia}"
+        if q4 not in queries:
+            queries.append(q4)
+    return queries
+
+
+def buscar_wikipedia_url_api(
+    nombre: str, provincia: str, lat: float = None, lng: float = None,
+    tipo: str = "pueblo", comunidad: str = ""
+) -> str:
+    """
+    Busca la URL de Wikipedia para una entidad hija.
+    - srlimit=3: evalúa los 3 primeros resultados por query.
+    - Hasta 4 queries adaptativas.
+    - Descarta desambiguaciones.
+    - Ciudades: solo requiere coordenadas (sin validar distancia).
+    - Pueblos/barrios/distritos: distancia <= WIKI_DISTANCIA_PUEBLOS_KM.
+    - Reintentos con backoff ante HTTP 429.
+    """
+    es_ciudad = tipo in ("ciudad_grande", "ciudad_pequena")
+    queries = _generar_queries(nombre, provincia, comunidad)
+
+    mejor_url = None
+    mejor_dist = float("inf")
+    titulos_vistos = set()
+
+    for query in queries:
+        data = _wiki_api_get({
+            "action": "query", "list": "search",
+            "srsearch": query, "srlimit": WIKI_SEARCH_SRLIMIT,
+        })
+        if not data:
+            continue
+
+        results = data.get("query", {}).get("search", [])
+        for r in results:
+            title = r["title"]
+            if title in titulos_vistos:
+                continue
+            titulos_vistos.add(title)
+
+            if _es_desambiguacion(title):
+                continue
+
+            w_lat, w_lon = _obtener_coords_wiki(title)
+            if w_lat is None:
+                continue  # Sin coords → descartar
+
+            candidate_url = f"https://es.wikipedia.org/wiki/{title.replace(' ', '_')}"
+
+            if es_ciudad:
+                # Solo requiere tener coordenadas; preferir la más cercana
+                dist = _haversine(lat, lng, w_lat, w_lon) if (lat and lng) else 0.0
+                if dist < mejor_dist:
+                    mejor_dist = dist
+                    mejor_url = candidate_url
+                if dist < 2.5:
+                    break
+            else:
+                # Pueblos/barrios: validar distancia
+                if lat is None or lng is None:
+                    continue
+                dist = _haversine(lat, lng, w_lat, w_lon)
+                if dist <= WIKI_DISTANCIA_PUEBLOS_KM and dist < mejor_dist:
+                    mejor_dist = dist
+                    mejor_url = candidate_url
+
+        if mejor_url and mejor_dist < 1.0:
+            break  # Resultado excelente, no probar más queries
+
+    return mejor_url or ""
 
 def mandar_ws(n, p):
     try:
@@ -218,7 +324,11 @@ def main():
                 "imagenes": {"banner": "", "logo": ""}
             }
             
-            wiki_url = buscar_wikipedia_url_api(ent["nombre"], municipio.get("provincia", ""), ent["lat"], ent["lng"])
+            wiki_url = buscar_wikipedia_url_api(
+                ent["nombre"], municipio.get("provincia", ""),
+                ent["lat"], ent["lng"],
+                tipo=tipo_hija, comunidad=municipio.get("comunidad", "")
+            )
             if wiki_url:
                 lugar_hija["wikipedia_url"] = wiki_url
                 html_hija = fetch_url(wiki_url)

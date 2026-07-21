@@ -42,8 +42,124 @@ from fuentes import (
     prioridad_fuente,
     rotulo_fuente,
 )
+from config_idiomas import get_language_profile
+import fasttext
 
 logger = logging.getLogger("text_analyzer")
+
+try:
+    logger.info("Cargando modelo FastText...")
+    _LID_MODEL = fasttext.load_model("lid.176.ftz")
+except Exception as e:
+    logger.warning(f"No se pudo cargar fasttext (lid.176.ftz): {e}")
+    _LID_MODEL = None
+
+_OPUS_PIPELINES = {}
+
+def translate_chunk(text: str, motor: str, modelo_id: str) -> str:
+    if not text.strip():
+        return text
+    
+    if motor == "opus-mt":
+        try:
+            from transformers import pipeline
+            if modelo_id not in _OPUS_PIPELINES:
+                logger.info(f"Cargando modelo Opus-MT: {modelo_id}...")
+                _OPUS_PIPELINES[modelo_id] = pipeline("translation", model=modelo_id, max_length=512)
+            
+            lines = text.split("\n")
+            translated_lines = []
+            for line in lines:
+                if not line.strip() or line.startswith("=====") or line.startswith("[http"):
+                    translated_lines.append(line)
+                    continue
+                if len(line) > 1500: # Seguro contra OOM
+                    parts = [line[i:i+1000] for i in range(0, len(line), 1000)]
+                    res = []
+                    for p in parts:
+                        out = _OPUS_PIPELINES[modelo_id](p)
+                        res.append(out[0]['translation_text'])
+                    translated_lines.append(" ".join(res))
+                else:
+                    out = _OPUS_PIPELINES[modelo_id](line)
+                    translated_lines.append(out[0]['translation_text'])
+            return "\n".join(translated_lines)
+        except Exception as e:
+            logger.error(f"Error Opus-MT: {e}")
+            return text
+
+    elif motor == "apertium":
+        try:
+            import apertium
+            # Si el modelo_id es cat_valencia, usamos el par cat-spa
+            pair = "cat-spa" if "cat" in modelo_id else "oci-spa"
+            return apertium.translate(pair, text)
+        except ImportError:
+            logger.error("Apertium no está instalado. Omitiendo traducción.")
+            return text
+        except Exception as e:
+            logger.error(f"Error Apertium: {e}")
+            return text
+
+    return text
+
+def process_translation_pipeline(texto: str, municipio: dict) -> str:
+    comunidad = municipio.get("comunidad_autonoma", "")
+    provincia = municipio.get("provincia", "")
+    perfil_data = get_language_profile(comunidad, provincia)
+    
+    perfil_principal = perfil_data.get("perfil_principal")
+    perfil_secundario = perfil_data.get("perfil_secundario")
+    idiomas_a_detectar = perfil_data.get("idiomas_a_detectar", ["es"])
+    
+    if len(idiomas_a_detectar) <= 1 or not _LID_MODEL:
+        return texto
+        
+    blocks = texto.split("===== FUENTE:")
+    translated_blocks = []
+    
+    for i, block in enumerate(blocks):
+        if not block:
+            continue
+        
+        if i > 0 or texto.startswith("===== FUENTE:"):
+            real_block = "===== FUENTE:" + block
+        else:
+            real_block = block
+        
+        clean_text = re.sub(r'=====.*?=====', '', real_block)
+        clean_text = re.sub(r'\[http.*?\]', '', clean_text)
+        clean_text = clean_text.replace('\n', ' ').strip()
+        
+        if len(clean_text) < 20:
+            translated_blocks.append(real_block)
+            continue
+            
+        pred = _LID_MODEL.predict(clean_text, k=3)
+        labels = [l.replace('__label__', '') for l in pred[0]]
+        probs = pred[1]
+        
+        best_lang = "es"
+        best_prob = 0.0
+        for l, p in zip(labels, probs):
+            if l in idiomas_a_detectar and p > best_prob:
+                best_lang = l
+                best_prob = p
+                
+        if best_lang != "es" and best_prob > 0.4:
+            motor = perfil_principal["motor_traduccion"]
+            modelo = perfil_principal["modelo_id"]
+            if best_lang == "oc" and perfil_secundario:
+                motor = perfil_secundario["motor_traduccion"]
+                modelo = perfil_secundario["modelo_id"]
+                
+            logger.info(f"  [IDIOMA] Detectado {best_lang} ({best_prob:.2f}). Traduciendo con {motor}...")
+            translated_block = translate_chunk(real_block, motor, modelo)
+            translated_blocks.append(translated_block)
+        else:
+            translated_blocks.append(real_block)
+            
+    return "".join(translated_blocks)
 
 # Semáforo global: solo UNA petición simultánea al LLM local (evita desbordar la VRAM)
 LLM_SEMAPHORE = asyncio.Semaphore(1)
@@ -694,8 +810,10 @@ Devuelve SOLO JSON estricto con esta estructura (no escribas markdown, ni saludo
   ]
 }}"""
 
-    # Pre-procesado: traducir palabras clave para facilitar la labor del LLM
-    texto_traducido = texto_filtrado
+    # 1. Pipeline de Traducción Neuronal / Léxica (FastText + OpusMT/Apertium)
+    texto_traducido = process_translation_pipeline(texto_filtrado, municipio)
+
+    # 2. Pre-procesado fallback: traducir palabras clave estáticas por si falla lo anterior
     for patron, reemplazo in DICCIONARIO_FESTIVO.items():
         texto_traducido = re.sub(patron, reemplazo, texto_traducido, flags=re.IGNORECASE)
 

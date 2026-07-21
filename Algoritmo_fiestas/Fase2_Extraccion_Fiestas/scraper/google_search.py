@@ -23,6 +23,7 @@ from config import (
     USER_AGENT,
 )
 from fuentes import crear_documento, FUENTE_BUSQUEDA
+from config_idiomas import get_language_profile
 
 logger = logging.getLogger("search")
 
@@ -32,13 +33,20 @@ def _build_queries(localidad: dict, municipio: dict, anno: int) -> list[str]:
     nombre_loc = localidad["nombre"]
     nombre_mun = municipio["nombre"]
     provincia = municipio.get("provincia", "")
+    comunidad = municipio.get("comunidad_autonoma", "")
     sitio_web_mun = municipio.get("sitio_web", "").strip()
     sitio_web_loc = localidad.get("sitio_web", "").strip()
 
+    perfil_data = get_language_profile(comunidad, provincia)
+    kws = perfil_data["perfil_principal"]["keywords_busqueda"]
+    kw1 = kws[0]
+    kw2 = kws[1] if len(kws) > 1 else kws[0]
+    kw3 = kws[2] if len(kws) > 2 else kws[0]
+
     queries = [
-        f"fiestas patronales {nombre_loc} {nombre_mun} {anno}",
-        f"programa fiestas {nombre_loc} {anno}",
-        f"fiestas {nombre_loc} {provincia} {anno}",
+        f"{kw1} {nombre_loc} {nombre_mun} {anno}",
+        f"{kw2} {nombre_loc} {anno}",
+        f"{kw3} {nombre_loc} {provincia} {anno}",
     ]
     
     sitios_site = []
@@ -55,7 +63,7 @@ def _build_queries(localidad: dict, municipio: dict, anno: int) -> list[str]:
         url_to_parse = sitio if sitio.startswith("http") else "http://" + sitio
         domain = urllib.parse.urlparse(url_to_parse).netloc
         if domain:
-            queries.append(f"fiestas {nombre_loc} {anno} site:{domain}")
+            queries.append(f"{kw1} {nombre_loc} {anno} site:{domain}")
 
     return queries
 
