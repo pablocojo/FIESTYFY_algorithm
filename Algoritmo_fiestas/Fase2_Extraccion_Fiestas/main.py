@@ -8,6 +8,7 @@ ejecutando su pipeline completo: Spider → DDG → RAG → LLM → Validación.
 import json
 import os
 import sys
+import time
 import asyncio
 import argparse
 import logging
@@ -15,16 +16,18 @@ from datetime import datetime
 
 from state_manager import StateManager
 from scraper.heuristic_spider import AsyncTwoPassSpider
-from scraper.google_search import search_locality_web
-from scraper.social_content import cargar_documentos_rrss
+from scraper.google_search import search_locality_web, search_locality_media, get_failed_searches_count
+from scraper.social_content import cargar_documentos_rrss, invalidar_cache as invalidar_cache_rrss
 from scraper.social_finder import registrar_perfiles_web
-from llm_processor.text_analyzer import AsyncRAGProcessor, analyze_festivals_for_locality
+from scraper.rrss_client import RRSSClient
+from llm_processor.text_analyzer import AsyncRAGProcessor, analyze_festivals_for_locality, analyze_festivals_multipass
 from llm_processor.patron_finder import obtener_patron, integrar_patron, fecha_del_patron
-from fuentes import FUENTE_WEB_LOCALIDAD, FUENTE_WEB_MUNICIPIO, fuente_base
+from fuentes import FUENTE_WEB_LOCALIDAD, FUENTE_WEB_MUNICIPIO, fuente_base, es_fuente_oficial
 from config_idiomas import get_language_profile
 from config import (
     PARALLEL_MUNICIPALITIES,
     PATRON_SEARCH_ENABLED,
+    RRSS_SERVER_ENABLED,
     LOG_FORMAT,
     LOG_DATE_FORMAT,
     LOG_LEVEL,
@@ -67,7 +70,7 @@ def setup_logging():
 # ──────────────────────────────────────────
 
 def cargar_lugares(ruta_json: str) -> list[dict]:
-    with open(ruta_json, "r", encoding="utf-8") as f:
+    with open(ruta_json, "r", encoding="utf-8-sig") as f:
         data = json.load(f)
     # Soportar tanto formato wrapper {"version":N, "lugares":[...]} como array directo
     if isinstance(data, dict) and "lugares" in data:
@@ -121,11 +124,13 @@ async def process_locality(
     municipio: dict,
     anno: int,
     rag_processor: AsyncRAGProcessor,
+    rrss_client: RRSSClient | None,
     logger: logging.Logger,
+    docs_municipio_cache: list[dict] | None = None,
 ) -> list[dict]:
     """
     Pipeline completo para una localidad, en orden de fiabilidad de fuentes:
-    web localidad → web municipio → RRSS (caché) → búsqueda browser → RAG → LLM.
+    web localidad → web municipio → RRSS (caché/servidor) → búsqueda browser → RAG → LLM.
     """
     logger.info(
         f"    --> Buscando fiestas para: {localidad['nombre']} "
@@ -154,28 +159,52 @@ async def process_locality(
     # La web de la localidad solo cuenta si NO está vacía y es distinta de la del padre
     loc_tiene_web_propia = bool(sitio_loc) and sitio_loc.rstrip("/") != sitio_mun.rstrip("/")
 
+    # Guardar referencia a los spiders para extraer social_links
+    spider_loc = None
+    spider_mun = None
+
     # 1. Web oficial de la LOCALIDAD (fiabilidad máxima)
     if loc_tiene_web_propia:
         logger.info(f"    --> [1/5] Araña en web de la localidad: {sitio_loc}")
-        spider = AsyncTwoPassSpider()
-        documentos += await spider.crawl(
+        spider_loc = AsyncTwoPassSpider()
+        documentos += await spider_loc.crawl(
             sitio_loc, [localidad["nombre"]], FUENTE_WEB_LOCALIDAD, visited_urls
         )
         # Perfiles RRSS enlazados desde la web propia de la localidad
-        await registrar_perfiles_web(localidad, spider.social_links)
+        await registrar_perfiles_web(localidad, spider_loc.social_links)
 
     # 2. Web oficial del MUNICIPIO
-    if sitio_mun:
+    if docs_municipio_cache is not None:
+        logger.info(f"    --> [2/5] Araña en web del municipio (desde caché): {len(docs_municipio_cache)} docs")
+        documentos += docs_municipio_cache
+    elif sitio_mun:
         logger.info(f"    --> [2/5] Araña en web del municipio: {sitio_mun}")
-        spider = AsyncTwoPassSpider()
-        documentos += await spider.crawl(
+        spider_mun = AsyncTwoPassSpider()
+        documentos += await spider_mun.crawl(
             sitio_mun, [localidad["nombre"]], FUENTE_WEB_MUNICIPIO, visited_urls
         )
         # Perfiles RRSS del municipio (la caché evita repetir por cada pedanía)
-        await registrar_perfiles_web(municipio, spider.social_links)
+        await registrar_perfiles_web(municipio, spider_mun.social_links)
 
-    # 3-4. RRSS de la localidad y del municipio (desde la caché del runner de apps)
-    documentos += cargar_documentos_rrss(localidad, municipio)
+    # 3-4. RRSS de la localidad y del municipio
+    docs_rrss = cargar_documentos_rrss(localidad, municipio)
+    if not docs_rrss and rrss_client and rrss_client.disponible:
+        # No hay caché → pedir al servidor Windows que procese RRSS en tiempo real
+        logger.info(f"    --> [3-4/5] Solicitando RRSS al servidor Windows...")
+        lugar_ids = [localidad["id"]]
+        if municipio["id"] != localidad["id"]:
+            lugar_ids.append(municipio["id"])
+        resultado_rrss = await rrss_client.procesar_rrss(lugar_ids)
+        if resultado_rrss:
+            # El servidor actualizó la caché en disco → forzar re-lectura
+            invalidar_cache_rrss()
+            docs_rrss = cargar_documentos_rrss(localidad, municipio)
+    documentos += docs_rrss
+
+    docs_oficiales = [d for d in documentos if es_fuente_oficial(d["fuente"])]
+    if len(docs_oficiales) == 0:
+        logger.info(f"    --> [4.5/5] Sin fuentes oficiales. Búsqueda suplementaria en prensa regional...")
+        documentos += await search_locality_media(localidad, municipio, anno, visited_urls)
 
     # 5. Búsqueda browser (la menos fiable; no relee URLs de los pasos anteriores)
     logger.info(f"    --> [5/5] Búsqueda en buscadores...")
@@ -198,25 +227,16 @@ async def process_locality(
     total_chars = sum(len(d["texto"]) for d in documentos)
     logger.info(f"    Recopilados {len(documentos)} documentos ({total_chars} chars): {conteo_fuentes}")
 
-    # RAG: chunking por documento + selección por cuotas de fuente
-    comunidad = municipio.get("comunidad_autonoma", "")
-    provincia = municipio.get("provincia", "")
-    perfil_data = get_language_profile(comunidad, provincia)
-    terminos_rag = perfil_data["perfil_principal"]["terminos_rag"]
-
-    query_rag = (
-        f"{terminos_rag} en {municipio['nombre']} "
-        f"para la localidad de {localidad['nombre']} en el año {anno}"
-    )
-    contexto, fuentes_contexto = await rag_processor.saturate_context_docs(documentos, query_rag)
-
-    if not contexto.strip():
-        logger.warning(f"    [!] RAG no seleccionó texto relevante para {localidad['nombre']}.")
-        return integrar_patron([], patron, anno, localidad)
-
-    # LLM + validación (filtro adaptativo con el día del patrón + fuentes)
-    fiestas = await analyze_festivals_for_locality(
-        municipio, localidad, contexto, anno, fecha_patron, fuentes_contexto
+    # Multi-Pass RAG Architecture (Discovery Pass -> Enrichment Pass)
+    fiestas = await analyze_festivals_multipass(
+        municipio=municipio,
+        localidad=localidad,
+        documentos=documentos,
+        anno=anno,
+        fecha_patron=fecha_patron,
+        rag_processor=rag_processor,
+        logger=logger,
+        analyzer_fn=analyze_festivals_for_locality,
     )
 
     # Marcar fiestas que incluyen el día del patrón / añadir estimada si no está cubierto
@@ -240,6 +260,7 @@ async def process_municipio(
     descendientes: list[dict],
     anno: int,
     rag_processor: AsyncRAGProcessor,
+    rrss_client: RRSSClient | None,
     state_mgr: StateManager,
     indice: int,
     total: int,
@@ -260,6 +281,21 @@ async def process_municipio(
 
     # Procesar localidades secuencialmente (comparten el mismo sitio web municipal)
     todas_localidades = capitales + otros
+
+    # Pre-crawl del sitio municipal una sola vez para reutilizar en todas las pedanías
+    docs_municipio_cache = None
+    sitio_mun = municipio.get("sitio_web", "").strip()
+    if sitio_mun:
+        logger.info(f"  [PRECRAWL] Araña única del municipio: {sitio_mun}")
+        spider_mun = AsyncTwoPassSpider()
+        todos_nombres = [municipio["nombre"]] + [loc["nombre"] for loc in todas_localidades]
+        visited_mun = set()
+        docs_municipio_cache = await spider_mun.crawl(
+            sitio_mun, todos_nombres, FUENTE_WEB_MUNICIPIO, visited_mun
+        )
+        await registrar_perfiles_web(municipio, spider_mun.social_links)
+        logger.info(f"  [PRECRAWL] {len(docs_municipio_cache)} docs municipales en caché")
+
     for j, loc in enumerate(todas_localidades):
         if loc["id"] in locs_completadas:
             logger.info(f"  [{j + 1}/{len(todas_localidades)}] {loc['nombre']} (Omitiendo, ya procesada temporalmente)")
@@ -267,7 +303,9 @@ async def process_municipio(
             
         logger.info(f"  [{j + 1}/{len(todas_localidades)}] {loc['nombre']}")
         try:
-            fiestas_loc = await process_locality(loc, municipio, anno, rag_processor, logger)
+            fiestas_loc = await process_locality(
+                loc, municipio, anno, rag_processor, rrss_client, logger, docs_municipio_cache=docs_municipio_cache
+            )
             fiestas_municipio.extend(fiestas_loc)
             # Volcado temporal tras finalizar esta localidad
             await state_mgr.guardar_estado_localidad(fiestas_loc, loc["id"])
@@ -280,13 +318,118 @@ async def process_municipio(
 
 
 # ──────────────────────────────────────────
+# INFORME DE EJECUCIÓN Y MÉTRICAS (REQUISITO R6)
+# ──────────────────────────────────────────
+
+def generar_informe_ejecucion(
+    fiestas: list[dict],
+    localidades_completadas: list | set,
+    municipios_completados: list | set,
+    tiempo_total_segundos: float,
+    busquedas_fallidas: int = 0,
+) -> dict:
+    """
+    Calcula las métricas de ejecución de la Fase 2 (Requisito R6):
+    - Ratio de fiestas extraídas vs. estimadas
+    - Número de localidades con 0 fiestas
+    - Fuentes más contribuyentes
+    - Número de búsquedas bloqueadas/fallidas
+    - Tiempo medio de ejecución por municipio
+    """
+    extraidas = sum(1 for f in fiestas if not f.get("es_estimada", False))
+    estimadas = sum(1 for f in fiestas if f.get("es_estimada", False))
+    total_fiestas = len(fiestas)
+
+    if estimadas > 0:
+        ratio_val = extraidas / estimadas
+        ratio_str = f"{ratio_val:.2f}"
+    elif extraidas > 0:
+        ratio_val = float("inf")
+        ratio_str = f"{extraidas}:0 (Sin estimadas)"
+    else:
+        ratio_val = 0.0
+        ratio_str = "0:0"
+
+    set_localidades = set(localidades_completadas)
+    locs_con_fiestas = {f["lugar_id"] for f in fiestas if f.get("lugar_id")}
+    localidades_sin_fiestas = set_localidades - locs_con_fiestas
+    num_localidades_cero = len(localidades_sin_fiestas)
+
+    from collections import Counter
+    conteo_fuentes = Counter()
+    for f in fiestas:
+        if f.get("es_estimada", False):
+            conteo_fuentes["santo_patron"] += 1
+        else:
+            fuentes = f.get("fuentes", [])
+            if fuentes:
+                for src in fuentes:
+                    if isinstance(src, str):
+                        base = fuente_base(src)
+                    elif isinstance(src, dict):
+                        base = fuente_base(src.get("fuente", ""))
+                    else:
+                        base = "desconocida"
+                    conteo_fuentes[base or "desconocida"] += 1
+            else:
+                conteo_fuentes["desconocida"] += 1
+    top_fuentes = conteo_fuentes.most_common(5)
+
+    num_municipios = len(set(municipios_completados))
+    tiempo_medio_municipio = (tiempo_total_segundos / num_municipios) if num_municipios > 0 else 0.0
+
+    return {
+        "total_fiestas": total_fiestas,
+        "fiestas_extraidas": extraidas,
+        "fiestas_estimadas": estimadas,
+        "ratio_extraidas_vs_estimadas": ratio_str,
+        "ratio_numerico": ratio_val,
+        "total_localidades_procesadas": len(set_localidades),
+        "localidades_con_cero_fiestas": num_localidades_cero,
+        "fuentes_mas_contribuyentes": top_fuentes,
+        "busquedas_bloqueadas_fallidas": busquedas_fallidas,
+        "tiempo_total_segundos": tiempo_total_segundos,
+        "municipios_procesados": num_municipios,
+        "tiempo_medio_por_municipio": tiempo_medio_municipio,
+    }
+
+
+def registrar_informe_resumen(metrics: dict, logger: logging.Logger) -> str:
+    """Formatea y registra en el logger el informe resumen de ejecución R6."""
+    top_fuentes_str = ", ".join([f"{src}: {cnt}" for src, cnt in metrics["fuentes_mas_contribuyentes"]]) or "Ninguna"
+
+    informe_lines = [
+        "=" * 60,
+        "  INFORME RESUMEN DE EJECUCIÓN (MÉTRICAS R6)",
+        "=" * 60,
+        f"  Total Fiestas Registradas: {metrics['total_fiestas']}",
+        f"    - Extraídas de fuentes:  {metrics['fiestas_extraidas']}",
+        f"    - Estimadas (Patrón):    {metrics['fiestas_estimadas']}",
+        f"    - Ratio Extraídas/Estimadas: {metrics['ratio_extraidas_vs_estimadas']}",
+        f"  Localidades con 0 Fiestas: {metrics['localidades_con_cero_fiestas']} (de {metrics['total_localidades_procesadas']} procesadas)",
+        f"  Fuentes más contribuyentes: {top_fuentes_str}",
+        f"  Búsquedas bloqueadas/fallidas: {metrics['busquedas_bloqueadas_fallidas']}",
+        f"  Municipios procesados: {metrics['municipios_procesados']}",
+        f"  Tiempo total de ejecución: {metrics['tiempo_total_segundos']:.2f}s",
+        f"  Tiempo medio por municipio: {metrics['tiempo_medio_por_municipio']:.2f}s",
+        "=" * 60,
+    ]
+
+    report_text = "\n".join(informe_lines)
+    logger.info("\n" + report_text)
+    return report_text
+
+
+# ──────────────────────────────────────────
 # ORQUESTADOR PRINCIPAL
 # ──────────────────────────────────────────
 
 async def async_main():
+    start_time = time.time()
+
     parser = argparse.ArgumentParser(description="Fase 2: Extracción de Fiestas (Async)")
     parser.add_argument("--anno", type=int, default=2026, help="Año de búsqueda")
-    parser.add_argument("--input", type=str, default="../lugares_espana.json", help="Ruta JSON de lugares")
+    parser.add_argument("--input", type=str, default="../Fase1_recogida_datos_wiki/lugares_espana.json", help="Ruta JSON de lugares")
     parser.add_argument("--output", type=str, default="fiestas_espana.json", help="Ruta JSON de salida")
     parser.add_argument("--parallel", type=int, default=PARALLEL_MUNICIPALITIES, help="Municipios en paralelo")
     args = parser.parse_args()
@@ -324,10 +467,32 @@ async def async_main():
 
     if not pendientes:
         logger.info("¡Todos los municipios ya fueron procesados!")
+        tiempo_total = time.time() - start_time
+        metrics = generar_informe_ejecucion(
+            fiestas=state_mgr.state.get("fiestas", []),
+            localidades_completadas=state_mgr.state.get("localidades_completadas", []),
+            municipios_completados=state_mgr.state.get("municipios_completados", []),
+            tiempo_total_segundos=tiempo_total,
+            busquedas_fallidas=get_failed_searches_count(),
+        )
+        registrar_informe_resumen(metrics, logger)
         return
 
     # Inicializar RAG Processor
     rag_processor = AsyncRAGProcessor()
+
+    # Inicializar cliente RRSS (servidor Windows)
+    rrss_client = None
+    if RRSS_SERVER_ENABLED:
+        rrss_client = RRSSClient()
+        if await rrss_client.verificar_servidor():
+            logger.info(f"Servidor RRSS disponible — las RRSS se procesarán en tiempo real")
+        else:
+            logger.warning(
+                "Servidor RRSS no disponible. Las RRSS se omitirán "
+                "(solo se usará la caché existente si hay datos previos)."
+            )
+            rrss_client = None
 
     # Procesar en batches paralelos
     total = len(municipios_raiz)
@@ -345,7 +510,7 @@ async def async_main():
 
         tasks = [
             process_municipio(
-                mun, desc, args.anno, rag_processor, state_mgr, idx, total, logger
+                mun, desc, args.anno, rag_processor, rrss_client, state_mgr, idx, total, logger
             )
             for idx, mun, desc in batch
         ]
@@ -357,6 +522,16 @@ async def async_main():
     logger.info(f"  Total fiestas: {len(state_mgr.state['fiestas'])}")
     logger.info(f"{'=' * 60}")
 
+    tiempo_total = time.time() - start_time
+    metrics = generar_informe_ejecucion(
+        fiestas=state_mgr.state.get("fiestas", []),
+        localidades_completadas=state_mgr.state.get("localidades_completadas", []),
+        municipios_completados=state_mgr.state.get("municipios_completados", []),
+        tiempo_total_segundos=tiempo_total,
+        busquedas_fallidas=get_failed_searches_count(),
+    )
+    registrar_informe_resumen(metrics, logger)
+
 
 def main():
     asyncio.run(async_main())
@@ -364,3 +539,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

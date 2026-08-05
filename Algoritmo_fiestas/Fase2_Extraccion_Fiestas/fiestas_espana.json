@@ -1,26 +1,180 @@
 {
   "version": 2,
   "anno": 2026,
-  "ultimo_municipio_procesado": "01001000000",
+  "ultimo_municipio_procesado": "01010000000",
   "municipios_completados": [
+    "01004000000",
+    "01001000000",
     "01049000000",
     "01003000000",
-    "01001000000"
+    "01002000000",
+    "01006000000",
+    "01011000000",
+    "01009000000",
+    "01037000000",
+    "01010000000"
   ],
   "localidades_completadas": [
-    "01049000201",
-    "01003000601",
-    "01002000201",
-    "01002000101",
+    "01004000101",
     "01001000101",
+    "01003000601",
+    "01004000501",
+    "01002000201",
+    "01001000201",
+    "01049000201",
+    "01003000701",
+    "01002000101",
     "01002000301",
     "01002000501",
     "01002000601",
-    "01003000701",
     "01002000701",
-    "01001000201"
+    "01002000801",
+    "01002001101",
+    "01002001201",
+    "01006000101",
+    "01006000201",
+    "01006000301",
+    "01011000101",
+    "01037001001",
+    "01009000401",
+    "01037000201",
+    "01009000101",
+    "01037000401",
+    "01010002001",
+    "01009000201",
+    "01010000701",
+    "01037000501",
+    "01009000301",
+    "01010001001",
+    "01037000701",
+    "01009000501",
+    "01037001201",
+    "01010001101",
+    "01009000601",
+    "01037001301",
+    "01009000701",
+    "01010001401",
+    "01009000801",
+    "01037001401",
+    "01010001501",
+    "01009000901",
+    "01037010101",
+    "01037010301",
+    "01010001601",
+    "01009001001",
+    "01037010501",
+    "01010002101",
+    "01037010601",
+    "01010002201",
+    "01037020101",
+    "01010002401",
+    "01018000901",
+    "01018000101",
+    "01014000101",
+    "01018000201",
+    "01014000201",
+    "01016000301",
+    "01018000301",
+    "01013001401",
+    "01017000501",
+    "01014000301"
   ],
   "fiestas": [
+    {
+      "id": "fiestas-virgen-de-la-encina",
+      "lugar_id": "01004000101",
+      "nombre": "Fiestas Patronales de la Virgen de la Encina",
+      "fecha_inicio": "2026-09-04",
+      "fecha_fin": "2026-09-13",
+      "tamano": "grande",
+      "descripcion": "Las Fiestas de la Virgen de la Encina 2026 en Artziniega se celebrarán del viernes 4 al domingo 13 de septiembre, con el Día de la Patrona el martes 8. Procesión desde la parroquia, Carrera Mundial de Bombonas, subasta tradicional de productos, Comida en la Campa, Torneo de Artzikirol y verbenas nocturnas conforman el programa.",
+      "confianza": "baja",
+      "fuentes": [
+        "busqueda_web"
+      ],
+      "solo_fuentes_no_oficiales": true,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-09-04",
+          "eventos": []
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-09-05",
+          "eventos": []
+        },
+        {
+          "dia": 3,
+          "fecha": "2026-09-06",
+          "eventos": []
+        },
+        {
+          "dia": 4,
+          "fecha": "2026-09-07",
+          "eventos": []
+        },
+        {
+          "dia": 5,
+          "fecha": "2026-09-08",
+          "eventos": []
+        },
+        {
+          "dia": 6,
+          "fecha": "2026-09-09",
+          "eventos": []
+        },
+        {
+          "dia": 7,
+          "fecha": "2026-09-10",
+          "eventos": []
+        },
+        {
+          "dia": 8,
+          "fecha": "2026-09-11",
+          "eventos": []
+        },
+        {
+          "dia": 9,
+          "fecha": "2026-09-12",
+          "eventos": []
+        },
+        {
+          "dia": 10,
+          "fecha": "2026-09-13",
+          "eventos": []
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "lat": 43.1217919,
+      "lng": -3.13052099
+    },
+    {
+      "id": "patron-san-blas-01001000101",
+      "lugar_id": "01001000101",
+      "nombre": "Fiestas de San Blas (estimada)",
+      "fecha_inicio": "2026-02-03",
+      "fecha_fin": "2026-02-03",
+      "tamano": "pequeña",
+      "descripcion": "Fiesta anual estimada a partir del día del santo patrón de Alegría-Dulantzi (San Blas, 3 de febrero). No se encontró programa ni confirmación para este año.",
+      "confianza": "baja",
+      "origen": "santo_patron",
+      "es_estimada": true,
+      "incluye_dia_patron": true,
+      "fuentes": [],
+      "solo_fuentes_no_oficiales": false,
+      "patron": {
+        "nombre": "San Blas",
+        "dia": 3,
+        "mes": 2,
+        "fuente": "wikipedia"
+      },
+      "programa": [],
+      "lat": 42.84045247,
+      "lng": -2.512507724
+    },
     {
       "id": "patron-san-martin-01003000601",
       "lugar_id": "01003000601",
@@ -39,171 +193,20 @@
         "nombre": "San Martín",
         "dia": 11,
         "mes": 11,
-        "fuente": "busqueda"
+        "fuente": "wikipedia"
       },
-      "programa": []
+      "programa": [],
+      "lat": 43.05257873,
+      "lng": -2.564829379
     },
     {
-      "id": "patron-nuestra-senora-y-san-roque-01002000201",
-      "lugar_id": "01002000201",
-      "nombre": "Fiestas de Nuestra Señora\ny\nSan Roque (estimada)",
-      "fecha_inicio": "2026-08-16",
-      "fecha_fin": "2026-08-16",
-      "tamano": "pequeña",
-      "descripcion": "Fiesta anual estimada a partir del día del santo patrón de Amurrio (Nuestra Señora\ny\nSan Roque, 16 de agosto). No se encontró programa ni confirmación para este año.",
-      "confianza": "baja",
-      "origen": "santo_patron",
-      "es_estimada": true,
-      "incluye_dia_patron": true,
-      "fuentes": [],
-      "solo_fuentes_no_oficiales": false,
-      "patron": {
-        "nombre": "Nuestra Señora\ny\nSan Roque",
-        "dia": 16,
-        "mes": 8,
-        "fuente": "busqueda"
-      },
-      "programa": []
-    },
-    {
-      "id": "aloria-fiestas-patronales-2026",
-      "lugar_id": "01002000101",
-      "nombre": "Fiestas Patronales de Aloria en honor a San Juan Degollado",
-      "fecha_inicio": "2026-08-29",
-      "fecha_fin": "2026-08-30",
-      "tamano": "pequeña",
-      "descripcion": "Las Fiestas Patronales de Aloria en honor a San Juan Degollado incluyen procesión, misa, dantzaris y txistularis en la plaza, romería a la ermita y largas noches de orquesta con pintxos.",
-      "confianza": "baja",
-      "fuentes": [
-        "busqueda_web"
-      ],
-      "solo_fuentes_no_oficiales": true,
-      "programa": [
-        {
-          "dia": 1,
-          "fecha": "2026-08-29",
-          "eventos": [
-            {
-              "hora": "",
-              "descripcion": "Procesión y misa en torno a la iglesia del pueblo"
-            },
-            {
-              "hora": "",
-              "descripcion": "Dantzaris y txistularis en la plaza"
-            }
-          ]
-        },
-        {
-          "dia": 2,
-          "fecha": "2026-08-30",
-          "eventos": [
-            {
-              "hora": "",
-              "descripcion": "Romería a la ermita"
-            },
-            {
-              "hora": "",
-              "descripcion": "Largas noches de orquesta con pintxos"
-            }
-          ]
-        }
-      ],
-      "origen": "extraccion",
-      "es_estimada": false,
-      "incluye_dia_patron": true,
-      "patron": {
-        "nombre": "San Juan Degollado",
-        "dia": 29,
-        "mes": 8,
-        "fuente": "llm"
-      }
-    },
-    {
-      "id": "aloria-fiestas-san-prudencio-2026",
-      "lugar_id": "01002000101",
-      "nombre": "Fiestas de San Prudencio y Nuestra Señora de Estíbaliz",
-      "fecha_inicio": "2026-04-24",
-      "fecha_fin": "2026-05-01",
-      "tamano": "pequeña",
-      "descripcion": "Fiestas que combinan tradición, cultura y música con actividades para todos los públicos.",
-      "confianza": "baja",
-      "fuentes": [
-        "busqueda_web"
-      ],
-      "solo_fuentes_no_oficiales": true,
-      "programa": [
-        {
-          "dia": 1,
-          "fecha": "2026-04-24",
-          "eventos": [
-            {
-              "hora": "",
-              "descripcion": "Pregón de Antonio Altarriba"
-            }
-          ]
-        },
-        {
-          "dia": 8,
-          "fecha": "2026-05-01",
-          "eventos": [
-            {
-              "hora": "",
-              "descripcion": "Romería de Estíbaliz Vitoria-Gasteiz"
-            }
-          ]
-        }
-      ],
-      "origen": "extraccion",
-      "es_estimada": false,
-      "incluye_dia_patron": false
-    },
-    {
-      "id": "festival-teatro-amateur-2026",
-      "lugar_id": "01001000101",
-      "nombre": "Festival de Teatro Amateur",
-      "fecha_inicio": "2026-11-01",
-      "fecha_fin": "2026-11-30",
+      "id": "fiesta-retes-de-tudela-2026",
+      "lugar_id": "01004000501",
+      "nombre": "Fiestas de Retes de Tudela",
+      "fecha_inicio": "2026-07-18",
+      "fecha_fin": "2026-07-19",
       "tamano": "grande",
-      "descripcion": "El Festival de Teatro Amateur celebra su 20ª edición en Alegría-Dulantzi, destacando por su buen funcionamiento y acogida del público.",
-      "confianza": "alta",
-      "fuentes": [
-        "web_municipio"
-      ],
-      "solo_fuentes_no_oficiales": false,
-      "programa": [
-        {
-          "dia": 1,
-          "fecha": "2026-11-01",
-          "eventos": [
-            {
-              "hora": "",
-              "descripcion": "Inauguración del Festival"
-            }
-          ]
-        },
-        {
-          "dia": 30,
-          "fecha": "2026-11-30",
-          "eventos": [
-            {
-              "hora": "",
-              "descripcion": "Gala final con entrega de premios y diplomas"
-            }
-          ]
-        }
-      ],
-      "origen": "extraccion",
-      "es_estimada": false,
-      "incluye_dia_patron": false
-    },
-    {
-      "id": "artomana-san-jorge-2026",
-      "lugar_id": "01002000301",
-      "nombre": "Fiestas de San Jorge en Artomaña",
-      "fecha_inicio": "2026-04-17",
-      "fecha_fin": "2026-04-23",
-      "tamano": "grande",
-      "descripcion": "Celebración anual en honor a San Jorge con música, gastronomía y actividades para todos los públicos.",
+      "descripcion": "Celebración de las fiestas en Retes de Tudela, con actividades como el volteo de campanas y subida de la mascota Etiliko.",
       "confianza": "baja",
       "fuentes": [
         "busqueda_web"
@@ -212,81 +215,189 @@
       "programa": [
         {
           "dia": 1,
-          "fecha": "2026-04-17",
+          "fecha": "2026-07-18",
           "eventos": [
             {
-              "hora": "20:00",
-              "descripcion": "Chupinazo y cena popular"
+              "hora": "10:30",
+              "descripcion": "Volteo de campanas"
             },
             {
-              "hora": "21:00",
-              "descripcion": "Concierto Kesonikete"
+              "hora": "",
+              "descripcion": "Subida de la mascota Etiliko"
             },
             {
-              "hora": "23:00",
-              "descripcion": "Inicio del asado de ternera"
-            }
-          ]
-        },
-        {
-          "dia": 2,
-          "fecha": "2026-04-18",
-          "eventos": [
-            {
-              "hora": "14:00",
-              "descripcion": "Degustación de ternera asada ambientado con trikitixa"
+              "hora": "11:00",
+              "descripcion": "Inició de los concursos de tortilla y paella"
             },
-            {
-              "hora": "17:00",
-              "descripcion": "Duelo entre los pueblos de Arrastaria"
-            },
-            {
-              "hora": "19:00",
-              "descripcion": "Zumba (música y baile)"
-            },
-            {
-              "hora": "22:00",
-              "descripcion": "Concierto con Eriz & Totum Revolutum"
-            },
-            {
-              "hora": "24:00",
-              "descripcion": "DJ Varro"
-            }
-          ]
-        },
-        {
-          "dia": 3,
-          "fecha": "2026-04-19",
-          "eventos": [
             {
               "hora": "11:00",
               "descripcion": "Hinchables infantiles"
             },
             {
-              "hora": "12:30",
-              "descripcion": "Misa"
-            },
-            {
-              "hora": "13:30",
-              "descripcion": "Euskal Dantzak de la mano de Erauntsi baile Taldea"
-            },
-            {
-              "hora": "16:00",
-              "descripcion": "Hinchables infantiles"
-            },
-            {
-              "hora": "17:30",
-              "descripcion": "Chocolatada / Campeonato de brisca"
+              "hora": "11:00",
+              "descripcion": "Animación infantil; globoflexia, pintura facial, burbujas"
             }
           ]
         },
         {
-          "dia": 7,
-          "fecha": "2026-04-23",
+          "dia": 2,
+          "fecha": "2026-07-19",
           "eventos": [
             {
+              "hora": "",
+              "descripcion": "No se especifican eventos para este día"
+            }
+          ]
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "lat": 43.1145508,
+      "lng": -3.168250202
+    },
+    {
+      "id": "chupinazo",
+      "lugar_id": "01002000201",
+      "nombre": "Día del Chupinazo",
+      "fecha_inicio": "2026-08-12",
+      "fecha_fin": "2026-08-12",
+      "tamano": "grande",
+      "descripcion": "Celebración del Día del Chupinazo en Amurrio.",
+      "confianza": "alta",
+      "fuentes": [
+        "web_municipio"
+      ],
+      "solo_fuentes_no_oficiales": false,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-08-12",
+          "eventos": [
+            {
+              "hora": "11:00",
+              "descripcion": "Finales CAMPEONATO DE PELOTA “VILLA DE AMURRIO” en el Frontón. Organizado por el Club Pelotazale."
+            },
+            {
               "hora": "13:00",
-              "descripcion": "Misa en honor a San Jorge, seguido de lunch amenizado con trikitixa en la herriko taberna"
+              "descripcion": "Presentación de las cuadrillas EUSKOTARRAK, baile LAGUNAK, TROT-ART, EL BOLI, HERRIARENAK y TXABOLAKOAK. En la plaza Juan Urrutia."
+            },
+            {
+              "hora": "17:00",
+              "descripcion": "LANZAMIENTO DE TXAPELA. En la calle Iturralde."
+            },
+            {
+              "hora": "17:00",
+              "descripcion": "pasacalles Itinerante hasta el chupinazo con el grupo de percusión BATTUERE BATUKADA. en la plaza Juan Urrutia."
+            },
+            {
+              "hora": "17:30",
+              "descripcion": "Reparto de gafas para la observación del eclipse solar, hasta fin de existencias, en la entrada del Ayuntamiento de Amurrio. El Ayuntamiento no se hace responsable del uso indebido de las mismas."
+            },
+            {
+              "hora": "18:15",
+              "descripcion": "LECTURA DEL PREGÓN DE FIESTAS 2026 a cargo de la ASOCIACIÓN KUSKUA. En el salón del Ayuntamiento de Amurrio y retransmitido por megafonía."
+            },
+            {
+              "hora": "18:45",
+              "descripcion": "PRESENTACIÓN de los y las Representantes de las Cuadrillas de Fiestas en el Ayuntamiento."
+            },
+            {
+              "hora": "19:00",
+              "descripcion": "CHUPINAZO y bajada de IGUARRAKO."
+            }
+          ]
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "lat": 43.05265767,
+      "lng": -3.001015194
+    },
+    {
+      "id": "san-roque-01002000201",
+      "lugar_id": "01002000201",
+      "nombre": "San Roque",
+      "fecha_inicio": "2026-08-16",
+      "fecha_fin": "2026-08-17",
+      "tamano": "grande",
+      "descripcion": "Celebración de San Roque en Amurrio.",
+      "confianza": "alta",
+      "fuentes": [
+        "web_municipio"
+      ],
+      "solo_fuentes_no_oficiales": false,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-08-16",
+          "eventos": [
+            {
+              "hora": "08:30",
+              "descripcion": "Servicio de transporte gratuito ida y vuelta en autobús para acudir a las campas de San Roque. Salidas cada media hora desde la rotonda de Aldai. Paradas: en la marquesina de al lado del Antzoki y en la marquesina de San José. Última salida de San Roque a las 14:30h."
+            },
+            {
+              "hora": "10:00",
+              "descripcion": "SUBIDA DEL SANTO. Desde la Parroquia de Santa María a la Ermita de San Roque. Organizado por la Cofradía de la Santa Vera Cruz."
+            },
+            {
+              "hora": "10:30",
+              "descripcion": "EXPOSICIÓN DE GANADO SAN ROQUE 2026"
+            },
+            {
+              "hora": "11:00",
+              "descripcion": "ANIMACIÓN CON TRIKITIXA. En las campas de San Roque."
+            },
+            {
+              "hora": "11:30",
+              "descripcion": "Solemne MISA MAYOR. En la campa de San Roque. Con la participación de la coral Mariaka."
+            },
+            {
+              "hora": "12:30",
+              "descripcion": "LX CONCURSO DE AURRESKU Y JOTAS. En San Roque. Organizado por Aiara baile Taldea."
+            },
+            {
+              "hora": "",
+              "descripcion": "Espacio de prevención, sensibilización y atención de las violencias machistas. En el antiguo kiosko."
+            },
+            {
+              "hora": "19:30",
+              "descripcion": "ESPECTÁCULO DE TEATRO Y CLOWN THE RETURN OF DELIRIOS, de la compañía OSETE DELIRIOS. En la plaza comprendida entre Lucas Rey, Mendiko y Felix Murga."
+            },
+            {
+              "hora": "21:00",
+              "descripcion": "ORQUESTA MARAN. En la plaza Juan Urrutia."
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-08-17",
+          "eventos": [
+            {
+              "hora": "10:00",
+              "descripcion": "Servicio de transporte gratuito ida y vuelta en autobús para acudir a las campas de San Roque. Salidas cada media hora desde la rotonda de Aldai. Paradas: en la marquesina de al lado del Antzoki y en la marquesina de San José. Última salida de San Roque a las 15:00h y a las 19:00h."
+            },
+            {
+              "hora": "09:00",
+              "descripcion": "Inscripción en el V CONCURSO DE SUKALKI y XX V CONCURSO DE TORTILLA DE PATATAS. En San Roque. Organizado por el grupo Mendiko Lagunak M. T. IGUARRAKO DE ORO"
+            },
+            {
+              "hora": "11:30",
+              "descripcion": "MISA DE CAMPAÑA, en San Roque, con la participación de la coral Mariaka."
+            },
+            {
+              "hora": "12:30",
+              "descripcion": "Presentación de las tortillas de patata. En San Roque. Organizado por el grupo Mendiko Lagunak M. T."
+            },
+            {
+              "hora": "13:15",
+              "descripcion": "Presentación de cazuelas de SUKALKI. En San Roque. Organizado por el grupo Mendiko Lagunak M. T."
+            },
+            {
+              "hora": "14:00",
+              "descripcion": "Entrega de premios del CONCURSO DE SUKALKI y del CONCURSO DE TORTILLA DE PATATAS. En San Roque. Organizado por el grupo Mendiko Lagunak M. T."
             }
           ]
         }
@@ -295,69 +406,22 @@
       "es_estimada": false,
       "incluye_dia_patron": true,
       "patron": {
-        "nombre": "San Jorge vuelven a incluir este",
-        "dia": 23,
-        "mes": 4,
-        "fuente": "busqueda"
-      }
+        "nombre": "San Roque",
+        "dia": 16,
+        "mes": 8,
+        "fuente": "wikipedia"
+      },
+      "lat": 43.05265767,
+      "lng": -3.001015194
     },
     {
-      "id": "fiestas-de-san-anonio",
-      "lugar_id": "01002000501",
-      "nombre": "Fiestas de San Antonio",
-      "fecha_inicio": "2026-06-08",
-      "fecha_fin": "2026-06-10",
+      "id": "patron-san-blas-01001000201",
+      "lugar_id": "01001000201",
+      "nombre": "Fiestas de San Blas (estimada)",
+      "fecha_inicio": "2026-02-03",
+      "fecha_fin": "2026-02-03",
       "tamano": "pequeña",
-      "descripcion": "Celebración anual con misa, procesión y verbena.",
-      "confianza": "baja",
-      "fuentes": [
-        "busqueda_web"
-      ],
-      "solo_fuentes_no_oficiales": true,
-      "programa": [
-        {
-          "dia": 1,
-          "fecha": "2026-06-08",
-          "eventos": [
-            {
-              "hora": "",
-              "descripcion": "Misa y procesión"
-            }
-          ]
-        },
-        {
-          "dia": 2,
-          "fecha": "2026-06-09",
-          "eventos": [
-            {
-              "hora": "",
-              "descripcion": "Dantzaris"
-            }
-          ]
-        },
-        {
-          "dia": 3,
-          "fecha": "2026-06-10",
-          "eventos": [
-            {
-              "hora": "",
-              "descripcion": "Romería y verbena"
-            }
-          ]
-        }
-      ],
-      "origen": "extraccion",
-      "es_estimada": false,
-      "incluye_dia_patron": false
-    },
-    {
-      "id": "patron-san-antonio-abad-01002000501",
-      "lugar_id": "01002000501",
-      "nombre": "Fiestas de San Antonio Abad (estimada)",
-      "fecha_inicio": "2026-01-17",
-      "fecha_fin": "2026-01-17",
-      "tamano": "pequeña",
-      "descripcion": "Fiesta anual estimada a partir del día del santo patrón de Baranbio (San Antonio Abad, 17 de enero). No se encontró programa ni confirmación para este año.",
+      "descripcion": "Fiesta anual estimada a partir del día del santo patrón de Egileta (San Blas, 3 de febrero). No se encontró programa ni confirmación para este año.",
       "confianza": "baja",
       "origen": "santo_patron",
       "es_estimada": true,
@@ -365,123 +429,579 @@
       "fuentes": [],
       "solo_fuentes_no_oficiales": false,
       "patron": {
-        "nombre": "San Antonio Abad",
-        "dia": 17,
-        "mes": 1,
-        "fuente": "llm"
+        "nombre": "San Blas",
+        "dia": 3,
+        "mes": 2,
+        "fuente": "wikipedia"
       },
-      "programa": []
+      "programa": [],
+      "lat": 42.8101189,
+      "lng": -2.535543764
     },
     {
-      "id": "delika-fiestas-2026",
-      "lugar_id": "01002000601",
-      "nombre": "Fiestas de Delika",
-      "fecha_inicio": "2026-06-26",
-      "fecha_fin": "2026-06-28",
-      "tamano": "pequeña",
-      "descripcion": "Las fiestas de Delika incluyen música, concursos y actividades para toda la familia.",
+      "id": "fiestas-patronales-de-san-crist-bal-01049000201",
+      "lugar_id": "01049000201",
+      "nombre": "Fiestas Patronales de San Cristóbal",
+      "fecha_inicio": "2026-08-07",
+      "fecha_fin": "2026-08-08",
+      "tamano": "grande",
+      "descripcion": "Procesiones, competiciones deportivas, música en directo, juegos populares, danzas tradicionales y degustaciones de productos locales, como la sal de Añana.",
       "confianza": "alta",
       "fuentes": [
-        "busqueda_web",
         "web_municipio"
       ],
       "solo_fuentes_no_oficiales": false,
       "programa": [
         {
           "dia": 1,
-          "fecha": "2026-06-26",
+          "fecha": "2026-08-07",
           "eventos": [
             {
-              "hora": "21:00",
-              "descripcion": "Chupinazo."
-            },
-            {
-              "hora": "21:30",
-              "descripcion": "Concurso de tortilla de patata casera."
-            },
-            {
-              "hora": "22:00-01:00",
-              "descripcion": "Fiesta temática cowboy."
+              "hora": "",
+              "descripcion": "Procesiones, competiciones deportivas, música en directo, juegos populares, danzas tradicionales y degustaciones de productos locales, como la sal de Añana."
             }
           ]
         },
         {
           "dia": 2,
-          "fecha": "2026-06-27",
+          "fecha": "2026-08-08",
           "eventos": [
             {
-              "hora": "10:00",
-              "descripcion": "Salida de la I Marcha de Montaña (10 km aprox.)."
-            },
-            {
-              "hora": "10:30",
-              "descripcion": "Salida de la II Marcha de Montaña Familiar (3 km aprox.)."
-            },
-            {
-              "hora": "14:30",
-              "descripcion": "Comida popular."
-            },
-            {
-              "hora": "16:30",
-              "descripcion": "Desafío Arrastaria."
-            },
-            {
-              "hora": "20:00",
-              "descripcion": "Suelta de vaquillas (para mayores de 16 años)."
-            },
-            {
-              "hora": "23:00",
-              "descripcion": "Verbena con Zutik y DJ Varro."
-            }
-          ]
-        },
-        {
-          "dia": 3,
-          "fecha": "2026-06-28",
-          "eventos": [
-            {
-              "hora": "08:00",
-              "descripcion": "Quedada para limpiar la plaza y sus alrededores."
-            },
-            {
-              "hora": "11:30",
-              "descripcion": "Misa en la iglesia."
-            },
-            {
-              "hora": "12:30",
-              "descripcion": "Pintxo pote."
-            },
-            {
-              "hora": "15:00-20:00",
-              "descripcion": "Toro mecánico e hinchables."
-            },
-            {
-              "hora": "18:30",
-              "descripcion": "Chocolatada."
-            },
-            {
-              "hora": "19:00",
-              "descripcion": "Concierto de Eriz & Totum Revolutum."
-            },
-            {
-              "hora": "20:00",
-              "descripcion": "Parrillada."
+              "hora": "",
+              "descripcion": "Visitas guiadas a las salinas, talleres demostrativos sobre la producción de sal, catas de diferentes tipos de sal y mercados con productos locales. También suele haber espectáculos de danza, música y actividades para todas las edades."
             }
           ]
         }
       ],
       "origen": "extraccion",
       "es_estimada": false,
-      "incluye_dia_patron": false
+      "incluye_dia_patron": false,
+      "lat": 42.80237115,
+      "lng": -2.9865226
     },
     {
-      "id": "patron-san-pedro-01002000601",
-      "lugar_id": "01002000601",
+      "id": "fiestas-del-entroje-01049000201",
+      "lugar_id": "01049000201",
+      "nombre": "Fiestas del Entroje",
+      "fecha_inicio": "2026-10-05",
+      "fecha_fin": "2026-10-08",
+      "tamano": "grande",
+      "descripcion": "La fiesta del Entroje, celebra el fin de la recogida de la sal. La fiesta se comienza a celebrar en el año 2008, tratando de recordar las principales labores del fin de la cosecha.",
+      "confianza": "alta",
+      "fuentes": [
+        "web_municipio"
+      ],
+      "solo_fuentes_no_oficiales": false,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-10-05",
+          "eventos": [
+            {
+              "hora": "",
+              "descripcion": "Procesiones, competiciones deportivas, música en directo, juegos populares, danzas tradicionales y degustaciones de productos locales, como la sal de Añana."
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-10-06",
+          "eventos": [
+            {
+              "hora": "",
+              "descripcion": "Procesiones, competiciones deportivas, música en directo, juegos populares, danzas tradicionales y degustaciones de productos locales, como la sal de Añana."
+            }
+          ]
+        },
+        {
+          "dia": 3,
+          "fecha": "2026-10-07",
+          "eventos": [
+            {
+              "hora": "",
+              "descripcion": "Procesiones, competiciones deportivas, música en directo, juegos populares, danzas tradicionales y degustaciones de productos locales, como la sal de Añana."
+            }
+          ]
+        },
+        {
+          "dia": 4,
+          "fecha": "2026-10-08",
+          "eventos": [
+            {
+              "hora": "",
+              "descripcion": "Procesiones, competiciones deportivas, música en directo, juegos populares, danzas tradicionales y degustaciones de productos locales, como la sal de Añana."
+            }
+          ]
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": true,
+      "patron": {
+        "nombre": "Virgen del Rosario",
+        "dia": 7,
+        "mes": 10,
+        "fuente": "wikipedia"
+      },
+      "lat": 42.80237115,
+      "lng": -2.9865226
+    },
+    {
+      "id": "chupinazo-oleta-2026",
+      "lugar_id": "01003000701",
+      "nombre": "Chupinazo de Oleta",
+      "fecha_inicio": "2026-08-03",
+      "fecha_fin": "2026-08-03",
+      "tamano": "pequeña",
+      "descripcion": "Jaietan murgilduko dira oletarrak datorren abuztuaren 14tik aurrera eta astel arte. chupinazo, mariatxiak, DJa, patata tortilla campeonato, kontzertuak…",
+      "confianza": "alta",
+      "fuentes": [
+        "web_municipio"
+      ],
+      "solo_fuentes_no_oficiales": false,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-08-03",
+          "eventos": [
+            {
+              "hora": "18:00",
+              "descripcion": "Estanpazio eta txosnero tailerra"
+            },
+            {
+              "hora": "20:00",
+              "descripcion": "Kontzertuek txosnetan"
+            },
+            {
+              "hora": "",
+              "descripcion": "Anbotoko Mariren etorrera, txupinazue eta pregoie herriko euskara ikaslien eskutik"
+            },
+            {
+              "hora": "19:05",
+              "descripcion": "Pasacalles Trikitixa eskolako kidiekin (Triki-pasacalles Trikitixa Taldiek antolatute)"
+            },
+            {
+              "hora": "19:05",
+              "descripcion": "Pasacalles Herriko txistularixekin (Txistulari Taldiek antolatute)"
+            },
+            {
+              "hora": "19:05",
+              "descripcion": "Buruhaundi eta erraldoiek"
+            },
+            {
+              "hora": "19:30",
+              "descripcion": "Aramaioko Lagun Arteko Binakako XI. Txapelketaren finala (Lau ta erdi barruko buruz buruko partidue, Aramaioko pelota Taldiek antolatute)"
+            },
+            {
+              "hora": "20:00",
+              "descripcion": "Dirty Durum Brass Band taldiaz pasacalles"
+            },
+            {
+              "hora": "23:00",
+              "descripcion": "Kontzertuek txosnetan: Kiliki+ Zaunka"
+            }
+          ]
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "lat": 43.04832859,
+      "lng": -2.630922609
+    },
+    {
+      "id": "patron-san-martin-01003000701",
+      "lugar_id": "01003000701",
+      "nombre": "Fiestas de San Martín (estimada)",
+      "fecha_inicio": "2026-11-11",
+      "fecha_fin": "2026-11-11",
+      "tamano": "pequeña",
+      "descripcion": "Fiesta anual estimada a partir del día del santo patrón de Oleta (San Martín, 11 de noviembre). No se encontró programa ni confirmación para este año.",
+      "confianza": "baja",
+      "origen": "santo_patron",
+      "es_estimada": true,
+      "incluye_dia_patron": true,
+      "fuentes": [],
+      "solo_fuentes_no_oficiales": false,
+      "patron": {
+        "nombre": "San Martín",
+        "dia": 11,
+        "mes": 11,
+        "fuente": "wikipedia"
+      },
+      "programa": [],
+      "lat": 43.04832859,
+      "lng": -2.630922609
+    },
+    {
+      "id": "patron-san-roque-01002000101",
+      "lugar_id": "01002000101",
+      "nombre": "Fiestas de San Roque (estimada)",
+      "fecha_inicio": "2026-08-16",
+      "fecha_fin": "2026-08-16",
+      "tamano": "pequeña",
+      "descripcion": "Fiesta anual estimada a partir del día del santo patrón de Aloria (San Roque, 16 de agosto). No se encontró programa ni confirmación para este año.",
+      "confianza": "baja",
+      "origen": "santo_patron",
+      "es_estimada": true,
+      "incluye_dia_patron": true,
+      "fuentes": [],
+      "solo_fuentes_no_oficiales": false,
+      "patron": {
+        "nombre": "San Roque",
+        "dia": 16,
+        "mes": 8,
+        "fuente": "wikipedia"
+      },
+      "programa": [],
+      "lat": 42.99633625,
+      "lng": -2.982035886
+    },
+    {
+      "id": "patron-san-roque-01002000301",
+      "lugar_id": "01002000301",
+      "nombre": "Fiestas de San Roque (estimada)",
+      "fecha_inicio": "2026-08-16",
+      "fecha_fin": "2026-08-16",
+      "tamano": "pequeña",
+      "descripcion": "Fiesta anual estimada a partir del día del santo patrón de Artomaña (San Roque, 16 de agosto). No se encontró programa ni confirmación para este año.",
+      "confianza": "baja",
+      "origen": "santo_patron",
+      "es_estimada": true,
+      "incluye_dia_patron": true,
+      "fuentes": [],
+      "solo_fuentes_no_oficiales": false,
+      "patron": {
+        "nombre": "San Roque",
+        "dia": 16,
+        "mes": 8,
+        "fuente": "wikipedia"
+      },
+      "programa": [],
+      "lat": 42.98363568,
+      "lng": -2.98190796
+    },
+    {
+      "id": "patron-san-anton-en-la-ermita-de-dicho-santo-01002000501",
+      "lugar_id": "01002000501",
+      "nombre": "Fiestas de San Antón en la ermita de dicho santo (estimada)",
+      "fecha_inicio": "2026-01-17",
+      "fecha_fin": "2026-01-17",
+      "tamano": "pequeña",
+      "descripcion": "Fiesta anual estimada a partir del día del santo patrón de Baranbio (San Antón en la ermita de dicho santo, 17 de enero). No se encontró programa ni confirmación para este año.",
+      "confianza": "baja",
+      "origen": "santo_patron",
+      "es_estimada": true,
+      "incluye_dia_patron": true,
+      "fuentes": [],
+      "solo_fuentes_no_oficiales": false,
+      "patron": {
+        "nombre": "San Antón en la ermita de dicho santo",
+        "dia": 17,
+        "mes": 1,
+        "fuente": "wikipedia"
+      },
+      "programa": [],
+      "lat": 43.04848035,
+      "lng": -2.920819517
+    },
+    {
+      "id": "patron-san-roque-01002000701",
+      "lugar_id": "01002000701",
+      "nombre": "Fiestas de San Roque (estimada)",
+      "fecha_inicio": "2026-08-16",
+      "fecha_fin": "2026-08-16",
+      "tamano": "pequeña",
+      "descripcion": "Fiesta anual estimada a partir del día del santo patrón de Larrinbe (San Roque, 16 de agosto). No se encontró programa ni confirmación para este año.",
+      "confianza": "baja",
+      "origen": "santo_patron",
+      "es_estimada": true,
+      "incluye_dia_patron": true,
+      "fuentes": [],
+      "solo_fuentes_no_oficiales": false,
+      "patron": {
+        "nombre": "San Roque",
+        "dia": 16,
+        "mes": 8,
+        "fuente": "wikipedia"
+      },
+      "programa": [],
+      "lat": 43.04400047,
+      "lng": -2.982010581
+    },
+    {
+      "id": "patron-san-roque-01002000801",
+      "lugar_id": "01002000801",
+      "nombre": "Fiestas de San Roque (estimada)",
+      "fecha_inicio": "2026-08-16",
+      "fecha_fin": "2026-08-16",
+      "tamano": "pequeña",
+      "descripcion": "Fiesta anual estimada a partir del día del santo patrón de Lekamaña (San Roque, 16 de agosto). No se encontró programa ni confirmación para este año.",
+      "confianza": "baja",
+      "origen": "santo_patron",
+      "es_estimada": true,
+      "incluye_dia_patron": true,
+      "fuentes": [],
+      "solo_fuentes_no_oficiales": false,
+      "patron": {
+        "nombre": "San Roque",
+        "dia": 16,
+        "mes": 8,
+        "fuente": "wikipedia"
+      },
+      "programa": [],
+      "lat": 43.02149019,
+      "lng": -2.996148832
+    },
+    {
+      "id": "patron-san-roque-01002001101",
+      "lugar_id": "01002001101",
+      "nombre": "Fiestas de San Roque (estimada)",
+      "fecha_inicio": "2026-08-16",
+      "fecha_fin": "2026-08-16",
+      "tamano": "pequeña",
+      "descripcion": "Fiesta anual estimada a partir del día del santo patrón de Saratxo (San Roque, 16 de agosto). No se encontró programa ni confirmación para este año.",
+      "confianza": "baja",
+      "origen": "santo_patron",
+      "es_estimada": true,
+      "incluye_dia_patron": true,
+      "fuentes": [],
+      "solo_fuentes_no_oficiales": false,
+      "patron": {
+        "nombre": "San Roque",
+        "dia": 16,
+        "mes": 8,
+        "fuente": "wikipedia"
+      },
+      "programa": [],
+      "lat": 43.02410122,
+      "lng": -3.010798201
+    },
+    {
+      "id": "patron-san-roque-01002001201",
+      "lugar_id": "01002001201",
+      "nombre": "Fiestas de San Roque (estimada)",
+      "fecha_inicio": "2026-08-16",
+      "fecha_fin": "2026-08-16",
+      "tamano": "pequeña",
+      "descripcion": "Fiesta anual estimada a partir del día del santo patrón de Tertanga (San Roque, 16 de agosto). No se encontró programa ni confirmación para este año.",
+      "confianza": "baja",
+      "origen": "santo_patron",
+      "es_estimada": true,
+      "incluye_dia_patron": true,
+      "fuentes": [],
+      "solo_fuentes_no_oficiales": false,
+      "patron": {
+        "nombre": "San Roque",
+        "dia": 16,
+        "mes": 8,
+        "fuente": "wikipedia"
+      },
+      "programa": [],
+      "lat": 42.97818461,
+      "lng": -3.022813917
+    },
+    {
+      "id": "patron-san-andres-01006000101",
+      "lugar_id": "01006000101",
+      "nombre": "Fiestas de San Andrés (estimada)",
+      "fecha_inicio": "2026-11-30",
+      "fecha_fin": "2026-11-30",
+      "tamano": "pequeña",
+      "descripcion": "Fiesta anual estimada a partir del día del santo patrón de Armiñón (San Andrés, 30 de noviembre). No se encontró programa ni confirmación para este año.",
+      "confianza": "baja",
+      "origen": "santo_patron",
+      "es_estimada": true,
+      "incluye_dia_patron": true,
+      "fuentes": [],
+      "solo_fuentes_no_oficiales": false,
+      "patron": {
+        "nombre": "San Andrés",
+        "dia": 30,
+        "mes": 11,
+        "fuente": "wikipedia"
+      },
+      "programa": [],
+      "lat": 42.72340924,
+      "lng": -2.872270813
+    },
+    {
+      "id": "patron-san-andres-01006000201",
+      "lugar_id": "01006000201",
+      "nombre": "Fiestas de San Andrés (estimada)",
+      "fecha_inicio": "2026-11-30",
+      "fecha_fin": "2026-11-30",
+      "tamano": "pequeña",
+      "descripcion": "Fiesta anual estimada a partir del día del santo patrón de Estavillo (San Andrés, 30 de noviembre). No se encontró programa ni confirmación para este año.",
+      "confianza": "baja",
+      "origen": "santo_patron",
+      "es_estimada": true,
+      "incluye_dia_patron": true,
+      "fuentes": [],
+      "solo_fuentes_no_oficiales": false,
+      "patron": {
+        "nombre": "San Andrés",
+        "dia": 30,
+        "mes": 11,
+        "fuente": "wikipedia"
+      },
+      "programa": [],
+      "lat": 42.72789862,
+      "lng": -2.860116047
+    },
+    {
+      "id": "patron-san-andres-01006000301",
+      "lugar_id": "01006000301",
+      "nombre": "Fiestas de San Andrés (estimada)",
+      "fecha_inicio": "2026-11-30",
+      "fecha_fin": "2026-11-30",
+      "tamano": "pequeña",
+      "descripcion": "Fiesta anual estimada a partir del día del santo patrón de Lacorzana (San Andrés, 30 de noviembre). No se encontró programa ni confirmación para este año.",
+      "confianza": "baja",
+      "origen": "santo_patron",
+      "es_estimada": true,
+      "incluye_dia_patron": true,
+      "fuentes": [],
+      "solo_fuentes_no_oficiales": false,
+      "patron": {
+        "nombre": "San Andrés",
+        "dia": 30,
+        "mes": 11,
+        "fuente": "wikipedia"
+      },
+      "programa": [],
+      "lat": 42.68758008,
+      "lng": -2.886864
+    },
+    {
+      "id": "patron-san-bartolome-01011000101",
+      "lugar_id": "01011000101",
+      "nombre": "Fiestas de San Bartolomé (estimada)",
+      "fecha_inicio": "2026-08-24",
+      "fecha_fin": "2026-08-24",
+      "tamano": "pequeña",
+      "descripcion": "Fiesta anual estimada a partir del día del santo patrón de Baños de Ebro/Mañueta (San Bartolomé, 24 de agosto). No se encontró programa ni confirmación para este año.",
+      "confianza": "baja",
+      "origen": "santo_patron",
+      "es_estimada": true,
+      "incluye_dia_patron": true,
+      "fuentes": [],
+      "solo_fuentes_no_oficiales": false,
+      "patron": {
+        "nombre": "San Bartolomé",
+        "dia": 24,
+        "mes": 8,
+        "fuente": "busqueda"
+      },
+      "programa": [],
+      "lat": 42.53023483,
+      "lng": -2.679560658
+    },
+    {
+      "id": "fiesta-araiako-2026",
+      "lugar_id": "01009000401",
+      "nombre": "Fiestas de Araia 2026",
+      "fecha_inicio": "2026-06-27",
+      "fecha_fin": "2026-06-28",
+      "tamano": "grande",
+      "descripcion": "Fiestas basadas en el respeto, la convivencia y el cuidado de nuestro pueblo.",
+      "confianza": "alta",
+      "fuentes": [
+        "web_municipio"
+      ],
+      "solo_fuentes_no_oficiales": false,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-06-27",
+          "eventos": [
+            {
+              "hora": "11:00",
+              "descripcion": "Partidos de escuela de pelota de Araia en Iturbero."
+            },
+            {
+              "hora": "12:00",
+              "descripcion": "Dianas por las calles del pueblo a cargo de panderojoles y trikitixas de la Escuela de Música de Araia."
+            },
+            {
+              "hora": "13:00",
+              "descripcion": "Concierto de Araiako Banda en la Herriko enparantza."
+            },
+            {
+              "hora": "15:00",
+              "descripcion": "Comida popular organizada por Txaparron. Los tickets de la comida se compran en el Casino, Zubigain y Bene."
+            },
+            {
+              "hora": "",
+              "descripcion": "Animación musical a cargo del grupo KAOS RURAL en la Herriko Enparantza organizada por Txaparron."
+            },
+            {
+              "hora": "19:00",
+              "descripcion": "Txaranga fiestas a cargo de Txaparron."
+            },
+            {
+              "hora": "20:00",
+              "descripcion": "Tamborrada de Arai con la participación de las distintas compañías de tamborreros/as, cocineros/as, gastadores/as y barrileros/as, a los acordes de Araiako Banda, bajo la dirección de la makila de su Tambor Mayor Enara Egurrola."
+            },
+            {
+              "hora": "21:30",
+              "descripcion": "Cabezudos."
+            },
+            {
+              "hora": "24:00",
+              "descripcion": "Verbena a cargo del grupo Lehian y seguidamente DJ Jonathan."
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-06-28",
+          "eventos": [
+            {
+              "hora": "",
+              "descripcion": "Mesa informativa Puntu Morea en el arkupe."
+            },
+            {
+              "hora": "11:00",
+              "descripcion": "Dianas a cargo de Basauriko haize doinu taldea."
+            },
+            {
+              "hora": "12:00",
+              "descripcion": "Juegos infantiles en Iturbero y Herriko Enparantza organizado por madres y padres de Araia."
+            },
+            {
+              "hora": "19:00",
+              "descripcion": "Ostikda! Elektrotxaranga por las calles del pueblo y artísticos anai tailerrak."
+            },
+            {
+              "hora": "",
+              "descripcion": "Beso B Zren Gasteiz Big Band en concierto en la Herriko enparantza."
+            },
+            {
+              "hora": "20:00",
+              "descripcion": "Chupinazo a cargo de la C.D. Alipendi en el ral parle el SAS E E ee bei (Parejas) Petxebarria-Eskuza vs Larrazabal-Ugartemendia."
+            },
+            {
+              "hora": "",
+              "descripcion": "Txaranga elektrokela a cargo de Txaparron. Fiestas amenizadas por la Banda de Araia. Animación."
+            }
+          ]
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "lat": 42.88962423,
+      "lng": -2.317425972
+    },
+    {
+      "id": "patron-san-pedro-01009000401",
+      "lugar_id": "01009000401",
       "nombre": "Fiestas de San Pedro (estimada)",
       "fecha_inicio": "2026-06-29",
       "fecha_fin": "2026-06-29",
       "tamano": "pequeña",
-      "descripcion": "Fiesta anual estimada a partir del día del santo patrón de Delika (San Pedro, 29 de junio). No se encontró programa ni confirmación para este año.",
+      "descripcion": "Fiesta anual estimada a partir del día del santo patrón de Araia (San Pedro, 29 de junio). No se encontró programa ni confirmación para este año.",
       "confianza": "baja",
       "origen": "santo_patron",
       "es_estimada": true,
@@ -492,90 +1012,20 @@
         "nombre": "San Pedro",
         "dia": 29,
         "mes": 6,
-        "fuente": "llm"
+        "fuente": "busqueda"
       },
-      "programa": []
+      "programa": [],
+      "lat": 42.88962423,
+      "lng": -2.317425972
     },
     {
-      "id": "santiago-larrinbe-2026",
-      "lugar_id": "01002000701",
-      "nombre": "Fiestas de Santiago en Larrinbe",
-      "fecha_inicio": "2026-07-24",
+      "id": "patron-santiago-apostol-01037000401",
+      "lugar_id": "01037000401",
+      "nombre": "Fiestas de Santiago Apóstol (estimada)",
+      "fecha_inicio": "2026-07-25",
       "fecha_fin": "2026-07-25",
       "tamano": "pequeña",
-      "descripcion": "Celebración patronal con romería, procesión y música tradicional.",
-      "confianza": "baja",
-      "fuentes": [
-        "busqueda_web"
-      ],
-      "solo_fuentes_no_oficiales": true,
-      "programa": [
-        {
-          "dia": 1,
-          "fecha": "2026-07-24",
-          "eventos": [
-            {
-              "hora": "",
-              "descripcion": "Misa solemne en la iglesia de Santiago"
-            },
-            {
-              "hora": "",
-              "descripcion": "Procesión por las calles del pueblo"
-            }
-          ]
-        },
-        {
-          "dia": 2,
-          "fecha": "2026-07-25",
-          "eventos": [
-            {
-              "hora": "",
-              "descripcion": "Música tradicional y gastronomía local"
-            }
-          ]
-        }
-      ],
-      "origen": "extraccion",
-      "es_estimada": false,
-      "incluye_dia_patron": false
-    },
-    {
-      "id": "san-mames-larrinbe-2026",
-      "lugar_id": "01002000701",
-      "nombre": "Fiestas de San Mamés en Larrinbe",
-      "fecha_inicio": "2026-08-07",
-      "fecha_fin": "2026-08-07",
-      "tamano": "pequeña",
-      "descripcion": "Celebración patronal con actos religiosos y culturales.",
-      "confianza": "baja",
-      "fuentes": [
-        "busqueda_web"
-      ],
-      "solo_fuentes_no_oficiales": true,
-      "programa": [
-        {
-          "dia": 1,
-          "fecha": "2026-08-07",
-          "eventos": [
-            {
-              "hora": "",
-              "descripcion": "Actos religiosos y culturales en honor a San Mamés"
-            }
-          ]
-        }
-      ],
-      "origen": "extraccion",
-      "es_estimada": false,
-      "incluye_dia_patron": false
-    },
-    {
-      "id": "patron-san-roman-01001000201",
-      "lugar_id": "01001000201",
-      "nombre": "Fiestas de San Román (estimada)",
-      "fecha_inicio": "2026-11-18",
-      "fecha_fin": "2026-11-18",
-      "tamano": "pequeña",
-      "descripcion": "Fiesta anual estimada a partir del día del santo patrón de Egileta (San Román, 18 de noviembre). No se encontró programa ni confirmación para este año.",
+      "descripcion": "Fiesta anual estimada a partir del día del santo patrón de Atauri (Santiago Apóstol, 25 de julio). No se encontró programa ni confirmación para este año.",
       "confianza": "baja",
       "origen": "santo_patron",
       "es_estimada": true,
@@ -583,12 +1033,679 @@
       "fuentes": [],
       "solo_fuentes_no_oficiales": false,
       "patron": {
-        "nombre": "San Román",
-        "dia": 18,
+        "nombre": "Santiago Apóstol",
+        "dia": 25,
+        "mes": 7,
+        "fuente": "busqueda"
+      },
+      "programa": [],
+      "lat": 42.72696299,
+      "lng": -2.426781948
+    },
+    {
+      "id": "patron-san-julian-01010000701",
+      "lugar_id": "01010000701",
+      "nombre": "Fiestas de San Julián (estimada)",
+      "fecha_inicio": "2026-01-28",
+      "fecha_fin": "2026-01-28",
+      "tamano": "pequeña",
+      "descripcion": "Fiesta anual estimada a partir del día del santo patrón de Izoria (San Julián, 28 de enero). No se encontró programa ni confirmación para este año.",
+      "confianza": "baja",
+      "origen": "santo_patron",
+      "es_estimada": true,
+      "incluye_dia_patron": true,
+      "fuentes": [],
+      "solo_fuentes_no_oficiales": false,
+      "patron": {
+        "nombre": "San Julián",
+        "dia": 28,
+        "mes": 1,
+        "fuente": "llm"
+      },
+      "programa": [],
+      "lat": 43.06079534,
+      "lng": -3.039198428
+    },
+    {
+      "id": "santiago-apostol-2026",
+      "lugar_id": "01037000501",
+      "nombre": "Fiestas en honor a Santiago Apóstol",
+      "fecha_inicio": "2026-07-25",
+      "fecha_fin": "2026-07-25",
+      "tamano": "pequeña",
+      "descripcion": "Celebración en Azazeta en honor a Santiago Apóstol.",
+      "confianza": "baja",
+      "fuentes": [
+        "web_municipio"
+      ],
+      "solo_fuentes_no_oficiales": false,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-07-25",
+          "eventos": [
+            {
+              "hora": "",
+              "descripcion": "Fiestas en honor a Santiago Apóstol"
+            }
+          ]
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": true,
+      "patron": {
+        "nombre": "Santiago Apóstol",
+        "dia": 25,
+        "mes": 7,
+        "fuente": "busqueda"
+      },
+      "lat": 42.77779144,
+      "lng": -2.498464962
+    },
+    {
+      "id": "patron-san-pedro-apostol-01010001401",
+      "lugar_id": "01010001401",
+      "nombre": "Fiestas de San Pedro Apóstol (estimada)",
+      "fecha_inicio": "2026-06-29",
+      "fecha_fin": "2026-06-29",
+      "tamano": "pequeña",
+      "descripcion": "Fiesta anual estimada a partir del día del santo patrón de Menagarai (San Pedro Apóstol, 29 de junio). No se encontró programa ni confirmación para este año.",
+      "confianza": "baja",
+      "origen": "santo_patron",
+      "es_estimada": true,
+      "incluye_dia_patron": true,
+      "fuentes": [],
+      "solo_fuentes_no_oficiales": false,
+      "patron": {
+        "nombre": "San Pedro Apóstol",
+        "dia": 29,
+        "mes": 6,
+        "fuente": "llm"
+      },
+      "programa": [],
+      "lat": 43.09608177,
+      "lng": -3.07313585
+    },
+    {
+      "id": "patron-san-martin-01009000801",
+      "lugar_id": "01009000801",
+      "nombre": "Fiestas de San Martín (estimada)",
+      "fecha_inicio": "2026-11-11",
+      "fecha_fin": "2026-11-11",
+      "tamano": "pequeña",
+      "descripcion": "Fiesta anual estimada a partir del día del santo patrón de Ibarguren (San Martín, 11 de noviembre). No se encontró programa ni confirmación para este año.",
+      "confianza": "baja",
+      "origen": "santo_patron",
+      "es_estimada": true,
+      "incluye_dia_patron": true,
+      "fuentes": [],
+      "solo_fuentes_no_oficiales": false,
+      "patron": {
+        "nombre": "San Martín",
+        "dia": 11,
         "mes": 11,
         "fuente": "llm"
       },
-      "programa": []
+      "programa": [],
+      "lat": 42.86147529,
+      "lng": -2.27762744
+    },
+    {
+      "id": "patron-san-juan-bautista-01010001601",
+      "lugar_id": "01010001601",
+      "nombre": "Fiestas de San Juan Bautista (estimada)",
+      "fecha_inicio": "2026-06-24",
+      "fecha_fin": "2026-06-24",
+      "tamano": "pequeña",
+      "descripcion": "Fiesta anual estimada a partir del día del santo patrón de Murga (San Juan Bautista, 24 de junio). No se encontró programa ni confirmación para este año.",
+      "confianza": "baja",
+      "origen": "santo_patron",
+      "es_estimada": true,
+      "incluye_dia_patron": true,
+      "fuentes": [],
+      "solo_fuentes_no_oficiales": false,
+      "patron": {
+        "nombre": "San Juan Bautista",
+        "dia": 24,
+        "mes": 6,
+        "fuente": "llm"
+      },
+      "programa": [],
+      "lat": 43.07560574,
+      "lng": -3.025607625
+    },
+    {
+      "id": "patron-santa-eufemia-01037010501",
+      "lugar_id": "01037010501",
+      "nombre": "Fiestas de Santa Eufemia (estimada)",
+      "fecha_inicio": "2026-09-16",
+      "fecha_fin": "2026-09-16",
+      "tamano": "pequeña",
+      "descripcion": "Fiesta anual estimada a partir del día del santo patrón de Leorza/Elortza (Santa Eufemia, 16 de septiembre). No se encontró programa ni confirmación para este año.",
+      "confianza": "baja",
+      "origen": "santo_patron",
+      "es_estimada": true,
+      "incluye_dia_patron": true,
+      "fuentes": [],
+      "solo_fuentes_no_oficiales": false,
+      "patron": {
+        "nombre": "Santa Eufemia",
+        "dia": 16,
+        "mes": 9,
+        "fuente": "llm"
+      },
+      "programa": [],
+      "lat": 42.74926976,
+      "lng": -2.443460548
+    },
+    {
+      "id": "patron-san-andres-apostol-01010002101",
+      "lugar_id": "01010002101",
+      "nombre": "Fiestas de San Andrés Apóstol (estimada)",
+      "fecha_inicio": "2026-11-30",
+      "fecha_fin": "2026-11-30",
+      "tamano": "pequeña",
+      "descripcion": "Fiesta anual estimada a partir del día del santo patrón de Retes de Llanteno (San Andrés Apóstol, 30 de noviembre). No se encontró programa ni confirmación para este año.",
+      "confianza": "baja",
+      "origen": "santo_patron",
+      "es_estimada": true,
+      "incluye_dia_patron": true,
+      "fuentes": [],
+      "solo_fuentes_no_oficiales": false,
+      "patron": {
+        "nombre": "San Andrés Apóstol",
+        "dia": 30,
+        "mes": 11,
+        "fuente": "llm"
+      },
+      "programa": [],
+      "lat": 43.0910566,
+      "lng": -3.099845393
+    },
+    {
+      "id": "patron-san-martin-01037010601",
+      "lugar_id": "01037010601",
+      "nombre": "Fiestas de San Martín (estimada)",
+      "fecha_inicio": "2026-11-11",
+      "fecha_fin": "2026-11-11",
+      "tamano": "pequeña",
+      "descripcion": "Fiesta anual estimada a partir del día del santo patrón de Musitu (San Martín, 11 de noviembre). No se encontró programa ni confirmación para este año.",
+      "confianza": "baja",
+      "origen": "santo_patron",
+      "es_estimada": true,
+      "incluye_dia_patron": true,
+      "fuentes": [],
+      "solo_fuentes_no_oficiales": false,
+      "patron": {
+        "nombre": "San Martín",
+        "dia": 11,
+        "mes": 11,
+        "fuente": "llm"
+      },
+      "programa": [],
+      "lat": 42.77773769,
+      "lng": -2.422584582
+    },
+    {
+      "id": "patron-santa-marina-01010002401",
+      "lugar_id": "01010002401",
+      "nombre": "Fiestas de Santa Marina (estimada)",
+      "fecha_inicio": "2026-07-18",
+      "fecha_fin": "2026-07-18",
+      "tamano": "pequeña",
+      "descripcion": "Fiesta anual estimada a partir del día del santo patrón de Zuaza/Zuhatza (Santa Marina, 18 de julio). No se encontró programa ni confirmación para este año.",
+      "confianza": "baja",
+      "origen": "santo_patron",
+      "es_estimada": true,
+      "incluye_dia_patron": true,
+      "fuentes": [],
+      "solo_fuentes_no_oficiales": false,
+      "patron": {
+        "nombre": "Santa Marina",
+        "dia": 18,
+        "mes": 7,
+        "fuente": "busqueda"
+      },
+      "programa": [],
+      "lat": 43.09981257,
+      "lng": -3.049341142
+    },
+    {
+      "id": "patron-san-vicente-01014000101",
+      "lugar_id": "01014000101",
+      "nombre": "Fiestas de San Vicente (estimada)",
+      "fecha_inicio": "2026-01-22",
+      "fecha_fin": "2026-01-22",
+      "tamano": "pequeña",
+      "descripcion": "Fiesta anual estimada a partir del día del santo patrón de Berantevilla (San Vicente, 22 de enero). No se encontró programa ni confirmación para este año.",
+      "confianza": "baja",
+      "origen": "santo_patron",
+      "es_estimada": true,
+      "incluye_dia_patron": true,
+      "fuentes": [],
+      "solo_fuentes_no_oficiales": false,
+      "patron": {
+        "nombre": "San Vicente",
+        "dia": 22,
+        "mes": 1,
+        "fuente": "wikipedia"
+      },
+      "programa": [],
+      "lat": 42.68269243,
+      "lng": -2.859369462
+    },
+    {
+      "id": "patron-san-vicente-01014000201",
+      "lugar_id": "01014000201",
+      "nombre": "Fiestas de San Vicente (estimada)",
+      "fecha_inicio": "2026-01-22",
+      "fecha_fin": "2026-01-22",
+      "tamano": "pequeña",
+      "descripcion": "Fiesta anual estimada a partir del día del santo patrón de Escanzana (San Vicente, 22 de enero). No se encontró programa ni confirmación para este año.",
+      "confianza": "baja",
+      "origen": "santo_patron",
+      "es_estimada": true,
+      "incluye_dia_patron": true,
+      "fuentes": [],
+      "solo_fuentes_no_oficiales": false,
+      "patron": {
+        "nombre": "San Vicente",
+        "dia": 22,
+        "mes": 1,
+        "fuente": "wikipedia"
+      },
+      "programa": [],
+      "lat": 42.69357978,
+      "lng": -2.845712815
+    },
+    {
+      "id": "patron-san-bartolome-01016000301",
+      "lugar_id": "01016000301",
+      "nombre": "Fiestas de San Bartolomé (estimada)",
+      "fecha_inicio": "2026-08-24",
+      "fecha_fin": "2026-08-24",
+      "tamano": "pequeña",
+      "descripcion": "Fiesta anual estimada a partir del día del santo patrón de Bernedo (San Bartolomé, 24 de agosto). No se encontró programa ni confirmación para este año.",
+      "confianza": "baja",
+      "origen": "santo_patron",
+      "es_estimada": true,
+      "incluye_dia_patron": true,
+      "fuentes": [],
+      "solo_fuentes_no_oficiales": false,
+      "patron": {
+        "nombre": "San Bartolomé",
+        "dia": 24,
+        "mes": 8,
+        "fuente": "llm"
+      },
+      "programa": [],
+      "lat": 42.62644187,
+      "lng": -2.498883519
+    },
+    {
+      "id": "patron-san-juan-2026-en-ozaeta-01013001401",
+      "lugar_id": "01013001401",
+      "nombre": "Fiestas de San Juan 2026 en Ozaeta (estimada)",
+      "fecha_inicio": "2026-06-24",
+      "fecha_fin": "2026-06-24",
+      "tamano": "pequeña",
+      "descripcion": "Fiesta anual estimada a partir del día del santo patrón de Ozaeta (San Juan 2026 en Ozaeta, 24 de junio). No se encontró programa ni confirmación para este año.",
+      "confianza": "baja",
+      "origen": "santo_patron",
+      "es_estimada": true,
+      "incluye_dia_patron": true,
+      "fuentes": [],
+      "solo_fuentes_no_oficiales": false,
+      "patron": {
+        "nombre": "San Juan 2026 en Ozaeta",
+        "dia": 24,
+        "mes": 6,
+        "fuente": "busqueda"
+      },
+      "programa": [],
+      "lat": 42.91759943,
+      "lng": -2.496599499
+    },
+    {
+      "id": "fiesta-patronal-santa-isidro",
+      "lugar_id": "01017000501",
+      "nombre": "Fiestas patronales de Santa Isidro Labrador",
+      "fecha_inicio": "2026-05-15",
+      "fecha_fin": "2026-05-15",
+      "tamano": "pequeña",
+      "descripcion": "Romería y actividades relacionadas con la festividad de Santa Isidro Labrador.",
+      "confianza": "baja",
+      "fuentes": [
+        "web_municipio"
+      ],
+      "solo_fuentes_no_oficiales": false,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-05-15",
+          "eventos": [
+            {
+              "hora": "",
+              "descripcion": "Romería en honor a San Isidro Labrador"
+            }
+          ]
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "lat": 42.6700208,
+      "lng": -2.351267973
+    },
+    {
+      "id": "fiesta-patronal-san-isidro",
+      "lugar_id": "01017000501",
+      "nombre": "Fiestas patronales de San Isidro Labrador",
+      "fecha_inicio": "2026-05-15",
+      "fecha_fin": "2026-05-15",
+      "tamano": "pequeña",
+      "descripcion": "Romería y actividades relacionadas con la festividad de San Isidro Labrador.",
+      "confianza": "baja",
+      "fuentes": [
+        "web_municipio"
+      ],
+      "solo_fuentes_no_oficiales": false,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-05-15",
+          "eventos": [
+            {
+              "hora": "",
+              "descripcion": "Romería a San Isidro Labrador"
+            }
+          ]
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "lat": 42.6700208,
+      "lng": -2.351267973
+    },
+    {
+      "id": "fiesta-patronal-reyes",
+      "lugar_id": "01017000501",
+      "nombre": "Fiestas patronales de Reyes Magos y Olentzero",
+      "fecha_inicio": "2026-01-06",
+      "fecha_fin": "2026-01-06",
+      "tamano": "pequeña",
+      "descripcion": "Celebración de los Reyes Magos y Olentzero.",
+      "confianza": "baja",
+      "fuentes": [
+        "web_municipio"
+      ],
+      "solo_fuentes_no_oficiales": false,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-01-06",
+          "eventos": [
+            {
+              "hora": "",
+              "descripcion": "Cabalgata de Reyes Magos y Olentzero"
+            }
+          ]
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "lat": 42.6700208,
+      "lng": -2.351267973
+    },
+    {
+      "id": "fiesta-patronal-san-isidro-inmaculada",
+      "lugar_id": "01017000501",
+      "nombre": "Fiestas patronales de San Isidro Labrador y la Inmaculada Concepción",
+      "fecha_inicio": "2026-01-06",
+      "fecha_fin": "2026-01-06",
+      "tamano": "pequeña",
+      "descripcion": "Celebración de San Isidro Labrador y la Inmaculada Concepción.",
+      "confianza": "baja",
+      "fuentes": [
+        "web_municipio"
+      ],
+      "solo_fuentes_no_oficiales": false,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-01-06",
+          "eventos": []
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "lat": 42.6700208,
+      "lng": -2.351267973
+    },
+    {
+      "id": "fiesta-patronal-septiembre",
+      "lugar_id": "01017000501",
+      "nombre": "Fiestas patronales de septiembre",
+      "fecha_inicio": "2026-09-01",
+      "fecha_fin": "2026-09-03",
+      "tamano": "pequeña",
+      "descripcion": "Celebración de las fiestas patronales en el primer fin de semana de septiembre.",
+      "confianza": "alta",
+      "fuentes": [
+        "web_municipio"
+      ],
+      "solo_fuentes_no_oficiales": false,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-09-01",
+          "eventos": [
+            {
+              "hora": "",
+              "descripcion": "Feria agrícola-ganadera San Martín"
+            },
+            {
+              "hora": "",
+              "descripcion": "Romería Arkijas"
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-09-02",
+          "eventos": [
+            {
+              "hora": "",
+              "descripcion": "Juicio a Toribio"
+            }
+          ]
+        },
+        {
+          "dia": 3,
+          "fecha": "2026-09-03",
+          "eventos": [
+            {
+              "hora": "",
+              "descripcion": "Jueves de Lardero"
+            },
+            {
+              "hora": "",
+              "descripcion": "Procesión de Viernes Santo"
+            }
+          ]
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "lat": 42.6700208,
+      "lng": -2.351267973
+    },
+    {
+      "id": "feria-agrigenadera-san-martin",
+      "lugar_id": "01017000501",
+      "nombre": "Feria agrícola-ganadera San Martín",
+      "fecha_inicio": "2026-11-11",
+      "fecha_fin": "2026-11-11",
+      "tamano": "pequeña",
+      "descripcion": "Celebración de la Feria agrícola-ganadera San Martín.",
+      "confianza": "alta",
+      "fuentes": [
+        "web_municipio"
+      ],
+      "solo_fuentes_no_oficiales": false,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-11-11",
+          "eventos": []
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "lat": 42.6700208,
+      "lng": -2.351267973
+    },
+    {
+      "id": "fiesta-carnaval",
+      "lugar_id": "01017000501",
+      "nombre": "Fiesta de Carnaval",
+      "fecha_inicio": "2026-03-04",
+      "fecha_fin": "2026-03-04",
+      "tamano": "pequeña",
+      "descripcion": "Celebración del Carnaval con actividades y desfile.",
+      "confianza": "alta",
+      "fuentes": [
+        "web_municipio"
+      ],
+      "solo_fuentes_no_oficiales": false,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-03-04",
+          "eventos": []
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "lat": 42.6700208,
+      "lng": -2.351267973
+    },
+    {
+      "id": "fiesta-jueves-lardero",
+      "lugar_id": "01017000501",
+      "nombre": "Fiesta de Jueves Lardero",
+      "fecha_inicio": "2026-03-29",
+      "fecha_fin": "2026-03-29",
+      "tamano": "pequeña",
+      "descripcion": "Celebración del Jueves Lardero con actividades y desfile.",
+      "confianza": "alta",
+      "fuentes": [
+        "web_municipio"
+      ],
+      "solo_fuentes_no_oficiales": false,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-03-29",
+          "eventos": [
+            {
+              "hora": "",
+              "descripcion": "Fiesta de Jueves Lardero"
+            }
+          ]
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "lat": 42.6700208,
+      "lng": -2.351267973
+    },
+    {
+      "id": "fiesta-canto-auroras",
+      "lugar_id": "01017000501",
+      "nombre": "Fiesta del Canto de Auroras",
+      "fecha_inicio": "2026-03-21",
+      "fecha_fin": "2026-03-21",
+      "tamano": "pequeña",
+      "descripcion": "Celebración del Canto de Auroras con actuaciones musicales.",
+      "confianza": "alta",
+      "fuentes": [
+        "web_municipio"
+      ],
+      "solo_fuentes_no_oficiales": false,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-03-21",
+          "eventos": [
+            {
+              "hora": "",
+              "descripcion": "Fiesta del Canto de Auroras"
+            }
+          ]
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "lat": 42.6700208,
+      "lng": -2.351267973
+    },
+    {
+      "id": "patron-santa-cruz-de-campezo-01017000501",
+      "lugar_id": "01017000501",
+      "nombre": "Fiestas de Santa Cruz de Campezo (estimada)",
+      "fecha_inicio": "2026-05-03",
+      "fecha_fin": "2026-05-03",
+      "tamano": "pequeña",
+      "descripcion": "Fiesta anual estimada a partir del día del santo patrón de Santa Cruz de Campezo/Santikurutze Kanpezu (Santa Cruz de Campezo, 3 de mayo). No se encontró programa ni confirmación para este año.",
+      "confianza": "baja",
+      "origen": "santo_patron",
+      "es_estimada": true,
+      "incluye_dia_patron": true,
+      "fuentes": [],
+      "solo_fuentes_no_oficiales": false,
+      "patron": {
+        "nombre": "Santa Cruz de Campezo",
+        "dia": 3,
+        "mes": 5,
+        "fuente": "busqueda"
+      },
+      "programa": [],
+      "lat": 42.6700208,
+      "lng": -2.351267973
+    },
+    {
+      "id": "patron-san-vicente-01014000301",
+      "lugar_id": "01014000301",
+      "nombre": "Fiestas de San Vicente (estimada)",
+      "fecha_inicio": "2026-01-22",
+      "fecha_fin": "2026-01-22",
+      "tamano": "pequeña",
+      "descripcion": "Fiesta anual estimada a partir del día del santo patrón de Lacervilla (San Vicente, 22 de enero). No se encontró programa ni confirmación para este año.",
+      "confianza": "baja",
+      "origen": "santo_patron",
+      "es_estimada": true,
+      "incluye_dia_patron": true,
+      "fuentes": [],
+      "solo_fuentes_no_oficiales": false,
+      "patron": {
+        "nombre": "San Vicente",
+        "dia": 22,
+        "mes": 1,
+        "fuente": "wikipedia"
+      },
+      "programa": [],
+      "lat": 42.71238162,
+      "lng": -2.840262358
     }
   ]
 }

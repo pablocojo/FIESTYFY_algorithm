@@ -34,12 +34,22 @@ class ContenidoCache:
     def _cargar(self):
         if os.path.exists(self.path):
             try:
-                with open(self.path, "r", encoding="utf-8") as f:
+                with open(self.path, "r", encoding="utf-8-sig") as f:
                     self._data = json.load(f)
             except (json.JSONDecodeError, OSError):
                 self._data = {}
 
     def _guardar(self):
+        # Backup: si el archivo existente tiene contenido, guardar copia .bak
+        if os.path.exists(self.path):
+            try:
+                size = os.path.getsize(self.path)
+                if size > 2:  # más que un JSON vacío '{}'
+                    bak = f"{self.path}.bak"
+                    import shutil
+                    shutil.copy2(self.path, bak)
+            except OSError:
+                pass
         temp = f"{self.path}.tmp"
         with open(temp, "w", encoding="utf-8") as f:
             json.dump(self._data, f, ensure_ascii=False, indent=1)

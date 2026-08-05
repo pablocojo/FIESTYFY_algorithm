@@ -164,3 +164,20 @@ def test_saneado_renumera_dias():
     fechas = [d["fecha"] for d in saneada["programa"]]
     assert fechas == ["2026-08-10", "2026-08-12"]
     assert dias == [1, 3]
+
+
+# ──────────────────────────────────────────────
+# Tests de términos cooficiales multilingües
+# ──────────────────────────────────────────────
+
+def test_undia_con_correfoc_acepta():
+    f = _fiesta("Festa Major de Tardor", "2026-10-12", "2026-10-12", "Correfoc por las calles de la villa")
+    aceptada, motivo, _ = evaluar_fiesta(f)
+    assert aceptada, motivo
+
+
+def test_multidia_festa_major_acepta():
+    f = _fiesta("Festa Major de Vilafranca", "2026-08-29", "2026-09-02")
+    aceptada, motivo, _ = evaluar_fiesta(f)
+    assert aceptada, motivo
+

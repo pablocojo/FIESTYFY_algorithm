@@ -15,6 +15,8 @@ from bs4 import BeautifulSoup
 
 from config import (
     DDG_MAX_URLS_TO_FOLLOW,
+    DDG_DELAY_MIN,
+    DDG_DELAY_MAX,
     DDG_DELAY_BETWEEN_QUERIES,
     DDG_REQUEST_TIMEOUT,
     DDG_MAX_RETRIES,
@@ -22,26 +24,65 @@ from config import (
     DDG_CONTENT_MAX_CHARS,
     USER_AGENT,
 )
-from fuentes import crear_documento, FUENTE_BUSQUEDA
+from fuentes import (
+    crear_documento,
+    FUENTE_BUSQUEDA,
+    FUENTE_PRENSA_REGIONAL,
+    get_medios_prensa_por_provincia,
+)
 from config_idiomas import get_language_profile
 
 logger = logging.getLogger("search")
 
+# Métricas de búsqueda (Requisito R6)
+_SEARCH_METRICS = {
+    "failed_searches": 0,
+}
+
+
+def get_failed_searches_count() -> int:
+    """Devuelve el número total de búsquedas fallidas o bloqueadas."""
+    return _SEARCH_METRICS["failed_searches"]
+
+
+def reset_search_metrics() -> None:
+    """Reinicia el contador de métricas de búsqueda."""
+    _SEARCH_METRICS["failed_searches"] = 0
+
+
+def registrar_busqueda_fallida() -> None:
+    """Incrementa el contador de búsquedas fallidas/bloqueadas."""
+    _SEARCH_METRICS["failed_searches"] += 1
+
+
 
 def _build_queries(localidad: dict, municipio: dict, anno: int) -> list[str]:
     """Genera múltiples variaciones de búsqueda para maximizar cobertura."""
-    nombre_loc = localidad["nombre"]
-    nombre_mun = municipio["nombre"]
-    provincia = municipio.get("provincia", "")
-    comunidad = municipio.get("comunidad_autonoma", "")
-    sitio_web_mun = municipio.get("sitio_web", "").strip()
-    sitio_web_loc = localidad.get("sitio_web", "").strip()
+    if not isinstance(localidad, dict):
+        localidad = {}
+    if not isinstance(municipio, dict):
+        municipio = {}
+
+    nombre_loc = (localidad.get("nombre") or "").strip()
+    nombre_mun = (municipio.get("nombre") or "").strip()
+
+    if not nombre_loc and not nombre_mun:
+        return []
+    if not nombre_loc:
+        nombre_loc = nombre_mun
+    if not nombre_mun:
+        nombre_mun = nombre_loc
+
+    provincia = (municipio.get("provincia") or "").strip()
+    comunidad = (municipio.get("comunidad_autonoma") or "").strip()
+    sitio_web_mun = (municipio.get("sitio_web") or "").strip()
+    sitio_web_loc = (localidad.get("sitio_web") or "").strip()
 
     perfil_data = get_language_profile(comunidad, provincia)
     kws = perfil_data["perfil_principal"]["keywords_busqueda"]
-    kw1 = kws[0]
-    kw2 = kws[1] if len(kws) > 1 else kws[0]
-    kw3 = kws[2] if len(kws) > 2 else kws[0]
+    kw1 = kws[0] if kws else "fiestas"
+    kw2 = kws[1] if len(kws) > 1 else kw1
+    kw3 = kws[2] if len(kws) > 2 else kw1
 
     queries = [
         f"{kw1} {nombre_loc} {nombre_mun} {anno}",
@@ -80,12 +121,27 @@ USER_AGENTS = [
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Edge/120.0.0.0 Safari/537.36"
 ]
 
+def get_random_user_agent() -> str:
+    """Devuelve un User-Agent aleatorio de la lista de navegadores realistas."""
+    return random.choice(USER_AGENTS)
+
 def _get_random_headers() -> dict:
     return {
-        "User-Agent": random.choice(USER_AGENTS),
+        "User-Agent": get_random_user_agent(),
         "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
         "Accept-Language": "es-ES,es;q=0.9,en;q=0.8",
     }
+
+def get_query_delay() -> float:
+    """Devuelve un delay aleatorio entre DDG_DELAY_MIN y DDG_DELAY_MAX (2.0 a 4.5 segundos)."""
+    return random.uniform(DDG_DELAY_MIN, DDG_DELAY_MAX)
+
+def calculate_backoff_delay(attempt: int, base_backoff: float = DDG_RETRY_BACKOFF) -> float:
+    """
+    Calcula el tiempo de espera con backoff exponencial y jitter aleatorio.
+    Fórmula: (base_backoff * (2 ** attempt)) + random.uniform(0.5, 2.0)
+    """
+    return (base_backoff * (2 ** attempt)) + random.uniform(0.5, 2.0)
 
 def _sync_fetch_ddg(query: str) -> list[dict]:
     encoded_query = urllib.parse.quote_plus(query)
@@ -180,14 +236,17 @@ def _sync_fetch_bing(query: str) -> list[dict]:
     return results
 
 async def _fetch_search_results(session: aiohttp.ClientSession, query: str) -> list[dict]:
-    """Busca delegando en hilos síncronos rotando motores."""
+    """Busca delegando en hilos síncronos rotando motores con backoff exponencial sin reemplazo."""
     engines = [("DuckDuckGo", _sync_fetch_ddg), ("Yahoo", _sync_fetch_yahoo), ("Bing", _sync_fetch_bing)]
+    available_engines = engines.copy()
+    random.shuffle(available_engines)
     
     for attempt in range(DDG_MAX_RETRIES):
-        jitter = random.uniform(1.0, 3.5)
-        await asyncio.sleep(jitter)
-        
-        engine_name, engine_func = random.choice(engines)
+        if not available_engines:
+            available_engines = engines.copy()
+            random.shuffle(available_engines)
+            
+        engine_name, engine_func = available_engines.pop(0)
         
         results = await asyncio.to_thread(engine_func, query)
         if results:
@@ -195,7 +254,11 @@ async def _fetch_search_results(session: aiohttp.ClientSession, query: str) -> l
             return results
         
         logger.warning(f"  [{engine_name}] Vacío/Timeout (intento {attempt + 1}/{DDG_MAX_RETRIES}): {query}")
-        await asyncio.sleep(DDG_RETRY_BACKOFF * (attempt + 1))
+        registrar_busqueda_fallida()
+        if attempt < DDG_MAX_RETRIES - 1:
+            backoff_delay = calculate_backoff_delay(attempt)
+            logger.debug(f"  Backoff exponencial ({backoff_delay:.2f}s) antes del intento {attempt + 2}...")
+            await asyncio.sleep(backoff_delay)
     
     return []
 
@@ -205,6 +268,7 @@ async def _fetch_page_content(session: aiohttp.ClientSession, url: str) -> str:
     try:
         async with session.get(
             url,
+            headers=_get_random_headers(),
             timeout=aiohttp.ClientTimeout(total=DDG_REQUEST_TIMEOUT),
             allow_redirects=True,
             ssl=False,
@@ -247,7 +311,7 @@ async def search_locality_web(
     localidad: dict,
     municipio: dict,
     anno: int,
-    visited_urls: set | None = None,
+    visited_urls: set | list | None = None,
 ) -> list[dict]:
     """
     Busca información de fiestas de una localidad usando buscadores.
@@ -258,7 +322,19 @@ async def search_locality_web(
 
     Devuelve documentos etiquetados con fuente 'busqueda_web'.
     """
+    if not isinstance(localidad, dict):
+        localidad = {}
+    if not isinstance(municipio, dict):
+        municipio = {}
+
     queries = _build_queries(localidad, municipio, anno)
+    if not queries:
+        return []
+
+    original_visited_list = visited_urls if isinstance(visited_urls, list) else None
+    if isinstance(visited_urls, list):
+        visited_urls = set(visited_urls)
+
     documentos = []
     texto_snippets = ""
     all_urls_seen = set()
@@ -289,7 +365,7 @@ async def search_locality_web(
                 all_urls_seen.add(result_url)
                 urls_to_follow.append(result_url)
 
-            await asyncio.sleep(DDG_DELAY_BETWEEN_QUERIES)
+            await asyncio.sleep(get_query_delay())
 
         if texto_snippets.strip():
             documentos.append(
@@ -302,6 +378,9 @@ async def search_locality_web(
             logger.info(f"  Siguiendo {len(urls_to_fetch)} URLs de resultados...")
             if visited_urls is not None:
                 visited_urls.update(urls_to_fetch)
+            if original_visited_list is not None:
+                original_visited_list.extend(u for u in urls_to_fetch if u not in original_visited_list)
+
             tasks = [_fetch_page_content(session, url) for url in urls_to_fetch]
             page_contents = await asyncio.gather(*tasks, return_exceptions=True)
 
@@ -310,3 +389,110 @@ async def search_locality_web(
                     documentos.append(crear_documento(FUENTE_BUSQUEDA, url, content, tipo="pagina"))
 
     return documentos
+
+
+def build_media_queries(localidad: dict, municipio: dict, anno: int) -> list[str]:
+    """Genera queries de prensa regional con site:<dominio_prensa> para una localidad."""
+    if not isinstance(localidad, dict):
+        localidad = {}
+    if not isinstance(municipio, dict):
+        municipio = {}
+
+    lugar_id = localidad.get("id") or municipio.get("id", "")
+    provincia = (municipio.get("provincia") or "").strip()
+
+    medios = get_medios_prensa_por_provincia(lugar_id)
+    if not medios and provincia:
+        medios = get_medios_prensa_por_provincia(provincia)
+
+    if not medios:
+        return []
+
+    nombre_loc = (localidad.get("nombre") or "").strip()
+    if not nombre_loc:
+        nombre_loc = (municipio.get("nombre") or "").strip()
+    if not nombre_loc:
+        return []
+
+    comunidad = (municipio.get("comunidad_autonoma") or "").strip()
+    perfil_data = get_language_profile(comunidad, provincia)
+    kws = perfil_data["perfil_principal"]["keywords_busqueda"]
+    kw1 = kws[0] if kws else "fiestas"
+
+    return [f"{kw1} {nombre_loc} {anno} site:{domain}" for domain in medios]
+
+
+async def search_locality_media(
+    localidad: dict,
+    municipio: dict,
+    anno: int,
+    visited_urls: set | list | None = None,
+) -> list[dict]:
+    """
+    Busca información de fiestas en prensa regional de la provincia.
+    Genera queries con site:<dominio_prensa> para los medios de la provincia.
+    Devuelve documentos etiquetados con fuente FUENTE_PRENSA_REGIONAL.
+    """
+    if not isinstance(localidad, dict):
+        localidad = {}
+    if not isinstance(municipio, dict):
+        municipio = {}
+
+    queries = build_media_queries(localidad, municipio, anno)
+    if not queries:
+        return []
+
+    original_visited_list = visited_urls if isinstance(visited_urls, list) else None
+    if isinstance(visited_urls, list):
+        visited_urls = set(visited_urls)
+
+    documentos = []
+    texto_snippets = ""
+    all_urls_seen = set()
+    urls_to_follow = []
+
+    headers = {"User-Agent": USER_AGENT}
+    connector = aiohttp.TCPConnector(limit=5, ssl=False)
+
+    async with aiohttp.ClientSession(headers=headers, connector=connector) as session:
+        for query in queries:
+            logger.info(f"  [MEDIA_SEARCH] Buscando en prensa regional: {query}")
+            results = await _fetch_search_results(session, query)
+
+            for r in results:
+                texto_snippets += f"TITULO: {r['titulo']} | CONTENIDO: {r['snippet']}\n"
+                result_url = r.get("url", "")
+                if not result_url or not result_url.startswith("http"):
+                    continue
+                if result_url in all_urls_seen:
+                    continue
+                if visited_urls is not None and result_url in visited_urls:
+                    logger.debug(f"  URL ya leída por una fuente anterior, se omite: {result_url}")
+                    continue
+                all_urls_seen.add(result_url)
+                urls_to_follow.append(result_url)
+
+            await asyncio.sleep(get_query_delay())
+
+        if texto_snippets.strip():
+            documentos.append(
+                crear_documento(FUENTE_PRENSA_REGIONAL, "prensa_regional:snippets", texto_snippets, tipo="snippets")
+            )
+
+        urls_to_fetch = urls_to_follow[:DDG_MAX_URLS_TO_FOLLOW]
+        if urls_to_fetch:
+            logger.info(f"  Siguiendo {len(urls_to_fetch)} URLs de prensa regional...")
+            if visited_urls is not None:
+                visited_urls.update(urls_to_fetch)
+            if original_visited_list is not None:
+                original_visited_list.extend(u for u in urls_to_fetch if u not in original_visited_list)
+
+            tasks = [_fetch_page_content(session, url) for url in urls_to_fetch]
+            page_contents = await asyncio.gather(*tasks, return_exceptions=True)
+
+            for url, content in zip(urls_to_fetch, page_contents):
+                if isinstance(content, str) and content.strip():
+                    documentos.append(crear_documento(FUENTE_PRENSA_REGIONAL, url, content, tipo="pagina"))
+
+    return documentos
+

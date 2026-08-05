@@ -12,7 +12,7 @@ import math
 import json
 import re
 import logging
-from datetime import datetime, date
+from datetime import datetime, date, timedelta
 
 import aiohttp
 
@@ -62,43 +62,63 @@ def translate_chunk(text: str, motor: str, modelo_id: str) -> str:
     
     if motor == "opus-mt":
         try:
-            from transformers import pipeline
+            from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
             if modelo_id not in _OPUS_PIPELINES:
                 logger.info(f"Cargando modelo Opus-MT: {modelo_id}...")
-                _OPUS_PIPELINES[modelo_id] = pipeline("translation", model=modelo_id, max_length=512)
+                tokenizer = AutoTokenizer.from_pretrained(modelo_id)
+                model = AutoModelForSeq2SeqLM.from_pretrained(modelo_id)
+                _OPUS_PIPELINES[modelo_id] = (tokenizer, model)
             
+            tokenizer, model = _OPUS_PIPELINES[modelo_id]
             lines = text.split("\n")
             translated_lines = []
             for line in lines:
                 if not line.strip() or line.startswith("=====") or line.startswith("[http"):
                     translated_lines.append(line)
                     continue
-                if len(line) > 1500: # Seguro contra OOM
-                    parts = [line[i:i+1000] for i in range(0, len(line), 1000)]
-                    res = []
-                    for p in parts:
-                        out = _OPUS_PIPELINES[modelo_id](p)
-                        res.append(out[0]['translation_text'])
-                    translated_lines.append(" ".join(res))
-                else:
-                    out = _OPUS_PIPELINES[modelo_id](line)
-                    translated_lines.append(out[0]['translation_text'])
+                
+                # Traducimos usando directamente el modelo Seq2Seq (super robusto en cualquier versión de transformers)
+                inputs = tokenizer(line, return_tensors="pt", padding=True, truncation=True, max_length=512)
+                outputs = model.generate(**inputs, max_new_tokens=512)
+                trans_text = tokenizer.decode(outputs[0], skip_special_tokens=True)
+                translated_lines.append(trans_text)
+                
             return "\n".join(translated_lines)
         except Exception as e:
             logger.error(f"Error Opus-MT: {e}")
             return text
 
     elif motor == "apertium":
+        import subprocess
+        import sys
+        # Si el modelo_id es cat_valencia, usamos el par cat-spa
+        pair = "cat-spa" if "cat" in modelo_id else "oci-spa"
+        
+        # Si ejecutamos directamente en Linux/WSL (Opción B), llamamos a 'apertium' de forma nativa.
+        # Si por alguna razón se ejecutara en Windows, añade el prefijo 'wsl'.
+        comando = ["wsl", "apertium", pair] if sys.platform == "win32" else ["apertium", pair]
         try:
-            import apertium
-            # Si el modelo_id es cat_valencia, usamos el par cat-spa
-            pair = "cat-spa" if "cat" in modelo_id else "oci-spa"
-            return apertium.translate(pair, text)
-        except ImportError:
-            logger.error("Apertium no está instalado. Omitiendo traducción.")
+            proceso = subprocess.Popen(
+                comando,
+                stdin=subprocess.PIPE,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                text=True,
+                encoding='utf-8'
+            )
+            # Metemos el chunk de texto directamente a las tripas de Apertium
+            stdout, stderr = proceso.communicate(input=text)
+            
+            if proceso.returncode == 0:
+                return stdout.strip()
+            else:
+                logger.error(f"Error Apertium ({comando[0]}): {stderr.strip()}")
+                return text
+        except FileNotFoundError:
+            logger.error(f"No se encontró el ejecutable '{comando[0]}' en el sistema. Omitiendo traducción.")
             return text
         except Exception as e:
-            logger.error(f"Error Apertium: {e}")
+            logger.error(f"Error llamando a Apertium: {e}")
             return text
 
     return text
@@ -225,8 +245,17 @@ CRITERIO DE IDENTIFICACIÓN DE FIESTAS VÁLIDAS:
    NUNCA extraigas como fiesta un acto aislado de un solo día (una procesión, una misa, una exposición,
    una conferencia) que no tenga programación festiva.
 
-7. RANGO COMPLETO: si el texto indica que la fiesta abarca varios días, devuelve UNA sola fiesta con el
-   rango completo (fecha_inicio a fecha_fin), nunca la trocees en actos sueltos de un día.
+7. FUSIÓN OBLIGATORIA (REGLA DE LOS 7 DÍAS):
+   a) Si el texto indica que la fiesta abarca varios días, devuelve UNA sola fiesta con el rango
+      completo (fecha_inicio a fecha_fin). NUNCA la trocees en actos sueltos de un día.
+   b) Si identificas eventos festivos consecutivos o separados por 7 días o menos (ej. chupinazo
+      el día 12 y San Roque el día 17, o dos fines de semana seguidos), DEBES FUSIONARLOS en una
+      única fiesta conjunta. El rango (fecha_inicio a fecha_fin) debe abarcar desde el primer
+      evento hasta el último.
+   c) ÚNICA EXCEPCIÓN para NO fusionar: que el texto indique de forma inequívoca que se trata de
+      festividades con NOMBRES completamente distintos (ej. "Feria de Mayo" y "Corpus Christi").
+      Simples actividades dentro del mismo periodo (chupinazo, verbena, procesión) NO son nombres
+      distintos y DEBEN fusionarse en la fiesta que los engloba.
 
 8. EVENTOS PRIVADOS: NO extraigas eventos de negocios privados (discotecas, salas de fiestas, pubs, clubs).
    Solo celebraciones populares propias de la localidad y abiertas a todo el mundo.
@@ -499,13 +528,34 @@ class AsyncRAGProcessor:
 # VALIDACIÓN POST-LLM
 # ──────────────────────────────────────────────────
 
-def _validar_fecha(fecha_str: str, anno: int) -> bool:
-    """Valida que una fecha sea YYYY-MM-DD del año correcto."""
+def _validar_fecha(
+    fecha_str: str,
+    anno: int,
+    es_fecha_fin: bool = False,
+    fecha_inicio_str: str | None = None,
+) -> bool:
+    """
+    Valida que una fecha sea YYYY-MM-DD del año correcto.
+    Permite que fecha_fin sea del año siguiente (anno + 1) si fecha_inicio está en diciembre del año objetivo (anno).
+    """
     try:
         parsed = datetime.strptime(fecha_str, "%Y-%m-%d").date()
-        return parsed.year == anno
+        if parsed.year == anno:
+            return True
+        if parsed.year == anno + 1 and (es_fecha_fin or fecha_inicio_str):
+            if fecha_inicio_str:
+                try:
+                    parsed_ini = datetime.strptime(fecha_inicio_str, "%Y-%m-%d").date()
+                    if parsed_ini.year == anno and parsed_ini.month == 12:
+                        return True
+                except (ValueError, TypeError):
+                    pass
+            elif es_fecha_fin:
+                return True
+        return False
     except (ValueError, TypeError):
         return False
+
 
 
 def _normalizar_nombre(nombre: str) -> str:
@@ -618,7 +668,7 @@ def validar_fiestas(
             logger.warning(f"  [VALIDACIÓN] '{nombre}' fecha_inicio inválida: {f['fecha_inicio']}. Descartada.")
             continue
 
-        if not _validar_fecha(f["fecha_fin"], anno):
+        if not _validar_fecha(f["fecha_fin"], anno, es_fecha_fin=True, fecha_inicio_str=f.get("fecha_inicio")):
             logger.warning(f"  [VALIDACIÓN] '{nombre}' fecha_fin inválida: {f['fecha_fin']}. Descartada.")
             continue
 
@@ -765,6 +815,10 @@ async def analyze_festivals_for_locality(
     if es_capital:
         regla_exclusividad = (
             f'Extraer las fiestas ÚNICAMENTE para el núcleo principal/capital del municipio: "{localidad["nombre"]}".\n'
+            f'DESCARTA automáticamente cualquier fiesta que se anuncie de forma explícita para un barrio, '
+            f'distrito, pedanía o zona concreta (ej. "Fiestas del barrio de Ibarra", "Fiestas de Butarque").\n'
+            f'Solo extrae las fiestas MATRICES que engloban a toda la localidad en su conjunto '
+            f'(ej. "Fiestas de {localidad["nombre"]}", "San Roque", fiestas patronales generales).\n'
             f'Asegúrate de NO incluir fiestas que pertenezcan a otras pedanías o aldeas periféricas menores.'
         )
     else:
@@ -856,3 +910,527 @@ Devuelve SOLO JSON estricto con esta estructura (no escribas markdown, ni saludo
         f"(de {len(fiestas_raw)} generadas) para {localidad['nombre']}"
     )
     return fiestas_validas
+
+
+# ──────────────────────────────────────────────────
+# MULTI-PASS RAG ARCHITECTURE (DISCOVERY + ENRICHMENT)
+# ──────────────────────────────────────────────────
+
+DISCOVERY_MAX_CHARS = 15000
+ENRICHMENT_MAX_CHARS = 25000
+FIESTA_MAX_DURACION_DIAS = 30
+
+
+def _parse_fecha_con_fallback_bisiesto(fecha_str: str | None) -> date | None:
+    """
+    Parsea una fecha YYYY-MM-DD.
+    Si fecha_str es 'YYYY-02-29' y el año YYYY no es bisiesto,
+    hace fallback a 'YYYY-02-28'. Retorna date o None si es inválida.
+    """
+    if not fecha_str or not isinstance(fecha_str, str):
+        return None
+    s = fecha_str.strip()
+    try:
+        return datetime.strptime(s, "%Y-%m-%d").date()
+    except (ValueError, TypeError):
+        if "-02-29" in s:
+            s_fallback = s.replace("-02-29", "-02-28")
+            try:
+                return datetime.strptime(s_fallback, "%Y-%m-%d").date()
+            except (ValueError, TypeError):
+                return None
+        return None
+
+
+def generar_consultas_enriquecimiento(
+    nombre_fiesta: str | dict,
+    fecha_inicio: str | None = None,
+    fecha_fin: str | None = None,
+    max_dias: int = FIESTA_MAX_DURACION_DIAS,
+) -> list[tuple[str, str]]:
+    """
+    Genera una lista de tuplas (fecha_str, query_str) para cada día de una fiesta.
+    Formato: (fecha_str, f"{nombre_fiesta} {fecha_str} programa actos")
+
+    Maneja:
+    - Rango intra-mes (ej. 10 a 14 de agosto)
+    - Rango inter-mes (ej. 28 de agosto a 3 de septiembre)
+    - Rango inter-año (ej. 29 de diciembre a 3 de enero)
+    - Año bisiesto (29 de febrero) y año no bisiesto (28 de febrero fallback)
+    - Fechas invertidas (auto-intercambia inicio y fin)
+    - Fechas malformadas o vacías (retorna lista vacía)
+    - Límite máximo de días (max_dias = 30)
+    """
+    if isinstance(nombre_fiesta, dict):
+        f_dict = nombre_fiesta
+        nombre = f_dict.get("nombre", "")
+        fecha_ini_str = fecha_inicio or f_dict.get("fecha_inicio", "")
+        fecha_fin_str = fecha_fin or f_dict.get("fecha_fin", "")
+    else:
+        nombre = str(nombre_fiesta) if nombre_fiesta is not None else ""
+        fecha_ini_str = fecha_inicio or ""
+        fecha_fin_str = fecha_fin or ""
+
+    nombre = nombre.strip()
+    if not nombre or not fecha_ini_str or not fecha_fin_str:
+        return []
+
+    d_start = _parse_fecha_con_fallback_bisiesto(str(fecha_ini_str))
+    d_end = _parse_fecha_con_fallback_bisiesto(str(fecha_fin_str))
+
+    if d_start is None or d_end is None:
+        return []
+
+    if d_start > d_end:
+        d_start, d_end = d_end, d_start
+
+    consultas = []
+    current = d_start
+    count = 0
+    while current <= d_end and count < max_dias:
+        fecha_str = current.strftime("%Y-%m-%d")
+        query_str = f"{nombre} {fecha_str} programa actos"
+        consultas.append((fecha_str, query_str))
+        current += timedelta(days=1)
+        count += 1
+
+    return consultas
+
+
+async def index_document_chunks(
+    rag_processor: AsyncRAGProcessor | None,
+    documentos: list[dict],
+) -> list[dict]:
+    """
+    Fragmenta cada documento y calcula sus vector embeddings en batch 1 sola vez per localidad.
+    Devuelve una lista de dicts indexed_chunks.
+    """
+    if not documentos:
+        return []
+
+    chunk_size = rag_processor.chunk_size if rag_processor else RAG_CHUNK_SIZE
+    items = []
+    for doc in documentos:
+        texto = (doc.get("texto") or "").strip()
+        if not texto:
+            continue
+        for chunk in chunk_documento(texto, chunk_size):
+            items.append({
+                "chunk": chunk,
+                "fuente": doc.get("fuente", "busqueda_web"),
+                "url": doc.get("url", ""),
+                "es_calendario": doc.get("es_calendario", False),
+                "prioridad": prioridad_fuente(doc.get("fuente", "busqueda_web")),
+                "embedding": None,
+            })
+
+    if not items:
+        return []
+
+    if rag_processor is not None:
+        chunks_text = [i["chunk"] for i in items]
+        batch_size = rag_processor.batch_size
+        all_embeddings = []
+        try:
+            async with aiohttp.ClientSession() as session:
+                for b in range(0, len(chunks_text), batch_size):
+                    batch_embs = await rag_processor.get_embeddings_batch(
+                        session, chunks_text[b : b + batch_size]
+                    )
+                    all_embeddings.extend(batch_embs)
+            for item, emb in zip(items, all_embeddings):
+                item["embedding"] = emb
+        except Exception as e:
+            logger.warning(f"Error calculando embeddings batch en index_document_chunks: {e}")
+
+    return items
+
+
+async def discover_festivals_for_locality(
+    municipio: dict,
+    localidad: dict,
+    documentos: list[dict],
+    indexed_chunks: list[dict],
+    anno: int,
+    rag_processor: AsyncRAGProcessor | None = None,
+    fecha_patron=None,
+) -> list[dict]:
+    """
+    Paso 1 del RAG Multi-Pass (Discovery Pass):
+    Recupera top 10-15 chunks (~15,000 chars / ~5.8K tokens) para extraer JSON con metadatos básicos de fiestas.
+    """
+    if not indexed_chunks:
+        return []
+
+    es_capital = (localidad['nombre'].strip().lower() == municipio['nombre'].strip().lower())
+    if es_capital:
+        regla_exclusividad = (
+            f'Extraer las fiestas ÚNICAMENTE para el núcleo principal/capital del municipio: "{localidad["nombre"]}".\n'
+            f'DESCARTA automáticamente cualquier fiesta que se anuncie de forma explícita para un barrio, '
+            f'distrito, pedanía o zona concreta (ej. "Fiestas del barrio de Ibarra", "Fiestas de Butarque").\n'
+            f'Solo extrae las fiestas MATRICES que engloban a toda la localidad en su conjunto '
+            f'(ej. "Fiestas de {localidad["nombre"]}", "San Roque", fiestas patronales generales).\n'
+            f'Asegúrate de NO incluir fiestas que pertenezcan a otras pedanías o aldeas periféricas menores.'
+        )
+    else:
+        regla_exclusividad = (
+            f'Extraer las fiestas ÚNICAMENTE para la localidad menor/pedanía: "{localidad["nombre"]}" (ID: {localidad["id"]}).\n'
+            f'NUNCA asignes ni generes fiestas para el municipio principal ({municipio["nombre"]}) a menos que ocurran específicamente en esta pedanía.\n'
+            f'Si no encuentras fiestas para "{localidad["nombre"]}", devuelve la lista vacía.'
+        )
+
+    system_prompt = f"""Eres un API estricta especializada en identificar y catalogar las fiestas locales en España.
+CONTEXTO: Municipio {municipio['nombre']} ({municipio.get('provincia', 'España')}), Localidad: {localidad['nombre']}.
+
+{CRITERIO_FIESTAS}
+
+{JERARQUIA_FUENTES}
+
+OBJETIVO CRÍTICO:
+{regla_exclusividad}
+AÑO: {anno}. Identifica la lista de fiestas que se celebran en {anno}.
+
+Devuelve SOLO JSON estricto con esta estructura (NO incluyas el programa detallado de actos en este paso):
+{{
+  "fiestas": [
+    {{
+      "id": "slug-unico",
+      "lugar_id": "{localidad['id']}",
+      "nombre": "Nombre de la Fiesta",
+      "fecha_inicio": "YYYY-MM-DD",
+      "fecha_fin": "YYYY-MM-DD",
+      "tamano": "pequeña" o "grande",
+      "descripcion": "Breve descripción general de la celebración",
+      "confianza": "alta", "media" o "baja",
+      "fuentes": ["web_municipio", "busqueda_web"],
+      "solo_fuentes_no_oficiales": false
+    }}
+  ]
+}}"""
+
+    comunidad = municipio.get("comunidad_autonoma", "")
+    provincia = municipio.get("provincia", "")
+    perfil_data = get_language_profile(comunidad, provincia)
+    terminos_rag = perfil_data["perfil_principal"]["terminos_rag"]
+
+    query_discovery = (
+        f"{terminos_rag} en {municipio['nombre']} "
+        f"para la localidad de {localidad['nombre']} en el año {anno}"
+    )
+
+    items_copy = [dict(item) for item in indexed_chunks]
+    query_emb = None
+    if rag_processor is not None:
+        try:
+            async with aiohttp.ClientSession() as session:
+                query_embs = await rag_processor.get_embeddings_batch(session, [query_discovery])
+                query_emb = query_embs[0] if query_embs else None
+        except Exception as e:
+            logger.warning(f"Error obteniendo embedding de la query de discovery: {e}")
+
+    if query_emb:
+        for item in items_copy:
+            item["score"] = AsyncRAGProcessor.cosine_similarity(query_emb, item.get("embedding")) if item.get("embedding") else 0.0
+    else:
+        for item in items_copy:
+            item["score"] = 0.0
+
+    seleccion = seleccionar_chunks(items_copy, DISCOVERY_MAX_CHARS, RAG_UMBRAL_SIMILITUD if query_emb else -1.0)
+    if not seleccion:
+        seleccion = sorted(items_copy, key=lambda i: (i["prioridad"], -i.get("score", 0.0)))[:15]
+
+    contexto = ensamblar_contexto(seleccion)
+    fuentes_contexto = {i["fuente"] for i in seleccion}
+
+    if not contexto.strip():
+        logger.warning(f"  [DISCOVERY] No hay texto de contexto para {localidad['nombre']}.")
+        return []
+
+    texto_traducido = process_translation_pipeline(contexto, municipio)
+    for patron_str, reemplazo in DICCIONARIO_FESTIVO.items():
+        texto_traducido = re.sub(patron_str, reemplazo, texto_traducido, flags=re.IGNORECASE)
+
+    parsed = None
+    for factor in (1.0, 0.7, 0.5):
+        texto_intento = texto_traducido
+        if factor < 1.0:
+            corte = int(len(texto_traducido) * factor)
+            salto = texto_traducido.rfind("\n", 0, corte)
+            texto_intento = texto_traducido[: salto if salto > 0 else corte]
+
+        user_prompt = (
+            f"AÑO: {anno}\n\n"
+            f"TEXTO RECUPERADO:\n{texto_intento}\n\n"
+            f"Extrae la lista básica de fiestas en formato JSON exclusivamente para {localidad['nombre']}. Recuerda, responde SOLO con JSON:\n```json\n"
+        )
+
+        logger.info(f"  [DISCOVERY] Llamando a {LMSTUDIO_CHAT_MODEL}...")
+        try:
+            parsed = await llm_chat_json(system_prompt, user_prompt, max_tokens=LMSTUDIO_CHAT_MAX_TOKENS)
+            break
+        except ContextOverflowError as e:
+            logger.warning(f"  [DISCOVERY n_ctx] {e}")
+            continue
+
+    if parsed is None:
+        return []
+
+    fiestas_raw = parsed.get("fiestas", [])
+    fiestas_validas = validar_fiestas(fiestas_raw, localidad, anno, fecha_patron, fuentes_contexto)
+    logger.info(f"  [DISCOVERY] Descubiertas {len(fiestas_validas)} fiestas preliminares para {localidad['nombre']}.")
+    return fiestas_validas
+
+
+async def enrich_festival_program(
+    municipio: dict,
+    localidad: dict,
+    fiesta: dict,
+    indexed_chunks: list[dict],
+    anno: int,
+    rag_processor: AsyncRAGProcessor | None = None,
+) -> dict:
+    """
+    Paso 2 del RAG Multi-Pass (Enrichment Pass):
+    Recupera chunks día a día para la fiesta descubierta y enriquece el campo programa.
+    """
+    nombre_fiesta = fiesta.get("nombre", "")
+    fecha_ini = fiesta.get("fecha_inicio", "")
+    fecha_fin = fiesta.get("fecha_fin", "")
+
+    consultas_dias = generar_consultas_enriquecimiento(nombre_fiesta, fecha_ini, fecha_fin, max_dias=FIESTA_MAX_DURACION_DIAS)
+    if not consultas_dias:
+        fiesta.setdefault("programa", [])
+        return fiesta
+
+    logger.info(f"  [ENRICHMENT] Enriqueciendo '{nombre_fiesta}' ({len(consultas_dias)} días: {fecha_ini} a {fecha_fin})...")
+
+    chunks_seleccionados_dias = []
+    seen_chunks = set()
+
+    query_embs = [None] * len(consultas_dias)
+    if rag_processor is not None:
+        try:
+            async with aiohttp.ClientSession() as session:
+                query_texts = [q for _, q in consultas_dias]
+                query_embs = await rag_processor.get_embeddings_batch(session, query_texts)
+        except Exception as e:
+            logger.warning(f"Error calculando embeddings batch de consultas diarias: {e}")
+            query_embs = [None] * len(consultas_dias)
+
+    for (fecha_str, query_str), query_emb in zip(consultas_dias, query_embs):
+        items_copy = [dict(item) for item in indexed_chunks]
+        if query_emb:
+            for item in items_copy:
+                item["score"] = AsyncRAGProcessor.cosine_similarity(query_emb, item.get("embedding")) if item.get("embedding") else 0.0
+        else:
+            for item in items_copy:
+                txt = item["chunk"].lower()
+                score = 0.0
+                if fecha_str in txt:
+                    score += 0.5
+                if nombre_fiesta.lower() in txt:
+                    score += 0.3
+                item["score"] = score
+
+        chunks_dia = [i for i in items_copy if i.get("score", 0.0) >= RAG_UMBRAL_SIMILITUD]
+        if not chunks_dia:
+            chunks_dia = sorted(items_copy, key=lambda i: -i.get("score", 0.0))[:3]
+        else:
+            chunks_dia = sorted(chunks_dia, key=lambda i: (i["prioridad"], -i.get("score", 0.0)))[:3]
+
+        for item in chunks_dia:
+            chunk_key = (item["fuente"], item["chunk"])
+            if chunk_key not in seen_chunks:
+                seen_chunks.add(chunk_key)
+                chunks_seleccionados_dias.append(item)
+
+
+    if not chunks_seleccionados_dias:
+        fiesta.setdefault("programa", [])
+        return fiesta
+
+    usados = 0
+    chunks_finales = []
+    for item in chunks_seleccionados_dias:
+        if usados + len(item["chunk"]) > ENRICHMENT_MAX_CHARS:
+            break
+        chunks_finales.append(item)
+        usados += len(item["chunk"])
+
+    contexto = ensamblar_contexto(chunks_finales)
+
+    texto_traducido = process_translation_pipeline(contexto, municipio)
+    for patron_str, reemplazo in DICCIONARIO_FESTIVO.items():
+        texto_traducido = re.sub(patron_str, reemplazo, texto_traducido, flags=re.IGNORECASE)
+
+    system_prompt = f"""Eres un API estricta especializada en estructurar el PROGRAMA DE ACTOS Y EVENTOS de una fiesta local en España.
+CONTEXTO: Municipio {municipio['nombre']} ({municipio.get('provincia', 'España')}), Localidad: {localidad['nombre']}.
+FIESTA A ENRIQUECER: "{nombre_fiesta}" ({fecha_ini} a {fecha_fin}).
+
+REGLAS DE PROGRAMA DE ACTOS:
+1. Extrae todos los actos y eventos mencionados en el texto para los días comprendidos entre {fecha_ini} y {fecha_fin}.
+2. Organiza los actos día por día. "dia" es 1 para {fecha_ini}, 2 para el siguiente día, etc. "fecha" debe ser YYYY-MM-DD.
+3. Para cada acto, indica la hora si está disponible (formato HH:MM, ej. "12:00", "23:30"), o "" si no especifica hora.
+4. Traduce descripciones al castellano.
+
+Devuelve SOLO JSON estricto con esta estructura:
+{{
+  "programa": [
+    {{
+      "dia": 1,
+      "fecha": "YYYY-MM-DD",
+      "eventos": [
+        {{ "hora": "HH:MM", "descripcion": "Descripción del acto o evento" }}
+      ]
+    }}
+  ]
+}}"""
+
+    user_prompt = (
+        f"FIESTA: {nombre_fiesta} ({fecha_ini} a {fecha_fin})\n\n"
+        f"TEXTO RECUPERADO:\n{texto_traducido}\n\n"
+        f"Genera el programa de actos en formato JSON. Responde SOLO con JSON:\n```json\n"
+    )
+
+    try:
+        parsed = await llm_chat_json(system_prompt, user_prompt, max_tokens=LMSTUDIO_CHAT_MAX_TOKENS)
+        if parsed and isinstance(parsed, dict) and "programa" in parsed:
+            prog = parsed["programa"]
+            if isinstance(prog, list):
+                fiesta["programa"] = prog
+                logger.info(f"  [ENRICHMENT] '{nombre_fiesta}' enriquecida con {len(prog)} días de programa.")
+            else:
+                fiesta.setdefault("programa", [])
+        else:
+            fiesta.setdefault("programa", [])
+    except Exception as e:
+        logger.warning(f"  [ENRICHMENT] Error enriqueciendo '{nombre_fiesta}': {e}")
+        fiesta.setdefault("programa", [])
+
+    return fiesta
+
+
+async def retrieve_discovery_context(
+    indexed_chunks: list[dict],
+    municipio: dict,
+    localidad: dict,
+    anno: int,
+    rag_processor: AsyncRAGProcessor | None = None,
+    max_chars: int = DISCOVERY_MAX_CHARS,
+) -> tuple[str, set]:
+    """Recupera los top 10-15 chunks (~15,000 chars) para el contexto del Discovery Pass."""
+    if not indexed_chunks:
+        return "", set()
+
+    comunidad = municipio.get("comunidad_autonoma", "")
+    provincia = municipio.get("provincia", "")
+    perfil_data = get_language_profile(comunidad, provincia)
+    terminos_rag = perfil_data["perfil_principal"]["terminos_rag"]
+
+    query_discovery = (
+        f"{terminos_rag} en {municipio['nombre']} "
+        f"para la localidad de {localidad['nombre']} en el año {anno}"
+    )
+
+    items_copy = [dict(item) for item in indexed_chunks]
+    query_emb = None
+    if rag_processor is not None:
+        try:
+            async with aiohttp.ClientSession() as session:
+                query_embs = await rag_processor.get_embeddings_batch(session, [query_discovery])
+                query_emb = query_embs[0] if query_embs else None
+        except Exception as e:
+            logger.warning(f"Error obteniendo embedding de la query de discovery: {e}")
+
+    if query_emb:
+        for item in items_copy:
+            item["score"] = AsyncRAGProcessor.cosine_similarity(query_emb, item.get("embedding")) if item.get("embedding") else 0.0
+    else:
+        for item in items_copy:
+            item["score"] = 0.0
+
+    seleccion = seleccionar_chunks(items_copy, max_chars, RAG_UMBRAL_SIMILITUD if query_emb else -1.0)
+    if not seleccion:
+        seleccion = sorted(items_copy, key=lambda i: (i["prioridad"], -i.get("score", 0.0)))[:15]
+
+    contexto = ensamblar_contexto(seleccion)
+    fuentes_contexto = {i["fuente"] for i in seleccion}
+    return contexto, fuentes_contexto
+
+
+async def analyze_festivals_multipass(
+    municipio: dict,
+    localidad: dict,
+    documentos: list[dict],
+    anno: int,
+    fecha_patron=None,
+    rag_processor: AsyncRAGProcessor | None = None,
+    logger: logging.Logger | None = None,
+    analyzer_fn=None,
+) -> list[dict]:
+    """
+    Coordinador de la arquitectura RAG Multi-Pass:
+    1. Pre-indexa chunks y embeddings con index_document_chunks.
+    2. Recupera el contexto de discovery (top 10-15 chunks, ~15,000 chars / ~5.8K tokens).
+    3. Ejecuta Discovery Pass a través de analyzer_fn o discover_festivals_for_locality.
+    4. Ejecuta Enrichment Pass (enrich_festival_program) por cada fiesta descubierta.
+    5. Devuelve la lista final de fiestas validadas y enriquecidas.
+    """
+    if not documentos:
+        return []
+
+    if rag_processor is None:
+        rag_processor = AsyncRAGProcessor()
+
+    # Paso 1: Indexar chunks y calcular embeddings 1 sola vez
+    indexed_chunks = await index_document_chunks(rag_processor, documentos)
+    if not indexed_chunks:
+        return []
+
+    # Paso 2: Obtener contexto de discovery
+    discovery_context, fuentes_contexto = await retrieve_discovery_context(
+        indexed_chunks=indexed_chunks,
+        municipio=municipio,
+        localidad=localidad,
+        anno=anno,
+        rag_processor=rag_processor,
+        max_chars=DISCOVERY_MAX_CHARS,
+    )
+
+    if not discovery_context.strip():
+        return []
+
+    # Paso 3: Discovery Pass
+    if analyzer_fn is not None:
+        fiestas_descubiertas = await analyzer_fn(
+            municipio, localidad, discovery_context, anno, fecha_patron, fuentes_contexto
+        )
+    else:
+        fiestas_descubiertas = await discover_festivals_for_locality(
+            municipio=municipio,
+            localidad=localidad,
+            documentos=documentos,
+            indexed_chunks=indexed_chunks,
+            anno=anno,
+            rag_processor=rag_processor,
+            fecha_patron=fecha_patron,
+        )
+
+    if not fiestas_descubiertas:
+        return []
+
+    # Paso 4: Enrichment Pass por fiesta
+    fiestas_enriquecidas = []
+    for fiesta in fiestas_descubiertas:
+        f_enriched = await enrich_festival_program(
+            municipio=municipio,
+            localidad=localidad,
+            fiesta=fiesta,
+            indexed_chunks=indexed_chunks,
+            anno=anno,
+            rag_processor=rag_processor,
+        )
+        fiestas_enriquecidas.append(f_enriched)
+
+    return fiestas_enriquecidas
+

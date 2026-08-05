@@ -20,17 +20,26 @@ ocr_executor = ThreadPoolExecutor(max_workers=4)
 
 def _discover_tesseract_path() -> str | None:
     """Busca un ejecutable de Tesseract en rutas locales del proyecto, PATH y ubicaciones comunes."""
-    candidates: list[str] = []
-
+    import sys
+    
     env_path = os.environ.get("TESSERACT_PATH")
-    if env_path:
-        candidates.append(env_path)
+    if env_path and os.path.isfile(env_path):
+        return env_path
 
+    # 1. Priorizar el binario nativo del SO (ej. /usr/bin/tesseract en Linux/WSL)
+    # Esto evita problemas de rutas (/tmp/...) al llamar un .exe desde Linux
+    native_bin = shutil.which("tesseract")
+    if native_bin:
+        return native_bin
+
+    # 2. Si estamos en Windows, buscar en lugares comunes
+    candidates: list[str] = []
+    
     current_file = Path(__file__).resolve()
     project_roots = [
-        current_file.parent.parent,  # Fase2_Extraccion_Fiestas
-        current_file.parent.parent.parent,  # carpeta Algoritmo_fiestas
-        current_file.parents[2],  # carpeta superior a Algoritmo_fiestas
+        current_file.parent.parent,
+        current_file.parent.parent.parent,
+        current_file.parents[2],
     ]
 
     for project_root in project_roots:
@@ -56,7 +65,7 @@ def _discover_tesseract_path() -> str | None:
         if candidate and os.path.isfile(candidate):
             return os.path.normpath(candidate)
 
-    return shutil.which("tesseract") or shutil.which("tesseract.exe")
+    return shutil.which("tesseract.exe")
 
 
 def _discover_tessdata_prefix(tesseract_cmd: str | None) -> str | None:
@@ -98,12 +107,13 @@ try:
     else:
         pytesseract = None
 except ImportError:
+    Image = None
     pytesseract = None  # Dependencias que el usuario debe instalar
 
 try:
     import pdfplumber
 except ImportError:
-    pass
+    pdfplumber = None
 
 from config import (
     IMAGE_MIN_SIZE_BYTES,
@@ -118,30 +128,47 @@ from config import (
 # Filtros de relevancia (pre-descarga)
 # ─────────────────────────────────────────────
 
-# Keywords que indican contenido de fiestas
+# Keywords que indican contenido de fiestas (castellano y cooficiales)
 _FIESTA_KEYWORDS = [
+    # Castellano
     "fiesta", "festejo", "programa", "cartel", "feria", "carnaval",
     "romeria", "patronal", "navidad", "semana santa", "programacion",
     "verbena", "pregon", "encierro", "orquesta", "concierto",
     "fiestas", "festividad", "actos", "taurino",
+    # Catalán / Valenciano / Balear
+    "festes", "festa major", "cartell", "programacio", "revetlla", "correfoc", "cercavila",
+    # Euskera
+    "jaiak", "jaia", "jai", "egitaraua", "festak", "kartela", "txosna", "txosnak", "kontzertua", "erromeria", "kalejira",
+    # Gallego
+    "festas", "romaria", "foliada", "verbenas", "patronais",
+    # Aranés
+    "hèsta", "hèstes", "patronaus",
 ]
 
 
-def is_promising_pdf(url: str, link_text: str, context_text: str) -> bool:
+def is_promising_pdf(url: str, link_text: str, context_text: str, target_year: int = 2026) -> bool:
     """
     Evalúa heurísticamente si un PDF parece contener información de fiestas.
+    Verifica explícitamente el año objetivo (2026 por defecto) y el año anterior (2025)
+    en lugar de aceptar cualquier año 20xx arbitrario.
     Se llama ANTES de descargar el archivo.
     """
     text_to_check = f"{url} {link_text} {context_text}".lower()
+
+    valid_years = {str(target_year), str(target_year - 1)}
+    years_found = set(re.findall(r"20\d{2}", text_to_check))
+
+    # Si contiene años 20xx, debe incluir al menos el año objetivo o el anterior
+    if years_found and not years_found.intersection(valid_years):
+        return False
 
     for kw in _FIESTA_KEYWORDS:
         if kw in text_to_check:
             return True
 
-    # También aceptar PDFs con año en el nombre (programa-2026.pdf)
-    if re.search(r"20\d{2}", url):
-        # Si tiene año en la URL, es más probable que sea un programa
-        for kw in ["programa", "cartel", "fiesta", "feria", "actos"]:
+    # También aceptar si contiene un año válido en la URL con keywords secundarias
+    if any(y in url for y in valid_years):
+        for kw in ["programa", "cartel", "fiesta", "feria", "actos", "festes", "cartell", "jaiak", "egitaraua", "festas", "hèsta"]:
             if kw in url.lower():
                 return True
 
@@ -207,6 +234,9 @@ def _run_ocr(image) -> str:
 
 def extract_text_from_image(image_bytes: bytes) -> str:
     """Extrae texto de una imagen usando Tesseract OCR, con filtrado por dimensiones."""
+    if Image is None:
+        logger.warning("No se puede extraer texto de la imagen porque PIL (Pillow) no está instalado.")
+        return ""
     try:
         image = Image.open(io.BytesIO(image_bytes))
 
@@ -234,6 +264,9 @@ def extract_text_from_image(image_bytes: bytes) -> str:
 
 def extract_text_from_pdf(pdf_bytes: bytes) -> str:
     """Extrae texto de un PDF. Si es escaneado, usa OCR (hasta N páginas)."""
+    if pdfplumber is None:
+        logger.warning("No se puede extraer texto del PDF porque pdfplumber no está instalado.")
+        return ""
     text = ""
     try:
         with pdfplumber.open(io.BytesIO(pdf_bytes)) as pdf:

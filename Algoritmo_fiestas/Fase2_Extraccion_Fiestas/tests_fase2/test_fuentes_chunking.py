@@ -26,9 +26,11 @@ from llm_processor.text_analyzer import (
 def test_prioridades_y_oficialidad():
     assert prioridad_fuente("web_localidad") == 1
     assert prioridad_fuente("rrss_localidad:instagram") == 3
-    assert prioridad_fuente("busqueda_web") == 5
+    assert prioridad_fuente("prensa_regional") == 5
+    assert prioridad_fuente("busqueda_web") == 6
     assert es_fuente_oficial("web_municipio")
     assert es_fuente_oficial("rrss_municipio:facebook")
+    assert not es_fuente_oficial("prensa_regional")
     assert not es_fuente_oficial("busqueda_web")
     assert not es_fuente_oficial("fuente_inventada")
     assert fuente_base("rrss_localidad:twitter") == "rrss_localidad"

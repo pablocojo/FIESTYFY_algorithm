@@ -1,10 +1,26 @@
 {
+ "01004000000": {
+  "instagram": null,
+  "facebook": null,
+  "twitter": null,
+  "verificado_por": "web_oficial",
+  "fecha_verificacion": "2026-08-05",
+  "pendiente_apps": true
+ },
+ "01002000000": {
+  "instagram": null,
+  "facebook": "https://www.facebook.com/amurrioudalaayuntamiento",
+  "twitter": "https://x.com/amurriohauxeda",
+  "verificado_por": "web_oficial",
+  "fecha_verificacion": "2026-08-05",
+  "pendiente_apps": true
+ },
  "01049000000": {
   "instagram": null,
   "facebook": null,
   "twitter": null,
   "verificado_por": "web_oficial",
-  "fecha_verificacion": "2026-07-04",
+  "fecha_verificacion": "2026-08-05",
   "pendiente_apps": true
  },
  "01003000000": {
@@ -12,42 +28,171 @@
   "facebook": null,
   "twitter": null,
   "verificado_por": "web_oficial",
-  "fecha_verificacion": "2026-07-04",
-  "pendiente_apps": true,
-  "apps_sin_resultado": {
-   "instagram": "2026-07-04",
-   "facebook": "2026-07-04"
-  }
- },
- "01002000000": {
-  "instagram": null,
-  "facebook": "https://www.facebook.com/amurrioudalaayuntamiento",
-  "twitter": "https://x.com/amurriohauxeda",
-  "verificado_por": "web_oficial",
-  "fecha_verificacion": "2026-07-04",
-  "pendiente_apps": false,
-  "apps_sin_resultado": {
-   "instagram": "2026-07-04"
-  }
+  "fecha_verificacion": "2026-08-05",
+  "pendiente_apps": true
  },
  "01001000000": {
   "instagram": null,
   "facebook": "https://www.facebook.com/deportekirolaaytoalegriadulantzikoudala",
   "twitter": null,
   "verificado_por": "web_oficial",
-  "fecha_verificacion": "2026-07-04",
-  "pendiente_apps": false,
-  "apps_sin_resultado": {
-   "instagram": "2026-07-04",
-   "twitter": "2026-07-04"
+  "fecha_verificacion": "2026-08-05",
+  "pendiente_apps": true
+ },
+ "01006000000": {
+  "instagram": null,
+  "facebook": null,
+  "twitter": null,
+  "verificado_por": "web_oficial",
+  "fecha_verificacion": "2026-08-05",
+  "pendiente_apps": true
+ },
+ "01011000000": {
+  "instagram": "https://www.instagram.com/ascibondo",
+  "facebook": "https://www.facebook.com/profile.php?id=100010883198602",
+  "twitter": "https://x.com/banosdeebroma",
+  "verificado_por": "web_oficial",
+  "fecha_verificacion": "2026-08-05",
+  "pendiente_apps": false
+ },
+ "01037000000": {
+  "instagram": null,
+  "facebook": null,
+  "twitter": null,
+  "verificado_por": "web_oficial",
+  "fecha_verificacion": "2026-08-05",
+  "pendiente_apps": true
+ },
+ "01009000000": {
+  "instagram": null,
+  "facebook": null,
+  "twitter": null,
+  "verificado_por": "web_oficial",
+  "fecha_verificacion": "2026-08-05",
+  "pendiente_apps": true
+ },
+ "01010000000": {
+  "instagram": "https://www.instagram.com/aiaraudala",
+  "facebook": null,
+  "twitter": "https://x.com/aiaraudala",
+  "verificado_por": "web_oficial",
+  "fecha_verificacion": "2026-08-05",
+  "pendiente_apps": true
+ },
+ "01018000000": {
+  "instagram": null,
+  "facebook": null,
+  "twitter": null,
+  "verificado_por": "web_oficial",
+  "fecha_verificacion": "2026-08-05",
+  "pendiente_apps": true
+ },
+ "01014000000": {
+  "instagram": null,
+  "facebook": null,
+  "twitter": null,
+  "verificado_por": "web_oficial",
+  "fecha_verificacion": "2026-08-05",
+  "pendiente_apps": true
+ },
+ "01017000000": {
+  "instagram": null,
+  "facebook": null,
+  "twitter": null,
+  "verificado_por": "web_oficial",
+  "fecha_verificacion": "2026-08-05",
+  "pendiente_apps": true,
+  "fichas": {
+   "twitter": {
+    "titulo": "Nonehttps://x.com/home - Buscar con Google - Google Chrome",
+    "webs": [
+     "2fx.com",
+     "atareao.es",
+     "developers.google.com",
+     "forum.domoticz.com",
+     "github.com",
+     "google.com",
+     "guia-neovim.es",
+     "media.academy.niryo.com",
+     "merchantapi.googleapis.com",
+     "www.e-bug.eu",
+     "www.exploit-db.com",
+     "www.guia-neovim.es",
+     "x.com"
+    ],
+    "emails": [
+     "sainzmartinp@gmail.com"
+    ],
+    "seguidores": null,
+    "handle_visible": "gmail.com"
+   }
+  },
+  "bio_web_match": {
+   "twitter": false
+  },
+  "sospechosos": {
+   "twitter": "2026-08-05"
   }
  },
- "01003000701": {
-  "instagram": "https://www.instagram.com/dssgazteria",
-  "facebook": "https://www.facebook.com/dssgazteria",
-  "twitter": "https://x.com/dssgazteria",
+ "01016000000": {
+  "instagram": null,
+  "facebook": null,
+  "twitter": null,
   "verificado_por": "web_oficial",
-  "fecha_verificacion": "2026-07-04",
-  "pendiente_apps": false
+  "fecha_verificacion": "2026-08-05",
+  "pendiente_apps": true,
+  "fichas": {
+   "twitter": {
+    "titulo": "Nonehttps://x.com/home - Buscar con Google - Google Chrome",
+    "webs": [
+     "2fx.com",
+     "atareao.es",
+     "developers.google.com",
+     "forum.domoticz.com",
+     "github.com",
+     "google.com",
+     "guia-neovim.es",
+     "media.academy.niryo.com",
+     "merchantapi.googleapis.com",
+     "www.e-bug.eu",
+     "www.exploit-db.com",
+     "www.guia-neovim.es",
+     "x.com"
+    ],
+    "emails": [
+     "sainzmartinp@gmail.com"
+    ],
+    "seguidores": null,
+    "handle_visible": "gmail.com"
+   }
+  },
+  "bio_web_match": {
+   "twitter": false
+  },
+  "sospechosos": {
+   "twitter": "2026-08-05"
+  }
+ },
+ "01013000000": {
+  "instagram": "https://www.instagram.com/barrundiakoudala",
+  "facebook": "https://www.facebook.com/profile.php?id=100010298505280",
+  "twitter": "https://x.com/barrundia_udala",
+  "verificado_por": "web_oficial",
+  "fecha_verificacion": "2026-08-05",
+  "pendiente_apps": false,
+  "fichas": {
+   "twitter": {
+    "titulo": "(1) Barrundiako udala (@barrundia_udala) / X - Google Chrome",
+    "webs": [
+     "x.com"
+    ],
+    "emails": [],
+    "seguidores": "89 Followers",
+    "handle_visible": "barrundia_udala"
+   }
+  },
+  "bio_web_match": {
+   "twitter": "handle_match"
+  }
  }
 }

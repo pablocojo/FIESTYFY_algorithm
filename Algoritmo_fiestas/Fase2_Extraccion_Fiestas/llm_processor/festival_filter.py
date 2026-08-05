@@ -49,6 +49,7 @@ SENALES_NOCTURNAS = [
     "musica en directo", "musica en vivo", "grupo musical", "grupos musicales",
     "festival", "baile", "sesion de baile", "gaupasa", "txosna", "txosnas",
     "charanga", "txaranga", "batucada", "chupinazo",
+    "correfoc", "revetlla", "foliada", "herri bazkaria",
 ]
 
 # Señal de que la celebración es una fiesta popular reconocible
@@ -62,6 +63,7 @@ SENALES_TIPO_FIESTA = [
     "gigantes y cabezudos", "pasacalles", "pena", "penas",
     "comida popular", "cena popular", "paella popular", "sardinada",
     "fiesta popular", "fiestas populares",
+    "festa major", "festes patronals", "festas patronais", "cercavila", "kalejira", "hèsta major",
 ]
 
 # Actos que por sí solos NO tienen carácter festivo (solo informativo para el motivo)
@@ -113,6 +115,7 @@ TIPO_CELEBRACION_FUERTE = [
     "feria", "carnaval", "moros y cristianos", "romeria", "verbena", "encierro",
     "hoguera", "pasacalles", "comida popular", "cena popular", "charanga",
     "gigantes y cabezudos", "vaquillas", "toro de fuego",
+    "festa major", "festes patronals", "festas patronais", "correfoc", "revetlla", "kalejira",
 ]
 
 # Frases positivas que hay que enmascarar antes de buscar señales privadas
@@ -122,6 +125,7 @@ _MASCARAS_PRIVADAS = ["discoteca movil", "disco movil", "discomovil", "macrodisc
 # Nombre claramente patronal (excepción del filtro estricto de un día)
 _RE_NOMBRE_PATRONAL = re.compile(
     r"\bfiestas?\b.*\bpatronal(es)?\b"
+    r"|\b(festes|festas|jaiak|hèsta|festak)\b"
     r"|\bfiestas?\s+(en\s+honor\s+)?(a\s+|de\s+|del\s+|de\s+la\s+|de\s+los\s+|de\s+las\s+)?"
     r"(san|santa|santo|sant|virgen|cristo|santisimo|santisima|inmaculada|purisima|asuncion|nuestra\s+senora)\b"
     r"|\bpatron(a)?\b"

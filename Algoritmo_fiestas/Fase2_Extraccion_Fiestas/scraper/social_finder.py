@@ -169,6 +169,16 @@ def resolver_perfiles(contador: Counter) -> dict:
 _CACHE_MISS = object()
 
 
+def _write_json_cache_sync(path: str, data: dict):
+    temp = f"{path}.tmp"
+    try:
+        with open(temp, "w", encoding="utf-8") as f:
+            json.dump(data, f, ensure_ascii=False, indent=1)
+        os.replace(temp, path)
+    except OSError as e:
+        logger.error(f"Error guardando caché de perfiles RRSS: {e}")
+
+
 class RedesCache:
     def __init__(self, path: str):
         self.path = path
@@ -198,13 +208,7 @@ class RedesCache:
         async with self._lock:
             self._cargar()
             self._data[lugar_id] = valor
-            temp = f"{self.path}.tmp"
-            try:
-                with open(temp, "w", encoding="utf-8") as f:
-                    json.dump(self._data, f, ensure_ascii=False, indent=1)
-                os.replace(temp, self.path)
-            except OSError as e:
-                logger.error(f"Error guardando caché de perfiles RRSS: {e}")
+            await asyncio.to_thread(_write_json_cache_sync, self.path, dict(self._data))
 
 
 _FASE2_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -241,8 +245,7 @@ async def registrar_perfiles_web(lugar: dict, links_sociales: Counter) -> dict |
         **perfiles,
         "verificado_por": "web_oficial",
         "fecha_verificacion": date.today().isoformat(),
-        # Redes sin perfil hallado → candidatas a búsqueda in-app (Etapa C)
-        "pendiente_apps": not all(perfiles.values()),
+        "pendiente_apps": any(not perfiles.get(red) for red in REDES),
     }
     await _cache.set(lugar_id, entrada)
 

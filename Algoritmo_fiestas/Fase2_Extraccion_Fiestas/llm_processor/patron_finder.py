@@ -253,6 +253,16 @@ def buscar_en_santoral(nombre: str) -> tuple[int, int] | None:
 _CACHE_MISS = object()
 
 
+def _write_patron_cache_sync(path: str, data: dict):
+    temp = f"{path}.tmp"
+    try:
+        with open(temp, "w", encoding="utf-8") as f:
+            json.dump(data, f, ensure_ascii=False, indent=1)
+        os.replace(temp, path)
+    except OSError as e:
+        logger.error(f"Error guardando caché de patrones: {e}")
+
+
 class _PatronCache:
     def __init__(self, path: str):
         self.path = path
@@ -282,13 +292,7 @@ class _PatronCache:
         async with self._lock:
             self._cargar()
             self._data[lugar_id] = valor
-            temp = f"{self.path}.tmp"
-            try:
-                with open(temp, "w", encoding="utf-8") as f:
-                    json.dump(self._data, f, ensure_ascii=False, indent=1)
-                os.replace(temp, self.path)
-            except OSError as e:
-                logger.error(f"Error guardando caché de patrones: {e}")
+            await asyncio.to_thread(_write_patron_cache_sync, self.path, dict(self._data))
 
 
 _FASE2_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -663,13 +667,19 @@ async def obtener_patron(localidad: dict, municipio: dict) -> dict | None:
 # ──────────────────────────────────────────────────
 
 def fecha_del_patron(patron: dict | None, anno: int) -> date | None:
-    """Día del patrón en el año objetivo, o None si no hay fecha fiable."""
+    """Día del patrón en el año objetivo, o None si no hay fecha fiable. Si es 29 de febrero y el año no es bisiesto, cae a 28 de febrero."""
     if not patron or not patron.get("dia") or not patron.get("mes"):
         return None
     try:
         return date(anno, patron["mes"], patron["dia"])
     except ValueError:
+        if patron.get("mes") == 2 and patron.get("dia") == 29:
+            try:
+                return date(anno, 2, 28)
+            except ValueError:
+                return None
         return None
+
 
 
 def crear_fiesta_estimada(patron: dict, fecha: date, localidad: dict) -> dict:

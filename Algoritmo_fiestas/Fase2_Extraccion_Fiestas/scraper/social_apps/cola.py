@@ -28,20 +28,23 @@ def construir_cola(
 
     Tarea: {tipo, lugar_id, red, url|None, handle|None, nombre, municipio_nombre, poblacion}
     """
-    tareas = []
+    leer_tareas = []
+    buscar_tareas = []
+
     for lugar_id, entrada in (redes_cache or {}).items():
         if not isinstance(entrada, dict):
             continue
         lugar = lugares_por_id.get(lugar_id)
         nombre = (lugar or {}).get("nombre")
         poblacion = (lugar or {}).get("poblacion") or 0
+        apps_sin_res = entrada.get("apps_sin_resultado") or {}
 
         for red in redes_habilitadas:
             url = entrada.get(red)
             if url:
                 if contenido.vigente(lugar_id, red, ttl_dias, hoy):
                     continue
-                tareas.append({
+                leer_tareas.append({
                     "tipo": "leer",
                     "lugar_id": lugar_id,
                     "red": red,
@@ -50,14 +53,10 @@ def construir_cola(
                     "nombre": nombre,
                     "poblacion": poblacion,
                 })
-            elif entrada.get("pendiente_apps"):
-                # Sin nombre no se puede buscar; sin resultado previo reciente tampoco se repite
-                if not nombre:
+            elif entrada.get("pendiente_apps") and nombre:
+                if red in apps_sin_res:
                     continue
-                buscado = (entrada.get("apps_sin_resultado") or {}).get(red)
-                if buscado:
-                    continue  # ya se buscó en apps y no existía; el TTL lo gestiona la Etapa C futura
-                tareas.append({
+                buscar_tareas.append({
                     "tipo": "buscar",
                     "lugar_id": lugar_id,
                     "red": red,
@@ -67,6 +66,6 @@ def construir_cola(
                     "poblacion": poblacion,
                 })
 
-    orden_tipo = {"leer": 0, "buscar": 1}
-    tareas.sort(key=lambda t: (orden_tipo[t["tipo"]], -t["poblacion"]))
-    return tareas
+    leer_tareas.sort(key=lambda t: -t["poblacion"])
+    buscar_tareas.sort(key=lambda t: -t["poblacion"])
+    return leer_tareas + buscar_tareas

@@ -50,7 +50,37 @@ _RUIDO_UI = re.compile(
     r"following|inicio|home|buscar|search|reels?|mensajes?|messages|notificaciones|"
     r"notifications|perfil|profile|m[aá]s|more|crear|create|explorar|explore|"
     r"publicar|post|responder|reply|repostear|repost|ver traducci[oó]n|"
-    r"ver m[aá]s|see more|\d+\s*(me gusta|likes?|comentarios?|comments?))$",
+    r"ver m[aá]s|see more|\d+\s*(me gusta|likes?|comentarios?|comments?)|"
+    # Controles de ventana y navegación del navegador
+    r"minimizar|restaurar|cerrar|maximize|minimize|close|"
+    r"volver|adelante|volver a cargar|back|forward|reload|"
+    # Sidebar de Twitter/X
+    r"grok|bookmarks|premium|creator studio|communities|"
+    r"direct messages|lists|verified orgs|"
+    # Sidebar de Instagram
+    r"nueva publicaci[oó]n|hilos|threads|"
+    # Sidebar de Facebook
+    r"amigos|grupos|videojuegos|friends|groups|gaming|marketplace|"
+    # Acciones genéricas
+    r"guardar|save|silenciar|mute|reportar|report|bloquear|block|"
+    r"copiar enlace|copy link|embed|insertar|"
+    r"trending now|image|video)$",
+    re.IGNORECASE,
+)
+
+# Textos más largos que son claramente UI/chrome, no contenido de posts
+_RUIDO_UI_LARGO = re.compile(
+    r"(view keyboard shortcuts|press question mark"
+    r"|you might like|who to follow|show more"
+    r"|what.s happening|trending in \w+"
+    r"|terms\s.*privacy\s.*cookies"
+    r"|© \d{4} (x|meta|instagram)"
+    r"|ads info|new unread posts"
+    r"|unread notification"
+    r"|opens profile photo"
+    r"|not followed by anyone"
+    r"|verified account\b"
+    r"|\d+ views?\.\s*view post analytics)",
     re.IGNORECASE,
 )
 
@@ -158,345 +188,25 @@ class DriverBase:
                 return None
         return None
 
-    # ── buscador ──
-
-    def _encontrar_edit_busqueda(self, paseo=None):
-        patron = re.compile(self.buscador_re, re.IGNORECASE)
-        paseo = paseo if paseo is not None else self._paseo()
-        edits = []
-        for tipo, texto, el in paseo:
-            if tipo not in ("Edit", "ComboBox"):
-                continue
-            try:
-                nombre = f"{texto} {el.element_info.name or ''}"
-            except Exception:
-                nombre = texto
-            edits.append((el, nombre))
-        for el, nombre in edits:
-            if patron.search(nombre):
-                return el
-        if len(edits) == 1:
-            return edits[0][0]
-        return None
-
-    def _abrir_buscador(self):
-        """
-        Devuelve el Edit del buscador. En las PWAs (p. ej. Instagram) el
-        buscador es un ICONO del carril lateral que abre el panel: si no hay
-        Edit visible, se clica el icono "Buscar/Search" (una sola vez por
-        nombre: su Image gemela lo volvería a cerrar) y se espera al campo.
-        """
-        paseo = self._paseo()
-        edit = self._encontrar_edit_busqueda(paseo)
-        if edit is not None:
-            return edit
-
-        patron = re.compile(self.buscador_re, re.IGNORECASE)
-        nombres_clicados: set[str] = set()
-        for tipo, texto, el in paseo:
-            if tipo not in ("Button", "Hyperlink", "TabItem", "MenuItem", "ListItem", "Text", "Image"):
-                continue
-            try:
-                nombre = f"{texto} {el.element_info.name or ''}".strip()
-            except Exception:
-                nombre = texto
-            if not patron.search(nombre):
-                continue
-            clave = normalizar(nombre)
-            if clave in nombres_clicados:
-                continue  # el mismo control expone Hyperlink + Image con igual nombre
-            nombres_clicados.add(clave)
-            objetivo = el if tipo != "Text" else (self._ancestro_clicable(el) or el)
-            if not self.guard.click_seguro(objetivo):
-                continue
-            # Esperar a que el panel exponga el campo de texto
-            for _ in range(4):
-                time.sleep(1.0)
-                edit = self._encontrar_edit_busqueda()
-                if edit is not None:
-                    return edit
-            if len(nombres_clicados) >= 3:
-                break
-        return None
-
-    def _escribir_en_buscador(self, consulta: str) -> bool:
-        control = self._abrir_buscador()
-        if control is None:
-            logger.warning(f"[{self.red}] No se encontró el buscador interno.")
-            return False
-        if not self.guard.click_seguro(control):
-            return False
-        time.sleep(0.8)
-        self.guard.teclear_seguro("^a{DELETE}", con_espacios=False)
-        self.guard.teclear_seguro(consulta)
-        time.sleep(2.5)  # dejar que carguen las sugerencias
-        return True
-
-    # ── candidatos y fases de resultados ──
-
-    def _candidatos_de_busqueda(self, consulta: str) -> list[tuple[str, object]]:
-        """Filas de resultado clicables con su texto (excluye el eco de la consulta)."""
-        consulta_norm = normalizar(consulta)
-        paseo = self._paseo()
-        candidatos = []
-        vistos_textos = set()
-
-        def _agregar(texto, elemento):
-            if not texto or len(texto) < 3 or _RUIDO_UI.match(texto):
-                return
-            if es_link_externo(texto):
-                return  # enlaces/correos de paneles de perfil: nunca son resultados
-            if es_fila_historial(texto):
-                return  # filas del historial de búsqueda: no llevan al perfil
-            if normalizar(texto) == consulta_norm or texto in vistos_textos:
-                return
-            vistos_textos.add(texto)
-            candidatos.append((texto, elemento))
-
-        for tipo, texto, el in paseo:
-            if tipo in _TIPOS_CLICABLES:
-                _agregar(texto, el)
-        for tipo, texto, el in paseo:
-            if tipo == "Text" and texto and len(texto) >= 3:
-                ancestro = self._ancestro_clicable(el)
-                if ancestro is not None:
-                    _agregar(texto, ancestro)
-        return candidatos
-
-    def _clicar_filtro_resultados(self) -> bool:
-        """Clica la pestaña/filtro de la página de resultados (Personas, Páginas...)."""
-        if not self.filtro_resultados_re:
-            return True
-        patron = re.compile(self.filtro_resultados_re, re.IGNORECASE)
-        for tipo, texto, el in self._paseo():
-            if tipo not in ("Hyperlink", "Button", "TabItem", "MenuItem", "ListItem", "Text"):
-                continue
-            if not patron.fullmatch(texto.strip()):
-                continue
-            objetivo = el if tipo != "Text" else (self._ancestro_clicable(el) or el)
-            if self.guard.click_seguro(objetivo):
-                logger.info(f"[{self.red}] Filtro de resultados '{texto}' seleccionado.")
-                time.sleep(2.0)
-                return True
-        logger.info(f"[{self.red}] No se encontró el filtro '{self.filtro_resultados_re}' en resultados.")
-        return False
-
-    def _preparar_fase_resultados(self):
-        """ENTER hacia la página de resultados completa + filtro propio de la app."""
-        self.guard.teclear_seguro("{ENTER}", con_espacios=False)
-        time.sleep(3.0)
-        self._clicar_filtro_resultados()
-
-    # ── verificación de navegación ──
-
-    def _perfil_abierto(self, handle: str | None = None, nombre: str | None = None) -> bool:
-        try:
-            titulo = self.ventana.window_text() or ""
-        except Exception:
-            return False
-        if _TITULO_RESULTADOS.search(titulo):
-            return False
-        titulo_comp = _compactar(titulo)
-        if handle and _compactar(handle) and _compactar(handle) in titulo_comp:
-            return True
-        if nombre and normalizar(nombre) and normalizar(nombre) in normalizar(titulo):
-            return True
-        return False
-
-    def _verificar_perfil_con_handle(self, handle: str, texto_candidato: str | None = None) -> bool:
-        """
-        Verificación post-clic de que estamos en el perfil correcto:
-        1. el handle aparece en el título o el contenido visible; o
-        2. el título contiene el NOMBRE del candidato clicado (Facebook no
-           muestra el handle en la página: 'Donostia Gazteria' titula la
-           ventana, y ese candidato ya pasó la pre-validación contra el handle).
-        Sin confirmación NO se lee nada.
-        """
-        if self._perfil_abierto(handle=handle):
-            return True
-        try:
-            titulo = self.ventana.window_text() or ""
-        except Exception:
-            return False
-        if _TITULO_RESULTADOS.search(titulo):
-            return False
-
-        objetivo = _compactar(handle)
-        if objetivo:
-            for t in self._texto_visible()[:120]:
-                if objetivo in _compactar(t):
-                    return True
-
-        if texto_candidato and self._perfil_abierto(nombre=texto_candidato):
-            logger.info(
-                f"[{self.red}] Perfil verificado por nombre de página "
-                f"('{texto_candidato[:40]}' en el título; el handle no es visible)."
-            )
-            return True
-        if texto_candidato and self._parece_perfil_por_contenido(texto_candidato):
-            return True
-        return False
-
-    def _parece_perfil_por_contenido(self, nombre_perfil: str) -> bool:
-        """
-        Verificación por CONTENIDO (el título de las PWAs tarda en actualizarse):
-        el nombre del perfil clicado aparece en la página junto a señales de
-        cabecera de perfil (seguidores/publicaciones). Nunca en una página de
-        resultados (excluida antes por el título).
-        """
-        objetivo = normalizar(nombre_perfil)
-        if not objetivo:
-            return False
-        textos = self._texto_visible()[:100]
-        nombre_visto = any(objetivo in normalizar(t) for t in textos)
-        senal_perfil = any(
-            re.search(r"seguidores|followers|publicaciones|posts|siguiendo|following", t, re.IGNORECASE)
-            for t in textos
-        )
-        if nombre_visto and senal_perfil:
-            logger.info(f"[{self.red}] Perfil verificado por contenido ('{nombre_perfil[:40]}' + cabecera).")
-            return True
-        return False
-
-    def _verificar_con_espera(self, verificar, texto: str, intentos: int = 4, espera: float = 2.0) -> bool:
-        """El título/árbol de las PWAs tarda en reflejar la navegación: reintentar."""
-        for i in range(intentos):
-            if verificar(texto):
-                return True
-            if i < intentos - 1:
-                time.sleep(espera)
-        return False
-
-    def _volver_atras(self):
-        self.guard.teclear_seguro("%{LEFT}", con_espacios=False)
-        time.sleep(2.0)
-
-    def _tab_walk_activar(self, es_valido, max_tabs: int = 40) -> str | None:
-        """
-        Fallback por TECLADO cuando el árbol UIA no expone los resultados
-        (Chromium a veces no materializa el contenido web): TAB recorre los
-        elementos accionables, el FOCO fuerza a materializar cada nodo, se lee
-        su nombre y con ENTER se activa el que valida. Sin ratón, sin árbol.
-        """
-        logger.info(f"[{self.red}] Árbol UIA sin resultados: fallback por teclado (TAB)...")
-        for _ in range(max_tabs):
-            self.guard.verificar()
-            self.guard.teclear_seguro("{TAB}", con_espacios=False)
-            time.sleep(0.3)
-            nombre = nombre_elemento_con_foco() or ""
-            if len(nombre) < 3 or _RUIDO_UI.match(nombre):
-                continue
-            if es_link_externo(nombre) or es_fila_historial(nombre):
-                continue
-            if es_valido(nombre):
-                logger.info(f"[{self.red}] TAB-walk: activando '{nombre[:50]}'")
-                self.guard.teclear_seguro("{ENTER}", con_espacios=False)
-                time.sleep(3.0)
-                return nombre
-        return None
-
-    def _explorar_candidatos(self, consulta: str, es_valido, verificar) -> str | None:
-        """
-        Recorre las fases de búsqueda de la app: clic → verificar (con espera:
-        el título tarda en actualizarse) → si falla, atrás y siguiente.
-        Si el árbol UIA no expone resultados, fallback por teclado (TAB-walk).
-        """
-        intentados: set[str] = set()
-        for fase in self.fases_busqueda:
-            if fase == "resultados":
-                self._preparar_fase_resultados()
-            for intento in range(4):
-                candidatos = self._candidatos_de_busqueda(consulta)
-                validos = [
-                    (texto, el) for texto, el in candidatos
-                    if texto not in intentados and es_valido(texto)
-                ]
-                if not validos:
-                    if intento < 3:
-                        time.sleep(1.5)
-                        continue
-                    muestra = [t[:45] for t, _ in candidatos[:6]]
-                    logger.info(
-                        f"[{self.red}] Fase '{fase}': ningún candidato válido "
-                        f"entre {len(candidatos)} vistos. Muestra: {muestra}"
-                    )
-                    # El árbol no expone los resultados → recorrido por teclado
-                    if fase == "resultados":
-                        nombre = self._tab_walk_activar(es_valido)
-                        if nombre and self._verificar_con_espera(verificar, nombre):
-                            return nombre
-                        if nombre:
-                            self._volver_atras()
-                    break
-                texto, el = validos[0]
-                intentados.add(texto)
-                if not self.guard.click_seguro(el):
-                    continue
-                time.sleep(3.0)
-                if self._verificar_con_espera(verificar, texto):
-                    return texto
-                logger.info(
-                    f"[{self.red}] '{texto[:50]}' no llevó al perfil esperado "
-                    f"(título: '{self.ventana.window_text()[:50]}'). Atrás."
-                )
-                self._volver_atras()
-        return None
-
     # ── operaciones de alto nivel ──
 
-    def abrir_perfil(self, handle: str, nombre_localidad: str) -> bool:
+    def abrir_perfil(self, url: str) -> bool:
         """
-        Abre un perfil YA VERIFICADO en la Etapa B buscando su handle.
-        Pre-validación laxa (las apps muestran nombres, no handles) +
-        verificación dura del handle dentro del perfil.
-        """
-        self.guard.activar()
-        if not self._escribir_en_buscador(handle):
-            return False
-
-        def es_valido(texto: str) -> bool:
-            ok, _ = validar_candidato_perfil(texto, nombre_localidad, handle_esperado=handle)
-            return ok or similitud_handle(texto, handle) >= 0.55
-
-        hallado = self._explorar_candidatos(
-            handle, es_valido, lambda t: self._verificar_perfil_con_handle(handle, t)
-        )
-        if hallado:
-            logger.info(f"[{self.red}] Perfil abierto y verificado: {handle}")
-            return True
-        logger.warning(f"[{self.red}] No se pudo abrir el perfil '{handle}'.")
-        return False
-
-    def buscar_perfil(self, nombre_localidad: str, nombre_municipio: str) -> dict | None:
-        """
-        Busca el perfil OFICIAL de una localidad sin URL previa. Validación
-        estricta (nombre completo + marcador institucional) y verificación
-        de la navegación antes de dar el perfil por bueno.
+        Navega directamente a la URL del perfil oficial usando la barra de
+        direcciones del navegador (Ctrl+L).
         """
         self.guard.activar()
-        for consulta in (f"ayuntamiento {nombre_localidad}", f"ayuntamiento de {nombre_localidad}"):
-            if not self._escribir_en_buscador(consulta):
-                return None
+        # Enfocar barra de direcciones y escribir URL
+        self.guard.teclear_seguro("^l", con_espacios=False)
+        time.sleep(0.5)
+        self.guard.teclear_seguro(url)
+        self.guard.teclear_seguro("{ENTER}", con_espacios=False)
+        
+        # Esperar a que cargue la página
+        time.sleep(4.0)
+        logger.info(f"[{self.red}] Navegación directa completada: {url}")
+        return True
 
-            def es_valido(texto: str) -> bool:
-                return validar_candidato_perfil(texto, nombre_localidad)[0]
-
-            def verificar(texto: str) -> bool:
-                if self._perfil_abierto(None, texto):
-                    return True
-                try:
-                    if _TITULO_RESULTADOS.search(self.ventana.window_text() or ""):
-                        return False
-                except Exception:
-                    return False
-                return self._parece_perfil_por_contenido(texto)
-
-            hallado = self._explorar_candidatos(consulta, es_valido, verificar)
-            if hallado:
-                logger.info(f"[{self.red}] Perfil oficial verificado: {hallado!r}")
-                return {"texto": hallado, "url": None}
-        logger.info(f"[{self.red}] Sin perfil oficial concluyente para {nombre_localidad}.")
-        return None
 
     def extraer_handle_visible(self) -> str | None:
         try:
@@ -510,6 +220,45 @@ class DriverBase:
             if m:
                 return m.group(1).lower()
         return None
+
+    def _perfil_abierto(self, handle_esperado: str | None = None, candidato_nombre: str | None = None) -> bool:
+        try:
+            titulo = self.ventana.window_text() or ""
+        except Exception:
+            titulo = ""
+        if not titulo:
+            return False
+        if _TITULO_RESULTADOS.search(titulo):
+            return False
+
+        norm_titulo = normalizar(titulo)
+
+        if handle_esperado:
+            h_norm = normalizar(handle_esperado)
+            h_compact = _compactar(handle_esperado)
+            if h_norm in norm_titulo or h_compact in _compactar(titulo):
+                return True
+
+        if candidato_nombre:
+            c_norm = normalizar(candidato_nombre)
+            if c_norm in norm_titulo:
+                return True
+            if similitud_handle(titulo, candidato_nombre) >= 0.55:
+                return True
+
+        return False
+
+    def _verificar_perfil_con_handle(self, handle: str, candidato_nombre: str | None = None) -> bool:
+        if not self._perfil_abierto(handle, candidato_nombre):
+            return False
+        if self._perfil_abierto(handle, None):
+            return True
+        if candidato_nombre and self._perfil_abierto(None, candidato_nombre):
+            return True
+        vis = self.extraer_handle_visible()
+        if vis and (normalizar(vis) == normalizar(handle) or _compactar(vis) == _compactar(handle)):
+            return True
+        return False
 
     # ── lectura del perfil (helpers compartidos) ──
 
@@ -563,12 +312,24 @@ class DriverBase:
         """
         Textos y enlaces de fecha visibles CON su rectángulo y contenedor,
         para agruparlos en posts individuales (agrupar_posts).
+        Filtra ruido de UI y restringe a la zona central de la ventana.
         """
+        # Zona central: excluir sidebar izquierda (~20%) y panel derecho (~25%)
+        try:
+            wr = self.ventana.rectangle()
+            ancho = wr.right - wr.left
+            zona_izq = wr.left + int(ancho * 0.18)
+            zona_der = wr.right - int(ancho * 0.22)
+        except Exception:
+            zona_izq, zona_der = 0, 99999
+
         items = []
         for tipo, texto, el in self._paseo():
             if tipo not in ("Text", "Hyperlink"):
                 continue
             if not texto or len(texto) < 4 or _RUIDO_UI.match(texto):
+                continue
+            if len(texto) < 120 and _RUIDO_UI_LARGO.search(texto):
                 continue
             if texto in vistos:
                 continue
@@ -577,6 +338,10 @@ class DriverBase:
             except Exception:
                 continue
             if rc.width() <= 0 or rc.height() <= 0:
+                continue
+            # Filtro de zona: el centro del elemento debe estar en el área de contenido
+            cx = (rc.left + rc.right) // 2
+            if cx < zona_izq or cx > zona_der:
                 continue
             vistos.add(texto)
             items.append({
@@ -639,9 +404,11 @@ class DriverBase:
                     viejos_consecutivos = 0
                 if len(cluster["texto"]) < 15 and not ruta_captura:
                     continue
+                fecha_iso = fecha.isoformat() if fecha else None
                 posts.append({
                     "texto": cluster["texto"],
-                    "fecha": fecha.isoformat() if fecha else None,
+                    "fecha": fecha_iso,
+                    "fecha_publicacion": fecha_iso,
                     "captura": ruta_captura,
                     "hash_captura": hash_c,
                     "url_post": None,
@@ -733,9 +500,11 @@ class DriverBase:
                 else:
                     viejos_consecutivos = 0
                     if texto_post or ruta_captura:
+                        fecha_iso = fecha.isoformat() if fecha else None
                         posts.append({
                             "texto": texto_post,
-                            "fecha": fecha.isoformat() if fecha else None,
+                            "fecha": fecha_iso,
+                            "fecha_publicacion": fecha_iso,
                             "captura": ruta_captura,
                             "hash_captura": hash_c,
                             "url_post": None,
