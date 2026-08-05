@@ -1090,6 +1090,9 @@ OBJETIVO CRÍTICO:
 {regla_exclusividad}
 AÑO: {anno}. Identifica la lista de fiestas que se celebran en {anno}.
 
+REGLA DE AGRUPACIÓN CRÍTICA:
+Si encuentras varios eventos festivos cercanos en el tiempo (ej. "Día del Chupinazo el 12 de agosto" y "Día de San Roque el 16 de agosto"), FUSIONA TODOS en una ÚNICA fiesta global cuya `fecha_inicio` sea el primer evento (12 de agosto) y `fecha_fin` sea el último evento (16 de agosto). NO crees múltiples fiestas pequeñas si pertenecen al mismo ciclo festivo.
+
 Devuelve SOLO JSON estricto con esta estructura (NO incluyas el programa detallado de actos en este paso):
 {{
   "fiestas": [

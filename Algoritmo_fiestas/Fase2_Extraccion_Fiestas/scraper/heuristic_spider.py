@@ -360,12 +360,12 @@ class AsyncTwoPassSpider:
                     if url in visited:
                         continue
 
-                    # Deduplicación de URLs de calendario por fecha (/YYYY/M/D/)
-                    cal_key = self._get_calendar_date_key(url)
-                    if cal_key:
-                        if cal_key in self.seen_calendar_dates:
-                            continue
-                        self.seen_calendar_dates.add(cal_key)
+                    # Deduplicación de URLs de calendario por fecha (/YYYY/M/D/) DESACTIVADA
+                    # cal_key = self._get_calendar_date_key(url)
+                    # if cal_key:
+                    #     if cal_key in self.seen_calendar_dates:
+                    #         continue
+                    #     self.seen_calendar_dates.add(cal_key)
 
                     if is_internal and depth > self.max_internal_depth:
                         continue
@@ -451,10 +451,10 @@ class AsyncTwoPassSpider:
                             if any(skip in link_url.lower() for skip in URL_BLACKLIST):
                                 continue
 
-                            # Deduplicación preventiva de enlaces de calendario por fecha
-                            cal_key = self._get_calendar_date_key(link_url)
-                            if cal_key and cal_key in self.seen_calendar_dates:
-                                continue
+                            # Deduplicación preventiva de enlaces de calendario por fecha DESACTIVADA
+                            # cal_key = self._get_calendar_date_key(link_url)
+                            # if cal_key and cal_key in self.seen_calendar_dates:
+                            #     continue
 
                             is_internal_next = self._is_internal(start_url, link_url)
                             
