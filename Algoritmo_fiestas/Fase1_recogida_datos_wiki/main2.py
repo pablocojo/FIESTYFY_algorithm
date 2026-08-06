@@ -22,8 +22,12 @@ from datos_ine import cargar_datos_ine, buscar_municipio_ine, cargar_municipios_
 def cargar_json_lugares(path: str) -> list[dict]:
     if not os.path.exists(path): return []
     try:
-        with open(path, "r", encoding="utf-8") as f: data = json.load(f)
-    except: return []
+        with open(path, "r", encoding="utf-8-sig") as f: data = json.load(f)
+    except Exception:
+        try:
+            with open(path, "r", encoding="utf-8") as f: data = json.load(f)
+        except Exception:
+            return []
     lugares = data.get("lugares", [])
     return lugares if isinstance(lugares, list) else []
 
@@ -217,6 +221,19 @@ def mandar_ws(n, p):
         pyautogui.press('enter')
     except: pass
 
+
+def municipio_ya_procesado(municipio: dict, ids_procesados: set) -> bool:
+    m_id = municipio.get("id")
+    return bool(m_id and m_id in ids_procesados)
+
+
+def encontrar_inicio_pendiente(municipios_wiki: list[dict], ids_procesados: set) -> int | None:
+    for idx, municipio in enumerate(municipios_wiki):
+        if not municipio_ya_procesado(municipio, ids_procesados):
+            return idx
+    return None
+
+
 def main():
     print("\n" + "=" * 70)
     print(" FASE 2: ENRIQUECIMIENTO CON NGMEP Y SUBDIVISIONES")
@@ -237,9 +254,13 @@ def main():
             m_id = m.get("original_id") or m.get("id")
             if m_id:
                 ids_procesados.add(m_id)
-                
-    start_idx = 1 # Para mantener la compatibilidad con el print del idx
 
+    start_idx = encontrar_inicio_pendiente(municipios_wiki, ids_procesados)
+    if start_idx is None:
+        print("Todos los municipios ya están presentes en lugares_espana.json. No hay nada más por procesar.")
+        return
+
+    print(f"Reanudando desde el siguiente municipio pendiente: {municipios_wiki[start_idx].get('nombre', '?')}")
 
     datos_ine = cargar_datos_ine()
     muni_ngmep = cargar_municipios_ngmep()
@@ -248,12 +269,11 @@ def main():
     import parte2_distritos_pedanias.distritos_pedanias as dp_module
     dp_module.DATOS_INE_GLOBAL = datos_ine
 
-    for idx, municipio in enumerate(municipios_wiki, start=1):
+    for idx, municipio in enumerate(municipios_wiki[start_idx:], start=start_idx + 1):
         nombre_wiki = municipio.get("nombre", "?")
         
         # Saltar si ya está procesado
-        m_id = municipio.get("id")
-        if m_id in ids_procesados or (m_id and any(m_id == k for k in ids_procesados)):
+        if municipio_ya_procesado(municipio, ids_procesados):
             continue
             
         print(f"\n[{idx}/{len(municipios_wiki)}] Procesando: {nombre_wiki}")
