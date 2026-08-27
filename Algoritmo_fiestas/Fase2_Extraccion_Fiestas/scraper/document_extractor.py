@@ -122,6 +122,8 @@ from config import (
     IMAGE_EXCLUDED_PATTERNS,
     IMAGE_VALID_EXTENSIONS,
     PDF_MAX_PAGES_OCR,
+    DISPOSICION_ENABLED,
+    PDF_MAX_PAGES_VLM,
 )
 
 # ─────────────────────────────────────────────
@@ -146,30 +148,95 @@ _FIESTA_KEYWORDS = [
 ]
 
 
+# Documentos administrativos: nunca contienen programas de fiestas, pero suelen
+# llevar un año válido y colgar de páginas cuyo menú menciona "fiestas". El PDF
+# ANEXO_3_Ppto_2025.pdf del Ayuntamiento de Amurrio (tablas de partidas
+# presupuestarias) llegó así a copar el 100% del contexto del LLM.
+_PDF_ADMINISTRATIVO = re.compile(
+    r"(?:^|[/_\-.])"
+    r"(?:ppto|presupuesto|presupuestos|anexo|anexos|ordenanza|ordenanzas|"
+    r"acta|actas|pleno|plenos|padron|licitacion|licitaciones|contrato|contratos|"
+    r"contratacion|subvencion|subvenciones|convenio|convenios|memoria|"
+    r"cuenta|cuentas|balance|liquidacion|tasa|tasas|impuesto|impuestos|"
+    r"bop|boe|bopv|edicto|edictos|reglamento|estatuto|estatutos|"
+    r"pgou|urbanismo|catastro|nomina|nominas|factura|facturas|"
+    r"auditoria|interventor|tesoreria|rpt|organigrama|"
+    r"instancia|solicitud|formulario|declaracion|modelo)"
+    r"(?:$|[/_\-.0-9])",
+    re.IGNORECASE,
+)
+
+# Términos festivos FUERTES: si uno de estos aparece en la URL o en el texto del
+# enlace, el PDF es candidato aunque el nombre suene administrativo.
+_FIESTA_KEYWORDS_FUERTES = [
+    "fiesta", "fiestas", "festejo", "patronal", "patronales", "cartel", "carnaval",
+    "romeria", "verbena", "pregon", "chupinazo", "encierro",
+    "festes", "festa major", "cartell", "revetlla", "correfoc", "cercavila",
+    "jaiak", "jaia", "egitaraua", "festak", "kartela", "txosna", "erromeria",
+    "festas", "romaria", "foliada", "patronais", "hèsta", "hèstes", "patronaus",
+]
+
+
+def _normalizar_ascii(texto: str) -> str:
+    import unicodedata
+    return "".join(
+        c for c in unicodedata.normalize("NFD", (texto or "").lower())
+        if unicodedata.category(c) != "Mn"
+    )
+
+
 def is_promising_pdf(url: str, link_text: str, context_text: str, target_year: int = 2026) -> bool:
     """
     Evalúa heurísticamente si un PDF parece contener información de fiestas.
-    Verifica explícitamente el año objetivo (2026 por defecto) y el año anterior (2025)
-    en lugar de aceptar cualquier año 20xx arbitrario.
     Se llama ANTES de descargar el archivo.
+
+    El orden de las reglas importa. Antes, un PDF administrativo pasaba el filtro
+    con solo contener un año válido y colgar de una página cuyo menú mencionase
+    "fiestas", porque `context_text` eran los primeros caracteres de la portada
+    del ayuntamiento. Ahora:
+
+      1. Nombre de fichero administrativo sin término festivo -> se rechaza.
+      2. Si menciona años y ninguno es el objetivo ni el anterior -> se rechaza.
+      3. Término festivo fuerte en la URL o en el texto del enlace -> se acepta.
+      4. Término festivo en el contexto del enlace MÁS un año válido -> se acepta.
+      5. Año válido en la URL con una palabra secundaria -> se acepta.
     """
-    text_to_check = f"{url} {link_text} {context_text}".lower()
+    url_l = _normalizar_ascii(url)
+    enlace_l = _normalizar_ascii(link_text)
+    contexto_l = _normalizar_ascii(context_text)
+    url_y_enlace = f"{url_l} {enlace_l}"
 
     valid_years = {str(target_year), str(target_year - 1)}
-    years_found = set(re.findall(r"20\d{2}", text_to_check))
 
-    # Si contiene años 20xx, debe incluir al menos el año objetivo o el anterior
+    # 1. Documento administrativo (se juzga por el nombre del fichero, no por la
+    #    página que lo enlaza), salvo que él mismo se anuncie como festivo.
+    nombre_fichero = url_l.rsplit("/", 1)[-1]
+    if _PDF_ADMINISTRATIVO.search(nombre_fichero) and not any(
+        kw in url_y_enlace for kw in _FIESTA_KEYWORDS_FUERTES
+    ):
+        return False
+
+    # 2. Coherencia temporal.
+    years_found = set(re.findall(r"20\d{2}", f"{url_l} {enlace_l} {contexto_l}"))
     if years_found and not years_found.intersection(valid_years):
         return False
 
-    for kw in _FIESTA_KEYWORDS:
-        if kw in text_to_check:
-            return True
+    # 3. Evidencia fuerte: el propio enlace se anuncia como festivo.
+    if any(kw in url_y_enlace for kw in _FIESTA_KEYWORDS_FUERTES):
+        return True
 
-    # También aceptar si contiene un año válido en la URL con keywords secundarias
-    if any(y in url for y in valid_years):
-        for kw in ["programa", "cartel", "fiesta", "feria", "actos", "festes", "cartell", "jaiak", "egitaraua", "festas", "hèsta"]:
-            if kw in url.lower():
+    # 4. Evidencia débil (el contexto alrededor del enlace) solo cuenta si además
+    #    hay un año válido: evita aceptar cualquier PDF de una página de fiestas.
+    if any(kw in contexto_l for kw in _FIESTA_KEYWORDS):
+        if any(y in f"{url_l} {enlace_l} {contexto_l}" for y in valid_years):
+            return True
+        return False
+
+    # 5. Año válido en la URL más una palabra secundaria en la URL.
+    if any(y in url_l for y in valid_years):
+        for kw in ["programa", "cartel", "fiesta", "feria", "actos", "festes",
+                   "cartell", "jaiak", "egitaraua", "festas", "hesta", "agenda"]:
+            if kw in url_l:
                 return True
 
     return False
@@ -232,69 +299,114 @@ def _run_ocr(image) -> str:
         raise e
 
 
-def extract_text_from_image(image_bytes: bytes) -> str:
+def extract_text_from_image(image_bytes: bytes) -> tuple[str, list]:
     """Extrae texto de una imagen usando Tesseract OCR, con filtrado por dimensiones."""
     if Image is None:
         logger.warning("No se puede extraer texto de la imagen porque PIL (Pillow) no está instalado.")
-        return ""
+        return "", []
     try:
         image = Image.open(io.BytesIO(image_bytes))
 
-        # Filtrar por dimensiones mínimas
         width, height = image.size
         if width < IMAGE_MIN_WIDTH or height < IMAGE_MIN_HEIGHT:
-            logger.debug(f"Imagen descartada por dimensiones: {width}x{height}")
-            return ""
+            return "", []
 
-        # Aplicar OCR
         text = _run_ocr(image)
         text = text.strip()
 
-        # Si el OCR no extrajo texto significativo, descartar
         if len(text) < 20:
-            return ""
+            return "", []
+            
+        images_for_vlm = []
+        text_lower = text.lower()
+        if any(kw in text_lower for kw in _FIESTA_KEYWORDS):
+            images_for_vlm.append(image.copy())
 
-        logger.debug(f"OCR extraído ({len(text)} chars) de imagen {width}x{height}")
-        return text
+        return text, images_for_vlm
 
     except Exception as e:
         logger.warning(f"Error OCR en imagen: {e}")
-        return ""
+        return "", []
 
 
-def extract_text_from_pdf(pdf_bytes: bytes) -> str:
+def _reconstruir_si_multicolumna(page, page_text: str, page_num: int) -> str:
+    """
+    Devuelve la página reconstruida por columnas si lo es, o el texto tal cual.
+
+    La reconstrucción solo se aplica cuando se detectan varias columnas: en un
+    documento lineal el texto plano ya está en orden de lectura y tocarlo no
+    aportaría nada. Si algo falla se devuelve el texto original: esta mejora
+    nunca debe poder dejar una página sin extraer.
+    """
+    if not DISPOSICION_ENABLED:
+        return page_text
+    try:
+        from disposicion_pdf import extraer_pagina_estructurada, merece_reconstruccion
+
+        estructurado, metricas = extraer_pagina_estructurada(page)
+        if estructurado and merece_reconstruccion(metricas):
+            logger.info(
+                f"    [DISPOSICIÓN] Página {page_num + 1}: {metricas['columnas']} columnas, "
+                f"{metricas['cabeceras_dia']} días; reconstruida en orden de lectura."
+            )
+            return estructurado
+    except Exception as e:
+        logger.debug(f"No se pudo reconstruir la disposición de la página {page_num}: {e}")
+    return page_text
+
+
+def extract_text_from_pdf(pdf_bytes: bytes) -> tuple[str, list]:
     """Extrae texto de un PDF. Si es escaneado, usa OCR (hasta N páginas)."""
     if pdfplumber is None:
         logger.warning("No se puede extraer texto del PDF porque pdfplumber no está instalado.")
-        return ""
+        return "", []
     text = ""
+    images_for_vlm = []
     try:
         with pdfplumber.open(io.BytesIO(pdf_bytes)) as pdf:
             ocr_pages_count = 0
             for page_num, page in enumerate(pdf.pages):
                 page_text = page.extract_text()
+
                 if page_text and len(page_text.strip()) > 50:
+                    # ── Página con texto extraíble: NO invocar Ghostscript ──
+                    # `extract_text()` lee por filas horizontales. En un cartel de
+                    # varias columnas eso pega en la misma línea actos de columnas
+                    # y días distintos, y el modelo los atribuye al día que no es.
+                    # Si la página resulta ser multicolumna se sustituye por la
+                    # versión reconstruida en orden de lectura.
+                    page_text = _reconstruir_si_multicolumna(page, page_text, page_num)
                     text += page_text + "\n"
+                    if len(images_for_vlm) < PDF_MAX_PAGES_VLM and any(kw in page_text.lower() for kw in _FIESTA_KEYWORDS):
+                        try:
+                            im = page.to_image(resolution=150)
+                            images_for_vlm.append(im.original.copy())
+                        except Exception as e:
+                            logger.debug(f"No se pudo renderizar página {page_num} para VLM: {e}")
                 else:
-                    # PDF escaneado — aplicar OCR con límite
+                    # ── Página sin texto (escaneada): renderizar para OCR ──
                     if ocr_pages_count >= PDF_MAX_PAGES_OCR:
-                        logger.debug(f"Límite de OCR alcanzado en página {page_num}")
                         continue
                     try:
                         im = page.to_image(resolution=150)
-                        pil_img = im.original
-                        page_text_ocr = _run_ocr(pil_img)
+                        page_image = im.original.copy()
+                    except Exception as e:
+                        logger.debug(f"No se pudo renderizar página {page_num} para OCR: {e}")
+                        continue
+                    try:
+                        page_text_ocr = _run_ocr(page_image)
                         if page_text_ocr and len(page_text_ocr.strip()) > 20:
                             text += page_text_ocr + "\n"
                             ocr_pages_count += 1
+                            if any(kw in page_text_ocr.lower() for kw in _FIESTA_KEYWORDS):
+                                if len(images_for_vlm) < PDF_MAX_PAGES_VLM:
+                                    images_for_vlm.append(page_image)
                     except Exception as e:
                         logger.warning(f"Error OCR en página {page_num} del PDF: {e}")
 
         result = text.strip()
-        if result:
-            logger.debug(f"PDF extraído: {len(result)} caracteres")
-        return result
+        return result, images_for_vlm
 
     except Exception as e:
         logger.warning(f"Error procesando PDF: {e}")
-        return ""
+        return "", []

@@ -145,15 +145,57 @@ def normalizar_link_social(url: str) -> tuple[str, str] | None:
     return red, f"https://www.facebook.com/{primero}"
 
 
-def resolver_perfiles(contador: Counter) -> dict:
+import unicodedata
+
+_RUIDO_HANDLES = {"diario", "noticias", "club", "cf", "cd", "asociacion", "tv", "radio", "prensa", "deporte", "futbol"}
+
+def _extraer_handle(url: str, red: str) -> str:
+    parsed = urllib.parse.urlparse(url)
+    if red == "facebook" and "profile.php" in parsed.path:
+        return "" # Los IDs numéricos no se pueden validar léxicamente, los aceptamos por defecto
+    segmentos = [s for s in parsed.path.split("/") if s]
+    if not segmentos: 
+        return ""
+    if red == "facebook" and segmentos[0] in ("pages", "people") and len(segmentos) >= 3:
+        return segmentos[1]
+    return segmentos[-1]
+
+def _validar_handle(handle: str, nombre_lugar: str) -> bool:
+    if not handle:
+        return True # Si no hay handle (ej. ID numerico), confiamos en que era el mas repetido de la web
+    handle_lower = handle.lower()
+    for ruido in _RUIDO_HANDLES:
+        if ruido in handle_lower:
+            return False
+            
+    # Normalize with unicodedata
+    nombre_norm = ''.join(c for c in unicodedata.normalize('NFD', nombre_lugar) if unicodedata.category(c) != 'Mn').lower()
+    
+    oficiales = {"ayto", "ayuntamiento", "udala", "turismo", "fiestas", "kultura", "cultura"}
+    
+    for off in oficiales:
+        if off in handle_lower:
+            return True
+            
+    words = [w for w in re.split(r'\W+', nombre_norm) if len(w) >= 4]
+    if not words: # Nombre muy corto (ej. "A", "Ea")
+        return nombre_norm in handle_lower
+        
+    for w in words:
+        if w in handle_lower:
+            return True
+            
+    return False
+
+def resolver_perfiles(contador: Counter, nombre_lugar: str = "") -> dict:
     """
-    Elige el mejor perfil por red de un Counter {(red, url): apariciones}.
-    Gana el más repetido (footer/header aparecen en todas las páginas);
-    a igualdad, la URL más corta (la canónica suele serlo).
+    Elige el mejor perfil por red validándolo léxicamente.
     """
     candidatos: dict[str, list] = {}
     for (red, url), n in (contador or Counter()).items():
-        candidatos.setdefault(red, []).append((n, -len(url), url))
+        handle = _extraer_handle(url, red)
+        if not nombre_lugar or _validar_handle(handle, nombre_lugar):
+            candidatos.setdefault(red, []).append((n, -len(url), url))
 
     perfiles = {red: None for red in REDES}
     for red, lista in candidatos.items():
@@ -170,11 +212,9 @@ _CACHE_MISS = object()
 
 
 def _write_json_cache_sync(path: str, data: dict):
-    temp = f"{path}.tmp"
+    from state_manager import escribir_json_con_respaldo
     try:
-        with open(temp, "w", encoding="utf-8") as f:
-            json.dump(data, f, ensure_ascii=False, indent=1)
-        os.replace(temp, path)
+        escribir_json_con_respaldo(path, data, indent=1)
     except OSError as e:
         logger.error(f"Error guardando caché de perfiles RRSS: {e}")
 
@@ -191,13 +231,11 @@ class RedesCache:
             return
         self._loaded = True
         if os.path.exists(self.path):
-            try:
-                with open(self.path, "r", encoding="utf-8") as f:
-                    self._data = json.load(f)
+            from state_manager import leer_json_con_respaldo
+            datos = leer_json_con_respaldo(self.path, "La caché de perfiles RRSS")
+            if isinstance(datos, dict):
+                self._data = datos
                 logger.info(f"Caché de perfiles RRSS cargada: {len(self._data)} lugares")
-            except (json.JSONDecodeError, OSError) as e:
-                logger.warning(f"No se pudo leer la caché de perfiles RRSS: {e}")
-                self._data = {}
 
     async def get(self, lugar_id: str):
         async with self._lock:
@@ -219,13 +257,47 @@ _cache = RedesCache(os.path.join(_FASE2_DIR, SOCIAL_PROFILE_CACHE_FILE))
 # REGISTRO DE PERFILES DESCUBIERTOS
 # ──────────────────────────────────────────────────
 
+async def buscar_perfiles_externos(lugar: dict) -> dict:
+    """Etapa C: Busca perfiles oficiales activamente usando DuckDuckGo."""
+    nombre = lugar.get("nombre", "")
+    if not nombre:
+        return {}
+        
+    from scraper.google_search import _sync_fetch_ddg
+    perfiles_encontrados = {}
+    
+    # Búsquedas dirigidas
+    for red in REDES:
+        site = "facebook.com" if red == "facebook" else ("instagram.com" if red == "instagram" else "x.com")
+        queries = [
+            f'"Ayuntamiento de {nombre}" site:{site}',
+            f'"Fiestas de {nombre}" site:{site}'
+        ]
+        
+        for q in queries:
+            try:
+                # Ejecutar búsqueda síncrona en el thread pool
+                resultados = await asyncio.to_thread(_sync_fetch_ddg, q)
+                for res in resultados:
+                    url = res.get("url", "")
+                    norm = normalizar_link_social(url)
+                    if norm and norm[0] == red:
+                        handle = _extraer_handle(norm[1], red)
+                        if _validar_handle(handle, nombre):
+                            perfiles_encontrados[red] = norm[1]
+                            break # Encontramos uno válido
+            except Exception as e:
+                logger.debug(f"Error en búsqueda externa para {red}: {e}")
+            
+            if red in perfiles_encontrados:
+                break
+                
+    return perfiles_encontrados
+
 async def registrar_perfiles_web(lugar: dict, links_sociales: Counter) -> dict | None:
     """
     Registra los perfiles cosechados de la web oficial de un lugar.
-    - Si el lugar ya está en caché, no se recalcula.
-    - Si el lugar ya trae `redes_sociales` desde lugares_espana.json, se respeta.
-    - Se registra también el resultado vacío (la web se miró y no enlaza
-      perfiles) con pendiente_apps: true → cola del runner de apps (Etapa C).
+    Si faltan redes, ejecuta una búsqueda externa (Etapa C) para intentar encontrarlas.
     """
     if not SOCIAL_PROFILE_DISCOVERY_ENABLED:
         return None
@@ -240,10 +312,19 @@ async def registrar_perfiles_web(lugar: dict, links_sociales: Counter) -> dict |
         await _cache.set(lugar_id, previo)
         return previo
 
-    perfiles = resolver_perfiles(links_sociales)
+    perfiles = resolver_perfiles(links_sociales, lugar.get("nombre", ""))
+    
+    faltan_redes = any(not perfiles.get(red) for red in REDES)
+    if faltan_redes:
+        logger.info(f"  [RRSS] Faltan redes en web oficial de {lugar.get('nombre')}, lanzando búsqueda externa...")
+        extra = await buscar_perfiles_externos(lugar)
+        for red, url in extra.items():
+            if not perfiles.get(red):
+                perfiles[red] = url
+
     entrada = {
         **perfiles,
-        "verificado_por": "web_oficial",
+        "verificado_por": "web_oficial" if not faltan_redes else "web_oficial_y_busqueda",
         "fecha_verificacion": date.today().isoformat(),
         "pendiente_apps": any(not perfiles.get(red) for red in REDES),
     }
@@ -252,6 +333,6 @@ async def registrar_perfiles_web(lugar: dict, links_sociales: Counter) -> dict |
     hallados = [f"{red}={url}" for red, url in perfiles.items() if url]
     logger.info(
         f"  [RRSS] {lugar['nombre']}: "
-        + (", ".join(hallados) if hallados else "sin perfiles enlazados en la web oficial")
+        + (", ".join(hallados) if hallados else "sin perfiles enlazados ni encontrados")
     )
     return entrada

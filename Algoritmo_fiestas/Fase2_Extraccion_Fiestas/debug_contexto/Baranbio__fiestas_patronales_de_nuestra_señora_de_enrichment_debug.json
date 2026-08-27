@@ -1,0 +1,287 @@
+{
+  "metricas": {
+    "etapa": "enrichment",
+    "municipio": "Amurrio",
+    "localidad": "Baranbio__fiestas patronales de nuestra señora de ",
+    "candidatos": 11,
+    "seleccionados": 11,
+    "documentos_distintos": 5,
+    "chunks_duplicados": 0,
+    "chars_contexto": 11686,
+    "chars_unicos": 11015,
+    "pct_unico": 100.0,
+    "tokens_contexto": 4060,
+    "top_documentos": [
+      [
+        "buscadores:snippets",
+        7
+      ],
+      [
+        "https://www.amurrioturismo.com/agenda-amurrio",
+        1
+      ],
+      [
+        "https://udala.amurrio.eus/cas/noticias/noticias-fiestas/2199-el-ayuntamiento-de-amurrio-hace-una-valoracion-muy-positiva-de-sus-fiestas-de-nuestra-senora-y-san-roke-2026",
+        1
+      ],
+      [
+        "https://udala.amurrio.eus/cas/calendario/eventosdiarios/2026/8/1/-",
+        1
+      ],
+      [
+        "facebook:01002000000",
+        1
+      ]
+    ],
+    "presupuesto": {
+      "presupuesto_chars": 32000
+    },
+    "fiesta": "Fiestas Patronales de Nuestra Señora de la Asunción y San Roque",
+    "dias_consultados": 6,
+    "dias_sin_presupuesto": 0
+  },
+  "chunks": [
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6179,
+      "score_detalle": {
+        "similitud": 0.6641,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1030,
+      "tokens": 366,
+      "hash": "9dc56663c61b",
+      "seleccionado": true,
+      "muestra": "TITULO: FiestasdeBaranbio 2026(Andra Mari Txiki) |Amurrio, Álava | CONTENIDO: Del 6 al 13 de septiembre 2026, Baranbio (Amurrio) celebra Andra Mari Txiki: carrera ciclista, morcill"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.5731,
+      "score_detalle": {
+        "similitud": 0.5105,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1011,
+      "tokens": 313,
+      "hash": "83c816654217",
+      "seleccionado": true,
+      "muestra": "TITULO: programacion.tvProgramación TV - Toda la programación de televisión | CONTENIDO: La programación de televisión de todas las cadenas nacionales, autonómicas y lo más destaca"
+    },
+    {
+      "url": "https://www.amurrioturismo.com/agenda-amurrio",
+      "fuente": "web_municipio",
+      "es_calendario": false,
+      "prioridad": 2,
+      "relevancia_geo": "GENERAL",
+      "score": 0.4214,
+      "score_detalle": {
+        "similitud": 0.6619,
+        "spider": 1.0,
+        "programa": 0.3,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 3340,
+      "rank_spider": 0,
+      "chars": 1167,
+      "tokens": 377,
+      "hash": "434c4126f7fc",
+      "seleccionado": true,
+      "muestra": "Famoso en todo Euskadi ⏎ y una oportunidad inmejorable para degustar el txakoli. ⏎ Destaca el ⏎ concurso gastronómico ⏎ en el que un ingrediente imprescindible tiene que ser el txakoli ela"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "GENERAL",
+      "score": 0.4158,
+      "score_detalle": {
+        "similitud": 1.0,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 975,
+      "tokens": 349,
+      "hash": "9182e4d17a3f",
+      "seleccionado": true,
+      "muestra": "TITULO: udala.amurrio.eus› cas › serviciosFiestaspatronales- Amurrioko Udala | CONTENIDO: LasFiestasPatronalesdeAmurriose celebran del 12 al 17 de agosto en torno a la Festividad d"
+    },
+    {
+      "url": "facebook:01002000000",
+      "fuente": "rrss_municipio:facebook",
+      "es_calendario": false,
+      "prioridad": 4,
+      "relevancia_geo": "GENERAL",
+      "score": 0.3999,
+      "score_detalle": {
+        "similitud": 0.6621,
+        "spider": 0.5,
+        "programa": 0.44,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1062,
+      "tokens": 449,
+      "hash": "a00a3b202f5d",
+      "seleccionado": true,
+      "muestra": "[POST 2026-08-18] ﻿Zurekin Batera   En Tol Sarmiento ⏎ Eta horrela amaiera eman diegu jai ahaztezinei. ⏎ Eskerrik asko, Amurrio, aurten ere gure jaiak hain bereziak egiteagatik. ⏎ Septie"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "GENERAL",
+      "score": 0.3976,
+      "score_detalle": {
+        "similitud": 0.7659,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1060,
+      "tokens": 389,
+      "hash": "b5a008d34125",
+      "seleccionado": true,
+      "muestra": "TITULO: FiestasenAmurrio(País Vasco) - Calendario2026y 2027 |Fiestasde ... | CONTENIDO: Descubre las fiestas de Amurrio (Álava) en País Vasco. Calendario completo de fiestas patron"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "GENERAL",
+      "score": 0.3928,
+      "score_detalle": {
+        "similitud": 0.7496,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 969,
+      "tokens": 314,
+      "hash": "d7b3b9a05325",
+      "seleccionado": true,
+      "muestra": "TITULO: Concurso Cartel Fiestas Álava 2026 | PDF | Esfera pública - Scribd | CONTENIDO: La Diputación Foral de Álava ha aprobado la convocatoria del concurso para elcartelanunciado"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "GENERAL",
+      "score": 0.3663,
+      "score_detalle": {
+        "similitud": 0.9101,
+        "spider": 0.5,
+        "programa": 0.2,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 872,
+      "tokens": 294,
+      "hash": "5991fc8447aa",
+      "seleccionado": true,
+      "muestra": "TITULO: udala.amurrio.eus› attachments › articleCARTEL DE LASFIESTASDE AMURRIO2026- udala.amurrio.eus | CONTENIDO: CARTEL DE LASFIESTASDEAMURRIO2026Llamada a profesionales del dise"
+    },
+    {
+      "url": "https://udala.amurrio.eus/cas/noticias/noticias-fiestas/2199-el-ayuntamiento-de-amurrio-hace-una-valoracion-muy-positiva-de-sus-fiestas-de-nuestra-senora-y-san-roke-2026",
+      "fuente": "web_municipio",
+      "es_calendario": false,
+      "prioridad": 2,
+      "relevancia_geo": "GENERAL",
+      "score": 0.358,
+      "score_detalle": {
+        "similitud": 0.7494,
+        "spider": 0.3333,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 1390,
+      "rank_spider": 9,
+      "chars": 1120,
+      "tokens": 309,
+      "hash": "d93e751d3473",
+      "seleccionado": true,
+      "muestra": "El Ayuntamiento de Amurrio hace una valoración muy positiva de sus fiestas de Nuestra Señora y San Roke 2026 ⏎ Inicio ⏎ noticias ⏎ Noticias Fiestas ⏎ El Ayuntamiento de Amurrio hace una va"
+    },
+    {
+      "url": "https://udala.amurrio.eus/cas/calendario/eventosdiarios/2026/8/1/-",
+      "fuente": "web_municipio",
+      "es_calendario": false,
+      "prioridad": 2,
+      "relevancia_geo": "GENERAL",
+      "score": 0.3445,
+      "score_detalle": {
+        "similitud": 0.6394,
+        "spider": 0.4222,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 1650,
+      "rank_spider": 3,
+      "chars": 826,
+      "tokens": 356,
+      "hash": "3954438f13ab",
+      "seleccionado": true,
+      "muestra": "Calendario ⏎ Inicio ⏎ Calendario ⏎ Elija una categoría para filtrar la lista ⏎ Todas las categorías ⏎ Hitzaldia - Conferencia ⏎ Erakusketa - Exposición ⏎ Musika - Música ⏎ Kirola - Deporte ⏎ Azoka -"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "GENERAL",
+      "score": 0.3441,
+      "score_detalle": {
+        "similitud": 0.5825,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 923,
+      "tokens": 312,
+      "hash": "09c9d73290f2",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas de Barambio 2026 | Fechas y guía | Fiestas de Pueblos de España | CONTENIDO: Vive lasFiestasde Barambio (Álava): misa y procesión, dantzaris, romería, verbena y gas"
+    }
+  ]
+}

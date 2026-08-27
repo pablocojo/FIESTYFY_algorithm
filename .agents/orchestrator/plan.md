@@ -1,46 +1,22 @@
-# Project Plan: Fiestyfy Algorithm 2026 Improvements
+# Execution Plan: Fiestyfy Algorithm RAG Pipeline Fixes
 
-## Overview
-Decompose, implement, and verify requirements R1 through R6 and isolated test scripts for the Fase 2 festival extraction pipeline.
+## Target Directory
+`c:\Users\Usuario\PROYECTOS\DEV-FIESTYFY_0426\FIESTYFY_algorithm\Algoritmo_fiestas\Fase2_Extraccion_Fiestas`
 
-## Milestones
+## Objectives
+1. **R1**: Fix `seleccionar_chunks` Geographic Filtering Order in `llm_processor/text_analyzer.py`. Ensure `filtrar_chunks_por_localidad` is applied AFTER similarity score calculation, not inside `seleccionar_chunks`.
+2. **R2**: Fix `nombres_hermanas` Capital Exclusion in `main.py`. Ensure the capital of the municipality is explicitly excluded from sister localities list.
+3. **R3**: Fix Contextual Embeddings in `llm_processor/text_analyzer.py` (`index_document_chunks`). Compute embeddings on raw `chunk` text rather than `chunk_contextualizado`.
+4. **R4**: Verify by running extraction test on a sample municipality (e.g. Amurrio) and verifying output JSON has non-estimated festivals with non-empty `programa` arrays.
 
-### Phase 0: Survey & Codebase Assessment
-- **Status**: IN_PROGRESS
-- **Agents**: 3 parallel Explorers (surveying R1-R6)
-- **Output**: Survey reports to synthesize into `PROJECT.md`
-
-### Phase 1: Implementation Milestones
-- **M1: Resilient Web Search (R1)**
-  - File: `google_search.py` (and `config.py`)
-  - Target: User-Agent rotation per query, random delay (2.0-4.5s), exponential backoff with jitter for DDG/Yahoo/Bing. No Google Custom Search API.
-- **M2: Spider 2026 Prioritization (R2)**
-  - File: `heuristic_spider.py`
-  - Target: `_score_page` prioritizing target year 2026, penalizing previous years, bonus for 2026 + festival keywords, deduplicating calendar URLs (`/YYYY/M/D/`), filtering single-event municipal calendar URLs.
-- **M3: Cross-Year & Leap Year Edge Cases (R3)**
-  - Files: `text_analyzer.py`, `patron_finder.py`
-  - Target: `_validar_fecha` allows `fecha_fin` in `anno+1` if `fecha_inicio` in Dec of target year; `fecha_del_patron` falls back to Feb 28 if Feb 29 and target year is not leap year.
-- **M4: Social Media Date Filtering (R4)**
-  - File: `social_content.py`
-  - Target: Save `fecha_publicacion`, filter posts within acceptable window for target year 2026.
-- **M5: PDF Priority & Async Caches (R5)**
-  - Files: `document_extractor.py`, `social_finder.py`, `patron_finder.py`
-  - Target: `is_promising_pdf` explicitly verifies target/previous year; `RedesCache.set` and `_PatronCache.set` use `asyncio.to_thread` for JSON file writing.
-- **M6: Execution Metrics Logging (R6)**
-  - File: `main.py`
-  - Target: `async_main` final summary report logging extracted vs estimated ratio, 0-festival localities, top sources, blocked/failed searches, avg time per municipality.
-
-### Phase 2: Isolated Test Scripts & Acceptance Criteria Verification
-- **M7: Test Suite & Verification**
-  - Verification scripts for:
-    1. `fecha_del_patron` Feb 28 fallback for Feb 29 saint in 2026.
-    2. `_validar_fecha` accepting festival from Dec 30 2026 to Jan 2 2027.
-    3. User-Agent rotation and random delay execution without errors.
-  - Reviewer, Challenger, and Forensic Auditor verification.
-
-## Execution Procedure per Milestone
-1. Worker implements changes in target codebase.
-2. Reviewer(s) verify code quality, logic completeness, and requirements compliance.
-3. Challenger(s) run test scripts / empirical checks.
-4. Forensic Auditor (`teamwork_preview_auditor`) verifies code integrity (no hardcoding/cheating).
-5. Gate Evaluation (ALL must pass).
+## Phases & Milestones
+- **Phase 0: Survey & Codebase Exploration**
+  - Dispatch 3 parallel Explorers to investigate `llm_processor/text_analyzer.py`, `main.py`, and test infrastructure around `Fase2_Extraccion_Fiestas`.
+- **Milestone 1 (M1): R1 Fix - Geographic Filtering Order**
+  - Explorer -> Worker -> Reviewers (2) + Challengers (2) + Forensic Auditor (1) -> Gate
+- **Milestone 2 (M2): R2 Fix - Capital Exclusion**
+  - Explorer -> Worker -> Reviewers (2) + Challengers (2) + Forensic Auditor (1) -> Gate
+- **Milestone 3 (M3): R3 Fix - Contextual Embeddings Input Text**
+  - Explorer -> Worker -> Reviewers (2) + Challengers (2) + Forensic Auditor (1) -> Gate
+- **Milestone 4 (M4): R4 Verification - Extraction Test**
+  - Run full extraction test on sample municipality (Amurrio) and verify output JSON structure and non-empty `programa` arrays.

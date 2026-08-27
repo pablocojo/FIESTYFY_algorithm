@@ -1,0 +1,243 @@
+{
+  "metricas": {
+    "etapa": "enrichment",
+    "municipio": "Amurrio",
+    "localidad": "Aloria__fiestas patronales de san roque y nuestr",
+    "candidatos": 9,
+    "seleccionados": 9,
+    "documentos_distintos": 5,
+    "chunks_duplicados": 0,
+    "chars_contexto": 9950,
+    "chars_unicos": 9123,
+    "pct_unico": 100.0,
+    "tokens_contexto": 3321,
+    "top_documentos": [
+      [
+        "https://www.amurrioturismo.com/agenda-amurrio",
+        3
+      ],
+      [
+        "buscadores:snippets",
+        3
+      ],
+      [
+        "https://udala.amurrio.eus/cas/noticias/noticias-fiestas/2199-el-ayuntamiento-de-amurrio-hace-una-valoracion-muy-positiva-de-sus-fiestas-de-nuestra-senora-y-san-roke-2026",
+        1
+      ],
+      [
+        "https://udala.amurrio.eus/cas/calendario/eventosdiarios/2026/8/1/-",
+        1
+      ],
+      [
+        "facebook:01002000000",
+        1
+      ]
+    ],
+    "presupuesto": {
+      "presupuesto_chars": 32000
+    },
+    "fiesta": "Fiestas Patronales de San Roque y Nuestra Señora de la Asunción",
+    "dias_consultados": 7,
+    "dias_sin_presupuesto": 0
+  },
+  "chunks": [
+    {
+      "url": "https://www.amurrioturismo.com/agenda-amurrio",
+      "fuente": "web_municipio",
+      "es_calendario": false,
+      "prioridad": 2,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.7188,
+      "score_detalle": {
+        "similitud": 0.8243,
+        "spider": 1.0,
+        "programa": 0.3,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 3340,
+      "rank_spider": 0,
+      "chars": 1167,
+      "tokens": 377,
+      "hash": "434c4126f7fc",
+      "seleccionado": true,
+      "muestra": "Famoso en todo Euskadi ⏎ y una oportunidad inmejorable para degustar el txakoli. ⏎ Destaca el ⏎ concurso gastronómico ⏎ en el que un ingrediente imprescindible tiene que ser el txakoli ela"
+    },
+    {
+      "url": "https://www.amurrioturismo.com/agenda-amurrio",
+      "fuente": "web_municipio",
+      "es_calendario": false,
+      "prioridad": 2,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.5895,
+      "score_detalle": {
+        "similitud": 0.3812,
+        "spider": 1.0,
+        "programa": 0.3,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 3340,
+      "rank_spider": 0,
+      "chars": 1190,
+      "tokens": 389,
+      "hash": "6cea7a22e54b",
+      "seleccionado": true,
+      "muestra": "Ferias y fiestas de Amurrio, Euskadi ⏎ SAN ANTÓN ⏎ El domingo siguiente al día de San Antón, 17 de enero, se celebra en Amurrio la Feria de San Antón.  Este día  encontrarás un ⏎ mercado"
+    },
+    {
+      "url": "facebook:01002000000",
+      "fuente": "rrss_municipio:facebook",
+      "es_calendario": false,
+      "prioridad": 4,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.5563,
+      "score_detalle": {
+        "similitud": 0.8555,
+        "spider": 0.5,
+        "programa": 0.44,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1062,
+      "tokens": 449,
+      "hash": "a00a3b202f5d",
+      "seleccionado": true,
+      "muestra": "[POST 2026-08-18] ﻿Zurekin Batera   En Tol Sarmiento ⏎ Eta horrela amaiera eman diegu jai ahaztezinei. ⏎ Eskerrik asko, Amurrio, aurten ere gure jaiak hain bereziak egiteagatik. ⏎ Septie"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.4969,
+      "score_detalle": {
+        "similitud": 0.8436,
+        "spider": 0.5,
+        "programa": 0.2,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1091,
+      "tokens": 318,
+      "hash": "31284c697ebf",
+      "seleccionado": true,
+      "muestra": "TITULO: ocioengalicia.comAgenda de Actividades y Ocio en Galicia | OcioenGalicia | CONTENIDO: Los mejores planes de ocio en Galicia. Encuentra en nuestro calendario todas las activ"
+    },
+    {
+      "url": "https://www.amurrioturismo.com/agenda-amurrio",
+      "fuente": "web_municipio",
+      "es_calendario": false,
+      "prioridad": 2,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.4789,
+      "score_detalle": {
+        "similitud": 0.2421,
+        "spider": 1.0,
+        "programa": 0.0,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 3340,
+      "rank_spider": 0,
+      "chars": 636,
+      "tokens": 213,
+      "hash": "0892325e8b46",
+      "seleccionado": true,
+      "muestra": "incluso actividades para los más jóvenes. ⏎ Todo un mundo alrededor de esta delicia gastronómica. ⏎ NOVIEMBRE ⏎ Planifica tu viaje ⏎ ​DÓNDE DORMIR Y DÓNDE COMER ⏎ EN AMURRIO ⏎ ¡Quédate a comer"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.4555,
+      "score_detalle": {
+        "similitud": 0.7017,
+        "spider": 0.5,
+        "programa": 0.2,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1124,
+      "tokens": 359,
+      "hash": "e9648f58016e",
+      "seleccionado": true,
+      "muestra": "TITULO: www.gulliveria.com› calendario-de-fiestas-en-espanaCalendario de Fiestas enEspaña 2026 - Gulliveria | CONTENIDO: 21 de ene de2026·España es un país que vibra con sus celebr"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.4476,
+      "score_detalle": {
+        "similitud": 0.8346,
+        "spider": 0.5,
+        "programa": 0.0,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 907,
+      "tokens": 268,
+      "hash": "f0c242a7db4a",
+      "seleccionado": true,
+      "muestra": "TITULO: ocioengalicia.comAgenda de Actividades y Ocio en Galicia | OcioenGalicia | CONTENIDO: Los mejores planes de ocio en Galicia. Encuentra en nuestro calendario todas las activ"
+    },
+    {
+      "url": "https://udala.amurrio.eus/cas/noticias/noticias-fiestas/2199-el-ayuntamiento-de-amurrio-hace-una-valoracion-muy-positiva-de-sus-fiestas-de-nuestra-senora-y-san-roke-2026",
+      "fuente": "web_municipio",
+      "es_calendario": false,
+      "prioridad": 2,
+      "relevancia_geo": "GENERAL",
+      "score": 0.4311,
+      "score_detalle": {
+        "similitud": 1.0,
+        "spider": 0.3333,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 1390,
+      "rank_spider": 9,
+      "chars": 1120,
+      "tokens": 309,
+      "hash": "d93e751d3473",
+      "seleccionado": true,
+      "muestra": "El Ayuntamiento de Amurrio hace una valoración muy positiva de sus fiestas de Nuestra Señora y San Roke 2026 ⏎ Inicio ⏎ noticias ⏎ Noticias Fiestas ⏎ El Ayuntamiento de Amurrio hace una va"
+    },
+    {
+      "url": "https://udala.amurrio.eus/cas/calendario/eventosdiarios/2026/8/1/-",
+      "fuente": "web_municipio",
+      "es_calendario": false,
+      "prioridad": 2,
+      "relevancia_geo": "GENERAL",
+      "score": 0.4038,
+      "score_detalle": {
+        "similitud": 0.843,
+        "spider": 0.4222,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 1650,
+      "rank_spider": 3,
+      "chars": 826,
+      "tokens": 356,
+      "hash": "3954438f13ab",
+      "seleccionado": true,
+      "muestra": "Calendario ⏎ Inicio ⏎ Calendario ⏎ Elija una categoría para filtrar la lista ⏎ Todas las categorías ⏎ Hitzaldia - Conferencia ⏎ Erakusketa - Exposición ⏎ Musika - Música ⏎ Kirola - Deporte ⏎ Azoka -"
+    }
+  ]
+}

@@ -151,7 +151,10 @@ class RunnerApps:
                 f"{tarea['nombre'] or tarea['lugar_id']}"
             )
             try:
-                ok = self._tarea_leer(driver, tarea)
+                if tarea["tipo"] == "buscar":
+                    ok = self._tarea_buscar(driver, tarea)
+                else:
+                    ok = self._tarea_leer(driver, tarea)
                 completadas += 1 if ok else 0
                 fallidas += 0 if ok else 1
             except AppPerdidaError as e:
@@ -289,5 +292,25 @@ class RunnerApps:
             tarea["lugar_id"], self._dir_capturas(tarea["lugar_id"]), self.anno
         )
         self.contenido.guardar_posts(tarea["lugar_id"], tarea["red"], posts)
+        return True
+
+    def _tarea_buscar(self, driver, tarea) -> bool:
+        nombre_buscar = tarea["nombre"]
+        if not nombre_buscar:
+            return False
+            
+        logger.info(f"  [BUSCAR] Realizando búsqueda de: {nombre_buscar}")
+        if not driver._escribir_en_buscador(nombre_buscar):
+            logger.warning(f"  [BUSCAR] No se pudo escribir en el buscador.")
+            return False
+            
+        # TODO: Falta implementar leer_resultados_busqueda en los drivers
+        # Por ahora solo dejamos la página con la búsqueda hecha (puede ayudar visualmente)
+        # o marcar la tarea como completada para no iterar infinitamente.
+        logger.info(f"  [BUSCAR] Búsqueda lanzada en {tarea['red']}.")
+        
+        # Opcional: si tuviéramos un método leer_resultados_busqueda(), aquí lo llamaríamos
+        # y guardaríamos los posibles perfiles encontrados en la caché
+        
         return True
 

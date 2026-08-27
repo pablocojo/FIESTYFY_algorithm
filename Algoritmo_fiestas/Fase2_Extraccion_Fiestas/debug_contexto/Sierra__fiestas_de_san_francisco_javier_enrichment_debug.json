@@ -1,0 +1,577 @@
+{
+  "metricas": {
+    "etapa": "enrichment",
+    "municipio": "Tobarra",
+    "localidad": "Sierra__fiestas de san francisco javier",
+    "candidatos": 24,
+    "seleccionados": 24,
+    "documentos_distintos": 6,
+    "chunks_duplicados": 0,
+    "chars_contexto": 21594,
+    "chars_unicos": 24218,
+    "pct_unico": 100.0,
+    "tokens_contexto": 7080,
+    "top_documentos": [
+      [
+        "buscadores:snippets",
+        12
+      ],
+      [
+        "https://elfarodehellin.com/sierra-se-prepara-para-unas-fiestas-patronales-llenas-de-musica-tradicion-y-diversion/",
+        5
+      ],
+      [
+        "https://www.javiersierra.com/",
+        3
+      ],
+      [
+        "https://www.festivalesdeespana.com/festival/fiestas-patronales-de-la-sierra-san-francisco-javier-calasparra/2025",
+        2
+      ],
+      [
+        "https://www.cmmedia.es/play/tv/ancha-es-castilla-la-mancha/vecinos-sierra-celebran-fiestas-honor-san-francisco-javier.html",
+        1
+      ],
+      [
+        "https://www.facebook.com/p/Fiestas-Sierra-verano-2023-100094381898088/",
+        1
+      ]
+    ],
+    "presupuesto": {
+      "presupuesto_chars": 32000
+    },
+    "fiesta": "Fiestas de San Francisco Javier",
+    "dias_consultados": 4,
+    "dias_sin_presupuesto": 0
+  },
+  "chunks": [
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.7721,
+      "score_detalle": {
+        "similitud": 0.7928,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.7
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 932,
+      "tokens": 342,
+      "hash": "f78fbd584f58",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas Sierra Verano 2026 - Facebook | CONTENIDO: 🎉 ¡Sierrase viste defiesta! 🎉 Del 30 de julio al 2 de agosto, celebramos lasFiestasdeSierra2026en honor a San Francisco J"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.7678,
+      "score_detalle": {
+        "similitud": 0.8581,
+        "spider": 0.5,
+        "programa": 0.2,
+        "temporal": 1.0,
+        "extra": 0.7
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1118,
+      "tokens": 369,
+      "hash": "4df48be93e6e",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas Patronales en honor a San Francisco Javier | CONTENIDO: LasFiestasPatronalesen honor aSanFranciscoJavier, patrón del pueblo, no son solo una celebración religiosa; "
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.7485,
+      "score_detalle": {
+        "similitud": 1.0,
+        "spider": 0.5,
+        "programa": 0.44,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1049,
+      "tokens": 404,
+      "hash": "7177bf30091f",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas Sierra Verano 2026 - Facebook | CONTENIDO: 🎉 ¡Sierrase viste defiesta! 🎉 Del 30 dejulioal 2 de agosto, celebramos lasFiestasdeSierra2026en honor aSanFranciscoJavier"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6979,
+      "score_detalle": {
+        "similitud": 0.9387,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 866,
+      "tokens": 328,
+      "hash": "5f1d003aa94c",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas Sierra Verano 2026 - Facebook | CONTENIDO: 🎉 ¡Sierrase vistedefiesta! 🎉 Del 30dejulio al 2deagosto, celebramos lasFiestasdeSierra2026en honor aSanFranciscoJavier. |"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6565,
+      "score_detalle": {
+        "similitud": 0.3964,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.7
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1164,
+      "tokens": 425,
+      "hash": "59da4bf95418",
+      "seleccionado": true,
+      "muestra": "TITULO: 'Donde el toro es leyenda y la afición, el alma de nuestra fiesta': así ... | CONTENIDO: La empresa UTE Amador-Casas ha presentado el spot oficial de la Feria Taurina deAlb"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6427,
+      "score_detalle": {
+        "similitud": 0.8294,
+        "spider": 0.5,
+        "programa": 0.2,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1083,
+      "tokens": 350,
+      "hash": "50ce3bc50415",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas Patronales en honor a San Francisco Javier | CONTENIDO: Elprograma, que se extiende durante dos semanas a finalesdenoviembre y principiosdediciembre, es un torbelli"
+    },
+    {
+      "url": "https://elfarodehellin.com/sierra-se-prepara-para-unas-fiestas-patronales-llenas-de-musica-tradicion-y-diversion/",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6335,
+      "score_detalle": {
+        "similitud": 0.4893,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 0.5,
+        "extra": 0.7
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1144,
+      "tokens": 358,
+      "hash": "439f20884b56",
+      "seleccionado": true,
+      "muestra": "Sabores de la tierra ⏎ La gastronomía tendrá un papel protagonista: ⏎ chorizada popular ⏎ , ⏎ brioche de codillo o carrillera ⏎ , ⏎ huevos con jamón ⏎ , ⏎ perritos calientes ⏎ , ⏎ tapas variadas ⏎ , y e"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6191,
+      "score_detalle": {
+        "similitud": 0.6683,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1044,
+      "tokens": 324,
+      "hash": "e9ebd4effc3d",
+      "seleccionado": true,
+      "muestra": "TITULO: Los vecinos de Sierra celebran sus fiestas en honor a San Francisco ... | CONTENIDO: Y otra celebración nos lleva esta noche aSierra. Allí están defiestaspatronalesen honor"
+    },
+    {
+      "url": "https://www.cmmedia.es/play/tv/ancha-es-castilla-la-mancha/vecinos-sierra-celebran-fiestas-honor-san-francisco-javier.html",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.5962,
+      "score_detalle": {
+        "similitud": 0.6699,
+        "spider": 0.5,
+        "programa": 0.2,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 811,
+      "tokens": 296,
+      "hash": "ecfe60e1538a",
+      "seleccionado": true,
+      "muestra": "Los vecinos de Sierra celebran sus fiestas en honor a San Francisco Javier | Ancha es Castilla-La Mancha | Campos de Hellín | Ancha es Castilla-La Mancha - CLIPS - CMM Play ⏎ Volver "
+    },
+    {
+      "url": "https://www.facebook.com/p/Fiestas-Sierra-verano-2023-100094381898088/",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.5886,
+      "score_detalle": {
+        "similitud": 0.7237,
+        "spider": 0.5,
+        "programa": 0.1,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 26,
+      "tokens": 11,
+      "hash": "baf236c7b91b",
+      "seleccionado": true,
+      "muestra": "Fiestas Sierra Verano 2026"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.5844,
+      "score_detalle": {
+        "similitud": 0.5495,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 871,
+      "tokens": 309,
+      "hash": "ed7f14de2b52",
+      "seleccionado": true,
+      "muestra": "TITULO: Miraflores de la Sierra celebra sus Fiestas Patronales 2026 del 13 al ... | CONTENIDO: LasFiestasPatronalesde Miraflores de laSierra2026arrancan en honor a la Asunción de N"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.568,
+      "score_detalle": {
+        "similitud": 0.4931,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1029,
+      "tokens": 371,
+      "hash": "de9bd28a5e16",
+      "seleccionado": true,
+      "muestra": "TITULO: Agenda de Fiestas en los Pueblos de la Comunidad de Madrid 2026 | CONTENIDO: Fiestaspatronales, romerías, recreaciones y ferias de los pueblos madrileños en2026, de lasierr"
+    },
+    {
+      "url": "https://elfarodehellin.com/sierra-se-prepara-para-unas-fiestas-patronales-llenas-de-musica-tradicion-y-diversion/",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.5462,
+      "score_detalle": {
+        "similitud": 0.4185,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1199,
+      "tokens": 433,
+      "hash": "247d731f547e",
+      "seleccionado": true,
+      "muestra": "Atropellan a una mujer en plena calle Melchor de Macanaz de Hellín ⏎ 25 agosto, 2026 ⏎ Sucesos ⏎ Un joven resulta herido durante el segundo encierro de Liétor ⏎ 25 agosto, 2026 ⏎ Sucesos ⏎ Un "
+    },
+    {
+      "url": "https://elfarodehellin.com/sierra-se-prepara-para-unas-fiestas-patronales-llenas-de-musica-tradicion-y-diversion/",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.5405,
+      "score_detalle": {
+        "similitud": 0.8762,
+        "spider": 0.5,
+        "programa": 0.132,
+        "temporal": 0.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1191,
+      "tokens": 389,
+      "hash": "52ca4a253d06",
+      "seleccionado": true,
+      "muestra": "El Faro de Hellín ⏎ 23 julio, 2025 ⏎ Cuota ⏎ Facebook ⏎ X ⏎ WhatsApp ⏎ La pedanía de ⏎ Sierra ⏎ celebrará sus esperadas ⏎ Fiestas Patronales en honor a San Francisco Javier ⏎ del ⏎ 31 de julio al 3 de a"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.5391,
+      "score_detalle": {
+        "similitud": 0.6342,
+        "spider": 0.5,
+        "programa": 0.0,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1086,
+      "tokens": 427,
+      "hash": "8f1188af6c3d",
+      "seleccionado": true,
+      "muestra": "TITULO: Ayto. de Elche de la Sierra | CONTENIDO: Calendario de eventos Julio, 2024 Anual Mensual Semanal Hoy Ir al mes específico Enero Febrero Marzo Abril Mayo Junio Julio Agosto "
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.5377,
+      "score_detalle": {
+        "similitud": 0.3892,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1112,
+      "tokens": 380,
+      "hash": "e1b58f13d70a",
+      "seleccionado": true,
+      "muestra": "TITULO: Moralzarzal ultima sus Fiestas Patronales de 2026 entre la ... | CONTENIDO: El Ayuntamiento de Moralzarzal ultima los preparativos de lasFiestasPatronalesde2026, la denomin"
+    },
+    {
+      "url": "https://elfarodehellin.com/sierra-se-prepara-para-unas-fiestas-patronales-llenas-de-musica-tradicion-y-diversion/",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.5288,
+      "score_detalle": {
+        "similitud": 0.4386,
+        "spider": 0.5,
+        "programa": 0.2,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1141,
+      "tokens": 352,
+      "hash": "050d773e05ed",
+      "seleccionado": true,
+      "muestra": "Sierra se prepara para unas fiestas patronales llenas de música, tradición y diversión | El Faro de Hellín ⏎ Facebook ⏎ Instagram ⏎ X ⏎ Vimeo ⏎ Youtube ⏎ Registrarse ⏎ Política ⏎ Deportes ⏎ Noticias"
+    },
+    {
+      "url": "https://www.festivalesdeespana.com/festival/fiestas-patronales-de-la-sierra-san-francisco-javier-calasparra/2025",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.5131,
+      "score_detalle": {
+        "similitud": 0.8157,
+        "spider": 0.5,
+        "programa": 0.09,
+        "temporal": 0.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 500,
+      "tokens": 157,
+      "hash": "099da2f1bd13",
+      "seleccionado": true,
+      "muestra": "Fiestas Patronales de La Sierra en honor a San Francisco Javier — Ediciones 2025 ⏎ Proponer una corrección ⏎ Estás viendo una edición pasada (2025) ⏎ Este evento ya ha tenido lugar. ⏎ Ver "
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.4981,
+      "score_detalle": {
+        "similitud": 0.7644,
+        "spider": 0.5,
+        "programa": 0.09,
+        "temporal": 0.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 964,
+      "tokens": 310,
+      "hash": "d843b22744ae",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas Patronales de La Sierra en honor a San Francisco Javier | CONTENIDO: LaSierracelebró del 27 de julio al 3 de agosto de 2025 susfiestaspatronalesen honor aSanFrancis"
+    },
+    {
+      "url": "https://www.javiersierra.com/",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.4888,
+      "score_detalle": {
+        "similitud": 0.3817,
+        "spider": 0.5,
+        "programa": 0.1,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1197,
+      "tokens": 343,
+      "hash": "64dcefa8247f",
+      "seleccionado": true,
+      "muestra": "Pagina Oficial de Javier Sierra | www.javiersierra.com ⏎ El plan maestro ⏎ Descubre El plan maestro, la última novela de Javier Sierra, donde la realidad y la ficción se entrelazan en "
+    },
+    {
+      "url": "https://www.javiersierra.com/",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.4558,
+      "score_detalle": {
+        "similitud": 0.3598,
+        "spider": 0.5,
+        "programa": 0.2,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1117,
+      "tokens": 313,
+      "hash": "6f5e5e29868a",
+      "seleccionado": true,
+      "muestra": "Javier Sierra ha sido uno de los escritores internacionales más aplaudido en la reciente edición de la Feria Internacional del Libro (FIL) de Guadalajara, en Jalisco (México). Su o"
+    },
+    {
+      "url": "https://www.festivalesdeespana.com/festival/fiestas-patronales-de-la-sierra-san-francisco-javier-calasparra/2025",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.4509,
+      "score_detalle": {
+        "similitud": 0.6024,
+        "spider": 0.5,
+        "programa": 0.09,
+        "temporal": 0.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1189,
+      "tokens": 389,
+      "hash": "12793b66b8dc",
+      "seleccionado": true,
+      "muestra": "La edición de 2025 desarrolló un programa especialmente completo. El fin de semana del 27 de julio abrió con cicloturismo, almuerzo deportivo, repique de campanas, ofrenda floral y"
+    },
+    {
+      "url": "https://www.javiersierra.com/",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.4491,
+      "score_detalle": {
+        "similitud": 0.3254,
+        "spider": 0.5,
+        "programa": 0.0,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1195,
+      "tokens": 365,
+      "hash": "d200deb3cd6e",
+      "seleccionado": true,
+      "muestra": "En 2026, editorial Planeta celebra el 75 aniversario de su premio más emblemático. Establecido en 1952, el Premio Planeta ha galardonado obras que han ido esculpiendo el canon lite"
+    },
+    {
+      "url": "https://elfarodehellin.com/sierra-se-prepara-para-unas-fiestas-patronales-llenas-de-musica-tradicion-y-diversion/",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.4266,
+      "score_detalle": {
+        "similitud": 0.2484,
+        "spider": 0.5,
+        "programa": 0.0,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1190,
+      "tokens": 428,
+      "hash": "1106fc7142b1",
+      "seleccionado": true,
+      "muestra": "El accidente entre un camión de la basura y un ciclista en Hellín llega al pleno ⏎ 27 julio, 2026 ⏎ Política ⏎ VOX denuncia la pérdida de especialistas y el deterioro asistencial del Hos"
+    }
+  ]
+}

@@ -10,7 +10,9 @@ La fecha del patrón es SIEMPRE un único día fijo del calendario:
 También expone las funciones puras de integración con las fiestas extraídas:
 - fecha_del_patron(): día del patrón en el año objetivo.
 - integrar_patron(): marca las fiestas que incluyen el día del patrón y añade
-  el registro estimado cuando ninguna fiesta lo cubre.
+  el registro estimado cuando ninguna ficha ES la fiesta de ese patrón. Ojo a la
+  diferencia: "ser la fiesta del patrón" no es "caer en el día del patrón", que
+  es como se duplicaban las patronales trasladadas al verano.
 """
 
 import asyncio
@@ -20,6 +22,7 @@ import re
 import logging
 import unicodedata
 from datetime import date
+from urllib.parse import unquote
 
 import aiohttp
 from bs4 import BeautifulSoup
@@ -151,6 +154,17 @@ SANTORAL: dict[str, tuple[int, int]] = {
     # Octubre
     "san saturio": (2, 10),
     "san francisco": (4, 10), "san francisco de asis": (4, 10),
+    # Santos compuestos cuyo apellido NO empieza por "de": sin su entrada
+    # propia, el santoral casa el prefijo y `recortar_coletilla_del_santo` tira
+    # la palabra que los distingue. Medido el 2026-08-27: el patrón de Sierra,
+    # San Francisco Javier (3 de diciembre), se guardaba como "San Francisco"
+    # (4 de octubre) y con esa fecha equivocada se descartó dos veces su fiesta
+    # buena. Son cuatro meses de diferencia y otro santo.
+    "san francisco javier": (3, 12),
+    "san vicente ferrer": (5, 4),
+    "san juan bosco": (31, 1),
+    "san jose obrero": (1, 5),
+    "san antonio maria claret": (24, 10),
     "san froilan": (5, 10), "san atilano": (5, 10),
     "virgen del rosario": (7, 10), "mare de deu del roser": (7, 10), "virxe do rosario": (7, 10),
     "san dionisio": (9, 10),
@@ -232,18 +246,139 @@ def _canonicalizar_nombre(nombre: str) -> str:
     return texto.strip()
 
 
-def buscar_en_santoral(nombre: str) -> tuple[int, int] | None:
-    """Busca la fecha fija (dia, mes) de un santo/advocación en el santoral."""
+def _clave_toponimo(nombre: str) -> str:
+    """
+    Reduce un topónimo a una clave que iguala las grafías euskera y castellana
+    del mismo pueblo.
+
+    Wikipedia titula los concejos alaveses en castellano y el padrón los nombra
+    en euskera, así que la URL de un pueblo real casi nunca coincide letra a
+    letra con su nombre. Las diferencias son un puñado de dígrafos regulares:
+    Saratxo/Saracho, Delika/Délica, Baranbio/Barambio, Larrinbe/Larrimbe.
+
+    Medido sobre esos pares y sobre contraejemplos duros (Lezama/Lekamaña,
+    Elorrio/Elorriaga, Berriz/Berriatua): con esta normalización los pares
+    verdaderos caen en la MISMA clave y los falsos no. Por eso la comparación de
+    arriba puede exigir igualdad exacta en vez de un umbral de parecido, que en
+    estos nombres cortos no separa nada.
+    """
+    base = normalizar_texto(re.sub(r"\s*\(.*?\)\s*", " ", nombre or ""))
+    base = re.sub(r"[^a-z0-9]+", "", base)
+    for origen, destino in (("tx", "ch"), ("tz", "z"), ("k", "c"), ("nb", "mb"), ("v", "b")):
+        base = base.replace(origen, destino)
+    return base
+
+
+def _wiki_es_de_la_localidad(url: str, nombre_localidad: str) -> bool:
+    """
+    ¿El artículo de Wikipedia trata de ESTA localidad, o es prestado?
+
+    Fase 1 rellena `wikipedia_url` como puede y se equivoca a menudo: medido el
+    2026-08-22 sobre Amurrio, Aloria y Amurrio-pueblo apuntaban al artículo de la
+    PROVINCIA de Álava y Tertanga al de Délica, que es otro pueblo. Sacar el
+    patrón de ahí es cómo Tertanga acabó con el patrón del vecino y media comarca
+    con el del municipio.
+    """
+    if not url:
+        return False
+    slug = unquote(url.rstrip("/").rsplit("/", 1)[-1]).replace("_", " ")
+    return bool(slug) and _clave_toponimo(slug) == _clave_toponimo(nombre_localidad)
+
+
+def clave_en_santoral(nombre: str) -> str | None:
+    """Entrada del santoral que reconoce este nombre, o None."""
     if not nombre:
         return None
     n = _canonicalizar_nombre(nombre)
     if n in SANTORAL:
-        return SANTORAL[n]
+        return n
     # Contención con límites de palabra, probando primero las claves más largas
     for key in _SANTORAL_KEYS:
         if re.search(rf"\b{re.escape(key)}\b", n):
-            return SANTORAL[key]
+            return key
     return None
+
+
+def buscar_en_santoral(nombre: str) -> tuple[int, int] | None:
+    """Busca la fecha fija (dia, mes) de un santo/advocación en el santoral."""
+    key = clave_en_santoral(nombre)
+    return SANTORAL[key] if key else None
+
+
+# Palabras que puede tener el complemento de una advocación ("de la Antigua",
+# "del Amparo", "de los Remedios"). Por encima ya no es un nombre, es una frase.
+_MAX_PALABRAS_ADVOCACION = 4
+_PARTICULAS = {"de", "del", "la", "las", "los", "el", "y", "a"}
+
+
+def capitalizar_advocacion(nombre: str) -> str:
+    """
+    Pone mayúsculas a un nombre de santo que venga todo en minúsculas.
+
+    Los buscadores devuelven el patrón tal y como lo escribiera la fuente, y a
+    veces llega "virgen del carmen". Si el nombre ya trae mayúsculas se deja como
+    está: quien lo escribió sabía más que nosotros.
+    """
+    if not nombre or nombre != nombre.lower():
+        return nombre
+    palabras = nombre.split()
+    return " ".join(
+        p if i and p in _PARTICULAS else p.capitalize() for i, p in enumerate(palabras)
+    )
+
+
+def recortar_coletilla_del_santo(nombre: str) -> str:
+    """
+    Deja el nombre del santo en el nombre del santo.
+
+    La ruta de buscadores devuelve trozos de titular, no nombres: medido el
+    2026-08-22, el patrón de Artomaña se guardó como "San Jorge vuelven a incluir
+    este", el de Larrinbe como "Santiago 2026 en Larrinbe" y el de Baranbio como
+    "San Antón en la ermita de dicho santo". Las FECHAS salían bien —el santoral
+    las resuelve igual—, pero el nombre acababa así en la salida.
+
+    Si el santoral reconoce el principio del nombre, sobra todo lo que venga
+    después. Cuando lo que reconoce no está al principio no se toca nada: en
+    "Nuestra Señora de la Asunción" el santoral casa por su sinónimo "virgen de
+    la asuncion", y recortar ahí estropearía un nombre que ya era correcto.
+
+    Y lo que va detrás tampoco sobra siempre: la advocación concreta se forma
+    justo así, con un complemento. El santoral reconoce "santísimo cristo" y de
+    "Stmo. Cristo de la Antigua" —el patrón de Tobarra— dejaba "Stmo. Cristo",
+    tirando lo único que lo distingue de cualquier otro Cristo. Una cola que
+    empieza por "de" o "del" y es corta es parte del nombre; una que empieza por
+    otra cosa ("2026 en Aloria", "vuelven a incluir este") o que se alarga, no.
+    """
+    if not nombre:
+        return nombre
+    key = clave_en_santoral(nombre)
+    if not key:
+        return nombre
+
+    palabras = nombre.split()
+    n_clave = len(key.split())
+    if len(palabras) <= n_clave:
+        return nombre
+
+    prefijo = " ".join(palabras[:n_clave])
+    if _canonicalizar_nombre(prefijo) != key:
+        return nombre      # el santo no está al principio: no hay coletilla que quitar
+
+    cola = palabras[n_clave:]
+    if len(cola) <= _MAX_PALABRAS_ADVOCACION and normalizar_texto(cola[0]) in {"de", "del"}:
+        return nombre      # "…de la Antigua", "…del Amparo": es la advocación entera
+
+    # Una cola de UNA palabra en mayúscula es sospechosa: puede ser el apellido
+    # que distingue a un santo de otro ("Javier", "Ferrer", "Bosco") y no una
+    # coletilla de titular. Si lo es, su sitio está en el santoral, no aquí; se
+    # deja constancia para que se vea al primer run en vez de descubrirse por
+    # casualidad cuatro meses después.
+    if len(cola) == 1 and cola[0][:1].isupper() and cola[0].isalpha():
+        logger.warning(
+            f"  [PATRON] Recortado '{nombre}' a '{prefijo}': el santoral no conoce "
+            f"'{normalizar_texto(nombre)}'. Si son santos distintos, falta su entrada."
+        )
+    return prefijo
 
 
 # ──────────────────────────────────────────────────
@@ -254,11 +389,9 @@ _CACHE_MISS = object()
 
 
 def _write_patron_cache_sync(path: str, data: dict):
-    temp = f"{path}.tmp"
+    from state_manager import escribir_json_con_respaldo
     try:
-        with open(temp, "w", encoding="utf-8") as f:
-            json.dump(data, f, ensure_ascii=False, indent=1)
-        os.replace(temp, path)
+        escribir_json_con_respaldo(path, data, indent=1)
     except OSError as e:
         logger.error(f"Error guardando caché de patrones: {e}")
 
@@ -275,18 +408,22 @@ class _PatronCache:
             return
         self._loaded = True
         if os.path.exists(self.path):
-            try:
-                with open(self.path, "r", encoding="utf-8") as f:
-                    self._data = json.load(f)
+            from state_manager import leer_json_con_respaldo
+            datos = leer_json_con_respaldo(self.path, "La caché de patrones")
+            if isinstance(datos, dict):
+                self._data = datos
                 logger.info(f"Caché de patrones cargada: {len(self._data)} localidades")
-            except (json.JSONDecodeError, OSError) as e:
-                logger.warning(f"No se pudo leer la caché de patrones: {e}")
-                self._data = {}
 
     async def get(self, lugar_id: str):
         async with self._lock:
             self._cargar()
-            return self._data.get(lugar_id, _CACHE_MISS)
+            valor = self._data.get(lugar_id, _CACHE_MISS)
+            # Las entradas escritas antes de que existiera `ambito` no distinguen
+            # el patrón propio del heredado del municipio, y sobre esa distinción
+            # se decide ahora qué fiestas se descartan. Se recalculan.
+            if isinstance(valor, dict) and "ambito" not in valor:
+                return _CACHE_MISS
+            return valor
 
     async def set(self, lugar_id: str, valor: dict | None):
         async with self._lock:
@@ -334,9 +471,93 @@ _CORTES_NOMBRE = re.compile(
 )
 
 
+# Abreviaturas que llevan punto DENTRO del nombre de un santo. Cortar la frase en
+# el primer "punto y espacio" las decapita: medido el 2026-08-25, el patrón de
+# Tobarra —el Stmo. Cristo de la Antigua— quedaba guardado como "Stmo". Le pasa a
+# cualquier pueblo cuyo patrón se escriba abreviado, que son muchísimos.
+_ABREVIATURAS_SANTO = (
+    "stmo", "stma", "smo", "sma", "sto", "sta", "s", "ntra", "ntro", "nta",
+    "sr", "sra", "srta", "bto", "bta", "excmo", "ilmo", "vgen", "vg",
+)
+def _validar_patron(resultado: dict | None, localidad: dict, municipio: dict, fuente: str) -> dict | None:
+    """
+    Deja pasar el resultado solo si el nombre puede ser el de un santo.
+
+    Cuando no lo es se devuelve None y la localidad sigue su camino: se prueba la
+    siguiente fuente y, si ninguna da algo creíble, se queda SIN patrón. Es lo
+    acordado el 2026-08-25: ninguno antes que uno equivocado, porque el patrón
+    alimenta las consultas de búsqueda de las patronales y la guarda que impide
+    mover sus fechas, así que uno malo no se queda quieto, propaga.
+    """
+    if not resultado:
+        return None
+    nombre = (resultado.get("nombre") or "").strip()
+    if nombre_de_patron_creible(nombre, localidad.get("nombre", ""), municipio.get("nombre", "")):
+        return resultado
+    logger.info(
+        f"  [PATRON] {localidad.get('nombre')}: se descarta '{nombre}' ({fuente}); "
+        f"no parece el nombre de un santo."
+    )
+    return None
+
+
+def nombre_de_patron_creible(nombre: str, localidad_nombre: str, municipio_nombre: str = "") -> bool:
+    """
+    ¿Esto que hemos extraído puede ser el nombre de un santo?
+
+    Tres cosas que no lo son, las tres sacadas del caché del 2026-08-25:
+
+    - El nombre del propio pueblo. A Santiago de Mora se le guardó como patrón
+      «Santiago de Mora 2026», con confianza alta, porque su web dice «fiestas
+      patronales de Santiago de Mora 2026» y el extractor se quedó con lo que
+      venía detrás de «patronales de». La consulta que salía de ahí era
+      «fiestas patronales Santiago de Mora 2026 Santiago de Mora 2026».
+    - Un año pegado. Un santo no lleva año.
+    - Una abreviatura suelta: «Stmo» era lo que quedaba del Cristo de la
+      Antigua de Tobarra al cortar el nombre en el punto de la abreviatura.
+
+    Ojo con el caso legítimo: hay pueblos que se llaman como su patrón —Santiago
+    de Mora entre ellos—, así que lo que se rechaza es el topónimo COMPLETO, no
+    que compartan una palabra. «Santiago» a secas sigue valiendo.
+    """
+    n = normalizar_texto(nombre or "").strip()
+    if len(n) < 4:
+        return False
+    if re.search(r"\b(19|20)\d{2}\b", n):
+        return False
+    if n in _ABREVIATURAS_SANTO:
+        return False
+    for lugar in (localidad_nombre, municipio_nombre):
+        if lugar and n == normalizar_texto(lugar).strip():
+            return False
+    return True
+
+
+def _cortar_en_fin_de_frase(nombre: str) -> str:
+    """
+    Corta en el primer punto que cierra una frase, saltándose las abreviaturas.
+
+    Se mira la palabra ANTERIOR al punto, no la siguiente. Con un lookahead sobre
+    lo que viene detrás no funciona: en «Stmo. Cristo de la Antigua» la
+    abreviatura está delante del punto, y el corte seguía dejando «Stmo».
+    """
+    for m in re.finditer(r"\.\s+", nombre):
+        anterior = re.search(r"(\w+)$", nombre[:m.start()])
+        if anterior and anterior.group(1).lower() in _ABREVIATURAS_SANTO:
+            continue
+        return nombre[:m.start()]
+    return nombre
+
+
 def _limpiar_nombre(nombre: str) -> str:
     nombre = re.sub(r"\[\d+\]", "", nombre)          # referencias wiki [1]
-    nombre = re.split(r"\.\s", nombre)[0]            # cortar en fin de frase ("San Andrés. Municipio...")
+    # Un nombre de santo es UNA línea. El salto de línea colaba la ciudad de la
+    # hermandad pegada detrás: a Sierra le quedó "Santísimo Cristo del
+    # Consuelo\nSevilla" guardado como patrón, con el salto incluido.
+    nombre = nombre.split("\n")[0]
+    # Cortar en fin de frase ("San Andrés. Municipio de..."), pero no cuando el
+    # punto es el de una abreviatura ("Stmo. Cristo de la Antigua").
+    nombre = _cortar_en_fin_de_frase(nombre)
     nombre = _CORTES_NOMBRE.sub("", nombre)
     nombre = re.sub(r"[\s,.;:]+$", "", nombre.strip())
     return nombre
@@ -400,7 +621,7 @@ def extraer_patron_de_texto(texto: str) -> dict | None:
     return {"nombre": mejor["nombre"], "dia": mejor["dia"], "mes": mejor["mes"]}
 
 
-def _resolver_fecha(resultado: dict, fuente: str) -> dict:
+def _resolver_fecha(resultado: dict, fuente: str, ambito: str = "localidad") -> dict:
     """Combina fecha explícita del texto con el santoral. El santoral prevalece."""
     nombre = resultado["nombre"]
     dia_texto, mes_texto = resultado.get("dia"), resultado.get("mes")
@@ -423,7 +644,15 @@ def _resolver_fecha(resultado: dict, fuente: str) -> dict:
     else:
         dia, mes, confianza = None, None, "baja"
 
-    return {"nombre": nombre, "dia": dia, "mes": mes, "fuente": fuente, "confianza": confianza}
+    # El patrón heredado del municipio nunca es de confianza alta, por muy bien
+    # que el santoral fije su fecha: la fecha puede ser exacta y el santo, ajeno.
+    if ambito != "localidad" and confianza == "alta":
+        confianza = "media"
+
+    return {
+        "nombre": nombre, "dia": dia, "mes": mes,
+        "fuente": fuente, "confianza": confianza, "ambito": ambito,
+    }
 
 
 # ──────────────────────────────────────────────────
@@ -495,6 +724,24 @@ def _extraer_de_infobox(filas: dict) -> dict | None:
     return None
 
 
+def _pagina_anclada_al_municipio(texto: str, url: str, municipio: dict) -> bool:
+    """
+    ¿Esta página está atada a nuestro municipio, y no solo repite el nombre del pueblo?
+
+    Aquí sí se exige el municipio o la provincia, al revés que en el filtro de
+    documentos de fiestas, donde la provincia se descartó como aval por dejar
+    entrar el material de la capital. La diferencia es qué se juega cada uno: allí
+    un documento de más solo gasta contexto, aquí un patrón equivocado se queda en
+    la caché y envenena las consultas de todas las ejecuciones siguientes.
+    """
+    aguja = normalizar_texto(f"{texto} {url}")
+    for pista in (municipio.get("nombre", ""), municipio.get("provincia", "")):
+        pista = normalizar_texto(pista or "").strip()
+        if pista and pista in aguja:
+            return True
+    return False
+
+
 def _ventanas_relevantes(texto: str, nombre_localidad: str, radio: int = 300, max_total: int = 6000) -> str:
     """Recorta ventanas alrededor de menciones de 'patrón/patronales' que citen la localidad."""
     ventanas = []
@@ -537,11 +784,28 @@ async def _buscar_en_web(session: aiohttp.ClientSession, localidad: dict, munici
                     urls.append(url)
 
     if urls:
-        tareas = [_fetch_page_content(session, u) for u in urls[:PATRON_MAX_URLS]]
+        seguidas = urls[:PATRON_MAX_URLS]
+        tareas = [_fetch_page_content(session, u) for u in seguidas]
         contenidos = await asyncio.gather(*tareas, return_exceptions=True)
-        for contenido in contenidos:
-            if isinstance(contenido, str) and contenido.strip():
-                texto += "\n" + _ventanas_relevantes(contenido, nombre_loc)
+        for url, resultado in zip(seguidas, contenidos):
+            # _fetch_page_content devuelve ahora (texto, pdfs_enlazados)
+            if isinstance(resultado, BaseException) or not isinstance(resultado, tuple):
+                continue
+            contenido, _pdfs = resultado
+            if not (contenido and contenido.strip()):
+                continue
+            # La página entera tiene que estar anclada a nuestro sitio, no solo
+            # nombrar al pueblo. Con nombres corrientes eso no filtra nada:
+            # medido el 2026-08-25, a la pedanía "Sierra" de Tobarra le entró la
+            # página de una hermandad sevillana porque decía "sierra", y se le
+            # guardó como patrón «Santísimo Cristo del Consuelo\nSevilla».
+            if not _pagina_anclada_al_municipio(contenido, url, municipio):
+                logger.info(
+                    f"  [PATRON] {nombre_loc}: se descarta '{url[:70]}'; no nombra a "
+                    f"{municipio.get('nombre')} ni a su provincia."
+                )
+                continue
+            texto += "\n" + _ventanas_relevantes(contenido, nombre_loc)
 
     return texto
 
@@ -591,47 +855,98 @@ async def obtener_patron(localidad: dict, municipio: dict) -> dict | None:
     lugar_id = localidad["id"]
     cacheado = await _cache.get(lugar_id)
     if cacheado is not _CACHE_MISS:
-        return cacheado
+        # Lo guardado antes de que existieran estas comprobaciones puede ser
+        # basura: en la caché del 2026-08-25 había "Stmo" (el Cristo de Tobarra
+        # decapitado en el punto de la abreviatura), "Santiago de Mora 2026" (el
+        # nombre del pueblo con el año) y "Santísimo Cristo del Consuelo\nSevilla"
+        # (una hermandad sevillana). Se vuelve a resolver en vez de arrastrarlo.
+        if cacheado is None or nombre_de_patron_creible(
+            cacheado.get("nombre", ""), localidad.get("nombre", ""), municipio.get("nombre", "")
+        ):
+            return cacheado
+        logger.info(
+            f"  [PATRON] {localidad.get('nombre')}: se tira lo cacheado "
+            f"({cacheado.get('nombre')!r}) y se vuelve a buscar."
+        )
 
     resultado = None
     fuente = None
+    # De dónde salió el patrón. "localidad" = de una fuente que trata de ESTE
+    # pueblo; "municipio" = heredado del artículo del municipio, que es una
+    # conjetura. Solo el primero sirve para descartar fiestas por el patrón: es
+    # la diferencia entre saber el patrón del pueblo y suponerlo.
+    ambito = "municipio"
     textos_acumulados = []
+
+    # El núcleo que da nombre al municipio sí está descrito por el artículo del
+    # municipio: para él no hay herencia que valga, es su propio artículo.
+    es_nucleo_principal = bool(
+        localidad.get("es_capital")
+        or _clave_toponimo(localidad["nombre"]) == _clave_toponimo(municipio.get("nombre", ""))
+    )
 
     headers = {"User-Agent": USER_AGENT, "Accept-Language": "es-ES,es;q=0.9"}
     connector = aiohttp.TCPConnector(limit=3, ssl=False)
 
     try:
         async with aiohttp.ClientSession(headers=headers, connector=connector) as session:
-            # Fuente 1: Wikipedia (localidad, luego municipio)
+            # Fuente 1: Wikipedia. Se prueba primero el artículo propio de la
+            # localidad y solo después el del municipio, y se anota cuál de los
+            # dos dio el resultado.
             urls_wiki = []
-            for lugar in (localidad, municipio):
-                url = (lugar.get("wikipedia_url") or "").strip()
-                if url and url not in urls_wiki:
-                    urls_wiki.append(url)
+            url_loc = (localidad.get("wikipedia_url") or "").strip()
+            if url_loc and _wiki_es_de_la_localidad(url_loc, localidad["nombre"]):
+                urls_wiki.append((url_loc, "localidad"))
+            elif url_loc:
+                logger.info(
+                    f"  [PATRON] {localidad['nombre']}: se descarta '{url_loc}', "
+                    f"el artículo no es de esta localidad."
+                )
+            # El artículo del municipio SOLO se lee para el núcleo que le da
+            # nombre, porque entonces es su propio artículo. Para una pedanía no
+            # se toca: el patrón de la villa no es el suyo, y heredarlo era la
+            # causa de que siete de nueve localidades de Amurrio saliesen con
+            # "San Roque". Si su artículo no dice nada, se pasa a buscadores.
+            url_mun = (municipio.get("wikipedia_url") or "").strip()
+            if es_nucleo_principal and url_mun and url_mun not in [u for u, _ in urls_wiki]:
+                urls_wiki.append((url_mun, "localidad"))
 
-            for url in urls_wiki:
+            # Todo lo que hay en `urls_wiki` es, a estas alturas, un artículo de
+            # la propia localidad: o el suyo verificado, o el del municipio
+            # cuando la localidad ES el municipio.
+            for url, _ in urls_wiki:
                 filas, texto = await _descargar_wikipedia(session, url)
                 textos_acumulados.append(texto)
                 resultado = _extraer_de_infobox(filas) or extraer_patron_de_texto(texto)
+                resultado = _validar_patron(resultado, localidad, municipio, "wikipedia")
                 if resultado:
                     fuente = "wikipedia"
+                    ambito = "localidad"
                     break
 
-            # Fuente 2: buscadores
+            # Fuente 2: buscadores. `_buscar_en_web` ya filtra los snippets a los
+            # que nombran a la localidad, así que lo que salga de ahí es suyo.
             if not resultado:
                 texto_web = await _buscar_en_web(session, localidad, municipio)
                 textos_acumulados.append(texto_web)
                 resultado = extraer_patron_de_texto(texto_web)
+                resultado = _validar_patron(resultado, localidad, municipio, "busqueda")
                 if resultado:
                     fuente = "busqueda"
+                    ambito = "localidad"
 
-        # Fuente 3 (fallback): LLM sobre todo lo acumulado
+        # Fuente 3 (fallback): LLM sobre todo lo acumulado. Desde que el artículo
+        # del municipio ya no se lee para las pedanías, todo lo acumulado aquí es
+        # de la propia localidad —su artículo y los snippets filtrados por su
+        # nombre—, así que lo que salga es suyo y no una herencia.
         if not resultado:
             texto_total = "\n".join(t for t in textos_acumulados if t).strip()
             if texto_total:
                 resultado = await _extraer_con_llm(texto_total, localidad)
+                resultado = _validar_patron(resultado, localidad, municipio, "llm")
                 if resultado:
                     fuente = "llm"
+                    ambito = "localidad"
 
     except Exception as e:
         logger.warning(f"  [PATRON] Error buscando patrón de {localidad['nombre']}: {e}")
@@ -647,13 +962,16 @@ async def obtener_patron(localidad: dict, municipio: dict) -> dict | None:
         # No dejar el nombre vacío o sin sentido (p. ej. "Virgen del Mironcillo" → "Virgen")
         if len(recortado) >= 4 and _canonicalizar_nombre(recortado) not in {"virgen", "cristo", "santo", "santa", "san"}:
             resultado["nombre"] = recortado
+        # Y quitar la cola de titular que arrastra la ruta de buscadores.
+        resultado["nombre"] = capitalizar_advocacion(recortar_coletilla_del_santo(resultado["nombre"]))
 
-    final = _resolver_fecha(resultado, fuente) if resultado else None
+    final = _resolver_fecha(resultado, fuente, ambito) if resultado else None
     if final:
         fecha_txt = f"{final['dia']} de {_NOMBRE_MES[final['mes']]}" if final["mes"] else "fecha desconocida"
+        sello = "propio" if final["ambito"] == "localidad" else "HEREDADO del municipio"
         logger.info(
             f"  [PATRON] {localidad['nombre']}: {final['nombre']} ({fecha_txt}) "
-            f"[{final['fuente']}, confianza {final['confianza']}]"
+            f"[{final['fuente']}, confianza {final['confianza']}, {sello}]"
         )
     else:
         logger.info(f"  [PATRON] No se encontró patrón para {localidad['nombre']}.")
@@ -716,15 +1034,27 @@ def crear_fiesta_estimada(patron: dict, fecha: date, localidad: dict) -> dict:
 
 def integrar_patron(fiestas: list[dict], patron: dict | None, anno: int, localidad: dict) -> list[dict]:
     """
-    Marca las fiestas que incluyen el día del patrón y, si ninguna lo cubre
-    (incluido el caso de 0 fiestas), añade el registro estimado.
+    Marca las fiestas que incluyen el día del patrón y, si NINGUNA ficha es ya la
+    fiesta de ese patrón, añade el registro estimado.
+
+    "Ser la fiesta del patrón" no es lo mismo que "caer en el día del patrón".
+    Cuando se confundían las dos cosas, cualquier pueblo que traslade sus
+    patronales salía con la fiesta dos veces: el 2026-08-26 Tobarra llevaba su
+    Cristo de la Antigua del 9 al 17 de agosto —extraído, con programa— y encima
+    un "Fiestas de Stmo. Cristo de la Antigua (estimada)" el 14 de septiembre,
+    que es el mismo Cristo. Igual en Sierra con San Francisco. La estimación
+    existe para el pueblo del que no se ha encontrado NADA, no para duplicar lo
+    que ya se encontró.
     """
     fecha = fecha_del_patron(patron, anno)
     if not fecha:
         return fiestas
 
+    from llm_processor.text_analyzer import es_la_fiesta_del_patron
+
     fecha_iso = fecha.isoformat()
     cubierto = False
+    ya_esta = False
     for f in fiestas:
         if f.get("fecha_inicio", "") <= fecha_iso <= f.get("fecha_fin", ""):
             f["incluye_dia_patron"] = True
@@ -735,8 +1065,22 @@ def integrar_patron(fiestas: list[dict], patron: dict | None, anno: int, localid
                 "fuente": patron.get("fuente"),
             }
             cubierto = True
+        if f.get("origen") != "santo_patron" and es_la_fiesta_del_patron(f, patron, fecha):
+            ya_esta = True
+            f.setdefault("patron", {
+                "nombre": patron["nombre"],
+                "dia": patron["dia"],
+                "mes": patron["mes"],
+                "fuente": patron.get("fuente"),
+            })
 
-    if not cubierto:
+    if not cubierto and ya_esta:
+        logger.info(
+            f"  [PATRON] {localidad['nombre']}: el día de {patron['nombre']} ({fecha_iso}) "
+            f"no cae dentro de ninguna ficha, pero la fiesta del patrón ya está extraída "
+            f"(trasladada). No se estima nada."
+        )
+    elif not cubierto:
         fiestas.append(crear_fiesta_estimada(patron, fecha, localidad))
         logger.info(
             f"  [PATRON] Añadida fiesta estimada de {patron['nombre']} ({fecha_iso}) "

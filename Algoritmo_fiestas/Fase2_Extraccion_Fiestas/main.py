@@ -20,9 +20,18 @@ from scraper.google_search import search_locality_web, search_locality_media, ge
 from scraper.social_content import cargar_documentos_rrss, invalidar_cache as invalidar_cache_rrss
 from scraper.social_finder import registrar_perfiles_web
 from scraper.rrss_client import RRSSClient
-from llm_processor.text_analyzer import AsyncRAGProcessor, analyze_festivals_for_locality, analyze_festivals_multipass
+from llm_processor.text_analyzer import (
+    AsyncRAGProcessor,
+    analyze_festivals_for_locality,
+    analyze_festivals_multipass,
+    limpiar_actos_compartidos_del_municipio,
+)
 from llm_processor.patron_finder import obtener_patron, integrar_patron, fecha_del_patron
-from fuentes import FUENTE_WEB_LOCALIDAD, FUENTE_WEB_MUNICIPIO, fuente_base, es_fuente_oficial
+from fuentes import (
+    FUENTE_WEB_LOCALIDAD, FUENTE_WEB_MUNICIPIO, FUENTE_HISTORICO,
+    fuente_base, es_fuente_oficial, misma_web, web_es_de_este_lugar,
+)
+from higiene_documentos import limpiar_documentos
 from config_idiomas import get_language_profile
 from config import (
     PARALLEL_MUNICIPALITIES,
@@ -127,6 +136,8 @@ async def process_locality(
     rrss_client: RRSSClient | None,
     logger: logging.Logger,
     docs_municipio_cache: list[dict] | None = None,
+    nombres_hermanas: list[str] = None,
+    fiestas_capital: list[dict] | None = None,
 ) -> list[dict]:
     """
     Pipeline completo para una localidad, en orden de fiabilidad de fuentes:
@@ -156,8 +167,22 @@ async def process_locality(
 
     sitio_mun = municipio.get("sitio_web", "").strip()
     sitio_loc = localidad.get("sitio_web", "").strip()
-    # La web de la localidad solo cuenta si NO está vacía y es distinta de la del padre
-    loc_tiene_web_propia = bool(sitio_loc) and sitio_loc.rstrip("/") != sitio_mun.rstrip("/")
+    # La web de la localidad solo cuenta si NO está vacía y es distinta de la del
+    # padre. La comparación normaliza esquema, "www." y barra final: si no, la
+    # misma web escrita de dos formas se rastrea dos veces.
+    loc_tiene_web_propia = bool(sitio_loc) and not misma_web(sitio_loc, sitio_mun)
+    # …y solo si el dominio es de este pueblo o de su municipio. Fase 1 asigna a
+    # muchas pedanías la web de otro sitio —de la capital de provincia, de un
+    # partido, de una televisión—, y rastrearla mete material de otro pueblo.
+    if loc_tiene_web_propia and not web_es_de_este_lugar(
+        sitio_loc, localidad.get("nombre", ""), municipio.get("nombre", "")
+    ):
+        logger.warning(
+            f"    [!] La web de {localidad['nombre']} ({sitio_loc}) no es de esta "
+            f"localidad ni de {municipio.get('nombre', '')}; no se rastrea. "
+            f"Conviene corregirlo en Fase 1."
+        )
+        loc_tiene_web_propia = False
 
     # Guardar referencia a los spiders para extraer social_links
     spider_loc = None
@@ -207,16 +232,32 @@ async def process_locality(
         documentos += await search_locality_media(localidad, municipio, anno, visited_urls)
 
     # 5. Búsqueda browser (la menos fiable; no relee URLs de los pasos anteriores)
-    logger.info(f"    --> [5/5] Búsqueda en buscadores...")
-    documentos += await search_locality_web(localidad, municipio, anno, visited_urls)
-
-    # El patrón ya debería estar resuelto (corría en paralelo con el scraping)
+    # El patrón se resuelve ANTES de buscar, para poder buscar por su nombre. Es
+    # lo que identifica una fiesta patronal, y sin él la encontrábamos solo si
+    # aparecía por casualidad en los snippets de ese día. La tarea lleva corriendo
+    # desde el paso 0, así que casi siempre está lista y no cuesta espera.
     patron = await _esperar_patron()
+    if patron and patron.get("nombre"):
+        localidad = dict(localidad, patron_nombre=patron["nombre"])
+
+    logger.info(f"    --> [5/5] Búsqueda en buscadores...")
+    docs_busqueda = await search_locality_web(localidad, municipio, anno, visited_urls)
+        
+    documentos += docs_busqueda
+
     fecha_patron = fecha_del_patron(patron, anno)
 
     documentos = [d for d in documentos if (d.get("texto") or "").strip()]
     if not documentos:
         logger.warning(f"    [!] No se extrajo ningún texto para {localidad['nombre']}.")
+        return integrar_patron([], patron, anno, localidad)
+
+    # Higiene: duplicados, tablas de cifras y boilerplate del gestor de contenidos.
+    # Se hace ANTES de trocear para que el presupuesto de contexto no se gaste en
+    # copias literales del mismo documento.
+    documentos, _metricas_higiene = limpiar_documentos(documentos, etiqueta=localidad["nombre"])
+    if not documentos:
+        logger.warning(f"    [!] La higiene descartó todos los documentos de {localidad['nombre']}.")
         return integrar_patron([], patron, anno, localidad)
 
     # Métrica: documentos por fuente
@@ -236,7 +277,9 @@ async def process_locality(
         fecha_patron=fecha_patron,
         rag_processor=rag_processor,
         logger=logger,
-        analyzer_fn=analyze_festivals_for_locality,
+        nombres_hermanas=nombres_hermanas,
+        fiestas_capital=fiestas_capital,
+        patron=patron,
     )
 
     # Marcar fiestas que incluyen el día del patrón / añadir estimada si no está cubierto
@@ -296,21 +339,44 @@ async def process_municipio(
         await registrar_perfiles_web(municipio, spider_mun.social_links)
         logger.info(f"  [PRECRAWL] {len(docs_municipio_cache)} docs municipales en caché")
 
+    fiestas_capital: list[dict] = []
     for j, loc in enumerate(todas_localidades):
         if loc["id"] in locs_completadas:
             logger.info(f"  [{j + 1}/{len(todas_localidades)}] {loc['nombre']} (Omitiendo, ya procesada temporalmente)")
             continue
             
         logger.info(f"  [{j + 1}/{len(todas_localidades)}] {loc['nombre']}")
+        nombres_hermanas = [
+            hermana["nombre"]
+            for hermana in todas_localidades
+            if hermana["id"] != loc["id"] and not hermana.get("es_capital")
+        ]
         try:
             fiestas_loc = await process_locality(
-                loc, municipio, anno, rag_processor, rrss_client, logger, docs_municipio_cache=docs_municipio_cache
+                loc, municipio, anno, rag_processor, rrss_client, logger,
+                docs_municipio_cache=docs_municipio_cache,
+                nombres_hermanas=nombres_hermanas,
+                fiestas_capital=fiestas_capital,
             )
+            # El nucleo principal se procesa el primero (todas_localidades =
+            # capitales + otros), asi que sus fiestas ya estan disponibles cuando
+            # les toca a las pedanias y sirven de referencia anti-copia.
+            if loc.get("es_capital"):
+                fiestas_capital = list(fiestas_loc)
             fiestas_municipio.extend(fiestas_loc)
             # Volcado temporal tras finalizar esta localidad
             await state_mgr.guardar_estado_localidad(fiestas_loc, loc["id"])
         except Exception as e:
             logger.error(f"  [ERROR] Fallo procesando {loc['nombre']}: {e}")
+
+    # Barrido final: el acto que sale en varios pueblos del municipio no puede
+    # ser de todos. Solo se puede ver aquí, con todas las localidades hechas, y
+    # atrapa lo que la comparación contra la capital no ve cuando la capital se
+    # ha extraído a medias. Modifica los mismos dicts que guarda el estado.
+    capital = next((l for l in todas_localidades if l.get("es_capital")), None)
+    limpiar_actos_compartidos_del_municipio(
+        fiestas_municipio, capital["id"] if capital else None
+    )
 
     # Guardar progreso al finalizar el municipio completo
     # Se pasa lista vacía de fiestas porque ya se han guardado todas progresivamente
@@ -440,6 +506,31 @@ async def async_main():
     logger.info(f"  FASE 2: EXTRACCIÓN DE FIESTAS ({args.anno})")
     from config import LMSTUDIO_CHAT_MODEL
     logger.info(f"  Modelo: {LMSTUDIO_CHAT_MODEL} | Paralelismo: {args.parallel} municipios")
+
+    # Presupuesto de contexto real del modelo cargado en LM Studio.
+    try:
+        from context_budget import get_model_info, resumen_presupuesto, RESERVA_SALIDA_DISCOVERY
+        from llm_processor.text_analyzer import DISCOVERY_MAX_CHARS
+        info = get_model_info()
+        r = resumen_presupuesto("x" * 4800, RESERVA_SALIDA_DISCOVERY)  # system prompt típico
+        origen = "detectado" if info["detectado"] else "FALLBACK (LM Studio no respondió)"
+        logger.info(
+            f"  Contexto: n_ctx={info['n_ctx']} ({origen})"
+            + (f", máximo del modelo={info['max_context_length']}" if info.get("max_context_length") else "")
+        )
+        logger.info(
+            f"  Presupuesto disponible ≈ {r['presupuesto_contexto_tokens']} tok "
+            f"(~{r['presupuesto_contexto_chars_aprox']} chars) | "
+            f"hoy se usan {DISCOVERY_MAX_CHARS} chars en discovery "
+            f"= {100 * DISCOVERY_MAX_CHARS / max(1, r['presupuesto_contexto_chars_aprox']):.0f}% del presupuesto"
+        )
+        logger.info(
+            f"  Conteo de tokens: {'tokenizador exacto' if r['tokenizador_exacto'] else 'ratio autocalibrado'} "
+            f"({r['ratio_chars_token']} chars/token)"
+        )
+    except Exception as e:
+        logger.warning(f"  No se pudo calcular el presupuesto de contexto: {e}")
+
     logger.info(f"{'=' * 60}")
 
     if not os.path.exists(args.input):

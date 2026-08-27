@@ -1,0 +1,445 @@
+{
+  "metricas": {
+    "etapa": "enrichment",
+    "municipio": "Tobarra",
+    "localidad": "Cordovilla__fiestas patronales de san diego de alcal",
+    "candidatos": 18,
+    "seleccionados": 18,
+    "documentos_distintos": 6,
+    "chunks_duplicados": 0,
+    "chars_contexto": 20301,
+    "chars_unicos": 19000,
+    "pct_unico": 100.0,
+    "tokens_contexto": 6744,
+    "top_documentos": [
+      [
+        "buscadores:snippets",
+        9
+      ],
+      [
+        "https://elfarodehellin.com/cordovilla-se-prepara-para-celebrar-sus-fiestas-en-honor-a-san-diego-de-alcala-del-13-al-16-de-noviembre/",
+        4
+      ],
+      [
+        "https://cordovillaribera.wordpress.com/fiestas/",
+        2
+      ],
+      [
+        "https://orkestas.es/fiestas/cordovilla-cordovilla",
+        1
+      ],
+      [
+        "https://www.facebook.com/asociaciondecordovilla/posts/-fiestas-patronales-de-cordovilla-2025-en-honor-a-san-diego-de-alcal%C3%A1-nuestras-f/1258776216292836/",
+        1
+      ],
+      [
+        "https://www.villadefunes.com/docs/ACTUALIDAD/PROGRAMA_FUNES_2026_DEFI_(2).pdf",
+        1
+      ]
+    ],
+    "presupuesto": {
+      "presupuesto_chars": 32000
+    },
+    "fiesta": "Fiestas Patronales de San Diego de Alcalá",
+    "dias_consultados": 4,
+    "dias_sin_presupuesto": 0
+  },
+  "chunks": [
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.7767,
+      "score_detalle": {
+        "similitud": 0.6487,
+        "spider": 0.5,
+        "programa": 1.0,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1048,
+      "tokens": 360,
+      "hash": "f8608d62bf00",
+      "seleccionado": true,
+      "muestra": "TITULO: Instagram | CONTENIDO: 🎉Programacompleto de lasFiestasde Verano deCordovilla2026🎉 Actividades para todas las edades, pensando en que cada vecino encuentre su momento para d"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.7158,
+      "score_detalle": {
+        "similitud": 1.0,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1144,
+      "tokens": 379,
+      "hash": "94f44bdb19c6",
+      "seleccionado": true,
+      "muestra": "TITULO: Programa de las Fiestas de Cordovilla en honor a San Diego de Alcalá ... | CONTENIDO: La pedanía tobarreñadeCordovillacelebrará del 13 al 16denoviembre sus tradicionalesFie"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6903,
+      "score_detalle": {
+        "similitud": 0.9126,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1091,
+      "tokens": 358,
+      "hash": "106062daa4b4",
+      "seleccionado": true,
+      "muestra": "TITULO: Instagram | CONTENIDO: Con este día tan especial, ¡damos comienzo oficialmente a nuestrasFiestasPatronales! 🥳 Además, aprovechamos para anunciar que ya están a la venta los"
+    },
+    {
+      "url": "https://elfarodehellin.com/cordovilla-se-prepara-para-celebrar-sus-fiestas-en-honor-a-san-diego-de-alcala-del-13-al-16-de-noviembre/",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6885,
+      "score_detalle": {
+        "similitud": 0.9836,
+        "spider": 0.5,
+        "programa": 0.132,
+        "temporal": 0.0,
+        "extra": 0.7
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1183,
+      "tokens": 364,
+      "hash": "2bd92713b30e",
+      "seleccionado": true,
+      "muestra": "Programa de las Fiestas de Cordovilla en honor a San Diego de Alcalá, del 13 al 16 de noviembre ⏎ By ⏎ El Faro de Hellín ⏎ 13 noviembre, 2025 ⏎ Cuota ⏎ Facebook ⏎ X ⏎ WhatsApp ⏎ Foto / cordovillar"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6577,
+      "score_detalle": {
+        "similitud": 0.9722,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1139,
+      "tokens": 391,
+      "hash": "01e6015f0958",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas Patronales de... - Asociación Vecinos de ... - Facebook | CONTENIDO: 🎉FiestasPatronalesdeCordovilla2025 🎉 En honor aSanDiegodeAlcalá, nuestrasfiestaspatronalesse ce"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6346,
+      "score_detalle": {
+        "similitud": 0.8014,
+        "spider": 0.5,
+        "programa": 0.2,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 939,
+      "tokens": 303,
+      "hash": "5ffaeef5a5a5",
+      "seleccionado": true,
+      "muestra": "TITULO: CORDOVILLA (Albacete) - Pueblos de España | CONTENIDO: Fiestas: lasfiestasson en Noviembre. su patron esSanDiegodeAlcalá, que es el día 12. ⏎ TITULO: Fiestas de San Diego | C"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6313,
+      "score_detalle": {
+        "similitud": 0.7102,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1167,
+      "tokens": 358,
+      "hash": "ca99b7f9e19b",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas de Cordovilla. Programa. - Besana Villoria | CONTENIDO: PrevioFiestasde Villoruela.ProgramaSiguiente Ya tenemos pregoneros para lasfiestas. ⏎ TITULO: Calendario Labor"
+    },
+    {
+      "url": "https://elfarodehellin.com/cordovilla-se-prepara-para-celebrar-sus-fiestas-en-honor-a-san-diego-de-alcala-del-13-al-16-de-noviembre/",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6267,
+      "score_detalle": {
+        "similitud": 0.7743,
+        "spider": 0.5,
+        "programa": 0.2,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1146,
+      "tokens": 361,
+      "hash": "b612a31037bc",
+      "seleccionado": true,
+      "muestra": "Programa de las Fiestas de Cordovilla en honor a San Diego de Alcalá, del 13 al 16 de noviembre | El Faro de Hellín ⏎ Facebook ⏎ Instagram ⏎ X ⏎ Vimeo ⏎ Youtube ⏎ Registrarse ⏎ Política ⏎ Deportes"
+    },
+    {
+      "url": "https://cordovillaribera.wordpress.com/fiestas/",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.614,
+      "score_detalle": {
+        "similitud": 0.5024,
+        "spider": 0.5,
+        "programa": 0.2,
+        "temporal": 0.5,
+        "extra": 0.7
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 980,
+      "tokens": 315,
+      "hash": "a56d4688a75d",
+      "seleccionado": true,
+      "muestra": "San Diego nació el 14 de noviembre de 1.400 en San Nicolás del Puerto (Sevilla) y falleció el 13 de noviembre de 1.463 en Alcalá de Henares (Madrid). Fue canonizado por el Papa Six"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.5845,
+      "score_detalle": {
+        "similitud": 0.5496,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1174,
+      "tokens": 341,
+      "hash": "e14bcdcc618e",
+      "seleccionado": true,
+      "muestra": "TITULO: Exposición \"Carteles Feria 2026\" | Albacete | CONTENIDO: El Ayuntamiento deAlbaceteinvita a toda la ciudadanía a descubrir la exposición de los Carteles de la Feria2026, un"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.5729,
+      "score_detalle": {
+        "similitud": 0.5899,
+        "spider": 0.5,
+        "programa": 0.2,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1083,
+      "tokens": 332,
+      "hash": "ddfe3ea9912e",
+      "seleccionado": true,
+      "muestra": "TITULO: PDFDisposición 21667 del BOE núm. 259 de 2025 | CONTENIDO: Disponer la publicación en el «Boletín Oficial del Estado» de la relación defiestaslaborales para el año2026de ám"
+    },
+    {
+      "url": "https://elfarodehellin.com/cordovilla-se-prepara-para-celebrar-sus-fiestas-en-honor-a-san-diego-de-alcala-del-13-al-16-de-noviembre/",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.5677,
+      "score_detalle": {
+        "similitud": 0.4922,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1105,
+      "tokens": 415,
+      "hash": "e6073058952c",
+      "seleccionado": true,
+      "muestra": "Un coche arde en la calle Feria y alarma a los vecinos de Hellín ⏎ 22 agosto, 2026 ⏎ Sucesos ⏎ La Sociedad de Pescadores alerta de restos de animales en descomposición en el Talave ⏎ 21 ag"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.5665,
+      "score_detalle": {
+        "similitud": 0.5681,
+        "spider": 0.5,
+        "programa": 0.2,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1064,
+      "tokens": 335,
+      "hash": "3be918ce61a3",
+      "seleccionado": true,
+      "muestra": "TITULO: Resolución de 6 de octubre de 2025, de la Dirección General de Trabajo ... | CONTENIDO: En el anexo de la presente resolución se incluye la relación defiestasacordadas por "
+    },
+    {
+      "url": "https://orkestas.es/fiestas/cordovilla-cordovilla",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.5646,
+      "score_detalle": {
+        "similitud": 0.4816,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 441,
+      "tokens": 162,
+      "hash": "3870c7f9044a",
+      "seleccionado": true,
+      "muestra": "OR ⏎ K ⏎ ESTAS ⏎ Explorar ⏎ Inicio ⏎ Rankings ⏎ Premios ⏎ Orquestas ⏎ Componentes ⏎ Fiestas ⏎ Actuaciones ⏎ Agencias ⏎ Anuncios ⏎ Cordovilla en Cordovilla | Cartel de Orquestas | Orkestas ⏎ OR ⏎ K ⏎ ESTAS ⏎ Explora"
+    },
+    {
+      "url": "https://elfarodehellin.com/cordovilla-se-prepara-para-celebrar-sus-fiestas-en-honor-a-san-diego-de-alcala-del-13-al-16-de-noviembre/",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.543,
+      "score_detalle": {
+        "similitud": 0.7504,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 0.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1896,
+      "tokens": 644,
+      "hash": "96e7400a20d8",
+      "seleccionado": true,
+      "muestra": "Agrupación Musical Santa Mujer Verónica de Tobarra ⏎ . Ya por la tarde, se celebrará el campeonato de fútbol, amenizado por ⏎ DJ Mármol Sound ⏎ , mientras que la música en directo llegar"
+    },
+    {
+      "url": "https://www.facebook.com/asociaciondecordovilla/posts/-fiestas-patronales-de-cordovilla-2025-en-honor-a-san-diego-de-alcal%C3%A1-nuestras-f/1258776216292836/",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.5182,
+      "score_detalle": {
+        "similitud": 0.5738,
+        "spider": 0.5,
+        "programa": 0.2,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 61,
+      "tokens": 18,
+      "hash": "de318f681bc4",
+      "seleccionado": true,
+      "muestra": "🎉 Fiestas Patronales de... ⏎ - Asociación Vecinos de Cordovilla"
+    },
+    {
+      "url": "https://www.villadefunes.com/docs/ACTUALIDAD/PROGRAMA_FUNES_2026_DEFI_(2).pdf",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.5178,
+      "score_detalle": {
+        "similitud": 0.4009,
+        "spider": 0.5,
+        "programa": 0.2,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1175,
+      "tokens": 465,
+      "hash": "fb84d7b4b5ac",
+      "seleccionado": true,
+      "muestra": "niel seguirá disfrutando de La Corporación Infantil en los porches del Ayuntamiento ⏎ su gran pasión: el fútbol. Un ⏎ ## Columna 2 de 4 ⏎ C O RPORACI Ó N INFANTIL ⏎ Un alcalde futbolero ⏎ do"
+    },
+    {
+      "url": "https://cordovillaribera.wordpress.com/fiestas/",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.4488,
+      "score_detalle": {
+        "similitud": 0.5954,
+        "spider": 0.5,
+        "programa": 0.09,
+        "temporal": 0.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1164,
+      "tokens": 386,
+      "hash": "5372e0eb1ffb",
+      "seleccionado": true,
+      "muestra": "FIESTAS | cordovillaribera ⏎ Inicio ⏎ COMO LLEGAR ⏎ ESCAPADAS ⏎ FIESTAS ⏎ GASTRONOMÍA ⏎ LA MUJER EN CORDOVILLA ⏎ LUGARES DE INTERES ⏎ OFICIOS ANTIGUOS DE CORDOVILLA ⏎ cordovillaribera ⏎ FIESTAS ⏎ Ermita"
+    }
+  ]
+}

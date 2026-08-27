@@ -1,0 +1,379 @@
+{
+  "metricas": {
+    "etapa": "enrichment",
+    "municipio": "Tobarra",
+    "localidad": "Sierra__fiestas de sierra ",
+    "candidatos": 15,
+    "seleccionados": 16,
+    "documentos_distintos": 6,
+    "chunks_duplicados": 0,
+    "chars_contexto": 17558,
+    "chars_unicos": 18835,
+    "pct_unico": 100.0,
+    "tokens_contexto": 5837,
+    "top_documentos": [
+      [
+        "buscadores:snippets",
+        8
+      ],
+      [
+        "https://www.comarcamonastrell.com/fiestas-de-sierra-2026-musica-tradicion-y-actividades-para-todos-los-publicos/",
+        3
+      ],
+      [
+        "https://sierramusical.es/wp-content/uploads/2026/06/CONCIERTO-11-DE-JULIO-MORALZARZAL.pdf",
+        2
+      ],
+      [
+        "https://www.facebook.com/p/Fiestas-Sierra-verano-2023-100094381898088/",
+        1
+      ],
+      [
+        "https://sierramusical.es/wp-content/uploads/2026/06/CONCIERTO-4-DE-JULIO-LOS-MOLINOS.pdf",
+        1
+      ],
+      [
+        "https://www.diariodecadiz.es/noticias-provincia-cadiz/sierrasur-completa-cartel-fechas-artistas_0_2007610032.html",
+        1
+      ]
+    ],
+    "presupuesto": {
+      "presupuesto_chars": 32000
+    },
+    "fiesta": "Fiestas de Sierra 2026",
+    "dias_consultados": 4,
+    "dias_sin_presupuesto": 0
+  },
+  "chunks": [
+    {
+      "url": "https://www.comarcamonastrell.com/fiestas-de-sierra-2026-musica-tradicion-y-actividades-para-todos-los-publicos/",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.8642,
+      "score_detalle": {
+        "similitud": 0.8253,
+        "spider": 0.5,
+        "programa": 0.44,
+        "temporal": 1.0,
+        "extra": 1.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1192,
+      "tokens": 380,
+      "hash": "2888118ae3e6",
+      "seleccionado": true,
+      "muestra": "Fiestas de Sierra 2026: música, tradición y actividades para todos los públicos | Comarca Monastrell ⏎ Envelope ⏎ Facebook ⏎ Instagram ⏎ Actualidad ⏎ Municipios ⏎ Albatana ⏎ Fuente Álamo ⏎ Hellín ⏎ "
+    },
+    {
+      "url": "https://www.comarcamonastrell.com/fiestas-de-sierra-2026-musica-tradicion-y-actividades-para-todos-los-publicos/",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.8461,
+      "score_detalle": {
+        "similitud": 0.8752,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 1.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1103,
+      "tokens": 332,
+      "hash": "4e062c4af24d",
+      "seleccionado": true,
+      "muestra": "parque de Sierra ⏎ , epicentro de unas fiestas que volverán a reunir a numerosas personas en torno a una programación repleta de propuestas. ⏎ Música y ambiente festivo durante todo el"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.7528,
+      "score_detalle": {
+        "similitud": 0.9553,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.3
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1135,
+      "tokens": 382,
+      "hash": "791c472f9000",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas Sierra Verano 2026 - Facebook | CONTENIDO: Nos esperan díasdemúsica, tradición y diversión: fiesta asegurada, actividades infantiles, desfiledecarrozas, juegos, DJs"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.752,
+      "score_detalle": {
+        "similitud": 0.8405,
+        "spider": 0.5,
+        "programa": 0.44,
+        "temporal": 1.0,
+        "extra": 0.3
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1126,
+      "tokens": 386,
+      "hash": "56fb5067d0ce",
+      "seleccionado": true,
+      "muestra": "TITULO: Programa fiestas patronales San Roque 2026 | CONTENIDO: ¡Ven y disfruta del pop-rock con nuestro artista sorpresa! Si te sabes las canciones, este es tu momento para darlo "
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.741,
+      "score_detalle": {
+        "similitud": 0.9148,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.3
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 831,
+      "tokens": 263,
+      "hash": "f8125b047472",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas de Sierra 2026: música, tradición y actividades para todos los ... | CONTENIDO: Con esta programación, lasFiestasdeSierra2026se prepara para que la música, las trad"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.7224,
+      "score_detalle": {
+        "similitud": 0.6224,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.7
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1177,
+      "tokens": 454,
+      "hash": "3b6ea3cbec95",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas Patronales de Tobarra Verano 2026 - La Caseta, Camela, Mägo de ... | CONTENIDO: LasFiestasPatronalesdeTobarrade verano se celebran del 9 al 17 de agosto en La Caset"
+    },
+    {
+      "url": "https://www.comarcamonastrell.com/fiestas-de-sierra-2026-musica-tradicion-y-actividades-para-todos-los-publicos/",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.7172,
+      "score_detalle": {
+        "similitud": 0.8332,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.3
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1198,
+      "tokens": 341,
+      "hash": "cb7fcaac2537",
+      "seleccionado": true,
+      "muestra": "Las fiestas mantendrán también algunas de sus citas más tradicionales. Antes de la apertura de fiestas, el sábado 25 de julio se celebrará la ⏎ misa y ofrenda floral en honor a San F"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.7139,
+      "score_detalle": {
+        "similitud": 0.7693,
+        "spider": 0.5,
+        "programa": 0.58,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 971,
+      "tokens": 328,
+      "hash": "53e35b1c5e49",
+      "seleccionado": true,
+      "muestra": "TITULO: PROGRAMACIÓN FIESTAS PATRONALES 2026 - Miraflores de la Sierra | CONTENIDO: Del 13 al 18 de agosto, Miraflores de laSierracelebra susFiestasPatronalesen honor a la Asunción"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6875,
+      "score_detalle": {
+        "similitud": 0.9829,
+        "spider": 0.5,
+        "programa": 0.2,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 853,
+      "tokens": 302,
+      "hash": "f276271b74fe",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas Sierra Verano 2026 - Facebook | CONTENIDO: Nos esperan díasdemúsica, tradición y diversión:fiestaasegurada, actividades infantiles, desfiledecarrozas, juegos, DJs, "
+    },
+    {
+      "url": "https://www.facebook.com/p/Fiestas-Sierra-verano-2023-100094381898088/",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6692,
+      "score_detalle": {
+        "similitud": 1.0,
+        "spider": 0.5,
+        "programa": 0.1,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 26,
+      "tokens": 11,
+      "hash": "baf236c7b91b",
+      "seleccionado": true,
+      "muestra": "Fiestas Sierra Verano 2026"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6485,
+      "score_detalle": {
+        "similitud": 0.769,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 809,
+      "tokens": 258,
+      "hash": "4f117b25fa1e",
+      "seleccionado": true,
+      "muestra": "TITULO: PROGRAMACIÓN FIESTAS PATRONALES 2026 - Miraflores de la Sierra | CONTENIDO: Del 13 al 18 de agosto, Miraflores de laSierracelebra susFiestasPatronales en honor a la Asunció"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6472,
+      "score_detalle": {
+        "similitud": 0.8448,
+        "spider": 0.5,
+        "programa": 0.2,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 904,
+      "tokens": 326,
+      "hash": "c531cfb2837f",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas Sierra Verano 2026 - Facebook | CONTENIDO: 🎉 ¡Sierrase viste defiesta! 🎉 Del 30 dejulioal 2 de agosto, celebramos lasFiestasdeSierra2026en honor a San Francisco Jav"
+    },
+    {
+      "url": "https://sierramusical.es/wp-content/uploads/2026/06/CONCIERTO-11-DE-JULIO-MORALZARZAL.pdf",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.4998,
+      "score_detalle": {
+        "similitud": 0.3702,
+        "spider": 0.5,
+        "programa": 0.09,
+        "temporal": 0.0,
+        "extra": 0.7
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 2796,
+      "tokens": 1038,
+      "hash": "63d5d6c4ca5e",
+      "seleccionado": false,
+      "muestra": "## Columna 1 de 4 ⏎ ### Viernes 17 de julio, 20:00, GUADARRAMA, Centro C. La Torre ⏎ “Ecos de lo imposible” ⏎ Obras de: R. Peterson, José Luis Greco, Astor Piazzolla, David del Puerto y "
+    },
+    {
+      "url": "https://sierramusical.es/wp-content/uploads/2026/06/CONCIERTO-4-DE-JULIO-LOS-MOLINOS.pdf",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.4783,
+      "score_detalle": {
+        "similitud": 0.3571,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 2991,
+      "tokens": 1076,
+      "hash": "29cec2297278",
+      "seleccionado": true,
+      "muestra": "## Columna 1 de 4 ⏎ Sábado 11 de julio, 21:00, MORALZARZAL, Centro Cultural Orquesta de Cámara de España ⏎ “La belleza de lo sencillo” ⏎ Obras de: Bach, Lewis, Piazzolla, Umebayashi, Viv"
+    },
+    {
+      "url": "https://www.diariodecadiz.es/noticias-provincia-cadiz/sierrasur-completa-cartel-fechas-artistas_0_2007610032.html",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.4387,
+      "score_detalle": {
+        "similitud": 0.3814,
+        "spider": 0.5,
+        "programa": 0.1,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1051,
+      "tokens": 295,
+      "hash": "407acc68acf0",
+      "seleccionado": true,
+      "muestra": "Un momento del último SierraSur con numeroso público ⏎ / ⏎ SierraSur ⏎ El ⏎ SierraSur ya tiene todo su cartel completo para su cita del 10 y el 11 de octubre en Zahara de la Sierra. ⏎ Tras u"
+    }
+  ]
+}

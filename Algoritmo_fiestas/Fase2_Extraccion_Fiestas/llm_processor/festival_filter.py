@@ -322,3 +322,170 @@ def evaluar_fiesta(fiesta: dict, fecha_patron: date | None = None) -> tuple[bool
     if negativas:
         motivo += f" ({', '.join(negativas)})"
     return False, motivo, None
+
+
+# ──────────────────────────────────────────────────
+# FUSIÓN DE FIESTAS PRÓXIMAS (Problema 1)
+# ──────────────────────────────────────────────────
+from datetime import timedelta
+
+def fusionar_fiestas_proximas(fiestas: list[dict]) -> list[dict]:
+    """
+    Fusiona fiestas de la misma localidad que se solapen o tengan una diferencia
+    de 7 días o menos entre sí, asumiendo que pertenecen al mismo ciclo festivo,
+    excepto si tienen nombres forzadamente distintos.
+    """
+    if not fiestas:
+        return []
+
+    # Excepciones que NUNCA deben fusionarse juntas
+    NOMBRES_DISTINTOS_FORZADOS = [
+        "carnaval", "san juan", "navidad", "semana santa", "corpus christi"
+    ]
+
+    def parse_fecha(f_str):
+        try:
+            return datetime.strptime(f_str, "%Y-%m-%d").date()
+        except:
+            return date.max
+
+    validas = [f for f in fiestas if _parsear_fecha(f.get("fecha_inicio")) and _parsear_fecha(f.get("fecha_fin"))]
+    invalidas = [f for f in fiestas if f not in validas]
+
+    validas.sort(key=lambda f: parse_fecha(f.get("fecha_inicio")))
+
+    fusionadas = []
+    for actual in validas:
+        if not fusionadas:
+            fusionadas.append(actual)
+            continue
+            
+        anterior = fusionadas[-1]
+        
+        ant_fin = parse_fecha(anterior.get("fecha_fin"))
+        act_ini = parse_fecha(actual.get("fecha_inicio"))
+        
+        son_fusionables = False
+        if act_ini <= ant_fin + timedelta(days=7):
+            nombre_ant_norm = normalizar_texto(anterior.get("nombre", ""))
+            nombre_act_norm = normalizar_texto(actual.get("nombre", ""))
+            
+            es_excepcion = False
+            for exc in NOMBRES_DISTINTOS_FORZADOS:
+                if (exc in nombre_ant_norm and exc not in nombre_act_norm) or \
+                   (exc in nombre_act_norm and exc not in nombre_ant_norm):
+                    es_excepcion = True
+                    break
+                    
+            if not es_excepcion:
+                son_fusionables = True
+                
+        if son_fusionables:
+            # Nombre: el más largo
+            if len(actual.get("nombre", "")) > len(anterior.get("nombre", "")):
+                anterior["nombre"] = actual.get("nombre")
+                anterior["descripcion"] = actual.get("descripcion", anterior.get("descripcion", ""))
+                
+            # Fechas
+            act_fin = parse_fecha(actual.get("fecha_fin"))
+            if act_fin > ant_fin:
+                anterior["fecha_fin"] = actual.get("fecha_fin")
+                
+            # Fuentes
+            fuentes_ant = set(anterior.get("fuentes", []))
+            fuentes_act = set(actual.get("fuentes", []))
+            anterior["fuentes"] = list(fuentes_ant | fuentes_act)
+            
+            # Confianza
+            if actual.get("confianza") == "alta" or anterior.get("confianza") == "alta":
+                anterior["confianza"] = "alta"
+            elif actual.get("confianza") == "media" or anterior.get("confianza") == "media":
+                anterior["confianza"] = "media"
+                
+            # Programa
+            prog_ant = anterior.get("programa", []) or []
+            prog_act = actual.get("programa", []) or []
+            
+            dias_dict = {}
+            for d in prog_ant + prog_act:
+                fecha = d.get("fecha")
+                if fecha not in dias_dict:
+                    dias_dict[fecha] = {"fecha": fecha, "eventos": []}
+                dias_dict[fecha]["eventos"].extend(d.get("eventos", []))
+                
+            nuevo_prog = list(dias_dict.values())
+            nuevo_prog.sort(key=lambda d: parse_fecha(d["fecha"]))
+            for i, d in enumerate(nuevo_prog):
+                d["dia"] = i + 1
+                
+            anterior["programa"] = nuevo_prog
+            logger.info(f"  [FUSION] Fusionadas fiestas próximas -> '{anterior['nombre']}' ({anterior['fecha_inicio']} a {anterior['fecha_fin']})")
+        else:
+            fusionadas.append(actual)
+
+    return fusionadas + invalidas
+
+
+# ──────────────────────────────────────────────────
+# VALIDACIÓN DE FECHAS MÓVILES (Problema 4)
+# ──────────────────────────────────────────────────
+def _calcular_pascua(year: int) -> date:
+    # Computus (Algoritmo de Butcher-Meeus)
+    a = year % 19
+    b = year // 100
+    c = year % 100
+    d = b // 4
+    e = b % 4
+    f = (b + 8) // 25
+    g = (b - f + 1) // 3
+    h = (19 * a + b - d - g + 15) % 30
+    i = c // 4
+    k = c % 4
+    l = (32 + 2 * e + 2 * i - h - k) % 7
+    m = (a + 11 * h + 22 * l) // 451
+    mes = (h + l - 7 * m + 114) // 31
+    dia = ((h + l - 7 * m + 114) % 31) + 1
+    return date(year, mes, dia)
+
+def validar_fechas_moviles(fiestas: list[dict], anno: int) -> list[dict]:
+    """
+    Corrige las fechas de fiestas móviles comunes (Carnaval, etc.) si el LLM
+    las ha inventado o colocado mal.
+    """
+    pascua = _calcular_pascua(anno)
+    
+    # Offsets respecto a Pascua (min_days, max_days)
+    FIESTAS_MOVILES = {
+        "carnaval": (-52, -45),       # De Jueves Lardero a Miércoles de Ceniza
+        "jueves lardero": (-52, -50),
+        "semana santa": (-7, 1),
+        "corpus christi": (60, 63),
+    }
+
+    for fiesta in fiestas:
+        nombre_norm = normalizar_texto(fiesta.get("nombre", ""))
+        
+        for kw, (offset_min, offset_max) in FIESTAS_MOVILES.items():
+            if kw in nombre_norm:
+                fecha_min = pascua + timedelta(days=offset_min)
+                fecha_max = pascua + timedelta(days=offset_max)
+                
+                f_ini = _parsear_fecha(fiesta.get("fecha_inicio"))
+                f_fin = _parsear_fecha(fiesta.get("fecha_fin"))
+                
+                if not f_ini or not f_fin:
+                    continue
+                    
+                # Si la fiesta dictada por el LLM cae fuera de la ventana móvil
+                if f_fin < fecha_min or f_ini > fecha_max:
+                    logger.warning(f"  [MOVIL] Alucinación detectada en '{fiesta.get('nombre')}'. Fecha dictada: {f_ini}. Ventana real: {fecha_min} a {fecha_max}")
+                    # Degradar confianza y forzar fecha estimada a la ventana real
+                    fiesta["confianza"] = "baja"
+                    fiesta["es_estimada"] = True
+                    fiesta["fecha_inicio"] = fecha_min.isoformat()
+                    fiesta["fecha_fin"] = fecha_max.isoformat()
+                    fiesta["programa"] = []
+                break 
+                
+    return fiestas
+

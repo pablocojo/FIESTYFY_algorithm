@@ -1,0 +1,183 @@
+{
+  "metricas": {
+    "etapa": "enrichment",
+    "municipio": "Amurrio",
+    "localidad": "Delika__fiestas de delika",
+    "candidatos": 7,
+    "seleccionados": 7,
+    "documentos_distintos": 1,
+    "chunks_duplicados": 0,
+    "chars_contexto": 7747,
+    "chars_unicos": 7668,
+    "pct_unico": 100.0,
+    "tokens_contexto": 2752,
+    "top_documentos": [
+      [
+        "buscadores:snippets",
+        7
+      ]
+    ],
+    "presupuesto": {
+      "presupuesto_chars": 32000
+    },
+    "fiesta": "Fiestas de Delika",
+    "dias_consultados": 3,
+    "dias_sin_presupuesto": 0
+  },
+  "chunks": [
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.8825,
+      "score_detalle": {
+        "similitud": 1.0,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 1.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1147,
+      "tokens": 397,
+      "hash": "8c06924cd2c4",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas - udala.amurrio.eus | CONTENIDO: El Ayuntamiento deAmurriopresenta la programación de susFiestasPatronales202628 Julio2026La programación contará con más de un cent"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.8694,
+      "score_detalle": {
+        "similitud": 0.8431,
+        "spider": 0.5,
+        "programa": 0.44,
+        "temporal": 1.0,
+        "extra": 1.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1146,
+      "tokens": 402,
+      "hash": "85053719d3d8",
+      "seleccionado": true,
+      "muestra": "TITULO: » Delika celebra sus fiestas de viernes a domingo | CONTENIDO: La localidad deDelikaha preparado tres jornadas festivas donde la música y la gastronomía tendrán un protagon"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.8644,
+      "score_detalle": {
+        "similitud": 0.938,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 1.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1077,
+      "tokens": 394,
+      "hash": "9469107dec2d",
+      "seleccionado": true,
+      "muestra": "TITULO: El Ayuntamiento de Amurrio presenta la programación de sus Fiestas ... | CONTENIDO: El Ayuntamiento deAmurrioha presentado en rueda de prensa el cartel y la programación of"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.7617,
+      "score_detalle": {
+        "similitud": 0.9859,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.3
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 946,
+      "tokens": 332,
+      "hash": "cf5c23ff5532",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas de Delika del 26 al 28 de junio: programa completo | CONTENIDO: FiestasdeDelikadel 26 al 28 de junio:programacompleto El concejo de Amurrio celebra susfiestaspopula"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.7558,
+      "score_detalle": {
+        "similitud": 0.9657,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.3
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1022,
+      "tokens": 374,
+      "hash": "afee40fd3096",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas de San Pedro 2026 en Delika (Amurrio, Álava) | CONTENIDO: Descubre lasFiestasPatronales2026de San Pedro en el concejo deDelika(Amurrio): tortilla, ternera asada, pe"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.7226,
+      "score_detalle": {
+        "similitud": 0.7032,
+        "spider": 0.5,
+        "programa": 0.2,
+        "temporal": 1.0,
+        "extra": 0.7
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1189,
+      "tokens": 435,
+      "hash": "71e5058fbeb4",
+      "seleccionado": true,
+      "muestra": "TITULO: Agenda de Fiestas en los Pueblos del País Vasco 2026 | CONTENIDO: ¿Dónde suena el txistu hoy en Euskadi? Vive lasfiestasde sus pueblos con nuestra agenda2026. De la Tamborr"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.7037,
+      "score_detalle": {
+        "similitud": 0.787,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.3
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1141,
+      "tokens": 396,
+      "hash": "68002594e35f",
+      "seleccionado": true,
+      "muestra": "TITULO: Aiala Lucero Ibisate ganadora del concurso del cartel anunciador de ... | CONTENIDO: La diseñadora gráfica Aiala Lucero Ibisate, residente en Vitoria-Gasteiz, ha sido la ga"
+    }
+  ]
+}

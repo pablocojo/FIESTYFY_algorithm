@@ -1,0 +1,577 @@
+{
+  "metricas": {
+    "etapa": "enrichment",
+    "municipio": "Tobarra",
+    "localidad": "Sierra__fiestas patronales de sierra ",
+    "candidatos": 24,
+    "seleccionados": 24,
+    "documentos_distintos": 9,
+    "chunks_duplicados": 0,
+    "chars_contexto": 23456,
+    "chars_unicos": 26152,
+    "pct_unico": 100.0,
+    "tokens_contexto": 8023,
+    "top_documentos": [
+      [
+        "buscadores:snippets",
+        14
+      ],
+      [
+        "https://elfarodehellin.com/sierra-se-prepara-para-unas-fiestas-patronales-llenas-de-musica-tradicion-y-diversion/",
+        2
+      ],
+      [
+        "https://www.festivalesdeespana.com/festival/fiestas-patronales-de-la-sierra-san-francisco-javier-calasparra/2025",
+        2
+      ],
+      [
+        "https://www.facebook.com/p/Fiestas-Sierra-verano-2023-100094381898088/",
+        1
+      ],
+      [
+        "https://sierramusical.es/wp-content/uploads/2026/06/CONCIERTO-4-DE-JULIO-LOS-MOLINOS.pdf",
+        1
+      ],
+      [
+        "https://www.cmmedia.es/play/tv/ancha-es-castilla-la-mancha/vecinos-sierra-celebran-fiestas-honor-san-francisco-javier.html",
+        1
+      ]
+    ],
+    "presupuesto": {
+      "presupuesto_chars": 32000
+    },
+    "fiesta": "Fiestas Patronales de Sierra 2026",
+    "dias_consultados": 4,
+    "dias_sin_presupuesto": 0
+  },
+  "chunks": [
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.8215,
+      "score_detalle": {
+        "similitud": 0.9623,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.7
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1083,
+      "tokens": 381,
+      "hash": "2f195adb3216",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas SierraVerano 2026 - Facebook | CONTENIDO: 30 de jul de 2026· 🎉 ¡Sierra se viste de fiesta! 🎉 Del 30 de julio al 2 de agosto, celebramos las Fiestas de Sierra 2026 e"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.7822,
+      "score_detalle": {
+        "similitud": 0.8275,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.7
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1056,
+      "tokens": 393,
+      "hash": "38bc4baeecf0",
+      "seleccionado": true,
+      "muestra": "TITULO: Agenda de Fiestas en los Pueblos de la Comunidad de Madrid 2026 | CONTENIDO: Fiestaspatronales, romerías, recreaciones y ferias de los pueblos madrileños en2026, de lasierr"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.7463,
+      "score_detalle": {
+        "similitud": 0.7044,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.7
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1177,
+      "tokens": 454,
+      "hash": "3b6ea3cbec95",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas Patronales de Tobarra Verano 2026 - La Caseta, Camela, Mägo de ... | CONTENIDO: LasFiestasPatronalesdeTobarrade verano se celebran del 9 al 17 de agosto en La Caset"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.7252,
+      "score_detalle": {
+        "similitud": 0.8082,
+        "spider": 0.5,
+        "programa": 0.58,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 804,
+      "tokens": 281,
+      "hash": "ae658fb7651c",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas Patronales - sierra de Madrid, Segovia y Ávila | Pueblus | CONTENIDO: Calendario completo defiestaspatronalesen los pueblos de lasierrade Madrid, Segovia y Ávila. D"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.71,
+      "score_detalle": {
+        "similitud": 0.9801,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 974,
+      "tokens": 300,
+      "hash": "f2b453ed5eb5",
+      "seleccionado": true,
+      "muestra": "TITULO: PROGRAMACIÓN FIESTAS PATRONALES 2026 - Miraflores de la Sierra | CONTENIDO: Del 13 al 18deagosto, MirafloresdelaSierracelebra susFiestasPatronalesen honor a la AsuncióndeNu"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.7032,
+      "score_detalle": {
+        "similitud": 0.9565,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 931,
+      "tokens": 320,
+      "hash": "920169114286",
+      "seleccionado": true,
+      "muestra": "TITULO: Hoyo de Manzanares presenta su programa de Fiestas Patronales 2026 en ... | CONTENIDO: Tendrá lugar la tradicional elección y proclamacióndereinas, la concentracióndevespis"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6905,
+      "score_detalle": {
+        "similitud": 0.913,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1197,
+      "tokens": 437,
+      "hash": "6c6d69610ec6",
+      "seleccionado": true,
+      "muestra": "TITULO: Calendario de Fiestas de España 2026 y 2027 | Fiestas de Pueblos de España | CONTENIDO: Calendario completo defiestaspatronalesy tradiciones de los pueblos de España para20"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6837,
+      "score_detalle": {
+        "similitud": 0.8897,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 824,
+      "tokens": 265,
+      "hash": "74eae96c22fe",
+      "seleccionado": true,
+      "muestra": "TITULO: PROGRAMACIÓN FIESTAS PATRONALES 2026 - Miraflores de la Sierra | CONTENIDO: Del 13 al 18 de agosto, Miraflores de laSierracelebra susFiestasPatronalesen honor a la Asunción"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6801,
+      "score_detalle": {
+        "similitud": 0.8776,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1049,
+      "tokens": 375,
+      "hash": "3dd4340fe16f",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas Sierra Verano 2026 - Facebook | CONTENIDO: Nos esperan díasdemúsica, tradición y diversión: fiesta asegurada, actividades infantiles, desfiledecarrozas, juegos, DJs"
+    },
+    {
+      "url": "https://elfarodehellin.com/sierra-se-prepara-para-unas-fiestas-patronales-llenas-de-musica-tradicion-y-diversion/",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6784,
+      "score_detalle": {
+        "similitud": 0.643,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 0.5,
+        "extra": 0.7
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1043,
+      "tokens": 337,
+      "hash": "b726e99f6acf",
+      "seleccionado": true,
+      "muestra": "taller de bachata ⏎ , ⏎ juegos tradicionales ⏎ , una original ⏎ suelta de vaquillas con ruedas ⏎ , y un espectacular ⏎ castillo de fuegos artificiales ⏎ para cerrar las fiestas la noche del domi"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6742,
+      "score_detalle": {
+        "similitud": 0.8573,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 804,
+      "tokens": 270,
+      "hash": "f6fd161e104b",
+      "seleccionado": true,
+      "muestra": "TITULO: Programa de Fiestas Patronales Somosierra 2026 - Ayuntamiento de Somosierra | CONTENIDO: Página oficial del AyuntamientodeSomosierra - Madrid. Información sobre sus instala"
+    },
+    {
+      "url": "https://www.facebook.com/p/Fiestas-Sierra-verano-2023-100094381898088/",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6692,
+      "score_detalle": {
+        "similitud": 1.0,
+        "spider": 0.5,
+        "programa": 0.1,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 26,
+      "tokens": 11,
+      "hash": "baf236c7b91b",
+      "seleccionado": true,
+      "muestra": "Fiestas Sierra Verano 2026"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6642,
+      "score_detalle": {
+        "similitud": 0.823,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1125,
+      "tokens": 383,
+      "hash": "05c0c4cb8f62",
+      "seleccionado": true,
+      "muestra": "TITULO: Programa de las Fiestas Patronales 2026 - Radio Tobarra Municipal - 107 ... | CONTENIDO: PROGRAMA DE LASFIESTASEN HONOR AL CRISTO DE LA ANTIGUA Y LA VIRGEN DE LA ENCARNACIÓ"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6487,
+      "score_detalle": {
+        "similitud": 0.7698,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 933,
+      "tokens": 335,
+      "hash": "2ab0f353a734",
+      "seleccionado": true,
+      "muestra": "TITULO: Agenda de Fiestas en los Pueblos de la Comunidad de Madrid 2026 | CONTENIDO: Fiestaspatronales, romerías, recreaciones y ferias de los pueblos madrileños en2026, de lasierr"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6384,
+      "score_detalle": {
+        "similitud": 0.7345,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 810,
+      "tokens": 261,
+      "hash": "5f8285b9f88e",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas de Tobarra archivos | Comarca Monastrell | CONTENIDO: Reggae-Tob Festival, Tobarrock, The Gafapasta y Un Viaje a los 90's destacan en una programación que ofrecerá "
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6344,
+      "score_detalle": {
+        "similitud": 0.8009,
+        "spider": 0.5,
+        "programa": 0.2,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 977,
+      "tokens": 316,
+      "hash": "e58c54edd730",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas Patronalesde LaSierrain honor ofSan FranciscoJavier | CONTENIDO: 27 de jul de 2025· La Sierra celebrated its patron saint festivals in honor of San Francisco Javier"
+    },
+    {
+      "url": "https://elfarodehellin.com/sierra-se-prepara-para-unas-fiestas-patronales-llenas-de-musica-tradicion-y-diversion/",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.5272,
+      "score_detalle": {
+        "similitud": 0.8304,
+        "spider": 0.5,
+        "programa": 0.132,
+        "temporal": 0.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1195,
+      "tokens": 385,
+      "hash": "d0bbe7095d99",
+      "seleccionado": true,
+      "muestra": "Inicio ⏎ Local ⏎ Sierra se prepara para unas fiestas patronales llenas de música, tradición y... ⏎ Local ⏎ Sierra se prepara para unas fiestas patronales llenas de música, tradición y dive"
+    },
+    {
+      "url": "https://sierramusical.es/wp-content/uploads/2026/06/CONCIERTO-11-DE-JULIO-MORALZARZAL.pdf",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.4876,
+      "score_detalle": {
+        "similitud": 0.3285,
+        "spider": 0.5,
+        "programa": 0.09,
+        "temporal": 0.0,
+        "extra": 0.7
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 2796,
+      "tokens": 1038,
+      "hash": "63d5d6c4ca5e",
+      "seleccionado": true,
+      "muestra": "## Columna 1 de 4 ⏎ ### Viernes 17 de julio, 20:00, GUADARRAMA, Centro C. La Torre ⏎ “Ecos de lo imposible” ⏎ Obras de: R. Peterson, José Luis Greco, Astor Piazzolla, David del Puerto y "
+    },
+    {
+      "url": "https://sierramusical.es/wp-content/uploads/2026/06/CONCIERTO-4-DE-JULIO-LOS-MOLINOS.pdf",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.4693,
+      "score_detalle": {
+        "similitud": 0.3263,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 2991,
+      "tokens": 1076,
+      "hash": "29cec2297278",
+      "seleccionado": true,
+      "muestra": "## Columna 1 de 4 ⏎ Sábado 11 de julio, 21:00, MORALZARZAL, Centro Cultural Orquesta de Cámara de España ⏎ “La belleza de lo sencillo” ⏎ Obras de: Bach, Lewis, Piazzolla, Umebayashi, Viv"
+    },
+    {
+      "url": "https://www.festivalesdeespana.com/festival/fiestas-patronales-de-la-sierra-san-francisco-javier-calasparra/2025",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.4687,
+      "score_detalle": {
+        "similitud": 0.7115,
+        "spider": 0.5,
+        "programa": 0.03,
+        "temporal": 0.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 585,
+      "tokens": 193,
+      "hash": "76616977c38c",
+      "seleccionado": true,
+      "muestra": "Volver a la ficha de Fiestas de La Sierra ⏎ Dónde se celebra Fiestas de La Sierra ⏎ Parque y casco urbano de La Sierra ⏎ Pedanía de La Sierra, 30420 Calasparra ⏎ Contactar Fiestas de La Si"
+    },
+    {
+      "url": "https://www.festivalesdeespana.com/festival/fiestas-patronales-de-la-sierra-san-francisco-javier-calasparra/2025",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.4563,
+      "score_detalle": {
+        "similitud": 0.6209,
+        "spider": 0.5,
+        "programa": 0.09,
+        "temporal": 0.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1160,
+      "tokens": 362,
+      "hash": "66d352f08ed2",
+      "seleccionado": true,
+      "muestra": "Proponer una corrección ⏎ Estás viendo una edición pasada (2025) ⏎ Este evento ya ha tenido lugar. ⏎ Ver edición actual ⏎ Edición 2025 — Fiestas de La Sierra ⏎ La Sierra celebró del 27 de ju"
+    },
+    {
+      "url": "https://www.cmmedia.es/play/tv/ancha-es-castilla-la-mancha/vecinos-sierra-celebran-fiestas-honor-san-francisco-javier.html",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.4484,
+      "score_detalle": {
+        "similitud": 0.6181,
+        "spider": 0.5,
+        "programa": 0.06,
+        "temporal": 0.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 402,
+      "tokens": 121,
+      "hash": "0ccbd887cc45",
+      "seleccionado": true,
+      "muestra": "ancha es castilla-la mancha ⏎ Los vecinos de Sierra celebran sus fiestas en honor a San Francisco Javier ⏎ 03/12/2025 21:25 ⏎ Duración del video ⏎ 2m 59s ⏎ Y otra celebración nos lleva esta "
+    },
+    {
+      "url": "https://www.diariodecadiz.es/noticias-provincia-cadiz/sierrasur-completa-cartel-fechas-artistas_0_2007610032.html",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.4442,
+      "score_detalle": {
+        "similitud": 0.4003,
+        "spider": 0.5,
+        "programa": 0.1,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1051,
+      "tokens": 295,
+      "hash": "407acc68acf0",
+      "seleccionado": true,
+      "muestra": "Un momento del último SierraSur con numeroso público ⏎ / ⏎ SierraSur ⏎ El ⏎ SierraSur ya tiene todo su cartel completo para su cita del 10 y el 11 de octubre en Zahara de la Sierra. ⏎ Tras u"
+    },
+    {
+      "url": "https://tobarra.sedipualba.es/cambiar_sede.aspx",
+      "fuente": "web_municipio",
+      "es_calendario": false,
+      "prioridad": 2,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.4009,
+      "score_detalle": {
+        "similitud": 0.4168,
+        "spider": 0.3808,
+        "programa": 0.0,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 1500,
+      "rank_spider": 2,
+      "chars": 1159,
+      "tokens": 486,
+      "hash": "50d11aad2c56",
+      "seleccionado": true,
+      "muestra": "ASOCIACIÓN PARA EL DESARROLLO INTEGRAL MANCHA JÚCAR-CENTRO ⏎ GRUPO DE ACCIÓN LOCAL DE LA SIERRA DEL SEGURA ⏎ ASOCIACIÓN PARA EL DESARROLLO DE LA COMARCA DE MONTE IBÉRICO ⏎ SACAM ⏎ CONSORCI"
+    }
+  ]
+}

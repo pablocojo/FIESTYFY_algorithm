@@ -1,0 +1,70 @@
+{
+  "_descripcion": "Conjunto dorado para medir el efecto de las fases 1-5 del plan de mejora del contexto. Cada entrada describe qué DEBERÍA encontrar el pipeline en esa localidad. Rellenar 'fuente_esperada' con fragmentos de URL que deban aparecer en el contexto de discovery (basta con un trozo distintivo; se compara por subcadena).",
+  "_como_usarlo": "1) Ejecutar la Fase 2 sobre estas localidades. 2) py tests_fase2/evaluar_dorado.py. Compara debug_contexto/*_discovery_debug.json y fiestas_espana.json contra este fichero.",
+  "_estado": "PLANTILLA — Amurrio y sus pedanías están rellenas a partir de la ejecución del 2026-08-21. El resto son huecos a completar con casos de otras CCAA e idiomas.",
+  "anno": 2026,
+  "localidades": [
+    {
+      "lugar_id": "01002000101",
+      "municipio": "Amurrio",
+      "localidad": "Amurrio",
+      "tipo": "capital",
+      "fuente_esperada": [
+        "amurrioturismo.com/agenda-amurrio",
+        "udala.amurrio.eus/cas/calendario/eventosanual/2026",
+        "berriak-jaiak"
+      ],
+      "fuente_prohibida": [
+        "ANEXO_3_Ppto_2025.pdf",
+        "Ppto_",
+        "presupuesto"
+      ],
+      "espera_fiestas": true,
+      "fiestas_esperadas": [
+        {
+          "nombre_contiene": "San Roque",
+          "fecha_inicio_aprox": "2026-08-16",
+          "tolerancia_dias": 6,
+          "espera_programa": true
+        }
+      ],
+      "notas": "Patrón San Roque (16 de agosto), confirmado por patron_finder vía Wikipedia. La araña puntuó agenda-amurrio con 3340 y eventosanual/2026 con 1650; ninguna llegó al LLM en la ejecución del 2026-08-21."
+    },
+    {
+      "lugar_id": "01002000201",
+      "municipio": "Amurrio",
+      "localidad": "Aloria",
+      "tipo": "pedania",
+      "fuente_esperada": [],
+      "fuente_prohibida": ["ANEXO_3_Ppto_2025.pdf", "Ppto_"],
+      "espera_fiestas": null,
+      "fiestas_esperadas": [],
+      "notas": "PENDIENTE de verificar manualmente si Aloria publica programa propio. `espera_fiestas: null` = no evaluado todavía; no cuenta ni a favor ni en contra."
+    },
+    {
+      "lugar_id": "01002000501",
+      "municipio": "Amurrio",
+      "localidad": "Baranbio",
+      "tipo": "pedania",
+      "fuente_esperada": [],
+      "fuente_prohibida": ["ANEXO_3_Ppto_2025.pdf", "Ppto_"],
+      "espera_fiestas": null,
+      "fiestas_esperadas": [],
+      "notas": "PENDIENTE. Patrón detectado: 'San Antón en la ermita de dicho santo' (17 de enero) — el nombre sugiere que patron_finder está arrastrando texto sobrante de Wikipedia, revisar aparte."
+    },
+    {
+      "_plantilla": true,
+      "lugar_id": "",
+      "municipio": "",
+      "localidad": "",
+      "tipo": "capital",
+      "fuente_esperada": ["fragmento-de-url-del-programa"],
+      "fuente_prohibida": [],
+      "espera_fiestas": true,
+      "fiestas_esperadas": [
+        {"nombre_contiene": "", "fecha_inicio_aprox": "2026-MM-DD", "tolerancia_dias": 3, "espera_programa": true}
+      ],
+      "notas": "Añadir: 2 municipios con web en catalán/valenciano, 2 en gallego, 1 pedanía SIN fiestas propias (caso negativo: el pipeline debe devolver lista vacía, no inventarse las del municipio) y 1 municipio grande (>50k hab) para probar el map-reduce de la Fase 5."
+    }
+  ]
+}

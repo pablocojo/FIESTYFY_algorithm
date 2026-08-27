@@ -21,10 +21,19 @@ logger = logging.getLogger("rrss_client")
 class RRSSClient:
     """Cliente async para comunicarse con rrss_server.py en Windows."""
 
+    # Fases abortadas seguidas que se toleran antes de dejar de pedir RRSS. El
+    # servidor las aborta cuando la ventana de la app pierde el primer plano y
+    # no lo recupera, y eso NO se arregla solo: si ha pasado dos veces seguidas,
+    # va a pasar las diez restantes. Medido el 2026-08-26: doce localidades,
+    # doce abortos, dos minutos de espera cada uno — 24 de los 52 minutos del
+    # run esperando un foco de ventana que nunca volvió, y cero contenido.
+    MAX_ABORTOS_SEGUIDOS = 2
+
     def __init__(self, server_url: str = RRSS_SERVER_URL, timeout: int = RRSS_SERVER_TIMEOUT):
         self.server_url = server_url.rstrip("/")
         self.timeout = timeout
         self._disponible: bool | None = None  # None = no comprobado aún
+        self._abortos_seguidos = 0
 
     async def verificar_servidor(self) -> bool:
         """
@@ -106,10 +115,30 @@ class RRSSClient:
                     completadas = resumen_runner.get("completadas", 0)
                     programas = resumen_vlm.get("programas", 0)
                     if completadas or programas:
+                        self._abortos_seguidos = 0
                         logger.info(
                             f"    RRSS server: {completadas} perfiles leídos, "
                             f"{programas} programas VLM detectados"
                         )
+                        return contenido
+
+                    # Ni un perfil leído. Si además la fase se abortó, el
+                    # servidor no está en condiciones de trabajar y seguir
+                    # pidiéndoselo solo cuesta tiempo.
+                    if resumen_runner.get("abortado"):
+                        self._abortos_seguidos += 1
+                        logger.warning(
+                            f"    El servidor RRSS abortó la fase sin leer ningún perfil "
+                            f"({self._abortos_seguidos}/{self.MAX_ABORTOS_SEGUIDOS})."
+                        )
+                        if self._abortos_seguidos >= self.MAX_ABORTOS_SEGUIDOS:
+                            self._disponible = False
+                            logger.error(
+                                f"    Servidor RRSS descartado para el resto de la ejecución: "
+                                f"{self._abortos_seguidos} fases abortadas seguidas. Revisa que "
+                                f"las ventanas de las apps sigan en primer plano. Las RRSS se "
+                                f"omiten a partir de aquí."
+                            )
                     return contenido
 
         except aiohttp.ClientError as e:

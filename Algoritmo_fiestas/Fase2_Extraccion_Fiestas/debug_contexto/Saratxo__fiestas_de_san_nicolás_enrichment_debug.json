@@ -1,0 +1,467 @@
+{
+  "metricas": {
+    "etapa": "enrichment",
+    "municipio": "Amurrio",
+    "localidad": "Saratxo__fiestas de san nicolás",
+    "candidatos": 19,
+    "seleccionados": 19,
+    "documentos_distintos": 6,
+    "chunks_duplicados": 0,
+    "chars_contexto": 28600,
+    "chars_unicos": 27071,
+    "pct_unico": 100.0,
+    "tokens_contexto": 11800,
+    "top_documentos": [
+      [
+        "buscadores:snippets",
+        6
+      ],
+      [
+        "https://www.festivalesdeespana.com/festival/fiestas-de-san-nicolas-de-saratxo",
+        5
+      ],
+      [
+        "https://fiestasdepueblos.net/fiesta/fiestas-de-saratxo-saratxo",
+        4
+      ],
+      [
+        "https://udala.amurrio.eus/attachments/article/2183/2026_Amurrio_Jai_kartel_orokorra_320x700.pdf",
+        2
+      ],
+      [
+        "https://fiestasdepueblos.net/pueblos/saratxo",
+        1
+      ],
+      [
+        "https://udala.amurrio.eus/cas/calendario/eventosanual/2026/-",
+        1
+      ]
+    ],
+    "presupuesto": {
+      "presupuesto_chars": 32000
+    },
+    "fiesta": "Fiestas de San Nicolás",
+    "dias_consultados": 4,
+    "dias_sin_presupuesto": 0
+  },
+  "chunks": [
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.7658,
+      "score_detalle": {
+        "similitud": 1.0,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.3
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1109,
+      "tokens": 357,
+      "hash": "6d4766e20753",
+      "seleccionado": true,
+      "muestra": "TITULO: El Ayuntamiento de Amurrio presenta la programación de sus Fiestas ... | CONTENIDO: Durante la comparecencia se han dado a conocer los principales actos que conformarán una"
+    },
+    {
+      "url": "https://www.festivalesdeespana.com/festival/fiestas-de-san-nicolas-de-saratxo",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.7584,
+      "score_detalle": {
+        "similitud": 0.9746,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.3
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 953,
+      "tokens": 296,
+      "hash": "ca453f6a6b26",
+      "seleccionado": true,
+      "muestra": "La particularidad de Saratxo es el ⏎ silencio de diciembre ⏎ : nieblas espesas, prados escarchados, árboles desnudos y caseríos con humo saliendo de las chimeneas. La fiesta es como un"
+    },
+    {
+      "url": "https://www.festivalesdeespana.com/festival/fiestas-de-san-nicolas-de-saratxo",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.7348,
+      "score_detalle": {
+        "similitud": 0.8938,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.3
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1073,
+      "tokens": 339,
+      "hash": "39bbdb32fd70",
+      "seleccionado": true,
+      "muestra": "Fiestas de San Nicolás 2026 en Saratxo (Amurrio, Álava) ⏎ Proponer una corrección ⏎ Fechas ⏎ 05 dic. ⏎ — 08 dic. 2026 ⏎ Lugar ⏎ Amurrio ⏎ (01) ⏎ Precios ⏎ Gratis ⏎ Estado ⏎ — ⏎ Presentación de San Nicolás"
+    },
+    {
+      "url": "https://www.festivalesdeespana.com/festival/fiestas-de-san-nicolas-de-saratxo",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6947,
+      "score_detalle": {
+        "similitud": 0.9275,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1157,
+      "tokens": 366,
+      "hash": "03457b39e1f6",
+      "seleccionado": true,
+      "muestra": ". Se mantendrán los actos clásicos: txupinazo, misa mayor con procesión, comida popular, chocolatada con opilak para los niños, dantzas infantiles, campeonato de mus y briska, rome"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6435,
+      "score_detalle": {
+        "similitud": 0.7521,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 974,
+      "tokens": 353,
+      "hash": "e37f324e1f44",
+      "seleccionado": true,
+      "muestra": "TITULO: Ntra. Sra. de la Asunción y San Roque 2026 en Amurrio | Fiestas de ... | CONTENIDO: Vive lasfiestaspatronalesde Ntra. Sra. de la Asunción y San Roque enAmurrio: procesión, "
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.634,
+      "score_detalle": {
+        "similitud": 0.7993,
+        "spider": 0.5,
+        "programa": 0.2,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 926,
+      "tokens": 295,
+      "hash": "c920572d251c",
+      "seleccionado": true,
+      "muestra": "TITULO: Descubre la programación completa de las Fiestas de San Sebastián ... | CONTENIDO: Unprogramacargado de eventos que combina la adrenalina de los encierros invernales con un"
+    },
+    {
+      "url": "https://fiestasdepueblos.net/fiesta/fiestas-de-saratxo-saratxo",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6197,
+      "score_detalle": {
+        "similitud": 0.6704,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 826,
+      "tokens": 274,
+      "hash": "3774fb5fdf61",
+      "seleccionado": true,
+      "muestra": "Fiestas de Saratxo 2026 | Fechas, mapa y guía | Fiestas de Pueblos de España ⏎ Cargando fiestas ⏎ Command Palette ⏎ Search for a command to run... ⏎ 🏆 ⏎ Interés Turístico ⏎ Regional ⏎ Fiestas de"
+    },
+    {
+      "url": "https://www.festivalesdeespana.com/festival/fiestas-de-san-nicolas-de-saratxo",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6103,
+      "score_detalle": {
+        "similitud": 0.8096,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1180,
+      "tokens": 333,
+      "hash": "a2340d57970e",
+      "seleccionado": true,
+      "muestra": "San Nicolás de Bari es uno de los santos más queridos del cristianismo, especialmente por su patrocinio sobre los niños, navegantes y estudiantes. En la tradición vasca, su figura "
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.5998,
+      "score_detalle": {
+        "similitud": 0.6021,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1123,
+      "tokens": 378,
+      "hash": "f8d87009e418",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas en Saratxo (País Vasco) - Calendario 2026 y 2027 | Fiestas de ... | CONTENIDO: Descubre lasfiestasdeSaratxo(Álava) en País Vasco. Calendario completo defiestaspatro"
+    },
+    {
+      "url": "https://www.festivalesdeespana.com/festival/fiestas-de-san-nicolas-de-saratxo",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.5994,
+      "score_detalle": {
+        "similitud": 0.8406,
+        "spider": 0.5,
+        "programa": 0.0,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1176,
+      "tokens": 423,
+      "hash": "ccd1bbb9fbb0",
+      "seleccionado": true,
+      "muestra": "Ninguna foto por el momento. ¡Comparte las tuyas! ⏎ Compartir tus fotos ⏎ Edición correspondiente (opcional) ⏎ 2026 ⏎ 2024 ⏎ 5 fotos máx., 5 MB por foto (JPG, PNG, WebP) ⏎ Enviar ⏎ ¿Has detectad"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.5935,
+      "score_detalle": {
+        "similitud": 0.6605,
+        "spider": 0.5,
+        "programa": 0.2,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1035,
+      "tokens": 366,
+      "hash": "627bf91ed158",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas en Araba 2026: calendario con las fiestas del año | CONTENIDO: Así que pueblos y ciudades de Araba se afanan cada año en elaborarprogramasdefiestasque hagan las del"
+    },
+    {
+      "url": "https://fiestasdepueblos.net/pueblos/saratxo",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.5831,
+      "score_detalle": {
+        "similitud": 0.545,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1048,
+      "tokens": 396,
+      "hash": "e8db7156e435",
+      "seleccionado": true,
+      "muestra": "Fiestas en Saratxo (País Vasco) - Calendario 2026 y 2027 | Fiestas de Pueblos de España ⏎ Cargando fiestas ⏎ Command Palette ⏎ Search for a command to run... ⏎ Inicio ⏎ / ⏎ País Vasco ⏎ / ⏎ Álava ⏎ "
+    },
+    {
+      "url": "https://udala.amurrio.eus/attachments/article/2183/2026_Amurrio_Jai_kartel_orokorra_320x700.pdf",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "GENERAL",
+      "score": 0.5035,
+      "score_detalle": {
+        "similitud": 0.7406,
+        "spider": 0.5,
+        "programa": 1.0,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1518,
+      "tokens": 807,
+      "hash": "85453624c0b0",
+      "seleccionado": true,
+      "muestra": "HERRIKO KOPA: ATHLETIC - ALAVÉS ⏎ - 19:00 ROMERÍA OTEGI ⏎ - 19:00-22:00 ESPACIO PREVENCIÓN, SENSIBILIZA- ⏎ CIÓN Y ATENCIÓN VIOLENCIAS MACHISTAS ⏎ - 19:30 EXHIBICIÓN EUSKAL DANTZAK ⏎ - 20:30 "
+    },
+    {
+      "url": "https://fiestasdepueblos.net/fiesta/fiestas-de-saratxo-saratxo",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.4902,
+      "score_detalle": {
+        "similitud": 0.3977,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 912,
+      "tokens": 255,
+      "hash": "fb7b919518ea",
+      "seleccionado": true,
+      "muestra": "Los actos habituales que se repiten cada año incluyen: celebración religiosa en la iglesia del pueblo y, cuando existe, romería hacia la ermita; pasacalles con música tradicional; "
+    },
+    {
+      "url": "https://fiestasdepueblos.net/fiesta/fiestas-de-saratxo-saratxo",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.4761,
+      "score_detalle": {
+        "similitud": 0.3495,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 918,
+      "tokens": 244,
+      "hash": "9159dcdb9fbd",
+      "seleccionado": true,
+      "muestra": "Como muchas fiestas patronales del interior de Álava, las Fiestas de Saratxo tienen raíces en celebraciones vinculadas al calendario religioso y al ritmo agrario local: misas, rome"
+    },
+    {
+      "url": "https://udala.amurrio.eus/attachments/article/2183/2026_Amurrio_Jai_kartel_orokorra_320x700.pdf",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "GENERAL",
+      "score": 0.4753,
+      "score_detalle": {
+        "similitud": 0.644,
+        "spider": 0.5,
+        "programa": 1.0,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 7974,
+      "tokens": 4479,
+      "hash": "3e848296379e",
+      "seleccionado": true,
+      "muestra": "## Columna 1 de 4 ⏎ ### 1 LARUNBATA ⏎ - 18:00 SANTUAREN JAITSIERA ⏎ ### 9 IGANDEA ⏎ - 21:30 ZINEMA KALEAN: WOLFGANG ⏎ ### 11 ASTEARTEA ⏎ - 20:00 KUADRILLEN ARTEKO SOKA SALTO LEHIAKETA ⏎ ### 12 A"
+    },
+    {
+      "url": "https://udala.amurrio.eus/cas/calendario/eventosanual/2026/-",
+      "fuente": "web_municipio",
+      "es_calendario": false,
+      "prioridad": 2,
+      "relevancia_geo": "GENERAL",
+      "score": 0.4333,
+      "score_detalle": {
+        "similitud": 0.9439,
+        "spider": 0.4222,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 1650,
+      "rank_spider": 3,
+      "chars": 1058,
+      "tokens": 641,
+      "hash": "38bc9bf15bc4",
+      "seleccionado": true,
+      "muestra": "Azoka - Feria ⏎ Jaiak - Fiestas ⏎ 2024 ⏎ 2025 ⏎ 2026 ⏎ 2027 ⏎ 2028 ⏎ 2029 ⏎ 2030 ⏎ 2031 ⏎ 2026 ⏎ Enero 2026 ⏎ Viernes, 2. Enero 2026 - Lunes, 5. Enero 2026 11:30am - 01:30pm ⏎ PARQUE INFANTIL DE NAVIDAD ⏎ :: "
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "GENERAL",
+      "score": 0.4319,
+      "score_detalle": {
+        "similitud": 0.8837,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 954,
+      "tokens": 328,
+      "hash": "e0c813c8bbeb",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas de San Sebastián de los Reyes 2026: programa, horarios ... | CONTENIDO: LasFiestasde San Sebastián Mártir2026tienen lugar del 15 al 23 de enero. Los festejos incluy"
+    },
+    {
+      "url": "https://fiestasdepueblos.net/fiesta/fiestas-de-saratxo-saratxo",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.4235,
+      "score_detalle": {
+        "similitud": 0.2491,
+        "spider": 0.5,
+        "programa": 0.2,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1157,
+      "tokens": 331,
+      "hash": "329fa26fb5bb",
+      "seleccionado": true,
+      "muestra": "Saratxo es un pueblo del interior de Álava en el País Vasco caracterizado por su ambiente rural, caseríos y paisaje atlántico-interior. Como muchos municipios alaveses, ofrece ruta"
+    }
+  ]
+}

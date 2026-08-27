@@ -1,20 +1,21 @@
-# Progress Log
+# Progress Tracking
 
 ## Current Status
-Last visited: 2026-08-04T18:42:45Z
+Last visited: 2026-08-08T17:31:00Z
+
 
 ## Iteration Status
-Current iteration: 2 / 32
+Current iteration: 4 / 32
 
-## Step-by-Step Progress
-- [x] Initialized Project Orchestrator state and heartbeat cron (task-25)
-- [x] Dispatched Survey Phase: 3 Explorers (Gen 1)
-- [x] Received all Survey Reports & synthesized `PROJECT.md` (Gen 1)
-- [x] Milestone Implementation Track (M1-M6 complete)
-- [x] M2 Gate Evaluation: PASSED (100% APPROVE + CLEAN)
-- [x] M4 Gate Evaluation: PASSED (100% APPROVE + CLEAN)
-- [x] M6 Gate Evaluation: PASSED (100% APPROVE + CLEAN)
-- [/] M1 Defect Fix & Re-evaluation: Worker M1 Fix dispatched to fix engine sampling without replacement
-- [/] M3 Gate Evaluation: Dispatched 2 Reviewers, 2 Challengers, 1 Forensic Auditor
-- [ ] M5 Gate Evaluation: Pending dispatch
-- [ ] M7 Final Integrated Test Suite & Gate Verification: Pending dispatch
+## Tasks Checklist
+- [x] Create initialization state files (`ORIGINAL_REQUEST.md`, `DISPATCH.md`, `BRIEFING.md`, `plan.md`, `progress.md`)
+- [x] Schedule heartbeat cron
+- [x] Phase 0: Survey codebase with 3 parallel Explorers
+- [x] Create `PROJECT.md` global feature & milestone index
+- [x] M1: Fix R1 (Geographic Filtering Order in `llm_processor/text_analyzer.py`) [PASSED GATE]
+- [x] M2: Fix R2 (Capital Exclusion in `main.py`) [PASSED GATE]
+- [x] M3: Fix R3 (Compute embeddings on raw `chunk` in `llm_processor/text_analyzer.py`) [PASSED GATE]
+- [x] Self-succession trigger: Spawn Gen 2 Orchestrator
+- [/] M4: End-to-end verification (Amurrio sample extraction test) [Dispatching Worker M4]
+- [ ] Final synthesis and reporting to Sentinel
+

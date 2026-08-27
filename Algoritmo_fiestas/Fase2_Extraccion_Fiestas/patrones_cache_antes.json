@@ -1,0 +1,84 @@
+{
+ "02074000601": {
+  "nombre": "Stmo",
+  "dia": null,
+  "mes": null,
+  "fuente": "wikipedia",
+  "confianza": "baja",
+  "ambito": "localidad"
+ },
+ "02074000101": {
+  "nombre": "San Isidro",
+  "dia": 15,
+  "mes": 5,
+  "fuente": "wikipedia",
+  "confianza": "alta",
+  "ambito": "localidad"
+ },
+ "02074000201": {
+  "nombre": "San Diego de Alcalá",
+  "dia": 13,
+  "mes": 11,
+  "fuente": "wikipedia",
+  "confianza": "alta",
+  "ambito": "localidad"
+ },
+ "02074000301": {
+  "nombre": "Santa Quiteria",
+  "dia": null,
+  "mes": null,
+  "fuente": "wikipedia",
+  "confianza": "baja",
+  "ambito": "localidad"
+ },
+ "02074000401": {
+  "nombre": "Santiago de Mora 2026",
+  "dia": 25,
+  "mes": 7,
+  "fuente": "busqueda",
+  "confianza": "alta",
+  "ambito": "localidad"
+ },
+ "02074000501": {
+  "nombre": "Santísimo Cristo del Consuelo\nSevilla",
+  "dia": 14,
+  "mes": 9,
+  "fuente": "busqueda",
+  "confianza": "alta",
+  "ambito": "localidad"
+ },
+ "02074000701": {
+  "nombre": "Virgen del Carmen",
+  "dia": 16,
+  "mes": 7,
+  "fuente": "busqueda",
+  "confianza": "alta",
+  "ambito": "localidad"
+ },
+ "09018000201": {
+  "nombre": "Virgen de las Viñas",
+  "dia": null,
+  "mes": null,
+  "fuente": "wikipedia",
+  "confianza": "baja",
+  "ambito": "localidad"
+ },
+ "09018000101": {
+  "nombre": "San Pedro Regalado",
+  "dia": 13,
+  "mes": 5,
+  "fuente": "wikipedia",
+  "confianza": "alta",
+  "ambito": "localidad"
+ },
+ "09018000301": {
+  "nombre": "San Bartolomé",
+  "dia": 24,
+  "mes": 8,
+  "fuente": "wikipedia",
+  "confianza": "alta",
+  "ambito": "localidad"
+ },
+ "09018000401": null,
+ "09018000501": null
+}

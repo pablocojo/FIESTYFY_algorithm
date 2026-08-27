@@ -1,0 +1,217 @@
+{
+  "metricas": {
+    "etapa": "enrichment",
+    "municipio": "Amurrio",
+    "localidad": "Saratxo__fiestas patronales de nuestra señora y s",
+    "candidatos": 8,
+    "seleccionados": 8,
+    "documentos_distintos": 4,
+    "chunks_duplicados": 0,
+    "chars_contexto": 9382,
+    "chars_unicos": 8814,
+    "pct_unico": 100.0,
+    "tokens_contexto": 3173,
+    "top_documentos": [
+      [
+        "buscadores:snippets",
+        5
+      ],
+      [
+        "https://www.amurrioturismo.com/agenda-amurrio",
+        1
+      ],
+      [
+        "https://udala.amurrio.eus/cas/noticias/noticias-fiestas/2199-el-ayuntamiento-de-amurrio-hace-una-valoracion-muy-positiva-de-sus-fiestas-de-nuestra-senora-y-san-roke-2026",
+        1
+      ],
+      [
+        "facebook:01002000000",
+        1
+      ]
+    ],
+    "presupuesto": {
+      "presupuesto_chars": 32000
+    },
+    "fiesta": "Fiestas Patronales de Nuestra Señora y San Roke",
+    "dias_consultados": 6,
+    "dias_sin_presupuesto": 0
+  },
+  "chunks": [
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.7158,
+      "score_detalle": {
+        "similitud": 1.0,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1077,
+      "tokens": 392,
+      "hash": "d187643e7d03",
+      "seleccionado": true,
+      "muestra": "TITULO: radiollodio.com›2026/07/28 › el-ayuntamiento-de-amurrio-presenta-la-programacionEl Ayuntamiento deAmurriopresenta la programación de sus... | CONTENIDO: 28 de jul de2026·El"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6646,
+      "score_detalle": {
+        "similitud": 0.8243,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1058,
+      "tokens": 337,
+      "hash": "613f78d1990e",
+      "seleccionado": true,
+      "muestra": "TITULO: udala.amurrio.eus› cas › serviciosFiestas- udala.amurrio.eus | CONTENIDO: El Ayuntamiento deAmurriopresenta la programación de susFiestasPatronales202628 Julio2026La progra"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.627,
+      "score_detalle": {
+        "similitud": 0.6956,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1149,
+      "tokens": 403,
+      "hash": "036e77d226a0",
+      "seleccionado": true,
+      "muestra": "TITULO: radiollodio.com›2026/08/12 › el-ayuntamiento-de-amurrio-policia-local-yEl Ayuntamiento deAmurrio, Policía Local y Ertzaintza refuerzan... | CONTENIDO: 12 de ago de2026·El A"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.601,
+      "score_detalle": {
+        "similitud": 0.6061,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1120,
+      "tokens": 360,
+      "hash": "5c55751da283",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas en Saratxo (País Vasco) - Calendario 2026 y 2027 | Fiestas de ... | CONTENIDO: Descubre lasfiestasdeSaratxo(Álava) en País Vasco. Calendario completo defiestaspatro"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.5979,
+      "score_detalle": {
+        "similitud": 0.5957,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1157,
+      "tokens": 410,
+      "hash": "cdc44a50bcfd",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas de Saratxo 2026 | Fechas, mapa y guía | Fiestas de Pueblos de ... | CONTENIDO: Vive lasFiestasdeSaratxo(Álava): tradiciones, verbenas, dantzaris y gastronomía local"
+    },
+    {
+      "url": "facebook:01002000000",
+      "fuente": "rrss_municipio:facebook",
+      "es_calendario": false,
+      "prioridad": 4,
+      "relevancia_geo": "GENERAL",
+      "score": 0.4273,
+      "score_detalle": {
+        "similitud": 0.756,
+        "spider": 0.5,
+        "programa": 0.44,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 966,
+      "tokens": 394,
+      "hash": "616a49d39d00",
+      "seleccionado": true,
+      "muestra": "[POST 2026-08-18] ﻿Zurekin Batera   En Tol Sarmiento ⏎ Eta horrela amaiera eman diegu jai ahaztezinei. ⏎ Eskerrik asko, Amurrio, aurten ere gure jaiak hain bereziak egiteagatik. ⏎ Septie"
+    },
+    {
+      "url": "https://www.amurrioturismo.com/agenda-amurrio",
+      "fuente": "web_municipio",
+      "es_calendario": false,
+      "prioridad": 2,
+      "relevancia_geo": "GENERAL",
+      "score": 0.4036,
+      "score_detalle": {
+        "similitud": 0.6009,
+        "spider": 1.0,
+        "programa": 0.3,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 3340,
+      "rank_spider": 0,
+      "chars": 1167,
+      "tokens": 377,
+      "hash": "434c4126f7fc",
+      "seleccionado": true,
+      "muestra": "Famoso en todo Euskadi ⏎ y una oportunidad inmejorable para degustar el txakoli. ⏎ Destaca el ⏎ concurso gastronómico ⏎ en el que un ingrediente imprescindible tiene que ser el txakoli ela"
+    },
+    {
+      "url": "https://udala.amurrio.eus/cas/noticias/noticias-fiestas/2199-el-ayuntamiento-de-amurrio-hace-una-valoracion-muy-positiva-de-sus-fiestas-de-nuestra-senora-y-san-roke-2026",
+      "fuente": "web_municipio",
+      "es_calendario": false,
+      "prioridad": 2,
+      "relevancia_geo": "GENERAL",
+      "score": 0.3977,
+      "score_detalle": {
+        "similitud": 0.8854,
+        "spider": 0.3333,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 1390,
+      "rank_spider": 9,
+      "chars": 1120,
+      "tokens": 309,
+      "hash": "d93e751d3473",
+      "seleccionado": true,
+      "muestra": "El Ayuntamiento de Amurrio hace una valoración muy positiva de sus fiestas de Nuestra Señora y San Roke 2026 ⏎ Inicio ⏎ noticias ⏎ Noticias Fiestas ⏎ El Ayuntamiento de Amurrio hace una va"
+    }
+  ]
+}

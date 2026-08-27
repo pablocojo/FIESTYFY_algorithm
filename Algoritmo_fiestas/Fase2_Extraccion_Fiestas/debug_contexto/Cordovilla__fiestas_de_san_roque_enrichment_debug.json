@@ -1,0 +1,51 @@
+{
+  "metricas": {
+    "etapa": "enrichment",
+    "municipio": "Tobarra",
+    "localidad": "Cordovilla__fiestas de san roque",
+    "candidatos": 1,
+    "seleccionados": 1,
+    "documentos_distintos": 1,
+    "chunks_duplicados": 0,
+    "chars_contexto": 257,
+    "chars_unicos": 128,
+    "pct_unico": 100.0,
+    "tokens_contexto": 74,
+    "top_documentos": [
+      [
+        "https://ejemplo.es/programa",
+        1
+      ]
+    ],
+    "presupuesto": {
+      "presupuesto_chars": 32000
+    },
+    "fiesta": "Fiestas de San Roque",
+    "dias_consultados": 3,
+    "dias_sin_presupuesto": 0
+  },
+  "chunks": [
+    {
+      "url": "https://ejemplo.es/programa",
+      "fuente": "web_municipio",
+      "es_calendario": false,
+      "prioridad": 2,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.4967,
+      "score_detalle": {
+        "similitud": 0.5,
+        "spider": 0.5,
+        "programa": 0.2,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 128,
+      "tokens": 33,
+      "hash": "94f700a0e7f9",
+      "seleccionado": true,
+      "muestra": "La localidad celebra sus fiestas cada verano con mucha participacion vecinal, actos religiosos y musica para todos los publicos."
+    }
+  ]
+}

@@ -1,0 +1,323 @@
+{
+  "metricas": {
+    "etapa": "enrichment",
+    "municipio": "Aranda de Duero",
+    "localidad": "La Aguilera__fiestas de la aguilera",
+    "candidatos": 13,
+    "seleccionados": 13,
+    "documentos_distintos": 3,
+    "chunks_duplicados": 0,
+    "chars_contexto": 14976,
+    "chars_unicos": 14024,
+    "pct_unico": 100.0,
+    "tokens_contexto": 5047,
+    "top_documentos": [
+      [
+        "buscadores:snippets",
+        5
+      ],
+      [
+        "https://www.festivalesdeespana.com/festival/fiestas-patronales-la-aguilera",
+        5
+      ],
+      [
+        "https://www.enaranda.es/evento/fiestas-patronales-de-la-aguilera-mayo-2026/",
+        3
+      ]
+    ],
+    "presupuesto": {
+      "presupuesto_chars": 32000
+    },
+    "fiesta": "Fiestas de La Aguilera",
+    "dias_consultados": 8,
+    "dias_sin_presupuesto": 0
+  },
+  "chunks": [
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.7658,
+      "score_detalle": {
+        "similitud": 1.0,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.3
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1076,
+      "tokens": 357,
+      "hash": "4e67aca8e4c3",
+      "seleccionado": true,
+      "muestra": "TITULO: Arrancan este martes las fiestas de La Aguilera en honor a San Pedro ... | CONTENIDO: LaAguilerainicia este martes susfiestaspatronales en honor a San Pedro Regalado, una c"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.7332,
+      "score_detalle": {
+        "similitud": 0.888,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.3
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1166,
+      "tokens": 373,
+      "hash": "62a25becd608",
+      "seleccionado": true,
+      "muestra": "TITULO: Arrancan este martes las fiestas de La Aguilera en honor a San Pedro ... | CONTENIDO: LaAguilerainicia este martes susfiestaspatronalesen honor a San Pedro Regalado, una ce"
+    },
+    {
+      "url": "https://www.enaranda.es/evento/fiestas-patronales-de-la-aguilera-mayo-2026/",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.7108,
+      "score_detalle": {
+        "similitud": 0.754,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 0.5,
+        "extra": 0.7
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1116,
+      "tokens": 477,
+      "hash": "616ee6b1e435",
+      "seleccionado": true,
+      "muestra": "en el teleclub a cargo de la Asociación Cuesta del Águila ⏎ Jueves 14 de mayo ⏎ 17:00h a 18:00h | ⏎ Clases de bailes de salón gratis ⏎ en el teleclub ⏎ 18:00h | ⏎ Colocación de peleles ⏎ 19:00h "
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.7021,
+      "score_detalle": {
+        "similitud": 0.9527,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1163,
+      "tokens": 362,
+      "hash": "031f0d96e13d",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiesta anual de la Asociación Cuesta del Águila | 20 JUNIO 2026 | CONTENIDO: FiestasenLaAguileraLaAsociación Cuesta del Águila celebra sufiestaanual con un plan completo pa"
+    },
+    {
+      "url": "https://www.enaranda.es/evento/fiestas-patronales-de-la-aguilera-mayo-2026/",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.7017,
+      "score_detalle": {
+        "similitud": 0.9515,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1199,
+      "tokens": 423,
+      "hash": "89c41277cc8d",
+      "seleccionado": true,
+      "muestra": "Fiestas Patronales de La Aguilera | 12 a 17 MAYO 2026 ⏎ Descubre la nueva sección Experiencias ⏎ Donde podrás ver una selección de actividades para realizar cuando tú quieras ⏎ Entendido"
+    },
+    {
+      "url": "https://www.festivalesdeespana.com/festival/fiestas-patronales-la-aguilera",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6906,
+      "score_detalle": {
+        "similitud": 0.9135,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1179,
+      "tokens": 401,
+      "hash": "9774f5adada4",
+      "seleccionado": true,
+      "muestra": "Edición 2026 de las patronales de La Aguilera con misa solemne en el Domus Dei, procesión y verbenas. ⏎ Edición 2026 ⏎ La cita 2026 se celebrará el ⏎ miércoles 13 de mayo ⏎ , festividad de"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.666,
+      "score_detalle": {
+        "similitud": 0.829,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1153,
+      "tokens": 415,
+      "hash": "66b8f4a16a33",
+      "seleccionado": true,
+      "muestra": "TITULO: Patronales de La Aguilera 2026 | San Pedro Regalado | CONTENIDO: FiestasPatronalesdeLaAguilera2026: misa, procesión y verbenas el 13demayo en torno al Convento del Domus De"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6469,
+      "score_detalle": {
+        "similitud": 0.7638,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1016,
+      "tokens": 364,
+      "hash": "d533d9751ece",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas Patronales de Aranda de Duero 2026: cuándo son, agenda ... | CONTENIDO: ArandadeDuerocalienta motores para sus festejos más esperados. Del 11 al 20deseptiembrede202"
+    },
+    {
+      "url": "https://www.festivalesdeespana.com/festival/fiestas-patronales-la-aguilera",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6356,
+      "score_detalle": {
+        "similitud": 0.7248,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1086,
+      "tokens": 340,
+      "hash": "3e2e0eb9507c",
+      "seleccionado": true,
+      "muestra": "Patronales de La Aguilera 2026 | San Pedro Regalado ⏎ Proponer una corrección ⏎ Fechas ⏎ 13 may. ⏎ — 17 may. 2026 ⏎ Lugar ⏎ La Aguilera ⏎ (09) ⏎ Precios ⏎ Gratis ⏎ Estado ⏎ Confirmado ⏎ Presentación de Pa"
+    },
+    {
+      "url": "https://www.enaranda.es/evento/fiestas-patronales-de-la-aguilera-mayo-2026/",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6339,
+      "score_detalle": {
+        "similitud": 0.719,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 559,
+      "tokens": 220,
+      "hash": "486b8b096627",
+      "seleccionado": true,
+      "muestra": ": Ayuntamiento de La Aguilera, Peña Chupipandi, Cofradía de San Pedro Regalado, Asociación Cuesta del Águila ⏎ Dónde está La Aguilera? ⏎ [eltiempo] ⏎ Publicidad ⏎ Donde comer ⏎ Dónde comer ⏎ c"
+    },
+    {
+      "url": "https://www.festivalesdeespana.com/festival/fiestas-patronales-la-aguilera",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6318,
+      "score_detalle": {
+        "similitud": 0.7917,
+        "spider": 0.5,
+        "programa": 0.2,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1025,
+      "tokens": 339,
+      "hash": "5c7c3cf10168",
+      "seleccionado": true,
+      "muestra": "Edición correspondiente (opcional) ⏎ 2026 ⏎ 5 fotos máx., 5 MB por foto (JPG, PNG, WebP) ⏎ Enviar ⏎ ¿Has detectado un error o una información que falta? ⏎ Ayúdanos a mantener actualizada est"
+    },
+    {
+      "url": "https://www.festivalesdeespana.com/festival/fiestas-patronales-la-aguilera",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.5431,
+      "score_detalle": {
+        "similitud": 0.4078,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1116,
+      "tokens": 326,
+      "hash": "9fca6586f12a",
+      "seleccionado": true,
+      "muestra": "y verbenas en la plaza del pueblo. ⏎ Comidas populares ⏎ con productos riberanos. ⏎ Juegos infantiles ⏎ y actividades para familias. ⏎ Espectáculos ⏎ y orquestas nocturnas. ⏎ San Pedro Regalado,"
+    },
+    {
+      "url": "https://www.festivalesdeespana.com/festival/fiestas-patronales-la-aguilera",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.5078,
+      "score_detalle": {
+        "similitud": 0.4581,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1170,
+      "tokens": 332,
+      "hash": "7e57ccf0209d",
+      "seleccionado": true,
+      "muestra": ", religioso franciscano vallisoletano de gran fama de santidad. Este convento, fundado por Pedro Regalado en 1404, conserva el sepulcro del santo y constituye un destacado lugar de"
+    }
+  ]
+}

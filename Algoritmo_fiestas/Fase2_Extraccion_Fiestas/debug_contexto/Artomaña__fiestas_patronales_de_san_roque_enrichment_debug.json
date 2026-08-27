@@ -1,0 +1,731 @@
+{
+  "metricas": {
+    "etapa": "enrichment",
+    "municipio": "Amurrio",
+    "localidad": "Artomaña__fiestas patronales de san roque",
+    "candidatos": 31,
+    "seleccionados": 31,
+    "documentos_distintos": 22,
+    "chunks_duplicados": 0,
+    "chars_contexto": 33064,
+    "chars_unicos": 30258,
+    "pct_unico": 100.0,
+    "tokens_contexto": 12899,
+    "top_documentos": [
+      [
+        "https://udala.amurrio.eus/eus/berriak",
+        5
+      ],
+      [
+        "buscadores:snippets",
+        4
+      ],
+      [
+        "https://www.amurrioturismo.com/agenda-amurrio",
+        2
+      ],
+      [
+        "https://udala.amurrio.eus/eus/berriak/berriak-jaiak/2196-trafiko-eta-aparkamenduaren-abisua-andra-mari-eta-san-roke-jaietan",
+        2
+      ],
+      [
+        "https://udala.amurrio.eus/cas/calendario/eventospormes/2026/8/-",
+        1
+      ],
+      [
+        "https://udala.amurrio.eus/cas/calendario/eventosdiarios/2026/8/12/-",
+        1
+      ]
+    ],
+    "presupuesto": {
+      "presupuesto_chars": 32000
+    },
+    "fiesta": "Fiestas Patronales de San Roque",
+    "dias_consultados": 6,
+    "dias_sin_presupuesto": 0
+  },
+  "chunks": [
+    {
+      "url": "https://udala.amurrio.eus/cas/calendario/eventospormes/2026/8/-",
+      "fuente": "web_municipio",
+      "es_calendario": false,
+      "prioridad": 2,
+      "relevancia_geo": "GENERAL",
+      "score": 0.565,
+      "score_detalle": {
+        "similitud": 0.9955,
+        "spider": 0.4222,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.7
+      },
+      "score_spider": 1650,
+      "rank_spider": 2,
+      "chars": 660,
+      "tokens": 377,
+      "hash": "51064c347ee6",
+      "seleccionado": true,
+      "muestra": "Azoka - Feria ⏎ Jaiak - Fiestas ⏎ 2024 ⏎ 2025 ⏎ 2026 ⏎ 2027 ⏎ 2028 ⏎ 2029 ⏎ 2030 ⏎ 2031 ⏎ 21. Agosto 2026 ⏎ Lunes ⏎ Martes ⏎ Miércoles ⏎ Jueves ⏎ Viernes ⏎ Sábado ⏎ Domingo ⏎ 31 ⏎ 27 ⏎ 28 ⏎ 29 ⏎ 30 ⏎ 31 ⏎ 1 ⏎ 08:00am 1 DE AGOSTO, "
+    },
+    {
+      "url": "https://udala.amurrio.eus/cas/calendario/eventosdiarios/2026/8/12/-",
+      "fuente": "web_municipio",
+      "es_calendario": false,
+      "prioridad": 2,
+      "relevancia_geo": "GENERAL",
+      "score": 0.5478,
+      "score_detalle": {
+        "similitud": 0.9121,
+        "spider": 0.4564,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.7
+      },
+      "score_spider": 1750,
+      "rank_spider": 1,
+      "chars": 794,
+      "tokens": 341,
+      "hash": "c39cab7a64eb",
+      "seleccionado": true,
+      "muestra": "Calendario ⏎ Calendario ⏎ Elija una categoría para filtrar la lista ⏎ Todas las categorías ⏎ Hitzaldia - Conferencia ⏎ Erakusketa - Exposición ⏎ Musika - Música ⏎ Kirola - Deporte ⏎ Azoka - Feria ⏎ "
+    },
+    {
+      "url": "https://udala.amurrio.eus/eus/",
+      "fuente": "web_municipio",
+      "es_calendario": false,
+      "prioridad": 2,
+      "relevancia_geo": "GENERAL",
+      "score": 0.48,
+      "score_detalle": {
+        "similitud": 0.8092,
+        "spider": 0.2752,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.7
+      },
+      "score_spider": 1220,
+      "rank_spider": 39,
+      "chars": 1192,
+      "tokens": 491,
+      "hash": "9c622ef1db8b",
+      "seleccionado": true,
+      "muestra": "Home ⏎ CAS ⏎ EUS ⏎ berriak ⏎ Amurrioko koadrilek berriro harritu gaituzgte sormenez betetako karroza lehiaketan ⏎ 17 Abuztua 2026 ⏎ Trot-Artek irabazi du lehen saria, Greziako mitologiaren eta"
+    },
+    {
+      "url": "https://www.amurrioturismo.com/agenda-amurrio",
+      "fuente": "web_municipio",
+      "es_calendario": false,
+      "prioridad": 2,
+      "relevancia_geo": "GENERAL",
+      "score": 0.4775,
+      "score_detalle": {
+        "similitud": 0.8542,
+        "spider": 1.0,
+        "programa": 0.3,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 3340,
+      "rank_spider": 0,
+      "chars": 1167,
+      "tokens": 377,
+      "hash": "434c4126f7fc",
+      "seleccionado": true,
+      "muestra": "Famoso en todo Euskadi ⏎ y una oportunidad inmejorable para degustar el txakoli. ⏎ Destaca el ⏎ concurso gastronómico ⏎ en el que un ingrediente imprescindible tiene que ser el txakoli ela"
+    },
+    {
+      "url": "facebook:01002000000",
+      "fuente": "rrss_municipio:facebook",
+      "es_calendario": false,
+      "prioridad": 4,
+      "relevancia_geo": "GENERAL",
+      "score": 0.4618,
+      "score_detalle": {
+        "similitud": 0.8743,
+        "spider": 0.5,
+        "programa": 0.44,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 966,
+      "tokens": 394,
+      "hash": "616a49d39d00",
+      "seleccionado": true,
+      "muestra": "[POST 2026-08-18] ﻿Zurekin Batera   En Tol Sarmiento ⏎ Eta horrela amaiera eman diegu jai ahaztezinei. ⏎ Eskerrik asko, Amurrio, aurten ere gure jaiak hain bereziak egiteagatik. ⏎ Septie"
+    },
+    {
+      "url": "https://udala.amurrio.eus/eus/berriak/berriak-jaiak/2196-trafiko-eta-aparkamenduaren-abisua-andra-mari-eta-san-roke-jaietan",
+      "fuente": "web_municipio",
+      "es_calendario": false,
+      "prioridad": 2,
+      "relevancia_geo": "GENERAL",
+      "score": 0.4548,
+      "score_detalle": {
+        "similitud": 0.7424,
+        "spider": 0.2479,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.7
+      },
+      "score_spider": 1140,
+      "rank_spider": 42,
+      "chars": 1103,
+      "tokens": 468,
+      "hash": "31d0d4e41ff2",
+      "seleccionado": true,
+      "muestra": "Trafiko eta aparkamenduaren abisua Andra Mari eta San Roke jaietan ⏎ Etxea ⏎ berriak ⏎ Berriak Jaiak ⏎ Trafiko eta aparkamenduaren abisua Andra Mari eta San Roke jaietan ⏎ berriak ⏎ Trafiko et"
+    },
+    {
+      "url": "https://udala.amurrio.eus/cas/calendario/eventosdiarios/2026/8/17/-",
+      "fuente": "web_municipio",
+      "es_calendario": false,
+      "prioridad": 2,
+      "relevancia_geo": "GENERAL",
+      "score": 0.4496,
+      "score_detalle": {
+        "similitud": 1.0,
+        "spider": 0.4222,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 1650,
+      "rank_spider": 19,
+      "chars": 791,
+      "tokens": 337,
+      "hash": "39f59c7eb008",
+      "seleccionado": true,
+      "muestra": "Calendario ⏎ Calendario ⏎ Elija una categoría para filtrar la lista ⏎ Todas las categorías ⏎ Hitzaldia - Conferencia ⏎ Erakusketa - Exposición ⏎ Musika - Música ⏎ Kirola - Deporte ⏎ Azoka - Feria ⏎ "
+    },
+    {
+      "url": "https://udala.amurrio.eus/cas/calendario/eventosdiarios/2026/8/1/-",
+      "fuente": "web_municipio",
+      "es_calendario": false,
+      "prioridad": 2,
+      "relevancia_geo": "GENERAL",
+      "score": 0.441,
+      "score_detalle": {
+        "similitud": 0.9703,
+        "spider": 0.4222,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 1650,
+      "rank_spider": 4,
+      "chars": 792,
+      "tokens": 346,
+      "hash": "0ff973ef82ef",
+      "seleccionado": true,
+      "muestra": "Calendario ⏎ Calendario ⏎ Elija una categoría para filtrar la lista ⏎ Todas las categorías ⏎ Hitzaldia - Conferencia ⏎ Erakusketa - Exposición ⏎ Musika - Música ⏎ Kirola - Deporte ⏎ Azoka - Feria ⏎ "
+    },
+    {
+      "url": "https://udala.amurrio.eus/cas/calendario/eventosanual/2026/-",
+      "fuente": "web_municipio",
+      "es_calendario": false,
+      "prioridad": 2,
+      "relevancia_geo": "GENERAL",
+      "score": 0.4386,
+      "score_detalle": {
+        "similitud": 0.9621,
+        "spider": 0.4222,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 1650,
+      "rank_spider": 3,
+      "chars": 1058,
+      "tokens": 641,
+      "hash": "38bc9bf15bc4",
+      "seleccionado": true,
+      "muestra": "Azoka - Feria ⏎ Jaiak - Fiestas ⏎ 2024 ⏎ 2025 ⏎ 2026 ⏎ 2027 ⏎ 2028 ⏎ 2029 ⏎ 2030 ⏎ 2031 ⏎ 2026 ⏎ Enero 2026 ⏎ Viernes, 2. Enero 2026 - Lunes, 5. Enero 2026 11:30am - 01:30pm ⏎ PARQUE INFANTIL DE NAVIDAD ⏎ :: "
+    },
+    {
+      "url": "https://udala.amurrio.eus/cas/calendario/eventosdiarios/2026/8/16/-",
+      "fuente": "web_municipio",
+      "es_calendario": false,
+      "prioridad": 2,
+      "relevancia_geo": "GENERAL",
+      "score": 0.4337,
+      "score_detalle": {
+        "similitud": 0.9455,
+        "spider": 0.4222,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 1650,
+      "rank_spider": 18,
+      "chars": 751,
+      "tokens": 242,
+      "hash": "3b9911562962",
+      "seleccionado": true,
+      "muestra": "CAS ⏎ EUS ⏎ Inicio ⏎ Azoka - Feria ⏎ Jaiak - Fiestas ⏎ Antzokia ⏎ Agosto ⏎ 2024 ⏎ 2025 ⏎ 2026 ⏎ 2027 ⏎ 2028 ⏎ 2029 ⏎ 2030 ⏎ 2031 ⏎ Domingo, 16. Agosto 2026 ⏎ sin hora ⏎ 16 DE AGOSTO, DOMINGO - SAN ROQUE ⏎ ::  Jaiak -"
+    },
+    {
+      "url": "https://udala.amurrio.eus/images/Cortes.jpg",
+      "fuente": "web_municipio",
+      "es_calendario": false,
+      "prioridad": 2,
+      "relevancia_geo": "GENERAL",
+      "score": 0.4212,
+      "score_detalle": {
+        "similitud": 0.7151,
+        "spider": 0.2752,
+        "programa": 0.38,
+        "temporal": 0.5,
+        "extra": 0.7
+      },
+      "score_spider": 1220,
+      "rank_spider": 40,
+      "chars": 995,
+      "tokens": 460,
+      "hash": "f287517bc4ac",
+      "seleccionado": true,
+      "muestra": "-AMURRIO ⏎ V0144708b0141c160ee0782238070b34i ⏎ BENETAKO KOPIA, Egiaztatze Kode Seguruaren bidez egiazta daiteteena helbide honetan: / COPIA AUTÉNTICA que ⏎ puede ser comprobada mediante "
+    },
+    {
+      "url": "https://udala.amurrio.eus/cas/calendario/eventosdiarios/2026/8/15/-",
+      "fuente": "web_municipio",
+      "es_calendario": false,
+      "prioridad": 2,
+      "relevancia_geo": "GENERAL",
+      "score": 0.4176,
+      "score_detalle": {
+        "similitud": 0.8902,
+        "spider": 0.4222,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 1650,
+      "rank_spider": 17,
+      "chars": 792,
+      "tokens": 340,
+      "hash": "d9daa7bbd862",
+      "seleccionado": true,
+      "muestra": "Calendario ⏎ Calendario ⏎ Elija una categoría para filtrar la lista ⏎ Todas las categorías ⏎ Hitzaldia - Conferencia ⏎ Erakusketa - Exposición ⏎ Musika - Música ⏎ Kirola - Deporte ⏎ Azoka - Feria ⏎ "
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "GENERAL",
+      "score": 0.4157,
+      "score_detalle": {
+        "similitud": 0.8281,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1171,
+      "tokens": 335,
+      "hash": "f2ee08ef278e",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestasde Galicia -Fiestaspor Galicia | CONTENIDO: Encuentra cosas que hacer y descubre qué está pasando en Galicia, eventos, espacios naturales, conciertos, festivales (fe"
+    },
+    {
+      "url": "https://udala.amurrio.eus/cas/calendario/eventosdiarios/2026/8/13/-",
+      "fuente": "web_municipio",
+      "es_calendario": false,
+      "prioridad": 2,
+      "relevancia_geo": "GENERAL",
+      "score": 0.4122,
+      "score_detalle": {
+        "similitud": 0.8717,
+        "spider": 0.4222,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 1650,
+      "rank_spider": 15,
+      "chars": 809,
+      "tokens": 344,
+      "hash": "b546cd32e8f2",
+      "seleccionado": true,
+      "muestra": "Calendario ⏎ Calendario ⏎ Elija una categoría para filtrar la lista ⏎ Todas las categorías ⏎ Hitzaldia - Conferencia ⏎ Erakusketa - Exposición ⏎ Musika - Música ⏎ Kirola - Deporte ⏎ Azoka - Feria ⏎ "
+    },
+    {
+      "url": "https://udala.amurrio.eus/eus/berriak/berriak-jaiak/2200-amurrioko-udalak-oso-positibotzat-jo-du-2026ko-andra-mari-eta-san-rokeko-festak",
+      "fuente": "web_municipio",
+      "es_calendario": false,
+      "prioridad": 2,
+      "relevancia_geo": "GENERAL",
+      "score": 0.4061,
+      "score_detalle": {
+        "similitud": 0.8703,
+        "spider": 0.3949,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 1570,
+      "rank_spider": 35,
+      "chars": 983,
+      "tokens": 386,
+      "hash": "6b2dd08b0381",
+      "seleccionado": true,
+      "muestra": "Amurrioko Udalak oso positibotzat jo du 2026ko Andra Mari eta San Rokeko festak ⏎ Etxea ⏎ Berriak Jaiak ⏎ Amurrioko Udalak oso positibotzat jo du 2026ko Andra Mari eta San Rokeko festak ⏎ "
+    },
+    {
+      "url": "https://udala.amurrio.eus/cas/calendario/eventosdiarios/2026/8/26/-",
+      "fuente": "web_municipio",
+      "es_calendario": false,
+      "prioridad": 2,
+      "relevancia_geo": "GENERAL",
+      "score": 0.3984,
+      "score_detalle": {
+        "similitud": 0.8244,
+        "spider": 0.4222,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 1650,
+      "rank_spider": 28,
+      "chars": 702,
+      "tokens": 216,
+      "hash": "00bcfa3b2abe",
+      "seleccionado": true,
+      "muestra": "CAS ⏎ EUS ⏎ Inicio ⏎ Azoka - Feria ⏎ Jaiak - Fiestas ⏎ Antzokia ⏎ Agosto ⏎ 2024 ⏎ 2025 ⏎ 2026 ⏎ 2027 ⏎ 2028 ⏎ 2029 ⏎ 2030 ⏎ 2031 ⏎ Miércoles, 26. Agosto 2026 ⏎ Sin eventos ⏎ Política de cookies ⏎ Esta web utiliza coo"
+    },
+    {
+      "url": "https://udala.amurrio.eus/cas/calendario/eventosdiarios/2026/8/14/-",
+      "fuente": "web_municipio",
+      "es_calendario": false,
+      "prioridad": 2,
+      "relevancia_geo": "GENERAL",
+      "score": 0.3972,
+      "score_detalle": {
+        "similitud": 0.8201,
+        "spider": 0.4222,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 1650,
+      "rank_spider": 16,
+      "chars": 794,
+      "tokens": 338,
+      "hash": "72e36274ae63",
+      "seleccionado": true,
+      "muestra": "Calendario ⏎ Calendario ⏎ Elija una categoría para filtrar la lista ⏎ Todas las categorías ⏎ Hitzaldia - Conferencia ⏎ Erakusketa - Exposición ⏎ Musika - Música ⏎ Kirola - Deporte ⏎ Azoka - Feria ⏎ "
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "GENERAL",
+      "score": 0.395,
+      "score_detalle": {
+        "similitud": 0.7571,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1164,
+      "tokens": 381,
+      "hash": "48dbdc0588cb",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas en Galicia, ferias, romerías y festivales gallegos | CONTENIDO: 9 de jul de 2015· Fiestas en Galicia, ferias, romerías y festivales gallegos. Galicia puede presumir"
+    },
+    {
+      "url": "https://udala.amurrio.eus/cas/calendario/eventosdiarios/2026/8/19/-",
+      "fuente": "web_municipio",
+      "es_calendario": false,
+      "prioridad": 2,
+      "relevancia_geo": "GENERAL",
+      "score": 0.3918,
+      "score_detalle": {
+        "similitud": 0.8017,
+        "spider": 0.4222,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 1650,
+      "rank_spider": 21,
+      "chars": 733,
+      "tokens": 307,
+      "hash": "11428536eb00",
+      "seleccionado": true,
+      "muestra": "Calendario ⏎ Calendario ⏎ Elija una categoría para filtrar la lista ⏎ Todas las categorías ⏎ Hitzaldia - Conferencia ⏎ Erakusketa - Exposición ⏎ Musika - Música ⏎ Kirola - Deporte ⏎ Azoka - Feria ⏎ "
+    },
+    {
+      "url": "https://udala.amurrio.eus/eus/berriak",
+      "fuente": "web_municipio",
+      "es_calendario": false,
+      "prioridad": 2,
+      "relevancia_geo": "GENERAL",
+      "score": 0.3909,
+      "score_detalle": {
+        "similitud": 0.675,
+        "spider": 0.2752,
+        "programa": 0.3,
+        "temporal": 0.5,
+        "extra": 0.7
+      },
+      "score_spider": 1220,
+      "rank_spider": 40,
+      "chars": 1177,
+      "tokens": 465,
+      "hash": "ec3879b948ab",
+      "seleccionado": true,
+      "muestra": "Udalak eskerrak eman nahi dizkie kultur eta kirol elkarteei, koadrilei, ostalaritza eta merkataritza establezimenduei, udal langileei, segurtasun, garbiketa eta larrialdi zerbitzue"
+    },
+    {
+      "url": "https://udala.amurrio.eus/cas/calendario/eventosdiarios/2026/8/7/-",
+      "fuente": "web_municipio",
+      "es_calendario": false,
+      "prioridad": 2,
+      "relevancia_geo": "GENERAL",
+      "score": 0.3892,
+      "score_detalle": {
+        "similitud": 0.7929,
+        "spider": 0.4222,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 1650,
+      "rank_spider": 10,
+      "chars": 730,
+      "tokens": 305,
+      "hash": "9875ec9f0052",
+      "seleccionado": true,
+      "muestra": "Calendario ⏎ Calendario ⏎ Elija una categoría para filtrar la lista ⏎ Todas las categorías ⏎ Hitzaldia - Conferencia ⏎ Erakusketa - Exposición ⏎ Musika - Música ⏎ Kirola - Deporte ⏎ Azoka - Feria ⏎ "
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "GENERAL",
+      "score": 0.3775,
+      "score_detalle": {
+        "similitud": 0.7772,
+        "spider": 0.5,
+        "programa": 0.2,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1104,
+      "tokens": 343,
+      "hash": "3305c4c46bd3",
+      "seleccionado": true,
+      "muestra": "TITULO: www.galiciafiestas.es› calendario-fiestasCalendario deFiestasen Galicia | CONTENIDO: Consulta el calendario completo defiestasen Galicia por año y mes. Encuentra eventos de"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "GENERAL",
+      "score": 0.3737,
+      "score_detalle": {
+        "similitud": 0.764,
+        "spider": 0.5,
+        "programa": 0.2,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1153,
+      "tokens": 347,
+      "hash": "530963841b6d",
+      "seleccionado": true,
+      "muestra": "TITULO: fiestas.net› espanaFiestas Destacadas en España-Fiestas.Net | CONTENIDO: Ferias yFiestasdestacadas de pueblos y ciudades en España. Con agenda de actividades infantiles, co"
+    },
+    {
+      "url": "https://udala.amurrio.eus/cas/bilatu-buscar",
+      "fuente": "web_municipio",
+      "es_calendario": false,
+      "prioridad": 2,
+      "relevancia_geo": "GENERAL",
+      "score": 0.361,
+      "score_detalle": {
+        "similitud": 0.7817,
+        "spider": 0.3026,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 1300,
+      "rank_spider": 37,
+      "chars": 789,
+      "tokens": 395,
+      "hash": "48df844f33d4",
+      "seleccionado": true,
+      "muestra": "Elija una categoría para filtrar la lista ⏎ Todas las categorías ⏎ Hitzaldia - Conferencia ⏎ Erakusketa - Exposición ⏎ Musika - Música ⏎ Kirola - Deporte ⏎ Azoka - Feria ⏎ Kale antzerkia - Teatr"
+    },
+    {
+      "url": "https://www.amurrioturismo.com/agenda-amurrio",
+      "fuente": "web_municipio",
+      "es_calendario": false,
+      "prioridad": 2,
+      "relevancia_geo": "GENERAL",
+      "score": 0.3461,
+      "score_detalle": {
+        "similitud": 0.4037,
+        "spider": 1.0,
+        "programa": 0.3,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 3340,
+      "rank_spider": 0,
+      "chars": 1190,
+      "tokens": 389,
+      "hash": "6cea7a22e54b",
+      "seleccionado": true,
+      "muestra": "Ferias y fiestas de Amurrio, Euskadi ⏎ SAN ANTÓN ⏎ El domingo siguiente al día de San Antón, 17 de enero, se celebra en Amurrio la Feria de San Antón.  Este día  encontrarás un ⏎ mercado"
+    },
+    {
+      "url": "https://udala.amurrio.eus/eus/berriak",
+      "fuente": "web_municipio",
+      "es_calendario": false,
+      "prioridad": 2,
+      "relevancia_geo": "GENERAL",
+      "score": 0.3429,
+      "score_detalle": {
+        "similitud": 0.6706,
+        "spider": 0.2752,
+        "programa": 0.1,
+        "temporal": 0.5,
+        "extra": 0.7
+      },
+      "score_spider": 1220,
+      "rank_spider": 40,
+      "chars": 1199,
+      "tokens": 451,
+      "hash": "a481de0a3b64",
+      "seleccionado": true,
+      "muestra": "Desfileak agerian utzi zituen, beste behin ere, herriko koadrilen ahalegina, sormena eta inplikazioa, horiek baitira urtero Amurrioko jaietako une garrantzitsuenetakotzat finkatzen"
+    },
+    {
+      "url": "https://udala.amurrio.eus/eus/berriak",
+      "fuente": "web_municipio",
+      "es_calendario": false,
+      "prioridad": 2,
+      "relevancia_geo": "GENERAL",
+      "score": 0.3349,
+      "score_detalle": {
+        "similitud": 0.5629,
+        "spider": 0.2752,
+        "programa": 0.2,
+        "temporal": 0.5,
+        "extra": 0.7
+      },
+      "score_spider": 1220,
+      "rank_spider": 40,
+      "chars": 1003,
+      "tokens": 367,
+      "hash": "562a622b0473",
+      "seleccionado": true,
+      "muestra": "Abuztuaren 12an eta 13an izango da pertseiden aktibitate maximoa, eta, aurten, kondizio ezin hobeetan gozatu ahal izango da, Ilberriari esker. ⏎ Izar-jasa ikusteko asmoa baduzu, jant"
+    },
+    {
+      "url": "https://udala.amurrio.eus/eus/berriak/berriak-jaiak/2196-trafiko-eta-aparkamenduaren-abisua-andra-mari-eta-san-roke-jaietan",
+      "fuente": "web_municipio",
+      "es_calendario": false,
+      "prioridad": 2,
+      "relevancia_geo": "GENERAL",
+      "score": 0.3298,
+      "score_detalle": {
+        "similitud": 0.7092,
+        "spider": 0.2479,
+        "programa": 0.52,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 1140,
+      "rank_spider": 42,
+      "chars": 1061,
+      "tokens": 423,
+      "hash": "8c816e327fb2",
+      "seleccionado": true,
+      "muestra": "Trafiko mozketa Elexondo Kalean, Landakoko/Aiarako eta Foru Kaleko elkarguneen artean, SÜNEk Juan Urrutia plazan emango duen kontzertua dela eta. ⏎ Larunbata, abuztuak 15 ⏎ Ezin da apa"
+    },
+    {
+      "url": "https://udala.amurrio.eus/eus/berriak",
+      "fuente": "web_municipio",
+      "es_calendario": false,
+      "prioridad": 2,
+      "relevancia_geo": "GENERAL",
+      "score": 0.3293,
+      "score_detalle": {
+        "similitud": 0.688,
+        "spider": 0.2752,
+        "programa": 0.52,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 1220,
+      "rank_spider": 40,
+      "chars": 1077,
+      "tokens": 448,
+      "hash": "dce2035a7a39",
+      "seleccionado": true,
+      "muestra": "22:00etatik 23:00etara ⏎ Trafiko mozketa Elexondo Kalean, Landakoko/Aiarako eta Foru Kaleko elkarguneen artean, Zezensuzkoa dela eta. ⏎ Abuztuak 14, ostirala ⏎ 23:30etik 02:30era: ⏎ Trafik"
+    },
+    {
+      "url": "https://udala.amurrio.eus/eus/berriak",
+      "fuente": "web_municipio",
+      "es_calendario": false,
+      "prioridad": 2,
+      "relevancia_geo": "GENERAL",
+      "score": 0.3259,
+      "score_detalle": {
+        "similitud": 0.8521,
+        "spider": 0.2752,
+        "programa": 0.3,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 1220,
+      "rank_spider": 40,
+      "chars": 1160,
+      "tokens": 434,
+      "hash": "f56ffb7667db",
+      "seleccionado": true,
+      "muestra": "Etxea ⏎ Amurrioko Udalak oso positibotzat jo du 2026ko Andra Mari eta San Rokeko festak ⏎ Berriak Jaiak ⏎ Udalak herritarren parte-hartze zabala, jai giroa eta publiko guztientzako pents"
+    },
+    {
+      "url": "https://udala.amurrio.eus/cas/politica-de-cookies",
+      "fuente": "web_municipio",
+      "es_calendario": false,
+      "prioridad": 2,
+      "relevancia_geo": "GENERAL",
+      "score": 0.3198,
+      "score_detalle": {
+        "similitud": 0.885,
+        "spider": 0.2,
+        "programa": 0.3,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 1000,
+      "rank_spider": 64,
+      "chars": 1198,
+      "tokens": 365,
+      "hash": "a267fbaa1d04",
+      "seleccionado": true,
+      "muestra": "Agenda y programación ⏎ Eventos Antzokia ⏎ Personas asociadas ⏎ Deportes ⏎ Instalaciones deportivas ⏎ Documentos ⏎ Empleo ⏎ Ofertas públicas de empleo ⏎ Euskera, educación, salud y mediación ⏎ Euske"
+    }
+  ]
+}

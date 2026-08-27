@@ -1,0 +1,202 @@
+[
+  {
+    "id": "01002000000",
+    "tipo": "municipio",
+    "nombre": "Amurrio",
+    "provincia": "Araba/Álava",
+    "comunidad": "País Vasco",
+    "poblacion": 10346,
+    "lat": 43.05265767,
+    "lng": -3.001015194,
+    "descripcion_corta": "Descubre la rica historia y cultura de una ciudad vasca con un pasado industrial vibrante",
+    "descripcion": "Amurrio, rodeado por montañas y ríos, ofrece una mezcla única de entorno natural y cultura. Su economía se basa en la industria siderúrgica, con empresas líderes como Tubos Reunidos y Tubacex. Explora su patrimonio histórico y disfruta del paisaje pintoresco que la rodea",
+    "imagenes": {
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Amurrio_12.JPG",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Escudo_de_Amurrio.svg/120px-Escudo_de_Amurrio.svg.png"
+    },
+    "sitio_web": "https://amurrio.eus/cas",
+    "wikipedia_url": "https://es.wikipedia.org/wiki/Amurrio",
+    "original_id": "amurrio",
+    "es_capital": false
+  },
+  {
+    "id": "01002000101",
+    "padre_id": "01002000000",
+    "nombre": "Aloria",
+    "provincia": "Araba/Álava",
+    "comunidad": "País Vasco",
+    "poblacion": 24,
+    "lat": 42.99633625,
+    "lng": -2.982035886,
+    "es_capital": false,
+    "tipo": "pueblo",
+    "sitio_web": "",
+    "wikipedia_url": "",
+    "descripcion_corta": "Una localidad con encanto e historia por descubrir.",
+    "descripcion": "Aloria es un destino ideal para disfrutar del turismo, descubrir paisajes inolvidables y sumergirse en su riqueza cultural.",
+    "imagenes": {
+      "banner": "",
+      "logo": ""
+    }
+  },
+  {
+    "id": "01002000201",
+    "padre_id": "01002000000",
+    "nombre": "Amurrio",
+    "provincia": "Araba/Álava",
+    "comunidad": "País Vasco",
+    "poblacion": 9256,
+    "lat": 43.05265767,
+    "lng": -3.001015194,
+    "es_capital": true,
+    "tipo": "pueblo",
+    "sitio_web": "",
+    "wikipedia_url": "",
+    "descripcion_corta": "Una localidad con encanto e historia por descubrir.",
+    "descripcion": "Amurrio es un destino ideal para disfrutar del turismo, descubrir paisajes inolvidables y sumergirse en su riqueza cultural.",
+    "imagenes": {
+      "banner": "",
+      "logo": ""
+    }
+  },
+  {
+    "id": "01002000301",
+    "padre_id": "01002000000",
+    "nombre": "Artomaña",
+    "provincia": "Araba/Álava",
+    "comunidad": "País Vasco",
+    "poblacion": 63,
+    "lat": 42.98363568,
+    "lng": -2.98190796,
+    "es_capital": false,
+    "tipo": "pueblo",
+    "sitio_web": "",
+    "wikipedia_url": "https://es.wikipedia.org/wiki/Artómaña",
+    "descripcion_corta": "Pueblo con bodega de txakoli en medio del entorno natural protegido.",
+    "descripcion": "Artomaña es un pueblo con una bodega de txakoli situado en el corazón de un entorno natural protegido, donde la viñedos y los paisajes agrícolas predominan.",
+    "imagenes": {
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Artomana_1932-1934_ortoargazkia.jpg",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Artomana_1932-1934_ortoargazkia.jpg/250px-Artomana_1932-1934_ortoargazkia.jpg"
+    }
+  },
+  {
+    "id": "01002000501",
+    "padre_id": "01002000000",
+    "nombre": "Baranbio",
+    "provincia": "Araba/Álava",
+    "comunidad": "País Vasco",
+    "poblacion": 73,
+    "lat": 43.04848035,
+    "lng": -2.920819517,
+    "es_capital": false,
+    "tipo": "pueblo",
+    "sitio_web": "",
+    "wikipedia_url": "https://es.wikipedia.org/wiki/Barambio",
+    "descripcion_corta": "Pueblo situado entre montañas junto al río Altube, conocido por sus rutas y feria dedicada a la cabra.",
+    "descripcion": "Entre las majestuosas montañas de Asegi y Goriabe, junto al río Altube, se encuentra este encantador pueblo que ofrece rutas variadas como la ruta del agua y la minería. Además, celebra el 'Ahuntz Eguna', una feria tradicional dedicada a la cabra con concursos de razas locales.",
+    "imagenes": {
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Baranbioko_etxeak_atzean_eliza.jpg",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Baranbioko_etxeak_atzean_eliza.jpg/250px-Baranbioko_etxeak_atzean_eliza.jpg"
+    }
+  },
+  {
+    "id": "01002000601",
+    "padre_id": "01002000000",
+    "nombre": "Delika",
+    "provincia": "Araba/Álava",
+    "comunidad": "País Vasco",
+    "poblacion": 124,
+    "lat": 42.97101677,
+    "lng": -2.990098275,
+    "es_capital": false,
+    "tipo": "pueblo",
+    "sitio_web": "",
+    "wikipedia_url": "https://es.wikipedia.org/wiki/Délica",
+    "descripcion_corta": "Un pueblo con sendero natural que ofrece ver el salto del río Nervión entre robles y hayas.",
+    "descripcion": "Delika es un encantador pueblo con un sendero natural donde se puede admirar el salto del río Nervión flanqueado por majestuosos robles y hayas, ofreciendo un hermoso paseo entre la naturaleza.",
+    "imagenes": {
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Valle_delica.jpg",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Salto_nervion2023.jpg/330px-Salto_nervion2023.jpg"
+    }
+  },
+  {
+    "id": "01002000701",
+    "padre_id": "01002000000",
+    "nombre": "Larrinbe",
+    "provincia": "Araba/Álava",
+    "comunidad": "País Vasco",
+    "poblacion": 85,
+    "lat": 43.04400047,
+    "lng": -2.982010581,
+    "es_capital": false,
+    "tipo": "pueblo",
+    "sitio_web": "",
+    "wikipedia_url": "https://es.wikipedia.org/wiki/Larrimbe",
+    "descripcion_corta": "Pueblo con encanto en la comarca vasca, rodeado de naturaleza y rica en historia.",
+    "descripcion": "Larrinbe es un pintoresco pueblo situado en la comarca vasca, envuelto por bellos paisajes naturales. Su entorno ofrece caminos para paseos y senderismo, mientras que su historia se refleja en edificios antiguos y tradiciones locales.",
+    "imagenes": {
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Larrimbe_-_Iglesia_de_Santiago_09.JPG",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Larrimbe_-_Iglesia_de_Santiago_09.JPG/250px-Larrimbe_-_Iglesia_de_Santiago_09.JPG"
+    }
+  },
+  {
+    "id": "01002000801",
+    "padre_id": "01002000000",
+    "nombre": "Lekamaña",
+    "provincia": "Araba/Álava",
+    "comunidad": "País Vasco",
+    "poblacion": 43,
+    "lat": 43.02149019,
+    "lng": -2.996148832,
+    "es_capital": false,
+    "tipo": "pueblo",
+    "sitio_web": "",
+    "wikipedia_url": "",
+    "descripcion_corta": "Una localidad con encanto e historia por descubrir.",
+    "descripcion": "Lekamaña es un destino ideal para disfrutar del turismo, descubrir paisajes inolvidables y sumergirse en su riqueza cultural.",
+    "imagenes": {
+      "banner": "",
+      "logo": ""
+    }
+  },
+  {
+    "id": "01002001101",
+    "padre_id": "01002000000",
+    "nombre": "Saratxo",
+    "provincia": "Araba/Álava",
+    "comunidad": "País Vasco",
+    "poblacion": 20,
+    "lat": 43.02410122,
+    "lng": -3.010798201,
+    "es_capital": false,
+    "tipo": "pueblo",
+    "sitio_web": "",
+    "wikipedia_url": "https://es.wikipedia.org/wiki/Saracho",
+    "descripcion_corta": "Pueblo encantador con rica historia junto al mar Cantábrico.",
+    "descripcion": "Saratxo es un encantador pueblo con una rica historia que se asoma al mar Cantábrico, ofreciendo a los visitantes el disfrute de sus calles empedradas y su entorno natural privilegiado.",
+    "imagenes": {
+      "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Saratxo_1932-1934_ortoargazkia.jpg",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Saratxo_1932-1934_ortoargazkia.jpg/250px-Saratxo_1932-1934_ortoargazkia.jpg"
+    }
+  },
+  {
+    "id": "01002001201",
+    "padre_id": "01002000000",
+    "nombre": "Tertanga",
+    "provincia": "Araba/Álava",
+    "comunidad": "País Vasco",
+    "poblacion": 33,
+    "lat": 42.97818461,
+    "lng": -3.022813917,
+    "es_capital": false,
+    "tipo": "pueblo",
+    "sitio_web": "",
+    "wikipedia_url": "",
+    "descripcion_corta": "Una localidad con encanto e historia por descubrir.",
+    "descripcion": "Tertanga es un destino ideal para disfrutar del turismo, descubrir paisajes inolvidables y sumergirse en su riqueza cultural.",
+    "imagenes": {
+      "banner": "",
+      "logo": ""
+    }
+  }
+]

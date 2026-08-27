@@ -1,0 +1,165 @@
+{
+  "metricas": {
+    "etapa": "enrichment",
+    "municipio": "Amurrio",
+    "localidad": "Larrinbe__fiestas patronales de amurrio incluye la",
+    "candidatos": 6,
+    "seleccionados": 6,
+    "documentos_distintos": 2,
+    "chunks_duplicados": 0,
+    "chars_contexto": 6908,
+    "chars_unicos": 6682,
+    "pct_unico": 100.0,
+    "tokens_contexto": 2332,
+    "top_documentos": [
+      [
+        "buscadores:snippets",
+        5
+      ],
+      [
+        "https://www.amurrioturismo.com/agenda-amurrio",
+        1
+      ]
+    ],
+    "presupuesto": {
+      "presupuesto_chars": 32000
+    },
+    "fiesta": "Fiestas Patronales de Amurrio (incluye Larrinbe)",
+    "dias_consultados": 7,
+    "dias_sin_presupuesto": 0
+  },
+  "chunks": [
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.7158,
+      "score_detalle": {
+        "similitud": 1.0,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1035,
+      "tokens": 425,
+      "hash": "afb56d690630",
+      "seleccionado": true,
+      "muestra": "TITULO: Programa Fiestas de Larrinbe 2026 en Amurrio - kaixo.com | CONTENIDO: LasFiestasde Santiago2026enLarrinbe, Amurrio, se celebrarán el 24 y 25 de julio. Dirección:Larrinbe, A"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.7042,
+      "score_detalle": {
+        "similitud": 0.8483,
+        "spider": 0.5,
+        "programa": 0.44,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1122,
+      "tokens": 367,
+      "hash": "94b23ea52f1c",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas de Santiago de Larrinbe 2026 | CONTENIDO: LasFiestasde Santiago deLarrinbe2026prometen llenar de alegría y tradición el pequeño concejo deLarrinbe, en Amurrio. Del "
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6909,
+      "score_detalle": {
+        "similitud": 0.9147,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1139,
+      "tokens": 400,
+      "hash": "0749ab356766",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestasde Galicia -Fiestaspor Galicia | CONTENIDO: Encuentra cosas que hacer y descubre qué está pasando en Galicia, eventos, espacios naturales, conciertos, festivales (fe"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "GENERAL",
+      "score": 0.4656,
+      "score_detalle": {
+        "similitud": 0.9994,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1098,
+      "tokens": 360,
+      "hash": "48128cf60bbe",
+      "seleccionado": true,
+      "muestra": "TITULO: Noticias Fiestas - udala.amurrio.eus | CONTENIDO: El cartel de lasFiestasPatronalesde Amurrio2026ya ha sido seleccionado por el comité designado para la convocatoria Notici"
+    },
+    {
+      "url": "https://www.amurrioturismo.com/agenda-amurrio",
+      "fuente": "web_municipio",
+      "es_calendario": false,
+      "prioridad": 2,
+      "relevancia_geo": "GENERAL",
+      "score": 0.4252,
+      "score_detalle": {
+        "similitud": 0.6751,
+        "spider": 1.0,
+        "programa": 0.3,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 3340,
+      "rank_spider": 0,
+      "chars": 1167,
+      "tokens": 377,
+      "hash": "434c4126f7fc",
+      "seleccionado": true,
+      "muestra": "Famoso en todo Euskadi ⏎ y una oportunidad inmejorable para degustar el txakoli. ⏎ Destaca el ⏎ concurso gastronómico ⏎ en el que un ingrediente imprescindible tiene que ser el txakoli ela"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "GENERAL",
+      "score": 0.3883,
+      "score_detalle": {
+        "similitud": 0.7343,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1121,
+      "tokens": 334,
+      "hash": "af3cd2e2d268",
+      "seleccionado": true,
+      "muestra": "TITULO: What is acarteland its impact on society? - Mexico News Daily | CONTENIDO: 24 de feb de 2026· A business cartel is a group of otherwise legal firms that secretly agree to f"
+    }
+  ]
+}

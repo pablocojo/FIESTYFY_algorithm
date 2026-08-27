@@ -1,0 +1,511 @@
+{
+  "metricas": {
+    "etapa": "enrichment",
+    "municipio": "Amurrio",
+    "localidad": "Lekamaña__fiestas patronales de nuestra señora de ",
+    "candidatos": 21,
+    "seleccionados": 21,
+    "documentos_distintos": 13,
+    "chunks_duplicados": 0,
+    "chars_contexto": 31669,
+    "chars_unicos": 29531,
+    "pct_unico": 100.0,
+    "tokens_contexto": 13303,
+    "top_documentos": [
+      [
+        "buscadores:snippets",
+        4
+      ],
+      [
+        "https://www.festivalesdeespana.com/festival/fiestas-de-san-miguel-de-lezama",
+        4
+      ],
+      [
+        "https://arabakoak.com/2026/07/29/amurrio-celebrara-sus-fiestas-patronales-del-12-al-17-de-agosto-7f60/",
+        2
+      ],
+      [
+        "https://udala.amurrio.eus/attachments/article/2183/2026_Amurrio_Jai_kartel_orokorra_320x700.pdf",
+        2
+      ],
+      [
+        "https://udala.amurrio.eus/cas/noticias/noticias-fiestas/2183-el-ayuntamiento-de-amurrio-presenta-la-programacion-de-sus-fiestas-patronales-2026",
+        1
+      ],
+      [
+        "https://www.amurrioturismo.com/agenda-amurrio",
+        1
+      ]
+    ],
+    "presupuesto": {
+      "presupuesto_chars": 32000
+    },
+    "fiesta": "Fiestas Patronales de Nuestra Señora de la Asunción",
+    "dias_consultados": 3,
+    "dias_sin_presupuesto": 0
+  },
+  "chunks": [
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.8325,
+      "score_detalle": {
+        "similitud": 1.0,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.7
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1048,
+      "tokens": 372,
+      "hash": "40f0687a4507",
+      "seleccionado": true,
+      "muestra": "TITULO: Amurrio celebrará sus fiestas patronales del 12 al 17 de ago | CONTENIDO: El Ayuntamiento deAmurrioha presentado la programación oficial de lasFiestasde Nuestra Señora y Sa"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6966,
+      "score_detalle": {
+        "similitud": 0.9342,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1110,
+      "tokens": 367,
+      "hash": "c4c36edc8ca7",
+      "seleccionado": true,
+      "muestra": "TITULO: El Ayuntamiento de Amurrio presenta la programación de sus Fiestas ... | CONTENIDO: El Ayuntamiento deAmurrioha presentado en rueda de prensa el cartel y la programación of"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6845,
+      "score_detalle": {
+        "similitud": 0.8925,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1131,
+      "tokens": 395,
+      "hash": "359ae6de1eda",
+      "seleccionado": true,
+      "muestra": "TITULO: Programa Fiestas de Barakaldo 2026 (Cármenes 2026 ) | CONTENIDO: LasFiestasdel Carmen de Barakaldo2026se celebrarán del 11 al 19 de julio, con cerca de 300 actividades pens"
+    },
+    {
+      "url": "https://www.festivalesdeespana.com/festival/fiestas-de-san-miguel-de-lezama",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.5817,
+      "score_detalle": {
+        "similitud": 0.54,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1127,
+      "tokens": 458,
+      "hash": "4517a597460c",
+      "seleccionado": true,
+      "muestra": "Comparte tu experiencia con la comunidad. ⏎ Tu puntuación (opcional) ⏎ borrar ⏎ Edición correspondiente (opcional) ⏎ 2026 ⏎ 2025 ⏎ Publicar mi opinión ⏎ Dónde se celebra San Miguel Lezama ⏎ Plaza "
+    },
+    {
+      "url": "https://udala.amurrio.eus/cas/noticias/noticias-fiestas/2183-el-ayuntamiento-de-amurrio-presenta-la-programacion-de-sus-fiestas-patronales-2026",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "GENERAL",
+      "score": 0.5626,
+      "score_detalle": {
+        "similitud": 0.9317,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.7
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1185,
+      "tokens": 355,
+      "hash": "0cba96c164c4",
+      "seleccionado": true,
+      "muestra": "El Ayuntamiento de Amurrio presenta la programación de sus Fiestas Patronales 2026 ⏎ noticias ⏎ Noticias Fiestas ⏎ El Ayuntamiento de Amurrio presenta la programación de sus Fiestas Patr"
+    },
+    {
+      "url": "https://www.amurrioturismo.com/agenda-amurrio",
+      "fuente": "web_municipio",
+      "es_calendario": false,
+      "prioridad": 2,
+      "relevancia_geo": "GENERAL",
+      "score": 0.5595,
+      "score_detalle": {
+        "similitud": 0.7354,
+        "spider": 1.0,
+        "programa": 0.3,
+        "temporal": 0.5,
+        "extra": 0.7
+      },
+      "score_spider": 3340,
+      "rank_spider": 0,
+      "chars": 1167,
+      "tokens": 377,
+      "hash": "434c4126f7fc",
+      "seleccionado": true,
+      "muestra": "Famoso en todo Euskadi ⏎ y una oportunidad inmejorable para degustar el txakoli. ⏎ Destaca el ⏎ concurso gastronómico ⏎ en el que un ingrediente imprescindible tiene que ser el txakoli ela"
+    },
+    {
+      "url": "https://www.festivalesdeespana.com/festival/fiestas-de-san-miguel-de-lezama",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.5585,
+      "score_detalle": {
+        "similitud": 0.4604,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1182,
+      "tokens": 375,
+      "hash": "b33449354fc5",
+      "seleccionado": true,
+      "muestra": "Lezama se encuentra en un entorno rural privilegiado del valle de Ayala, rodeado de prados, robledales y bosques de pino. El concejo está próximo al ⏎ Parque Natural de Gorbea ⏎ y a la"
+    },
+    {
+      "url": "https://www.festivalesdeespana.com/festival/fiestas-de-san-miguel-de-lezama",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.5413,
+      "score_detalle": {
+        "similitud": 0.4014,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1015,
+      "tokens": 339,
+      "hash": "c34699281cb8",
+      "seleccionado": true,
+      "muestra": "Fiestas de San Miguel 2026 en Lezama-Lekamaña (Amurrio, Álava) ⏎ Proponer una corrección ⏎ Fechas ⏎ 26 sep. ⏎ — 29 sep. 2026 ⏎ Lugar ⏎ Amurrio ⏎ (01) ⏎ Precios ⏎ Gratis ⏎ Estado ⏎ — ⏎ Presentación de San "
+    },
+    {
+      "url": "https://arabakoak.com/2026/07/29/amurrio-celebrara-sus-fiestas-patronales-del-12-al-17-de-agosto-7f60/",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "GENERAL",
+      "score": 0.5309,
+      "score_detalle": {
+        "similitud": 0.8232,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.7
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1172,
+      "tokens": 410,
+      "hash": "86b15b31a7cb",
+      "seleccionado": true,
+      "muestra": "anima a la ciudadanía a participar en las actividades programadas, enfatizando la importancia del respeto y la convivencia durante las fiestas. ⏎ Las ⏎ Fiestas de Nuestra Señora y San "
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "GENERAL",
+      "score": 0.5286,
+      "score_detalle": {
+        "similitud": 0.8151,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.7
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 983,
+      "tokens": 345,
+      "hash": "3a0b613f4563",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas en Lezama (amurrio) (País Vasco) - Calendario 2026 y 2027 ... | CONTENIDO: Descubre lasfiestasde Lezama (amurrio) (Álava) en País Vasco. Calendario completo defiest"
+    },
+    {
+      "url": "https://arabakoak.com/2026/07/29/amurrio-celebrara-sus-fiestas-patronales-del-12-al-17-de-agosto-7f60/",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "GENERAL",
+      "score": 0.5271,
+      "score_detalle": {
+        "similitud": 0.8099,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.7
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1193,
+      "tokens": 351,
+      "hash": "db9f6fa0bd17",
+      "seleccionado": true,
+      "muestra": "Amurrio celebrará sus fiestas patronales del 12 al 17 de ago ⏎ Saltar al contenido ⏎ Presentación Fiestas Amurrio 2026 ⏎ El Ayuntamiento de Amurrio ha presentado la programación de las F"
+    },
+    {
+      "url": "https://udala.amurrio.eus/cas/calendario/eventosdiarios/2026/8/15/-",
+      "fuente": "web_municipio",
+      "es_calendario": false,
+      "prioridad": 2,
+      "relevancia_geo": "GENERAL",
+      "score": 0.5107,
+      "score_detalle": {
+        "similitud": 0.8093,
+        "spider": 0.4222,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.7
+      },
+      "score_spider": 1650,
+      "rank_spider": 17,
+      "chars": 843,
+      "tokens": 359,
+      "hash": "d196b7771773",
+      "seleccionado": true,
+      "muestra": "Calendario ⏎ CAS ⏎ EUS ⏎ Inicio ⏎ Calendario ⏎ Elija una categoría para filtrar la lista ⏎ Todas las categorías ⏎ Hitzaldia - Conferencia ⏎ Erakusketa - Exposición ⏎ Musika - Música ⏎ Kirola - Deporte"
+    },
+    {
+      "url": "https://udala.amurrio.eus/attachments/article/2183/2026_Amurrio_Kontzertuen_Kartela.pdf",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "GENERAL",
+      "score": 0.5007,
+      "score_detalle": {
+        "similitud": 0.7197,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.7
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 570,
+      "tokens": 368,
+      "hash": "e9dda167c8ce",
+      "seleccionado": true,
+      "muestra": "## Columna 1 de 3 ⏎ KON ⏎ TZER ⏎ TUAK ⏎ Amurrioko jaiak 2026 ⏎ ## Columna 2 de 3 ⏎ ### ABUZTUAK 20:30 12 ⏎ LA POLAKA ⏎ - 22:00 ⏎ NØT ⏎ - 23:45 ⏎ OXABI ⏎ ERROMERIA ⏎ - 03:00 ⏎ XAUKENA ⏎ XAUK ⏎ ### ABUZTUAK 22:30 1"
+    },
+    {
+      "url": "https://udala.amurrio.eus/attachments/article/2183/2026_Amurrio_Jai_kartel_orokorra_320x700.pdf",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "GENERAL",
+      "score": 0.4998,
+      "score_detalle": {
+        "similitud": 0.728,
+        "spider": 0.5,
+        "programa": 1.0,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1518,
+      "tokens": 807,
+      "hash": "85453624c0b0",
+      "seleccionado": true,
+      "muestra": "HERRIKO KOPA: ATHLETIC - ALAVÉS ⏎ - 19:00 ROMERÍA OTEGI ⏎ - 19:00-22:00 ESPACIO PREVENCIÓN, SENSIBILIZA- ⏎ CIÓN Y ATENCIÓN VIOLENCIAS MACHISTAS ⏎ - 19:30 EXHIBICIÓN EUSKAL DANTZAK ⏎ - 20:30 "
+    },
+    {
+      "url": "https://udala.amurrio.eus/cas/calendario/eventospormes/2026/8/-",
+      "fuente": "web_municipio",
+      "es_calendario": false,
+      "prioridad": 2,
+      "relevancia_geo": "GENERAL",
+      "score": 0.4877,
+      "score_detalle": {
+        "similitud": 0.7307,
+        "spider": 0.4222,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.7
+      },
+      "score_spider": 1650,
+      "rank_spider": 2,
+      "chars": 1196,
+      "tokens": 585,
+      "hash": "5ed22d14bc23",
+      "seleccionado": true,
+      "muestra": "Calendario ⏎ CAS ⏎ EUS ⏎ Inicio ⏎ Calendario ⏎ Elija una categoría para filtrar la lista ⏎ Todas las categorías ⏎ Hitzaldia - Conferencia ⏎ Erakusketa - Exposición ⏎ Musika - Música ⏎ Kirola - Deporte"
+    },
+    {
+      "url": "https://udala.amurrio.eus/cas/calendario/eventosdiarios/2026/8/17/-",
+      "fuente": "web_municipio",
+      "es_calendario": false,
+      "prioridad": 2,
+      "relevancia_geo": "GENERAL",
+      "score": 0.4825,
+      "score_detalle": {
+        "similitud": 0.7126,
+        "spider": 0.4222,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.7
+      },
+      "score_spider": 1650,
+      "rank_spider": 19,
+      "chars": 842,
+      "tokens": 356,
+      "hash": "b6256121023d",
+      "seleccionado": true,
+      "muestra": "Calendario ⏎ CAS ⏎ EUS ⏎ Inicio ⏎ Calendario ⏎ Elija una categoría para filtrar la lista ⏎ Todas las categorías ⏎ Hitzaldia - Conferencia ⏎ Erakusketa - Exposición ⏎ Musika - Música ⏎ Kirola - Deporte"
+    },
+    {
+      "url": "https://udala.amurrio.eus/cas/servicios/fiestas",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "GENERAL",
+      "score": 0.4809,
+      "score_detalle": {
+        "similitud": 0.6516,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.7
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1191,
+      "tokens": 349,
+      "hash": "3335b6aeb8f4",
+      "seleccionado": true,
+      "muestra": "Fiestas ⏎ servicios ⏎ Fiestas ⏎ Las cuadrillas de Amurrio vuelven a sorprender en un concurso de carrozas lleno de creatividad ⏎ 17 Agosto 2026 ⏎ Trot-Art se alza con el primer premio con un"
+    },
+    {
+      "url": "https://udala.amurrio.eus/cas/calendario/eventosdiarios/2026/8/16/-",
+      "fuente": "web_municipio",
+      "es_calendario": false,
+      "prioridad": 2,
+      "relevancia_geo": "GENERAL",
+      "score": 0.4784,
+      "score_detalle": {
+        "similitud": 0.6985,
+        "spider": 0.4222,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.7
+      },
+      "score_spider": 1650,
+      "rank_spider": 18,
+      "chars": 833,
+      "tokens": 352,
+      "hash": "13c6b9089f10",
+      "seleccionado": true,
+      "muestra": "Calendario ⏎ CAS ⏎ EUS ⏎ Inicio ⏎ Calendario ⏎ Elija una categoría para filtrar la lista ⏎ Todas las categorías ⏎ Hitzaldia - Conferencia ⏎ Erakusketa - Exposición ⏎ Musika - Música ⏎ Kirola - Deporte"
+    },
+    {
+      "url": "https://udala.amurrio.eus/attachments/article/2183/2026_Amurrio_Jai_kartel_orokorra_320x700.pdf",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "GENERAL",
+      "score": 0.4727,
+      "score_detalle": {
+        "similitud": 0.6348,
+        "spider": 0.5,
+        "programa": 1.0,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 7974,
+      "tokens": 4479,
+      "hash": "3e848296379e",
+      "seleccionado": true,
+      "muestra": "## Columna 1 de 4 ⏎ ### 1 LARUNBATA ⏎ - 18:00 SANTUAREN JAITSIERA ⏎ ### 9 IGANDEA ⏎ - 21:30 ZINEMA KALEAN: WOLFGANG ⏎ ### 11 ASTEARTEA ⏎ - 20:00 KUADRILLEN ARTEKO SOKA SALTO LEHIAKETA ⏎ ### 12 A"
+    },
+    {
+      "url": "https://www.festivalesdeespana.com/festival/fiestas-de-san-miguel-de-lezama",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.4691,
+      "score_detalle": {
+        "similitud": 0.3142,
+        "spider": 0.5,
+        "programa": 0.1,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1175,
+      "tokens": 384,
+      "hash": "9405a9e416ec",
+      "seleccionado": true,
+      "muestra": "Acceso libre y gratuito. ⏎ Información práctica — San Miguel Lezama ⏎ Cómo llegar ⏎ Lezama-Lekamaña está a 3 km de Amurrio por carretera local. En coche: autovía A-68 hasta Amurrio, lueg"
+    },
+    {
+      "url": "https://radiollodio.com/2026/07/28/el-ayuntamiento-de-amurrio-presenta-la-programacion-de-sus-fiestas-patronales-2026/",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "GENERAL",
+      "score": 0.4652,
+      "score_detalle": {
+        "similitud": 0.9979,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1076,
+      "tokens": 332,
+      "hash": "61dd1f81b823",
+      "seleccionado": true,
+      "muestra": "» El Ayuntamiento de Amurrio presenta la programación de sus Fiestas Patronales 2026 ⏎ El Ayuntamiento de Amurrio presenta la programación de sus Fiestas Patronales 2026 ⏎ Rafa Arberas"
+    }
+  ]
+}

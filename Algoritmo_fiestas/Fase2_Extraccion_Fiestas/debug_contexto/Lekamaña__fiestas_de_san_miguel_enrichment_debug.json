@@ -1,0 +1,99 @@
+{
+  "metricas": {
+    "etapa": "enrichment",
+    "municipio": "Amurrio",
+    "localidad": "Lekamaña__fiestas de san miguel",
+    "candidatos": 3,
+    "seleccionados": 3,
+    "documentos_distintos": 2,
+    "chunks_duplicados": 0,
+    "chars_contexto": 3710,
+    "chars_unicos": 3506,
+    "pct_unico": 100.0,
+    "tokens_contexto": 1551,
+    "top_documentos": [
+      [
+        "buscadores:snippets",
+        2
+      ],
+      [
+        "https://udala.amurrio.eus/attachments/article/2183/2026_Amurrio_Jai_kartel_orokorra_320x700.pdf",
+        1
+      ]
+    ],
+    "presupuesto": {
+      "presupuesto_chars": 32000
+    },
+    "fiesta": "Fiestas de San Miguel",
+    "dias_consultados": 1,
+    "dias_sin_presupuesto": 0
+  },
+  "chunks": [
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.8825,
+      "score_detalle": {
+        "similitud": 1.0,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 1.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 931,
+      "tokens": 301,
+      "hash": "4c997ef5b841",
+      "seleccionado": true,
+      "muestra": "TITULO: Programa de las Fiestas de La Manga 2026: conciertos, actividades y ... | CONTENIDO: La Manga celebrará susfiestasdel 16 al 20 de septiembre con cinco días de música en dir"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.8559,
+      "score_detalle": {
+        "similitud": 0.9089,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 1.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1057,
+      "tokens": 369,
+      "hash": "8a0c2c1fe460",
+      "seleccionado": true,
+      "muestra": "TITULO: El Ayuntamiento de Amurrio presenta la programación de sus Fiestas ... | CONTENIDO: El Ayuntamiento deAmurrioha presentado en rueda de prensa el cartel y la programación of"
+    },
+    {
+      "url": "https://udala.amurrio.eus/attachments/article/2183/2026_Amurrio_Jai_kartel_orokorra_320x700.pdf",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "GENERAL",
+      "score": 0.4942,
+      "score_detalle": {
+        "similitud": 0.7088,
+        "spider": 0.5,
+        "programa": 1.0,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1518,
+      "tokens": 807,
+      "hash": "85453624c0b0",
+      "seleccionado": true,
+      "muestra": "HERRIKO KOPA: ATHLETIC - ALAVÉS ⏎ - 19:00 ROMERÍA OTEGI ⏎ - 19:00-22:00 ESPACIO PREVENCIÓN, SENSIBILIZA- ⏎ CIÓN Y ATENCIÓN VIOLENCIAS MACHISTAS ⏎ - 19:30 EXHIBICIÓN EUSKAL DANTZAK ⏎ - 20:30 "
+    }
+  ]
+}

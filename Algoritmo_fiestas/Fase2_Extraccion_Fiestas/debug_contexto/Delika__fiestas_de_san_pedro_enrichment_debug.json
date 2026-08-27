@@ -1,0 +1,187 @@
+{
+  "metricas": {
+    "etapa": "enrichment",
+    "municipio": "Amurrio",
+    "localidad": "Delika__fiestas de san pedro",
+    "candidatos": 7,
+    "seleccionados": 7,
+    "documentos_distintos": 2,
+    "chunks_duplicados": 0,
+    "chars_contexto": 7538,
+    "chars_unicos": 7330,
+    "pct_unico": 100.0,
+    "tokens_contexto": 2825,
+    "top_documentos": [
+      [
+        "buscadores:snippets",
+        6
+      ],
+      [
+        "https://udala.amurrio.eus/attachments/article/2183/2026_Amurrio_Jai_kartel_orokorra_320x700.pdf",
+        1
+      ]
+    ],
+    "presupuesto": {
+      "presupuesto_chars": 32000
+    },
+    "fiesta": "Fiestas de San Pedro",
+    "dias_consultados": 3,
+    "dias_sin_presupuesto": 0
+  },
+  "chunks": [
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.903,
+      "score_detalle": {
+        "similitud": 0.9582,
+        "spider": 0.5,
+        "programa": 0.44,
+        "temporal": 1.0,
+        "extra": 1.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1057,
+      "tokens": 383,
+      "hash": "532af02e2af4",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas de Delika del 26 al 28 de junio: programa completo | CONTENIDO: FiestasdeDelikadel 26 al 28 de junio:programacompleto El concejo de Amurrio celebra susfiestaspopula"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.8477,
+      "score_detalle": {
+        "similitud": 0.8807,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 1.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1084,
+      "tokens": 373,
+      "hash": "0c7f821ba6e1",
+      "seleccionado": true,
+      "muestra": "TITULO: ¿Cuándo empiezan las fiestas de Gracia 2026? fechas, calles decoradas y ... | CONTENIDO: ¿Cuándo empiezan lasfiestasde Gracia2026? fechas, calles decoradas yprogramade conc"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.803,
+      "score_detalle": {
+        "similitud": 0.8989,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.7
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1095,
+      "tokens": 385,
+      "hash": "ca3fb2d5552d",
+      "seleccionado": true,
+      "muestra": "TITULO: Programa Fiestas de Delika 2026 (Amurrio) | CONTENIDO: LasfiestasdeDelika2026se celebrarán del 26 al 28 de junio. Habrá diversas actividades, como música, concurso de torti"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.7771,
+      "score_detalle": {
+        "similitud": 0.8101,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.7
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1042,
+      "tokens": 399,
+      "hash": "de8caece36d7",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas en Amurrio (País Vasco) - Calendario 2026 y 2027 | Fiestas de ... | CONTENIDO: Descubre lasfiestasdeAmurrio(Álava) en País Vasco. Calendario completo defiestaspatro"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.7658,
+      "score_detalle": {
+        "similitud": 1.0,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.3
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1022,
+      "tokens": 374,
+      "hash": "a8439b8c162e",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas de San Pedro 2026 en Delika (Amurrio, Álava) | CONTENIDO: Descubre lasFiestasPatronales2026de San Pedro en el concejo deDelika(Amurrio): tortilla, ternera asada, pe"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6057,
+      "score_detalle": {
+        "similitud": 0.6223,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1172,
+      "tokens": 405,
+      "hash": "340d8fe0ffa0",
+      "seleccionado": true,
+      "muestra": "TITULO: Aiala Lucero Ibisate, ganadora del concurso del cartel anunciador de ... | CONTENIDO: Estecartel, inspirado en el estilo de boceto manual, refleja la esencia de nuestrasfie"
+    },
+    {
+      "url": "https://udala.amurrio.eus/attachments/article/2183/2026_Amurrio_Jai_kartel_orokorra_320x700.pdf",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "GENERAL",
+      "score": 0.5257,
+      "score_detalle": {
+        "similitud": 0.8166,
+        "spider": 0.5,
+        "programa": 1.0,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 858,
+      "tokens": 433,
+      "hash": "51bb3f4bb0df",
+      "seleccionado": true,
+      "muestra": "ETA LEHIAKETA 19:30 IKUSKIZUNA: LOS BARLOUEN DOES 11:00 PARTIDAS SIMULTÁNEAS DE AJEDREZ 21:00 MARIACHI MEXICO LINDO “SÍ SEÑOR” ⏎ 11:00-14:00 HAURRENTZAKO JOLASAK 21:00 MARIACHI MEXIC"
+    }
+  ]
+}

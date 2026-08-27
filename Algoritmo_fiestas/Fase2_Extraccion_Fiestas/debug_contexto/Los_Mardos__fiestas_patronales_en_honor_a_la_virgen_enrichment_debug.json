@@ -1,0 +1,231 @@
+{
+  "metricas": {
+    "etapa": "enrichment",
+    "municipio": "Tobarra",
+    "localidad": "Los Mardos__fiestas patronales en honor a la virgen ",
+    "candidatos": 9,
+    "seleccionados": 15,
+    "documentos_distintos": 2,
+    "chunks_duplicados": 4,
+    "chars_contexto": 13905,
+    "chars_unicos": 10973,
+    "pct_unico": 71.5,
+    "tokens_contexto": 4347,
+    "top_documentos": [
+      [
+        "https://www.comarcamonastrell.com/los-mardos-celebra-sus-fiestas-patronales-en-honor-a-la-virgen-del-carmen/",
+        8
+      ],
+      [
+        "buscadores:snippets",
+        7
+      ]
+    ],
+    "presupuesto": {
+      "presupuesto_chars": 32000
+    },
+    "fiesta": "Fiestas Patronales en honor a la Virgen del Carmen",
+    "dias_consultados": 1,
+    "dias_sin_presupuesto": 0
+  },
+  "chunks": [
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.8825,
+      "score_detalle": {
+        "similitud": 1.0,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 1.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1116,
+      "tokens": 382,
+      "hash": "8f3bd363c892",
+      "seleccionado": true,
+      "muestra": "TITULO: Los Mardos celebra sus Fiestas Patronales en honor a la Virgen del Carmen | CONTENIDO: Ya está todo listoenLosMardospara el inicio de susFiestasPatronales. Desde hoy, jueve"
+    },
+    {
+      "url": "https://www.comarcamonastrell.com/los-mardos-celebra-sus-fiestas-patronales-en-honor-a-la-virgen-del-carmen/",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.8429,
+      "score_detalle": {
+        "similitud": 0.7523,
+        "spider": 0.5,
+        "programa": 0.44,
+        "temporal": 1.0,
+        "extra": 1.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1179,
+      "tokens": 389,
+      "hash": "0875338889e2",
+      "seleccionado": false,
+      "muestra": "Los Mardos celebra sus Fiestas Patronales en honor a la Virgen del Carmen | Comarca Monastrell ⏎ Envelope ⏎ Facebook ⏎ Instagram ⏎ Actualidad ⏎ Municipios ⏎ Albatana ⏎ Fuente Álamo ⏎ Hellín ⏎ Ontur ⏎ "
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.7636,
+      "score_detalle": {
+        "similitud": 0.8438,
+        "spider": 0.5,
+        "programa": 0.2,
+        "temporal": 1.0,
+        "extra": 0.7
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 787,
+      "tokens": 253,
+      "hash": "5b8bdfc95aa8",
+      "seleccionado": true,
+      "muestra": "TITULO: Los Mardos celebra sus Fiestas Patronales en honor a la Virgen del ... | CONTENIDO: Ya está todo listo enLosMardospara el inicio de susFiestasPatronales. Desde hoy, jueves "
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.7518,
+      "score_detalle": {
+        "similitud": 0.9519,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.3
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1146,
+      "tokens": 394,
+      "hash": "ca6177eaf3c7",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas de la Virgen del Carmen 2026 en Torrevieja: programa completo ... | CONTENIDO: Consulta elprogramacompletodelasFiestasdelaVirgendelCarmen2026en Torrevieja, con proc"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.7463,
+      "score_detalle": {
+        "similitud": 0.9329,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.3
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1111,
+      "tokens": 376,
+      "hash": "3b1f20a171ba",
+      "seleccionado": true,
+      "muestra": "TITULO: Los Mardos celebra sus Fiestas Patronales en honor a la Virgen del Carmen | CONTENIDO: El AyuntamientodeTobarra, junto alaComisióndeFiestas, han preparado unprogramaque com"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.7319,
+      "score_detalle": {
+        "similitud": 0.655,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.7
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1083,
+      "tokens": 371,
+      "hash": "3b3c0ef2db10",
+      "seleccionado": true,
+      "muestra": "TITULO: Los Mardos celebra sus Fiestas Patronales en honor a la Virgen del ... | CONTENIDO: Ya está todo listo enLosMardospara el inicio de susFiestasPatronales. Desde hoy, jueves "
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.5987,
+      "score_detalle": {
+        "similitud": 0.7699,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 777,
+      "tokens": 255,
+      "hash": "a0eb55c6d930",
+      "seleccionado": true,
+      "muestra": "TITULO: Los Mardos celebra sus Fiestas Patronales en honor a la Virgen del ... | CONTENIDO: El Ayuntamiento de Tobarra, junto a la Comisión deFiestas, han preparado unprogramaque c"
+    },
+    {
+      "url": "https://www.comarcamonastrell.com/los-mardos-celebra-sus-fiestas-patronales-en-honor-a-la-virgen-del-carmen/",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.493,
+      "score_detalle": {
+        "similitud": 0.4074,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1194,
+      "tokens": 360,
+      "hash": "b51c567a0bdc",
+      "seleccionado": false,
+      "muestra": "Los actos religiosos y la convivencia vecinal marcan el inicio de los festejos. El momento más solemne llegará con la ⏎ misa en honor a la patrona ⏎ y su posterior procesión ⏎ por las ca"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.4863,
+      "score_detalle": {
+        "similitud": 0.373,
+        "spider": 0.5,
+        "programa": 0.1,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 588,
+      "tokens": 220,
+      "hash": "ed6aa3759629",
+      "seleccionado": true,
+      "muestra": "TITULO: Los Mardos (Albacete) - Ludia | CONTENIDO: Cuándo 3 de febrero En qué consiste Canto de la aurora por las calles del pueblo, subasta de leña paralosmayorales, baile de la j"
+    }
+  ]
+}

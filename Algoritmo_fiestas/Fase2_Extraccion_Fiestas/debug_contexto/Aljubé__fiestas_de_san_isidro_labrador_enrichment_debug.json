@@ -1,0 +1,191 @@
+{
+  "metricas": {
+    "etapa": "enrichment",
+    "municipio": "Tobarra",
+    "localidad": "Aljubé__fiestas de san isidro labrador",
+    "candidatos": 7,
+    "seleccionados": 7,
+    "documentos_distintos": 3,
+    "chunks_duplicados": 0,
+    "chars_contexto": 8165,
+    "chars_unicos": 7910,
+    "pct_unico": 100.0,
+    "tokens_contexto": 3187,
+    "top_documentos": [
+      [
+        "buscadores:snippets",
+        4
+      ],
+      [
+        "https://www.radiotobarra.es/aljube26/",
+        2
+      ],
+      [
+        "https://www.radiotobarra.es/wp-content/uploads/aljube26.pdf",
+        1
+      ]
+    ],
+    "presupuesto": {
+      "presupuesto_chars": 32000
+    },
+    "fiesta": "Fiestas de San Isidro Labrador",
+    "dias_consultados": 5,
+    "dias_sin_presupuesto": 0
+  },
+  "chunks": [
+    {
+      "url": "https://www.radiotobarra.es/wp-content/uploads/aljube26.pdf",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.8206,
+      "score_detalle": {
+        "similitud": 0.7991,
+        "spider": 0.5,
+        "programa": 1.0,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 2016,
+      "tokens": 862,
+      "hash": "6afef5d4c116",
+      "seleccionado": true,
+      "muestra": "FIESTAS 2026 ⏎ * ALJUBE | ⏎ Del 13 al 17 de Mayo ⏎ En honor a San Isidro Labrador ⏎ y Ntra. Senora de Fatima ⏎ tere + “ve te 7 ⏎ ‘  anitinch tes ra DE car Xt ⏎ 18:00 H. & » OFRENDA DE FLORES A L"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6327,
+      "score_detalle": {
+        "similitud": 0.7148,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 866,
+      "tokens": 326,
+      "hash": "25397f67b17a",
+      "seleccionado": true,
+      "muestra": "TITULO: Programa de San Isidro 2026: carteles, fechas y todo el calendario en ... | CONTENIDO: Consulta elprogramaoficialdeSanIsidro2026en Madrid con fechas, carteles, corridas, no"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6038,
+      "score_detalle": {
+        "similitud": 0.616,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1157,
+      "tokens": 417,
+      "hash": "2f3e9fc1d360",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas de Aljubé 2026 - Radio Tobarra Municipal - 107.9 FM | CONTENIDO: Estás aquí: InicioFiestasdeAljubé2026FIESTASDE LA PEDANÍA DEALJUBÉ EN HONOR DE SAN ISIDRO LABRADOR "
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.5993,
+      "score_detalle": {
+        "similitud": 0.6005,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 740,
+      "tokens": 286,
+      "hash": "b2c40d51fa00",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas de Aljubé 2026 - Radio Tobarra Municipal - 107.9 FM | CONTENIDO: Estás aquí: InicioFiestasdeAljubé2026FIESTASDE LA PEDANÍA DEALJUBÉ EN HONOR DE SAN ISIDRO LABRADOR "
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.5879,
+      "score_detalle": {
+        "similitud": 0.5613,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1074,
+      "tokens": 375,
+      "hash": "e0cc2318e7de",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas de Aljubé 2026 - Radio Tobarra Municipal - 107.9 FM | CONTENIDO: Estás aquí: InicioFiestasdeAljubé2026FIESTASDE LA PEDANÍA DEALJUBÉ EN HONOR DE SAN ISIDRO LABRADOR "
+    },
+    {
+      "url": "https://www.radiotobarra.es/aljube26/",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.5289,
+      "score_detalle": {
+        "similitud": 0.519,
+        "spider": 0.5,
+        "programa": 0.1,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 870,
+      "tokens": 304,
+      "hash": "cd0cfa315109",
+      "seleccionado": true,
+      "muestra": "Conversaciones 2023 ⏎ Conversaciones 2019 ⏎ Conversaciones 2015 ⏎ Conversaciones 2011 ⏎ Conversaciones 2007 ⏎ Conversaciones 2003 ⏎ Conversaciones 1999 ⏎ Conversaciones 1995 ⏎ Conversaciones 1991 ⏎ "
+    },
+    {
+      "url": "https://www.radiotobarra.es/aljube26/",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.5139,
+      "score_detalle": {
+        "similitud": 0.3876,
+        "spider": 0.5,
+        "programa": 0.2,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1187,
+      "tokens": 531,
+      "hash": "b3a60b57ff66",
+      "seleccionado": true,
+      "muestra": "Fiestas de Aljubé 2026 – Radio Tobarra Municipal – 107.9 FM ⏎ Saltar al contenido ⏎ Programación ⏎ Programas ⏎ Tobarra a la una ⏎ Tras el Cristal (semanal) ⏎ Tras el Cristal (Anuarios Sonoros)"
+    }
+  ]
+}

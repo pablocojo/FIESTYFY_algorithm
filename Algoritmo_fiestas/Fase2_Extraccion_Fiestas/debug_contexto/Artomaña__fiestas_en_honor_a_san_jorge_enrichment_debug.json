@@ -1,0 +1,283 @@
+{
+  "metricas": {
+    "etapa": "enrichment",
+    "municipio": "Amurrio",
+    "localidad": "Artomaña__fiestas en honor a san jorge",
+    "candidatos": 11,
+    "seleccionados": 11,
+    "documentos_distintos": 4,
+    "chunks_duplicados": 0,
+    "chars_contexto": 13029,
+    "chars_unicos": 12260,
+    "pct_unico": 100.0,
+    "tokens_contexto": 4926,
+    "top_documentos": [
+      [
+        "buscadores:snippets",
+        5
+      ],
+      [
+        "https://almansaturistica.es/wp-content/uploads/2026/04/PROGRAMA-DE-FIESTAS-2026.pdf",
+        3
+      ],
+      [
+        "https://www.euskalplan.eus/es/events/programa-fiestas-de-artomana-2026-laudio-2026041810045620",
+        2
+      ],
+      [
+        "https://fiestasdepueblos.net/pueblos/artomana",
+        1
+      ]
+    ],
+    "presupuesto": {
+      "presupuesto_chars": 32000
+    },
+    "fiesta": "Fiestas en honor a San Jorge",
+    "dias_consultados": 7,
+    "dias_sin_presupuesto": 0
+  },
+  "chunks": [
+    {
+      "url": "https://www.euskalplan.eus/es/events/programa-fiestas-de-artomana-2026-laudio-2026041810045620",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 1.0458,
+      "score_detalle": {
+        "similitud": 1.0,
+        "spider": 0.5,
+        "programa": 1.0,
+        "temporal": 1.0,
+        "extra": 1.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 827,
+      "tokens": 318,
+      "hash": "496a861d9f1b",
+      "seleccionado": true,
+      "muestra": "Artomaña volverá a llenarse de ambiente festivo con motivo de las fiestas en honor a San Jorge, que se celebrarán entre el 17 y el 23 de abril de 2026. ⏎ 17 abril, viernes ⏎ 20:00 Txup"
+    },
+    {
+      "url": "https://www.euskalplan.eus/es/events/programa-fiestas-de-artomana-2026-laudio-2026041810045620",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 1.0361,
+      "score_detalle": {
+        "similitud": 0.9668,
+        "spider": 0.5,
+        "programa": 1.0,
+        "temporal": 1.0,
+        "extra": 1.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1212,
+      "tokens": 486,
+      "hash": "e8d31ff41375",
+      "seleccionado": true,
+      "muestra": "Programa Fiestas de Artomaña 2026 (Laudio) | Euskalplan ⏎ Este evento ya ha pasado. ⏎ Ver próximos eventos ⏎ 17/04/2026 ⏎ Programa Fiestas de Artomaña 2026 (Laudio) ⏎ Artomañako Jaiak 2026 L"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.8147,
+      "score_detalle": {
+        "similitud": 0.939,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.7
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1187,
+      "tokens": 426,
+      "hash": "aacd541de725",
+      "seleccionado": true,
+      "muestra": "TITULO: Programa Fiestas de Amurrio 2026 (12-17 agosto) - Kulturklik | CONTENIDO: LasfiestasdeAmurrio2026se celebrarán del 12 al 17 de agosto. LasfiestasdeAmurrio2026contarán con u"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6428,
+      "score_detalle": {
+        "similitud": 0.7497,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1044,
+      "tokens": 356,
+      "hash": "e31d11494e7b",
+      "seleccionado": true,
+      "muestra": "TITULO: Ya se conoce al Cipotegato y la programación de las Fiestas de Tarazona ... | CONTENIDO: Ya se conoce al Cipotegato y la programación de lasFiestasde Tarazona2026Elprograma"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6266,
+      "score_detalle": {
+        "similitud": 0.694,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1186,
+      "tokens": 405,
+      "hash": "757a943449aa",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas Patronales de Amurrio 2026 | Programa del 12 al 17 de Agosto | CONTENIDO: LasFiestasPatronalesdeAmurriose celebran del 12 al 17 de agosto en torno a la Festividad d"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6169,
+      "score_detalle": {
+        "similitud": 0.6607,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1118,
+      "tokens": 373,
+      "hash": "0d761def3f47",
+      "seleccionado": true,
+      "muestra": "TITULO: El Ayuntamiento de Amurrio presenta la programación de sus Fiestas ... | CONTENIDO: El Ayuntamiento deAmurrioha presentado en rueda de prensa el cartel y la programación of"
+    },
+    {
+      "url": "https://almansaturistica.es/wp-content/uploads/2026/04/PROGRAMA-DE-FIESTAS-2026.pdf",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "GENERAL",
+      "score": 0.6028,
+      "score_detalle": {
+        "similitud": 0.5897,
+        "spider": 0.5,
+        "programa": 0.9,
+        "temporal": 1.0,
+        "extra": 0.7
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1197,
+      "tokens": 481,
+      "hash": "97dc2c1504cb",
+      "seleccionado": true,
+      "muestra": "clamación de la Abanderada y Alférez Mayores Infantiles, ⏎ Abanderadas y Alféreces Infantiles de Comparsas y Emba- ⏎ jadores Infantiles. Lugar: Teatro Regio ⏎ ## Columna 2 de 3 ⏎ ### DOMIN"
+    },
+    {
+      "url": "https://fiestasdepueblos.net/pueblos/artomana",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.5791,
+      "score_detalle": {
+        "similitud": 0.5312,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1050,
+      "tokens": 392,
+      "hash": "55447b7723c2",
+      "seleccionado": true,
+      "muestra": "Fiestas en Artomaña (País Vasco) - Calendario 2026 y 2027 | Fiestas de Pueblos de España ⏎ Cargando fiestas ⏎ Command Palette ⏎ Search for a command to run... ⏎ Inicio ⏎ / ⏎ País Vasco ⏎ / ⏎ Álava"
+    },
+    {
+      "url": "https://almansaturistica.es/wp-content/uploads/2026/04/PROGRAMA-DE-FIESTAS-2026.pdf",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "GENERAL",
+      "score": 0.5414,
+      "score_detalle": {
+        "similitud": 0.811,
+        "spider": 0.5,
+        "programa": 0.86,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1137,
+      "tokens": 505,
+      "hash": "86b340ec13a8",
+      "seleccionado": true,
+      "muestra": "Fiestas Mayores 2026 ⏎ PROGRAMA DE ⏎ FIESTAS 2026 - ⏎ PROGRAMA DE ⏎ FIESTAS 2026 - ⏎ PROGRAMA DE ⏎ PROGRAMA DE FIESTAS 2026 ⏎ FIESTAS 2026 - ⏎ PROGRAMA DE ⏎ FIESTAS 2026 - ⏎ PROGRAMA DE ⏎ FIESTAS 2026 -"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.5398,
+      "score_detalle": {
+        "similitud": 0.3964,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1108,
+      "tokens": 368,
+      "hash": "6a14ca8eb10a",
+      "seleccionado": true,
+      "muestra": "TITULO: Aiala Lucero Ibisate ganadora del concurso del cartel anunciador de ... | CONTENIDO: La diseñadora gráfica Aiala Lucero Ibisate, residente en Vitoria-Gasteiz, ha sido la ga"
+    },
+    {
+      "url": "https://almansaturistica.es/wp-content/uploads/2026/04/PROGRAMA-DE-FIESTAS-2026.pdf",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "GENERAL",
+      "score": 0.514,
+      "score_detalle": {
+        "similitud": 0.829,
+        "spider": 0.5,
+        "programa": 0.72,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1194,
+      "tokens": 521,
+      "hash": "2fb253a01887",
+      "seleccionado": true,
+      "muestra": "PROGRAMA ⏎ DE ⏎ FIESTAS ⏎ 2026 ⏎ PROGRAMA ⏎ DE ⏎ FIESTAS ⏎ 2026 ⏎ PROGRAMA ⏎ DE ⏎ FIESTAS ⏎ 2026 ⏎ PROGRAMA ⏎ DE ⏎ FIESTAS ⏎ 2026 ⏎ ## Columna 1 de 3 ⏎ 6202 ⏎ SATSEIF ⏎ ED ⏎ AMARGORP ⏎ 6202 ⏎ SATSEIF ⏎ ED ⏎ AMARGORP ⏎ 6202 ⏎ SATSEIF"
+    }
+  ]
+}

@@ -32,28 +32,19 @@ class ContenidoCache:
         self._cargar()
 
     def _cargar(self):
+        # El .bak existía desde el principio, pero nadie lo leía nunca: el
+        # 2026-08-26 el fichero bueno se quedó a 0 bytes, la copia de 16 KB
+        # siguió intacta al lado y las doce localidades del run corrieron sin
+        # caché de contenido. Guardar un respaldo que no se restaura no sirve
+        # de nada.
         if os.path.exists(self.path):
-            try:
-                with open(self.path, "r", encoding="utf-8-sig") as f:
-                    self._data = json.load(f)
-            except (json.JSONDecodeError, OSError):
-                self._data = {}
+            from state_manager import leer_json_con_respaldo
+            datos = leer_json_con_respaldo(self.path, "La caché de contenido RRSS")
+            self._data = datos if isinstance(datos, dict) else {}
 
     def _guardar(self):
-        # Backup: si el archivo existente tiene contenido, guardar copia .bak
-        if os.path.exists(self.path):
-            try:
-                size = os.path.getsize(self.path)
-                if size > 2:  # más que un JSON vacío '{}'
-                    bak = f"{self.path}.bak"
-                    import shutil
-                    shutil.copy2(self.path, bak)
-            except OSError:
-                pass
-        temp = f"{self.path}.tmp"
-        with open(temp, "w", encoding="utf-8") as f:
-            json.dump(self._data, f, ensure_ascii=False, indent=1)
-        os.replace(temp, self.path)
+        from state_manager import escribir_json_con_respaldo
+        escribir_json_con_respaldo(self.path, self._data, indent=1)
 
     def entrada(self, lugar_id: str, red: str) -> dict | None:
         valor = (self._data.get(lugar_id) or {}).get(red)

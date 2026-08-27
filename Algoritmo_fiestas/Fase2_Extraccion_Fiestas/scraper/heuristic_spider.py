@@ -18,12 +18,11 @@ import aiohttp
 
 from scraper.social_finder import normalizar_link_social
 
+from concurrent.futures import ProcessPoolExecutor
+
 from scraper.document_extractor import (
     is_promising_image,
     is_promising_pdf,
-    extract_text_from_image,
-    extract_text_from_pdf,
-    ocr_executor,
 )
 from fuentes import crear_documento
 from config import (
@@ -38,6 +37,8 @@ from config import (
     SPIDER_RETRY_BACKOFF,
     USER_AGENT,
     IMAGE_MIN_SIZE_BYTES,
+    PASS2_BATCH_SIZE,
+    MAX_IMAGES_PER_PAGE,
 )
 
 logger = logging.getLogger("spider")
@@ -49,10 +50,82 @@ URL_BLACKLIST = [
     "mailto:", "javascript:", "tel:", "#"
 ]
 
+# Dominios de RRSS que no se deben intentar scrapear en Pasada 2
+# (requieren JS pesado, ya se procesan vía social_finder/social_content)
+_EXTERNAL_DOMAIN_BLOCKLIST = {
+    "twitter.com", "x.com", "facebook.com", "instagram.com",
+    "youtube.com", "tiktok.com", "linkedin.com",
+}
+
+# ───── Subprocess isolation para OCR/PDF (protege contra segfaults de Tesseract/Ghostscript) ─────
+
+_ocr_process_pool: ProcessPoolExecutor | None = None
+
+def _get_ocr_pool() -> ProcessPoolExecutor:
+    """Devuelve un ProcessPoolExecutor, recreándolo si fue roto por un segfault."""
+    global _ocr_process_pool
+    if _ocr_process_pool is None:
+        _ocr_process_pool = ProcessPoolExecutor(max_workers=2)
+    return _ocr_process_pool
+
+def _reset_ocr_pool():
+    """Recrea el pool de procesos tras un error fatal (segfault en hijo)."""
+    global _ocr_process_pool
+    try:
+        if _ocr_process_pool is not None:
+            _ocr_process_pool.shutdown(wait=False)
+    except Exception:
+        pass
+    _ocr_process_pool = None
+
+def _subprocess_extract_pdf(pdf_bytes: bytes) -> str:
+    """Extrae texto de PDF en subproceso aislado. Solo retorna texto (sin imágenes PIL)."""
+    try:
+        from scraper.document_extractor import extract_text_from_pdf
+        resultado = extract_text_from_pdf(pdf_bytes)
+        if isinstance(resultado, tuple) and len(resultado) == 2:
+            return resultado[0].strip()
+        return str(resultado).strip() if resultado else ""
+    except Exception:
+        return ""
+
+def _subprocess_extract_image(img_bytes: bytes) -> str:
+    """OCR de imagen en subproceso aislado. Solo retorna texto (sin imágenes PIL)."""
+    try:
+        from scraper.document_extractor import extract_text_from_image
+        resultado = extract_text_from_image(img_bytes)
+        if isinstance(resultado, tuple) and len(resultado) == 2:
+            return resultado[0].strip()
+        return str(resultado).strip() if resultado else ""
+    except Exception:
+        return ""
+
 class AsyncTwoPassSpider:
     """Crawler async de dos pasadas centrado en una localidad."""
 
     RE_CALENDAR_DATE_URL = re.compile(r"/(?:19|20)\d{2}/[0-1]?\d/[0-3]?\d(?:/|$)")
+
+    # Formatos alternativos de fecha que usan otros calendarios municipales.
+    # Cada patrón captura el año en el grupo 1. Se usan solo para decidir si una
+    # página de calendario es del año objetivo, no para la identidad de
+    # deduplicación (_get_calendar_date_key sigue siendo la única fuente de esa).
+    _RE_FECHA_ANNO_ALT = (
+        # /11/8/2026/ o /11-8-2026  (día/mes/año, orden que usan algunos CMS)
+        re.compile(r"/[0-3]?\d[/-][0-1]?\d[/-]((?:19|20)\d{2})(?:/|$|[?&])"),
+        # 2026-08-11, 2026_08_11, 2026.08.11 — en la ruta o en la query
+        re.compile(
+            r"((?:19|20)\d{2})[-_.](?:0?[1-9]|1[0-2])[-_.](?:0?[1-9]|[12]\d|3[01])(?:\b|/|$|[?&])"
+        ),
+        # ?fecha=2026-08-11 , ?date=2026/08/11
+        re.compile(
+            r"[?&](?:fecha|date)=((?:19|20)\d{2})[-/](?:0?[1-9]|1[0-2])[-/](?:0?[1-9]|[12]\d|3[01])\b"
+        ),
+    )
+    # ?anyo=2026&mes=8&dia=11 , ?year=2026&month=8&day=11 (parámetros sueltos:
+    # el año solo cuenta si aparecen también mes y día en la misma query)
+    _RE_ANNO_QUERY = re.compile(r"[?&](?:anyo|a[nñ]o|year)=((?:19|20)\d{2})\b")
+    _RE_MES_QUERY = re.compile(r"[?&](?:mes|month)=(?:0?[1-9]|1[0-2])\b")
+    _RE_DIA_QUERY = re.compile(r"[?&](?:dia|day)=(?:0?[1-9]|[12]\d|3[01])\b")
 
     def __init__(
         self,
@@ -69,7 +142,6 @@ class AsyncTwoPassSpider:
         self.max_external_depth = max_external_depth
         self.concurrency = concurrency
         self.target_year = target_year
-        self.seen_calendar_dates: set[str] = set()
         # Perfiles sociales cosechados de las páginas INTERNAS del sitio:
         # Counter {(red, url_canonica): apariciones}
         self.social_links: Counter = Counter()
@@ -80,6 +152,42 @@ class AsyncTwoPassSpider:
         if match:
             parsed = urllib.parse.urlparse(url)
             return f"{parsed.netloc.lower()}:{match.group(0).rstrip('/')}"
+        return None
+
+    @classmethod
+    def _extraer_anno_calendario(cls, url: str) -> int | None:
+        """
+        Año de una página de calendario, probando varios esquemas de fecha.
+
+        Ningún ayuntamiento escribe la fecha igual: unos usan /2026/8/11/, otros
+        /11/8/2026/, otros 2026-08-11 en la ruta, otros la llevan en la query
+        (?fecha=2026-08-11 o ?anyo=2026&mes=8&dia=11). Se prueban todos; el
+        primero que reconozca la URL gana. Si no se reconoce ninguno, devuelve
+        None y la URL no se trata como calendario a efectos de año.
+        """
+        match = cls.RE_CALENDAR_DATE_URL.search(url)
+        if match:
+            anno_str = match.group(0).strip("/").split("/")[0]
+            try:
+                return int(anno_str)
+            except ValueError:
+                pass
+
+        for patron in cls._RE_FECHA_ANNO_ALT:
+            m = patron.search(url)
+            if m:
+                try:
+                    return int(m.group(1))
+                except ValueError:
+                    continue
+
+        m_anno = cls._RE_ANNO_QUERY.search(url)
+        if m_anno and cls._RE_MES_QUERY.search(url) and cls._RE_DIA_QUERY.search(url):
+            try:
+                return int(m_anno.group(1))
+            except ValueError:
+                pass
+
         return None
 
     # ───── Utilidades ─────
@@ -206,6 +314,15 @@ class AsyncTwoPassSpider:
             if p in text_lower:
                 score -= 100
 
+        # 6. Penalizar páginas de calendario vacío (e.g. /?date=20260801)
+        RE_QUERY_DATE = re.compile(r"[?&]date=\d{6,8}", re.IGNORECASE)
+        if RE_QUERY_DATE.search(url_lower):
+            texto_util = page_text.strip()
+            if len(texto_util) < 300:
+                score -= 500  # página vacía de calendario, penalizar fuertemente
+            else:
+                score -= 100  # puede tener algo de contenido, penalizar moderadamente
+
         return score
 
     # ───── Petición HTTP resiliente ─────
@@ -319,7 +436,6 @@ class AsyncTwoPassSpider:
             start_url = "http://" + start_url
 
         visited = visited_urls if visited_urls is not None else set()
-        self.seen_calendar_dates = set()
         counter = itertools.count()
         # Cola: (prioridad, contador, url, profundidad, es_interno)
         queue = []
@@ -360,12 +476,18 @@ class AsyncTwoPassSpider:
                     if url in visited:
                         continue
 
-                    # Deduplicación de URLs de calendario por fecha (/YYYY/M/D/) DESACTIVADA
-                    # cal_key = self._get_calendar_date_key(url)
-                    # if cal_key:
-                    #     if cal_key in self.seen_calendar_dates:
-                    #         continue
-                    #     self.seen_calendar_dates.add(cal_key)
+                    # Filtro de calendario por AÑO, no por cantidad. El tope fijo
+                    # (antes 3 páginas por dominio de calendario) descartaba los
+                    # días de la fiesta real por orden de llegada: si las fiestas
+                    # son del 11 al 17 de agosto, las primeras 3 páginas de
+                    # calendario que encuentra el crawler casi nunca son esas.
+                    # Ahora se acepta cualquier cantidad de páginas de calendario
+                    # siempre que sean del año objetivo; solo se descartan las de
+                    # otros años. Si no se reconoce el esquema de fecha de la URL,
+                    # se deja pasar (no se penaliza lo que no se sabe leer).
+                    anno_cal = self._extraer_anno_calendario(url)
+                    if anno_cal is not None and anno_cal != year:
+                        continue
 
                     if is_internal and depth > self.max_internal_depth:
                         continue
@@ -417,7 +539,13 @@ class AsyncTwoPassSpider:
                             if href.lower().endswith(".pdf"):
                                 pdf_url = urllib.parse.urljoin(url, href)
                                 link_text = a.get_text(strip=True)
-                                pdf_links.append((pdf_url, link_text))
+                                # Contexto REAL del enlace: el bloque que lo contiene.
+                                # Antes se usaba page_text[:500], que en una portada
+                                # son los menús del sitio y hacía pasar el filtro a
+                                # cualquier PDF colgado de un ayuntamiento.
+                                contenedor = a.find_parent(["li", "p", "td", "h1", "h2", "h3", "article", "section", "div"])
+                                contexto_enlace = contenedor.get_text(" ", strip=True)[:300] if contenedor else link_text
+                                pdf_links.append((pdf_url, link_text, contexto_enlace))
 
                         # Recopilar información de imágenes
                         img_infos = []
@@ -451,10 +579,11 @@ class AsyncTwoPassSpider:
                             if any(skip in link_url.lower() for skip in URL_BLACKLIST):
                                 continue
 
-                            # Deduplicación preventiva de enlaces de calendario por fecha DESACTIVADA
-                            # cal_key = self._get_calendar_date_key(link_url)
-                            # if cal_key and cal_key in self.seen_calendar_dates:
-                            #     continue
+                            # Filtro preventivo de enlaces de calendario por AÑO
+                            # (ver comentario en el filtro equivalente más arriba).
+                            anno_cal_link = self._extraer_anno_calendario(link_url)
+                            if anno_cal_link is not None and anno_cal_link != year:
+                                continue
 
                             is_internal_next = self._is_internal(start_url, link_url)
                             
@@ -476,6 +605,95 @@ class AsyncTwoPassSpider:
 
     # ───── Pasada 2: Extracción profunda ─────
 
+    async def _process_single_page(
+        self,
+        session: aiohttp.ClientSession,
+        semaphore: asyncio.Semaphore,
+        rank: int,
+        score: int,
+        url: str,
+        page_text: str,
+        pdf_links: list,
+        img_infos: list,
+        locality_names: list[str],
+        fuente: str,
+        visited_urls: set | None,
+    ) -> list[dict]:
+        """Procesa una sola página del Top N: texto + PDFs + imágenes."""
+        if score < 0:
+            return []
+
+        # Filtrar dominios de RRSS (no scrapeables por JS)
+        parsed_domain = urllib.parse.urlparse(url).netloc.lower()
+        if any(d in parsed_domain for d in _EXTERNAL_DOMAIN_BLOCKLIST):
+            logger.debug(f"  [Skip] Dominio social no scrapeable: {url[:70]}")
+            return []
+
+        logger.info(f"  [Top {rank + 1} / Score: {score}] {url[:70]}...")
+        docs = [crear_documento(fuente, url, page_text, tipo="pagina",
+                                score_spider=score, rank_spider=rank)]
+
+        # ─── PDFs: filtrar por relevancia antes de descargar ───
+        # El mismo PDF suele estar enlazado desde varias páginas del sitio. Antes
+        # se añadía a `visited_urls` pero nunca se comprobaba, así que las páginas
+        # del mismo lote concurrente lo descargaban e indexaban por duplicado
+        # (en Amurrio, tres copias del PDF de presupuestos coparon el contexto).
+        # La comprobación y el alta van juntas y sin `await` entre medias, de modo
+        # que son atómicas dentro del bucle de eventos.
+        pdf_tasks = []
+        pdf_urls_pedidas = []
+        for pdf_url, link_text, contexto_enlace in pdf_links:
+            pdf_limpia = self._clean_url(pdf_url)
+            if visited_urls is not None and pdf_limpia in visited_urls:
+                continue
+            if is_promising_pdf(pdf_url, link_text, contexto_enlace, target_year=self.target_year):
+                if visited_urls is not None:
+                    visited_urls.add(pdf_limpia)
+                pdf_tasks.append(self._extract_pdf(session, pdf_url, semaphore))
+                pdf_urls_pedidas.append(pdf_url)
+
+        if pdf_tasks:
+            logger.info(f"    Descargando {len(pdf_tasks)} PDFs prometedores...")
+            pdf_results = await asyncio.gather(*pdf_tasks, return_exceptions=True)
+            for pdf_url, pdf_text in zip(pdf_urls_pedidas, pdf_results):
+                if isinstance(pdf_text, str) and pdf_text:
+                    docs.append(crear_documento(fuente, pdf_url, pdf_text, tipo="pdf",
+                                                score_spider=score, rank_spider=rank))
+
+        # ─── Imágenes: filtrar agresivamente antes de OCR ───
+        # Misma dedup para las imágenes: un cartel enlazado desde la portada y desde
+        # la noticia se OCRizaba dos veces, con el coste de OCR duplicado.
+        img_tasks = []
+        img_urls_pedidas = []
+        for img_url, alt_text in img_infos:
+            img_limpia = self._clean_url(img_url)
+            if visited_urls is not None and img_limpia in visited_urls:
+                continue
+            if is_promising_image(img_url, alt_text, locality_names):
+                if visited_urls is not None:
+                    visited_urls.add(img_limpia)
+                img_tasks.append(self._extract_image(session, img_url, semaphore))
+                img_urls_pedidas.append(img_url)
+
+        # Limitar OCR por página para evitar saturación (ej. webs turísticas con 26 fotos)
+        if len(img_tasks) > MAX_IMAGES_PER_PAGE:
+            logger.debug(f"    Limitando OCR de {len(img_tasks)} → {MAX_IMAGES_PER_PAGE} imágenes")
+            # Cerrar las coroutines descartadas para evitar RuntimeWarning
+            for discarded in img_tasks[MAX_IMAGES_PER_PAGE:]:
+                discarded.close()
+            img_tasks = img_tasks[:MAX_IMAGES_PER_PAGE]
+            img_urls_pedidas = img_urls_pedidas[:MAX_IMAGES_PER_PAGE]
+
+        if img_tasks:
+            logger.info(f"    OCR en {len(img_tasks)} imágenes prometedoras...")
+            img_results = await asyncio.gather(*img_tasks, return_exceptions=True)
+            for img_url, ocr_text in zip(img_urls_pedidas, img_results):
+                if isinstance(ocr_text, str) and ocr_text.strip():
+                    docs.append(crear_documento(fuente, img_url, ocr_text, tipo="cartel",
+                                                score_spider=score, rank_spider=rank))
+
+        return docs
+
     async def pass_2_heavy_extraction(
         self,
         scored_pages: list,
@@ -483,8 +701,8 @@ class AsyncTwoPassSpider:
         fuente: str,
         visited_urls: set | None = None,
     ) -> list[dict]:
-        """Pasada 2: OCR y PDFs del Top N. Devuelve documentos etiquetados con la fuente."""
-        logger.info(f"[Pasada 2] Extracción profunda del Top {self.max_extraction_pages}...")
+        """Pasada 2: OCR y PDFs del Top N en batches paralelos (PASS2_BATCH_SIZE páginas a la vez)."""
+        logger.info(f"[Pasada 2] Extracción profunda del Top {self.max_extraction_pages} (batches de {PASS2_BATCH_SIZE})...")
         top_pages = scored_pages[: self.max_extraction_pages]
 
         documentos = []
@@ -493,59 +711,46 @@ class AsyncTwoPassSpider:
         connector = aiohttp.TCPConnector(limit=self.concurrency, ssl=False)
 
         async with aiohttp.ClientSession(headers=headers, connector=connector) as session:
-            for rank, (score, url, page_text, pdf_links, img_infos) in enumerate(top_pages):
-                if score < 0:
-                    break  # Ignorar páginas irrelevantes
-
-                logger.info(f"  [Top {rank + 1} / Score: {score}] {url[:70]}...")
-                documentos.append(crear_documento(fuente, url, page_text, tipo="pagina"))
-
-                # ─── PDFs: filtrar por relevancia antes de descargar ───
-                pdf_tasks = []
-                pdf_urls_pedidas = []
-                for pdf_url, link_text in pdf_links:
-                    if is_promising_pdf(pdf_url, link_text, page_text[:500], target_year=self.target_year):
-                        pdf_tasks.append(self._extract_pdf(session, pdf_url, semaphore))
-                        pdf_urls_pedidas.append(pdf_url)
-                        if visited_urls is not None:
-                            visited_urls.add(self._clean_url(pdf_url))
-
-                if pdf_tasks:
-                    logger.info(f"    Descargando {len(pdf_tasks)} PDFs prometedores...")
-                    pdf_results = await asyncio.gather(*pdf_tasks, return_exceptions=True)
-                    for pdf_url, pdf_text in zip(pdf_urls_pedidas, pdf_results):
-                        if isinstance(pdf_text, str) and pdf_text:
-                            documentos.append(crear_documento(fuente, pdf_url, pdf_text, tipo="pdf"))
-
-                # ─── Imágenes: filtrar agresivamente antes de OCR ───
-                img_tasks = []
-                img_urls_pedidas = []
-                for img_url, alt_text in img_infos:
-                    if is_promising_image(img_url, alt_text, locality_names):
-                        img_tasks.append(self._extract_image(session, img_url, semaphore))
-                        img_urls_pedidas.append(img_url)
-
-                if img_tasks:
-                    logger.info(f"    OCR en {len(img_tasks)} imágenes prometedoras...")
-                    img_results = await asyncio.gather(*img_tasks, return_exceptions=True)
-                    for img_url, ocr_text in zip(img_urls_pedidas, img_results):
-                        if isinstance(ocr_text, str) and ocr_text.strip():
-                            documentos.append(crear_documento(fuente, img_url, ocr_text, tipo="cartel"))
+            for batch_start in range(0, len(top_pages), PASS2_BATCH_SIZE):
+                batch = top_pages[batch_start:batch_start + PASS2_BATCH_SIZE]
+                tasks = [
+                    self._process_single_page(
+                        session, semaphore, batch_start + j,
+                        score, url, page_text, pdf_links, img_infos,
+                        locality_names, fuente, visited_urls,
+                    )
+                    for j, (score, url, page_text, pdf_links, img_infos) in enumerate(batch)
+                ]
+                batch_results = await asyncio.gather(*tasks, return_exceptions=True)
+                for result in batch_results:
+                    if isinstance(result, list):
+                        documentos.extend(result)
+                    elif isinstance(result, Exception):
+                        logger.warning(f"Error en extracción de página: {result}")
 
         return documentos
 
     async def _extract_pdf(self, session, pdf_url, semaphore):
-        """Descarga y extrae texto de un PDF."""
+        """Descarga y extrae texto de un PDF (aislado en subproceso para evitar segfaults)."""
         pdf_bytes = await self._fetch_bytes(session, pdf_url, semaphore)
-        if pdf_bytes:
-            # Ejecutar extracción CPU-intensiva en el pool dedicado
-            loop = asyncio.get_event_loop()
-            return await loop.run_in_executor(ocr_executor, extract_text_from_pdf, pdf_bytes)
-        return ""
+        if not pdf_bytes:
+            return ""
+        
+        loop = asyncio.get_event_loop()
+        try:
+            pool = _get_ocr_pool()
+            text = await loop.run_in_executor(pool, _subprocess_extract_pdf, pdf_bytes)
+            return text
+        except Exception as e:
+            if "BrokenProcessPool" in type(e).__name__:
+                logger.warning(f"  [Segfault/Crash] en subproceso al extraer PDF {pdf_url}. Reiniciando pool.")
+                _reset_ocr_pool()
+            else:
+                logger.debug(f"  Error al extraer PDF {pdf_url}: {e}")
+            return ""
 
     async def _extract_image(self, session, img_url, semaphore):
-        """Descarga y extrae texto OCR de una imagen (si es grande)."""
-        # Primero verificar tamaño con HEAD
+        """Descarga y extrae texto OCR de una imagen (aislado en subproceso para evitar segfaults)."""
         try:
             async with semaphore:
                 async with session.head(img_url, timeout=aiohttp.ClientTimeout(total=5), ssl=False) as resp:
@@ -556,10 +761,21 @@ class AsyncTwoPassSpider:
             pass  # Si HEAD falla, intentar GET de todas formas
 
         img_bytes = await self._fetch_bytes(session, img_url, semaphore, max_size=15_000_000)
-        if img_bytes and len(img_bytes) >= IMAGE_MIN_SIZE_BYTES:
-            loop = asyncio.get_event_loop()
-            return await loop.run_in_executor(ocr_executor, extract_text_from_image, img_bytes)
-        return ""
+        if not img_bytes or len(img_bytes) < IMAGE_MIN_SIZE_BYTES:
+            return ""
+            
+        loop = asyncio.get_event_loop()
+        try:
+            pool = _get_ocr_pool()
+            text = await loop.run_in_executor(pool, _subprocess_extract_image, img_bytes)
+            return text
+        except Exception as e:
+            if "BrokenProcessPool" in type(e).__name__:
+                logger.warning(f"  [Segfault/Crash] en subproceso al procesar imagen {img_url}. Reiniciando pool.")
+                _reset_ocr_pool()
+            else:
+                logger.debug(f"  Error al extraer imagen {img_url}: {e}")
+            return ""
 
     # ───── Interfaz pública ─────
 

@@ -1,0 +1,415 @@
+{
+  "metricas": {
+    "etapa": "enrichment",
+    "municipio": "Tobarra",
+    "localidad": "Santiago de Mora__fiestas de santiago apóstol y santa ana",
+    "candidatos": 17,
+    "seleccionados": 17,
+    "documentos_distintos": 4,
+    "chunks_duplicados": 0,
+    "chars_contexto": 19720,
+    "chars_unicos": 18576,
+    "pct_unico": 100.0,
+    "tokens_contexto": 6716,
+    "top_documentos": [
+      [
+        "https://www.radiotobarra.es/wp-content/uploads/santiago2026.pdf",
+        7
+      ],
+      [
+        "buscadores:snippets",
+        6
+      ],
+      [
+        "https://www.radiotobarra.es/santiago2026/",
+        2
+      ],
+      [
+        "https://tobarra.es/wp-content/uploads/2024/03/Doc3-Anexo7-Memoria-ambiental.pdf",
+        2
+      ]
+    ],
+    "presupuesto": {
+      "presupuesto_chars": 32000
+    },
+    "fiesta": "Fiestas de Santiago Apóstol y Santa Ana",
+    "dias_consultados": 2,
+    "dias_sin_presupuesto": 0
+  },
+  "chunks": [
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6367,
+      "score_detalle": {
+        "similitud": 0.7286,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 912,
+      "tokens": 333,
+      "hash": "916f86d038e4",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas de Mora 2026 | Fechas y guía | Fiestas de Pueblos de España | CONTENIDO: Descubre lasFiestasdeMora(Toledo): tradiciones manchegas, actos populares, música, verbenas"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6133,
+      "score_detalle": {
+        "similitud": 0.6483,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1056,
+      "tokens": 404,
+      "hash": "ca2ccf9ee251",
+      "seleccionado": true,
+      "muestra": "TITULO: El mapa festivo que recorre Albacete: así serán las fiestas de los ... | CONTENIDO: Un calendario que combina tradición, convivencia y diversión para todos los públicos con"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6132,
+      "score_detalle": {
+        "similitud": 0.6482,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1005,
+      "tokens": 391,
+      "hash": "dce0571047f8",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas de Santiago de Mora 2026 - Radio Tobarra Municipal - 107.9 FM | CONTENIDO: FIESTASDELA PEDANÍADESANTIAGODEMORAEN HONOR ASANTIAGOAPOSTOL Y SANTA ANA | ORIGEN: https:"
+    },
+    {
+      "url": "https://www.radiotobarra.es/wp-content/uploads/santiago2026.pdf",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6122,
+      "score_detalle": {
+        "similitud": 0.5877,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 0.0,
+        "extra": 0.7
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1145,
+      "tokens": 449,
+      "hash": "dc5546fb46b4",
+      "seleccionado": true,
+      "muestra": "19:00H CONCENTRACIÓN DE CARROZAS ⏎ Lugar: Parada de Autobús ⏎ 19:30H GRAN DESFILE DE CARROZAS ⏎ Por el itinerario de costumbre, este año nos lucimos de lo lindo. ⏎ AL FINALIZAR, DUCHAS DE "
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6103,
+      "score_detalle": {
+        "similitud": 0.6381,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 975,
+      "tokens": 348,
+      "hash": "b5ac369cef46",
+      "seleccionado": true,
+      "muestra": "TITULO: Turismo - Mora | CONTENIDO: La Feria yFiestasdeMorase celebra en honor al Cristodela Veracruz, patróndela villa, y da comienzo con la quemadefuegos artificiales, conocida t"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6058,
+      "score_detalle": {
+        "similitud": 0.6227,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1127,
+      "tokens": 422,
+      "hash": "a464c85a00e6",
+      "seleccionado": true,
+      "muestra": "TITULO: Festividades Locales Populares en Mora | Actualizado julio 2026 | CONTENIDO: ¿Cuándo se celebran lasfiestasdeSantiagodeMora? LasfiestasdeSantiagodeMorase celebran anualment"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.5964,
+      "score_detalle": {
+        "similitud": 0.5906,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1078,
+      "tokens": 385,
+      "hash": "406e7ef23fe6",
+      "seleccionado": true,
+      "muestra": "TITULO: Santiago De Mora (@comision.santiago) - Instagram | CONTENIDO: 944 Followers, 994 Following, 72 Posts -SantiagoDeMora(@comision.santiago) on Instagram: \"ComisióndeFiestasde"
+    },
+    {
+      "url": "https://www.radiotobarra.es/santiago2026/",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.5842,
+      "score_detalle": {
+        "similitud": 0.6286,
+        "spider": 0.5,
+        "programa": 0.2,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1197,
+      "tokens": 531,
+      "hash": "3c69a42fd18d",
+      "seleccionado": true,
+      "muestra": "Fiestas de Santiago de Mora 2026 – Radio Tobarra Municipal – 107.9 FM ⏎ Saltar al contenido ⏎ Programación ⏎ Programas ⏎ Tobarra a la una ⏎ Tras el Cristal (semanal) ⏎ Tras el Cristal (Anuario"
+    },
+    {
+      "url": "https://www.radiotobarra.es/wp-content/uploads/santiago2026.pdf",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.5639,
+      "score_detalle": {
+        "similitud": 0.447,
+        "spider": 0.5,
+        "programa": 0.34,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1181,
+      "tokens": 368,
+      "hash": "b2d7fde7492c",
+      "seleccionado": true,
+      "muestra": "apurar lo que nos quede de merienda. ⏎ 20:00H TARDEO REMEMBER ⏎ Lugat: Plaza de la Iglesia ⏎ A cargo de la Sala Límite, ⏎ Lugar: Camino de la Almazara ⏎ A cargo del ayuntamiento de Tobarra. ⏎ "
+    },
+    {
+      "url": "https://www.radiotobarra.es/wp-content/uploads/santiago2026.pdf",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.5566,
+      "score_detalle": {
+        "similitud": 0.6142,
+        "spider": 0.5,
+        "programa": 0.1,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1169,
+      "tokens": 356,
+      "hash": "f9f160b30df5",
+      "seleccionado": true,
+      "muestra": "KAI ⏎ Fa ⏎ FIESTAS 2026 ⏎ SANTIAGO DE MORA ⏎ Del 212126 de Julio + ⏎ d bai, ⏎ AMI ⏎ KE ⏎ La ⏎ A ⏎ LA AA AA AAADIÍA A AA ⏎ DE ⏎ Bk Ea ⏎ e ⏎ SALUDA DE LA COMISIÓN DE FIESTAS ⏎ o ⏎ 4 ⏎ $ e e y ⏎ Queridos vecinos y vecin"
+    },
+    {
+      "url": "https://www.radiotobarra.es/santiago2026/",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.5478,
+      "score_detalle": {
+        "similitud": 0.5838,
+        "spider": 0.5,
+        "programa": 0.1,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 882,
+      "tokens": 296,
+      "hash": "29807dbb9419",
+      "seleccionado": true,
+      "muestra": "Conversaciones 2023 ⏎ Conversaciones 2019 ⏎ Conversaciones 2015 ⏎ Conversaciones 2011 ⏎ Conversaciones 2007 ⏎ Conversaciones 2003 ⏎ Conversaciones 1999 ⏎ Conversaciones 1995 ⏎ Conversaciones 1991 ⏎ "
+    },
+    {
+      "url": "https://www.radiotobarra.es/wp-content/uploads/santiago2026.pdf",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.5445,
+      "score_detalle": {
+        "similitud": 0.6639,
+        "spider": 0.5,
+        "programa": 0.2,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1131,
+      "tokens": 335,
+      "hash": "624676348927",
+      "seleccionado": true,
+      "muestra": "Nada de lo que vivimos estos días sería posible sin la participación y el apoyo de tods ⏎ He vecin(ds. la incansable y entregada Comisión de Fiestas, las personas y comercios ⏎ colabor"
+    },
+    {
+      "url": "https://www.radiotobarra.es/wp-content/uploads/santiago2026.pdf",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.5091,
+      "score_detalle": {
+        "similitud": 0.5426,
+        "spider": 0.5,
+        "programa": 0.2,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1174,
+      "tokens": 352,
+      "hash": "324641f0b88a",
+      "seleccionado": true,
+      "muestra": "señalados. Aqui siempre encontrarán las puertas abiertas, porque una de las mayores riquezas de ⏎ nuestro pueblo es su capacidad para acoger y hacer sentir a todos como en casa. ⏎ Ahor"
+    },
+    {
+      "url": "https://www.radiotobarra.es/wp-content/uploads/santiago2026.pdf",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.468,
+      "score_detalle": {
+        "similitud": 0.4016,
+        "spider": 0.5,
+        "programa": 0.2,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1126,
+      "tokens": 324,
+      "hash": "a05fe3a5cf99",
+      "seleccionado": true,
+      "muestra": "vecinos llegados de toda la comarca, atraídos por el gran ambiente, la hospitalidad y los ⏎ magníficos actos que organizáis. ⏎ Este éxito rotundo no es fruto de la casualidad, sino del"
+    },
+    {
+      "url": "https://www.radiotobarra.es/wp-content/uploads/santiago2026.pdf",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.447,
+      "score_detalle": {
+        "similitud": 0.4096,
+        "spider": 0.5,
+        "programa": 0.1,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1123,
+      "tokens": 311,
+      "hash": "6d0087858b06",
+      "seleccionado": true,
+      "muestra": "¡Ya están aquí nuestras queridas fiestas! En primer lugar, quiero decir que me siento muy ⏎ afortunado de poder dejar este pequeño mensaje en el libro, algo que llevo leyendo desde ⏎ h"
+    },
+    {
+      "url": "https://tobarra.es/wp-content/uploads/2024/03/Doc3-Anexo7-Memoria-ambiental.pdf",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.3775,
+      "score_detalle": {
+        "similitud": 0.2515,
+        "spider": 0.5,
+        "programa": 0.0,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1164,
+      "tokens": 414,
+      "hash": "89ba9463c73a",
+      "seleccionado": true,
+      "muestra": "Un aspecto fundamental del modelo definido es la protección y defensa de los ⏎ La tipología de viviendas previstas son edificaciones aisladas en baja densidad, ⏎ En Santiago de Mora el"
+    },
+    {
+      "url": "https://tobarra.es/wp-content/uploads/2024/03/Doc3-Anexo7-Memoria-ambiental.pdf",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.3658,
+      "score_detalle": {
+        "similitud": 0.2112,
+        "spider": 0.5,
+        "programa": 0.0,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1131,
+      "tokens": 323,
+      "hash": "c24b19cc8c01",
+      "seleccionado": true,
+      "muestra": "priorizan los crecimientos que se ubiquen en los espacios existentes entre barrios, de ⏎ manera que se consiga una trama urbana conexa. ⏎ numerosos valores medioambientales presentes, "
+    }
+  ]
+}

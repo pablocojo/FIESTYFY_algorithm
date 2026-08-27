@@ -260,7 +260,28 @@ class DriverBase:
             return True
         return False
 
-    # ── lectura del perfil (helpers compartidos) ──
+    # ── navegación base ──
+
+    def _volver_atras(self) -> bool:
+        """Retrocede en el historial del navegador/app."""
+        self.guard.teclear_seguro("%{LEFT}", con_espacios=False)
+        time.sleep(1.0)
+        return True
+
+    def _escribir_en_buscador(self, consulta: str) -> bool:
+        """Busca usando el buscador nativo de la red social."""
+        if not self.buscador_re:
+            return False
+            
+        for tipo, texto, el in self._paseo():
+            if re.search(self.buscador_re, texto or "", re.IGNORECASE):
+                if self.guard.click_seguro(el):
+                    time.sleep(1.0)
+                    self.guard.teclear_seguro(consulta)
+                    self.guard.teclear_seguro("{ENTER}", con_espacios=False)
+                    time.sleep(3.0)
+                    return True
+        return False
 
     def _limite_antiguedad(self) -> date:
         return date.today() - timedelta(days=30 * SOCIAL_POST_MONTHS_BACK)

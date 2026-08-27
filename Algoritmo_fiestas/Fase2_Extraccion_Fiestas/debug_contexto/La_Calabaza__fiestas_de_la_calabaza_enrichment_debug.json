@@ -1,0 +1,331 @@
+{
+  "metricas": {
+    "etapa": "enrichment",
+    "municipio": "Aranda de Duero",
+    "localidad": "La Calabaza__fiestas de la calabaza",
+    "candidatos": 13,
+    "seleccionados": 13,
+    "documentos_distintos": 5,
+    "chunks_duplicados": 0,
+    "chars_contexto": 14573,
+    "chars_unicos": 13607,
+    "pct_unico": 100.0,
+    "tokens_contexto": 5086,
+    "top_documentos": [
+      [
+        "http://www.arandactiva.com/",
+        5
+      ],
+      [
+        "https://www.enaranda.es/evento/fiestas-del-barrio-de-la-calabaza-agosto-2026/",
+        3
+      ],
+      [
+        "buscadores:snippets",
+        3
+      ],
+      [
+        "https://www.arandadeduero.es/monteria-coto-bu-10614-20-02-2026/",
+        1
+      ],
+      [
+        "https://www.arandadeduero.es/tema/monteria/",
+        1
+      ]
+    ],
+    "presupuesto": {
+      "presupuesto_chars": 32000
+    },
+    "fiesta": "Fiestas de La Calabaza",
+    "dias_consultados": 1,
+    "dias_sin_presupuesto": 0
+  },
+  "chunks": [
+    {
+      "url": "https://www.enaranda.es/evento/fiestas-del-barrio-de-la-calabaza-agosto-2026/",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.7158,
+      "score_detalle": {
+        "similitud": 1.0,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1193,
+      "tokens": 408,
+      "hash": "36b642b9928d",
+      "seleccionado": true,
+      "muestra": "Fiestas del Barrio de La Calabaza 2026 | 21 AGOSTO a 23 AGOSTO 2026 ⏎ Descubre la nueva sección Experiencias ⏎ Donde podrás ver una selección de actividades para realizar cuando tú qui"
+    },
+    {
+      "url": "http://www.arandactiva.com/",
+      "fuente": "web_municipio",
+      "es_calendario": false,
+      "prioridad": 2,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.7008,
+      "score_detalle": {
+        "similitud": 0.6673,
+        "spider": 0.4008,
+        "programa": 0.24,
+        "temporal": 1.0,
+        "extra": 0.7
+      },
+      "score_spider": 1500,
+      "rank_spider": 3,
+      "chars": 941,
+      "tokens": 332,
+      "hash": "d281721d528f",
+      "seleccionado": true,
+      "muestra": "A continuación, compartimos toda la información que necesitas saber: ⏎ Apertura Piscina Acapulco: Apertura Piscina Acapulco.pdf ⏎ Apertura Piscina La Calabaza: Apertura Piscina La Cala"
+    },
+    {
+      "url": "https://www.enaranda.es/evento/fiestas-del-barrio-de-la-calabaza-agosto-2026/",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6741,
+      "score_detalle": {
+        "similitud": 0.9368,
+        "spider": 0.5,
+        "programa": 0.2,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 146,
+      "tokens": 57,
+      "hash": "cd49521ae3c5",
+      "seleccionado": true,
+      "muestra": "ago ⏎ + información ⏎ XLIII Verano Cultural 2026 ⏎ lunes ⏎ 13 ⏎ jul ⏎ - ⏎ domingo ⏎ 30 ⏎ ago ⏎ + información ⏎ Más fiestas y ferias ⏎ Más eventos en Barrio de la Calabaza"
+    },
+    {
+      "url": "https://www.enaranda.es/evento/fiestas-del-barrio-de-la-calabaza-agosto-2026/",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.666,
+      "score_detalle": {
+        "similitud": 0.8293,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1199,
+      "tokens": 444,
+      "hash": "1a4e2713eea2",
+      "seleccionado": true,
+      "muestra": "12:00h | ⏎ Gran concurso de tuta ⏎ , III Torneo Vecinal Barrio La Calabaza. Competición por parejas, con premios sorpresa para el primer, segundo y tercer puesto. ⏎ 12:30h | ⏎ I Concurso d"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6333,
+      "score_detalle": {
+        "similitud": 0.7972,
+        "spider": 0.5,
+        "programa": 0.2,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1130,
+      "tokens": 371,
+      "hash": "a31e69e36bfa",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas de distritos y barrios de Madrid en 2026: programas completos y ... | CONTENIDO: Fiestasdedistritos y barriosdeMadrid en2026: programas completos y fechas Consultal"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6306,
+      "score_detalle": {
+        "similitud": 0.7876,
+        "spider": 0.5,
+        "programa": 0.2,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1160,
+      "tokens": 399,
+      "hash": "2dc8d2ba71aa",
+      "seleccionado": true,
+      "muestra": "TITULO: montería - Ayuntamiento de Aranda de Duero | CONTENIDO: Se informa a los vecinos y vecinas delalocalidad, así como alaspersonas en general, que con motivo delacelebración d"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6268,
+      "score_detalle": {
+        "similitud": 0.6946,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 991,
+      "tokens": 349,
+      "hash": "d3aec12dc9b1",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas Patronales de Aranda de Duero - Aranda de Duero | CONTENIDO: LasfiestaspatronalesdeArandadeDuerose celebran en honor a Nuestra SeñoradelasViñas, patronadelaciudad, "
+    },
+    {
+      "url": "https://www.arandadeduero.es/monteria-coto-bu-10614-20-02-2026/",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.5718,
+      "score_detalle": {
+        "similitud": 0.7463,
+        "spider": 0.5,
+        "programa": 0.0,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1186,
+      "tokens": 378,
+      "hash": "4700f8100f48",
+      "seleccionado": true,
+      "muestra": "Montería Coto del Monte de la Calabaza, 20-02-2026 – Ayuntamiento de Aranda de Duero ⏎ Skip to content ⏎ Montería autorizada ⏎ Se informa a los vecinos y vecinas de la localidad, así com"
+    },
+    {
+      "url": "https://www.arandadeduero.es/tema/monteria/",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.5507,
+      "score_detalle": {
+        "similitud": 0.6737,
+        "spider": 0.5,
+        "programa": 0.0,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1153,
+      "tokens": 363,
+      "hash": "ea2af8db0c70",
+      "seleccionado": true,
+      "muestra": "montería – Ayuntamiento de Aranda de Duero ⏎ Skip to content ⏎ Montería autorizada ⏎ Se informa a los vecinos y vecinas de la localidad, así como a las personas en general, que con motiv"
+    },
+    {
+      "url": "http://www.arandactiva.com/",
+      "fuente": "web_municipio",
+      "es_calendario": false,
+      "prioridad": 2,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.465,
+      "score_detalle": {
+        "similitud": 0.3708,
+        "spider": 0.4008,
+        "programa": 0.1,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 1500,
+      "rank_spider": 3,
+      "chars": 1161,
+      "tokens": 404,
+      "hash": "4ee7c162302b",
+      "seleccionado": true,
+      "muestra": "La concejalía de deportes del Ayuntamiento de Aranda de Duero anuncia la celebración de dos partidos internacionales de primer nivel entre las selecciones juveniles masculinas de E"
+    },
+    {
+      "url": "http://www.arandactiva.com/",
+      "fuente": "web_municipio",
+      "es_calendario": false,
+      "prioridad": 2,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.4616,
+      "score_detalle": {
+        "similitud": 0.4393,
+        "spider": 0.4008,
+        "programa": 0.0,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 1500,
+      "rank_spider": 3,
+      "chars": 1020,
+      "tokens": 381,
+      "hash": "9eaad8e0e0e2",
+      "seleccionado": true,
+      "muestra": "JORNADA DE PROMOCIÓN DE ATLETISMO EN PISTA - JUEGOS ESCOLARES ⏎ VII TORNEO DE AJEDREZ DEL IES VELA ZANETTI ⏎ MÁS ⏎ NOTICIAS ⏎ [CICLISMO] ⏎ El Velo Club Ribera del Duero lanza el Campus de Ci"
+    },
+    {
+      "url": "http://www.arandactiva.com/",
+      "fuente": "web_municipio",
+      "es_calendario": false,
+      "prioridad": 2,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.4605,
+      "score_detalle": {
+        "similitud": 0.4355,
+        "spider": 0.4008,
+        "programa": 0.0,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 1500,
+      "rank_spider": 3,
+      "chars": 1187,
+      "tokens": 395,
+      "hash": "937b7b23d8a6",
+      "seleccionado": true,
+      "muestra": "(Polideportividad) PREBENJAMIN BALONMANO Pre-Benjamín Mixto ⏎ (Polideportividad) PREBENJAMIN FUTBOL SALA Pre-Benjamín Mixto ⏎ (Voleibol) VOLEIBOL CADETE JUVENIL 3ª VUELTA Mixta ⏎ (Voleib"
+    },
+    {
+      "url": "http://www.arandactiva.com/",
+      "fuente": "web_municipio",
+      "es_calendario": false,
+      "prioridad": 2,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.3964,
+      "score_detalle": {
+        "similitud": 0.3872,
+        "spider": 0.4008,
+        "programa": 0.0,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 1500,
+      "rank_spider": 3,
+      "chars": 1140,
+      "tokens": 475,
+      "hash": "0ab5b86f3e19",
+      "seleccionado": true,
+      "muestra": ".: Concejalía de deportes de Aranda de Duero :. arandactiva.com ⏎ Contacta con Nosotros ⏎ Recomienda esta P�gina ⏎ Pol�tica de Privacidad ⏎ Ayúdanos a mejorar ⏎ Estas en: ⏎ Inicio ⏎ Enviar ⏎ | ⏎ Imp"
+    }
+  ]
+}

@@ -1,0 +1,595 @@
+{
+  "metricas": {
+    "etapa": "enrichment",
+    "municipio": "Amurrio",
+    "localidad": "Aloria__fiestas patronales de san juan degollado",
+    "candidatos": 25,
+    "seleccionados": 22,
+    "documentos_distintos": 5,
+    "chunks_duplicados": 0,
+    "chars_contexto": 33870,
+    "chars_unicos": 31803,
+    "pct_unico": 100.0,
+    "tokens_contexto": 14072,
+    "top_documentos": [
+      [
+        "https://almansaturistica.es/wp-content/uploads/2026/04/PROGRAMA-DE-FIESTAS-2026.pdf",
+        9
+      ],
+      [
+        "buscadores:snippets",
+        5
+      ],
+      [
+        "https://www.festivalesdeespana.com/festival/fiestas-de-san-juan-degollado-de-aloria",
+        5
+      ],
+      [
+        "https://udala.amurrio.eus/attachments/article/2183/2026_Amurrio_Jai_kartel_orokorra_320x700.pdf",
+        2
+      ],
+      [
+        "https://fiestasdepueblos.net/pueblos/aloria",
+        1
+      ]
+    ],
+    "presupuesto": {
+      "presupuesto_chars": 32000
+    },
+    "fiesta": "Fiestas Patronales de San Juan Degollado",
+    "dias_consultados": 3,
+    "dias_sin_presupuesto": 3
+  },
+  "chunks": [
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.7158,
+      "score_detalle": {
+        "similitud": 1.0,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 942,
+      "tokens": 325,
+      "hash": "6bbc70bcafea",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas de San Juan Degollado 2026 en Aloria (Amurrio, Álava) | CONTENIDO: Descubre lasFiestaspatronales2026de San Juan Degollado en el concejo deAloria(Amurrio): misa, pro"
+    },
+    {
+      "url": "https://www.festivalesdeespana.com/festival/fiestas-de-san-juan-degollado-de-aloria",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6783,
+      "score_detalle": {
+        "similitud": 0.8713,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1153,
+      "tokens": 356,
+      "hash": "68c2c809d593",
+      "seleccionado": true,
+      "muestra": ", la mayor cascada de España con más de 220 metros de caída libre, espectacular tras las lluvias. Combinar las fiestas con excursiones a estos parajes es una fórmula ideal para con"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6712,
+      "score_detalle": {
+        "similitud": 0.8471,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1126,
+      "tokens": 402,
+      "hash": "0c35eb567c80",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas Patronales de Amurrio 2026 | Programa del 12 al 17 de Agosto | CONTENIDO: LasFiestasPatronalesdeAmurriose celebran del 12 al 17 de agosto en torno a la Festividad d"
+    },
+    {
+      "url": "https://www.festivalesdeespana.com/festival/fiestas-de-san-juan-degollado-de-aloria",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6712,
+      "score_detalle": {
+        "similitud": 0.8469,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1031,
+      "tokens": 326,
+      "hash": "483b5a79f945",
+      "seleccionado": true,
+      "muestra": "Fiestas de San Juan Degollado 2026 en Aloria (Amurrio, Álava) ⏎ Proponer una corrección ⏎ Fechas ⏎ 28 ago. ⏎ — 30 ago. 2026 ⏎ Lugar ⏎ Amurrio ⏎ (01) ⏎ Precios ⏎ Gratis ⏎ Estado ⏎ — ⏎ Presentación de San J"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6611,
+      "score_detalle": {
+        "similitud": 0.8124,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1114,
+      "tokens": 371,
+      "hash": "c9ed9c607479",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas - udala.amurrio.eus | CONTENIDO: El Ayuntamiento deAmurriopresenta la programación de susFiestasPatronales202628 Julio2026La programación contará con más de un cent"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6608,
+      "score_detalle": {
+        "similitud": 0.6994,
+        "spider": 0.5,
+        "programa": 0.44,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1142,
+      "tokens": 418,
+      "hash": "b1a0acf6acef",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas de Aloria 2026 | Fechas y guía | Fiestas de Pueblos de España | CONTENIDO: Vive lasFiestasdeAloria(Álava): procesiones, dantzaris, romería y verbena con pintxos y v"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6045,
+      "score_detalle": {
+        "similitud": 0.6184,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1123,
+      "tokens": 385,
+      "hash": "26ab80a5de5c",
+      "seleccionado": true,
+      "muestra": "TITULO: ¡Crea el cartel de las Fiestas de Álava 2026! | Rioja Alavesa | CONTENIDO: La Diputación Foral de Álava ha abierto el concurso para elcartelde lasFiestasde San Prudencio y "
+    },
+    {
+      "url": "https://www.festivalesdeespana.com/festival/fiestas-de-san-juan-degollado-de-aloria",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6015,
+      "score_detalle": {
+        "similitud": 0.7681,
+        "spider": 0.5,
+        "programa": 0.1,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1195,
+      "tokens": 466,
+      "hash": "53fedff4c49e",
+      "seleccionado": true,
+      "muestra": "Comparte tu experiencia con la comunidad. ⏎ Tu puntuación (opcional) ⏎ borrar ⏎ Edición correspondiente (opcional) ⏎ 2026 ⏎ 2025 ⏎ Publicar mi opinión ⏎ Dónde se celebra San Juan Degollado Alori"
+    },
+    {
+      "url": "https://fiestasdepueblos.net/pueblos/aloria",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.5651,
+      "score_detalle": {
+        "similitud": 0.4833,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1019,
+      "tokens": 386,
+      "hash": "1244c8439ae2",
+      "seleccionado": true,
+      "muestra": "Fiestas en Aloria (País Vasco) - Calendario 2026 y 2027 | Fiestas de Pueblos de España ⏎ Cargando fiestas ⏎ Command Palette ⏎ Search for a command to run... ⏎ Inicio ⏎ / ⏎ País Vasco ⏎ / ⏎ Álava ⏎ /"
+    },
+    {
+      "url": "https://almansaturistica.es/wp-content/uploads/2026/04/PROGRAMA-DE-FIESTAS-2026.pdf",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "GENERAL",
+      "score": 0.5577,
+      "score_detalle": {
+        "similitud": 0.8671,
+        "spider": 0.5,
+        "programa": 0.86,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1137,
+      "tokens": 505,
+      "hash": "86b340ec13a8",
+      "seleccionado": true,
+      "muestra": "Fiestas Mayores 2026 ⏎ PROGRAMA DE ⏎ FIESTAS 2026 - ⏎ PROGRAMA DE ⏎ FIESTAS 2026 - ⏎ PROGRAMA DE ⏎ PROGRAMA DE FIESTAS 2026 ⏎ FIESTAS 2026 - ⏎ PROGRAMA DE ⏎ FIESTAS 2026 - ⏎ PROGRAMA DE ⏎ FIESTAS 2026 -"
+    },
+    {
+      "url": "https://www.festivalesdeespana.com/festival/fiestas-de-san-juan-degollado-de-aloria",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.5224,
+      "score_detalle": {
+        "similitud": 0.5081,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1056,
+      "tokens": 302,
+      "hash": "7a65dbb38a06",
+      "seleccionado": true,
+      "muestra": ", que la Iglesia celebra el 29 de agosto, da nombre al patrón del concejo. Las fiestas arrancan el viernes víspera con txupinazo y chupinazo infantil, y se prolongan durante el fin"
+    },
+    {
+      "url": "https://almansaturistica.es/wp-content/uploads/2026/04/PROGRAMA-DE-FIESTAS-2026.pdf",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "GENERAL",
+      "score": 0.5102,
+      "score_detalle": {
+        "similitud": 0.5923,
+        "spider": 0.5,
+        "programa": 1.0,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1189,
+      "tokens": 428,
+      "hash": "c4cce12420bb",
+      "seleccionado": true,
+      "muestra": "alrededor de la elaboración de uno de nuestros platos típi- ⏎ cos: la gachamiga. Organizado por la Junta Festera de Ca- ⏎ lles. Lugar: Paseo de Néstor Almendros, “Batallódromo”. ⏎ - 09:3"
+    },
+    {
+      "url": "https://almansaturistica.es/wp-content/uploads/2026/04/PROGRAMA-DE-FIESTAS-2026.pdf",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "GENERAL",
+      "score": 0.5053,
+      "score_detalle": {
+        "similitud": 0.6554,
+        "spider": 0.5,
+        "programa": 0.9,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1197,
+      "tokens": 481,
+      "hash": "97dc2c1504cb",
+      "seleccionado": true,
+      "muestra": "clamación de la Abanderada y Alférez Mayores Infantiles, ⏎ Abanderadas y Alféreces Infantiles de Comparsas y Emba- ⏎ jadores Infantiles. Lugar: Teatro Regio ⏎ ## Columna 2 de 3 ⏎ ### DOMIN"
+    },
+    {
+      "url": "https://almansaturistica.es/wp-content/uploads/2026/04/PROGRAMA-DE-FIESTAS-2026.pdf",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "GENERAL",
+      "score": 0.4863,
+      "score_detalle": {
+        "similitud": 0.7342,
+        "spider": 0.5,
+        "programa": 0.72,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1194,
+      "tokens": 521,
+      "hash": "2fb253a01887",
+      "seleccionado": true,
+      "muestra": "PROGRAMA ⏎ DE ⏎ FIESTAS ⏎ 2026 ⏎ PROGRAMA ⏎ DE ⏎ FIESTAS ⏎ 2026 ⏎ PROGRAMA ⏎ DE ⏎ FIESTAS ⏎ 2026 ⏎ PROGRAMA ⏎ DE ⏎ FIESTAS ⏎ 2026 ⏎ ## Columna 1 de 3 ⏎ 6202 ⏎ SATSEIF ⏎ ED ⏎ AMARGORP ⏎ 6202 ⏎ SATSEIF ⏎ ED ⏎ AMARGORP ⏎ 6202 ⏎ SATSEIF"
+    },
+    {
+      "url": "https://almansaturistica.es/wp-content/uploads/2026/04/PROGRAMA-DE-FIESTAS-2026.pdf",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "GENERAL",
+      "score": 0.4842,
+      "score_detalle": {
+        "similitud": 0.5029,
+        "spider": 0.5,
+        "programa": 1.0,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1151,
+      "tokens": 445,
+      "hash": "13d656bbb494",
+      "seleccionado": true,
+      "muestra": "6202 ⏎ SATSEIF ⏎ ED ⏎ AMARGORP ⏎ 6202 ⏎ SATSEIF ⏎ ED ⏎ AMARGORP ⏎ 6202 ⏎ SATSEIF ⏎ ED ⏎ AMARGORP ⏎ 6202 ⏎ SATSEIF ⏎ ED ⏎ AMARGORP ⏎ 6202 ⏎ SATSEIF ⏎ ED ⏎ AMARGORP6202 ⏎ SATSEIF ⏎ ED ⏎ AMARGORP ⏎ ## Columna 2 de 3 ⏎ Fiestas Mayor"
+    },
+    {
+      "url": "https://almansaturistica.es/wp-content/uploads/2026/04/PROGRAMA-DE-FIESTAS-2026.pdf",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "GENERAL",
+      "score": 0.4841,
+      "score_detalle": {
+        "similitud": 0.6741,
+        "spider": 0.5,
+        "programa": 1.0,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1185,
+      "tokens": 452,
+      "hash": "eff3c06e8520",
+      "seleccionado": true,
+      "muestra": "### DOMINGO 26 DE ABRIL ⏎ - 18:30h L FESTIVAL DE CANTE FLAMENCO. Orga- por el Centro de Mayores. Lugar: Plaza de Santa María. ⏎ nizado por la Junta Festera de Calles y con la colaborac"
+    },
+    {
+      "url": "https://udala.amurrio.eus/attachments/article/2183/2026_Amurrio_Jai_kartel_orokorra_320x700.pdf",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "GENERAL",
+      "score": 0.4763,
+      "score_detalle": {
+        "similitud": 0.6473,
+        "spider": 0.5,
+        "programa": 1.0,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1518,
+      "tokens": 807,
+      "hash": "85453624c0b0",
+      "seleccionado": true,
+      "muestra": "HERRIKO KOPA: ATHLETIC - ALAVÉS ⏎ - 19:00 ROMERÍA OTEGI ⏎ - 19:00-22:00 ESPACIO PREVENCIÓN, SENSIBILIZA- ⏎ CIÓN Y ATENCIÓN VIOLENCIAS MACHISTAS ⏎ - 19:30 EXHIBICIÓN EUSKAL DANTZAK ⏎ - 20:30 "
+    },
+    {
+      "url": "https://www.festivalesdeespana.com/festival/fiestas-de-san-juan-degollado-de-aloria",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.4705,
+      "score_detalle": {
+        "similitud": 0.3187,
+        "spider": 0.5,
+        "programa": 0.1,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1186,
+      "tokens": 381,
+      "hash": "202f26b31c54",
+      "seleccionado": true,
+      "muestra": "Aloria está a 5 km de Amurrio por carretera local. En coche: autovía A-68 hasta Amurrio, luego desvío hacia Délika-Aloria. No hay servicio regular de bus. Aeropuertos: Bilbao-Loiu "
+    },
+    {
+      "url": "https://udala.amurrio.eus/attachments/article/2183/2026_Amurrio_Jai_kartel_orokorra_320x700.pdf",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "GENERAL",
+      "score": 0.4599,
+      "score_detalle": {
+        "similitud": 0.5911,
+        "spider": 0.5,
+        "programa": 1.0,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 7974,
+      "tokens": 4479,
+      "hash": "3e848296379e",
+      "seleccionado": true,
+      "muestra": "## Columna 1 de 4 ⏎ ### 1 LARUNBATA ⏎ - 18:00 SANTUAREN JAITSIERA ⏎ ### 9 IGANDEA ⏎ - 21:30 ZINEMA KALEAN: WOLFGANG ⏎ ### 11 ASTEARTEA ⏎ - 20:00 KUADRILLEN ARTEKO SOKA SALTO LEHIAKETA ⏎ ### 12 A"
+    },
+    {
+      "url": "https://almansaturistica.es/wp-content/uploads/2026/04/PROGRAMA-DE-FIESTAS-2026.pdf",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "GENERAL",
+      "score": 0.4528,
+      "score_detalle": {
+        "similitud": 0.5668,
+        "spider": 0.5,
+        "programa": 1.0,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1195,
+      "tokens": 416,
+      "hash": "218e2c053558",
+      "seleccionado": true,
+      "muestra": "Fiestas Mayores de Almansa han comenzado. Lugar: Pla- ⏎ za de Santa María. ⏎ - 19:30h CABALGATA DEL PREGÓN. Itinerario: calle ⏎ Aniceto Coloma, Pasaje del coronel Arteaga, calle Ram- ⏎ bla"
+    },
+    {
+      "url": "https://almansaturistica.es/wp-content/uploads/2026/04/PROGRAMA-DE-FIESTAS-2026.pdf",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "GENERAL",
+      "score": 0.4315,
+      "score_detalle": {
+        "similitud": 0.5462,
+        "spider": 0.5,
+        "programa": 0.72,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 860,
+      "tokens": 299,
+      "hash": "a5984b955295",
+      "seleccionado": true,
+      "muestra": "Conversión del Moro. Lugar: Plaza de Santa María. ⏎ ## Columna 2 de 3 ⏎ ### LUNES 4 DE MAYO (continúa de la columna anterior) ⏎ Fiestas Mayores 2026 ⏎ - 11:45h DESFILE DE ARCABUCERÍA. Itin"
+    },
+    {
+      "url": "https://almansaturistica.es/wp-content/uploads/2026/04/PROGRAMA-DE-FIESTAS-2026.pdf",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "GENERAL",
+      "score": 0.4211,
+      "score_detalle": {
+        "similitud": 0.5699,
+        "spider": 0.5,
+        "programa": 0.86,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1116,
+      "tokens": 375,
+      "hash": "0540347fbae8",
+      "seleccionado": true,
+      "muestra": "tada del programa infantil del año 2027. Organizado por ⏎ el Grupo Festero El Rincón y patrocinado por el Excmo. ⏎ Ayuntamiento de Almansa. Lugar: Templete del Jardín de ⏎ los Reyes Cató"
+    },
+    {
+      "url": "https://almansaturistica.es/wp-content/uploads/2026/04/PROGRAMA-DE-FIESTAS-2026.pdf",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "GENERAL",
+      "score": 0.4102,
+      "score_detalle": {
+        "similitud": 0.4208,
+        "spider": 0.5,
+        "programa": 1.0,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1188,
+      "tokens": 405,
+      "hash": "f6a75d56850d",
+      "seleccionado": false,
+      "muestra": "- 17:00h OFRENDA INFANTIL. Niñas y niños vestidos ⏎ con el traje manchego realizarán esta ofrenda y sus pre- ⏎ sentes serán recogidos por la Reina de las Fiestas Mayores ⏎ y las Reinas d"
+    },
+    {
+      "url": "https://almansaturistica.es/wp-content/uploads/2026/04/PROGRAMA-DE-FIESTAS-2026.pdf",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "GENERAL",
+      "score": 0.4089,
+      "score_detalle": {
+        "similitud": 0.6561,
+        "spider": 0.5,
+        "programa": 0.7,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1178,
+      "tokens": 453,
+      "hash": "bcdd1cf4926c",
+      "seleccionado": false,
+      "muestra": "Lugar: Auditorio de la Sociedad Unión Musical de Almansa Festeros. Lugar: Teatro Regio ⏎ ## Columna 3 de 3 ⏎ ### SÁBADO 21 DE MARZO ⏎ - 17:30h RECEPCIÓN DE LAS AUTORIDADES MU- ⏎ NICIPALES "
+    },
+    {
+      "url": "https://almansaturistica.es/wp-content/uploads/2026/04/PROGRAMA-DE-FIESTAS-2026.pdf",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "GENERAL",
+      "score": 0.4072,
+      "score_detalle": {
+        "similitud": 0.4903,
+        "spider": 0.5,
+        "programa": 0.9,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1166,
+      "tokens": 402,
+      "hash": "9764019b115a",
+      "seleccionado": false,
+      "muestra": "- 23:00h DESFILE DE ARCABUCERÍA. Itinerario: desde TA FESTERA DE CALLES. El colectivo infantil de la ⏎ el paseo de la Libertad, hasta la calle Rambla de la Mancha. Junta Festera de C"
+    }
+  ]
+}

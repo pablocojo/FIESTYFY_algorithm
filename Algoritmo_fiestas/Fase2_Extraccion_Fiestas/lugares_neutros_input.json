@@ -1,0 +1,282 @@
+[
+ {
+  "id": "02074000000",
+  "tipo": "municipio",
+  "nombre": "Tobarra",
+  "provincia": "Albacete",
+  "comunidad": "Castilla-La Mancha",
+  "poblacion": 8002,
+  "lat": 38.58855057,
+  "lng": -1.692343591,
+  "descripcion_corta": "Descubre la Semana Santa ininterrumpida de toque del tambor en un lugar único",
+  "descripcion": "Tobarra, municipio español con una rica historia y patrimonio artístico, destaca por su Semana Santa declarada de Interés Turístico Nacional. Explora el Monte Calvario, la talla de la Virgen Dolorosa y disfruta de la Denominación de Origen Protegida Jumilla. Disfruta del entorno natural con cerros y sierras dispersas por el territorio, y visita los pueblos cercanos como Pétrola y Fuente-Álamo.",
+  "imagenes": {
+   "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Vista_de_Tobarra_%28Albacete%29.JPG",
+   "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Escudo_de_Tobarra.svg/120px-Escudo_de_Tobarra.svg.png"
+  },
+  "sitio_web": "https://www.tobarra.es",
+  "wikipedia_url": "https://es.wikipedia.org/wiki/Tobarra",
+  "original_id": "tobarra",
+  "es_capital": false
+ },
+ {
+  "id": "02074000101",
+  "padre_id": "02074000000",
+  "nombre": "Aljubé",
+  "provincia": "Albacete",
+  "comunidad": "Castilla-La Mancha",
+  "poblacion": 170,
+  "lat": 38.60760117,
+  "lng": -1.63928259,
+  "es_capital": false,
+  "tipo": "pueblo",
+  "sitio_web": "https://www.tobarra.es",
+  "wikipedia_url": "https://es.wikipedia.org/wiki/Aljubé",
+  "descripcion_corta": "Pueblo con rica historia al pie de montañas, famoso por viñedos y almendros.",
+  "descripcion": "Aljubé es un pueblo con una rica historia situado en la zona sur de Castilla-La Mancha. Su entorno natural se caracteriza por viñedos y almendros, mientras que su pasado incluye una fundación durante el dominio musulmán y el paso del cólera morbo en 1834. La aldea también fue hogar de la noble familia Ladrón de Guevara, cuyas propiedades rodeaban sus tierras.",
+  "imagenes": {
+   "banner": "https://picsum.photos/seed/02074000000-aljube/1200/400",
+   "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Bandera_de_Espa%C3%B1a.svg/20px-Bandera_de_Espa%C3%B1a.svg.png"
+  }
+ },
+ {
+  "id": "02074000201",
+  "padre_id": "02074000000",
+  "nombre": "Cordovilla",
+  "provincia": "Albacete",
+  "comunidad": "Castilla-La Mancha",
+  "poblacion": 232,
+  "lat": 38.56439508,
+  "lng": -1.632449837,
+  "es_capital": false,
+  "tipo": "pueblo",
+  "sitio_web": "http://www.tobarra.es/",
+  "wikipedia_url": "https://es.wikipedia.org/wiki/Cordovilla_(Albacete)",
+  "descripcion_corta": "Torre histórica y encantadora aldea con rica gastronomía en el entorno natural del sureste español.",
+  "descripcion": "Cordovilla es una encantadora aldea rodeada de naturaleza, famosa por su torre histórica mozárabe y sabrosos chorizos. Destaca la agricultura local con almendros, olivos y azafrán en un entorno tranquilo y acogedor.",
+  "imagenes": {
+   "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/El_Castellar.jpg",
+   "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/El_Castellar.jpg/330px-El_Castellar.jpg"
+  }
+ },
+ {
+  "id": "02074000301",
+  "padre_id": "02074000000",
+  "nombre": "Mora de Santa Quiteria",
+  "provincia": "Albacete",
+  "comunidad": "Castilla-La Mancha",
+  "poblacion": 56,
+  "lat": 38.5609628,
+  "lng": -1.586496401,
+  "es_capital": false,
+  "tipo": "pueblo",
+  "sitio_web": "",
+  "wikipedia_url": "https://es.wikipedia.org/wiki/Mora_de_Santa_Quiteria",
+  "descripcion_corta": "Pueblo con rica historia romana cerca de Hellín, ideal para conocer su entorno natural y cultura rural.",
+  "descripcion": "Mora de Santa Quiteria ofrece un fascinante viaje a través de la historia romana en un entorno natural privilegiado, perfecto para explorar sus antiguos restos y vivir la cultura rural.",
+  "imagenes": {
+   "banner": "https://picsum.photos/seed/02074000000-mora-de-santa-quiteria/1200/400",
+   "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Moralogo_%281%29.svg/120px-Moralogo_%281%29.svg.png"
+  }
+ },
+ {
+  "id": "02074000401",
+  "padre_id": "02074000000",
+  "nombre": "Santiago de Mora",
+  "provincia": "Albacete",
+  "comunidad": "Castilla-La Mancha",
+  "poblacion": 186,
+  "lat": 38.56889866,
+  "lng": -1.596941745,
+  "es_capital": false,
+  "tipo": "pueblo",
+  "sitio_web": "",
+  "wikipedia_url": "https://es.wikipedia.org/wiki/Santiago_de_Mora",
+  "descripcion_corta": "Pueblo con tradiciones como la cogida de azafrán y fiestas populares.",
+  "descripcion": "Santiago de Mora, rodeado de campos verdes y cercano al embalse de Talave, ofrece una experiencia única con sus tradicionales festividades y la recolección del azafrán. Las noches se iluminan con verbenas y desfiles de carrozas durante las fiestas patronales.",
+  "imagenes": {
+   "banner": "https://picsum.photos/seed/02074000000-santiago-de-mora/1200/400",
+   "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Espa%C3%B1aLoc.svg/330px-Espa%C3%B1aLoc.svg.png"
+  }
+ },
+ {
+  "id": "02074000501",
+  "padre_id": "02074000000",
+  "nombre": "Sierra",
+  "provincia": "Albacete",
+  "comunidad": "Castilla-La Mancha",
+  "poblacion": 145,
+  "lat": 38.56061532,
+  "lng": -1.658647012,
+  "es_capital": false,
+  "tipo": "pueblo",
+  "sitio_web": "",
+  "wikipedia_url": "https://es.wikipedia.org/wiki/Elche_de_la_Sierra",
+  "descripcion_corta": "Pueblo con rica historia y entorno natural en el límite oriental de la sierra del Segura.",
+  "descripcion": "El pueblo ofrece un rico patrimonio histórico, con restos arqueológicos romanos y una gran iglesia parroquial del siglo XVIII. En su entorno natural se encuentran notables paisajes y posiblemente la tumba de Amílcar Barca, en disputa entre historiadores.",
+  "imagenes": {
+   "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Elche_de_la_Sierra.JPG",
+   "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Escudo_de_Elche_de_la_Sierra.svg/120px-Escudo_de_Elche_de_la_Sierra.svg.png"
+  }
+ },
+ {
+  "id": "02074000601",
+  "padre_id": "02074000000",
+  "nombre": "Tobarra",
+  "provincia": "Albacete",
+  "comunidad": "Castilla-La Mancha",
+  "poblacion": 6993,
+  "lat": 38.58855057,
+  "lng": -1.692343591,
+  "es_capital": true,
+  "tipo": "pueblo",
+  "sitio_web": "https://www.tobarra.es",
+  "wikipedia_url": "https://es.wikipedia.org/wiki/Tobarra",
+  "descripcion_corta": "Pueblo conocido por su Semana Santa de Interés Turístico Nacional con 104 horas ininterrumpidas de toque del tambor.",
+  "descripcion": "Tobarra es famoso por su Semana Santa, declarada de Interés Turístico Nacional, que incluye el acto de la bendición de Viernes Santo en el Monte Calvario. Destaca también su patrimonio artístico con la imagen de la Virgen Dolorosa y el Museo del Tambor. El entorno natural ofrece picos como Cerro Madroño (1052 m) y cerros aislados, atravesado por autovías y carreteras comarcales.",
+  "imagenes": {
+   "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Vista_de_Tobarra_%28Albacete%29.JPG",
+   "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Escudo_de_Tobarra.svg/120px-Escudo_de_Tobarra.svg.png"
+  }
+ },
+ {
+  "id": "02074000701",
+  "padre_id": "02074000000",
+  "nombre": "Los Mardos",
+  "provincia": "Albacete",
+  "comunidad": "Castilla-La Mancha",
+  "poblacion": 56,
+  "lat": 38.62082185,
+  "lng": -1.590775788,
+  "es_capital": false,
+  "tipo": "pueblo",
+  "sitio_web": "http://www.tobarra.es/",
+  "wikipedia_url": "https://es.wikipedia.org/wiki/Los_Mardos",
+  "descripcion_corta": "Pueblo con encanto rodeado de naturaleza, conocido por sus tradicionales fiestas en honor a la Virgen del Carmen.",
+  "descripcion": "Los Mardos es un pintoresco pueblo bañado por el entorno natural, famoso por sus tradicionales fiestas patronales celebradas alrededor del 16 de julio en honor a la Virgen del Carmen.",
+  "imagenes": {
+   "banner": "https://picsum.photos/seed/02074000000-los-mardos/1200/400",
+   "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Bandera_de_Espa%C3%B1a.svg/20px-Bandera_de_Espa%C3%B1a.svg.png"
+  }
+ },
+ {
+  "id": "09018000000",
+  "tipo": "municipio",
+  "nombre": "Aranda de Duero",
+  "provincia": "Burgos",
+  "comunidad": "Castilla y León",
+  "poblacion": 33904,
+  "lat": 41.67019102,
+  "lng": -3.689687939,
+  "descripcion_corta": "Aranda de Duero, una ciudad española con historia, cultura y paisajes naturales únicos.",
+  "descripcion": "Ubicada en el sur de la provincia de Burgos, Aranda de Duero es conocida por su gastronomía, vinos Ribera del Duero y patrimonio arquitectónico. Su entorno natural ofrece paisajes llanos y un valle disimétrico, con ríos y afluentes que forman un paisaje único. La ciudad acoge festivales de música y cultura, como el Festival Sonorama Ribera y el Congreso Internacional Fine Wine.",
+  "imagenes": {
+   "banner": "https://picsum.photos/seed/aranda-de-duero/1200/400",
+   "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Escudo_de_Aranda_de_Duero_%28Burgos%29.svg/120px-Escudo_de_Aranda_de_Duero_%28Burgos%29.svg.png"
+  },
+  "sitio_web": "https://www.arandadeduero.es/",
+  "wikipedia_url": "https://es.wikipedia.org/wiki/Aranda_de_Duero_(Burgos)",
+  "original_id": "aranda-de-duero",
+  "es_capital": false
+ },
+ {
+  "id": "09018000101",
+  "padre_id": "09018000000",
+  "nombre": "La Aguilera",
+  "provincia": "Burgos",
+  "comunidad": "Castilla y León",
+  "poblacion": 301,
+  "lat": 41.73203347,
+  "lng": -3.770124402,
+  "es_capital": false,
+  "tipo": "pueblo",
+  "sitio_web": "",
+  "wikipedia_url": "https://es.wikipedia.org/wiki/La_Aguilera_(Burgos)",
+  "descripcion_corta": "Descubre un encantador pueblo con riqueza histórica y paisajes naturales impresionantes.",
+  "descripcion": "La Aguilera, una localidad con historia milenaria, ofrece hermosos parajes naturales junto al río Gromejón y el Duero.",
+  "imagenes": {
+   "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/La_aguilera01.jpg",
+   "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/La_aguilera01.jpg/330px-La_aguilera01.jpg"
+  }
+ },
+ {
+  "id": "09018000201",
+  "padre_id": "09018000000",
+  "nombre": "Aranda de Duero",
+  "provincia": "Burgos",
+  "comunidad": "Castilla y León",
+  "poblacion": 32663,
+  "lat": 41.67019102,
+  "lng": -3.689687939,
+  "es_capital": true,
+  "tipo": "ciudad_pequena",
+  "sitio_web": "https://www.arandadeduero.es/",
+  "wikipedia_url": "https://es.wikipedia.org/wiki/Aranda_de_Duero",
+  "descripcion_corta": "Ciudad vinícola con un rico patrimonio histórico y gastronómico.",
+  "descripcion": "Descubre una ciudad donde el vino fluye junto al Duero, rodeada de históricas bodegas subterráneas y joyas arquitectónicas como la iglesia de Santa María.",
+  "imagenes": {
+   "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Aranda_de_Duero_Aerea.jpg",
+   "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Escudo_de_Aranda_de_Duero_%28Burgos%29.svg/120px-Escudo_de_Aranda_de_Duero_%28Burgos%29.svg.png"
+  }
+ },
+ {
+  "id": "09018000301",
+  "padre_id": "09018000000",
+  "nombre": "Sinovas",
+  "provincia": "Burgos",
+  "comunidad": "Castilla y León",
+  "poblacion": 177,
+  "lat": 41.70171592,
+  "lng": -3.66450571,
+  "es_capital": false,
+  "tipo": "pueblo",
+  "sitio_web": "",
+  "wikipedia_url": "https://es.wikipedia.org/wiki/Sinovas",
+  "descripcion_corta": "Descubre un encantador barrio con una rica historia y paisajes de viñedos.",
+  "descripcion": "Explora este pintoresco lugar donde la historia medieval se mezcla con hermosos viñedos y cultivos tradicionales, ideal para amantes del turismo rural.",
+  "imagenes": {
+   "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/AYUNTAMIENTO_Y_TELECLUB_DE_SINOVAS.png",
+   "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/AYUNTAMIENTO_Y_TELECLUB_DE_SINOVAS.png/330px-AYUNTAMIENTO_Y_TELECLUB_DE_SINOVAS.png"
+  }
+ },
+ {
+  "id": "09018000401",
+  "padre_id": "09018000000",
+  "nombre": "La Calabaza",
+  "provincia": "Burgos",
+  "comunidad": "Castilla y León",
+  "poblacion": 106,
+  "lat": 41.67543383,
+  "lng": -3.628462546,
+  "es_capital": false,
+  "tipo": "pueblo",
+  "sitio_web": "",
+  "wikipedia_url": "https://es.wikipedia.org/wiki/Quemada",
+  "descripcion_corta": "Descubre un pueblo encantador rodeado de viñedos y ríos, perfecto para degustar vinos autóctonos.",
+  "descripcion": "Enclavado en una región vinícola, este pintoresco lugar ofrece hermosas vistas de campos de vid y oportunidades únicas para explorar su rica historia vitivinícola.",
+  "imagenes": {
+   "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Ayuntamiento_de_Quemada_5252.jpg",
+   "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Escudo_de_Quemada_%28Burgos%29.svg/120px-Escudo_de_Quemada_%28Burgos%29.svg.png"
+  }
+ },
+ {
+  "id": "09018000501",
+  "padre_id": "09018000000",
+  "nombre": "Monte Costaján",
+  "provincia": "Burgos",
+  "comunidad": "Castilla y León",
+  "poblacion": 338,
+  "lat": 41.70528338,
+  "lng": -3.684459936,
+  "es_capital": false,
+  "tipo": "pueblo",
+  "sitio_web": "",
+  "wikipedia_url": "https://es.wikipedia.org/wiki/Santuario_de_la_Virgen_de_las_Viñas_(Aranda_de_Duero)",
+  "descripcion_corta": "Monte Costaján, lugar sagrado donde la Virgen apareció para revelar el escondite de su imagen.",
+  "descripcion": "Situado en un paraje natural, Monte Costaján alberga el santuario de la Virgen de las Viñas, patrona local con una historia milenaria y leyendas sobre apariciones divinas.",
+  "imagenes": {
+   "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Virgen_Vi%C3%B1as.JPG",
+   "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Aranda_de_Duero_-_Santuario_de_la_Virgen_de_las_Vi%C3%B1as_07.JPG/330px-Aranda_de_Duero_-_Santuario_de_la_Virgen_de_las_Vi%C3%B1as_07.JPG"
+  }
+ }
+]

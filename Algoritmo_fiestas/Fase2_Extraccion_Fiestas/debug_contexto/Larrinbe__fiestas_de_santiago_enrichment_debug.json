@@ -1,0 +1,161 @@
+{
+  "metricas": {
+    "etapa": "enrichment",
+    "municipio": "Amurrio",
+    "localidad": "Larrinbe__fiestas de santiago",
+    "candidatos": 6,
+    "seleccionados": 6,
+    "documentos_distintos": 1,
+    "chunks_duplicados": 0,
+    "chars_contexto": 6318,
+    "chars_unicos": 6240,
+    "pct_unico": 100.0,
+    "tokens_contexto": 2345,
+    "top_documentos": [
+      [
+        "buscadores:snippets",
+        6
+      ]
+    ],
+    "presupuesto": {
+      "presupuesto_chars": 32000
+    },
+    "fiesta": "Fiestas de Santiago",
+    "dias_consultados": 3,
+    "dias_sin_presupuesto": 0
+  },
+  "chunks": [
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.8825,
+      "score_detalle": {
+        "similitud": 1.0,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 1.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1092,
+      "tokens": 450,
+      "hash": "e5018407f9e6",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas de Santiago 2026 en Larrinbe (Amurrio, Álava) | CONTENIDO: Descubre lasFiestasde Santiago2026en el concejo deLarrinbe(Amurrio): misa, dantzas, motos clásicas, concu"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.8771,
+      "score_detalle": {
+        "similitud": 0.8693,
+        "spider": 0.5,
+        "programa": 0.44,
+        "temporal": 1.0,
+        "extra": 1.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1174,
+      "tokens": 421,
+      "hash": "35b73ab33603",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas de Santiago de Larrinbe 2026 | CONTENIDO: LasFiestasde Santiago deLarrinbe2026prometen llenar de alegría y tradición el pequeño concejo deLarrinbe, en Amurrio. Del "
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.8084,
+      "score_detalle": {
+        "similitud": 0.826,
+        "spider": 0.5,
+        "programa": 0.2,
+        "temporal": 1.0,
+        "extra": 1.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 951,
+      "tokens": 316,
+      "hash": "39f81cafb38f",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas de Santiago de Larrinbe 2026 en Amurrio | 24/07/2026 | CONTENIDO: LasFiestasde Santiago deLarrinbe2026prometen llenar de alegría y tradición el pequeño concejo deLa"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.7564,
+      "score_detalle": {
+        "similitud": 0.9676,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.3
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1000,
+      "tokens": 396,
+      "hash": "d62931928876",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas de Santiago de Larrinbe 2026 · Fiestas de Amurrio: fechas e ... | CONTENIDO: Fiestasde Santiago deLarrinbe2026enAmurrio: del 24/07 al 26/07/2026. Fechas, informació"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.7175,
+      "score_detalle": {
+        "similitud": 0.8344,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.3
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1050,
+      "tokens": 379,
+      "hash": "1214c0e306b5",
+      "seleccionado": true,
+      "muestra": "TITULO: El Ayuntamiento de Amurrio presenta la programación de sus Fiestas ... | CONTENIDO: El Ayuntamiento deAmurrioha presentado en rueda de prensa el cartel y la programación of"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6093,
+      "score_detalle": {
+        "similitud": 0.6348,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 973,
+      "tokens": 361,
+      "hash": "a870892b6a6c",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas de Amurrio 2026 | 12-17 agosto con SÜNE y Benito Kamelas | CONTENIDO: Amurrioko Jaiak2026del 12 al 17 de agosto: txupinazo, carrozas, conciertos de SÜNE y Benito Ka"
+    }
+  ]
+}

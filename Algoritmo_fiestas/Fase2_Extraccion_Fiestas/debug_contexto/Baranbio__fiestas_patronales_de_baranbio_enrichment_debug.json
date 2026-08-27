@@ -1,0 +1,621 @@
+{
+  "metricas": {
+    "etapa": "enrichment",
+    "municipio": "Amurrio",
+    "localidad": "Baranbio__fiestas patronales de baranbio",
+    "candidatos": 26,
+    "seleccionados": 24,
+    "documentos_distintos": 14,
+    "chunks_duplicados": 0,
+    "chars_contexto": 33326,
+    "chars_unicos": 31647,
+    "pct_unico": 100.0,
+    "tokens_contexto": 14119,
+    "top_documentos": [
+      [
+        "buscadores:snippets",
+        10
+      ],
+      [
+        "https://udala.amurrio.eus/attachments/article/2183/2026_Amurrio_Jai_kartel_orokorra_320x700.pdf",
+        2
+      ],
+      [
+        "https://udala.amurrio.eus/cas/noticias/1809-fiestas-de-baranbio-andra-mari-txiki",
+        1
+      ],
+      [
+        "https://udala.amurrio.eus/cas/calendario/eventosdiarios/2026/8/12/-",
+        1
+      ],
+      [
+        "https://udala.amurrio.eus/attachments/article/2183/2026_Amurrio_Kontzertuen_Kartela.pdf",
+        1
+      ],
+      [
+        "https://udala.amurrio.eus/cas/calendario/eventosdiarios/2026/8/13/-",
+        1
+      ]
+    ],
+    "presupuesto": {
+      "presupuesto_chars": 32000
+    },
+    "fiesta": "Fiestas Patronales de Baranbio",
+    "dias_consultados": 7,
+    "dias_sin_presupuesto": 2
+  },
+  "chunks": [
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.7031,
+      "score_detalle": {
+        "similitud": 0.9563,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1139,
+      "tokens": 374,
+      "hash": "3c3e4924b81b",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas de Baranbio 2026 (Andra Mari Txiki) | Amurrio, Álava | CONTENIDO: Del 6 al 13 de septiembre2026,Baranbio(Amurrio) celebra Andra Mari Txiki: carrera ciclista, morcil"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6922,
+      "score_detalle": {
+        "similitud": 0.9191,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 943,
+      "tokens": 304,
+      "hash": "0fe9c12bfa7e",
+      "seleccionado": true,
+      "muestra": "TITULO: El cartel de las Fiestas Patronales de Amurrio 2026 ya ha sido ... | CONTENIDO: LasFiestasde Amurrio2026ya cuentan con cartel anunciador. La propuesta ganadora ha sido la p"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6758,
+      "score_detalle": {
+        "similitud": 0.8629,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1028,
+      "tokens": 344,
+      "hash": "b0326c35f7b2",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas de distritos y barrios de Madrid en 2026: programas completos y ... | CONTENIDO: Desde mediados de enero hasta noviembre, Madrid encadena decenas defiestasen sus ba"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6446,
+      "score_detalle": {
+        "similitud": 0.8359,
+        "spider": 0.5,
+        "programa": 0.2,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1025,
+      "tokens": 360,
+      "hash": "fd135d53022d",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas de Andra Mari y San Roque — Amurrio | CONTENIDO: Fiestasde Andra Mari y San Roque enAmurrio(Vitoria): 14 — 17 agosto. Programa oficial día a día, cuenta atrás y avi"
+    },
+    {
+      "url": "https://udala.amurrio.eus/cas/noticias/1809-fiestas-de-baranbio-andra-mari-txiki",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.5235,
+      "score_detalle": {
+        "similitud": 0.8754,
+        "spider": 0.5,
+        "programa": 0.06,
+        "temporal": 0.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1191,
+      "tokens": 368,
+      "hash": "2ec1fad86b7a",
+      "seleccionado": true,
+      "muestra": "Fiestas de Baranbio - Andra Mari txiki ⏎ noticias ⏎ Fiestas de Baranbio - Andra Mari txiki ⏎ noticias ⏎ Fiestas de Baranbio - Andra Mari txiki ⏎ Noticias ⏎ También disponible: ⏎ 03 Septiembre 20"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "GENERAL",
+      "score": 0.5078,
+      "score_detalle": {
+        "similitud": 1.0,
+        "spider": 0.5,
+        "programa": 0.48,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 924,
+      "tokens": 301,
+      "hash": "a2dedfb141b5",
+      "seleccionado": true,
+      "muestra": "TITULO: Programa de fiestas 2026 - Ayuntamiento de Berriozar / Berriozarko Udala | CONTENIDO: Del 26 al 30 de agosto Berriozar vivirá cinco días defiestascon actividades variadas p"
+    },
+    {
+      "url": "https://udala.amurrio.eus/attachments/article/2183/2026_Amurrio_Jai_kartel_orokorra_320x700.pdf",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "GENERAL",
+      "score": 0.494,
+      "score_detalle": {
+        "similitud": 0.708,
+        "spider": 0.5,
+        "programa": 1.0,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 7974,
+      "tokens": 4479,
+      "hash": "3e848296379e",
+      "seleccionado": true,
+      "muestra": "## Columna 1 de 4 ⏎ ### 1 LARUNBATA ⏎ - 18:00 SANTUAREN JAITSIERA ⏎ ### 9 IGANDEA ⏎ - 21:30 ZINEMA KALEAN: WOLFGANG ⏎ ### 11 ASTEARTEA ⏎ - 20:00 KUADRILLEN ARTEKO SOKA SALTO LEHIAKETA ⏎ ### 12 A"
+    },
+    {
+      "url": "https://udala.amurrio.eus/cas/calendario/eventosdiarios/2026/8/12/-",
+      "fuente": "web_municipio",
+      "es_calendario": false,
+      "prioridad": 2,
+      "relevancia_geo": "GENERAL",
+      "score": 0.4921,
+      "score_detalle": {
+        "similitud": 0.7212,
+        "spider": 0.4564,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.7
+      },
+      "score_spider": 1750,
+      "rank_spider": 1,
+      "chars": 845,
+      "tokens": 360,
+      "hash": "2daf7d2300cf",
+      "seleccionado": true,
+      "muestra": "Calendario ⏎ CAS ⏎ EUS ⏎ Inicio ⏎ Calendario ⏎ Elija una categoría para filtrar la lista ⏎ Todas las categorías ⏎ Hitzaldia - Conferencia ⏎ Erakusketa - Exposición ⏎ Musika - Música ⏎ Kirola - Deporte"
+    },
+    {
+      "url": "https://udala.amurrio.eus/attachments/article/2183/2026_Amurrio_Kontzertuen_Kartela.pdf",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "GENERAL",
+      "score": 0.4913,
+      "score_detalle": {
+        "similitud": 0.6874,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.7
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 570,
+      "tokens": 368,
+      "hash": "e9dda167c8ce",
+      "seleccionado": true,
+      "muestra": "## Columna 1 de 3 ⏎ KON ⏎ TZER ⏎ TUAK ⏎ Amurrioko jaiak 2026 ⏎ ## Columna 2 de 3 ⏎ ### ABUZTUAK 20:30 12 ⏎ LA POLAKA ⏎ - 22:00 ⏎ NØT ⏎ - 23:45 ⏎ OXABI ⏎ ERROMERIA ⏎ - 03:00 ⏎ XAUKENA ⏎ XAUK ⏎ ### ABUZTUAK 22:30 1"
+    },
+    {
+      "url": "https://udala.amurrio.eus/attachments/article/2183/2026_Amurrio_Jai_kartel_orokorra_320x700.pdf",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "GENERAL",
+      "score": 0.4911,
+      "score_detalle": {
+        "similitud": 0.6981,
+        "spider": 0.5,
+        "programa": 1.0,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1518,
+      "tokens": 807,
+      "hash": "85453624c0b0",
+      "seleccionado": true,
+      "muestra": "HERRIKO KOPA: ATHLETIC - ALAVÉS ⏎ - 19:00 ROMERÍA OTEGI ⏎ - 19:00-22:00 ESPACIO PREVENCIÓN, SENSIBILIZA- ⏎ CIÓN Y ATENCIÓN VIOLENCIAS MACHISTAS ⏎ - 19:30 EXHIBICIÓN EUSKAL DANTZAK ⏎ - 20:30 "
+    },
+    {
+      "url": "https://udala.amurrio.eus/cas/calendario/eventosdiarios/2026/8/13/-",
+      "fuente": "web_municipio",
+      "es_calendario": false,
+      "prioridad": 2,
+      "relevancia_geo": "GENERAL",
+      "score": 0.4809,
+      "score_detalle": {
+        "similitud": 0.7072,
+        "spider": 0.4222,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.7
+      },
+      "score_spider": 1650,
+      "rank_spider": 15,
+      "chars": 860,
+      "tokens": 363,
+      "hash": "43cc18365441",
+      "seleccionado": true,
+      "muestra": "Calendario ⏎ CAS ⏎ EUS ⏎ Inicio ⏎ Calendario ⏎ Elija una categoría para filtrar la lista ⏎ Todas las categorías ⏎ Hitzaldia - Conferencia ⏎ Erakusketa - Exposición ⏎ Musika - Música ⏎ Kirola - Deporte"
+    },
+    {
+      "url": "https://udala.amurrio.eus/cas/calendario/eventosdiarios/2026/8/17/-",
+      "fuente": "web_municipio",
+      "es_calendario": false,
+      "prioridad": 2,
+      "relevancia_geo": "GENERAL",
+      "score": 0.4805,
+      "score_detalle": {
+        "similitud": 0.7059,
+        "spider": 0.4222,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.7
+      },
+      "score_spider": 1650,
+      "rank_spider": 19,
+      "chars": 842,
+      "tokens": 356,
+      "hash": "b6256121023d",
+      "seleccionado": true,
+      "muestra": "Calendario ⏎ CAS ⏎ EUS ⏎ Inicio ⏎ Calendario ⏎ Elija una categoría para filtrar la lista ⏎ Todas las categorías ⏎ Hitzaldia - Conferencia ⏎ Erakusketa - Exposición ⏎ Musika - Música ⏎ Kirola - Deporte"
+    },
+    {
+      "url": "https://udala.amurrio.eus/cas/servicios/fiestas/fiestas-patronales",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "GENERAL",
+      "score": 0.4802,
+      "score_detalle": {
+        "similitud": 0.8207,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 0.5,
+        "extra": 0.7
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1179,
+      "tokens": 431,
+      "hash": "406940a4018f",
+      "seleccionado": true,
+      "muestra": "Fiestas patronales ⏎ servicios ⏎ Fiestas ⏎ Fiestas patronales ⏎ Fiestas patronales ⏎ Las Fiestas Patronales de Amurrio se celebran del 12 al 17 de agosto en torno a la  Festividad de Nuestra"
+    },
+    {
+      "url": "https://udala.amurrio.eus/cas/calendario/eventosdiarios/2026/8/15/-",
+      "fuente": "web_municipio",
+      "es_calendario": false,
+      "prioridad": 2,
+      "relevancia_geo": "GENERAL",
+      "score": 0.4778,
+      "score_detalle": {
+        "similitud": 0.6965,
+        "spider": 0.4222,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.7
+      },
+      "score_spider": 1650,
+      "rank_spider": 17,
+      "chars": 843,
+      "tokens": 359,
+      "hash": "d196b7771773",
+      "seleccionado": true,
+      "muestra": "Calendario ⏎ CAS ⏎ EUS ⏎ Inicio ⏎ Calendario ⏎ Elija una categoría para filtrar la lista ⏎ Todas las categorías ⏎ Hitzaldia - Conferencia ⏎ Erakusketa - Exposición ⏎ Musika - Música ⏎ Kirola - Deporte"
+    },
+    {
+      "url": "https://udala.amurrio.eus/cas/calendario/eventosdiarios/2026/8/14/-",
+      "fuente": "web_municipio",
+      "es_calendario": false,
+      "prioridad": 2,
+      "relevancia_geo": "GENERAL",
+      "score": 0.4737,
+      "score_detalle": {
+        "similitud": 0.6827,
+        "spider": 0.4222,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.7
+      },
+      "score_spider": 1650,
+      "rank_spider": 16,
+      "chars": 845,
+      "tokens": 357,
+      "hash": "895f1949b6e5",
+      "seleccionado": true,
+      "muestra": "Calendario ⏎ CAS ⏎ EUS ⏎ Inicio ⏎ Calendario ⏎ Elija una categoría para filtrar la lista ⏎ Todas las categorías ⏎ Hitzaldia - Conferencia ⏎ Erakusketa - Exposición ⏎ Musika - Música ⏎ Kirola - Deporte"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "GENERAL",
+      "score": 0.4709,
+      "score_detalle": {
+        "similitud": 0.7889,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 0.5,
+        "extra": 0.7
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1092,
+      "tokens": 343,
+      "hash": "d37308caac23",
+      "seleccionado": false,
+      "muestra": "TITULO: Aiala Lucero Ibisate, ganadora del concurso del cartel anunciador de ... | CONTENIDO: Estecartel, inspirado en el estilo de boceto manual, refleja la esencia de nuestrasfie"
+    },
+    {
+      "url": "https://udala.amurrio.eus/cas/calendario/eventosdiarios/2026/8/16/-",
+      "fuente": "web_municipio",
+      "es_calendario": false,
+      "prioridad": 2,
+      "relevancia_geo": "GENERAL",
+      "score": 0.4671,
+      "score_detalle": {
+        "similitud": 0.6598,
+        "spider": 0.4222,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.7
+      },
+      "score_spider": 1650,
+      "rank_spider": 18,
+      "chars": 833,
+      "tokens": 352,
+      "hash": "13c6b9089f10",
+      "seleccionado": false,
+      "muestra": "Calendario ⏎ CAS ⏎ EUS ⏎ Inicio ⏎ Calendario ⏎ Elija una categoría para filtrar la lista ⏎ Todas las categorías ⏎ Hitzaldia - Conferencia ⏎ Erakusketa - Exposición ⏎ Musika - Música ⏎ Kirola - Deporte"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "GENERAL",
+      "score": 0.4626,
+      "score_detalle": {
+        "similitud": 0.9889,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 953,
+      "tokens": 325,
+      "hash": "e01923de2068",
+      "seleccionado": true,
+      "muestra": "TITULO: Elección Cartel Oficial de Fiestas 2026 - Ayuntamiento de Barañain ... | CONTENIDO: Plazo para la elección delcartel: Del 27 de abril al 06 de mayo. ... Para ver los cartel"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "GENERAL",
+      "score": 0.4606,
+      "score_detalle": {
+        "similitud": 0.7535,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 0.5,
+        "extra": 0.7
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1091,
+      "tokens": 354,
+      "hash": "a6f9ee6bc0bb",
+      "seleccionado": true,
+      "muestra": "TITULO: Home [udala.amurrio.eus] | CONTENIDO: Con motivo de la celebración de lasFiestasde Nuestra Señora y San Roke del 12 al 17 de agosto, se producirán cortes de tráfico y restr"
+    },
+    {
+      "url": "https://udala.amurrio.eus/cas/calendario/eventospormes/2026/8/-",
+      "fuente": "web_municipio",
+      "es_calendario": false,
+      "prioridad": 2,
+      "relevancia_geo": "GENERAL",
+      "score": 0.4576,
+      "score_detalle": {
+        "similitud": 0.6272,
+        "spider": 0.4222,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.7
+      },
+      "score_spider": 1650,
+      "rank_spider": 2,
+      "chars": 1196,
+      "tokens": 585,
+      "hash": "5ed22d14bc23",
+      "seleccionado": true,
+      "muestra": "Calendario ⏎ CAS ⏎ EUS ⏎ Inicio ⏎ Calendario ⏎ Elija una categoría para filtrar la lista ⏎ Todas las categorías ⏎ Hitzaldia - Conferencia ⏎ Erakusketa - Exposición ⏎ Musika - Música ⏎ Kirola - Deporte"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "GENERAL",
+      "score": 0.4388,
+      "score_detalle": {
+        "similitud": 0.9073,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1071,
+      "tokens": 354,
+      "hash": "45fcc856e73e",
+      "seleccionado": true,
+      "muestra": "TITULO: Programa Aste Nagusia 2026 (Fiestas de Bilbao 2026) - Kulturklik | CONTENIDO: Bilbao celebrará la Aste Nagusia2026del 22 al 30 de agosto. Nueve días defiestaen los que los "
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "GENERAL",
+      "score": 0.4247,
+      "score_detalle": {
+        "similitud": 0.8588,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1126,
+      "tokens": 384,
+      "hash": "65dbf795bd38",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas en Amurrio (País Vasco) - Calendario 2026 y 2027 | Fiestas de ... | CONTENIDO: Descubre lasfiestasdeAmurrio(Álava) en País Vasco. Calendario completo defiestaspatro"
+    },
+    {
+      "url": "https://udala.amurrio.eus/cas/noticias/noticias-fiestas/2183-el-ayuntamiento-de-amurrio-presenta-la-programacion-de-sus-fiestas-patronales-2026",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "GENERAL",
+      "score": 0.4239,
+      "score_detalle": {
+        "similitud": 0.8563,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1185,
+      "tokens": 355,
+      "hash": "0cba96c164c4",
+      "seleccionado": true,
+      "muestra": "El Ayuntamiento de Amurrio presenta la programación de sus Fiestas Patronales 2026 ⏎ noticias ⏎ Noticias Fiestas ⏎ El Ayuntamiento de Amurrio presenta la programación de sus Fiestas Patr"
+    },
+    {
+      "url": "https://www.amurrioturismo.com/agenda-amurrio",
+      "fuente": "web_municipio",
+      "es_calendario": false,
+      "prioridad": 2,
+      "relevancia_geo": "GENERAL",
+      "score": 0.4105,
+      "score_detalle": {
+        "similitud": 0.6246,
+        "spider": 1.0,
+        "programa": 0.3,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 3340,
+      "rank_spider": 0,
+      "chars": 1167,
+      "tokens": 377,
+      "hash": "434c4126f7fc",
+      "seleccionado": true,
+      "muestra": "Famoso en todo Euskadi ⏎ y una oportunidad inmejorable para degustar el txakoli. ⏎ Destaca el ⏎ concurso gastronómico ⏎ en el que un ingrediente imprescindible tiene que ser el txakoli ela"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "GENERAL",
+      "score": 0.3951,
+      "score_detalle": {
+        "similitud": 0.7574,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 936,
+      "tokens": 340,
+      "hash": "ebde3d46d88d",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas de Barambio 2026 | Fechas y guía | Fiestas de Pueblos de España | CONTENIDO: Vive lasFiestasde Barambio (Álava): misa y procesión, dantzaris, romería, verbena y gas"
+    },
+    {
+      "url": "https://udala.amurrio.eus/eus",
+      "fuente": "web_municipio",
+      "es_calendario": false,
+      "prioridad": 2,
+      "relevancia_geo": "GENERAL",
+      "score": 0.3893,
+      "score_detalle": {
+        "similitud": 0.4983,
+        "spider": 0.2752,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.7
+      },
+      "score_spider": 1220,
+      "rank_spider": 38,
+      "chars": 1196,
+      "tokens": 497,
+      "hash": "27b0b538bdaa",
+      "seleccionado": true,
+      "muestra": "Home ⏎ berriak ⏎ Amurrioko koadrilek berriro harritu gaituzgte sormenez betetako karroza lehiaketan ⏎ 17 Abuztua 2026 ⏎ Trot-Artek irabazi du lehen saria, Greziako mitologiaren eta Herkule"
+    }
+  ]
+}

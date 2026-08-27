@@ -1,0 +1,709 @@
+{
+  "metricas": {
+    "etapa": "enrichment",
+    "municipio": "Amurrio",
+    "localidad": "Delika__fiestas patronales de delika",
+    "candidatos": 30,
+    "seleccionados": 24,
+    "documentos_distintos": 11,
+    "chunks_duplicados": 0,
+    "chars_contexto": 34000,
+    "chars_unicos": 31895,
+    "pct_unico": 100.0,
+    "tokens_contexto": 14135,
+    "top_documentos": [
+      [
+        "buscadores:snippets",
+        7
+      ],
+      [
+        "https://www.festivalesdeespana.com/festival/fiestas-de-san-pedro-de-delika",
+        5
+      ],
+      [
+        "https://www.defiestaenfiesta.es/fiestas/pais-vasco/alava/amurrio/fiestas-de-san-pedro-de-delika-2026-20260626",
+        3
+      ],
+      [
+        "https://udala.amurrio.eus/attachments/article/2183/2026_Amurrio_Jai_kartel_orokorra_320x700.pdf",
+        2
+      ],
+      [
+        "https://www.kulturklik.euskadi.eus/evento/2026/06/26/programa-fiestas-de-delika-2026-amurrio-/webkklik00-detalle/es/",
+        1
+      ],
+      [
+        "https://udala.amurrio.eus/cas/calendario/eventosdiarios/2026/8/12/-",
+        1
+      ]
+    ],
+    "presupuesto": {
+      "presupuesto_chars": 32000
+    },
+    "fiesta": "Fiestas Patronales de Delika",
+    "dias_consultados": 7,
+    "dias_sin_presupuesto": 6
+  },
+  "chunks": [
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.728,
+      "score_detalle": {
+        "similitud": 0.9297,
+        "spider": 0.5,
+        "programa": 0.44,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1057,
+      "tokens": 383,
+      "hash": "7e858103959b",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas de Delika del 26 al 28 de junio: programa completo | CONTENIDO: FiestasdeDelikadel 26 al 28 de junio:programacompleto El concejo de Amurrio celebra susfiestaspopula"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.7158,
+      "score_detalle": {
+        "similitud": 1.0,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1147,
+      "tokens": 397,
+      "hash": "a74b76c25b23",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas - udala.amurrio.eus | CONTENIDO: El Ayuntamiento deAmurriopresenta la programación de susFiestasPatronales202628 Julio2026La programación contará con más de un cent"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6969,
+      "score_detalle": {
+        "similitud": 0.9351,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1022,
+      "tokens": 374,
+      "hash": "a8439b8c162e",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas de San Pedro 2026 en Delika (Amurrio, Álava) | CONTENIDO: Descubre lasFiestasPatronales2026de San Pedro en el concejo deDelika(Amurrio): tortilla, ternera asada, pe"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6951,
+      "score_detalle": {
+        "similitud": 0.9289,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1077,
+      "tokens": 394,
+      "hash": "9f1619e5a89e",
+      "seleccionado": true,
+      "muestra": "TITULO: El Ayuntamiento de Amurrio presenta la programación de sus Fiestas ... | CONTENIDO: El Ayuntamiento deAmurrioha presentado en rueda de prensa el cartel y la programación of"
+    },
+    {
+      "url": "https://www.defiestaenfiesta.es/fiestas/pais-vasco/alava/amurrio/fiestas-de-san-pedro-de-delika-2026-20260626",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6771,
+      "score_detalle": {
+        "similitud": 0.8673,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1197,
+      "tokens": 378,
+      "hash": "a93a32409e20",
+      "seleccionado": true,
+      "muestra": "Fiestas de San Pedro de Delika 2026 · Fiestas de Amurrio: fechas e información ⏎ Saltar al contenido principal ⏎ Fiesta ⏎ Fiestas de San Pedro de Delika 2026 ⏎ Las Fiestas de San Pedro de "
+    },
+    {
+      "url": "https://www.kulturklik.euskadi.eus/evento/2026/06/26/programa-fiestas-de-delika-2026-amurrio-/webkklik00-detalle/es/",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6672,
+      "score_detalle": {
+        "similitud": 0.9133,
+        "spider": 0.5,
+        "programa": 0.2,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 788,
+      "tokens": 346,
+      "hash": "2d6ef8b5c0b2",
+      "seleccionado": true,
+      "muestra": "Programa Fiestas de Delika 2026 (Amurrio) - Kulturklik ⏎ < Volver ⏎ Programa Fiestas de Delika 2026 (Amurrio) ⏎ Amurrio ⏎ Del 26 de junio 2026 al 28 de junio 2026 ⏎ Las ⏎ fiestas de Delika 202"
+    },
+    {
+      "url": "https://www.festivalesdeespana.com/festival/fiestas-de-san-pedro-de-delika",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6659,
+      "score_detalle": {
+        "similitud": 0.8287,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1163,
+      "tokens": 367,
+      "hash": "14a739af5fd6",
+      "seleccionado": true,
+      "muestra": "Delika es la base ideal para visitar el ⏎ Monumento Natural del Nacedero del Nervión ⏎ , el mirador del Salto (accesible por pista desde Berberana) y la ⏎ Sierra Salvada ⏎ , Red Natura 200"
+    },
+    {
+      "url": "https://www.defiestaenfiesta.es/fiestas/pais-vasco/alava/amurrio/fiestas-de-san-pedro-de-delika-2026-20260626",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.645,
+      "score_detalle": {
+        "similitud": 0.8372,
+        "spider": 0.5,
+        "programa": 0.2,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 521,
+      "tokens": 159,
+      "hash": "b07e0333c5d4",
+      "seleccionado": true,
+      "muestra": "Descubre todas las fiestas y eventos de la provincia ⏎ Ver fiestas en Álava ⏎ Compartir fiesta ⏎ Fiestas de San Pedro de Delika 2026 ⏎ Amurrio - 26/06/2026 ⏎ Facebook ⏎ WhatsApp ⏎ Instagram ⏎ Copi"
+    },
+    {
+      "url": "https://www.defiestaenfiesta.es/fiestas/pais-vasco/alava/amurrio/fiestas-de-san-pedro-de-delika-2026-20260626",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6395,
+      "score_detalle": {
+        "similitud": 0.7384,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1148,
+      "tokens": 444,
+      "hash": "cbbc617121cb",
+      "seleccionado": true,
+      "muestra": "fiestas y la agenda cultural de Amurrio ⏎ y sumergirse en la esencia de las celebraciones populares. Las Fiestas de San Pedro son el reflejo del espíritu comunitario y la hospitalida"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6389,
+      "score_detalle": {
+        "similitud": 0.7362,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1118,
+      "tokens": 407,
+      "hash": "c955f10f5012",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas en pueblos de Álava: Yécora, Espejo, Moreda de Álava ... | CONTENIDO: Lasfiestasde los pueblos vuelven de nuevo con fuerza en2026. Una tradición muy arraigada en nu"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6347,
+      "score_detalle": {
+        "similitud": 0.8018,
+        "spider": 0.5,
+        "programa": 0.2,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1152,
+      "tokens": 391,
+      "hash": "a19f3d9ee49a",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas en Araba 2026: calendario con las fiestas del año | CONTENIDO: Listado completo de todas lasfiestasde Araba en2026. Calendario de lasfiestasen pueblos,fiestasen fin"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6316,
+      "score_detalle": {
+        "similitud": 0.7113,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1153,
+      "tokens": 398,
+      "hash": "16ece6a10593",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas en pueblos de Álava: Yécora, Espejo, Moreda de Álava ... | CONTENIDO: Lasfiestasde los pueblos vuelven de nuevo con fuerza en2026. Una tradición muy arraigada en nu"
+    },
+    {
+      "url": "https://www.festivalesdeespana.com/festival/fiestas-de-san-pedro-de-delika",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6208,
+      "score_detalle": {
+        "similitud": 0.6741,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1194,
+      "tokens": 382,
+      "hash": "14f5369fa8ae",
+      "seleccionado": true,
+      "muestra": "Acceso libre. Degustación popular con tique. ⏎ Información práctica — San Pedro Delika ⏎ Cómo llegar ⏎ Delika está a 7 km de Amurrio. En coche: autovía A-68 hasta Amurrio, luego BU-556 h"
+    },
+    {
+      "url": "https://www.festivalesdeespana.com/festival/fiestas-de-san-pedro-de-delika",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6087,
+      "score_detalle": {
+        "similitud": 0.7928,
+        "spider": 0.5,
+        "programa": 0.1,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1183,
+      "tokens": 442,
+      "hash": "8063861cec17",
+      "seleccionado": true,
+      "muestra": "Opiniones de los festivaleros ⏎ Aún no hay puntuación — ¡sé el primero! ⏎ Ningún comentario por el momento. ¡Sé el primero! ⏎ ¿Estuviste allí? ⏎ Comparte tu experiencia con la comunidad. ⏎ T"
+    },
+    {
+      "url": "https://www.festivalesdeespana.com/festival/fiestas-de-san-pedro-de-delika",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6083,
+      "score_detalle": {
+        "similitud": 0.6908,
+        "spider": 0.5,
+        "programa": 0.44,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1192,
+      "tokens": 333,
+      "hash": "0379ca4b0024",
+      "seleccionado": true,
+      "muestra": "El 29 de junio, fiesta de San Pedro y San Pablo, Delika se vuelca en una celebración de marcado carácter popular, gastronómico y rural. El programa tradicional arranca el viernes a"
+    },
+    {
+      "url": "https://www.festivalesdeespana.com/festival/fiestas-de-san-pedro-de-delika",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.593,
+      "score_detalle": {
+        "similitud": 0.5789,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1068,
+      "tokens": 350,
+      "hash": "c8a15c252139",
+      "seleccionado": true,
+      "muestra": "Fiestas de San Pedro 2026 en Delika (Amurrio, Álava) ⏎ Proponer una corrección ⏎ Fechas ⏎ 26 jun. ⏎ — 29 jun. 2026 ⏎ Lugar ⏎ Amurrio ⏎ (01) ⏎ Precios ⏎ Gratis ⏎ Estado ⏎ — ⏎ Presentación de San Pedro Deli"
+    },
+    {
+      "url": "https://www.amurrioturismo.com/agenda-amurrio",
+      "fuente": "web_municipio",
+      "es_calendario": false,
+      "prioridad": 2,
+      "relevancia_geo": "GENERAL",
+      "score": 0.51,
+      "score_detalle": {
+        "similitud": 0.5659,
+        "spider": 1.0,
+        "programa": 0.3,
+        "temporal": 0.5,
+        "extra": 0.7
+      },
+      "score_spider": 3340,
+      "rank_spider": 0,
+      "chars": 1167,
+      "tokens": 377,
+      "hash": "434c4126f7fc",
+      "seleccionado": false,
+      "muestra": "Famoso en todo Euskadi ⏎ y una oportunidad inmejorable para degustar el txakoli. ⏎ Destaca el ⏎ concurso gastronómico ⏎ en el que un ingrediente imprescindible tiene que ser el txakoli ela"
+    },
+    {
+      "url": "https://udala.amurrio.eus/cas/noticias/noticias-fiestas/2183-el-ayuntamiento-de-amurrio-presenta-la-programacion-de-sus-fiestas-patronales-2026",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "GENERAL",
+      "score": 0.4926,
+      "score_detalle": {
+        "similitud": 0.6918,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.7
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1185,
+      "tokens": 355,
+      "hash": "0cba96c164c4",
+      "seleccionado": false,
+      "muestra": "El Ayuntamiento de Amurrio presenta la programación de sus Fiestas Patronales 2026 ⏎ noticias ⏎ Noticias Fiestas ⏎ El Ayuntamiento de Amurrio presenta la programación de sus Fiestas Patr"
+    },
+    {
+      "url": "https://udala.amurrio.eus/attachments/article/2183/2026_Amurrio_Kontzertuen_Kartela.pdf",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "GENERAL",
+      "score": 0.4849,
+      "score_detalle": {
+        "similitud": 0.6655,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.7
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 570,
+      "tokens": 368,
+      "hash": "e9dda167c8ce",
+      "seleccionado": false,
+      "muestra": "## Columna 1 de 3 ⏎ KON ⏎ TZER ⏎ TUAK ⏎ Amurrioko jaiak 2026 ⏎ ## Columna 2 de 3 ⏎ ### ABUZTUAK 20:30 12 ⏎ LA POLAKA ⏎ - 22:00 ⏎ NØT ⏎ - 23:45 ⏎ OXABI ⏎ ERROMERIA ⏎ - 03:00 ⏎ XAUKENA ⏎ XAUK ⏎ ### ABUZTUAK 22:30 1"
+    },
+    {
+      "url": "https://udala.amurrio.eus/attachments/article/2183/2026_Amurrio_Jai_kartel_orokorra_320x700.pdf",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "GENERAL",
+      "score": 0.4821,
+      "score_detalle": {
+        "similitud": 0.6671,
+        "spider": 0.5,
+        "programa": 1.0,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1518,
+      "tokens": 807,
+      "hash": "85453624c0b0",
+      "seleccionado": true,
+      "muestra": "HERRIKO KOPA: ATHLETIC - ALAVÉS ⏎ - 19:00 ROMERÍA OTEGI ⏎ - 19:00-22:00 ESPACIO PREVENCIÓN, SENSIBILIZA- ⏎ CIÓN Y ATENCIÓN VIOLENCIAS MACHISTAS ⏎ - 19:30 EXHIBICIÓN EUSKAL DANTZAK ⏎ - 20:30 "
+    },
+    {
+      "url": "https://udala.amurrio.eus/cas/calendario/eventosdiarios/2026/8/15/-",
+      "fuente": "web_municipio",
+      "es_calendario": false,
+      "prioridad": 2,
+      "relevancia_geo": "GENERAL",
+      "score": 0.4759,
+      "score_detalle": {
+        "similitud": 0.6901,
+        "spider": 0.4222,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.7
+      },
+      "score_spider": 1650,
+      "rank_spider": 17,
+      "chars": 843,
+      "tokens": 359,
+      "hash": "d196b7771773",
+      "seleccionado": false,
+      "muestra": "Calendario ⏎ CAS ⏎ EUS ⏎ Inicio ⏎ Calendario ⏎ Elija una categoría para filtrar la lista ⏎ Todas las categorías ⏎ Hitzaldia - Conferencia ⏎ Erakusketa - Exposición ⏎ Musika - Música ⏎ Kirola - Deporte"
+    },
+    {
+      "url": "https://udala.amurrio.eus/cas/calendario/eventosdiarios/2026/8/12/-",
+      "fuente": "web_municipio",
+      "es_calendario": false,
+      "prioridad": 2,
+      "relevancia_geo": "GENERAL",
+      "score": 0.4756,
+      "score_detalle": {
+        "similitud": 0.6646,
+        "spider": 0.4564,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.7
+      },
+      "score_spider": 1750,
+      "rank_spider": 1,
+      "chars": 845,
+      "tokens": 360,
+      "hash": "2daf7d2300cf",
+      "seleccionado": true,
+      "muestra": "Calendario ⏎ CAS ⏎ EUS ⏎ Inicio ⏎ Calendario ⏎ Elija una categoría para filtrar la lista ⏎ Todas las categorías ⏎ Hitzaldia - Conferencia ⏎ Erakusketa - Exposición ⏎ Musika - Música ⏎ Kirola - Deporte"
+    },
+    {
+      "url": "https://udala.amurrio.eus/cas/calendario/eventosdiarios/2026/8/14/-",
+      "fuente": "web_municipio",
+      "es_calendario": false,
+      "prioridad": 2,
+      "relevancia_geo": "GENERAL",
+      "score": 0.4682,
+      "score_detalle": {
+        "similitud": 0.6637,
+        "spider": 0.4222,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.7
+      },
+      "score_spider": 1650,
+      "rank_spider": 16,
+      "chars": 845,
+      "tokens": 357,
+      "hash": "895f1949b6e5",
+      "seleccionado": true,
+      "muestra": "Calendario ⏎ CAS ⏎ EUS ⏎ Inicio ⏎ Calendario ⏎ Elija una categoría para filtrar la lista ⏎ Todas las categorías ⏎ Hitzaldia - Conferencia ⏎ Erakusketa - Exposición ⏎ Musika - Música ⏎ Kirola - Deporte"
+    },
+    {
+      "url": "https://udala.amurrio.eus/cas/calendario/eventosdiarios/2026/8/17/-",
+      "fuente": "web_municipio",
+      "es_calendario": false,
+      "prioridad": 2,
+      "relevancia_geo": "GENERAL",
+      "score": 0.4655,
+      "score_detalle": {
+        "similitud": 0.6544,
+        "spider": 0.4222,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.7
+      },
+      "score_spider": 1650,
+      "rank_spider": 19,
+      "chars": 842,
+      "tokens": 356,
+      "hash": "b6256121023d",
+      "seleccionado": false,
+      "muestra": "Calendario ⏎ CAS ⏎ EUS ⏎ Inicio ⏎ Calendario ⏎ Elija una categoría para filtrar la lista ⏎ Todas las categorías ⏎ Hitzaldia - Conferencia ⏎ Erakusketa - Exposición ⏎ Musika - Música ⏎ Kirola - Deporte"
+    },
+    {
+      "url": "https://udala.amurrio.eus/cas/calendario/eventosdiarios/2026/8/13/-",
+      "fuente": "web_municipio",
+      "es_calendario": false,
+      "prioridad": 2,
+      "relevancia_geo": "GENERAL",
+      "score": 0.4644,
+      "score_detalle": {
+        "similitud": 0.6505,
+        "spider": 0.4222,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.7
+      },
+      "score_spider": 1650,
+      "rank_spider": 15,
+      "chars": 860,
+      "tokens": 363,
+      "hash": "43cc18365441",
+      "seleccionado": true,
+      "muestra": "Calendario ⏎ CAS ⏎ EUS ⏎ Inicio ⏎ Calendario ⏎ Elija una categoría para filtrar la lista ⏎ Todas las categorías ⏎ Hitzaldia - Conferencia ⏎ Erakusketa - Exposición ⏎ Musika - Música ⏎ Kirola - Deporte"
+    },
+    {
+      "url": "https://udala.amurrio.eus/cas/calendario/eventosdiarios/2026/8/16/-",
+      "fuente": "web_municipio",
+      "es_calendario": false,
+      "prioridad": 2,
+      "relevancia_geo": "GENERAL",
+      "score": 0.4607,
+      "score_detalle": {
+        "similitud": 0.6379,
+        "spider": 0.4222,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.7
+      },
+      "score_spider": 1650,
+      "rank_spider": 18,
+      "chars": 833,
+      "tokens": 352,
+      "hash": "13c6b9089f10",
+      "seleccionado": false,
+      "muestra": "Calendario ⏎ CAS ⏎ EUS ⏎ Inicio ⏎ Calendario ⏎ Elija una categoría para filtrar la lista ⏎ Todas las categorías ⏎ Hitzaldia - Conferencia ⏎ Erakusketa - Exposición ⏎ Musika - Música ⏎ Kirola - Deporte"
+    },
+    {
+      "url": "https://udala.amurrio.eus/attachments/article/2183/2026_Amurrio_Jai_kartel_orokorra_320x700.pdf",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "GENERAL",
+      "score": 0.4559,
+      "score_detalle": {
+        "similitud": 0.5773,
+        "spider": 0.5,
+        "programa": 1.0,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 7974,
+      "tokens": 4479,
+      "hash": "3e848296379e",
+      "seleccionado": true,
+      "muestra": "## Columna 1 de 4 ⏎ ### 1 LARUNBATA ⏎ - 18:00 SANTUAREN JAITSIERA ⏎ ### 9 IGANDEA ⏎ - 21:30 ZINEMA KALEAN: WOLFGANG ⏎ ### 11 ASTEARTEA ⏎ - 20:00 KUADRILLEN ARTEKO SOKA SALTO LEHIAKETA ⏎ ### 12 A"
+    },
+    {
+      "url": "https://udala.amurrio.eus/cas/calendario/eventospormes/2026/8/-",
+      "fuente": "web_municipio",
+      "es_calendario": false,
+      "prioridad": 2,
+      "relevancia_geo": "GENERAL",
+      "score": 0.4494,
+      "score_detalle": {
+        "similitud": 0.5993,
+        "spider": 0.4222,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.7
+      },
+      "score_spider": 1650,
+      "rank_spider": 2,
+      "chars": 1196,
+      "tokens": 585,
+      "hash": "5ed22d14bc23",
+      "seleccionado": true,
+      "muestra": "Calendario ⏎ CAS ⏎ EUS ⏎ Inicio ⏎ Calendario ⏎ Elija una categoría para filtrar la lista ⏎ Todas las categorías ⏎ Hitzaldia - Conferencia ⏎ Erakusketa - Exposición ⏎ Musika - Música ⏎ Kirola - Deporte"
+    },
+    {
+      "url": "https://udala.amurrio.eus/cas/servicios/fiestas",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "GENERAL",
+      "score": 0.4467,
+      "score_detalle": {
+        "similitud": 0.5344,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.7
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1191,
+      "tokens": 349,
+      "hash": "3335b6aeb8f4",
+      "seleccionado": true,
+      "muestra": "Fiestas ⏎ servicios ⏎ Fiestas ⏎ Las cuadrillas de Amurrio vuelven a sorprender en un concurso de carrozas lleno de creatividad ⏎ 17 Agosto 2026 ⏎ Trot-Art se alza con el primer premio con un"
+    },
+    {
+      "url": "https://www.amurrioturismo.com/salto-del-nervion",
+      "fuente": "web_municipio",
+      "es_calendario": false,
+      "prioridad": 2,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.4041,
+      "score_detalle": {
+        "similitud": 0.4299,
+        "spider": 0.3778,
+        "programa": 0.0,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 1520,
+      "rank_spider": 36,
+      "chars": 286,
+      "tokens": 106,
+      "hash": "f787e0d45222",
+      "seleccionado": true,
+      "muestra": "LO MEJOR DE AMURRIO ⏎ ¡Te quedan 6 LUGARES más por descubrir! ⏎ EL TXAKOLI ⏎ Nuestro vino blanco internacional ⏎ GARRASTATXU ⏎ Paisajes que nunca se olvidan ⏎ MUSEO DEL LICOR ⏎ Una leyenda de sa"
+    }
+  ]
+}

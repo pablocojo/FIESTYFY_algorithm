@@ -27,6 +27,7 @@ import aiohttp
 from PIL import Image
 
 from config import (
+    LMSTUDIO_SEED,
     LMSTUDIO_CHAT_URL,
     VISION_ENABLED,
     VISION_MODEL,
@@ -46,26 +47,24 @@ from llm_processor.festival_filter import (
 
 logger = logging.getLogger("vision_analyzer")
 
-# Variantes en lenguas cooficiales: los carteles de ayuntamientos vascos,
-# catalanes y gallegos anuncian "jaiak", "festes", "festas"... (visto en las
-# sesiones supervisadas: "Intxaurjaiak 2026", "San Juan bezpera").
-PALABRAS_COOFICIALES = [
-    "jaiak", "jaia", "jai", "bezpera", "txosna", "txosnak", "kontzertua",
-    "kontzertuak", "dantza", "erromeria", "kalejira", "txupinazo", "txupinazoa",
-    "herri bazkaria", "umeen eguna", "gau jai",
-    "festes", "festa", "festa major", "correfoc", "cercavila", "revetlla",
-    "festas", "romaria", "foliada",
-]
+from config_idiomas import PERFILES_IDIOMA
+
+_KEYWORDS_BASE = set(SENALES_NOCTURNAS + SENALES_TIPO_FIESTA + [
+    "programa", "programacion", "cartel", "actos", "agenda", "patronales"
+])
+
+for perfil in PERFILES_IDIOMA.values():
+    if "keywords_busqueda" in perfil:
+        for kw in perfil["keywords_busqueda"]:
+            _KEYWORDS_BASE.add(normalizar_texto(kw))
 
 # En euskera los nombres de fiesta se aglutinan (Intxaurjaiak, Sanjuanak...):
 # estas keywords casan también como SUFIJO de palabra
 _KEYWORDS_SUFIJO = {"jaiak", "jaia"}
 
-# Palabras que habilitan el envío de una captura al VLM (prefiltro por caption/OCR)
+# Palabras que habilitan el envío de una captura al VLM (prefiltro por OCR)
 PALABRAS_CLAVE_VISION = sorted(
-    set(SENALES_NOCTURNAS + SENALES_TIPO_FIESTA + PALABRAS_COOFICIALES + [
-        "programa", "programacion", "cartel", "actos", "agenda", "patronales",
-    ]),
+    list(_KEYWORDS_BASE),
     key=len,
     reverse=True,
 )
@@ -104,29 +103,33 @@ async def _keyword_por_ocr(ruta: str) -> str | None:
     return texto_indica_fiesta(texto or "")
 
 
+def pil_a_data_uri(img: Image.Image, max_dim: int = VISION_MAX_DIM) -> str | None:
+    """Valida dimensiones, redimensiona y codifica una imagen PIL en base64."""
+    try:
+        ancho, alto = img.size
+        if ancho < IMAGE_MIN_WIDTH or alto < IMAGE_MIN_HEIGHT:
+            logger.debug(f"Imagen descartada por dimensiones: {ancho}x{alto}")
+            return None
+        img = img.copy().convert("RGB")
+        img.thumbnail((max_dim, max_dim))
+        buffer = io.BytesIO()
+        img.save(buffer, format="JPEG", quality=85)
+        codificada = base64.b64encode(buffer.getvalue()).decode("ascii")
+        return f"data:image/jpeg;base64,{codificada}"
+    except Exception as e:
+        logger.warning(f"Error procesando PIL Image a Data URI: {e}")
+        return None
+
 def imagen_a_data_uri(ruta: str, max_dim: int = VISION_MAX_DIM) -> str | None:
-    """
-    Carga, valida dimensiones mínimas, redimensiona y codifica en base64 (JPEG).
-    Devuelve el data-URI o None si la imagen no es apta.
-    """
+    """Carga una imagen desde disco y la codifica."""
     try:
         with Image.open(ruta) as img:
-            ancho, alto = img.size
-            if ancho < IMAGE_MIN_WIDTH or alto < IMAGE_MIN_HEIGHT:
-                logger.debug(f"Imagen demasiado pequeña ({ancho}x{alto}): {ruta}")
-                return None
-            img = img.convert("RGB")
-            img.thumbnail((max_dim, max_dim))
-            buffer = io.BytesIO()
-            img.save(buffer, format="JPEG", quality=85)
+            return pil_a_data_uri(img, max_dim)
     except Exception as e:
         logger.warning(f"No se pudo procesar la imagen {ruta}: {e}")
         return None
-    codificada = base64.b64encode(buffer.getvalue()).decode("ascii")
-    return f"data:image/jpeg;base64,{codificada}"
 
-
-_SYSTEM_VISION = """Eres una API estricta que analiza capturas de redes sociales de ayuntamientos españoles.
+_SYSTEM_VISION = """Eres una API estricta que analiza capturas de redes sociales o carteles de ayuntamientos españoles.
 Tu única tarea: decidir si la imagen contiene un CARTEL o PROGRAMA DE FIESTAS de una localidad
 (programa de actos, cartel anunciador con fechas/horarios, agenda festiva) y, si lo es, transcribirlo.
 
@@ -136,11 +139,58 @@ de servicios municipales, bandos, esquelas, carteles de cursos o actividades no 
 Responde SOLO con JSON estricto:
 {"es_programa_fiestas": true o false, "texto_extraido": "transcripción fiel con fechas, horas y actos (vacío si false)"}"""
 
+async def analizar_imagen_directa(img: Image.Image) -> str:
+    """
+    Analiza una imagen PIL directamente. Devuelve el texto estructurado si es un programa, o "" si no.
+    """
+    data_uri = pil_a_data_uri(img)
+    if data_uri is None:
+        return ""
+    
+    payload = {
+        "model": VISION_MODEL,
+        "messages": [
+            {"role": "system", "content": _SYSTEM_VISION},
+            {
+                "role": "user",
+                "content": [
+                    {
+                        "type": "text",
+                        "text": "¿Contiene esta imagen un cartel o programa de fiestas? Responde SOLO con el JSON.",
+                    },
+                    {"type": "image_url", "image_url": {"url": data_uri}},
+                ],
+            },
+        ],
+        "temperature": 0.0,
+        "seed": LMSTUDIO_SEED,
+        "max_tokens": VISION_MAX_TOKENS,
+    }
+
+    try:
+        async with LLM_SEMAPHORE:
+            async with aiohttp.ClientSession() as session:
+                async with session.post(
+                    LMSTUDIO_CHAT_URL,
+                    json=payload,
+                    timeout=aiohttp.ClientTimeout(total=VISION_TIMEOUT),
+                ) as resp:
+                    if resp.status != 200:
+                        return ""
+                    data = await resp.json()
+                    contenido = data["choices"][0]["message"]["content"]
+    except Exception as e:
+        logger.error(f"Error VLM en analizar_imagen_directa: {e}")
+        return ""
+
+    parsed = _parse_json_llm(contenido)
+    if isinstance(parsed, dict) and parsed.get("es_programa_fiestas"):
+        return str(parsed.get("texto_extraido") or "").strip()
+    return ""
 
 async def analizar_imagen(ruta: str) -> dict | None:
     """
-    Clasifica y transcribe una captura con el VLM de LM Studio.
-    Devuelve {"es_programa_fiestas": bool, "texto_extraido": str} o None si falló.
+    Clasifica y transcribe una captura desde ruta en disco.
     """
     data_uri = imagen_a_data_uri(ruta)
     if data_uri is None:
@@ -162,6 +212,7 @@ async def analizar_imagen(ruta: str) -> dict | None:
             },
         ],
         "temperature": 0.0,
+        "seed": LMSTUDIO_SEED,
         "max_tokens": VISION_MAX_TOKENS,
     }
 

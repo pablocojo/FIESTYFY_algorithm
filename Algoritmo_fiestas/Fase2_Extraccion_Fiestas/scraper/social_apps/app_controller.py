@@ -250,6 +250,8 @@ class SafetyGuard:
 
     def teclear_seguro(self, texto_o_teclas: str, con_espacios: bool = True):
         """Teclea sobre la ventana de la app, verificada en primer plano."""
+        if texto_o_teclas is None:
+            raise ValueError(f"[{self.red}] teclear_seguro recibió None. Abortando tecleo.")
         self.verificar()
         self.ventana.type_keys(texto_o_teclas, with_spaces=con_espacios, pause=0.03)
 

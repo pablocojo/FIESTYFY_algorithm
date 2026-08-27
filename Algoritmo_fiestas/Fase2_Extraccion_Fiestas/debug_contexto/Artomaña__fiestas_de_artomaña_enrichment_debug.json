@@ -1,0 +1,459 @@
+{
+  "metricas": {
+    "etapa": "enrichment",
+    "municipio": "Amurrio",
+    "localidad": "Artomaña__fiestas de artomaña",
+    "candidatos": 19,
+    "seleccionados": 19,
+    "documentos_distintos": 4,
+    "chunks_duplicados": 0,
+    "chars_contexto": 29866,
+    "chars_unicos": 28189,
+    "pct_unico": 100.0,
+    "tokens_contexto": 12790,
+    "top_documentos": [
+      [
+        "https://almansaturistica.es/wp-content/uploads/2026/04/PROGRAMA-DE-FIESTAS-2026.pdf",
+        10
+      ],
+      [
+        "buscadores:snippets",
+        5
+      ],
+      [
+        "https://fiestasdepueblos.net/pueblos/artomana",
+        2
+      ],
+      [
+        "https://udala.amurrio.eus/attachments/article/2183/2026_Amurrio_Jai_kartel_orokorra_320x700.pdf",
+        2
+      ]
+    ],
+    "presupuesto": {
+      "presupuesto_chars": 32000
+    },
+    "fiesta": "Fiestas de Artomaña",
+    "dias_consultados": 7,
+    "dias_sin_presupuesto": 0
+  },
+  "chunks": [
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.8825,
+      "score_detalle": {
+        "similitud": 1.0,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 1.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1119,
+      "tokens": 412,
+      "hash": "81b3696be310",
+      "seleccionado": true,
+      "muestra": "TITULO: Programa Fiestas de Artomaña 2026 (Laudio) - euskalplan.eus | CONTENIDO: DescripciónArtomañavolverá a llenarse de ambiente festivo con motivo de lasfiestasen honor a San Jo"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.7416,
+      "score_detalle": {
+        "similitud": 0.9169,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.3
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1085,
+      "tokens": 385,
+      "hash": "37de329951a5",
+      "seleccionado": true,
+      "muestra": "TITULO: Programa Fiestas de Amurrio 2026 (12-17 agosto) - Kulturklik | CONTENIDO: LasfiestasdeAmurrio2026se celebrarán del 12 al 17 de agosto. LasfiestasdeAmurrio2026contarán con u"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6989,
+      "score_detalle": {
+        "similitud": 0.83,
+        "spider": 0.5,
+        "programa": 0.44,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1077,
+      "tokens": 402,
+      "hash": "067b4535fc7c",
+      "seleccionado": true,
+      "muestra": "TITULO: PDFFies ayor 2026 PROGR E ESTA 2026 PROGR E ESTA 2026 PROGR E | CONTENIDO: Reina de lasFiestasMayores y la Reina Infantil deFiestasencenderán las mechas de las tracas que a"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6673,
+      "score_detalle": {
+        "similitud": 0.8335,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1039,
+      "tokens": 335,
+      "hash": "5e791cb9103f",
+      "seleccionado": true,
+      "muestra": "TITULO: Conciertos y Fiestas Artomaña - Jaiak | CONTENIDO: EnArtomaña, lasfiestasen honor a San Jorge, en torno al 23 de abril, llenan el pueblo de tradición, música y solidaridad."
+    },
+    {
+      "url": "https://fiestasdepueblos.net/pueblos/artomana",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6656,
+      "score_detalle": {
+        "similitud": 0.8279,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1050,
+      "tokens": 392,
+      "hash": "55447b7723c2",
+      "seleccionado": true,
+      "muestra": "Fiestas en Artomaña (País Vasco) - Calendario 2026 y 2027 | Fiestas de Pueblos de España ⏎ Cargando fiestas ⏎ Command Palette ⏎ Search for a command to run... ⏎ Inicio ⏎ / ⏎ País Vasco ⏎ / ⏎ Álava"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6563,
+      "score_detalle": {
+        "similitud": 0.7958,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 914,
+      "tokens": 310,
+      "hash": "bfcc0bd7da70",
+      "seleccionado": true,
+      "muestra": "TITULO: Amurrio celebrará sus fiestas patronales del 12 al 17 de ago | CONTENIDO: El Ayuntamiento deAmurrioha presentado la programación de lasFiestasde Nuestra Señora y San Roke20"
+    },
+    {
+      "url": "https://almansaturistica.es/wp-content/uploads/2026/04/PROGRAMA-DE-FIESTAS-2026.pdf",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "GENERAL",
+      "score": 0.5625,
+      "score_detalle": {
+        "similitud": 0.8833,
+        "spider": 0.5,
+        "programa": 0.86,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1137,
+      "tokens": 505,
+      "hash": "86b340ec13a8",
+      "seleccionado": true,
+      "muestra": "Fiestas Mayores 2026 ⏎ PROGRAMA DE ⏎ FIESTAS 2026 - ⏎ PROGRAMA DE ⏎ FIESTAS 2026 - ⏎ PROGRAMA DE ⏎ PROGRAMA DE FIESTAS 2026 ⏎ FIESTAS 2026 - ⏎ PROGRAMA DE ⏎ FIESTAS 2026 - ⏎ PROGRAMA DE ⏎ FIESTAS 2026 -"
+    },
+    {
+      "url": "https://almansaturistica.es/wp-content/uploads/2026/04/PROGRAMA-DE-FIESTAS-2026.pdf",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "GENERAL",
+      "score": 0.5335,
+      "score_detalle": {
+        "similitud": 0.672,
+        "spider": 0.5,
+        "programa": 1.0,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1189,
+      "tokens": 428,
+      "hash": "c4cce12420bb",
+      "seleccionado": true,
+      "muestra": "alrededor de la elaboración de uno de nuestros platos típi- ⏎ cos: la gachamiga. Organizado por la Junta Festera de Ca- ⏎ lles. Lugar: Paseo de Néstor Almendros, “Batallódromo”. ⏎ - 09:3"
+    },
+    {
+      "url": "https://fiestasdepueblos.net/pueblos/artomana",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.5057,
+      "score_detalle": {
+        "similitud": 0.5311,
+        "spider": 0.5,
+        "programa": 0.2,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1001,
+      "tokens": 320,
+      "hash": "8b7c6497bfa7",
+      "seleccionado": true,
+      "muestra": "Acceso por carretera desde los núcleos principales de Álava; si viajas desde la capital provincial, consulta las conexiones locales y planifica el aparcamiento en las entradas del "
+    },
+    {
+      "url": "https://almansaturistica.es/wp-content/uploads/2026/04/PROGRAMA-DE-FIESTAS-2026.pdf",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "GENERAL",
+      "score": 0.5028,
+      "score_detalle": {
+        "similitud": 0.5666,
+        "spider": 0.5,
+        "programa": 1.0,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1151,
+      "tokens": 445,
+      "hash": "13d656bbb494",
+      "seleccionado": true,
+      "muestra": "6202 ⏎ SATSEIF ⏎ ED ⏎ AMARGORP ⏎ 6202 ⏎ SATSEIF ⏎ ED ⏎ AMARGORP ⏎ 6202 ⏎ SATSEIF ⏎ ED ⏎ AMARGORP ⏎ 6202 ⏎ SATSEIF ⏎ ED ⏎ AMARGORP ⏎ 6202 ⏎ SATSEIF ⏎ ED ⏎ AMARGORP6202 ⏎ SATSEIF ⏎ ED ⏎ AMARGORP ⏎ ## Columna 2 de 3 ⏎ Fiestas Mayor"
+    },
+    {
+      "url": "https://almansaturistica.es/wp-content/uploads/2026/04/PROGRAMA-DE-FIESTAS-2026.pdf",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "GENERAL",
+      "score": 0.5008,
+      "score_detalle": {
+        "similitud": 0.7314,
+        "spider": 0.5,
+        "programa": 1.0,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1185,
+      "tokens": 452,
+      "hash": "eff3c06e8520",
+      "seleccionado": true,
+      "muestra": "### DOMINGO 26 DE ABRIL ⏎ - 18:30h L FESTIVAL DE CANTE FLAMENCO. Orga- por el Centro de Mayores. Lugar: Plaza de Santa María. ⏎ nizado por la Junta Festera de Calles y con la colaborac"
+    },
+    {
+      "url": "https://almansaturistica.es/wp-content/uploads/2026/04/PROGRAMA-DE-FIESTAS-2026.pdf",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "GENERAL",
+      "score": 0.4974,
+      "score_detalle": {
+        "similitud": 0.6284,
+        "spider": 0.5,
+        "programa": 0.9,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1197,
+      "tokens": 481,
+      "hash": "97dc2c1504cb",
+      "seleccionado": true,
+      "muestra": "clamación de la Abanderada y Alférez Mayores Infantiles, ⏎ Abanderadas y Alféreces Infantiles de Comparsas y Emba- ⏎ jadores Infantiles. Lugar: Teatro Regio ⏎ ## Columna 2 de 3 ⏎ ### DOMIN"
+    },
+    {
+      "url": "https://almansaturistica.es/wp-content/uploads/2026/04/PROGRAMA-DE-FIESTAS-2026.pdf",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "GENERAL",
+      "score": 0.4934,
+      "score_detalle": {
+        "similitud": 0.7585,
+        "spider": 0.5,
+        "programa": 0.72,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1194,
+      "tokens": 521,
+      "hash": "2fb253a01887",
+      "seleccionado": true,
+      "muestra": "PROGRAMA ⏎ DE ⏎ FIESTAS ⏎ 2026 ⏎ PROGRAMA ⏎ DE ⏎ FIESTAS ⏎ 2026 ⏎ PROGRAMA ⏎ DE ⏎ FIESTAS ⏎ 2026 ⏎ PROGRAMA ⏎ DE ⏎ FIESTAS ⏎ 2026 ⏎ ## Columna 1 de 3 ⏎ 6202 ⏎ SATSEIF ⏎ ED ⏎ AMARGORP ⏎ 6202 ⏎ SATSEIF ⏎ ED ⏎ AMARGORP ⏎ 6202 ⏎ SATSEIF"
+    },
+    {
+      "url": "https://udala.amurrio.eus/attachments/article/2183/2026_Amurrio_Jai_kartel_orokorra_320x700.pdf",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "GENERAL",
+      "score": 0.466,
+      "score_detalle": {
+        "similitud": 0.612,
+        "spider": 0.5,
+        "programa": 1.0,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1518,
+      "tokens": 807,
+      "hash": "85453624c0b0",
+      "seleccionado": true,
+      "muestra": "HERRIKO KOPA: ATHLETIC - ALAVÉS ⏎ - 19:00 ROMERÍA OTEGI ⏎ - 19:00-22:00 ESPACIO PREVENCIÓN, SENSIBILIZA- ⏎ CIÓN Y ATENCIÓN VIOLENCIAS MACHISTAS ⏎ - 19:30 EXHIBICIÓN EUSKAL DANTZAK ⏎ - 20:30 "
+    },
+    {
+      "url": "https://udala.amurrio.eus/attachments/article/2183/2026_Amurrio_Jai_kartel_orokorra_320x700.pdf",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "GENERAL",
+      "score": 0.4634,
+      "score_detalle": {
+        "similitud": 0.6031,
+        "spider": 0.5,
+        "programa": 1.0,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 7974,
+      "tokens": 4479,
+      "hash": "3e848296379e",
+      "seleccionado": true,
+      "muestra": "## Columna 1 de 4 ⏎ ### 1 LARUNBATA ⏎ - 18:00 SANTUAREN JAITSIERA ⏎ ### 9 IGANDEA ⏎ - 21:30 ZINEMA KALEAN: WOLFGANG ⏎ ### 11 ASTEARTEA ⏎ - 20:00 KUADRILLEN ARTEKO SOKA SALTO LEHIAKETA ⏎ ### 12 A"
+    },
+    {
+      "url": "https://almansaturistica.es/wp-content/uploads/2026/04/PROGRAMA-DE-FIESTAS-2026.pdf",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "GENERAL",
+      "score": 0.4341,
+      "score_detalle": {
+        "similitud": 0.5027,
+        "spider": 0.5,
+        "programa": 1.0,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1188,
+      "tokens": 405,
+      "hash": "f6a75d56850d",
+      "seleccionado": true,
+      "muestra": "- 17:00h OFRENDA INFANTIL. Niñas y niños vestidos ⏎ con el traje manchego realizarán esta ofrenda y sus pre- ⏎ sentes serán recogidos por la Reina de las Fiestas Mayores ⏎ y las Reinas d"
+    },
+    {
+      "url": "https://almansaturistica.es/wp-content/uploads/2026/04/PROGRAMA-DE-FIESTAS-2026.pdf",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "GENERAL",
+      "score": 0.4289,
+      "score_detalle": {
+        "similitud": 0.5373,
+        "spider": 0.5,
+        "programa": 0.72,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 860,
+      "tokens": 299,
+      "hash": "a5984b955295",
+      "seleccionado": true,
+      "muestra": "Conversión del Moro. Lugar: Plaza de Santa María. ⏎ ## Columna 2 de 3 ⏎ ### LUNES 4 DE MAYO (continúa de la columna anterior) ⏎ Fiestas Mayores 2026 ⏎ - 11:45h DESFILE DE ARCABUCERÍA. Itin"
+    },
+    {
+      "url": "https://almansaturistica.es/wp-content/uploads/2026/04/PROGRAMA-DE-FIESTAS-2026.pdf",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "GENERAL",
+      "score": 0.4261,
+      "score_detalle": {
+        "similitud": 0.4752,
+        "spider": 0.5,
+        "programa": 1.0,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1195,
+      "tokens": 416,
+      "hash": "218e2c053558",
+      "seleccionado": true,
+      "muestra": "Fiestas Mayores de Almansa han comenzado. Lugar: Pla- ⏎ za de Santa María. ⏎ - 19:30h CABALGATA DEL PREGÓN. Itinerario: calle ⏎ Aniceto Coloma, Pasaje del coronel Arteaga, calle Ram- ⏎ bla"
+    },
+    {
+      "url": "https://almansaturistica.es/wp-content/uploads/2026/04/PROGRAMA-DE-FIESTAS-2026.pdf",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "GENERAL",
+      "score": 0.4244,
+      "score_detalle": {
+        "similitud": 0.5814,
+        "spider": 0.5,
+        "programa": 0.86,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1116,
+      "tokens": 375,
+      "hash": "0540347fbae8",
+      "seleccionado": true,
+      "muestra": "tada del programa infantil del año 2027. Organizado por ⏎ el Grupo Festero El Rincón y patrocinado por el Excmo. ⏎ Ayuntamiento de Almansa. Lugar: Templete del Jardín de ⏎ los Reyes Cató"
+    }
+  ]
+}

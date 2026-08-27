@@ -1,0 +1,261 @@
+{
+  "metricas": {
+    "etapa": "enrichment",
+    "municipio": "Amurrio",
+    "localidad": "Artomaña__fiestas de san jorge en artomaña",
+    "candidatos": 10,
+    "seleccionados": 10,
+    "documentos_distintos": 4,
+    "chunks_duplicados": 0,
+    "chars_contexto": 11082,
+    "chars_unicos": 10404,
+    "pct_unico": 100.0,
+    "tokens_contexto": 3875,
+    "top_documentos": [
+      [
+        "buscadores:snippets",
+        4
+      ],
+      [
+        "https://www.euskalplan.eus/es/events/programa-fiestas-de-artomana-2026-laudio-2026041810045620",
+        2
+      ],
+      [
+        "https://zuk.eus/fiestas-artomana-2026-san-jorge-programa/",
+        2
+      ],
+      [
+        "https://fiestasdepueblos.net/pueblos/artomana",
+        2
+      ]
+    ],
+    "presupuesto": {
+      "presupuesto_chars": 32000
+    },
+    "fiesta": "Fiestas de San Jorge en Artomaña",
+    "dias_consultados": 7,
+    "dias_sin_presupuesto": 0
+  },
+  "chunks": [
+    {
+      "url": "https://www.euskalplan.eus/es/events/programa-fiestas-de-artomana-2026-laudio-2026041810045620",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.9852,
+      "score_detalle": {
+        "similitud": 0.9634,
+        "spider": 0.5,
+        "programa": 1.0,
+        "temporal": 1.0,
+        "extra": 0.7
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1212,
+      "tokens": 486,
+      "hash": "e8d31ff41375",
+      "seleccionado": true,
+      "muestra": "Programa Fiestas de Artomaña 2026 (Laudio) | Euskalplan ⏎ Este evento ya ha pasado. ⏎ Ver próximos eventos ⏎ 17/04/2026 ⏎ Programa Fiestas de Artomaña 2026 (Laudio) ⏎ Artomañako Jaiak 2026 L"
+    },
+    {
+      "url": "https://www.euskalplan.eus/es/events/programa-fiestas-de-artomana-2026-laudio-2026041810045620",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.9821,
+      "score_detalle": {
+        "similitud": 0.953,
+        "spider": 0.5,
+        "programa": 1.0,
+        "temporal": 1.0,
+        "extra": 0.7
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 827,
+      "tokens": 318,
+      "hash": "496a861d9f1b",
+      "seleccionado": true,
+      "muestra": "Artomaña volverá a llenarse de ambiente festivo con motivo de las fiestas en honor a San Jorge, que se celebrarán entre el 17 y el 23 de abril de 2026. ⏎ 17 abril, viernes ⏎ 20:00 Txup"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.8325,
+      "score_detalle": {
+        "similitud": 1.0,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.7
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 878,
+      "tokens": 331,
+      "hash": "ea46025e7866",
+      "seleccionado": true,
+      "muestra": "TITULO: Programa Fiestas de Artomaña 2026 (Laudio) - euskalplan.eus | CONTENIDO: DescripciónArtomañavolverá a llenarse de ambiente festivo con motivo de lasfiestasen honor a San Jo"
+    },
+    {
+      "url": "https://zuk.eus/fiestas-artomana-2026-san-jorge-programa/",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.8198,
+      "score_detalle": {
+        "similitud": 0.8443,
+        "spider": 0.5,
+        "programa": 0.44,
+        "temporal": 1.0,
+        "extra": 0.7
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1193,
+      "tokens": 365,
+      "hash": "29db77830743",
+      "seleccionado": true,
+      "muestra": "Artomaña celebra desde este fin de semana sus fiestas de San Jorge 2026 - ZUK ⏎ Artomaña celebra desde este fin de semana sus fiestas de San Jorge 2026 ⏎ El sábado tendrá lugar una deg"
+    },
+    {
+      "url": "https://zuk.eus/fiestas-artomana-2026-san-jorge-programa/",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.7308,
+      "score_detalle": {
+        "similitud": 0.8112,
+        "spider": 0.5,
+        "programa": 0.1,
+        "temporal": 1.0,
+        "extra": 0.7
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1120,
+      "tokens": 316,
+      "hash": "e14dbd10e0d2",
+      "seleccionado": true,
+      "muestra": "y sesiones de zumba, mientras que la noche estará protagonizada por conciertos con ⏎ Eriz & Totum Revolutum y la sesión de DJ Varro. ⏎ Domingo con actividades infantiles y tradición ⏎ El"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6497,
+      "score_detalle": {
+        "similitud": 0.7734,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1022,
+      "tokens": 374,
+      "hash": "e2b54c7adbc1",
+      "seleccionado": true,
+      "muestra": "TITULO: Programa Fiestas de Amurrio 2026 (12-17 agosto) - euskalplan.eus | CONTENIDO: LasfiestasdeAmurrio2026se celebrarán del 12 al 17 de agosto. LasfiestasdeAmurrio2026contarán c"
+    },
+    {
+      "url": "https://fiestasdepueblos.net/pueblos/artomana",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6415,
+      "score_detalle": {
+        "similitud": 0.7453,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1050,
+      "tokens": 392,
+      "hash": "55447b7723c2",
+      "seleccionado": true,
+      "muestra": "Fiestas en Artomaña (País Vasco) - Calendario 2026 y 2027 | Fiestas de Pueblos de España ⏎ Cargando fiestas ⏎ Command Palette ⏎ Search for a command to run... ⏎ Inicio ⏎ / ⏎ País Vasco ⏎ / ⏎ Álava"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6021,
+      "score_detalle": {
+        "similitud": 0.61,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1099,
+      "tokens": 390,
+      "hash": "dafe6d900e30",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas Aste Nagusia 2026 en Bilbao: programa, actividades y ... - ABC | CONTENIDO: FiestasAste Nagusia2026en Bilbao:programa, actividades y conciertos gratis La Semana Gra"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.5926,
+      "score_detalle": {
+        "similitud": 0.5775,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1002,
+      "tokens": 322,
+      "hash": "638564f80b36",
+      "seleccionado": true,
+      "muestra": "TITULO: Programa Aste Nagusia 2026 (Fiestas de Bilbao 2026) - Kulturklik | CONTENIDO: Bilbao celebrará la Aste Nagusia2026del 22 al 30 de agosto. Nueve días defiestaen los que los "
+    },
+    {
+      "url": "https://fiestasdepueblos.net/pueblos/artomana",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.4783,
+      "score_detalle": {
+        "similitud": 0.4371,
+        "spider": 0.5,
+        "programa": 0.2,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1001,
+      "tokens": 320,
+      "hash": "8b7c6497bfa7",
+      "seleccionado": true,
+      "muestra": "Acceso por carretera desde los núcleos principales de Álava; si viajas desde la capital provincial, consulta las conexiones locales y planifica el aparcamiento en las entradas del "
+    }
+  ]
+}

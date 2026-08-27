@@ -1,0 +1,301 @@
+{
+  "metricas": {
+    "etapa": "enrichment",
+    "municipio": "Tobarra",
+    "localidad": "Santiago de Mora__fiestas de santiago apóstol",
+    "candidatos": 12,
+    "seleccionados": 12,
+    "documentos_distintos": 3,
+    "chunks_duplicados": 0,
+    "chars_contexto": 14423,
+    "chars_unicos": 13510,
+    "pct_unico": 100.0,
+    "tokens_contexto": 4866,
+    "top_documentos": [
+      [
+        "https://www.radiotobarra.es/wp-content/uploads/santiago2026.pdf",
+        7
+      ],
+      [
+        "buscadores:snippets",
+        3
+      ],
+      [
+        "https://www.radiotobarra.es/santiago2026/",
+        2
+      ]
+    ],
+    "presupuesto": {
+      "presupuesto_chars": 32000
+    },
+    "fiesta": "Fiestas de Santiago Apóstol",
+    "dias_consultados": 5,
+    "dias_sin_presupuesto": 0
+  },
+  "chunks": [
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.7577,
+      "score_detalle": {
+        "similitud": 0.9197,
+        "spider": 0.5,
+        "programa": 0.58,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1100,
+      "tokens": 440,
+      "hash": "d74ed358c700",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas Patronales Santiago Apóstol 2026 | CONTENIDO: Novena en la CatedralSantiagoApóstol del 16 al 24dejulio a las 7:00 p.m. Peregrinaciones desde las 6:00 p.m. partiendo"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6396,
+      "score_detalle": {
+        "similitud": 0.8185,
+        "spider": 0.5,
+        "programa": 0.2,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1191,
+      "tokens": 399,
+      "hash": "fb92faf636fd",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas de Santiago de Mora 2026 - Radio Tobarra Municipal - 107.9 FM | CONTENIDO: FIESTASDELA PEDANÍADESANTIAGODEMORAEN HONOR ASANTIAGOAPOSTOL Y SANTA ANA ⏎ TITULO: Festivid"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6096,
+      "score_detalle": {
+        "similitud": 0.7159,
+        "spider": 0.5,
+        "programa": 0.2,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1091,
+      "tokens": 415,
+      "hash": "0870a132b64c",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas de Santiago de Mora 2026 - Radio Tobarra Municipal - 107.9 FM | CONTENIDO: FIESTASDELA PEDANÍADESANTIAGODEMORAEN HONOR ASANTIAGOAPOSTOL Y SANTA ANA ⏎ TITULO: Fiestas "
+    },
+    {
+      "url": "https://www.radiotobarra.es/santiago2026/",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.601,
+      "score_detalle": {
+        "similitud": 0.6862,
+        "spider": 0.5,
+        "programa": 0.2,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1197,
+      "tokens": 531,
+      "hash": "3c69a42fd18d",
+      "seleccionado": true,
+      "muestra": "Fiestas de Santiago de Mora 2026 – Radio Tobarra Municipal – 107.9 FM ⏎ Saltar al contenido ⏎ Programación ⏎ Programas ⏎ Tobarra a la una ⏎ Tras el Cristal (semanal) ⏎ Tras el Cristal (Anuario"
+    },
+    {
+      "url": "https://www.radiotobarra.es/wp-content/uploads/santiago2026.pdf",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.576,
+      "score_detalle": {
+        "similitud": 0.4886,
+        "spider": 0.5,
+        "programa": 0.34,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1181,
+      "tokens": 368,
+      "hash": "b2d7fde7492c",
+      "seleccionado": true,
+      "muestra": "apurar lo que nos quede de merienda. ⏎ 20:00H TARDEO REMEMBER ⏎ Lugat: Plaza de la Iglesia ⏎ A cargo de la Sala Límite, ⏎ Lugar: Camino de la Almazara ⏎ A cargo del ayuntamiento de Tobarra. ⏎ "
+    },
+    {
+      "url": "https://www.radiotobarra.es/wp-content/uploads/santiago2026.pdf",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.5726,
+      "score_detalle": {
+        "similitud": 0.669,
+        "spider": 0.5,
+        "programa": 0.1,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1169,
+      "tokens": 356,
+      "hash": "f9f160b30df5",
+      "seleccionado": true,
+      "muestra": "KAI ⏎ Fa ⏎ FIESTAS 2026 ⏎ SANTIAGO DE MORA ⏎ Del 212126 de Julio + ⏎ d bai, ⏎ AMI ⏎ KE ⏎ La ⏎ A ⏎ LA AA AA AAADIÍA A AA ⏎ DE ⏎ Bk Ea ⏎ e ⏎ SALUDA DE LA COMISIÓN DE FIESTAS ⏎ o ⏎ 4 ⏎ $ e e y ⏎ Queridos vecinos y vecin"
+    },
+    {
+      "url": "https://www.radiotobarra.es/santiago2026/",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.5689,
+      "score_detalle": {
+        "similitud": 0.6562,
+        "spider": 0.5,
+        "programa": 0.1,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 882,
+      "tokens": 296,
+      "hash": "29807dbb9419",
+      "seleccionado": true,
+      "muestra": "Conversaciones 2023 ⏎ Conversaciones 2019 ⏎ Conversaciones 2015 ⏎ Conversaciones 2011 ⏎ Conversaciones 2007 ⏎ Conversaciones 2003 ⏎ Conversaciones 1999 ⏎ Conversaciones 1995 ⏎ Conversaciones 1991 ⏎ "
+    },
+    {
+      "url": "https://www.radiotobarra.es/wp-content/uploads/santiago2026.pdf",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.5498,
+      "score_detalle": {
+        "similitud": 0.6822,
+        "spider": 0.5,
+        "programa": 0.2,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1131,
+      "tokens": 335,
+      "hash": "624676348927",
+      "seleccionado": true,
+      "muestra": "Nada de lo que vivimos estos días sería posible sin la participación y el apoyo de tods ⏎ He vecin(ds. la incansable y entregada Comisión de Fiestas, las personas y comercios ⏎ colabor"
+    },
+    {
+      "url": "https://www.radiotobarra.es/wp-content/uploads/santiago2026.pdf",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.5338,
+      "score_detalle": {
+        "similitud": 0.6272,
+        "spider": 0.5,
+        "programa": 0.2,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1174,
+      "tokens": 352,
+      "hash": "324641f0b88a",
+      "seleccionado": true,
+      "muestra": "señalados. Aqui siempre encontrarán las puertas abiertas, porque una de las mayores riquezas de ⏎ nuestro pueblo es su capacidad para acoger y hacer sentir a todos como en casa. ⏎ Ahor"
+    },
+    {
+      "url": "https://www.radiotobarra.es/wp-content/uploads/santiago2026.pdf",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.5008,
+      "score_detalle": {
+        "similitud": 0.6055,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 0.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1145,
+      "tokens": 449,
+      "hash": "dc5546fb46b4",
+      "seleccionado": true,
+      "muestra": "19:00H CONCENTRACIÓN DE CARROZAS ⏎ Lugar: Parada de Autobús ⏎ 19:30H GRAN DESFILE DE CARROZAS ⏎ Por el itinerario de costumbre, este año nos lucimos de lo lindo. ⏎ AL FINALIZAR, DUCHAS DE "
+    },
+    {
+      "url": "https://www.radiotobarra.es/wp-content/uploads/santiago2026.pdf",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.4702,
+      "score_detalle": {
+        "similitud": 0.4092,
+        "spider": 0.5,
+        "programa": 0.2,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1126,
+      "tokens": 324,
+      "hash": "a05fe3a5cf99",
+      "seleccionado": true,
+      "muestra": "vecinos llegados de toda la comarca, atraídos por el gran ambiente, la hospitalidad y los ⏎ magníficos actos que organizáis. ⏎ Este éxito rotundo no es fruto de la casualidad, sino del"
+    },
+    {
+      "url": "https://www.radiotobarra.es/wp-content/uploads/santiago2026.pdf",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.4682,
+      "score_detalle": {
+        "similitud": 0.4824,
+        "spider": 0.5,
+        "programa": 0.1,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1123,
+      "tokens": 311,
+      "hash": "6d0087858b06",
+      "seleccionado": true,
+      "muestra": "¡Ya están aquí nuestras queridas fiestas! En primer lugar, quiero decir que me siento muy ⏎ afortunado de poder dejar este pequeño mensaje en el libro, algo que llevo leyendo desde ⏎ h"
+    }
+  ]
+}

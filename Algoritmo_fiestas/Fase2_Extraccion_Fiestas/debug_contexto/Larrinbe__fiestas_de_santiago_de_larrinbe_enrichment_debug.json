@@ -1,0 +1,423 @@
+{
+  "metricas": {
+    "etapa": "enrichment",
+    "municipio": "Amurrio",
+    "localidad": "Larrinbe__fiestas de santiago de larrinbe",
+    "candidatos": 17,
+    "seleccionados": 17,
+    "documentos_distintos": 6,
+    "chunks_duplicados": 0,
+    "chars_contexto": 17850,
+    "chars_unicos": 16252,
+    "pct_unico": 100.0,
+    "tokens_contexto": 6361,
+    "top_documentos": [
+      [
+        "https://www.festivalesdeespana.com/festival/fiestas-de-santiago-de-larrinbe",
+        6
+      ],
+      [
+        "buscadores:snippets",
+        5
+      ],
+      [
+        "https://www.defiestaenfiesta.es/fiestas/pais-vasco/alava/amurrio/fiestas-de-santiago-de-larrinbe-2026-20260724",
+        3
+      ],
+      [
+        "facebook:01002000000",
+        1
+      ],
+      [
+        "https://www.euskalplan.eus/es/events/programa-fiestas-de-larrinbe-2026-en-amurrio-2026072309224448",
+        1
+      ],
+      [
+        "https://www.kulturklik.euskadi.eus/evento/2026/07/24/programa-fiestas-de-larrinbe-2026-en-amurrio/webkklik00-detalle/es/",
+        1
+      ]
+    ],
+    "presupuesto": {
+      "presupuesto_chars": 32000
+    },
+    "fiesta": "Fiestas de Santiago de Larrinbe",
+    "dias_consultados": 3,
+    "dias_sin_presupuesto": 0
+  },
+  "chunks": [
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6048,
+      "score_detalle": {
+        "similitud": 0.9622,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.3
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1085,
+      "tokens": 463,
+      "hash": "8c8f1b2c076f",
+      "seleccionado": true,
+      "muestra": "TITULO: Programa Fiestas de Larrinbe 2026 en Amurrio - Kulturklik | CONTENIDO: LasFiestasde Santiago2026enLarrinbe,Amurrio, se celebrarán el 24 y 25 de julio. ProgramaFiestasdeLarr"
+    },
+    {
+      "url": "https://www.defiestaenfiesta.es/fiestas/pais-vasco/alava/amurrio/fiestas-de-santiago-de-larrinbe-2026-20260724",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.5777,
+      "score_detalle": {
+        "similitud": 0.8692,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.3
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1118,
+      "tokens": 355,
+      "hash": "32b1dc05bd12",
+      "seleccionado": true,
+      "muestra": "Fiestas de Santiago de Larrinbe 2026 · Fiestas de Amurrio: fechas e información ⏎ Saltar al contenido principal ⏎ Fiesta ⏎ Fiestas de Santiago de Larrinbe 2026 ⏎ Las Fiestas de Santiago de"
+    },
+    {
+      "url": "https://www.euskalplan.eus/es/events/programa-fiestas-de-larrinbe-2026-en-amurrio-2026072309224448",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.5658,
+      "score_detalle": {
+        "similitud": 1.0,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 755,
+      "tokens": 341,
+      "hash": "05ae71ce9608",
+      "seleccionado": true,
+      "muestra": "Programa Fiestas de Larrinbe 2026 en Amurrio | Euskalplan ⏎ Este evento ya ha pasado. ⏎ Ver próximos eventos ⏎ 24/07/2026 - 25/07/2026 ⏎ Programa Fiestas de Larrinbe 2026 en Amurrio ⏎ Larrin"
+    },
+    {
+      "url": "https://www.defiestaenfiesta.es/fiestas/pais-vasco/alava/amurrio/fiestas-de-santiago-de-larrinbe-2026-20260724",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.5554,
+      "score_detalle": {
+        "similitud": 0.8729,
+        "spider": 0.5,
+        "programa": 0.2,
+        "temporal": 1.0,
+        "extra": 0.3
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 469,
+      "tokens": 147,
+      "hash": "28fbfe712962",
+      "seleccionado": true,
+      "muestra": "Ver fiestas en Álava ⏎ Compartir fiesta ⏎ Fiestas de Santiago de Larrinbe 2026 ⏎ Amurrio - 24/07/2026 ⏎ Facebook ⏎ WhatsApp ⏎ Instagram ⏎ Copiar enlace ⏎ ✕ ⏎ volver ⏎ × ⏎ 🔔 ⏎ Eventos en tu zona ⏎ Regístrate"
+    },
+    {
+      "url": "https://www.kulturklik.euskadi.eus/evento/2026/07/24/programa-fiestas-de-larrinbe-2026-en-amurrio/webkklik00-detalle/es/",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.5298,
+      "score_detalle": {
+        "similitud": 0.9564,
+        "spider": 0.5,
+        "programa": 0.2,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 736,
+      "tokens": 337,
+      "hash": "dc35d9c30f64",
+      "seleccionado": true,
+      "muestra": "Programa Fiestas de Larrinbe 2026 en Amurrio - Kulturklik ⏎ < Volver ⏎ Programa Fiestas de Larrinbe 2026 en Amurrio ⏎ Amurrio ⏎ Del 24 de julio 2026 al 25 de julio 2026 ⏎ Las Fiestas de Sant"
+    },
+    {
+      "url": "https://www.festivalesdeespana.com/festival/fiestas-de-santiago-de-larrinbe",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.5273,
+      "score_detalle": {
+        "similitud": 0.8678,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1181,
+      "tokens": 382,
+      "hash": "3fb685c31e34",
+      "seleccionado": true,
+      "muestra": "El calendario oficial de las juntas administrativas de Amurrio fija la festividad de ⏎ Santiago en Larrinbe el 26 de julio ⏎ (domingo en 2026). Se espera un programa festivo del ⏎ vierne"
+    },
+    {
+      "url": "https://www.defiestaenfiesta.es/fiestas/pais-vasco/alava/amurrio/fiestas-de-santiago-de-larrinbe-2026-20260724",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.5236,
+      "score_detalle": {
+        "similitud": 0.6838,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.3
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1192,
+      "tokens": 451,
+      "hash": "c0b255a0bba1",
+      "seleccionado": true,
+      "muestra": ". La comunidad se vuelca en la organización, garantizando diversión y momentos memorables. Los días centrales, en torno al 25 de julio, suelen concentrar los eventos más significat"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.5188,
+      "score_detalle": {
+        "similitud": 0.8387,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1056,
+      "tokens": 387,
+      "hash": "8292c52a24b9",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas - udala.amurrio.eus | CONTENIDO: El Ayuntamiento deAmurriopresenta la programación de susFiestasPatronales202628 Julio2026La programación contará con más de un cent"
+    },
+    {
+      "url": "https://www.festivalesdeespana.com/festival/fiestas-de-santiago-de-larrinbe",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.4951,
+      "score_detalle": {
+        "similitud": 0.7575,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1119,
+      "tokens": 333,
+      "hash": "1394bb1cc14c",
+      "seleccionado": true,
+      "muestra": "Las fiestas de Santiago en Larrinbe combinan la tradición religiosa y el festejo rural con elementos más contemporáneos como la exhibición de motos clásicas o conciertos de grupos "
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.4891,
+      "score_detalle": {
+        "similitud": 0.7371,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1009,
+      "tokens": 308,
+      "hash": "ca1de89c21cc",
+      "seleccionado": true,
+      "muestra": "TITULO: Fêtes de la Saint-Jacques 2026 à Larrinbe (Amurrio, Álava) | CONTENIDO: Découvrez les Fêtespatronales2026de la Saint-Jacques au hameau deLarrinbe(Amurrio) : messe, danses b"
+    },
+    {
+      "url": "https://www.festivalesdeespana.com/festival/fiestas-de-santiago-de-larrinbe",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.4839,
+      "score_detalle": {
+        "similitud": 0.7193,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1099,
+      "tokens": 356,
+      "hash": "032e0859a013",
+      "seleccionado": true,
+      "muestra": "Fiestas de Santiago 2026 en Larrinbe (Amurrio, Álava) ⏎ Proponer una corrección ⏎ Fechas ⏎ 24 jul. ⏎ — 26 jul. 2026 ⏎ Lugar ⏎ Amurrio ⏎ (01) ⏎ Precios ⏎ Gratis ⏎ Estado ⏎ — ⏎ Presentación de Santiago Larr"
+    },
+    {
+      "url": "https://www.festivalesdeespana.com/festival/fiestas-de-santiago-de-larrinbe",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.4622,
+      "score_detalle": {
+        "similitud": 0.6447,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 693,
+      "tokens": 284,
+      "hash": "d0c342218af9",
+      "seleccionado": true,
+      "muestra": "Edición 2025 ⏎ jul. 2025 ⏎ Mismo género ⏎ Festivales similares a Santiago Larrinbe ⏎ Explorar más → ⏎ Carnaval de Villaquilambre ⏎ Villaquilambre (24) ⏎ Artes de calle ⏎ Tradiciones populares ⏎ 16 f"
+    },
+    {
+      "url": "facebook:01002000000",
+      "fuente": "rrss_municipio:facebook",
+      "es_calendario": false,
+      "prioridad": 4,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.431,
+      "score_detalle": {
+        "similitud": 0.4256,
+        "spider": 0.5,
+        "programa": 0.44,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1062,
+      "tokens": 449,
+      "hash": "a00a3b202f5d",
+      "seleccionado": true,
+      "muestra": "[POST 2026-08-18] ﻿Zurekin Batera   En Tol Sarmiento ⏎ Eta horrela amaiera eman diegu jai ahaztezinei. ⏎ Eskerrik asko, Amurrio, aurten ere gure jaiak hain bereziak egiteagatik. ⏎ Septie"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.4228,
+      "score_detalle": {
+        "similitud": 0.5095,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 600,
+      "tokens": 185,
+      "hash": "f8df81e3455c",
+      "seleccionado": true,
+      "muestra": "TITULO: Agenda de Actividades y Ocio en Galicia | OcioenGalicia | CONTENIDO: Los mejores planes de ocio en Galicia. Encuentra en nuestro calendario todas las actividades programada"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.4226,
+      "score_detalle": {
+        "similitud": 0.5089,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1157,
+      "tokens": 368,
+      "hash": "faf88e99121a",
+      "seleccionado": true,
+      "muestra": "TITULO: Calendario deFiestasen Galicia | CONTENIDO: Consulta el calendario completo de fiestas en Galicia por año y mes. Encuentra eventos destacados y planifica tu próxima celebra"
+    },
+    {
+      "url": "https://www.festivalesdeespana.com/festival/fiestas-de-santiago-de-larrinbe",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.4202,
+      "score_detalle": {
+        "similitud": 0.7407,
+        "spider": 0.5,
+        "programa": 0.0,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1188,
+      "tokens": 393,
+      "hash": "2d22ee08198d",
+      "seleccionado": true,
+      "muestra": "Llegar pronto si queréis ver la exhibición de motos clásicas, muy popular. Llevar gorra y agua: julio puede ser caluroso al mediodía. Inscribirse con al menos una semana de antelac"
+    },
+    {
+      "url": "https://www.festivalesdeespana.com/festival/fiestas-de-santiago-de-larrinbe",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.4046,
+      "score_detalle": {
+        "similitud": 0.6187,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 733,
+      "tokens": 228,
+      "hash": "5451a63acc95",
+      "seleccionado": true,
+      "muestra": ", uno de los doce apóstoles y patrón de España, se conmemora el 25 de julio. En Larrinbe, la fiesta se celebra en el fin de semana más próximo a esa fecha, lo que puede extenderse "
+    }
+  ]
+}

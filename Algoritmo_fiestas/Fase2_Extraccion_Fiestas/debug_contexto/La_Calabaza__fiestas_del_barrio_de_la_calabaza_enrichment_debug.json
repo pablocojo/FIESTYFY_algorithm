@@ -1,0 +1,401 @@
+{
+  "metricas": {
+    "etapa": "enrichment",
+    "municipio": "Aranda de Duero",
+    "localidad": "La Calabaza__fiestas del barrio de la calabaza ",
+    "candidatos": 16,
+    "seleccionados": 16,
+    "documentos_distintos": 7,
+    "chunks_duplicados": 0,
+    "chars_contexto": 14109,
+    "chars_unicos": 15204,
+    "pct_unico": 100.0,
+    "tokens_contexto": 4860,
+    "top_documentos": [
+      [
+        "buscadores:snippets",
+        7
+      ],
+      [
+        "https://www.enaranda.es/evento/fiestas-del-barrio-de-la-calabaza-agosto-2026/",
+        2
+      ],
+      [
+        "http://www.arandactiva.com/",
+        2
+      ],
+      [
+        "https://www.arandadeduero.es/tema/monteria/",
+        2
+      ],
+      [
+        "https://www.enaranda.es/evento/concierto-de-simulacro-agosto-2026/",
+        1
+      ],
+      [
+        "https://www.enaranda.es/lugar/barrio-de-la-calabaza/",
+        1
+      ]
+    ],
+    "presupuesto": {
+      "presupuesto_chars": 32000
+    },
+    "fiesta": "Fiestas del Barrio de La Calabaza 2026",
+    "dias_consultados": 3,
+    "dias_sin_presupuesto": 0
+  },
+  "chunks": [
+    {
+      "url": "https://www.enaranda.es/evento/fiestas-del-barrio-de-la-calabaza-agosto-2026/",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.8676,
+      "score_detalle": {
+        "similitud": 0.9488,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 1.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1190,
+      "tokens": 402,
+      "hash": "470a2a8895d2",
+      "seleccionado": true,
+      "muestra": "Finalizado ⏎ viernes ⏎ 21 ⏎ ago ⏎ 2026 ⏎ - ⏎ domingo ⏎ 23 ⏎ ago ⏎ 2026 ⏎ Fiestas del Barrio de La Calabaza 2026 ⏎ + información ⏎ Agregar a favoritos ⏎ Avísame ⏎ Compartir ⏎ Compartir en: ⏎ Descargar para Instagr"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.8592,
+      "score_detalle": {
+        "similitud": 1.0,
+        "spider": 0.5,
+        "programa": 0.2,
+        "temporal": 1.0,
+        "extra": 1.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 934,
+      "tokens": 325,
+      "hash": "5d6408d5be10",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas del Barrio de La Calabaza 2026 | 21 AGOSTO a 23 AGOSTO 2026 | CONTENIDO: ElBarriodeLaCalabazadeArandadeDuero celebra susfiestascon un completoprogramapara todaslase"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.8394,
+      "score_detalle": {
+        "similitud": 0.8522,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 1.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1167,
+      "tokens": 413,
+      "hash": "d752eb0495e4",
+      "seleccionado": true,
+      "muestra": "TITULO: FIESTAS BARRIOS MADRID | Calendario de fiestas en Madrid 2026: barrios ... | CONTENIDO: Por ello, con el comienzodeun nuevo año, vuelvenlascelebraciones más esperadas a los"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.8356,
+      "score_detalle": {
+        "similitud": 0.8392,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 1.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 715,
+      "tokens": 262,
+      "hash": "daa32161fdeb",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas Virgen de las Viñas 2026 — Aranda de Duero | CONTENIDO: FiestaspatronalesdeArandadeDuerodel 11 al 20deseptiembrede2026. Chupinazo, peñas, romería, procesión y encie"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.8172,
+      "score_detalle": {
+        "similitud": 0.856,
+        "spider": 0.5,
+        "programa": 0.2,
+        "temporal": 1.0,
+        "extra": 1.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1191,
+      "tokens": 430,
+      "hash": "52237f45c052",
+      "seleccionado": true,
+      "muestra": "TITULO: Agenda de Fiestas en los Pueblos de Castilla-La Mancha 2026 | CONTENIDO: Fiestaspatronales, romerías, ferias y tradicionesdelos pueblos manchegos, alcarreños y serranos en2"
+    },
+    {
+      "url": "https://www.enaranda.es/evento/concierto-de-simulacro-agosto-2026/",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.654,
+      "score_detalle": {
+        "similitud": 0.7882,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1061,
+      "tokens": 382,
+      "hash": "361df6cf7135",
+      "seleccionado": true,
+      "muestra": "Finalizado ⏎ viernes ⏎ 21 ⏎ ago ⏎ 2026 ⏎ Concierto de Simulacro ⏎ 22:30 Agregar a favoritos ⏎ Avísame ⏎ Compartir ⏎ Compartir en: ⏎ Descargar para Instagram Stories ⏎ Descargar para feed de Instagram ⏎ Bl"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6515,
+      "score_detalle": {
+        "similitud": 0.8593,
+        "spider": 0.5,
+        "programa": 0.2,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 939,
+      "tokens": 313,
+      "hash": "a18f94cafac2",
+      "seleccionado": true,
+      "muestra": "TITULO: Barrio de la Calabaza - enAranda | CONTENIDO: Eventos enBarriodelaCalabazaFiestasdelBarriodeLaCalabaza202621 ago - 23 ago | ORIGEN: https://www.enaranda.es/lugar/barrio-de-"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6386,
+      "score_detalle": {
+        "similitud": 0.8153,
+        "spider": 0.5,
+        "programa": 0.2,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 908,
+      "tokens": 325,
+      "hash": "bf51e82ccd71",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas en el barrio de La Calabaza .- Citas en la Ribera del Duero ... | CONTENIDO: Todo lo que ocurre en ArandadeDuero y su comarca con fotos y vídeos. | ORIGEN: https://"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6377,
+      "score_detalle": {
+        "similitud": 0.8121,
+        "spider": 0.5,
+        "programa": 0.2,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 941,
+      "tokens": 311,
+      "hash": "78a54421df77",
+      "seleccionado": true,
+      "muestra": "TITULO: enAranda | ¡Las fiestas del Barrio de La Calabaza ... - Instagram | CONTENIDO: Juegos infantiles, agua, concursos, paellada, magia y mucha música con SIMULACRO, Charanga Es"
+    },
+    {
+      "url": "https://www.enaranda.es/evento/fiestas-del-barrio-de-la-calabaza-agosto-2026/",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6038,
+      "score_detalle": {
+        "similitud": 0.616,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1117,
+      "tokens": 423,
+      "hash": "9adc612ebd25",
+      "seleccionado": true,
+      "muestra": ". La degustación se realizará antes del vermut y habrá premios para los cocineros y cocineras desde el primero hasta el quinto puesto. ⏎ 12:30h a 15:00h | ⏎ Baile vermut ⏎ amenizado por ⏎ "
+    },
+    {
+      "url": "http://www.arandactiva.com/",
+      "fuente": "web_municipio",
+      "es_calendario": false,
+      "prioridad": 2,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.5626,
+      "score_detalle": {
+        "similitud": 0.3855,
+        "spider": 0.4008,
+        "programa": 0.0,
+        "temporal": 1.0,
+        "extra": 0.7
+      },
+      "score_spider": 1500,
+      "rank_spider": 3,
+      "chars": 1187,
+      "tokens": 395,
+      "hash": "937b7b23d8a6",
+      "seleccionado": true,
+      "muestra": "(Polideportividad) PREBENJAMIN BALONMANO Pre-Benjamín Mixto ⏎ (Polideportividad) PREBENJAMIN FUTBOL SALA Pre-Benjamín Mixto ⏎ (Voleibol) VOLEIBOL CADETE JUVENIL 3ª VUELTA Mixta ⏎ (Voleib"
+    },
+    {
+      "url": "http://www.arandactiva.com/",
+      "fuente": "web_municipio",
+      "es_calendario": false,
+      "prioridad": 2,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.525,
+      "score_detalle": {
+        "similitud": 0.4647,
+        "spider": 0.4008,
+        "programa": 0.24,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 1500,
+      "rank_spider": 3,
+      "chars": 941,
+      "tokens": 332,
+      "hash": "d281721d528f",
+      "seleccionado": true,
+      "muestra": "A continuación, compartimos toda la información que necesitas saber: ⏎ Apertura Piscina Acapulco: Apertura Piscina Acapulco.pdf ⏎ Apertura Piscina La Calabaza: Apertura Piscina La Cala"
+    },
+    {
+      "url": "https://www.enaranda.es/lugar/barrio-de-la-calabaza/",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.5202,
+      "score_detalle": {
+        "similitud": 0.7407,
+        "spider": 0.5,
+        "programa": 0.0,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 158,
+      "tokens": 52,
+      "hash": "f057abc471e3",
+      "seleccionado": true,
+      "muestra": "Barrio de la Calabaza ⏎ Agregar a favoritos ⏎ Publicidad ⏎ Eventos en Barrio de la Calabaza ⏎ Compartir en: ⏎ Bluesky ⏎ Facebook ⏎ Whatsapp ⏎ Linkedin ⏎ Copiar URL ⏎ Más Opciones"
+    },
+    {
+      "url": "https://www.arandadeduero.es/tema/monteria/",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.51,
+      "score_detalle": {
+        "similitud": 0.5342,
+        "spider": 0.5,
+        "programa": 0.0,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1151,
+      "tokens": 378,
+      "hash": "870b6927ba76",
+      "seleccionado": true,
+      "muestra": "montería – Ayuntamiento de Aranda de Duero ⏎ Skip to content ⏎ Portal de transparencia ⏎ Perfil del contratante ⏎ Sede electrónica ⏎ Buscar ⏎ Mi Ayuntamiento ⏎ Corporación municipal ⏎ Info. de con"
+    },
+    {
+      "url": "https://www.diariodelaribera.net/calendario/evento/fiesta-semanas-culturales-programaciones-especiales/fiestas-en-el-barrio-de-la-calabaza/4/",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.5065,
+      "score_detalle": {
+        "similitud": 0.4422,
+        "spider": 0.5,
+        "programa": 0.1,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 422,
+      "tokens": 183,
+      "hash": "d96895450705",
+      "seleccionado": true,
+      "muestra": "Fiesta, Semanas culturales, programaciones especiales ⏎ Compartir: ⏎ DIARIO DE LA RIBERA ⏎ C/ Valladolid, 2, Bajo ⏎ Aranda de Duero (Burgos) ⏎ Telf.: 947 50 83 93 ⏎ M�vil: 640 781 604 ⏎ Email: ⏎ d"
+    },
+    {
+      "url": "https://www.arandadeduero.es/tema/monteria/",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.4949,
+      "score_detalle": {
+        "similitud": 0.4824,
+        "spider": 0.5,
+        "programa": 0.0,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1182,
+      "tokens": 393,
+      "hash": "d9ca6c299beb",
+      "seleccionado": true,
+      "muestra": "y respetar la señalización y las indicaciones de seguridad durante la jornada. ⏎ Montería Coto del Monte de La Calabaza, 11-02-2026 ⏎ Montería autorizada ⏎ Se informa ⏎ a los vecinos y vec"
+    }
+  ]
+}

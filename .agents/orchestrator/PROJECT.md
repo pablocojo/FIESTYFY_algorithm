@@ -1,46 +1,38 @@
-# PROJECT: Fiestyfy Algorithm 2026 Improvements
+# Project: Fiestyfy Algorithm RAG Pipeline Fixes
 
-## Architecture & Scope Summary
-Improvements to the Fase 2 festival extraction pipeline for 2026 season:
-1. Resilient search engine fallback & query throttling (`google_search.py`, `config.py`)
-2. Target year 2026 & keyword scoring in web spider (`heuristic_spider.py`)
-3. Cross-year & leap year date validation (`text_analyzer.py`, `patron_finder.py`)
-4. Publication date tracking & window filtering in social scraper (`social_content.py`)
-5. PDF year filtering (`document_extractor.py`) & non-blocking cache writes (`social_finder.py`, `patron_finder.py`)
-6. Execution metrics logging & final summary reporting (`main.py`)
-7. Independent test scripts for acceptance verification (`tests_fase2/`)
+## Working Directory
+`c:\Users\Usuario\PROYECTOS\DEV-FIESTYFY_0426\FIESTYFY_algorithm\Algoritmo_fiestas\Fase2_Extraccion_Fiestas`
+
+## Architecture
+The RAG pipeline extracts local festival programs for Spanish municipalities and entities.
+- `main.py`: Entry point orchestrating data loading, entity separation (capital vs sister localities), web searches, context building, and analyzer invocations.
+- `llm_processor/text_analyzer.py`: Chunk indexing, vector store creation, similarity search, geographic filtering (`filtrar_chunks_por_localidad`), chunk budget selection (`seleccionar_chunks`), context assembly (`ensamblar_contexto`), and LLM extraction functions (`discover_festivals_for_locality`, `enrich_festival_program`, `saturate_context_docs`).
 
 ## Feature Inventory
-| # | Requirement | Target File(s) | Description | Milestone | Source |
-|---|-------------|----------------|-------------|-----------|--------|
-| 1 | R1 Resilient Search | `google_search.py`, `config.py` | UA rotation, random delays (2.0-4.5s), exp backoff + jitter for DDG/Yahoo/Bing | M1 | ORIGINAL_REQUEST |
-| 2 | R2 Spider Prioritization | `heuristic_spider.py` | 2026 bonus, previous year penalty, calendar URL deduplication, single-event filtering | M2 | ORIGINAL_REQUEST |
-| 3 | R3 Edge Case Dates | `text_analyzer.py`, `patron_finder.py` | Cross-year (Dec 2026 -> Jan 2027) valid date; Feb 29 saint fallback to Feb 28 in non-leap year | M3 | ORIGINAL_REQUEST |
-| 4 | R4 Social Date Filter | `social_content.py` | Save `fecha_publicacion`, filter posts within 2026 target window | M4 | ORIGINAL_REQUEST |
-| 5 | R5 PDF & Async Caches | `document_extractor.py`, `social_finder.py`, `patron_finder.py` | `is_promising_pdf` target/prev year check; `asyncio.to_thread` for cache file IO | M5 | ORIGINAL_REQUEST |
-| 6 | R6 Execution Metrics | `main.py` | Final summary report: extracted/estimated ratio, 0-festival count, top sources, search errors, avg time | M6 | ORIGINAL_REQUEST |
-| 7 | Acceptance Verification | `tests_fase2/` | Standalone verification scripts for R1 (UA/delay), R3 (cross-year & Feb 28 patron), full test suite pass | M7 | ORIGINAL_REQUEST |
+| # | Feature | Description | Milestone | Source |
+|---|---------|-------------|-----------|--------|
+| 1 | R1: Geographic Filtering Order | Move `filtrar_chunks_por_localidad` out of `seleccionar_chunks` and apply it AFTER cosine similarity calculation in all retrieval pipelines (`discover_festivals_for_locality`, `retrieve_discovery_context`, `enrich_festival_program`, `saturate_context_docs`). | M1 | ORIGINAL_REQUEST §R1 |
+| 2 | R2: Capital Exclusion in Sister Localities | Modify `main.py` line 317 to exclude municipality capital (`es_capital: true`) when building `nombres_hermanas` list for sister localities. | M2 | ORIGINAL_REQUEST §R2 |
+| 3 | R3: Contextual Embeddings Target Text | Modify `index_document_chunks` in `llm_processor/text_analyzer.py` line 1106 to compute embeddings on raw `chunk` text rather than `chunk_contextualizado`. | M3 | ORIGINAL_REQUEST §R3 |
+| 4 | R4: E2E Verification on Sample Municipality | Run extraction test on sample municipality Amurrio (`01002000000`) and verify output JSON contains non-estimated festivals (`es_estimada: false`) with populated `programa` arrays. | M4 | ORIGINAL_REQUEST §R4 |
+
+## Code Layout
+- `llm_processor/text_analyzer.py`: Owned by M1 & M3
+- `main.py`: Owned by M2
+- Verification scripts / CLI execution: Owned by M4
 
 ## Milestones
 | # | Name | Scope | Dependencies | Status |
 |---|------|-------|-------------|--------|
-| M1 | Resilient Web Search | R1 implementation in `google_search.py` & `config.py` | None | PLANNED |
-| M2 | Spider 2026 Prioritization | R2 implementation in `heuristic_spider.py` | None | PLANNED |
-| M3 | Cross-Year & Leap Year Dates | R3 implementation in `text_analyzer.py` & `patron_finder.py` | None | PLANNED |
-| M4 | Social Media Date Filtering | R4 implementation in `social_content.py` | None | PLANNED |
-| M5 | PDF Priority & Async Caches | R5 implementation in `document_extractor.py`, `social_finder.py`, `patron_finder.py` | M3 | PLANNED |
-| M6 | Execution Metrics | R6 implementation in `main.py` | None | PLANNED |
-| M7 | Test Suite & Gate Verification | Verification scripts + full unit test pass + Auditor check | M1-M6 | PLANNED |
+| 1 | M1: R1 Fix (Geographic Filtering Order) | `llm_processor/text_analyzer.py` (decouple `filtrar_chunks_por_localidad` from `seleccionar_chunks`, apply after similarity score) | none | DONE |
+| 2 | M2: R2 Fix (Capital Exclusion) | `main.py` (exclude `es_capital: true` from `nombres_hermanas`) | none | DONE |
+| 3 | M3: R3 Fix (Raw Chunk Embeddings) | `llm_processor/text_analyzer.py` (line 1106 compute embeddings on `chunk` instead of `chunk_contextualizado`) | M1 | DONE |
+| 4 | M4: R4 Verification (Amurrio Test) | Run test extraction on Amurrio, verify `fiestas_espana.json` output | M1, M2, M3 | IN_PROGRESS |
 
-## Code Layout
-- Target project path: `c:\Users\Usuario\PROYECTOS\DEV-FIESTYFY_0426\FIESTYFY_algorithm\Algoritmo_fiestas\Fase2_Extraccion_Fiestas`
-  - `config.py`
-  - `main.py`
-  - `scraper/google_search.py`
-  - `scraper/heuristic_spider.py`
-  - `scraper/social_content.py`
-  - `scraper/social_finder.py`
-  - `scraper/document_extractor.py`
-  - `llm_processor/text_analyzer.py`
-  - `llm_processor/patron_finder.py`
-  - `tests_fase2/`
+## Interface Contracts
+- `seleccionar_chunks(chunks_con_score: List[Dict], max_tokens: int = 14000) -> List[Dict]`:
+  Pure budget-packing helper. Must NOT invoke `filtrar_chunks_por_localidad` internally.
+- `filtrar_chunks_por_localidad(chunks: List[Dict], localidad: Dict, nombres_hermanas: List[str]) -> List[Dict]`:
+  Adjusts chunk `score` based on geographic relevance tags (+0.15 DIRECTA, -0.10 GENERAL, excludes HERMANA). Must be called after cosine similarity scoring.
+- `index_document_chunks(doc_chunks: List[Dict]) -> Chroma`:
+  Computes vector embeddings batch using `i["chunk"]`. Stores `chunk_contextualizado` in document metadata for LLM prompt context assembly.

@@ -1,0 +1,165 @@
+{
+  "metricas": {
+    "etapa": "enrichment",
+    "municipio": "Amurrio",
+    "localidad": "Larrinbe__fiestas de santiago en larrinbe",
+    "candidatos": 6,
+    "seleccionados": 6,
+    "documentos_distintos": 2,
+    "chunks_duplicados": 0,
+    "chars_contexto": 6314,
+    "chars_unicos": 6107,
+    "pct_unico": 100.0,
+    "tokens_contexto": 2555,
+    "top_documentos": [
+      [
+        "buscadores:snippets",
+        5
+      ],
+      [
+        "https://udala.amurrio.eus/attachments/article/2183/2026_Amurrio_Jai_kartel_orokorra_320x700.pdf",
+        1
+      ]
+    ],
+    "presupuesto": {
+      "presupuesto_chars": 32000
+    },
+    "fiesta": "Fiestas de Santiago en Larrinbe",
+    "dias_consultados": 3,
+    "dias_sin_presupuesto": 0
+  },
+  "chunks": [
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.8165,
+      "score_detalle": {
+        "similitud": 0.9451,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.7
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 974,
+      "tokens": 389,
+      "hash": "14f1dd46694c",
+      "seleccionado": true,
+      "muestra": "TITULO: Programa Fiestas de Larrinbe 2026 en Amurrio - kaixo.com | CONTENIDO: LasFiestasde Santiago2026enLarrinbe, Amurrio, se celebrarán el 24 y 25 de julio. Dirección:Larrinbe, A"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.7158,
+      "score_detalle": {
+        "similitud": 1.0,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1085,
+      "tokens": 463,
+      "hash": "8c8f1b2c076f",
+      "seleccionado": true,
+      "muestra": "TITULO: Programa Fiestas de Larrinbe 2026 en Amurrio - Kulturklik | CONTENIDO: LasFiestasde Santiago2026enLarrinbe,Amurrio, se celebrarán el 24 y 25 de julio. ProgramaFiestasdeLarr"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6939,
+      "score_detalle": {
+        "similitud": 0.9248,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 990,
+      "tokens": 405,
+      "hash": "b53380eec37b",
+      "seleccionado": true,
+      "muestra": "TITULO: Fêtes de la Saint-Jacques 2026 à Larrinbe (Amurrio, Álava) | CONTENIDO: Découvrez les Fêtespatronales2026de la Saint-Jacques au hameau deLarrinbe(Amurrio) : messe, danses b"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6739,
+      "score_detalle": {
+        "similitud": 0.8561,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1056,
+      "tokens": 387,
+      "hash": "8292c52a24b9",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas - udala.amurrio.eus | CONTENIDO: El Ayuntamiento deAmurriopresenta la programación de susFiestasPatronales202628 Julio2026La programación contará con más de un cent"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6498,
+      "score_detalle": {
+        "similitud": 0.7736,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1144,
+      "tokens": 405,
+      "hash": "89f7b769edab",
+      "seleccionado": true,
+      "muestra": "TITULO: Santiago 2027 en Larrinbe | Mapa y programa | Fiestas de Pueblos de España | CONTENIDO: Santiago enLarrinbe(Álava): guía de lafiestapatronal con romería, procesión, música "
+    },
+    {
+      "url": "https://udala.amurrio.eus/attachments/article/2183/2026_Amurrio_Jai_kartel_orokorra_320x700.pdf",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "GENERAL",
+      "score": 0.4585,
+      "score_detalle": {
+        "similitud": 0.5862,
+        "spider": 0.5,
+        "programa": 1.0,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 858,
+      "tokens": 433,
+      "hash": "51bb3f4bb0df",
+      "seleccionado": true,
+      "muestra": "ETA LEHIAKETA 19:30 IKUSKIZUNA: LOS BARLOUEN DOES 11:00 PARTIDAS SIMULTÁNEAS DE AJEDREZ 21:00 MARIACHI MEXICO LINDO “SÍ SEÑOR” ⏎ 11:00-14:00 HAURRENTZAKO JOLASAK 21:00 MARIACHI MEXIC"
+    }
+  ]
+}

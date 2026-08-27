@@ -1,0 +1,121 @@
+{
+  "metricas": {
+    "etapa": "enrichment",
+    "municipio": "Tobarra",
+    "localidad": "Aljubé__fiestas de aljubé",
+    "candidatos": 4,
+    "seleccionados": 4,
+    "documentos_distintos": 2,
+    "chunks_duplicados": 0,
+    "chars_contexto": 3242,
+    "chars_unicos": 3059,
+    "pct_unico": 100.0,
+    "tokens_contexto": 1080,
+    "top_documentos": [
+      [
+        "buscadores:snippets",
+        3
+      ],
+      [
+        "https://www.comarcamonastrell.com/programa-de-las-fiestas-de-aljube-2025/",
+        1
+      ]
+    ],
+    "presupuesto": {
+      "presupuesto_chars": 32000
+    },
+    "fiesta": "Fiestas de Aljubé",
+    "dias_consultados": 1,
+    "dias_sin_presupuesto": 0
+  },
+  "chunks": [
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.8825,
+      "score_detalle": {
+        "similitud": 1.0,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 1.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1075,
+      "tokens": 323,
+      "hash": "94ee7fb96576",
+      "seleccionado": true,
+      "muestra": "TITULO: Programa de las fiestas de Aljubé 2025 | Comarca Monastrell | CONTENIDO: Y tendrán lugar durante toda la semana hasta el próximo domingo 18 de mayo. Este martes dieron comi"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.7166,
+      "score_detalle": {
+        "similitud": 0.8313,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.3
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 907,
+      "tokens": 324,
+      "hash": "b454b8f34b11",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas de Aljubé 2026 - Radio Tobarra Municipal - 107.9 FM | CONTENIDO: Estás aquí: InicioFiestasdeAljubé2026FIESTASDE LA PEDANÍA DEALJUBÉ EN HONOR DE SAN ISIDRO LABRADOR "
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6828,
+      "score_detalle": {
+        "similitud": 0.7153,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.3
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 965,
+      "tokens": 334,
+      "hash": "d48400732273",
+      "seleccionado": true,
+      "muestra": "TITULO: Ayuntamiento de Tobarra | Tobarra - Facebook | CONTENIDO: Tobarrase prepara para vivir uno de los momentos más esperados y multitudinarios de susfiestas: la gran Cabalgata "
+    },
+    {
+      "url": "https://www.comarcamonastrell.com/programa-de-las-fiestas-de-aljube-2025/",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.5749,
+      "score_detalle": {
+        "similitud": 0.8803,
+        "spider": 0.5,
+        "programa": 0.06,
+        "temporal": 0.0,
+        "extra": 0.3
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 112,
+      "tokens": 38,
+      "hash": "217aafef8ab0",
+      "seleccionado": true,
+      "muestra": "Programa de las fiestas de Aljubé 2025 | Comarca Monastrell ⏎ PHP Code Snippets ⏎ Powered By : ⏎ XYZScripts.com ⏎ Insert"
+    }
+  ]
+}

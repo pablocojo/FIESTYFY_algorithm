@@ -1,0 +1,217 @@
+{
+  "metricas": {
+    "etapa": "enrichment",
+    "municipio": "Amurrio",
+    "localidad": "Saratxo__fiestas de san nicolas",
+    "candidatos": 8,
+    "seleccionados": 8,
+    "documentos_distintos": 4,
+    "chunks_duplicados": 0,
+    "chars_contexto": 8933,
+    "chars_unicos": 8454,
+    "pct_unico": 100.0,
+    "tokens_contexto": 3359,
+    "top_documentos": [
+      [
+        "buscadores:snippets",
+        4
+      ],
+      [
+        "https://fiestasdepueblos.net/fiesta/fiestas-de-saratxo-saratxo",
+        2
+      ],
+      [
+        "https://fiestasdepueblos.net/pueblos/saratxo",
+        1
+      ],
+      [
+        "https://udala.amurrio.eus/attachments/article/2183/2026_Amurrio_Jai_kartel_orokorra_320x700.pdf",
+        1
+      ]
+    ],
+    "presupuesto": {
+      "presupuesto_chars": 32000
+    },
+    "fiesta": "Fiestas de San Nicolas",
+    "dias_consultados": 1,
+    "dias_sin_presupuesto": 0
+  },
+  "chunks": [
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.8325,
+      "score_detalle": {
+        "similitud": 1.0,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.7
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1109,
+      "tokens": 357,
+      "hash": "762eee43277e",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas de San Nicolás 2026 en Saratxo (Amurrio, Álava) | CONTENIDO: Descubre lasFiestasPatronales2026de San Nicolás en el concejo deSaratxo(Amurrio): misa, comida popular,"
+    },
+    {
+      "url": "https://fiestasdepueblos.net/fiesta/fiestas-de-saratxo-saratxo",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.7434,
+      "score_detalle": {
+        "similitud": 0.6945,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.7
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 826,
+      "tokens": 274,
+      "hash": "3774fb5fdf61",
+      "seleccionado": true,
+      "muestra": "Fiestas de Saratxo 2026 | Fechas, mapa y guía | Fiestas de Pueblos de España ⏎ Cargando fiestas ⏎ Command Palette ⏎ Search for a command to run... ⏎ 🏆 ⏎ Interés Turístico ⏎ Regional ⏎ Fiestas de"
+    },
+    {
+      "url": "https://fiestasdepueblos.net/pueblos/saratxo",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6953,
+      "score_detalle": {
+        "similitud": 0.5296,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.7
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1048,
+      "tokens": 396,
+      "hash": "e8db7156e435",
+      "seleccionado": true,
+      "muestra": "Fiestas en Saratxo (País Vasco) - Calendario 2026 y 2027 | Fiestas de Pueblos de España ⏎ Cargando fiestas ⏎ Command Palette ⏎ Search for a command to run... ⏎ Inicio ⏎ / ⏎ País Vasco ⏎ / ⏎ Álava ⏎ "
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6329,
+      "score_detalle": {
+        "similitud": 0.7156,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1108,
+      "tokens": 406,
+      "hash": "c60188cff2ad",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas de Amurrio 2026 | 12-17 agosto con SÜNE y Benito Kamelas | CONTENIDO: Del 12 al 17 de agosto,Amurriovive susFiestasPatronalesen honor a la Asunción y San Roque. ⏎ TIT"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6263,
+      "score_detalle": {
+        "similitud": 0.6931,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 962,
+      "tokens": 329,
+      "hash": "73bb559297b2",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas Aste Nagusia 2026 en Bilbao: programa, actividades y ... - ABC | CONTENIDO: FiestasAste Nagusia2026en Bilbao:programa, actividades y conciertos gratis La Semana Gra"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.5939,
+      "score_detalle": {
+        "similitud": 0.5819,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 971,
+      "tokens": 364,
+      "hash": "bbead218ebad",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas de Saratxo 2026 | Fechas, mapa y guía | Fiestas de Pueblos de ... | CONTENIDO: Vive lasFiestasdeSaratxo(Álava): tradiciones, verbenas, dantzaris y gastronomía local"
+    },
+    {
+      "url": "https://fiestasdepueblos.net/fiesta/fiestas-de-saratxo-saratxo",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.4933,
+      "score_detalle": {
+        "similitud": 0.4084,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 912,
+      "tokens": 255,
+      "hash": "fb7b919518ea",
+      "seleccionado": true,
+      "muestra": "Los actos habituales que se repiten cada año incluyen: celebración religiosa en la iglesia del pueblo y, cuando existe, romería hacia la ermita; pasacalles con música tradicional; "
+    },
+    {
+      "url": "https://udala.amurrio.eus/attachments/article/2183/2026_Amurrio_Jai_kartel_orokorra_320x700.pdf",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "GENERAL",
+      "score": 0.4899,
+      "score_detalle": {
+        "similitud": 0.694,
+        "spider": 0.5,
+        "programa": 1.0,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1518,
+      "tokens": 807,
+      "hash": "85453624c0b0",
+      "seleccionado": true,
+      "muestra": "HERRIKO KOPA: ATHLETIC - ALAVÉS ⏎ - 19:00 ROMERÍA OTEGI ⏎ - 19:00-22:00 ESPACIO PREVENCIÓN, SENSIBILIZA- ⏎ CIÓN Y ATENCIÓN VIOLENCIAS MACHISTAS ⏎ - 19:30 EXHIBICIÓN EUSKAL DANTZAK ⏎ - 20:30 "
+    }
+  ]
+}

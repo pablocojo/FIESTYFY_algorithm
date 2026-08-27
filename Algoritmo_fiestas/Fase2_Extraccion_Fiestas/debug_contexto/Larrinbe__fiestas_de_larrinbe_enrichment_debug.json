@@ -1,0 +1,231 @@
+{
+  "metricas": {
+    "etapa": "enrichment",
+    "municipio": "Amurrio",
+    "localidad": "Larrinbe__fiestas de larrinbe",
+    "candidatos": 9,
+    "seleccionados": 9,
+    "documentos_distintos": 2,
+    "chunks_duplicados": 0,
+    "chars_contexto": 17322,
+    "chars_unicos": 16983,
+    "pct_unico": 100.0,
+    "tokens_contexto": 8201,
+    "top_documentos": [
+      [
+        "buscadores:snippets",
+        7
+      ],
+      [
+        "https://udala.amurrio.eus/attachments/article/2183/2026_Amurrio_Jai_kartel_orokorra_320x700.pdf",
+        2
+      ]
+    ],
+    "presupuesto": {
+      "presupuesto_chars": 32000
+    },
+    "fiesta": "Fiestas de Larrinbe",
+    "dias_consultados": 3,
+    "dias_sin_presupuesto": 0
+  },
+  "chunks": [
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.7848,
+      "score_detalle": {
+        "similitud": 0.8364,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.7
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1000,
+      "tokens": 338,
+      "hash": "b9f186ad70a0",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas de Santiago de Larrinbe 2026 en Amurrio | 24/07/2026 | CONTENIDO: LasFiestasde Santiago deLarrinbe2026prometen llenar de alegría y tradición el pequeño concejo deLa"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.7789,
+      "score_detalle": {
+        "similitud": 0.8163,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.7
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1005,
+      "tokens": 374,
+      "hash": "af6ee4a86d4f",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas de Santiago 2026 en Larrinbe (Amurrio, Álava) | CONTENIDO: Descubre lasFiestasde Santiago2026en el concejo deLarrinbe(Amurrio): misa, dantzas, motos clásicas, concu"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.7584,
+      "score_detalle": {
+        "similitud": 0.9746,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.3
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1181,
+      "tokens": 424,
+      "hash": "64f59143302e",
+      "seleccionado": true,
+      "muestra": "TITULO: Programa Fiestas de Larrinbe 2026 en Amurrio - kaixo.com | CONTENIDO: LasFiestasde Santiago2026enLarrinbe,Amurrio, se celebrarán el 24 y 25 de julio.<br/><br/>ProgramaFiest"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.7507,
+      "score_detalle": {
+        "similitud": 0.9482,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.3
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1183,
+      "tokens": 503,
+      "hash": "b4044e189ed2",
+      "seleccionado": true,
+      "muestra": "TITULO: Programa Fiestas de Larrinbe 2026 en Amurrio - Kulturklik | CONTENIDO: LasFiestasde Santiago2026enLarrinbe,Amurrio, se celebrarán el 24 y 25 de julio. ProgramaFiestasdeLarr"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.7425,
+      "score_detalle": {
+        "similitud": 1.0,
+        "spider": 0.5,
+        "programa": 0.2,
+        "temporal": 1.0,
+        "extra": 0.3
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 977,
+      "tokens": 401,
+      "hash": "d7ae089460d5",
+      "seleccionado": true,
+      "muestra": "TITULO: Programa Fiestas de Larrinbe 2026 en Amurrio - Kulturklik | CONTENIDO: LasFiestasde Santiago2026enLarrinbe, Amurrio, se celebrarán el 24 y 25 de julio. ⏎ TITULO: Fiestas de L"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6693,
+      "score_detalle": {
+        "similitud": 0.8405,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1089,
+      "tokens": 371,
+      "hash": "6950c630e350",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas de Llanteno, Larrinbe y Lantarón 2026: programas completos | CONTENIDO: Consulta los programas completos de lasfiestasde Llanteno,Larrinbey Lantarón con todos los h"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6235,
+      "score_detalle": {
+        "similitud": 0.6835,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1056,
+      "tokens": 375,
+      "hash": "b2414c7d9f30",
+      "seleccionado": true,
+      "muestra": "TITULO: Programa Aste Nagusia 2026 (Fiestas de Bilbao 2026) - Kulturklik | CONTENIDO: Bilbao celebrará la Aste Nagusia2026del 22 al 30 de agosto. Nueve días defiestaen los que los "
+    },
+    {
+      "url": "https://udala.amurrio.eus/attachments/article/2183/2026_Amurrio_Jai_kartel_orokorra_320x700.pdf",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "GENERAL",
+      "score": 0.449,
+      "score_detalle": {
+        "similitud": 0.5536,
+        "spider": 0.5,
+        "programa": 1.0,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1518,
+      "tokens": 807,
+      "hash": "85453624c0b0",
+      "seleccionado": true,
+      "muestra": "HERRIKO KOPA: ATHLETIC - ALAVÉS ⏎ - 19:00 ROMERÍA OTEGI ⏎ - 19:00-22:00 ESPACIO PREVENCIÓN, SENSIBILIZA- ⏎ CIÓN Y ATENCIÓN VIOLENCIAS MACHISTAS ⏎ - 19:30 EXHIBICIÓN EUSKAL DANTZAK ⏎ - 20:30 "
+    },
+    {
+      "url": "https://udala.amurrio.eus/attachments/article/2183/2026_Amurrio_Jai_kartel_orokorra_320x700.pdf",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "GENERAL",
+      "score": 0.4426,
+      "score_detalle": {
+        "similitud": 0.5318,
+        "spider": 0.5,
+        "programa": 1.0,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 7974,
+      "tokens": 4479,
+      "hash": "3e848296379e",
+      "seleccionado": true,
+      "muestra": "## Columna 1 de 4 ⏎ ### 1 LARUNBATA ⏎ - 18:00 SANTUAREN JAITSIERA ⏎ ### 9 IGANDEA ⏎ - 21:30 ZINEMA KALEAN: WOLFGANG ⏎ ### 11 ASTEARTEA ⏎ - 20:00 KUADRILLEN ARTEKO SOKA SALTO LEHIAKETA ⏎ ### 12 A"
+    }
+  ]
+}

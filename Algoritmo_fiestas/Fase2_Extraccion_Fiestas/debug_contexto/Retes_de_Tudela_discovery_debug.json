@@ -1,0 +1,50 @@
+{
+  "metricas": {
+    "etapa": "discovery",
+    "municipio": "Artziniega",
+    "localidad": "Retes de Tudela",
+    "candidatos": 1,
+    "seleccionados": 1,
+    "documentos_distintos": 1,
+    "chunks_duplicados": 0,
+    "chars_contexto": 165,
+    "chars_unicos": 34,
+    "pct_unico": 100.0,
+    "tokens_contexto": 54,
+    "top_documentos": [
+      [
+        "http://artziniega.eus/fiestas",
+        1
+      ]
+    ],
+    "presupuesto": {
+      "presupuesto_chars": 20000,
+      "query_embedding_ok": true,
+      "umbral": 0.35
+    },
+    "query_discovery": "Fiestas, programa, cartel, eventos, actividades en Artziniega para la localidad de Retes de Tudela en el año 2026"
+  },
+  "chunks": [
+    {
+      "url": "http://artziniega.eus/fiestas",
+      "fuente": "web_municipio",
+      "es_calendario": false,
+      "prioridad": 2,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.416,
+      "score_detalle": {
+        "similitud": 0.5,
+        "spider": 0.5,
+        "programa": 0.2,
+        "temporal": 0.5
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 34,
+      "tokens": 10,
+      "hash": "b5e59e96906a",
+      "seleccionado": true,
+      "muestra": "Programa de fiestas de San Vitores"
+    }
+  ]
+}

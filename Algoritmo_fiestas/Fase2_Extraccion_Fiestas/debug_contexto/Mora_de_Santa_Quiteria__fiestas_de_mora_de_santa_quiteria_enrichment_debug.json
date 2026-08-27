@@ -1,0 +1,555 @@
+{
+  "metricas": {
+    "etapa": "enrichment",
+    "municipio": "Tobarra",
+    "localidad": "Mora de Santa Quiteria__fiestas de mora de santa quiteria",
+    "candidatos": 23,
+    "seleccionados": 30,
+    "documentos_distintos": 7,
+    "chunks_duplicados": 7,
+    "chars_contexto": 29894,
+    "chars_unicos": 23704,
+    "pct_unico": 75.7,
+    "tokens_contexto": 10002,
+    "top_documentos": [
+      [
+        "https://www.radiotobarra.es/wp-content/uploads/Mora26.pdf",
+        14
+      ],
+      [
+        "buscadores:snippets",
+        8
+      ],
+      [
+        "https://www.comarcamonastrell.com/mora-de-santa-quiteria-se-prepara-para-un-gran-fin-de-semana-de-fiestas-en-honor-a-su-patrona/",
+        3
+      ],
+      [
+        "https://www.radiotobarra.es/mora26/",
+        2
+      ],
+      [
+        "https://www.comarcamonastrell.com/tag/mora-de-sta-quiteria/",
+        1
+      ],
+      [
+        "https://es.wikipedia.org/wiki/Mora_de_Santa_Quiteria",
+        1
+      ]
+    ],
+    "presupuesto": {
+      "presupuesto_chars": 32000
+    },
+    "fiesta": "Fiestas de Mora de Santa Quiteria",
+    "dias_consultados": 3,
+    "dias_sin_presupuesto": 0
+  },
+  "chunks": [
+    {
+      "url": "https://www.comarcamonastrell.com/mora-de-santa-quiteria-se-prepara-para-un-gran-fin-de-semana-de-fiestas-en-honor-a-su-patrona/",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.9292,
+      "score_detalle": {
+        "similitud": 1.0,
+        "spider": 0.5,
+        "programa": 1.0,
+        "temporal": 1.0,
+        "extra": 0.3
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1194,
+      "tokens": 424,
+      "hash": "58e06c9570c5",
+      "seleccionado": true,
+      "muestra": "En este artículo, mostraremos la programación completa de unos festejos que arrancarán el 22 de mayo y se alargarán hasta el día 24. ⏎ Programación de las fiestas de Mora de Santa Qu"
+    },
+    {
+      "url": "https://www.radiotobarra.es/wp-content/uploads/Mora26.pdf",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.772,
+      "score_detalle": {
+        "similitud": 0.7446,
+        "spider": 0.5,
+        "programa": 0.86,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1194,
+      "tokens": 436,
+      "hash": "cebe60286cd4",
+      "seleccionado": false,
+      "muestra": "0 02:00H. Seguimos de marcha ⏎ con Dj Maxi hasta que el cuerpo aguante. ⏎ Y AA ⏎ av ES ⏎ Domingo 2 ⏎ 4 de Mayo ⏎ 0 10:30H. Pasacalles ⏎ A cargo de Banda Hermandad Santa Cruz de ⏎ la Toalla de Toba"
+    },
+    {
+      "url": "https://www.radiotobarra.es/wp-content/uploads/Mora26.pdf",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.7595,
+      "score_detalle": {
+        "similitud": 0.7612,
+        "spider": 0.5,
+        "programa": 1.0,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1174,
+      "tokens": 457,
+      "hash": "d652b268e32a",
+      "seleccionado": false,
+      "muestra": "A Te. ⏎ dE Ne ⏎ Mora de Santa Quiteria ⏎ Viernes 22 de Mayo ⏎ 0 10:30H. Disparo de cohetes. ⏎ Ó 11:00H. Misa en honor a Santa Quiteria ⏎ 0 16:00H. Concurso de dominó. ⏎ Con premio para el venced"
+    },
+    {
+      "url": "https://www.comarcamonastrell.com/mora-de-santa-quiteria-se-prepara-para-un-gran-fin-de-semana-de-fiestas-en-honor-a-su-patrona/",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.7159,
+      "score_detalle": {
+        "similitud": 0.6118,
+        "spider": 0.5,
+        "programa": 1.0,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1139,
+      "tokens": 370,
+      "hash": "3cf93bf157c8",
+      "seleccionado": true,
+      "muestra": "23:00h. Espectacular noche de baile con el Dúo Maxi. ⏎ 2:00h. Seguimos de marcha con DJ Maxi hasta que el cuerpo aguante. ⏎ Domingo 24 de mayo ⏎ 10:30h. Pasacalles. ⏎ A cargo de Banda Herm"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.7032,
+      "score_detalle": {
+        "similitud": 0.9566,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1006,
+      "tokens": 344,
+      "hash": "46629f16c4aa",
+      "seleccionado": true,
+      "muestra": "TITULO: Mora de Santa Quiteria se prepara para un gran fin de semana de fiestas ... | CONTENIDO: Desde el viernes y hasta el domingo, la población disfrutarádeuna programación carg"
+    },
+    {
+      "url": "https://www.comarcamonastrell.com/tag/mora-de-sta-quiteria/",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.697,
+      "score_detalle": {
+        "similitud": 0.9355,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 781,
+      "tokens": 269,
+      "hash": "18f5873dc806",
+      "seleccionado": true,
+      "muestra": "Etiqueta: ⏎ Mora de Sta. Quiteria ⏎ Mora de Santa Quiteria se prepara para un gran fin de semana de fiestas en honor a su patrona ⏎ 20 de mayo de 2026 ⏎ La comisión de fiestas de esta peda"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6793,
+      "score_detalle": {
+        "similitud": 0.8747,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1157,
+      "tokens": 350,
+      "hash": "aa257cac6731",
+      "seleccionado": true,
+      "muestra": "TITULO: Mora de Santa Quiteria se prepara para un gran fin de semana de fiestas ... | CONTENIDO: Desde el viernes y hasta el domingo, la población disfrutarádeuna programación carg"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6722,
+      "score_detalle": {
+        "similitud": 0.8503,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1101,
+      "tokens": 380,
+      "hash": "f10c1a4ec11a",
+      "seleccionado": true,
+      "muestra": "TITULO: PROGRAMACIÓN | Tradición y fiesta marcan los días grandes de Santa ... | CONTENIDO: Almassora se prepara para vivir del 15 al 24demayo susfiestaspatronalesen honor aSantaQu"
+    },
+    {
+      "url": "https://www.comarcamonastrell.com/mora-de-santa-quiteria-se-prepara-para-un-gran-fin-de-semana-de-fiestas-en-honor-a-su-patrona/",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6527,
+      "score_detalle": {
+        "similitud": 0.7516,
+        "spider": 0.5,
+        "programa": 0.34,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1106,
+      "tokens": 355,
+      "hash": "2150c672d1f0",
+      "seleccionado": true,
+      "muestra": "Mora de Santa Quiteria se prepara para un gran fin de semana de fiestas en honor a su patrona | Comarca Monastrell ⏎ Envelope ⏎ Facebook ⏎ Instagram ⏎ Actualidad ⏎ Municipios ⏎ Albatana ⏎ Fuente"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6471,
+      "score_detalle": {
+        "similitud": 0.7643,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1126,
+      "tokens": 376,
+      "hash": "2af1f7152b4e",
+      "seleccionado": true,
+      "muestra": "TITULO: Mora de Santa Quiteria - Wikipedia, la enciclopedia libre | CONTENIDO: Lasfiestaspatronales son el 22demayoy en ellas se procesiona la imagendeSantaQuiteriaa travésdelas ca"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.647,
+      "score_detalle": {
+        "similitud": 0.7641,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1182,
+      "tokens": 393,
+      "hash": "da9d191d5758",
+      "seleccionado": true,
+      "muestra": "TITULO: Santa Quiteria 2026 · Fiestas de Alpedrete: programa y fechas | CONTENIDO: LafiestadeSantaQuiteriaen Alpedrete (Madrid) es la celebración patronal que combina actos litúrgi"
+    },
+    {
+      "url": "https://www.radiotobarra.es/mora26/",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.6086,
+      "score_detalle": {
+        "similitud": 0.7924,
+        "spider": 0.5,
+        "programa": 0.1,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 854,
+      "tokens": 295,
+      "hash": "2fd3027ae236",
+      "seleccionado": true,
+      "muestra": "Conversaciones 2023 ⏎ Conversaciones 2019 ⏎ Conversaciones 2015 ⏎ Conversaciones 2011 ⏎ Conversaciones 2007 ⏎ Conversaciones 2003 ⏎ Conversaciones 1999 ⏎ Conversaciones 1995 ⏎ Conversaciones 1991 ⏎ "
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.5994,
+      "score_detalle": {
+        "similitud": 0.6807,
+        "spider": 0.5,
+        "programa": 0.2,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 901,
+      "tokens": 305,
+      "hash": "2f236d526b9f",
+      "seleccionado": true,
+      "muestra": "TITULO: Fiestas en Tobarra (Castilla-la Mancha) - Calendario 2026 y 2027 ... | CONTENIDO: Descubre lasfiestasdeTobarra(Albacete) en Castilla-la Mancha. Calendario completodefiestas"
+    },
+    {
+      "url": "https://www.radiotobarra.es/wp-content/uploads/Mora26.pdf",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.5966,
+      "score_detalle": {
+        "similitud": 0.7513,
+        "spider": 0.5,
+        "programa": 0.1,
+        "temporal": 0.5,
+        "extra": 0.3
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1189,
+      "tokens": 363,
+      "hash": "af1726f5aa2c",
+      "seleccionado": false,
+      "muestra": "Os invitamos a participar en cada acto, a disfrutar de ⏎ nuestra música, de nuestra gastronomía y, por encima de todo, ⏎ de la compañía de los demás. Que el respeto y la convivencia ⏎ se"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.5946,
+      "score_detalle": {
+        "similitud": 0.7558,
+        "spider": 0.5,
+        "programa": 0.3,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1145,
+      "tokens": 366,
+      "hash": "2f8eec2cc4fe",
+      "seleccionado": true,
+      "muestra": "TITULO: Mora de Santa Quiteria | CONTENIDO: EnMoradeSantaQuiteria, se festejan susfiestaspatronalesel 22deMayo, realizándose la tradicional procesión por el pueblo, con un recorrid"
+    },
+    {
+      "url": "https://www.radiotobarra.es/mora26/",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.5855,
+      "score_detalle": {
+        "similitud": 0.6331,
+        "spider": 0.5,
+        "programa": 0.2,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1185,
+      "tokens": 529,
+      "hash": "7110fa909eea",
+      "seleccionado": true,
+      "muestra": "Fiestas de Mora 2026 – Radio Tobarra Municipal – 107.9 FM ⏎ Saltar al contenido ⏎ Programación ⏎ Programas ⏎ Tobarra a la una ⏎ Tras el Cristal (semanal) ⏎ Tras el Cristal (Anuarios Sonoros) ⏎ 2"
+    },
+    {
+      "url": "https://www.radiotobarra.es/wp-content/uploads/Mora26.pdf",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.564,
+      "score_detalle": {
+        "similitud": 0.7309,
+        "spider": 0.5,
+        "programa": 0.2,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1191,
+      "tokens": 378,
+      "hash": "73fb33a647b6",
+      "seleccionado": false,
+      "muestra": "MAYO? ⏎ EZE ⏎ a ⏎ I ⏎ EN 1 ⏎ GN ⏎ Ni ⏎ d ⏎ ÍAS 09, ⏎ d o ⏎ e ZN d ⏎ EO E ⏎ ## Columna 1 de 2 ⏎ Saluda ⏎ Queridos vecinos, vecinas de Mora de Santa Quiteria: ⏎ En este mes de mayo, la pedanía se viste de gala pa"
+    },
+    {
+      "url": "buscadores:snippets",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.5439,
+      "score_detalle": {
+        "similitud": 0.7419,
+        "spider": 0.5,
+        "programa": 0.1,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1015,
+      "tokens": 350,
+      "hash": "9532d6600c3f",
+      "seleccionado": true,
+      "muestra": "TITULO: Comisión de fiestas de Mora de Sta Quiteria - Facebook | CONTENIDO: Por primera vez en la pedaníadeMoratendremos una degustacióndeVinos y jamón ibérico , con cortadordejamó"
+    },
+    {
+      "url": "https://www.radiotobarra.es/wp-content/uploads/Mora26.pdf",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.5369,
+      "score_detalle": {
+        "similitud": 0.6381,
+        "spider": 0.5,
+        "programa": 0.2,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1150,
+      "tokens": 350,
+      "hash": "1e763731731c",
+      "seleccionado": false,
+      "muestra": "el fervor a la Santa nos guíen en unos días de convivencia ⏎ inolvidables. ⏎ Recibid un afectuoso abrazo. ⏎ ¡Viva Santa Quiteria! ⏎ ## Columna 2 de 2 ⏎ Alcaldesa ⏎ de Tobarra ⏎ Estefanía Escriba"
+    },
+    {
+      "url": "https://www.radiotobarra.es/wp-content/uploads/Mora26.pdf",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.5365,
+      "score_detalle": {
+        "similitud": 0.5451,
+        "spider": 0.5,
+        "programa": 0.1,
+        "temporal": 1.0,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1199,
+      "tokens": 403,
+      "hash": "e369cc7ee067",
+      "seleccionado": false,
+      "muestra": "Cuando uno se siente comunidad, cuando se sabe vecino y casi ⏎ hermano, nace una experiencia muy honda de cercanía que hace bien ⏎ al corazón. Ese calor humano, esa atención sencilla e"
+    },
+    {
+      "url": "https://es.wikipedia.org/wiki/Mora_de_Santa_Quiteria",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.5349,
+      "score_detalle": {
+        "similitud": 0.6312,
+        "spider": 0.5,
+        "programa": 0.2,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 1160,
+      "tokens": 346,
+      "hash": "5b02bad2c7a0",
+      "seleccionado": true,
+      "muestra": "Desde el punto de vista demográfico, Mora de Santa Quiteria alcanzó su mayor desarrollo durante la década de 1950, cuando llegó a contar con aproximadamente 500 habitantes. En las "
+    },
+    {
+      "url": "https://www.radiotobarra.es/wp-content/uploads/Mora26.pdf",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.5277,
+      "score_detalle": {
+        "similitud": 0.6064,
+        "spider": 0.5,
+        "programa": 0.2,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 513,
+      "tokens": 156,
+      "hash": "9ca7656188bc",
+      "seleccionado": false,
+      "muestra": "Estas fiestas de Santa Quiteria tienen un brillo diferente, pues nos falta la ⏎ sonrisa y la presencia de Agustín. No hay mejor homenaje para un hom- ⏎ bre que amó su tierra que record"
+    },
+    {
+      "url": "https://www.facebook.com/100083277640210/",
+      "fuente": "busqueda_web",
+      "es_calendario": false,
+      "prioridad": 6,
+      "relevancia_geo": "DIRECTA",
+      "score": 0.513,
+      "score_detalle": {
+        "similitud": 0.7159,
+        "spider": 0.5,
+        "programa": 0.0,
+        "temporal": 0.5,
+        "extra": 0.0
+      },
+      "score_spider": 0,
+      "rank_spider": null,
+      "chars": 42,
+      "tokens": 14,
+      "hash": "e1d89f7f93d8",
+      "seleccionado": true,
+      "muestra": "Asoc. ⏎ de Vecinos de Mora de Santa Quiteria"
+    }
+  ]
+}

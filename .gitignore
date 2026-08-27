@@ -18,3 +18,6 @@ Algoritmo_fiestas/Fase1_recogida_datos_wiki/ejemplo_completo.json
 ## Algoritmo_fiestas/Fase1_recogida_datos_wiki/lugares_espana.json
 ## Algoritmo_fiestas/Fase1_recogida_datos_wiki/municipios.json
 Algoritmo_fiestas/Fase1_recogida_datos_wiki/munis_hasta1800_20_junio.json
+
+# Cache en disco de paginas descargadas (Fase 2): se regenera sola
+caches/
