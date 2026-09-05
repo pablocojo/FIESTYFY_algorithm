@@ -294,6 +294,47 @@ LMSTUDIO_CHAT_URL = f"{LMSTUDIO_BASE_URL}/v1/chat/completions"
 
 LMSTUDIO_EMBEDDING_MODEL = "text-embedding-baai-bge-m3-568m"
 
+# ─────────────────────────────────────────────
+# SEARXNG (buscador propio)
+# ─────────────────────────────────────────────
+# Metabuscador autoalojado. Sustituye al scrapeo de HTML de DuckDuckGo como
+# motor primario por un motivo medido: en la ejecución del 2026-09-05 (semilla
+# 7), 101 de 273 fiestas (36%) llegaron al localizador con UN dominio o menos en
+# el contexto, y 21 de 35 fiestas quedaron sin programa. El caso testigo es El
+# Barraco: 1037 caracteres de contexto, una sola URL —pueblus.com, un directorio
+# SEO— y `elbarraco.org` ausente pese a existir. El modelo no elegía mal: no
+# tenía nada que elegir.
+#
+# SearXNG consulta varios motores a la vez y fusiona, así que un bloqueo de
+# DuckDuckGo deja de dejar la consulta a ciegas. Devuelve JSON, con lo que no
+# hay HTML que parsear ni redirecciones bing.com/ck/a que deshacer.
+#
+# Corre en el mismo host que LM Studio (contenedor `searxng`, puerto 8888,
+# --restart always).
+SEARXNG_HOST = LMSTUDIO_HOST
+SEARXNG_BASE_URL = f"http://{SEARXNG_HOST}:8888"
+SEARXNG_SEARCH_URL = f"{SEARXNG_BASE_URL}/search"
+SEARXNG_TIMEOUT = 20            # segundos
+SEARXNG_IDIOMA = "es"
+# Tope de resultados que se piden. Va alto a propósito: el localizador no
+# responde preguntas, ELIGE URLs, y para eso necesita ancho de miras. Es el
+# mismo criterio que PROGRAM_LOCATOR_MAX_CANDIDATES (20).
+SEARXNG_MAX_RESULTADOS = 20
+
+# Directorios y agregadores SEO. No se eliminan —en municipios sin web propia
+# son lo único que hay—, se hunden en la ordenación para que no le tapen al
+# localizador la fuente oficial. La lista sale de las 9 fiestas que en la
+# ejecución del 2026-09-05 acabaron señalando uno de estos dominios y
+# devolvieron cero actos.
+DOMINIOS_AGREGADORES = (
+    "festivalesdeespana.com",
+    "pueblus.com",
+    "defiestaenfiesta.es",
+    "demercadosmedievales.es",
+    "turismoalmanzora.com",
+    "grada.es",
+)
+
 # Modelo de DESARROLLO (2026-09-01): a 26 tok/s en GPU (8GB, RTX 4060) frente a
 # los ~2,5 tok/s del 27B en CPU — mismo contexto real de Tobarra que antes daba
 # 0 actos, aquí dio 17 días y 20 actos en 69s con una sola llamada. Es un

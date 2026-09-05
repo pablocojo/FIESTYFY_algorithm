@@ -206,5 +206,21 @@
   "verificado_por": "web_oficial_y_busqueda",
   "fecha_verificacion": "2026-09-05",
   "pendiente_apps": true
+ },
+ "09330000000": {
+  "instagram": null,
+  "facebook": "https://www.facebook.com/salas.delosinfantes",
+  "twitter": null,
+  "verificado_por": "web_oficial_y_busqueda",
+  "fecha_verificacion": "2026-09-05",
+  "pendiente_apps": true
+ },
+ "06068000000": {
+  "instagram": "https://www.instagram.com/aytohinojosadelvalle",
+  "facebook": "https://www.facebook.com/profile.php?id=100063676203321",
+  "twitter": null,
+  "verificado_por": "web_oficial_y_busqueda",
+  "fecha_verificacion": "2026-09-06",
+  "pendiente_apps": true
  }
 }

@@ -10,6 +10,7 @@ import urllib.parse
 import logging
 import re
 import unicodedata
+import json
 
 import aiohttp
 from bs4 import BeautifulSoup
@@ -30,6 +31,11 @@ from config import (
     USER_AGENT,
     MIN_RESULTADOS_DESEADOS,
     MAX_MOTORES_POR_CONSULTA,
+    SEARXNG_SEARCH_URL,
+    SEARXNG_TIMEOUT,
+    SEARXNG_IDIOMA,
+    SEARXNG_MAX_RESULTADOS,
+    DOMINIOS_AGREGADORES,
     BUSQUEDA_SEGUIR_PDFS,
     BUSQUEDA_MAX_PDFS_POR_PAGINA,
     BUSQUEDA_MAX_PDFS_TOTAL,
@@ -379,6 +385,12 @@ def _priorizar_urls(urls: list[str], localidad: dict, municipio: dict) -> list[s
       2. Es un PDF (el programa suele serlo).
       3. La URL menciona programa/cartel/fiestas/agenda.
       4. La URL menciona el nombre de la localidad.
+      5. PENALIZACIÓN si es un directorio SEO conocido.
+
+    El criterio 5 se añadió el 2026-09-06: de las 21 fiestas sin programa de la
+    ejecución del 2026-09-05, 9 habían acabado señalando un agregador. Se hunde
+    en vez de eliminarse porque en municipios sin web propia es lo único que hay,
+    y un directorio con las fechas bien vale más que nada.
 
     Es una ordenación estable: a igualdad de puntuación se respeta el orden de
     llegada, que ya venía por calidad del motor.
@@ -411,6 +423,11 @@ def _priorizar_urls(urls: list[str], localidad: dict, municipio: dict) -> list[s
             p += 20
         if nombre_loc and len(nombre_loc) >= 4 and nombre_loc in un:
             p += 10
+        if any(d in u for d in DOMINIOS_AGREGADORES):
+            # -60 lo deja por debajo de cualquier pista de programa (+20) pero
+            # sin poder superar al dominio oficial (+100): si la web del
+            # ayuntamiento aparece, gana siempre.
+            p -= 60
         return p
 
     return sorted(urls, key=lambda u: -puntuar(u))
@@ -463,6 +480,69 @@ def calculate_backoff_delay(attempt: int, base_backoff: float = DDG_RETRY_BACKOF
     Fórmula: (base_backoff * (2 ** attempt)) + random.uniform(0.5, 2.0)
     """
     return (base_backoff * (2 ** attempt)) + random.uniform(0.5, 2.0)
+
+def _sync_fetch_searxng(query: str) -> list[dict]:
+    """Metabuscador propio. Es el motor primario.
+
+    A diferencia de los demás no se scrapea HTML: SearXNG devuelve JSON, así que
+    no hay que parsear ni deshacer redirecciones. Y como por dentro consulta
+    varios motores y fusiona, un bloqueo puntual de uno de ellos ya no deja la
+    consulta a ciegas, que era lo que producía los contextos de una sola URL.
+
+    Se enfría igual que el resto si deja de responder, pero por otro motivo: aquí
+    un fallo significa que el contenedor no está levantado, no que nos hayan
+    detectado. El aviso lo dice para no mandar a nadie a buscar un bloqueo que no
+    existe.
+    """
+    params = urllib.parse.urlencode({
+        "q": query,
+        "format": "json",
+        "language": SEARXNG_IDIOMA,
+    })
+    url = f"{SEARXNG_SEARCH_URL}?{params}"
+
+    try:
+        status, body = _http_get(url, timeout=SEARXNG_TIMEOUT)
+    except Exception as e:
+        _enfriar_motor("SearXNG")
+        logger.warning(
+            f"  [SearXNG] no responde ({type(e).__name__}). ¿Está levantado el "
+            f"contenedor en {SEARXNG_SEARCH_URL}? Se sigue con los otros motores."
+        )
+        return []
+
+    if status != 200 or not body:
+        _enfriar_motor("SearXNG")
+        logger.warning(
+            f"  [SearXNG] HTTP {status} en {SEARXNG_SEARCH_URL}. Si es un 403, "
+            f"revisar que `formats: [html, json]` sigue en su settings.yml."
+        )
+        return []
+
+    try:
+        datos = json.loads(body.decode("utf-8", errors="replace"))
+    except ValueError:
+        # Sin `json` en los formatos permitidos, SearXNG sirve HTML con un 200:
+        # se detecta aquí y no como un fallo de red.
+        _enfriar_motor("SearXNG")
+        logger.warning(
+            "  [SearXNG] respondió algo que no es JSON. Falta `formats: [html, "
+            "json]` en settings.yml."
+        )
+        return []
+
+    resultados = []
+    for item in (datos.get("results") or [])[:SEARXNG_MAX_RESULTADOS]:
+        u = (item.get("url") or "").strip()
+        if not u:
+            continue
+        resultados.append({
+            "titulo": (item.get("title") or "").strip(),
+            "snippet": (item.get("content") or "").strip(),
+            "url": u,
+        })
+    return resultados
+
 
 def _sync_fetch_ddg(query: str) -> list[dict]:
     encoded_query = urllib.parse.quote_plus(query)
@@ -648,7 +728,13 @@ async def _fetch_search_results(session: aiohttp.ClientSession, query: str) -> l
     # Orden por calidad medida el 2026-08-21, no por azar. DuckDuckGo devolvió
     # los resultados correctos de forma consistente; Bing va el último porque,
     # aunque responde siempre, envenena en cuanto detecta scraping.
+    #
+    # SearXNG va primero desde el 2026-09-06: consulta varios motores por dentro
+    # y fusiona, así que aporta más dominios distintos por consulta que
+    # cualquiera de los de abajo por separado. Los demás se quedan de reserva
+    # hasta tener una ejecución comparada con la semilla 7.
     engines = [
+        ("SearXNG", _sync_fetch_searxng),
         ("DuckDuckGo", _sync_fetch_ddg),
         ("DDG-lite", _sync_fetch_ddg_lite),
         ("Brave", _sync_fetch_brave),

@@ -45,3 +45,25 @@ def _volcado_de_contexto_aislado(tmp_path, monkeypatch):
     import debug_contexto
 
     monkeypatch.setattr(debug_contexto, "DIR_DEBUG", Path(tmp_path) / "debug_contexto")
+
+
+@pytest.fixture(autouse=True)
+def _searxng_fuera_de_los_tests():
+    """Ningún test sale a la red contra SearXNG.
+
+    Añadido el 2026-09-06, al entrar SearXNG como motor primario. El host
+    configurado (172.19.96.1) es alcanzable de verdad desde Windows, así que la
+    suite empezó a pegarle al contenedor: `test_el_motor_no_se_toca_si_la_
+    consulta_esta_guardada` falló porque SearXNG devolvió resultados suficientes
+    y DuckDuckGo —el motor que ese test simula— ya no llegó a consultarse.
+
+    Un test que pasa o falla según si Docker está arrancado no prueba nada. Se
+    usa el enfriamiento que ya existe en vez de sustituir la función, para que el
+    orquestador lo salte por el mismo camino que en producción. Los tests que sí
+    quieren ejercitar SearXNG limpian `_ENGINE_COOLDOWN` en su propio fixture.
+    """
+    import scraper.google_search as gs
+
+    gs._ENGINE_COOLDOWN["SearXNG"] = float("inf")
+    yield
+    gs._ENGINE_COOLDOWN.pop("SearXNG", None)

@@ -1,7 +1,7 @@
 {
   "version": 2,
   "anno": 2026,
-  "ultimo_municipio_procesado": "09330000000",
+  "ultimo_municipio_procesado": "06068000000",
   "municipios_completados": [
     "04049000000",
     "04097000000",
@@ -10,7 +10,8 @@
     "06158000000",
     "04076000000",
     "04093000000",
-    "09330000000"
+    "09330000000",
+    "06068000000"
   ],
   "localidades_completadas": [
     "04049000101",
@@ -34,7 +35,8 @@
     "09330000101",
     "09330000201",
     "09330000301",
-    "09330000501"
+    "09330000501",
+    "06068000101"
   ],
   "fiestas": [
     {
@@ -2150,6 +2152,144 @@
       "programa_estado": "no_encontrado",
       "lat": 42.04731486,
       "lng": -3.250035386
+    },
+    {
+      "id": "carnaval-hinojosa-del-valle-2026",
+      "lugar_id": "06068000101",
+      "nombre": "Carnaval de Hinojosa del Valle 2026",
+      "fecha_inicio": "2026-02-12",
+      "fecha_fin": "2026-02-17",
+      "tamano": "grande",
+      "descripcion": "Celebración popular de invierno en Hinojosa del Valle, con disfraces, comparsas, charangas y actividades en la Plaza de España. Entrada gratuita.",
+      "confianza": "baja",
+      "fuentes": [
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Hinojosa del Valle",
+      "solo_fuentes_no_oficiales": true,
+      "programa": [],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "url_programa": "https://hinojosadelvalle.com/carnaval-2026/",
+      "sin_programa_publicado": true,
+      "programa_estado": "no_encontrado",
+      "lat": 38.48282136,
+      "lng": -6.185309623
+    },
+    {
+      "id": "semana-santa-hinojosa-del-valle-2026",
+      "lugar_id": "06068000101",
+      "nombre": "Semana Santa de Hinojosa del Valle",
+      "fecha_inicio": "2026-04-02",
+      "fecha_fin": "2026-04-03",
+      "tamano": "grande",
+      "descripcion": "Celebración de la Semana Santa en Hinojosa del Valle, incluyendo procesiones y música sacra.",
+      "confianza": "baja",
+      "fuentes": [
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Hinojosa del Valle",
+      "solo_fuentes_no_oficiales": true,
+      "programa": [],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "url_programa": "https://www.festivalesdeespana.com/festival/semana-santa-de-hinojosa-del-valle",
+      "sin_programa_publicado": true,
+      "programa_estado": "no_encontrado",
+      "lat": 38.48282136,
+      "lng": -6.185309623
+    },
+    {
+      "id": "hinojosa-festival-2026",
+      "lugar_id": "06068000101",
+      "nombre": "Hinojosa Festival 2026",
+      "fecha_inicio": "2026-07-18",
+      "fecha_fin": "2026-07-18",
+      "tamano": "grande",
+      "descripcion": "Festival de música en directo con actuaciones de Pablo Carrasco, Sweet Suarez, Barrio Fino, Combo Perfecto, Borja Moreno y Valeria Cruz. Celebración en la Plaza de Toros con entrada gratuita desde las 21:30 hasta las 07:00 horas.",
+      "confianza": "baja",
+      "fuentes": [
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Hinojosa del Valle",
+      "solo_fuentes_no_oficiales": true,
+      "programa": [],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "url_programa": "https://www.hinojosafestival.com/",
+      "sin_programa_publicado": true,
+      "programa_estado": "no_encontrado",
+      "lat": 38.48282136,
+      "lng": -6.185309623
+    },
+    {
+      "id": "fiestas-patronales-hinojosa-del-valle-2026",
+      "lugar_id": "06068000101",
+      "nombre": "Fiestas Patronales de Hinojosa del Valle",
+      "fecha_inicio": "2026-08-15",
+      "fecha_fin": "2026-08-18",
+      "tamano": "grande",
+      "descripcion": "Celebración principal de Hinojosa del Valle en agosto, incluyendo verbenas, casetas, actos religiosos, deportivos y la Fiesta Acuática. Incluye eventos como el partido Locales vs Emigrantes y concursos populares.",
+      "confianza": "alta",
+      "fuentes": [
+        "web_municipio",
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Hinojosa del Valle",
+      "solo_fuentes_no_oficiales": false,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-08-15",
+          "eventos": [
+            {
+              "hora": "14:00",
+              "descripcion": "DÚO ALWAYS"
+            },
+            {
+              "hora": "16:30",
+              "descripcion": "CHARANGA LOS DISONANTES"
+            },
+            {
+              "hora": "23:00",
+              "descripcion": "TRIBUTO A LA RUMBA POR CHAITO & PALO SANTO"
+            },
+            {
+              "hora": "23:00",
+              "descripcion": "JAVI SÁNCHEZ SOLO NOISE DJ"
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-08-16",
+          "eventos": [
+            {
+              "hora": "14:00",
+              "descripcion": "CHARANGA LOS PINTORES"
+            },
+            {
+              "hora": "16:30",
+              "descripcion": "SUSO SÁNCHEZ"
+            },
+            {
+              "hora": "23:00",
+              "descripcion": "DJ MESSI"
+            }
+          ]
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "url_programa": "https://www.bandomovil.com/hinojosadelvalle",
+      "cobertura_dias": 1.0,
+      "programa_estado": "completo",
+      "lat": 38.48282136,
+      "lng": -6.185309623
     }
   ]
 }

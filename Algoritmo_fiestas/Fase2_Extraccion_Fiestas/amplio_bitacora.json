@@ -113,6 +113,20 @@
       "localidades_sin_fiesta": 2,
       "cortado_por_tope": false,
       "codigo_salida": 0
+    },
+    {
+      "municipio": "Hinojosa del Valle",
+      "id": "06068000000",
+      "provincia": "Badajoz",
+      "poblacion": 477,
+      "localidades": 2,
+      "minutos": 12.8,
+      "min_por_localidad": 6.4,
+      "fiestas": 4,
+      "localidades_con_fiesta": 1,
+      "localidades_sin_fiesta": 1,
+      "cortado_por_tope": false,
+      "codigo_salida": 0
     }
   ]
 }

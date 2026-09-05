@@ -1,42 +1,42 @@
 [
  {
-  "id": "06068000000",
+  "id": "06103000000",
   "tipo": "municipio",
-  "nombre": "Hinojosa del Valle",
+  "nombre": "Puebla de la Calzada",
   "provincia": "Badajoz",
   "comunidad": "Extremadura",
-  "poblacion": 477,
-  "lat": 38.48282136,
-  "lng": -6.185309623,
-  "descripcion_corta": "Descubre la belleza de Hinojosa del Valle, un pueblo rodeado de naturaleza y rica en historia.",
-  "descripcion": "Hinojosa del Valle es un pueblo situado en una depresión del terreno recorrida por el arroyo Botoz, rodeado de montañas y valles. La villa tiene su nombre debido a la planta aromática hinojo que prolifera en la zona. En el pasado, Hinojosa del Valle perteneció al marquesado de Hinojosa y fue fundada en el siglo XIII por Don Pedro Pérez. El pueblo cuenta con una rica historia y patrimonio cultural, incluyendo la Casa de la Encomienda, que fue la residencia de los comendadores de la Orden de Santiago. La villa también es conocida como 'La Jina', un nombre que se debe a la aspiración del -h- y a la construcción en diminutivo femenino apocopado. Hinojosa del Valle ofrece una experiencia única para aquellos que buscan descubrir la naturaleza, la historia y la cultura de esta pequeña villa.",
+  "poblacion": 5809,
+  "lat": 38.8944076,
+  "lng": -6.62605568,
+  "descripcion_corta": "Descubre la belleza de Puebla de la Calzada, un pueblo agrícola rodeado del río Guadiana.",
+  "descripcion": "Ubicado en el corazón de Extremadura, Puebla de la Calzada combina historia y naturaleza. El río Guadiana es el eje de la vida local, mientras que la vegetación peculiar y la fauna característica hacen de este lugar un destino turístico único. Explora su entorno natural, con suelos fértiles y cultivos de regadío, y disfruta del clima mediterráneo subtropical.",
   "imagenes": {
-   "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Nuestra_Se%C3%B1ora_de_los_%C3%81ngeles_en_Hinojosa_del_Valle.jpg",
-   "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Escudo_de_Hinojosa_del_Valle.svg/120px-Escudo_de_Hinojosa_del_Valle.svg.png"
+   "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Colegio_de_Nuestra_Sra._del_Carmen%2C_Puebla_de_la_Calzada.jpg",
+   "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Escudo_de_Puebla_de_la_Calzada.svg/120px-Escudo_de_Puebla_de_la_Calzada.svg.png"
   },
-  "sitio_web": "https://www.hinojosadelvalle.es",
-  "wikipedia_url": "https://es.wikipedia.org/wiki/Hinojosa_del_Valle",
-  "original_id": "hinojosa-del-valle",
+  "sitio_web": "http://www.puebladelacalzada.es",
+  "wikipedia_url": "https://es.wikipedia.org/wiki/Puebla_de_la_Calzada",
+  "original_id": "puebla-de-la-calzada",
   "es_capital": false
  },
  {
-  "id": "06068000101",
-  "padre_id": "06068000000",
-  "nombre": "Hinojosa del Valle",
+  "id": "06103000101",
+  "padre_id": "06103000000",
+  "nombre": "Puebla de la Calzada",
   "provincia": "Badajoz",
   "comunidad": "Extremadura",
-  "poblacion": 471,
-  "lat": 38.48282136,
-  "lng": -6.185309623,
+  "poblacion": 5764,
+  "lat": 38.8944076,
+  "lng": -6.62605568,
   "es_capital": true,
   "tipo": "pueblo",
-  "sitio_web": "https://www.hinojosadelvalle.es",
-  "wikipedia_url": "https://es.wikipedia.org/wiki/Hinojosa_del_Valle",
-  "descripcion_corta": "Descubre un pueblo con encanto rodeado de naturaleza y riqueza histórica.",
-  "descripcion": "Hinojosa del Valle, conocida como 'La Jina', es un lugar donde la historia se mezcla con la belleza natural. Su nombre evoca el hinojo que crece en la zona y está situada cerca de arroyos y montañas. Explora su pasado medieval y disfruta de sus alrededores.",
+  "sitio_web": "http://www.puebladelacalzada.es",
+  "wikipedia_url": "https://es.wikipedia.org/wiki/Puebla_de_la_Calzada",
+  "descripcion_corta": "Puebla de la Calzada, un pueblo rodeado por el río Guadiana con una vida agrícola intensiva.",
+  "descripcion": "Rodeado por el río Guadiana, Puebla de la Calzada es un destino ideal para amantes de la naturaleza y la agricultura. Su entorno ofrece paisajes fértiles y cultivos de regadío, junto con una variedad de aves acuáticas que habitan sus orillas.",
   "imagenes": {
-   "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Nuestra_Se%C3%B1ora_de_los_%C3%81ngeles_en_Hinojosa_del_Valle.jpg",
-   "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Escudo_de_Hinojosa_del_Valle.svg/120px-Escudo_de_Hinojosa_del_Valle.svg.png"
+   "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Colegio_de_Nuestra_Sra._del_Carmen%2C_Puebla_de_la_Calzada.jpg",
+   "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Escudo_de_Puebla_de_la_Calzada.svg/120px-Escudo_de_Puebla_de_la_Calzada.svg.png"
   }
  }
 ]
