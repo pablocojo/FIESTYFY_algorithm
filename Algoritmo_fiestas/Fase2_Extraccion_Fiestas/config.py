@@ -54,7 +54,12 @@ DDG_DELAY_BETWEEN_QUERIES = 2.0       # Delay entre queries (mantenido por compa
 # ─────────────────────────────────────────────
 # Configuración de Extracción Web y RAG
 # ─────────────────────────────────────────────
-RAG_MAX_TOKENS = 30000                # Aprovecha al máximo la ventana de 32k del modelo
+# VÍA MUERTA: solo lo lee `AsyncRAGProcessor.saturate_context_docs`, y a esa
+# función no llega nadie —el pipeline vivo pasa por `analyze_festivals_multipass`
+# y, desde el 2026-09-03, reparte con `reparto_contexto.repartir_en_lotes`—.
+# Comprobado con grep: sus únicas referencias fuera de su propia definición están
+# en los tests. Tocar este número no cambia nada de lo que ve el modelo.
+RAG_MAX_TOKENS = 30000
 RAG_CHARS_PER_TOKEN = 2.6             # Ratio real medido con texto web scrapeado (URLs y números tokenizan mal)
 RAG_CHUNK_SIZE = 1200                 # Tamaño objetivo de chunk (los cortes respetan frases/líneas)
 RAG_CHUNK_OVERLAP = 200               # (ya no se usa para cortar a ciegas; se mantiene por compatibilidad)
@@ -135,7 +140,48 @@ CACHE_BUSQUEDAS_TTL_DIAS = 3          # Los motores no devuelven dos veces la mi
 # Solo se aplica a los documentos avalados únicamente por el nombre de la
 # localidad: el 5% del total, donde se concentra todo el riesgo.
 PROCEDENCIA_CHARS = 1200              # Trozo de cabecera que se examina (un chunk)
-PROCEDENCIA_MAX_TOKENS = 90           # La respuesta es un JSON de tres campos
+# Subido de 90 a 1200 el 2026-09-03, al pasar a qwen3-32b. La respuesta sigue
+# siendo un JSON de tres campos —90 tokens le sobran—, pero los modelos que
+# RAZONAN gastan el razonamiento de este mismo presupuesto, y con 90 se acababa
+# antes de escribir el primer carácter del JSON. Medido en esa ejecución: 15 de
+# las 20 llamadas cortadas por longitud, exactamente en 90; las 5 que sí
+# terminaron necesitaron 275, 368, 385, 607 y 749 tokens.
+#
+# Importa más de lo que parece: una comprobación de procedencia fallida CONSERVA
+# el documento (el sesgo es a conservar), así que cada corte apagaba en silencio
+# el filtro de homónimos justo donde está el riesgo. Es el filtro que evita que
+# el programa de Cordovilla de Salamanca entre como si fuera el de Cordovilla de
+# Tobarra, a 600 km.
+#
+# Es un TOPE, no un objetivo: un modelo que no razona sigue parando en cuanto
+# cierra el JSON, así que subirlo no cuesta nada con LM Studio.
+PROCEDENCIA_MAX_TOKENS = 1200
+
+# ── Veredicto de pertenencia (última puerta antes de guardar) ──────────────
+#
+# El de arriba juzga DOCUMENTOS, uno a uno, sin saber a quién buscamos. Este
+# juzga la FICHA ya montada —nombre, fechas, programa y fuentes— diciéndole al
+# modelo quiénes somos: municipio, provincia, comunidad, población y pedanías
+# hermanas, que el dataset de Fase 1 trae para las 8.199 localidades.
+#
+# Existe por el peor registro del 2026-09-04: Santa Marta (La Roda, Albacete) se
+# quedó con los 64 actos de las fiestas de Astorga (León) DESPUÉS de que el
+# filtro de homónimos hubiera descartado bien catorce documentos de Astorga. El
+# agujero no estaba en el juez, sino en que nadie preguntaba por la ficha final.
+PERTENENCIA_ENABLED = True
+PERTENENCIA_MAX_TOKENS = 1500         # Mismo motivo que arriba: los que razonan gastan de aquí
+
+# Cuánto texto de las fuentes se le enseña. La medida del 2026-09-04: al juez de
+# procedencia se le daban entre 27 y 422 tokens con 130.000 libres en la ventana.
+# Aquí se va al otro extremo a propósito —decidir de dónde es una fiesta es
+# exactamente el problema que necesita el texto de alrededor, no la cabecera—.
+PERTENENCIA_CONTEXTO_TOKENS = 12000
+
+# Ante la duda, fuera. Buscamos realismo: en la tirada del 2026-09-04 el pipeline
+# no devolvió ni una sola localidad vacía, pero un tercio de las fichas eran de
+# otro sitio. Un hueco es honesto; una ficha falsa contamina la base de datos y
+# nadie la revisa después.
+PERTENENCIA_DESCARTAR_SI_DUDA = True
 
 # Material mínimo para pedirle a un modelo el programa de una fiesta: que alguna
 # página del contexto traiga al menos estos actos con hora de reloj.
@@ -152,6 +198,20 @@ PROCEDENCIA_MAX_TOKENS = 90           # La respuesta es un JSON de tres campos
 # aproveche mal. Eso es otro problema y no se arregla filtrando.
 ENRICHMENT_MIN_ACTOS_EN_PAGINA = 3
 
+# Verificacion de cobertura: fraccion de los DIAS que el documento nombra que la
+# ficha tiene que llegar a cubrir con actos para darla por completa.
+#
+# Se mide por dias y no por actos a proposito. `contar_actos_horarios()` cuenta
+# horas de reloj DISTINTAS en lineas con pinta de acto: es una senal de «esto
+# parece un programa» —y buena, por eso decide si se pregunta— pero no un
+# recuento de actos. Un programa de diez dias con cien actos puede tener veinte
+# horas distintas, asi que usarlo de denominador daria coberturas del 500%.
+#
+# Los dias, en cambio, se leen del propio documento con el mismo detector que ya
+# usa la guarda de «dias no mencionados». En Aranda de Duero el documento
+# nombraba los 10 dias de la fiesta y la ficha salio con 4: cobertura 0,4.
+COBERTURA_DIAS_MINIMA = 0.6
+
 # ── Localizador de programa guiado por LLM (Program Locator Pass) ────────────
 # Antes del enrichment, el LLM ve un resumen de las páginas candidatas y decide
 # cuáles contienen el programa real. Si dice que la información no está completa
@@ -163,10 +223,50 @@ ENRICHMENT_MIN_ACTOS_EN_PAGINA = 3
 # comprensión semántica. Este paso pone al LLM a decidir ANTES de extraer actos.
 PROGRAM_LOCATOR_ENABLED = True
 PROGRAM_LOCATOR_SNIPPET_CHARS = 400    # Caracteres del extracto por candidata
-PROGRAM_LOCATOR_MAX_CANDIDATES = 12    # Máximo de páginas a presentar al LLM
-PROGRAM_LOCATOR_MAX_ITERATIONS = 2     # Máximo de rondas LLM (1ª selección + 1 profundización)
+# Páginas que se le presentan al localizador, ordenadas por horas de reloj
+# distintas. Subido de 12 a 20 el 2026-09-03.
+#
+# El número no cambió de sentido, cambió el denominador: antes el localizador
+# elegía entre las páginas que el presupuesto había dejado entrar —8 a 17 por
+# localidad— y ahora ve el pool entero, que en Aranda de Duero son 83 documentos
+# distintos. Doce plazas sobre diecisiete es una preselección; sobre ochenta y
+# tres es un embudo nuevo justo donde acabamos de quitar uno.
+#
+# Cuesta poco: cada candidata son 400 caracteres de extracto, así que 20 son
+# 8.000 caracteres de un prompt que tiene 131.072 tokens de sitio.
+PROGRAM_LOCATOR_MAX_CANDIDATES = 20
+# Rondas del localizador. Subido de 2 a 6 el 2026-09-03, al empezar a hacerle
+# caso a `informacion_suficiente`.
+#
+# El motivo es medido: en la ejecución del 2026-09-03, 4 de las 8 rondas del
+# localizador devolvieron `suficiente=False`, y en las 4 el pipeline siguió
+# adelante sin hacer nada —dos porque el modelo no propuso ninguna URL (no había
+# ninguna en el contexto que seguir) y dos porque las que propuso ya estaban
+# descargadas—. Se tenía un modelo diciendo exactamente dónde faltaba
+# información y esa señal se tiraba.
+#
+# El tope real no es este número: el bucle para en cuanto una ronda no aporta
+# NINGÚN documento nuevo. 6 es la red de seguridad.
+PROGRAM_LOCATOR_MAX_ITERATIONS = 6
 PROGRAM_LOCATOR_MAX_URLS_PER_ROUND = 5 # URLs a seguir por ronda si el LLM dice que faltan
-PROGRAM_LOCATOR_MAX_TOKENS = 400       # Reserva de salida para la respuesta del localizador
+
+# Consultas de buscador que el localizador puede pedir por ronda. Va bajo porque
+# las búsquedas son lo que se enfría por anti-scraping (180 s tras 2 respuestas
+# incoherentes): multiplicar su ritmo es meterse en el problema que el resto del
+# pipeline evita a propósito.
+LOCATOR_MAX_CONSULTAS_POR_RONDA = 3
+# Tope de consultas por fiesta sumando todas las rondas.
+LOCATOR_MAX_CONSULTAS_POR_FIESTA = 6
+# Reserva de salida para la respuesta del localizador. Estuvo en 400 y se
+# quedaba corto: en la ejecución del 2026-08-28 cortó 16 respuestas, y con los
+# modelos de OpenRouter —que aplican el tope a rajatabla, mientras que LM Studio
+# lo dejaba pasar— fallaba el 100% de las veces (2 de 2 el 2026-09-01, ambas con
+# finish_reason=length y JSON no parseable).
+# Subido de 2000 a 4000 el 2026-09-03: con 2000 ya se vio truncar una llamada
+# —el LOCATOR más caro de esa ejecución gastó 2612 tokens—, y el razonamiento
+# del modelo sale de aquí. El reintento automático lo rescataba, pero pagando
+# dos llamadas en vez de una.
+PROGRAM_LOCATOR_MAX_TOKENS = 4000
 PROGRAM_LOCATOR_DOWNLOAD_TIMEOUT = 15  # Timeout de descarga de URLs señaladas (segundos)
 
 # Descubrimiento por meses. Antes se preguntaba una vez por localidad sobre
@@ -176,7 +276,13 @@ PROGRAM_LOCATOR_DOWNLOAD_TIMEOUT = 15  # Timeout de descarga de URLs señaladas 
 # entraba —entre dos ejecuciones del 2026-08-26 con el mismo material, Tobarra
 # pasó de 4 fiestas a 2 y perdió la del Cristo, que tiene 50 actos—.
 DISCOVERY_MIN_CHUNKS_MES_PROPIO = 3   # Con menos, el mes va en la tanda común
-DISCOVERY_MAX_LLAMADAS_LOCALIDAD = 10 # Tope de seguridad por localidad
+# Tope de SEGURIDAD, no de diseño. Estuvo en 10 y Aranda de Duero lo tocaba en la
+# ejecución del 2026-09-03 —«12 meses con señal, 10 llamadas»—, así que dos meses
+# con material se quedaban sin preguntar sin que nada lo señalara como pérdida.
+# Sigue existiendo porque un topónimo corriente dispara el barrido: «Sierra»
+# pedía 21 tandas y no tiene programa publicado. Ahora avisa a WARNING cuando
+# recorta, que es lo que faltaba.
+DISCOVERY_MAX_LLAMADAS_LOCALIDAD = 40
 
 # ─────────────────────────────────────────────
 # LM STUDIO
@@ -187,8 +293,22 @@ LMSTUDIO_EMBEDDING_URL = f"{LMSTUDIO_BASE_URL}/v1/embeddings"
 LMSTUDIO_CHAT_URL = f"{LMSTUDIO_BASE_URL}/v1/chat/completions"
 
 LMSTUDIO_EMBEDDING_MODEL = "text-embedding-baai-bge-m3-568m"
-LMSTUDIO_CHAT_MODEL = "qwen2.5-7b-instruct"
-LMSTUDIO_CHAT_TIMEOUT = 900           # Timeout para peticiones de chat (segundos)
+
+# Modelo de DESARROLLO (2026-09-01): a 26 tok/s en GPU (8GB, RTX 4060) frente a
+# los ~2,5 tok/s del 27B en CPU — mismo contexto real de Tobarra que antes daba
+# 0 actos, aquí dio 17 días y 20 actos en 69s con una sola llamada. Es un
+# "model.yaml" propio (hub/models/lmstudio-community/qwen3.5-9b-nothink/) que
+# envuelve el Qwen3.5-9B-GGUF suelto con enableThinking=false por defecto,
+# porque enable_thinking vía API está roto en llama.cpp para toda la familia
+# Qwen3.5 (https://github.com/ggml-org/llama.cpp/issues/20182, sin arreglo
+# previsto). Sin ese wrapper, el modelo gasta miles de tokens "pensando" antes
+# de escribir el JSON y hay que pagarlos igual.
+#
+# Cuando el pipeline esté maduro en 9B, la tirada de validación real vuelve a
+# "qwen/qwen3.8-27b" (mismo arch "qwen35", solo que sin el wrapper porque ese sí
+# trae el interruptor de fábrica al venir del catálogo propio de LM Studio).
+LMSTUDIO_CHAT_MODEL = "lmstudio-community/qwen3.5-9b-nothink"
+LMSTUDIO_CHAT_TIMEOUT = 10800           # Timeout para peticiones de chat (segundos)
 LMSTUDIO_EMBEDDING_TIMEOUT = 30       # Timeout para embeddings (segundos)
 LMSTUDIO_CHAT_TEMPERATURE = 0.0       # Temperatura 0.0 para evitar alucinaciones
 LMSTUDIO_CHAT_MAX_TOKENS = -1         # Sin límite: el modelo para cuando completa el JSON (evita truncamiento)
@@ -203,12 +323,200 @@ LMSTUDIO_CHAT_MAX_TOKENS = -1         # Sin límite: el modelo para cuando compl
 LMSTUDIO_SEED = 42
 
 # ─────────────────────────────────────────────
+# OPENROUTER — proveedor principal desde el 2026-09-02: qwen/qwen3-32b
+#
+# Historia, porque explica por qué la configuración es la que es:
+#
+# El 2026-09-01 se probó una cascada de ocho modelos GRATUITOS y falló por dos
+# motivos: la cuota se agotó a media ejecución de solo 2 municipios, con lo que
+# todo acabó dependiendo de un único modelo (minimax), y ese modelo dejaba
+# `content` vacío y volcaba la salida en `reasoning`, lo que tiró la fiesta
+# principal de Tobarra a 0 actos. Se apagó y se volvió al 9B local.
+#
+# Ahora se vuelve a la nube, pero con UN modelo de pago en vez de ocho gratuitos.
+# Eso quita de raíz los dos problemas: no hay cuota que agotar a mitad de
+# ejecución, y no hay que adivinar cuál de los ocho contestó. Comprobado contra
+# la API el 2026-09-02 con un prompt de extracción real: `content` vuelve con el
+# JSON limpio y bien formado, así que el fallback a `reasoning` —el que rompió
+# Tobarra— no llega a dispararse.
+#
+# Lo que sí hay que tener en cuenta: Qwen3 razona antes de responder y ese
+# razonamiento SE FACTURA como tokens de salida. Medido en esa misma prueba, con
+# un prompt de 121 tokens: 407 y 675 tokens de salida para una respuesta de 111
+# caracteres, con 1425 y 2526 caracteres de razonamiento por detrás. El
+# parámetro `reasoning: {enabled: false}` no lo apaga —se probó y salió más
+# razonamiento, no menos—. De ahí el tope de tokens de más abajo.
+# ─────────────────────────────────────────────
+OPENROUTER_ENABLED = True
+OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
+OPENROUTER_CHAT_URL = f"{OPENROUTER_BASE_URL}/chat/completions"
+
+
+def _leer_clave_openrouter() -> str:
+    """
+    La clave NUNCA se escribe en este fichero: config.py está en git y acabaría
+    publicada. Se lee de la variable de entorno OPENROUTER_API_KEY y, si no
+    está, de openrouter_key.txt en esta misma carpeta (ignorado por git).
+    """
+    clave = os.environ.get("OPENROUTER_API_KEY", "").strip()
+    if clave:
+        return clave
+    ruta = os.path.join(os.path.dirname(os.path.abspath(__file__)), "openrouter_key.txt")
+    try:
+        with open(ruta, encoding="utf-8") as fh:
+            return fh.read().strip()
+    except OSError:
+        return ""
+
+
+OPENROUTER_API_KEY = _leer_clave_openrouter()
+
+# Un solo modelo, de pago. La cascada de ocho gratuitos del 2026-09-01 hacía que
+# cada llamada pudiera contestarla un modelo distinto —y de hecho así fue, según
+# se iban agotando las cuotas—, con lo que la salida dejaba de ser comparable
+# entre localidades de la misma ejecución. Con uno solo, lo que cambia entre dos
+# ejecuciones es el código, no quién contestó.
+#
+# Ficha del modelo (consultada a la API el 2026-09-02):
+#   contexto     131.072 tokens (el 9B local iba con 32.768)
+#   precio       $0,08 por millón de tokens de entrada
+#                $0,28 por millón de tokens de salida
+#   coste estimado de una ejecución de 2 municipios / 12 localidades: céntimos.
+OPENROUTER_MODELS = [
+    "qwen/qwen3-32b",
+]
+
+# 5 min por llamada. Nada que ver con los 10800s de LM Studio: si un modelo en
+# la nube no ha contestado en 5 minutos es que no va a contestar, y hay otros
+# siete detrás esperando. Ese era justo el fallo de los timeouts de 3h.
+OPENROUTER_CHAT_TIMEOUT = 300
+
+# El timeout de arriba es el SUELO. Un prompt grande no tarda lo mismo que uno
+# pequeño: antes de generar el primer token, el modelo tiene que leerse la
+# entrada entera.
+#
+# Medido el 2026-09-03, la primera ejecución con el reparto en lotes: las cuatro
+# llamadas de enrichment de Aranda de Duero enviaron 106.124 tokens y las cuatro
+# se cortaron exactamente en 300 s sin devolver nada. Con 300 s fijos, cualquier
+# prompt por encima de ~40.000 tokens es una llamada tirada.
+#
+# 4 s por cada 1.000 tokens es conservador (equivale a ~250 tok/s de lectura) y
+# deja 300 + 425 = 725 s para un prompt de 106.000.
+LLM_SEGUNDOS_POR_1K_TOKENS = 4.0
+
+# Techo que se aplica a TODOS los proveedores, LM Studio incluido. Eso baja de
+# hecho el timeout local de las 3 horas de `LMSTUDIO_CHAT_TIMEOUT` a 30 minutos,
+# y es deliberado: en la ejecución del 2026-08-28 dos llamadas se quedaron
+# colgadas exactamente 10.800 s sin producir un token y se tiraron 6 horas, el
+# 17,8% del reloj de aquel run. Una llamada que no ha convergido en media hora
+# no va a converger.
+LLM_TIMEOUT_MAXIMO = 1800
+
+# LM Studio entiende max_tokens=-1 como "sin límite"; OpenRouter lo rechaza.
+# Cuando el llamador pide -1 se manda este tope en su lugar.
+#
+# Estuvo en 24000 y era demasiado alto: el 2026-09-01, dos de las seis llamadas
+# de ENRICHMENT de Tobarra se fueron a 24001 y 24059 tokens con
+# finish_reason=length —el modelo se enrolla, choca con el techo y devuelve un
+# JSON que ni empieza por JSON—. Se tiraron 8m42s, el 45% del tiempo de la
+# localidad, y la fiesta salió con 5 actos en vez de los 25 de la ejecución
+# anterior. Las llamadas que SÍ funcionaron generaron 5916, 5668, 4483 y 2351
+# tokens: ninguna legítima pasa de 6000.
+#
+# Subido de 10000 a 16000 el 2026-09-02 al pasar a Qwen3-32B. El motivo no es
+# que las respuestas sean más largas, sino que este modelo RAZONA y su
+# razonamiento sale del mismo presupuesto: en la prueba contra la API, un prompt
+# de 121 tokens gastó 407 de salida para una respuesta de 111 caracteres, es
+# decir que casi todo el gasto fue pensar. Con el tope en 10000, un razonamiento
+# largo sobre un prompt de ENRICHMENT de verdad puede comerse el presupuesto
+# antes de escribir el JSON, que es exactamente el finish_reason=length de
+# arriba. 16000 deja sitio a ~6000 de respuesta y ~10000 de razonamiento, y aun
+# así una respuesta desbocada se corta en 1-2 min en vez de 5.
+OPENROUTER_MAX_TOKENS = 16000
+
+# Ventana de contexto con la que se dimensionan los prompts cuando el chat va a
+# OpenRouter. Existe porque hasta el 2026-09-02 el presupuesto salía SIEMPRE del
+# modelo cargado en LM Studio, y eso deja de tener sentido cuando LM Studio ya no
+# contesta: si no está levantado, `get_n_ctx()` cae al valor de seguridad de 8192
+# y todos los prompts se construyen con la cuarta parte del material que
+# deberían, sin que nada avise. Comprobado ese mismo día con LM Studio
+# descargado.
+#
+# Subido de 32.768 a 131.072 —la ventana real del modelo— el 2026-09-03, con el
+# reparto en lotes ya en su sitio.
+#
+# Estuvo en 32.768 a propósito, para poder cambiar de modelo tocando una sola
+# variable. El motivo para subirlo es medido: con el tope anterior, al modelo
+# llegaba el 5,7% de los chunks candidatos en discovery y el 23,8% en enrichment
+# —10.060 descartados de 12.897 en la ejecución del 2026-09-03—, y el PDF del
+# programa de Aranda de Duero entraba a razón de 14 fragmentos de 82.
+#
+# Ya no es el techo de lo que ve el modelo: con el repartidor, lo que no cabe en
+# un lote va en el siguiente. Lo que esta variable decide ahora es cuántos lotes
+# hacen falta, es decir cuántas llamadas. A 131.072 el PDF entero de Aranda
+# —29.000 tokens— cabe en un solo lote.
+OPENROUTER_N_CTX = 131072
+
+# Reintento cuando la respuesta se corta por longitud. El presupuesto se
+# multiplica por este factor y se vuelve a preguntar UNA vez, en vez de dar por
+# perdido un JSON que llegó a medias. Protege a cualquier llamada de tope fino
+# frente a un modelo que razone más de lo previsto, sin tener que adivinar el
+# número exacto para cada una.
+LLM_FACTOR_REINTENTO_TRUNCADO = 6
+# Techo del reintento. Medido el 2026-09-03 sobre las llamadas que SÍ terminaron
+# en esa ejecución, con qwen3-32b (razonamiento incluido en la cuenta):
+#     DISCOVERY    max 1344   ENRICHMENT   max 3259
+#     LOCATOR      max 2612   PROCEDENCIA  max  925
+# Con 4000 el reintento de un ENRICHMENT difícil se quedaba al borde. 12000 da
+# holgura real y sigue por debajo de OPENROUTER_MAX_TOKENS, y una respuesta
+# desbocada cuesta menos de medio céntimo.
+LLM_TOPE_REINTENTO = 12000
+
+# En la nube no hay VRAM que desbordar, así que no hace falta serializar como
+# en local. Lo que limita es el cupo por minuto de la clave.
+#
+# Subido de 3 a 8 el 2026-09-03, a la vez que se paralelizaron las tandas de
+# DISCOVERY y los lotes de ENRICHMENT. Antes daba igual el número: los dos
+# bucles encadenaban las llamadas con `await`, así que nunca había más de UNA en
+# vuelo y el semáforo no llegaba ni a 2. Medido ese día, esas dos fases son el
+# 48% del reloj de una ejecución.
+#
+# 8 y no más porque el cupo de OpenRouter es por minuto y no está medido: si
+# aguanta sin 429, se puede subir. Las BÚSQUEDAS WEB no se tocan —siguen con su
+# ritmo y sus delays—: son las que se enfrían por anti-scraping, y multiplicar su
+# tasa es meterse en el problema que este cambio evita a propósito.
+# Reintento ante 429 (cupo por minuto agotado) EN EL MISMO proveedor, antes de
+# pasar al siguiente de la cadena.
+#
+# Existe por una trampa que hasta ahora no había saltado pero que el reparto en
+# lotes hace mucho más probable: cualquier respuesta distinta de 200 hacía saltar
+# al siguiente proveedor, y el siguiente es LM Studio, cargado con n_ctx = 8192.
+# Un lote de 30.000 tokens no le cabe, así que devolvía error de contexto, se
+# lanzaba ContextOverflowError y en `_descubrir_por_meses` esa tanda se convertía
+# en una lista vacía SIN QUE NADA la registrara como pérdida.
+#
+# En la ejecución del 2026-09-03 hubo cero 429 reales. Con 3,6x más llamadas y
+# lotes tres veces mayores, dejará de ser cero.
+LLM_REINTENTOS_429 = 3
+LLM_BACKOFF_429 = 6.0                 # Segundos; se dobla en cada intento
+
+OPENROUTER_CONCURRENCY = 8
+OPENROUTER_PAUSA_ENTRE_MODELOS = 0.4  # Respiro antes de saltar al siguiente modelo
+
+# Cabeceras de cortesía que OpenRouter usa para atribuir el tráfico.
+OPENROUTER_REFERER = "https://github.com/fiestyfy/algoritmo"
+OPENROUTER_TITLE = "Fiestyfy Fase 2"
+
+# ─────────────────────────────────────────────
 # SANTO PATRÓN
 # ─────────────────────────────────────────────
 PATRON_SEARCH_ENABLED = True          # Buscar el santo patrón de cada localidad
 PATRON_CACHE_FILE = "patrones_cache.json"  # Caché de patrones (en la carpeta Fase2)
 PATRON_MAX_URLS = 3                   # URLs de buscadores a seguir para hallar el patrón
-PATRON_LLM_MAX_TOKENS = 200           # Tokens máximos para la extracción LLM del patrón
+# Mismo motivo que PROCEDENCIA_MAX_TOKENS: 200 le sobran a la respuesta y no le
+# llegan al razonamiento. No se vio fallar el 2026-09-03 porque la caché de
+# patrones estaba caliente, pero con caché fría habría caído igual.
+PATRON_LLM_MAX_TOKENS = 1200           # Tokens máximos para la extracción LLM del patrón
 
 # ─────────────────────────────────────────────
 # FILTRO ADAPTATIVO DE FIESTAS
@@ -259,6 +567,14 @@ SOCIAL_GUARD_MAX_ESPERA_FOCO = 120    # Segundos máximos en pausa esperando rec
 # Solo interpreta imágenes procedentes de las apps de RRSS; las webs siguen con Tesseract.
 # ─────────────────────────────────────────────
 VISION_ENABLED = True
+# VLM dedicado, en LM Studio. Hasta el 2026-09-02 apuntaba al mismo modelo que
+# el chat, porque el chat también era local y traía su mmproj. Al llevarse el
+# chat a OpenRouter (ver más arriba) eso deja de tener sentido: la visión no se
+# va a la nube —son capturas de RRSS, y mandarlas fuera no aporta nada y cuesta
+# dinero—, así que se le pone su propio modelo, más pequeño y suficiente para
+# leer un cartel.
+#
+# Reparto que queda: chat en OpenRouter, embeddings y visión en LM Studio.
 VISION_MODEL = "qwen_qwen2.5-vl-7b-instruct"   # Identificador del modelo de visión en LM Studio
 VISION_TIMEOUT = 180                  # Timeout por imagen (segundos)
 VISION_MAX_TOKENS = 1200              # Respuesta máxima (los programas largos necesitan espacio)
@@ -268,8 +584,8 @@ VISION_MAX_DIM = 1280                 # Redimensionado máximo antes de enviar a
 # ─────────────────────────────────────────────
 # ORQUESTADOR
 # ─────────────────────────────────────────────
-PARALLEL_MUNICIPALITIES = 5           # Municipios procesados en paralelo
-MAX_LOCALITY_CONCURRENCY = 16         # Empatar con los 16 hilos lógicos del procesador
+PARALLEL_MUNICIPALITIES = 2           # Municipios procesados en paralelo (reducido para modelo 27B)
+MAX_LOCALITY_CONCURRENCY = 3          # Concurrencia de localidades (reducido para modelo 27B)
 
 # ─────────────────────────────────────────────
 # LOGGING
@@ -478,6 +794,33 @@ ANCLA_MAX_RANGOS_POR_SEGMENTO = 2
 # añadir desde el contexto. Pegadas o casi, son la misma fiesta contada por dos
 # fuentes que no coinciden, no dos fiestas distintas.
 ANCLA_DIAS_DE_SEPARACION = 3
+# Días que le tienen que quedar a una fiesta después de que el anclaje la
+# recorte. Un anclaje afina dónde empieza y acaba una fiesta; no puede convertir
+# una de varios días en una de un día, porque eso ya no es afinar, es afirmar
+# otra cosa. Medido el 2026-09-02 sobre las ejecuciones del 27B (28-30 ago) y del
+# 9B (1 sep): el anclaje se disparó 8 veces, las 8 sobre rangos del modelo que
+# cubrían el 100% de las fechas reales, y no mejoró la cobertura ni una vez. Dos
+# de esos disparos eran colapsos a un solo día y son los dos peores daños de todo
+# el pipeline: Aranda de Duero, del 11 al 20 de septiembre (sus fiestas mayores,
+# 33.000 habitantes) reducida al 15; y Los Mardos, del 16 al 19 de julio —lo que
+# dice su programa oficial— reducida al 19.
+ANCLA_MIN_DIAS_TRAS_RECORTE = 2
+# Distancia máxima, en caracteres, entre la fecha y la mención del pueblo dentro
+# del MISMO segmento. El segmento ya garantiza que las dos salen de la misma
+# página, pero una página entera es una unidad demasiado grande: en el contexto
+# de Mora de Santa Quiteria, el titular de sus fiestas y la fecha de un festival
+# de narración oral de la Casa de la Cultura de Tobarra convivían a noventa
+# líneas de distancia, y de ahí salió una ficha entera que no existe.
+ANCLA_MAX_CHARS_A_LA_LOCALIDAD = 600
+# Días que tiene que abarcar un programa para que sus fechas manden sobre el
+# rango que declaró el modelo. Un programa de dos días no dice cuánto dura la
+# fiesta, solo que esos dos días existen. Medido en la ejecución del 2026-09-02:
+# con el recorte sin condición, Sierra pasó del 30 de julio al 2 de agosto —lo
+# que anuncia su propia comisión de fiestas— a durar dos días, y Santiago de
+# Mora de cinco a dos, cuando lo suyo son once. Los dos programas tenían dos
+# días. Los dos recortes que sí acertaron —San Roque de Tobarra al 14 de agosto
+# exacto y Aljubé al 18 de mayo— venían de programas de seis y cinco días.
+RECORTE_PROGRAMA_MIN_DIAS = 3
 
 # ── Saneado del programa ─────────────────────────────────────────────────────
 # Longitud a partir de la cual un acto se considera CONCRETO y, por tanto, no

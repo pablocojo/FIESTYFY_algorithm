@@ -444,6 +444,36 @@ def _cabecera_base(doc: dict, fuente: str, url: str,
     else:
         return f"[FUENTE: Búsqueda web / Externa ({url})]"
 
+_RE_ARTICULO_INICIAL = re.compile(r"^(el|la|los|las|lo)\s+(.+)$")
+
+
+def _patron_de_nombre(nombre: str) -> str | None:
+    """
+    Expresión que reconoce un topónimo, incluida su forma invertida.
+
+    El INE y casi todo lo administrativo escriben los nombres con artículo al
+    revés: "Parra, La", "Roda, La", "Aldea del Obispo, La", y en las URLs
+    "parra-la" o "parra_(la)". Buscando solo "La Parra" esas fuentes se daban
+    por AJENAS. Medido el 2026-09-04: a La Parra (Badajoz) se le descartaron
+    documentos que SÍ eran suyos —`calendariosnacionales.com/.../badajoz/parra-la/`
+    y `calendarios-laborales.es/laboral-parra_(la)-2026-ba`— mientras el contexto
+    se llenaba con el La Parra de Ávila. Afecta a 1.786 lugares del dataset, el
+    18% del total.
+    """
+    n = normalize_text(nombre or "").strip()
+    if not n:
+        return None
+    directo = rf"(?<!\w){re.escape(n)}(?!\w)"
+    m = _RE_ARTICULO_INICIAL.match(n)
+    if not m:
+        return directo
+    articulo, resto = m.group(1), m.group(2)
+    # "parra" + cualquier separador que no sea letra + "la": cubre la coma, el
+    # paréntesis, el guion y el subrayado de las URLs.
+    invertido = rf"(?<!\w){re.escape(resto)}\W{{1,3}}{re.escape(articulo)}(?!\w)"
+    return f"(?:{directo}|{invertido})"
+
+
 def _menciones(texto_norm: str, nombre: str) -> list[int]:
     """Posiciones en que `nombre` aparece como palabra completa en texto ya normalizado.
 
@@ -451,11 +481,13 @@ def _menciones(texto_norm: str, nombre: str) -> list[int]:
     "Caloria" y, peor, cualquier nombre corto de aldea casaba dentro de un
     apellido o de un topónimo mayor. Con frontera de palabra una mención es una
     mención.
+
+    Cuenta también la forma invertida del INE —"Parra, La"—; ver `_patron_de_nombre`.
     """
-    n = normalize_text(nombre or "").strip()
-    if not n:
+    patron = _patron_de_nombre(nombre)
+    if not patron:
         return []
-    return [m.start() for m in re.finditer(rf"(?<!\w){re.escape(n)}(?!\w)", texto_norm)]
+    return [m.start() for m in re.finditer(patron, texto_norm)]
 
 
 def _mencion_en_enumeracion(

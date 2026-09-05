@@ -116,6 +116,9 @@ NOMBRES_ACTO = frozenset({
     "hinchables", "talleres", "taller", "gymkana", "yincana", "disco", "dj",
     "orquesta", "charanga", "banda", "coral", "coro", "fanfarria", "txaranga",
     "pregon", "pregón", "inauguracion", "clausura", "traca", "castillo",
+    # La Tamborada de Tobarra no la nombraba nadie: "tambor" no estaba aquí y
+    # sus fuentes hablan de tambores, no de verbenas.
+    "tamborada", "tamborrada", "tambor", "tambores",
     "herri", "kirolak", "sokatira", "aizkolari", "bertsolari",
 })
 

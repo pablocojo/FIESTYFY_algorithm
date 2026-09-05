@@ -1,0 +1,238 @@
+{
+  "version": 2,
+  "anno": 2026,
+  "ultimo_municipio_procesado": "02027000000",
+  "municipios_completados": [
+    "06121000000",
+    "06099000000",
+    "05076000000",
+    "02027000000"
+  ],
+  "localidades_completadas": [
+    "06121000101",
+    "06099000101",
+    "05076000101",
+    "02027000101",
+    "02027000201"
+  ],
+  "fiestas": [
+    {
+      "id": "patron-san-isidro-06121000101",
+      "lugar_id": "06121000101",
+      "nombre": "Fiestas de San Isidro (estimada)",
+      "fecha_inicio": "2026-05-15",
+      "fecha_fin": "2026-05-15",
+      "tamano": "pequeña",
+      "descripcion": "Fiesta anual estimada a partir del día del santo patrón de Santa Marta (San Isidro, 15 de mayo). No se encontró programa ni confirmación para este año.",
+      "confianza": "baja",
+      "origen": "santo_patron",
+      "es_estimada": true,
+      "incluye_dia_patron": true,
+      "fuentes": [],
+      "solo_fuentes_no_oficiales": false,
+      "patron": {
+        "nombre": "San Isidro",
+        "dia": 15,
+        "mes": 5,
+        "fuente": "wikipedia"
+      },
+      "programa": [],
+      "lat": 38.61514418,
+      "lng": -6.625215597
+    },
+    {
+      "id": "verano-cultural-2026",
+      "lugar_id": "05076000101",
+      "nombre": "Verano Cultural 2026",
+      "fecha_inicio": "2026-07-15",
+      "fecha_fin": "2026-07-31",
+      "tamano": "grande",
+      "descripcion": "Programa de actividades culturales y familiares durante el verano, incluyendo marchas nocturnas, fiestas de agua, talleres, conciertos y teatro popular. Destaca por su enfoque comunitario y diversidad de propuestas.",
+      "confianza": "baja",
+      "fuentes": [
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "El Fresno",
+      "solo_fuentes_no_oficiales": true,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-07-15",
+          "eventos": [
+            {
+              "hora": "19:30",
+              "descripcion": "Teatro solidario: «Anacleto se divorcia» en el Salon de Plenos del Ayuntamiento"
+            },
+            {
+              "hora": "23:00",
+              "descripcion": "Preparamos las hogueras con musica, bollos y limonada"
+            },
+            {
+              "hora": "23:30",
+              "descripcion": "Encendido de las hogueras de San Juan"
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-07-16",
+          "eventos": [
+            {
+              "hora": "18:00",
+              "descripcion": "Taller infantil Aventura en la Bibliopiscina"
+            },
+            {
+              "hora": "19:30",
+              "descripcion": "Comienzo Juegos Autoctonos en la Vega"
+            }
+          ]
+        },
+        {
+          "dia": 3,
+          "fecha": "2026-07-17",
+          "eventos": [
+            {
+              "hora": "19:30",
+              "descripcion": "Final Juegos Autoctonos"
+            },
+            {
+              "hora": "21:00",
+              "descripcion": "Teatro «LO QUE LAS PAREDES CALLAN» de Butaca Viva en el Salón del Ayuntamiento"
+            }
+          ]
+        },
+        {
+          "dia": 5,
+          "fecha": "2026-07-19",
+          "eventos": [
+            {
+              "hora": "23:00",
+              "descripcion": "Preparamos las hogueras con música, bollos y limonada"
+            }
+          ]
+        },
+        {
+          "dia": 6,
+          "fecha": "2026-07-20",
+          "eventos": [
+            {
+              "hora": "19:30",
+              "descripcion": "Final Juegos Autoctonos en la Plaza"
+            },
+            {
+              "hora": "00:00",
+              "descripcion": "Marcha nocturna en Bici para todas las edades desde la Plaza"
+            }
+          ]
+        },
+        {
+          "dia": 10,
+          "fecha": "2026-07-24",
+          "eventos": [
+            {
+              "hora": "00:00",
+              "descripcion": "Marcha nocturna en Bici para todas las edades"
+            }
+          ]
+        },
+        {
+          "dia": 11,
+          "fecha": "2026-07-25",
+          "eventos": []
+        },
+        {
+          "dia": 12,
+          "fecha": "2026-07-26",
+          "eventos": []
+        },
+        {
+          "dia": 16,
+          "fecha": "2026-07-30",
+          "eventos": [
+            {
+              "hora": "17:00",
+              "descripcion": "Voley Playa y Juegos acuáticos en la piscina"
+            }
+          ]
+        },
+        {
+          "dia": 17,
+          "fecha": "2026-07-31",
+          "eventos": [
+            {
+              "hora": "19:30",
+              "descripcion": "Dia de los mayores: Misa, refresco y actuación Nati Ortega"
+            },
+            {
+              "hora": "21:00",
+              "descripcion": "Cena Solidaria Manos Unidas. Monólogo “Talu Talu Teatro” en la Casa de Cultura"
+            }
+          ]
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "url_programa": "https://www.bandomovil.com/userFiles/pU/pUP6XProgramaVeranoCultural2026Vertical.pdf",
+      "programa_estado": "completo",
+      "lat": 40.6142669,
+      "lng": -4.75647131
+    },
+    {
+      "id": "fiestas-patronales-el-fresno-2026",
+      "lugar_id": "05076000101",
+      "nombre": "Fiestas Patronales de El Fresno 2026",
+      "fecha_inicio": "2026-08-19",
+      "fecha_fin": "2026-08-23",
+      "tamano": "grande",
+      "descripcion": "Celebración en honor a Nuestra Señora de la Asunción, con actos religiosos, verbenas, conciertos, teatro popular y actividades culturales. Incluye el Verano Cultural 2026 del 19 al 23 de agosto.",
+      "confianza": "baja",
+      "fuentes": [
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "El Fresno",
+      "solo_fuentes_no_oficiales": true,
+      "programa": [],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "url_programa": "https://avilared.com/art/84392/fiestas-de-la-santisima-trinidad-enel-fresno",
+      "cobertura_dias": 0.0,
+      "programa_no_recuperado": true,
+      "programa_estado": "no_encontrado",
+      "lat": 40.6142669,
+      "lng": -4.75647131
+    },
+    {
+      "id": "corral-rubio-san-miguel-2026",
+      "lugar_id": "02027000101",
+      "nombre": "Fiestas de San Miguel",
+      "fecha_inicio": "2026-09-28",
+      "fecha_fin": "2026-09-30",
+      "tamano": "grande",
+      "descripcion": "Fiestas patronales en honor a San Miguel Arcángel, incluyendo ofrenda floral, misa mayor, procesión, verbenas con orquesta, actividades infantiles y gastronomía tradicional manchega. Declaradas de Interés Turístico Provincial.",
+      "confianza": "media",
+      "fuentes": [
+        "web_municipio",
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Corral-Rubio",
+      "solo_fuentes_no_oficiales": false,
+      "programa": [],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": true,
+      "url_programa": "https://corralrubio.es/fiestas/",
+      "sin_programa_publicado": true,
+      "programa_estado": "no_encontrado",
+      "patron": {
+        "nombre": "San Miguel",
+        "dia": 29,
+        "mes": 9,
+        "fuente": "wikipedia"
+      },
+      "lat": 38.83482009,
+      "lng": -1.460420446
+    }
+  ]
+}

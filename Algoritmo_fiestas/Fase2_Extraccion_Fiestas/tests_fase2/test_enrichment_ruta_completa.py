@@ -103,11 +103,36 @@ def test_ninguna_funcion_usa_un_nombre_que_no_define():
     import builtins
     conocidos = globales | set(dir(builtins))
 
+    def _parametros(fn):
+        p = {a.arg for a in fn.args.args + fn.args.kwonlyargs}
+        if fn.args.vararg:
+            p.add(fn.args.vararg.arg)
+        if fn.args.kwarg:
+            p.add(fn.args.kwarg.arg)
+        return p
+
+    # Parámetros de la función que ENVUELVE a cada función anidada. Sin esto, un
+    # cierre que lee un parámetro del que lo contiene sale como «usado sin
+    # definir», que es Python perfectamente válido. `globales` ya recoge todas
+    # las variables asignadas en cualquier parte del fichero, así que el punto
+    # ciego eran solo los parámetros: no son `Name` sino `arg`.
+    #
+    # Saltó el 2026-09-03 al paralelizar DISCOVERY y ENRICHMENT, cuando los dos
+    # bucles pasaron a ser funciones anidadas que leen `municipio` y `localidad`,
+    # que son parámetros de la función de fuera.
+    heredados = {}
+    for envolvente in ast.walk(arbol):
+        if not isinstance(envolvente, (ast.FunctionDef, ast.AsyncFunctionDef)):
+            continue
+        for n in ast.walk(envolvente):
+            if n is not envolvente and isinstance(n, (ast.FunctionDef, ast.AsyncFunctionDef)):
+                heredados.setdefault(n, set()).update(_parametros(envolvente))
+
     huerfanos = []
     for fn in ast.walk(arbol):
         if not isinstance(fn, (ast.FunctionDef, ast.AsyncFunctionDef)):
             continue
-        locales = {a.arg for a in fn.args.args + fn.args.kwonlyargs}
+        locales = _parametros(fn) | heredados.get(fn, set())
         if fn.args.vararg:
             locales.add(fn.args.vararg.arg)
         if fn.args.kwarg:

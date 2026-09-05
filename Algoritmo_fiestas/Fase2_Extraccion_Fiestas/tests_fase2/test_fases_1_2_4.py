@@ -155,6 +155,64 @@ def test_el_plazo_de_inscripcion_no_es_la_fiesta():
     assert anclas_de_fechas(ctx, loc("Los Mardos"), PEDANIAS, 2026) == []
 
 
+def test_la_venta_de_entradas_no_es_la_fiesta():
+    """
+    Tobarra, ejecución del 2026-09-03. El PDF cristo26-1.pdf programa el 8 y el
+    9 de mayo, y de paso dice «Venta de tickets … del 24 de abril al 4 de mayo».
+    Ese rango se llevó la votación y fabricó una ficha entera —"Fiestas de
+    Tobarra", 24-abr a 4-may— que además arrastró al localizador durante tres
+    rondas y se quedó con el mejor documento del municipio, dejando a las
+    fiestas de verdad (8-24 de mayo) con el PDF peor y 10 actos de 17 días.
+    """
+    ctx = _plano(
+        "viernes 8 de mayo 10:00h. postulacion. avenida de la constitucion. "
+        "sabado 9 de mayo 12:00h. ii edicion camino a las pujas 2026. "
+        "14:00h. comida popular y sorteo solidario. donativo 6 euros. "
+        "venta de tickets en drogueria sila y centro medico tobarra, "
+        "del 24 de abril al 4 de mayo. fiestas de tobarra"
+    )
+    rangos = [(a["inicio"], a["fin"]) for a in anclas_de_fechas(ctx, loc("Tobarra"), PEDANIAS, 2026)]
+    assert (date(2026, 4, 24), date(2026, 5, 4)) not in rangos
+
+
+def test_un_rango_ajeno_al_programa_se_descarta_sin_conocer_la_palabra():
+    """
+    La misma frase sin ninguna palabra que `_TRAMITE` conozca. Lo que descarta
+    el rango aquí es que el segmento programa el 8 y el 9 de mayo y ese rango no
+    toca ninguno de los dos: la regla no depende del vocabulario.
+    """
+    ctx = _plano(
+        "viernes 8 de mayo 10:00h. postulacion. sabado 9 de mayo 12:00h. "
+        "ii edicion camino a las pujas. 14:00h. comida popular. "
+        "se despachan en drogueria sila, del 24 de abril al 4 de mayo. "
+        "fiestas de tobarra"
+    )
+    rangos = [(a["inicio"], a["fin"]) for a in anclas_de_fechas(ctx, loc("Tobarra"), PEDANIAS, 2026)]
+    assert (date(2026, 4, 24), date(2026, 5, 4)) not in rangos
+
+
+def test_un_rango_coherente_con_su_programa_sigue_anclando():
+    """La regla anterior no puede tumbar el rango bueno de un programa."""
+    ctx = _plano(
+        "las fiestas de delika 2026 se celebran del 26 al 28 de junio. "
+        "viernes 26 de junio 20:00h chupinazo. sabado 27 de junio 12:00h misa mayor. "
+        "domingo 28 de junio 19:00h toro de fuego"
+    )
+    a = anclas_de_fechas(ctx, loc("Delika", "01002000201"), [], 2026)
+    assert (a[0]["inicio"], a[0]["fin"]) == (date(2026, 6, 26), date(2026, 6, 28))
+
+
+def test_la_hora_pegada_al_minuto_cuenta_como_hora():
+    """
+    "10:00h" es como se escribe un programa en español y el patrón propio del
+    troceador no lo reconocía: la "h" se comía el `\\b` final. Con el detector
+    unificado, el modo programa arranca donde tiene que arrancar.
+    """
+    from llm_processor.text_analyzer import _RE_HORA_PROGRAMA
+    for hora in ("10:00h", "12:00h.", "9:30h", "22:30h.", "10.00h", "10:00 h", "10:00"):
+        assert _RE_HORA_PROGRAMA.search(hora), hora
+
+
 def test_la_evidencia_llega_hasta_la_advocacion():
     """
     La prueba del anclaje se recorta, y de ella sale el nombre. Con 200

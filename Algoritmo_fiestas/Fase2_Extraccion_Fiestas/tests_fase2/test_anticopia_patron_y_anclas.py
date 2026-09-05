@@ -343,11 +343,66 @@ def _ajustar(f, ctx, nombre="Aloria"):
 
 
 def test_ancla_afina_las_fechas_del_modelo():
-    """Aloria: el modelo dijo 28-30 de agosto; el texto dice 29-30, y es lo correcto."""
-    ctx = ("titulo fiestas de san juan degollado en aloria 2026 del 29 al 30 de agosto\n\n"
+    """
+    El anclaje afina cuando no hay nada más fiable con que hacerlo.
+
+    Aloria: el modelo dijo 28-30 de agosto y el texto dice 29-30, que es lo
+    correcto. Con un santo reconocible en el nombre —San Juan Degollado, 29 de
+    agosto— el rango del modelo ya lo cubre y desde el 2026-09-02 manda el
+    modelo: el recorte por una frase costaba más de lo que daba (ver
+    `test_el_ancla_no_recorta_un_rango_que_ya_cubre_al_patron`). Sin santo que
+    reconocer, el anclaje sigue siendo la mejor evidencia disponible y corrige.
+    """
+    ctx = ("titulo fiestas de verano en aloria 2026 del 29 al 30 de agosto\n\n"
            "titulo fiestas de aloria 2026 se celebran del 29 al 30 de agosto")
-    f = _ajustar(fiesta("Fiestas de San Juan Degollado", "2026-08-28", "2026-08-30"), ctx)
+    f = _ajustar(fiesta("Fiestas de Verano", "2026-08-28", "2026-08-30"), ctx)
     assert (f["fecha_inicio"], f["fecha_fin"]) == ("2026-08-29", "2026-08-30")
+
+
+def test_el_programa_recorta_cuando_tiene_dias_de_sobra_para_decirlo():
+    """
+    El recorte por programa es lo que sustituye al afinado del anclaje, pero pide
+    al menos tres días de programa: uno de dos no dice cuánto dura la fiesta.
+
+    Con seis días de programa dentro de un rango de nueve, el rango sobra por los
+    dos extremos y se recorta a lo que el programa cubre.
+    """
+    from llm_processor.text_analyzer import recortar_rango_al_programa
+    f = recortar_rango_al_programa({
+        "nombre": "Fiestas de San Juan Degollado",
+        "fecha_inicio": "2026-08-25", "fecha_fin": "2026-09-02",
+        "programa": [
+            {"fecha": f"2026-08-{d}", "eventos": [{"hora": "20:00", "descripcion": f"Acto {d}"}]}
+            for d in (27, 28, 29, 30, 31)
+        ],
+    })
+    assert (f["fecha_inicio"], f["fecha_fin"]) == ("2026-08-27", "2026-08-31")
+
+
+def test_el_caso_de_aloria_se_queda_con_un_dia_de_mas_a_proposito():
+    """
+    Aloria es el precio del freno, y conviene que esté escrito.
+
+    El modelo dio 28-30 de agosto y el texto decía 29-30, que era lo correcto.
+    Hasta el 2026-09-02 el anclaje hacía ese recorte; ahora no lo hace —esa misma
+    excepción le costaba a San Roque de Tobarra cuatro días de fiesta y a
+    La Aguilera uno—, y el programa tampoco lo rescata porque solo tiene dos días.
+
+    Resultado: Aloria arrastra un día de más. No pierde ni un día real, que es lo
+    que importa; y a cambio, en la ejecución del 2026-09-02, no recortar con
+    programas de dos días devolvió a Sierra sus cuatro días, a Santiago de Mora
+    cinco y a Aranda de Duero los ocho últimos de sus fiestas mayores.
+    """
+    from llm_processor.text_analyzer import recortar_rango_al_programa
+    f = recortar_rango_al_programa({
+        "nombre": "Fiestas de San Juan Degollado",
+        "fecha_inicio": "2026-08-28", "fecha_fin": "2026-08-30",
+        "programa": [
+            {"fecha": "2026-08-29", "eventos": [{"hora": "12:00", "descripcion": "Misa"}]},
+            {"fecha": "2026-08-30", "eventos": [{"hora": "20:00", "descripcion": "Verbena"}]},
+        ],
+    })
+    assert (f["fecha_inicio"], f["fecha_fin"]) == ("2026-08-28", "2026-08-30")
 
 
 def test_ancla_no_toca_fechas_que_no_solapan():

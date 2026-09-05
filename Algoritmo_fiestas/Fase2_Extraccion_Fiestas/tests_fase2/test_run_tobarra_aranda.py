@@ -939,7 +939,49 @@ def test_el_localizador_nunca_pasa_del_tope_de_rondas():
     import llm_processor.text_analyzer as ta
     from config import PROGRAM_LOCATOR_MAX_ITERATIONS
 
-    # Siempre pide seguir: si no hubiera tope, no pararía nunca.
+    # Siempre pide seguir, y CADA RONDA trae un documento distinto: sin tope no
+    # pararía nunca. Que sean distintos importa desde el 2026-09-03: el bucle
+    # para en cuanto una ronda no aporta nada nuevo, así que devolviendo siempre
+    # la misma URL se saldría por ahí y el tope no llegaría a ejercer.
+    n = {"llm": 0, "descarga": 0}
+
+    async def pide_una_url_distinta_cada_vez(system_prompt, user_prompt,
+                                             max_tokens=-1, etiqueta="LLM"):
+        n["llm"] += 1
+        return {"paginas_elegidas": [], "informacion_suficiente": False,
+                "urls_a_seguir": [f"https://otro.example/mas-{n['llm']}"],
+                "razon": "sigue"}
+
+    respuesta = AsyncMock(side_effect=pide_una_url_distinta_cada_vez)
+
+    async def una_pagina_nueva_cada_vez(urls, fuente="busqueda_web", timeout=15):
+        n["descarga"] += 1
+        return [{"url": urls[0], "fuente": "busqueda_web",
+                 "texto": "12:00 Misa\n20:00 Verbena\n23:00 Concierto"}]
+
+    with patch.object(ta, "llm_chat_json", respuesta), \
+         patch("scraper.google_search.descargar_urls_bajo_demanda",
+               una_pagina_nueva_cada_vez):
+        asyncio.run(ta.localizar_programa_con_llm(
+            CANDIDATAS_ARANDA, {"nombre": "F", "fecha_inicio": "2026-09-11",
+                                "fecha_fin": "2026-09-20"},
+            ARANDA, {"nombre": "Aranda de Duero"}, 2026, []))
+
+    assert respuesta.await_count == PROGRAM_LOCATOR_MAX_ITERATIONS
+
+
+def test_el_localizador_para_cuando_una_ronda_no_aporta_nada():
+    """
+    El criterio de parada que de verdad manda: no avanzar. Devolviendo siempre
+    la misma URL, el bucle tiene que salirse en la segunda ronda en vez de
+    gastar las seis pidiendo lo mismo.
+    """
+    import asyncio
+    from unittest.mock import AsyncMock, patch
+
+    import llm_processor.text_analyzer as ta
+    from config import PROGRAM_LOCATOR_MAX_ITERATIONS
+
     respuesta = AsyncMock(return_value={
         "paginas_elegidas": [], "informacion_suficiente": False,
         "urls_a_seguir": ["https://otro.example/mas"], "razon": "sigue"})
@@ -953,7 +995,10 @@ def test_el_localizador_nunca_pasa_del_tope_de_rondas():
                                 "fecha_fin": "2026-09-20"},
             ARANDA, {"nombre": "Aranda de Duero"}, 2026, []))
 
-    assert respuesta.await_count == PROGRAM_LOCATOR_MAX_ITERATIONS
+    assert respuesta.await_count == 2, (
+        f"{respuesta.await_count} rondas para no avanzar nada"
+    )
+    assert respuesta.await_count < PROGRAM_LOCATOR_MAX_ITERATIONS
 
 
 def test_los_snippets_no_le_quitan_el_sitio_al_programa():

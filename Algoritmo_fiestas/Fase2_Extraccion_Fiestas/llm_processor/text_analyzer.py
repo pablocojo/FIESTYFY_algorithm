@@ -45,11 +45,23 @@ from config import (
     ANCLA_EVIDENCIA_CHARS,
     PROCEDENCIA_CHARS,
     PROCEDENCIA_MAX_TOKENS,
+    PERTENENCIA_ENABLED,
+    PERTENENCIA_MAX_TOKENS,
+    PERTENENCIA_CONTEXTO_TOKENS,
+    PERTENENCIA_DESCARTAR_SI_DUDA,
     ENRICHMENT_MIN_ACTOS_EN_PAGINA,
+    COBERTURA_DIAS_MINIMA,
     DISCOVERY_MIN_CHUNKS_MES_PROPIO,
     DISCOVERY_MAX_LLAMADAS_LOCALIDAD,
     ANCLA_MAX_RANGOS_POR_SEGMENTO,
     ANCLA_DIAS_DE_SEPARACION,
+    ANCLA_MIN_DIAS_TRAS_RECORTE,
+    ANCLA_MAX_CHARS_A_LA_LOCALIDAD,
+    LLM_FACTOR_REINTENTO_TRUNCADO,
+    LLM_TOPE_REINTENTO,
+    LLM_REINTENTOS_429,
+    LLM_BACKOFF_429,
+    RECORTE_PROGRAMA_MIN_DIAS,
     PROGRAMA_MIN_CHARS_ACTO_UNICO,
     DISCOVERY_TOP_GARANTIZADOS,
     LMSTUDIO_EMBEDDING_URL,
@@ -61,8 +73,24 @@ from config import (
     LMSTUDIO_CHAT_TEMPERATURE,
     LMSTUDIO_CHAT_MAX_TOKENS,
     LMSTUDIO_SEED,
+    OPENROUTER_ENABLED,
+    OPENROUTER_API_KEY,
+    OPENROUTER_CHAT_URL,
+    OPENROUTER_MODELS,
+    OPENROUTER_CHAT_TIMEOUT,
+    LLM_SEGUNDOS_POR_1K_TOKENS,
+    LLM_TIMEOUT_MAXIMO,
+    OPENROUTER_N_CTX,
+    OPENROUTER_MAX_TOKENS,
+    OPENROUTER_CONCURRENCY,
+    OPENROUTER_PAUSA_ENTRE_MODELOS,
+    OPENROUTER_REFERER,
+    OPENROUTER_TITLE,
 )
-from llm_processor.festival_filter import sanear_fiesta, evaluar_fiesta, fusionar_fiestas_proximas, validar_fechas_moviles
+from llm_processor.festival_filter import (
+    sanear_fiesta, evaluar_fiesta, fusionar_fiestas_proximas, validar_fechas_moviles,
+    meses_de_fiestas_moviles, tiene_senal_nocturna,
+)
 from fuentes import (
     es_fuente_oficial,
     es_fuente_valida,
@@ -77,6 +105,7 @@ from fuentes import (
     clasificar_relevancia_documento,
     documento_es_ajeno_al_municipio,
     documento_avalado_solo_por_la_localidad,
+    web_es_de_este_lugar,
     procedencia_contradice_al_lugar,
     lengua_cooficial_detectada,
     parece_listado_institucional,
@@ -85,13 +114,17 @@ from fuentes import (
     FUENTE_WEB_LOCALIDAD,
     FUENTE_RRSS_LOCALIDAD,
 )
-from config_idiomas import get_language_profile
-from senales_festivas import contar_actos_horarios, tiene_termino_festivo, unir_hora_con_acto
+from config_idiomas import comunidad_de, get_language_profile, perfil_de_lugar
+from senales_festivas import (
+    PATRON_HORA, contar_actos_horarios, tiene_termino_festivo, unir_hora_con_acto,
+)
 from context_budget import (
     contar_tokens,
     get_n_ctx,
+    get_model_info,
     registrar_uso_real,
     resumen_presupuesto,
+    tokens_por_lote,
     OVERHEAD_PLANTILLA_TOKENS,
     RESERVA_SALIDA_DISCOVERY,
     RESERVA_SALIDA_ENRICHMENT,
@@ -99,6 +132,7 @@ from context_budget import (
 from debug_contexto import volcar_contexto
 from higiene_documentos import es_texto_tabular
 from ranking_chunks import puntuar_chunks, umbral_adaptativo, chunks_garantizados
+from reparto_contexto import repartir_en_lotes, resumen_reparto
 import fasttext
 
 logger = logging.getLogger("text_analyzer")
@@ -180,9 +214,7 @@ def translate_chunk(text: str, motor: str, modelo_id: str) -> str:
     return text
 
 def process_translation_pipeline(texto: str, municipio: dict) -> str:
-    comunidad = municipio.get("comunidad_autonoma", "")
-    provincia = municipio.get("provincia", "")
-    perfil_data = get_language_profile(comunidad, provincia)
+    perfil_data = perfil_de_lugar(municipio)
     
     perfil_principal = perfil_data.get("perfil_principal")
     perfil_secundario = perfil_data.get("perfil_secundario")
@@ -239,6 +271,11 @@ def process_translation_pipeline(texto: str, municipio: dict) -> str:
 
 # Semáforo global: solo UNA petición simultánea al LLM local (evita desbordar la VRAM)
 LLM_SEMAPHORE = asyncio.Semaphore(1)
+
+# En OpenRouter no hay VRAM que proteger, así que la restricción no es la misma:
+# lo que limita es el cupo por minuto del nivel gratuito. Semáforo aparte para no
+# arrastrar el cuello de botella del local a las llamadas en la nube.
+LLM_SEMAPHORE_REMOTO = asyncio.Semaphore(max(1, OPENROUTER_CONCURRENCY))
 
 # Diccionario de pre-mapeo para idiomas cooficiales
 DICCIONARIO_FESTIVO = {
@@ -357,7 +394,18 @@ Si un programa de actos aparece marcado como GENERAL y menciona lugares físicos
 # CHUNKING POR DOCUMENTOS (no corta programas ni mezcla fuentes)
 # ──────────────────────────────────────────────────
 
-_RE_HORA_PROGRAMA = re.compile(r"\b\d{1,2}[:.h]\d{2}\b")
+# La misma hora que reconoce el detector de actos, y por el mismo motivo por el
+# que `unir_hora_con_acto` se aplica aquí: si el troceador y el detector no leen
+# lo mismo, el "modo programa" no se activa en los documentos que existen para él.
+#
+# El patrón propio que había aquí —`\b\d{1,2}[:.h]\d{2}\b`— no reconocía
+# "10:00h", "12:00h." ni "9:30h", que es como se escribe un programa de fiestas
+# en español: la "h" pegada al minuto se come el `\b` final. Medido el
+# 2026-09-04 sobre los 159 contextos de enrichment de la última ejecución, se le
+# escapaba el 18% de las líneas con hora (2.491 de 13.739), de modo que en los
+# programas con ese formato el modo programa no llegaba a arrancar y el programa
+# se troceaba con el `chunk_size` normal.
+_RE_HORA_PROGRAMA = PATRON_HORA
 
 
 def _dividir_en_unidades(texto: str) -> list[str]:
@@ -539,6 +587,12 @@ def seleccionar_chunks(
     garantizados: list[dict] | None = None,
 ) -> list[dict]:
     """
+    FUERA DE LA RUTA PRINCIPAL desde el 2026-09-03. Solo lo usa
+    `AsyncRAGProcessor.saturate_context_docs`, que es la ruta heredada. El
+    discovery y el enrichment reparten con `reparto_contexto.repartir_en_lotes`
+    y no descartan nada: era este empaquetador, y no el ranking, quien decidía
+    qué veía el modelo —el 5,7% de los chunks en discovery—.
+
     Selección por cuotas de prioridad sobre items PRE-FILTRADOS y PRE-PONDERADOS.
     items: {chunk, fuente, url, es_calendario, prioridad, score}.
     1º entran los chunks GARANTIZADOS (mejores páginas según la araña);
@@ -593,6 +647,14 @@ def seleccionar_chunks(
 
     return seleccion
 
+
+# Los doce, por su número de mes. Para mirar si un texto habla del mes de una
+# fiesta sin tener que invertir _MES_A_NUMERO, que trae abreviaturas y duplica
+# septiembre.
+_MESES_EN_ORDEN = (
+    "enero", "febrero", "marzo", "abril", "mayo", "junio",
+    "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre",
+)
 
 _MES_A_NUMERO = {
     "enero": 1, "febrero": 2, "marzo": 3, "abril": 4, "mayo": 5, "junio": 6,
@@ -750,11 +812,36 @@ def pagina_entera(indexed_chunks: list[dict], url: str) -> list[dict]:
     return sorted(trozos, key=lambda i: i.get("indice_chunk", 0))
 
 
+def texto_pagina_entera(indexed_chunks: list[dict], url: str) -> str:
+    """
+    El texto COMPLETO de una página, en su orden de lectura.
+
+    Existe porque varias decisiones se estaban tomando sobre el trozo de página
+    que había sobrevivido al recorte por presupuesto, y no sobre la página. Con
+    el contexto mutilado, `contar_actos_horarios` cuenta de menos y
+    `_habla_de_otro_mes` ve meses que no son los que la página trata.
+    """
+    return "\n".join(i.get("chunk", "") for i in pagina_entera(indexed_chunks, url))
+
+
+def actos_del_documento(indexed_chunks: list[dict], urls: list[str]) -> int:
+    """Actos con hora de la página más completa de `urls`, leída ENTERA."""
+    return max(
+        (contar_actos_horarios(texto_pagina_entera(indexed_chunks, u)) for u in urls),
+        default=0,
+    )
+
+
 def _contexto_con_las_paginas_enteras(
     chunks_finales: list[dict], indexed_chunks: list[dict], urls: list[str],
     anno: int | None = None,
 ) -> tuple[list[dict], int, int]:
     """
+    FUERA DE LA RUTA VIVA desde el 2026-09-03. Su tope de ENRICHMENT_MAX_CHARS
+    es lo que dejaba entrar 14 de los 82 fragmentos del PDF de Aranda; ahora el
+    enrichment coge la página entera y la reparte con `repartir_en_lotes`.
+    Se conserva porque sus tests documentan el comportamiento que se retiró.
+
     Rehace la selección poniendo delante y completas las páginas del programa.
 
     Son varias porque el programa puede estarlo: una fiesta larga se publica a
@@ -806,6 +893,7 @@ def _contexto_con_las_paginas_enteras(
 
 def vetar_paginas_imposibles(
     urls: list[str], contexto: str, fiesta: dict, anno: int | None = None,
+    indexed_chunks: list[dict] | None = None,
 ) -> tuple[list[str], list[tuple[str, str]]]:
     """
     Quita de la elección del modelo las páginas que NO pueden ser el programa
@@ -833,7 +921,17 @@ def vetar_paginas_imposibles(
     meses = {ini.month, fin.month} if (ini and fin) else set()
     anno = anno or (ini.year if ini else None)
 
+    # La página ENTERA cuando se puede, y el trozo del contexto solo como
+    # respaldo. Juzgar una página por el fragmento que sobrevivió al recorte es
+    # cómo se descartó el PROGRAMA-2026.pdf de Aranda de Duero para su propia
+    # fiesta de septiembre: los fragmentos presentes citaban otros meses.
     textos = dict(paginas_del_contexto(contexto))
+    if indexed_chunks:
+        for u in urls:
+            entera = texto_pagina_entera(indexed_chunks, u)
+            if entera.strip():
+                textos[u] = entera
+
     validas, vetadas = [], []
     for url in urls:
         texto = textos.get(url, "")
@@ -967,6 +1065,8 @@ from config import (
     PROGRAM_LOCATOR_MAX_CANDIDATES,
     PROGRAM_LOCATOR_MAX_ITERATIONS,
     PROGRAM_LOCATOR_MAX_URLS_PER_ROUND,
+    LOCATOR_MAX_CONSULTAS_POR_RONDA,
+    LOCATOR_MAX_CONSULTAS_POR_FIESTA,
     PROGRAM_LOCATOR_MAX_TOKENS,
     PROGRAM_LOCATOR_DOWNLOAD_TIMEOUT,
 )
@@ -1122,23 +1222,39 @@ CRITERIOS DE DECISIÓN:
 CAMPO "informacion_suficiente":
 - true: la(s) página(s) elegida(s) contienen el programa completo o toda la
   información disponible. NO hace falta buscar más.
-- false: las páginas elegidas solo tienen información parcial o referencias a
-  otra página donde está el programa completo. En este caso, rellena
-  "urls_a_seguir" con las URLs que hay que descargar para encontrar el programa.
+- false: lo que tienes delante no basta. Di POR QUÉ en "razon" y, sobre todo,
+  di qué hacer para arreglarlo. Tienes dos herramientas y puedes usar las dos
+  a la vez:
+    · "urls_a_seguir": direcciones concretas que aparecen en los extractos y
+      que hay que descargar.
+    · "consultas_sugeridas": búsquedas de internet que redactas tú y que se
+      lanzarán tal cual en un buscador.
+
+CÓMO ESCRIBIR "consultas_sugeridas" (máximo {LOCATOR_MAX_CONSULTAS_POR_RONDA}):
+- Escribe la consulta como la escribiría una persona, sin operadores raros.
+- Incluye SIEMPRE el nombre del pueblo, para no traerte el programa de otro
+  pueblo que celebre la misma advocación —los hay a cientos—.
+- Lo que suele funcionar: el nombre de la fiesta con el pueblo y el año; el
+  pueblo con "programa de actos" y el mes; el nombre del pueblo junto al de la
+  emisora, la revista o el periódico comarcal si algún extracto los nombra.
+- No sugieras consultas si el problema es que esta fiesta sencillamente no
+  tiene programa publicado: devolver la lista vacía es una respuesta correcta.
 
 Responde SOLO con JSON estricto:
 {{
   "paginas_elegidas": ["url1", "url2"],
   "informacion_suficiente": true o false,
   "urls_a_seguir": ["url_externa1"],
+  "consultas_sugeridas": ["programa fiestas X 2026"],
   "razon": "Breve explicación de por qué has elegido esas páginas"
 }}
 
-Si NINGUNA candidata sirve y no hay URLs externas:
+Si NINGUNA candidata sirve y no hay nada que buscar:
 {{
   "paginas_elegidas": [],
   "informacion_suficiente": true,
   "urls_a_seguir": [],
+  "consultas_sugeridas": [],
   "razon": "Ninguna página contiene el programa de esta fiesta"
 }}"""
 
@@ -1160,6 +1276,9 @@ async def localizar_programa_con_llm(
     municipio: dict,
     anno: int,
     indexed_chunks: list[dict],
+    nombres_hermanas: list[str] | None = None,
+    provincia: str = "",
+    idiomas: list[str] | None = None,
 ) -> tuple[list[str], list[dict]]:
     """
     Program Locator Pass: el LLM decide qué página(s) contienen el programa.
@@ -1181,6 +1300,8 @@ async def localizar_programa_con_llm(
     documentos_nuevos: list[dict] = []
     urls_elegidas: list[str] = []
     contexto_acumulado = contexto
+    consultas_hechas: set[str] = set()
+    urls_ya_pedidas: set[str] = set()
 
     for iteracion in range(1, PROGRAM_LOCATOR_MAX_ITERATIONS + 1):
         candidatas = _resumir_candidatas(contexto_acumulado, fiesta)
@@ -1232,6 +1353,10 @@ async def localizar_programa_con_llm(
         urls_a_seguir = parsed.get("urls_a_seguir") or []
         if isinstance(urls_a_seguir, str):
             urls_a_seguir = [urls_a_seguir]
+        consultas = parsed.get("consultas_sugeridas") or []
+        if isinstance(consultas, str):
+            consultas = [consultas]
+        consultas = [c.strip() for c in consultas if isinstance(c, str) and c.strip()]
         razon = parsed.get("razon", "")
 
         # Registrar las elegidas de esta ronda
@@ -1243,15 +1368,23 @@ async def localizar_programa_con_llm(
             f"  [LOCATOR] '{nombre_fiesta}' ronda {iteracion}: "
             f"{len(elegidas)} página(s) elegida(s), "
             f"suficiente={suficiente}, "
-            f"{len(urls_a_seguir)} URL(s) a seguir. "
+            f"{len(urls_a_seguir)} URL(s) a seguir, "
+            f"{len(consultas)} consulta(s) sugerida(s). "
             f"Razón: {razon[:120]}"
         )
 
-        # Si dice que es suficiente o no hay nada que seguir, terminamos
-        if suficiente or not urls_a_seguir:
+        # Se para cuando el modelo dice que le basta. Si dice que NO le basta,
+        # se sigue mientras tenga algo concreto que pedir: hasta ahora el bucle
+        # se rompía también cuando no proponía URLs, que es justo el caso en que
+        # más falta hacía salir a buscar.
+        if suficiente:
             break
-
-        # Si estamos en la última iteración permitida, no seguimos
+        if not urls_a_seguir and not consultas:
+            logger.info(
+                f"  [LOCATOR] '{nombre_fiesta}': dice que no le basta pero no "
+                f"propone ni URLs ni consultas. Se sigue con lo que hay."
+            )
+            break
         if iteracion >= PROGRAM_LOCATOR_MAX_ITERATIONS:
             logger.info(
                 f"  [LOCATOR] '{nombre_fiesta}': máximo de rondas alcanzado "
@@ -1259,83 +1392,111 @@ async def localizar_programa_con_llm(
             )
             break
 
-        # Descargar las URLs señaladas que no estén ya en el contexto
-        urls_conocidas = {c["url"] for c in candidatas}
+        # Se distinguen los dos orígenes a propósito: una URL que el modelo
+        # señala DENTRO de un extracto ya vetado es como el enlace que sigue la
+        # araña —la noticia del ayuntamiento que remite a la emisora—, y esa
+        # página casi nunca repite el nombre del municipio. Una consulta de
+        # buscador, en cambio, puede devolver cualquier cosa.
+        nuevos_de_url: list[dict] = []
+        nuevos_de_busqueda: list[dict] = []
+
+        # 1. Las URLs concretas que el modelo señala en los extractos.
+        urls_conocidas = {c["url"] for c in candidatas} | urls_ya_pedidas
         urls_nuevas = [
             u for u in urls_a_seguir[:PROGRAM_LOCATOR_MAX_URLS_PER_ROUND]
             if u and u.startswith("http") and u not in urls_conocidas
         ]
-        if not urls_nuevas:
+        if urls_nuevas:
+            urls_ya_pedidas.update(urls_nuevas)
             logger.info(
-                f"  [LOCATOR] '{nombre_fiesta}': las URLs a seguir ya están "
-                f"en el contexto o no son válidas."
+                f"  [LOCATOR] '{nombre_fiesta}': descargando {len(urls_nuevas)} "
+                f"URL(s): {[u[:70] for u in urls_nuevas]}"
+            )
+            try:
+                from scraper.google_search import descargar_urls_bajo_demanda
+                nuevos_de_url += await descargar_urls_bajo_demanda(
+                    urls_nuevas, fuente=FUENTE_BUSQUEDA,
+                    timeout=PROGRAM_LOCATOR_DOWNLOAD_TIMEOUT,
+                ) or []
+            except Exception as e:
+                logger.warning(f"  [LOCATOR] Error descargando URLs: {e}")
+
+        # 2. Las consultas que redacta el propio modelo. Es la novedad: hasta
+        #    ahora solo se podía seguir un enlace que ya estuviera en el texto,
+        #    y en 2 de las 4 rondas con suficiente=False no había ninguno.
+        pendientes = [
+            c for c in consultas[:LOCATOR_MAX_CONSULTAS_POR_RONDA]
+            if " ".join(c.lower().split()) not in consultas_hechas
+        ][: max(0, LOCATOR_MAX_CONSULTAS_POR_FIESTA - len(consultas_hechas))]
+        if pendientes:
+            consultas_hechas.update(" ".join(c.lower().split()) for c in pendientes)
+            logger.info(
+                f"  [LOCATOR] '{nombre_fiesta}': buscando lo que pide el modelo: {pendientes}"
+            )
+            try:
+                from scraper.google_search import _buscar_y_descargar
+                nuevos_de_busqueda += await _buscar_y_descargar(
+                    pendientes, localidad, municipio, set(urls_conocidas),
+                ) or []
+            except Exception as e:
+                logger.warning(f"  [LOCATOR] Error buscando: {e}")
+
+        # Lo que llega por BÚSQUEDA pasa por los mismos filtros que cualquier
+        # otro resultado de buscador. Una consulta escrita por el modelo con el
+        # nombre de una advocación atrae con fuerza el programa del pueblo
+        # homónimo que celebra esa misma fiesta, y los hay a cientos.
+        if nuevos_de_busqueda:
+            antes = len(nuevos_de_busqueda)
+            nuevos_de_busqueda = [
+                d for d in nuevos_de_busqueda
+                if not documento_es_ajeno_al_municipio(
+                    d.get("texto") or "", d.get("url", ""),
+                    localidad.get("nombre", ""), municipio.get("nombre", ""),
+                    nombres_hermanas,
+                )
+            ]
+            nuevos_de_busqueda = await descartar_homonimos(
+                nuevos_de_busqueda, localidad.get("nombre", ""),
+                municipio.get("nombre", ""), provincia, nombres_hermanas,
+                idiomas or ["es"],
+            )
+            if len(nuevos_de_busqueda) != antes:
+                logger.info(
+                    f"  [LOCATOR] '{nombre_fiesta}': {antes - len(nuevos_de_busqueda)} de "
+                    f"{antes} resultados de búsqueda descartados por no ser de "
+                    f"{localidad.get('nombre', '')}."
+                )
+
+        nuevos = [d for d in (nuevos_de_url + nuevos_de_busqueda)
+                  if (d.get("texto") or "").strip()]
+        if not nuevos:
+            logger.info(
+                f"  [LOCATOR] '{nombre_fiesta}': la ronda {iteracion} no ha traído "
+                f"ningún documento nuevo. Se para."
             )
             break
 
+        documentos_nuevos.extend(nuevos)
         logger.info(
-            f"  [LOCATOR] '{nombre_fiesta}': descargando {len(urls_nuevas)} "
-            f"URL(s) nuevas: {[u[:70] for u in urls_nuevas]}"
+            f"  [LOCATOR] '{nombre_fiesta}': {len(nuevos)} documento(s) nuevo(s)."
         )
 
-        try:
-            from scraper.google_search import descargar_urls_bajo_demanda
-            nuevos = await descargar_urls_bajo_demanda(
-                urls_nuevas,
-                fuente=FUENTE_BUSQUEDA,
-                timeout=PROGRAM_LOCATOR_DOWNLOAD_TIMEOUT,
+        # Al índice, para que el enrichment pueda leerlos enteros después.
+        partes_nuevas = []
+        for doc in nuevos:
+            texto_doc, url_doc = doc.get("texto", ""), doc.get("url", "")
+            for idx, chunk_text in enumerate(chunk_documento(texto_doc)):
+                indexed_chunks.append({
+                    "fuente": doc.get("fuente", FUENTE_BUSQUEDA),
+                    "url": url_doc, "chunk": chunk_text, "indice_chunk": idx,
+                    "es_calendario": doc.get("es_calendario", False),
+                    "relevancia_geo": "DIRECTA", "score": 0.5, "prioridad": 6,
+                })
+            partes_nuevas.append(
+                f"\n--- [{url_doc}] | Relevancia: DIRECTA ---\n"
+                f"{texto_doc[:PROGRAM_LOCATOR_SNIPPET_CHARS * 3]}"
             )
-        except Exception as e:
-            logger.warning(
-                f"  [LOCATOR] Error descargando URLs para '{nombre_fiesta}': {e}"
-            )
-            break
-
-        if nuevos:
-            documentos_nuevos.extend(nuevos)
-            logger.info(
-                f"  [LOCATOR] '{nombre_fiesta}': {len(nuevos)} documento(s) "
-                f"nuevo(s) descargado(s)."
-            )
-            # Rechunkear los documentos nuevos y añadirlos al contexto
-            # para la siguiente ronda
-            for doc in nuevos:
-                texto_doc = doc.get("texto", "")
-                url_doc = doc.get("url", "")
-                if not texto_doc.strip():
-                    continue
-                chunks_doc = chunk_documento(texto_doc)
-                for idx, chunk_text in enumerate(chunks_doc):
-                    nuevo_chunk = {
-                        "fuente": doc.get("fuente", FUENTE_BUSQUEDA),
-                        "url": url_doc,
-                        "chunk": chunk_text,
-                        "indice_chunk": idx,
-                        "es_calendario": doc.get("es_calendario", False),
-                        "relevancia_geo": "DIRECTA",
-                        "score": 0.5,
-                        "prioridad": 6,
-                    }
-                    indexed_chunks.append(nuevo_chunk)
-
-            # Reconstruir el contexto con los nuevos documentos para la
-            # siguiente ronda. Solo añadimos los nuevos como un bloque extra.
-            partes_nuevas = []
-            for doc in nuevos:
-                url_doc = doc.get("url", "")
-                texto_doc = doc.get("texto", "")
-                if texto_doc.strip():
-                    partes_nuevas.append(
-                        f"\n--- [{url_doc}] | Relevancia: DIRECTA ---\n"
-                        f"{texto_doc[:PROGRAM_LOCATOR_SNIPPET_CHARS * 3]}"
-                    )
-            if partes_nuevas:
-                contexto_acumulado = contexto_acumulado + "\n".join(partes_nuevas)
-        else:
-            logger.info(
-                f"  [LOCATOR] '{nombre_fiesta}': ninguna URL nueva devolvió "
-                f"contenido útil."
-            )
-            break
+        contexto_acumulado = contexto_acumulado + "\n".join(partes_nuevas)
 
     return urls_elegidas, documentos_nuevos
 
@@ -1849,6 +2010,204 @@ Responde solo JSON: {"municipio": ..., "provincia": ...}
 (La lengua del documento NO se pregunta: la reconoce el código, que para eso no falla.)"""
 
 
+_SYS_PERTENENCIA = """Filtras fichas de fiestas populares españolas antes de guardarlas. Respondes DOS
+preguntas independientes sobre la ficha que se te da.
+
+Te dan la identidad de la localidad que buscamos, la ficha, y el texto de las
+fuentes de donde salió.
+
+PREGUNTA 1 — ¿Es la fiesta PROPIA de nuestra localidad?
+
+No preguntamos dónde se celebra, sino DE QUIÉN es. Son cosas distintas y la
+diferencia decide la respuesta.
+
+1. Manda lo que dice el TEXTO DE LAS FUENTES, no el nombre de la fiesta. Una
+   fiesta puede llamarse igual que nuestra localidad y ser de otra provincia.
+2. Que el texto la sitúe en el MUNICIPIO al que pertenece nuestra localidad es
+   señal BUENA, no mala. Las pedanías se escriben así de continuo: "fiestas de X
+   en Y", donde Y es el municipio o la comarca. Eso es NUESTRO. También lo es que
+   se nombre la provincia o la comunidad correctas.
+3. Si arriba se te da un segundo nombre para nuestra localidad, los dos nombres
+   son EL MISMO SITIO. Un texto que use el nombre largo habla de NOSOTROS, y la
+   respuesta es "si". No lo trates como un pueblo distinto por llamarse de otra
+   manera: es la misma localidad escrita entera.
+4. Es de OTRO SITIO cuando el texto la sitúa en una provincia o comunidad
+   distintas, o en un municipio que no es el nuestro. Cuidado con los nombres que
+   empiezan igual y siguen distinto —"X de la Vera", "X de Tormes", "X de León"
+   son pueblos DIFERENTES de "X"—, y con las direcciones y códigos postales, que
+   delatan la provincia aunque el texto no la nombre. Pero mira SIEMPRE la
+   provincia antes de decidirlo: si la provincia es la nuestra, el nombre largo
+   casi seguro es el nuestro escrito entero, no otro pueblo.
+5. NO ES NUESTRA, aunque se celebre físicamente aquí, la fiesta que pertenece a
+   OTRO: la del municipio entero, la de la comarca, o la que cada año cambia de
+   sede entre los pueblos. Si el texto dice que el municipio organiza un día o
+   una jornada y que este año toca en nuestro pueblo, la fiesta es del municipio
+   y la respuesta es "no". Esta regla pesa MÁS que la 2: que se nombre a nuestro
+   municipio ayuda a situarla, pero si el dueño de la fiesta ES el municipio, no
+   es la fiesta de nuestra localidad.
+   EXCEPCIÓN, y solo esta: si arriba pone que nuestra localidad ES LA CAPITAL,
+   sus fiestas patronales y su fiesta mayor son también las del municipio, así
+   que un texto que las llame "fiestas de <municipio>" habla de las NUESTRAS.
+   La excepción NO alcanza a los otros casos: una jornada que rota de sede sigue
+   siendo del municipio aunque toque en la capital, y NADA de esto vale si la
+   regla 3 ya dijo que el texto sitúa la fiesta en otra provincia. La geografía
+   manda siempre sobre esta excepción.
+6. Si no puedes decidir con el texto, responde "no_se". No adivines por lo que
+   sepas de fuera del texto ni supongas que es nuestra por descarte.
+
+PREGUNTA 2 — ¿Es una fiesta popular?
+
+SÍ lo son: las fiestas patronales, la fiesta mayor, las ferias locales con
+programación festiva, las tradicionales (carnaval, San Juan, moros y cristianos,
+romerías, hogueras), las fiestas de barrio o de pedanía, y las verbenas y fiestas
+populares de verano.
+
+NO lo son cuando aparecen SUELTOS, sin ser parte del programa de una fiesta:
+- Un acto institucional, un pleno, un día autonómico o una jornada oficial.
+- Un concurso, un certamen, una exposición, una conferencia o un ciclo de charlas.
+- Una feria comercial o un mercado sin programación festiva.
+- Una jornada gastronómica puntual.
+- Una competición deportiva suelta, una procesión suelta o una misa extraordinaria.
+- Un plazo administrativo, una convocatoria o el menú de navegación de una web.
+
+La pregunta correcta no es qué tipo de acto es, sino si es una celebración
+popular por sí misma o parte del programa de una. Una procesión dentro de las
+fiestas patronales SÍ cuenta; esa misma procesión suelta en marzo, no.
+
+REGLA DE ACEPTACIÓN OBLIGATORIA: si el programa incluye orquesta, verbena, DJ,
+discomóvil, charanga o música en directo por la noche, es una fiesta. Responde
+"si" a la pregunta 2 aunque el nombre te parezca raro.
+
+Responde solo JSON:
+{"es_de_la_localidad": "si" | "no" | "no_se",
+ "lugar_real": "dónde la sitúa el texto, o null si no lo dice",
+ "es_una_fiesta": "si" | "no" | "no_se",
+ "que_es": "si no es una fiesta, qué es; si lo es, null",
+ "razon": "una frase, citando lo que te ha hecho decidir"}"""
+
+
+def _bloque_identidad(localidad: dict, municipio: dict, nombres_hermanas: list[str] | None) -> str:
+    """
+    Quiénes somos, en el formato que lee el juez de pertenencia.
+
+    Se le da todo lo que el dataset de Fase 1 trae con cobertura completa
+    —provincia, comunidad, población y descripción están en las 8.199 localidades
+    del fichero—, porque sin saber qué buscamos el modelo solo puede extraer de
+    dónde es el documento y dejar que lo compare el código, que es justo lo que
+    no distingue "Santa Marta de Astorga" de "Santa Marta de La Roda".
+    """
+    # La capital no se reconoce solo por el id: en el dataset la cabecera del
+    # municipio es una localidad aparte, con su propio id y `es_capital`. Son
+    # 1.548 de las 8.199 localidades, casi una de cada cinco, y decirlo importa:
+    # sin esto el juez rechazó las fiestas de la Virgen del Rosario de
+    # Quintanadueñas «porque el texto las sitúa en el municipio de Alfoz de
+    # Quintanadueñas, no en la localidad» —siendo Quintanadueñas su capital, y
+    # llamándose el municipio así por ella—.
+    es_capital = (localidad.get("id") == municipio.get("id")) or bool(localidad.get("es_capital"))
+    # El nombre corto y el oficial van en LA MISMA LÍNEA y diciendo expresamente
+    # que son el mismo sitio. Ponerlos en dos campos separados —"Localidad: Santa
+    # Marta" y "Nombre oficial: Santa Marta de los Barros"— hizo que el modelo los
+    # leyera como dos pueblos distintos: descartó la Semana Santa de Santa Marta
+    # razonando «el texto la sitúa en Santa Marta de los Barros, pero el nombre
+    # oficial del municipio es Santa Marta de los Barros, no Santa Marta».
+    # Medido el 2026-09-04: cambiar el veto del código por el mismo error dentro
+    # del modelo no es progreso.
+    nombre_loc = localidad.get("nombre", "")
+    oficial = (municipio.get("nombre_oficial") or "").strip()
+    if oficial and _normalizar_nombre(oficial) != _normalizar_nombre(nombre_loc):
+        lineas = [
+            f"  Localidad: {nombre_loc}, que TAMBIÉN se escribe «{oficial}» "
+            f"—es el mismo sitio, dos formas de nombrarlo—"
+        ]
+    else:
+        lineas = [f"  Localidad: {nombre_loc}"]
+    if (municipio.get("sitio_web") or "").strip():
+        lineas.append(f"  Web oficial del ayuntamiento: {municipio['sitio_web']}")
+    if es_capital:
+        lineas.append(
+            f"  ES LA CAPITAL del municipio de {municipio.get('nombre', '')}: "
+            f"las fiestas del municipio son las suyas."
+        )
+    else:
+        lineas.append(f"  Es una localidad del municipio de: {municipio.get('nombre', '')}")
+    for etiqueta, clave, fuente in (
+        ("Provincia", "provincia", municipio), ("Comunidad", "comunidad", municipio),
+    ):
+        valor = (localidad.get(clave) or fuente.get(clave) or "").strip()
+        if valor:
+            lineas.append(f"  {etiqueta}: {valor}")
+    if localidad.get("poblacion"):
+        lineas.append(f"  Población: {localidad['poblacion']} habitantes")
+    hermanas = [h for h in (nombres_hermanas or []) if h and h != localidad.get("nombre")]
+    if hermanas:
+        lineas.append(f"  Otras localidades del mismo municipio: {', '.join(hermanas[:12])}")
+    # La `descripcion_corta` del dataset NO entra, aunque esté en las 8.199
+    # localidades. Está generada a partir del NOMBRE del pueblo, que es
+    # exactamente el error que este juez existe para corregir: Santa Marta (La
+    # Roda, Albacete) viene descrita como «pueblo encantador con vistas al mar y
+    # ruinas romanas», y Las Arenas y Santa Marina (Burgos) con «playas de arena
+    # dorada». Comprobado el 2026-09-04: siete localidades de provincias sin
+    # costa traen playas o acantilados en su descripción. Darle eso al modelo
+    # junto a la provincia correcta es ponerle una contradicción delante.
+    return "\n".join(lineas)
+
+
+def _bloque_ficha(fiesta: dict) -> str:
+    """La ficha tal como se guardaría, para que el juez vea lo que se va a aceptar."""
+    lineas = [
+        f"  Nombre: {fiesta.get('nombre', '')}",
+        f"  Fechas: {fiesta.get('fecha_inicio', '')} a {fiesta.get('fecha_fin', '')}",
+    ]
+    for etiqueta, clave in (("Descripción", "descripcion"), ("Sede según el texto", "sede_segun_el_texto")):
+        if (fiesta.get(clave) or "").strip():
+            lineas.append(f"  {etiqueta}: {str(fiesta[clave])[:400]}")
+    if (fiesta.get("evidencia") or "").strip():
+        lineas.append(f"  Frase de la que salieron sus fechas: «{fiesta['evidencia'][:300]}»")
+    if fiesta.get("url_programa"):
+        lineas.append(f"  Página de la que se copió el programa: {fiesta['url_programa']}")
+    prog = fiesta.get("programa") or []
+    actos = [e.get("descripcion", "") for d in prog for e in (d.get("eventos") or [])]
+    if actos:
+        lineas.append(f"  Programa: {len(prog)} días, {len(actos)} actos. Primeros:")
+        lineas += [f"    - {a[:150]}" for a in actos[:6]]
+    else:
+        lineas.append("  Programa: no se encontró ninguno (la ficha es solo nombre y fechas).")
+    return "\n".join(lineas)
+
+
+async def veredicto_de_pertenencia(
+    fiesta: dict,
+    localidad: dict,
+    municipio: dict,
+    nombres_hermanas: list[str] | None,
+    contexto_alrededor: str,
+) -> dict:
+    """
+    ¿Esta fiesta es de esta localidad? Lo dice el modelo, con los papeles delante.
+
+    Nace del peor registro de la ejecución del 2026-09-04: a Santa Marta —pedanía
+    de La Roda, Albacete— se le colgaron los 64 actos de las fiestas de Astorga
+    (León). Y no por falta de guardas: el juez de homónimos había descartado
+    correctamente catorce documentos, la web del ayuntamiento de Astorga entre
+    ellos. Lo que falló es que ese juez opina sobre DOCUMENTOS, uno a uno y sin
+    saber a quién buscamos, y la ficha se rehízo después desde un fragmento
+    suelto. Aquí se pregunta por la FICHA ya montada, que es lo que se guarda, y
+    diciéndole al modelo quiénes somos.
+    """
+    datos = await llm_chat_json(
+        _SYS_PERTENENCIA,
+        "LOCALIDAD QUE BUSCAMOS\n"
+        + _bloque_identidad(localidad, municipio, nombres_hermanas)
+        + "\n\nFICHA A JUZGAR\n"
+        + _bloque_ficha(fiesta)
+        + "\n\nTEXTO DE LAS FUENTES DE LAS QUE SALIÓ\n"
+        + (contexto_alrededor or "(no hay texto disponible)"),
+        max_tokens=PERTENENCIA_MAX_TOKENS,
+        etiqueta="PERTENENCIA",
+    )
+    return datos if isinstance(datos, dict) else {}
+
+
 async def procedencia_declarada(texto: str) -> dict:
     """
     Qué dice el documento sobre sí mismo: dónde se sitúa y en qué lengua está.
@@ -2056,6 +2415,224 @@ def _purgar_snippets(documentos: list[dict], urls_fuera: set[str]) -> list[dict]
     return salida
 
 
+# Modelo remoto que respondió la última vez. Con ocho modelos en cascada y varios
+# cientos de llamadas por ejecución, arrancar siempre por el primero significa
+# pagar el 429 del modelo saturado una y otra vez; recordar cuál funciona ahorra
+# esa ida y vuelta en todas las llamadas siguientes.
+_MODELO_REMOTO_PREFERIDO: str | None = None
+
+
+# Ventanas de contexto REALES aprendidas de los errores del propio motor, que no
+# siempre coinciden con las que declara al cargarse. Ver el bloque que lo anota
+# en `_pedir_a_proveedor`. Vive en memoria: se reaprende en cada ejecución.
+_VENTANA_REAL: dict[str, int] = {}
+
+
+def _cadena_proveedores() -> list[dict]:
+    """
+    Proveedores de chat a probar, en orden: primero la cascada de OpenRouter
+    —ordenada por parecido con el 27B, con el último que funcionó al frente— y
+    LM Studio al final como red de seguridad.
+
+    Los embeddings y el VLM de visión NO pasan por aquí: siguen en LM Studio.
+    """
+    cadena: list[dict] = []
+
+    if OPENROUTER_ENABLED and OPENROUTER_API_KEY:
+        modelos = list(OPENROUTER_MODELS)
+        if _MODELO_REMOTO_PREFERIDO in modelos:
+            modelos.remove(_MODELO_REMOTO_PREFERIDO)
+            modelos.insert(0, _MODELO_REMOTO_PREFERIDO)
+        for model_id in modelos:
+            cadena.append({
+                "nombre": model_id,
+                "remoto": True,
+                "url": OPENROUTER_CHAT_URL,
+                "modelo": model_id,
+                "n_ctx": OPENROUTER_N_CTX,
+                "timeout": OPENROUTER_CHAT_TIMEOUT,
+                "headers": {
+                    "Authorization": f"Bearer {OPENROUTER_API_KEY}",
+                    "HTTP-Referer": OPENROUTER_REFERER,
+                    "X-Title": OPENROUTER_TITLE,
+                },
+            })
+
+    # La ventana del local se consulta a LM Studio: es la red de seguridad de la
+    # cadena y su n_ctx suele ser mucho menor que el del remoto, así que hay que
+    # saberlo ANTES de ofrecerle un prompt que no le va a caber.
+    try:
+        n_ctx_local = get_model_info()["n_ctx"]
+    except Exception:
+        n_ctx_local = 8192
+    nombre_local = f"LM Studio/{LMSTUDIO_CHAT_MODEL}"
+    # Si en esta ejecución ya nos ha dicho su ventana real —rechazando un prompt
+    # que según lo declarado le cabía—, esa manda sobre lo que anuncia.
+    n_ctx_local = min(n_ctx_local, _VENTANA_REAL.get(nombre_local, n_ctx_local))
+    cadena.append({
+        "nombre": nombre_local,
+        "remoto": False,
+        "url": LMSTUDIO_CHAT_URL,
+        "modelo": LMSTUDIO_CHAT_MODEL,
+        "n_ctx": n_ctx_local,
+        "timeout": LMSTUDIO_CHAT_TIMEOUT,
+        "headers": {},
+    })
+    return cadena
+
+
+async def _pedir_a_proveedor(
+    prov: dict,
+    system_prompt: str,
+    user_prompt: str,
+    max_tokens: int,
+    etiqueta: str,
+    chars_prompt: int,
+) -> tuple[str, str]:
+    """
+    Una petición a un proveedor concreto. Devuelve `(estado, contenido)`:
+      - `("ok", texto)`      respuesta utilizable
+      - `("siguiente", "")`  este proveedor no sirve; probar el de detrás
+      - `("contexto", "")`   el prompt no cabe en la ventana de este modelo
+      - `("cupo", "")`       429: hay que esperar, no cambiar de proveedor
+    """
+    payload = {
+        "model": prov["modelo"],
+        "messages": [
+            {"role": "system", "content": system_prompt},
+            {"role": "user", "content": user_prompt},
+        ],
+        "temperature": LMSTUDIO_CHAT_TEMPERATURE,
+        "seed": LMSTUDIO_SEED,
+    }
+    # LM Studio interpreta max_tokens=-1 como "sin límite"; OpenRouter responde
+    # 400 ante un valor negativo, así que para la nube se traduce a un tope.
+    if max_tokens and max_tokens > 0:
+        payload["max_tokens"] = max_tokens
+    elif prov["remoto"]:
+        payload["max_tokens"] = OPENROUTER_MAX_TOKENS
+    else:
+        payload["max_tokens"] = max_tokens
+
+    # El timeout crece con el prompt: el modelo tiene que leerse la entrada
+    # entera antes de escribir el primer token, y 300 s fijos tumbaron las
+    # cuatro llamadas de 106.000 tokens del 2026-09-03.
+    tok_prompt = max(0, chars_prompt) / 4.0
+    timeout = min(
+        LLM_TIMEOUT_MAXIMO,
+        prov["timeout"] + (tok_prompt / 1000.0) * LLM_SEGUNDOS_POR_1K_TOKENS,
+    )
+
+    semaforo = LLM_SEMAPHORE_REMOTO if prov["remoto"] else LLM_SEMAPHORE
+    try:
+        async with semaforo:
+            async with aiohttp.ClientSession() as session:
+                async with session.post(
+                    prov["url"],
+                    json=payload,
+                    headers=prov["headers"],
+                    timeout=aiohttp.ClientTimeout(total=timeout),
+                ) as resp:
+                    cuerpo = await resp.text()
+                    if resp.status == 429:
+                        logger.warning(
+                            f"  [{etiqueta}] {prov['nombre']}: 429, cupo agotado."
+                        )
+                        return "cupo", ""
+                    if resp.status != 200:
+                        cuerpo_bajo = cuerpo.lower()
+                        if resp.status == 400 and (
+                            "n_keep" in cuerpo
+                            or "context length" in cuerpo_bajo
+                            or "maximum context" in cuerpo_bajo
+                            or "available context size" in cuerpo_bajo
+                        ):
+                            # El motor dice en el error cuál es su ventana DE
+                            # VERDAD, y no tiene por qué ser la que declaró al
+                            # cargarse: medido el 2026-09-04, LM Studio anunció
+                            # n_ctx=262144 y rechazó un prompt de 6.854 tokens
+                            # porque servía 8192. Con la ventana declarada, el
+                            # guardián de más arriba deja pasar prompts que el
+                            # motor no puede atender y la red de seguridad no
+                            # salva nada. Se aprende del error y se recuerda.
+                            real = re.search(r"available context size \((\d+)", cuerpo_bajo)
+                            if real:
+                                ventana_real = int(real.group(1))
+                                if ventana_real < (prov.get("n_ctx") or 10**9):
+                                    prov["n_ctx"] = ventana_real
+                                    _VENTANA_REAL[prov["nombre"]] = ventana_real
+                                    logger.warning(
+                                        f"  [{etiqueta}] {prov['nombre']}: su ventana real son "
+                                        f"{ventana_real} tok, no los que declaró. Anotado para "
+                                        f"el resto de la ejecución."
+                                    )
+                            else:
+                                logger.warning(
+                                    f"  [{etiqueta}] {prov['nombre']}: el prompt no cabe en su ventana."
+                                )
+                            return "contexto", ""
+                        logger.warning(
+                            f"  [{etiqueta}] {prov['nombre']}: status {resp.status} — {cuerpo[:160]}"
+                        )
+                        return "siguiente", ""
+                    data = json.loads(cuerpo)
+    except asyncio.TimeoutError:
+        logger.warning(f"  [{etiqueta}] {prov['nombre']}: timeout tras {timeout:.0f}s "
+                       f"(prompt de ~{tok_prompt:.0f} tok).")
+        return "siguiente", ""
+    except Exception as e:
+        logger.warning(f"  [{etiqueta}] {prov['nombre']}: {e}")
+        return "siguiente", ""
+
+    # OpenRouter puede devolver 200 con el error dentro del cuerpo.
+    if isinstance(data, dict) and data.get("error"):
+        detalle = data["error"]
+        mensaje_err = detalle.get("message") if isinstance(detalle, dict) else detalle
+        logger.warning(f"  [{etiqueta}] {prov['nombre']}: {str(mensaje_err)[:160]}")
+        return "siguiente", ""
+
+    truncada = False
+    mensaje = (data.get("choices") or [{}])[0].get("message") or {}
+    # Los modelos de razonamiento a veces dejan `content` vacío y vuelcan la
+    # salida en `reasoning`.
+    contenido = mensaje.get("content") or mensaje.get("reasoning") or ""
+    if not contenido.strip():
+        logger.warning(f"  [{etiqueta}] {prov['nombre']}: respuesta vacía.")
+        return "siguiente", ""
+
+    # ── Consumo real declarado por el proveedor + autocalibración ─────────────
+    try:
+        uso = data.get("usage") or {}
+        prompt_tokens = uso.get("prompt_tokens")
+        completion_tokens = uso.get("completion_tokens")
+        finish_reason = (data.get("choices") or [{}])[0].get("finish_reason")
+
+        if prompt_tokens:
+            logger.info(
+                f"  [CTX/{etiqueta}] real: prompt={prompt_tokens} tok, "
+                f"respuesta={completion_tokens} tok, finish_reason={finish_reason} "
+                f"| vía {prov['nombre']}"
+            )
+            # La calibración chars→tokens sirve para presupuestar el contexto
+            # del modelo local: alimentarla con el tokenizador de otro modelo la
+            # falsearía. Solo cuenta lo que mide LM Studio.
+            if not prov["remoto"]:
+                registrar_uso_real(chars_prompt, prompt_tokens)
+
+        if finish_reason == "length":
+            logger.warning(
+                f"  [CTX/{etiqueta}] La respuesta se cortó por LONGITUD "
+                f"({completion_tokens} tok). El JSON llegará truncado."
+            )
+            truncada = True
+    except Exception as e:
+        logger.debug(f"  [CTX/{etiqueta}] No se pudo leer `usage`: {e}")
+
+    # Un JSON cortado a media frase no se parsea. Se avisa al llamador para que
+    # lo reintente con más presupuesto en vez de dar la respuesta por perdida.
+    return ("truncado" if truncada else "ok"), contenido
+
+
 async def llm_chat_json(
     system_prompt: str,
     user_prompt: str,
@@ -2063,27 +2640,23 @@ async def llm_chat_json(
     etiqueta: str = "LLM",
 ) -> dict | None:
     """
-    Petición genérica al LLM local que devuelve un dict parseado del JSON de respuesta.
-    Serializada con el semáforo global para no desbordar la VRAM.
+    Petición genérica de chat que devuelve un dict parseado del JSON de respuesta.
+
+    Recorre la cadena de proveedores: primero los modelos gratuitos de OpenRouter
+    (por orden de parecido con el 27B) y LM Studio como último recurso. Gana el
+    primero que conteste algo utilizable; el resto ni se toca.
 
     `etiqueta` identifica la llamada en la traza de contexto (DISCOVERY, ENRICHMENT...).
-    Toda petición deja constancia de: n_ctx del modelo, tokens del system prompt,
-    tokens del contexto enviado, reserva de salida y tokens realmente generados.
-    Si el modelo se corta por longitud (`finish_reason == "length"`) se avisa: hoy
-    ese caso pasa completamente inadvertido y produce JSON truncado.
+    Toda petición deja constancia de: n_ctx del modelo local, tokens del system
+    prompt, tokens del contexto enviado, reserva de salida y tokens realmente
+    generados. Si el modelo se corta por longitud (`finish_reason == "length"`)
+    se avisa: ese caso pasaría inadvertido y produce JSON truncado.
     """
-    payload = {
-        "model": LMSTUDIO_CHAT_MODEL,
-        "messages": [
-            {"role": "system", "content": system_prompt},
-            {"role": "user", "content": user_prompt},
-        ],
-        "temperature": LMSTUDIO_CHAT_TEMPERATURE,
-        "max_tokens": max_tokens,
-        "seed": LMSTUDIO_SEED,
-    }
+    global _MODELO_REMOTO_PREFERIDO
 
     # ── Traza de contexto (Fase 0: solo mide, no decide) ──────────────────────
+    # El n_ctx es el del modelo local: sigue siendo el presupuesto más estrecho
+    # de la cadena, así que vale como cota conservadora para todos.
     chars_prompt = len(system_prompt) + len(user_prompt)
     try:
         n_ctx = get_n_ctx()
@@ -2100,57 +2673,97 @@ async def llm_chat_json(
     except Exception as e:  # la instrumentación jamás debe tumbar el pipeline
         logger.debug(f"  [CTX/{etiqueta}] No se pudo calcular la traza de contexto: {e}")
 
+    cadena = _cadena_proveedores()
+    hubo_desbordamiento = False
+    # Tokens que este prompt necesita de verdad, para no ofrecérselo a un
+    # proveedor cuya ventana no lo admite. Sin esto, un 429 del remoto hacía
+    # saltar a LM Studio con su n_ctx de 8192 y la llamada se perdía "por
+    # contexto" cuando el problema era el cupo.
     try:
-        async with LLM_SEMAPHORE:
-            async with aiohttp.ClientSession() as session:
-                async with session.post(
-                    LMSTUDIO_CHAT_URL,
-                    json=payload,
-                    timeout=aiohttp.ClientTimeout(total=LMSTUDIO_CHAT_TIMEOUT),
-                ) as resp:
-                    if resp.status != 200:
-                        error_body = await resp.text()
-                        if resp.status == 400 and (
-                            "n_keep" in error_body or "context length" in error_body.lower()
-                        ):
-                            raise ContextOverflowError(error_body[:200])
-                        logger.error(f"  Error LLM: status {resp.status} — {error_body[:200]}")
-                        return None
-                    data = await resp.json()
-                    content = data["choices"][0]["message"]["content"]
-    except ContextOverflowError:
-        raise
-    except asyncio.TimeoutError:
-        logger.error(f"  Timeout del LLM tras {LMSTUDIO_CHAT_TIMEOUT}s")
-        return None
-    except Exception as e:
-        logger.error(f"  Error LLM: {e}")
-        return None
+        tok_necesarios = (contar_tokens(system_prompt) + contar_tokens(user_prompt)
+                          + OVERHEAD_PLANTILLA_TOKENS)
+    except Exception:
+        tok_necesarios = 0
 
-    # ── Consumo real declarado por LM Studio + autocalibración ────────────────
-    try:
-        uso = data.get("usage") or {}
-        prompt_tokens = uso.get("prompt_tokens")
-        completion_tokens = uso.get("completion_tokens")
-        finish_reason = (data.get("choices") or [{}])[0].get("finish_reason")
-
-        if prompt_tokens:
+    for i, prov in enumerate(cadena):
+        ventana = prov.get("n_ctx") or 0
+        if tok_necesarios and ventana and tok_necesarios >= ventana:
             logger.info(
-                f"  [CTX/{etiqueta}] real: prompt={prompt_tokens} tok, "
-                f"respuesta={completion_tokens} tok, finish_reason={finish_reason}"
+                f"  [{etiqueta}] {prov['nombre']} se salta: el prompt necesita "
+                f"{tok_necesarios} tok y su ventana son {ventana}."
             )
-            registrar_uso_real(chars_prompt, prompt_tokens)
+            hubo_desbordamiento = True
+            continue
 
-        if finish_reason == "length":
+        estado, contenido = await _pedir_a_proveedor(
+            prov, system_prompt, user_prompt, max_tokens, etiqueta, chars_prompt,
+        )
+
+        # 429: es cupo, no un fallo del proveedor. Cambiar de modelo aquí es
+        # justo lo que no hay que hacer —el siguiente es el local, que no puede
+        # con el prompt—, así que se espera y se reintenta con el mismo.
+        espera = LLM_BACKOFF_429
+        for intento in range(LLM_REINTENTOS_429):
+            if estado != "cupo":
+                break
+            logger.info(
+                f"  [{etiqueta}] {prov['nombre']}: esperando {espera:.0f}s por cupo "
+                f"(intento {intento + 1}/{LLM_REINTENTOS_429})."
+            )
+            await asyncio.sleep(espera)
+            espera *= 2
+            estado, contenido = await _pedir_a_proveedor(
+                prov, system_prompt, user_prompt, max_tokens, etiqueta, chars_prompt,
+            )
+        if estado == "cupo":
             logger.warning(
-                f"  [CTX/{etiqueta}] La respuesta se cortó por LONGITUD "
-                f"({completion_tokens} tok). El JSON llegará truncado: hay que "
-                f"reservar más tokens de salida o reducir el contexto."
+                f"  [{etiqueta}] {prov['nombre']}: sigue sin cupo tras "
+                f"{LLM_REINTENTOS_429} reintentos. Se prueba el siguiente."
             )
-    except Exception as e:
-        logger.debug(f"  [CTX/{etiqueta}] No se pudo leer `usage`: {e}")
+            estado = "siguiente"
 
-    return _parse_json_llm(content)
+        # Cortada por longitud: el JSON viene a medias y no se puede parsear.
+        # Se reintenta UNA vez con más presupuesto antes de darla por perdida.
+        #
+        # Existe porque los modelos que razonan gastan del mismo presupuesto que
+        # la respuesta, y los topes finos de este pipeline están calibrados para
+        # un modelo que no razona. Medido el 2026-09-03 con qwen3-32b: 15 de las
+        # 20 llamadas de PROCEDENCIA se cortaron en sus 90 tokens —todo el
+        # presupuesto se iba en pensar, sin llegar a escribir el JSON— y las que
+        # sí terminaron necesitaron entre 275 y 749. Cada corte apagaba en
+        # silencio el filtro de homónimos para ese documento, porque una
+        # comprobación fallida conserva el documento.
+        if estado == "truncado" and max_tokens and 0 < max_tokens < LLM_TOPE_REINTENTO:
+            ampliado = min(max_tokens * LLM_FACTOR_REINTENTO_TRUNCADO, LLM_TOPE_REINTENTO)
+            logger.info(
+                f"  [CTX/{etiqueta}] Reintento con {ampliado} tokens de salida "
+                f"(antes {max_tokens}), que no daban para cerrar el JSON."
+            )
+            estado, contenido = await _pedir_a_proveedor(
+                prov, system_prompt, user_prompt, ampliado, etiqueta, chars_prompt,
+            )
+
+        if estado in ("ok", "truncado"):
+            if prov["remoto"]:
+                _MODELO_REMOTO_PREFERIDO = prov["modelo"]
+            return _parse_json_llm(contenido)
+
+        if estado == "contexto":
+            hubo_desbordamiento = True
+        # El que acaba de fallar deja de ser el atajo preferido.
+        if prov["remoto"] and prov["modelo"] == _MODELO_REMOTO_PREFERIDO:
+            _MODELO_REMOTO_PREFERIDO = None
+        if prov["remoto"] and i < len(cadena) - 1:
+            await asyncio.sleep(OPENROUTER_PAUSA_ENTRE_MODELOS)
+
+    # No sirvió ninguno. Si alguno se quejó de la ventana de contexto hay que
+    # avisar al llamador, que sabe recortar el contexto y reintentar.
+    if hubo_desbordamiento:
+        raise ContextOverflowError(
+            f"[{etiqueta}] el prompt no cupo en ningún modelo de la cadena."
+        )
+    logger.error(f"  [{etiqueta}] Ningún proveedor devolvió respuesta utilizable.")
+    return None
 
 
 async def analyze_festivals_for_locality(
@@ -2310,8 +2923,18 @@ Devuelve SOLO JSON estricto con esta estructura (no escribas markdown, ni saludo
 # MULTI-PASS RAG ARCHITECTURE (DISCOVERY + ENRICHMENT)
 # ──────────────────────────────────────────────────
 
+# Los dos topes en caracteres con los que se recortaba el contexto. Ya no
+# recortan nada: el tamaño de cada lote sale de `tokens_por_lote()`, que lo
+# deriva del presupuesto real del modelo. Se conservan porque siguen siendo el
+# valor por defecto de algún parámetro y varios tests los importan.
 DISCOVERY_MAX_CHARS = 20000
 ENRICHMENT_MAX_CHARS = 32000
+
+# Longitudes típicas de los system prompts, para dimensionar el lote cuando
+# todavía no se ha construido el prompt de esa llamada. Medidas en la ejecución
+# del 2026-09-03: discovery ≈ 2.057 tokens, enrichment ≈ 742.
+_SYSTEM_DISCOVERY_TIPICO = "x" * 7000
+_SYSTEM_ENRICHMENT_TIPICO = "x" * 2500
 FIESTA_MAX_DURACION_DIAS = 30
 
 
@@ -2529,7 +3152,7 @@ async def index_document_chunks(
 
 
 def barrer_meses_con_senal(
-    indexed_chunks: list[dict], localidad_nombre: str,
+    indexed_chunks: list[dict], localidad_nombre: str, anno: int | None = None,
 ) -> dict[int, list[dict]]:
     """
     Agrupa por mes los chunks que hablan de una fiesta DE ESTA localidad.
@@ -2563,7 +3186,17 @@ def barrer_meses_con_senal(
         texto = normalize_text(chunk)
         if clave_loc not in texto:
             continue
-        for mes in {_MESES_COMPLETOS[m] for m in re.findall(_RE_MESES, texto)}:
+        meses = {_MESES_COMPLETOS[m] for m in re.findall(_RE_MESES, texto)}
+        # Y los meses en los que caen este año los días móviles que el texto
+        # nombre sin decir el mes: "Miércoles Santo", "martes de carnaval",
+        # "Corpus". Sin esto, la Tamborada de Tobarra —lo más conocido del
+        # municipio, 104 horas de tambor, inscrita por la UNESCO— no entra en
+        # ningún cubo y nunca se le llega a preguntar al modelo. Comprobado el
+        # 2026-09-02: falta en las dos ejecuciones completas, con el 9B y con
+        # el 27B, y no es recall del modelo.
+        if anno:
+            meses |= meses_de_fiestas_moviles(chunk, anno)
+        for mes in meses:
             por_mes.setdefault(mes, []).append(item)
     return por_mes
 
@@ -2600,6 +3233,10 @@ def agrupar_meses_para_preguntar(
 
 def repartir_en_llamadas(chunks: list[dict], presupuesto: int) -> list[list[dict]]:
     """
+    FUERA DE LA RUTA VIVA desde el 2026-09-03: el discovery reparte con
+    `reparto_contexto.repartir_en_lotes`, que mide en tokens sobre el texto ya
+    ensamblado y no parte las páginas. Ajustar esto ya no cambia nada.
+
     Parte los chunks de un mes en tandas que quepan en el contexto.
 
     Solo se trocea lo que no cabe. Medido en Tobarra: de 450 chunks quedan 108
@@ -2626,32 +3263,66 @@ _NOMBRE_MES = ("", "enero", "febrero", "marzo", "abril", "mayo", "junio",
                "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre")
 
 
-async def _descubrir_de_una_vez(
-    texto: str, localidad: dict, anno: int, system_prompt: str,
+async def _descubrir_sin_barrido(
+    lotes: list[list[dict]], localidad: dict, municipio: dict,
+    anno: int, system_prompt: str,
 ) -> list[dict]:
-    """La llamada única de siempre. Queda como red por si el barrido no ve nada."""
-    for factor in (1.0, 0.7, 0.5):
-        intento = texto
-        if factor < 1.0:
-            corte = int(len(texto) * factor)
-            salto = texto.rfind("\n", 0, corte)
-            intento = texto[: salto if salto > 0 else corte]
+    """
+    Red de seguridad para cuando el barrido no encuentra ningún mes con señal.
+
+    Ya no es «la llamada única»: se pregunta por cada lote, igual que el barrido.
+    Antes esta rama reintentaba con el 100%, el 70% y el 50% del texto cuando no
+    cabía en la ventana; con el reparto eso sobra, porque ningún lote tiene que
+    caber a la fuerza en una sola llamada. Y la traducción se hace lote a lote,
+    no sobre el pool entero: en una comarca bilingüe traducir 600.000 caracteres
+    para descartarlos luego era el peor negocio posible.
+    """
+    if not lotes:
+        return []
+
+    async def _preguntar(n: int, lote: list[dict]) -> list[dict]:
+        texto = process_translation_pipeline(ensamblar_contexto(lote), municipio)
+        for patron_str, reemplazo in DICCIONARIO_FESTIVO.items():
+            texto = re.sub(patron_str, reemplazo, texto, flags=re.IGNORECASE)
+        situacion = ""
+        if len(lotes) > 1:
+            situacion = (
+                f"\nEste es el lote {n} de {len(lotes)} del material de esta "
+                f"localidad, ordenados de más a menos relevante. Que un lote no "
+                f"traiga ninguna fiesta es normal.\n"
+            )
         user_prompt = (
-            f"AÑO: {anno}\n\n"
-            f"TEXTO RECUPERADO:\n{intento}\n\n"
+            f"AÑO: {anno}\n{situacion}\n"
+            f"TEXTO RECUPERADO:\n{texto}\n\n"
             f"Extrae la lista básica de fiestas en formato JSON exclusivamente para {localidad['nombre']}. "
             f"Recuerda, responde SOLO con JSON:\n```json\n"
         )
-        logger.info(f"  [DISCOVERY] Llamando a {LMSTUDIO_CHAT_MODEL} (una sola pasada)...")
+        sufijo = f" {n}/{len(lotes)}" if len(lotes) > 1 else ""
         try:
             parsed = await llm_chat_json(
                 system_prompt, user_prompt,
-                max_tokens=LMSTUDIO_CHAT_MAX_TOKENS, etiqueta="DISCOVERY",
+                max_tokens=LMSTUDIO_CHAT_MAX_TOKENS, etiqueta=f"DISCOVERY{sufijo}",
             )
-            return (parsed or {}).get("fiestas", [])
         except ContextOverflowError as e:
-            logger.warning(f"  [DISCOVERY n_ctx] {e}")
-    return []
+            logger.warning(f"  [DISCOVERY n_ctx]{sufijo}: {e}")
+            return []
+        return (parsed or {}).get("fiestas", []) or []
+
+    logger.info(
+        f"  [DISCOVERY] {localidad['nombre']}: sin meses con señal; "
+        f"se pregunta por los {len(lotes)} lote(s) del material."
+    )
+    resultados = await asyncio.gather(
+        *[_preguntar(n, lote) for n, lote in enumerate(lotes, 1)],
+        return_exceptions=True,
+    )
+    fiestas: list[dict] = []
+    for r in resultados:
+        if isinstance(r, BaseException):
+            logger.warning(f"  [DISCOVERY] {localidad['nombre']}: un lote falló: {r}")
+            continue
+        fiestas.extend(r)
+    return _fusionar_fiestas_descubiertas(fiestas)
 
 
 async def _descubrir_por_meses(
@@ -2665,59 +3336,107 @@ async def _descubrir_por_meses(
     la llamada única. Los meses con poco material van juntos en una tanda común:
     se siguen mirando, pero sin gastar una llamada cada uno.
     """
-    por_mes = barrer_meses_con_senal(indexed_chunks, localidad.get("nombre", ""))
+    por_mes = barrer_meses_con_senal(indexed_chunks, localidad.get("nombre", ""), anno)
     if not por_mes:
         return None
 
-    grupos = agrupar_meses_para_preguntar(por_mes, DISCOVERY_MIN_CHUNKS_MES_PROPIO)
-    tandas: list[tuple[tuple[int, ...], list[dict]]] = []
-    for meses, chunks in grupos:
-        for tanda in repartir_en_llamadas(chunks, DISCOVERY_MAX_CHARS):
-            tandas.append((meses, tanda))
+    # El tamaño del lote sale del presupuesto real del modelo que va a contestar,
+    # no de una constante en caracteres. Con n_ctx = 131.072 son ~114.000 tokens,
+    # así que la mayoría de los meses caben en un solo lote y el reparto solo
+    # actúa donde de verdad sobra material.
+    lote_tok = tokens_por_lote(system_prompt, RESERVA_SALIDA_DISCOVERY)
 
-    # Tope de seguridad. Las tandas vienen ordenadas de más material a menos, así
-    # que lo que se recorta es la cola. Hace falta porque un nombre corriente
-    # dispara el barrido: «Sierra» pedía 21 llamadas, y ni siquiera tiene
-    # programa publicado.
+    grupos = agrupar_meses_para_preguntar(por_mes, DISCOVERY_MIN_CHUNKS_MES_PROPIO)
+    tandas: list[tuple[tuple[int, ...], list[dict], int, int]] = []
+    for meses, chunks in grupos:
+        lotes = repartir_en_lotes(chunks, lote_tok, ensamblar_contexto, contar_tokens)
+        for n, lote in enumerate(lotes, 1):
+            tandas.append((meses, lote, n, len(lotes)))
+
+    # Tope de seguridad, no de diseño. Antes estaba en 10 y Aranda de Duero lo
+    # tocaba —12 meses con señal, 10 llamadas—, así que dos meses con material
+    # se quedaban sin preguntar. Ahora solo existe para que un nombre corriente
+    # («Sierra» disparaba 21 tandas) no se lleve la ejecución por delante.
     if len(tandas) > DISCOVERY_MAX_LLAMADAS_LOCALIDAD:
-        logger.info(
+        logger.warning(
             f"  [DISCOVERY] {localidad['nombre']}: {len(tandas)} tandas recortadas "
-            f"a {DISCOVERY_MAX_LLAMADAS_LOCALIDAD}."
+            f"a {DISCOVERY_MAX_LLAMADAS_LOCALIDAD}. Se pierde material: revisa el tope."
         )
         tandas = tandas[:DISCOVERY_MAX_LLAMADAS_LOCALIDAD]
 
+    total_chunks = sum(len(t[1]) for t in tandas)
     logger.info(
         f"  [DISCOVERY] {localidad['nombre']}: {len(por_mes)} meses con señal, "
-        f"{len(tandas)} llamadas."
+        f"{len(tandas)} llamadas, {total_chunks} fragmentos "
+        f"(lote de {lote_tok} tok)."
     )
 
-    fiestas: list[dict] = []
-    for meses, tanda in tandas:
+    # Las tandas se preguntan A LA VEZ. Cada una mira meses distintos del mismo
+    # pueblo con su propio material delante, y ninguna necesita lo que devuelva
+    # otra: encadenarlas era tiempo de reloj regalado. Medido el 2026-09-03, el
+    # discovery se lleva el 22% de la ejecución y Tobarra gasta siete llamadas.
+    #
+    # El orden se conserva (`gather` respeta el de entrada), que importa porque
+    # `_fusionar_fiestas_descubiertas` da preferencia a lo que llega primero, y
+    # las tandas vienen ordenadas de más material a menos.
+    async def _preguntar_tanda(
+        meses: tuple, tanda: list[dict], n_lote: int, total_lotes: int,
+    ) -> list[dict]:
         etiqueta_meses = " y ".join(_NOMBRE_MES[m] for m in meses if 1 <= m <= 12)
         contexto = ensamblar_contexto(tanda)
         texto = process_translation_pipeline(contexto, municipio)
         for patron_str, reemplazo in DICCIONARIO_FESTIVO.items():
             texto = re.sub(patron_str, reemplazo, texto, flags=re.IGNORECASE)
+
+        # Decirle al modelo DÓNDE está mirando. Desde que nada se descarta, los
+        # últimos lotes de un mes son la cola del ranking y es normal que no
+        # traigan ninguna fiesta; sin este aviso, un modelo aplicado se siente
+        # obligado a encontrar algo, que es exactamente como salieron los 39
+        # actos inventados de Sierra.
+        situacion = ""
+        if total_lotes > 1:
+            situacion = (
+                f"\nEste es el lote {n_lote} de {total_lotes} del material de "
+                f"{etiqueta_meses}, ordenados de más a menos relevante. "
+                + ("Es el mejor material que hay.\n" if n_lote == 1 else
+                   "Los lotes anteriores ya traían lo mejor, así que es normal "
+                   "que en este no haya ninguna fiesta.\n")
+            )
+
         user_prompt = (
-            f"AÑO: {anno}\n\n"
+            f"AÑO: {anno}\n"
+            f"{situacion}\n"
             f"TEXTO RECUPERADO:\n{texto}\n\n"
             f"Extrae las fiestas de {localidad['nombre']} que este texto sitúe en "
             f"{etiqueta_meses} de {anno}. Si el texto no trae ninguna fiesta de "
             f"{etiqueta_meses}, devuelve la lista vacía: es una respuesta correcta.\n"
             f"Responde SOLO con JSON:\n```json\n"
         )
+        sufijo = f" {n_lote}/{total_lotes}" if total_lotes > 1 else ""
         try:
             parsed = await llm_chat_json(
                 system_prompt, user_prompt,
-                max_tokens=LMSTUDIO_CHAT_MAX_TOKENS, etiqueta=f"DISCOVERY/{etiqueta_meses[:12]}",
+                max_tokens=LMSTUDIO_CHAT_MAX_TOKENS,
+                etiqueta=f"DISCOVERY/{etiqueta_meses[:12]}{sufijo}",
             )
         except ContextOverflowError as e:
-            logger.warning(f"  [DISCOVERY n_ctx] {etiqueta_meses}: {e}")
-            continue
+            logger.warning(f"  [DISCOVERY n_ctx] {etiqueta_meses}{sufijo}: {e}")
+            return []
         nuevas = (parsed or {}).get("fiestas", []) or []
         if nuevas:
-            logger.info(f"  [DISCOVERY] {etiqueta_meses}: {len(nuevas)} fiesta(s).")
-        fiestas.extend(nuevas)
+            logger.info(f"  [DISCOVERY] {etiqueta_meses}{sufijo}: {len(nuevas)} fiesta(s).")
+        return nuevas
+
+    resultados = await asyncio.gather(
+        *[_preguntar_tanda(meses, tanda, n, total) for meses, tanda, n, total in tandas],
+        return_exceptions=True,
+    )
+    fiestas: list[dict] = []
+    for r in resultados:
+        if isinstance(r, BaseException):
+            logger.warning(f"  [DISCOVERY] {localidad['nombre']}: una tanda falló: {r}")
+            continue
+        fiestas.extend(r)
 
     return _fusionar_fiestas_descubiertas(fiestas)
 
@@ -2750,7 +3469,7 @@ async def discover_festivals_for_locality(
     rag_processor: AsyncRAGProcessor | None = None,
     fecha_patron=None,
     nombres_hermanas: list[str] = None,
-    contexto_precalculado: tuple[str, set] | None = None,
+    contexto_precalculado: tuple[str, set, list] | None = None,
 ) -> list[dict]:
     """
     Paso 1 del RAG Multi-Pass (Discovery Pass):
@@ -2851,9 +3570,9 @@ Devuelve SOLO JSON estricto con esta estructura (NO incluyas el programa detalla
     # ronda de embeddings por localidad y el riesgo de que ambas copias
     # divergieran al tocar una sola.
     if contexto_precalculado is not None:
-        contexto, fuentes_contexto = contexto_precalculado
+        contexto, fuentes_contexto, lotes = contexto_precalculado
     else:
-        contexto, fuentes_contexto, _n_directa = await retrieve_discovery_context(
+        contexto, fuentes_contexto, _n_directa, lotes = await retrieve_discovery_context(
             indexed_chunks=indexed_chunks,
             municipio=municipio,
             localidad=localidad,
@@ -2861,27 +3580,27 @@ Devuelve SOLO JSON estricto con esta estructura (NO incluyas el programa detalla
             rag_processor=rag_processor,
             max_chars=DISCOVERY_MAX_CHARS,
             nombres_hermanas=nombres_hermanas,
+            system_prompt=system_prompt,
         )
 
     if not contexto.strip():
         logger.warning(f"  [DISCOVERY] No hay texto de contexto para {localidad['nombre']}.")
         return []
 
-    texto_traducido = process_translation_pipeline(contexto, municipio)
-    for patron_str, reemplazo in DICCIONARIO_FESTIVO.items():
-        texto_traducido = re.sub(patron_str, reemplazo, texto_traducido, flags=re.IGNORECASE)
+    # La traducción NO se hace aquí. Se hacía sobre el contexto entero y antes de
+    # saber si haría falta; ahora que el contexto es todo el material —cientos de
+    # miles de caracteres— traducirlo por si acaso costaría más que todo lo
+    # demás junto. Cada rama traduce su propio lote, y solo el que va a enviar.
 
     # El barrido decide QUÉ MESES mirar, y se pregunta por cada uno con su propio
-    # material. Antes era una sola llamada sobre 20.000 caracteres —el 6-12% de
-    # los chunks—, de modo que el paso que decide qué fiestas existen era el que
-    # menos material veía. Si el barrido no encuentra ningún mes con señal se cae
-    # a la llamada única de antes, que es mejor que no preguntar nada.
+    # material. Si no encuentra ningún mes con señal se cae a preguntar por los
+    # lotes del pool, que es mejor que no preguntar nada.
     fiestas_raw = await _descubrir_por_meses(
         indexed_chunks, localidad, municipio, anno, system_prompt,
     )
     if fiestas_raw is None:
-        fiestas_raw = await _descubrir_de_una_vez(
-            texto_traducido, localidad, anno, system_prompt,
+        fiestas_raw = await _descubrir_sin_barrido(
+            lotes, localidad, municipio, anno, system_prompt,
         )
     fiestas_validas = validar_fiestas(fiestas_raw, localidad, anno, fecha_patron, fuentes_contexto)
     logger.info(
@@ -3146,17 +3865,19 @@ async def enrich_festival_program(
 
     orden_final = _ordenar_para_el_presupuesto(chunks_seleccionados_dias, paginas_del_dia)
 
-    # `continue` en vez de `break`: con break, el primer chunk que no cabía
-    # cortaba de golpe toda la cola aunque los siguientes fueran pequeños y sí
-    # cupieran. En Amurrio se descartaron así 68 chunks de una sentada.
-    usados = 0
-    chunks_finales = []
-    for item in orden_final:
-        if usados + len(item["chunk"]) > ENRICHMENT_MAX_CHARS:
-            continue
-        chunks_finales.append(item)
-        usados += len(item["chunk"])
-
+    # Aquí estaba el recorte por presupuesto: un bucle que iba metiendo chunks
+    # hasta llenar 32.000 caracteres y saltándose los que no cabían. Es el paso
+    # que en Aranda de Duero dejó fuera 68 de los 82 fragmentos del PDF del
+    # programa —el correcto, el que el localizador acababa de identificar— y,
+    # de rebote, hizo que la guarda de «días no mencionados» descartara 5 de los
+    # 7 lotes de días, porque juzgaba el documento por el trozo que sobrevivía.
+    #
+    # Ya no se recorta. El ranking ordena y el reparto decide en qué llamada va
+    # cada cosa. Lo que ve el localizador es TODO el material, no lo que cupo:
+    # antes solo podía elegir entre las páginas que el presupuesto había dejado
+    # pasar.
+    lote_tok = tokens_por_lote(_SYSTEM_ENRICHMENT_TIPICO, RESERVA_SALIDA_ENRICHMENT)
+    chunks_finales = list(orden_final)
     contexto = ensamblar_contexto(chunks_finales)
 
     # Sin una página que traiga un programa de verdad no se pregunta. Preguntar
@@ -3166,8 +3887,19 @@ async def enrich_festival_program(
     urls_programa: list[str] = []
     if PROGRAM_LOCATOR_ENABLED:
         try:
+            # La provincia y las lenguas viajan hasta el localizador porque
+            # ahora puede traer documentos nuevos de internet, y todo lo que
+            # entra pasa por el filtro de homónimos como cualquier otra fuente.
+            _prov = (municipio.get("provincia") or "").strip()
+            _com = (municipio.get("comunidad")
+                    or municipio.get("comunidad_autonoma") or "").strip()
+            try:
+                _idiomas = get_language_profile(_com, _prov).get("idiomas_a_detectar") or ["es"]
+            except Exception:
+                _idiomas = ["es"]
             urls_programa, _docs_nuevos = await localizar_programa_con_llm(
                 contexto, fiesta, localidad, municipio, anno, indexed_chunks,
+                nombres_hermanas=nombres_hermanas, provincia=_prov, idiomas=_idiomas,
             )
             # Si por el camino se han afinado las fechas de la fiesta, los lotes
             # de días hay que rehacerlos: si no, se preguntaría por los días de
@@ -3187,10 +3919,14 @@ async def enrich_festival_program(
             logger.warning(f"  [LOCATOR] '{nombre_fiesta}': {e}. Se sigue sin él.")
             urls_programa = []
 
-    # El modelo propone, el calendario veta.
+    # El modelo propone, el calendario veta. El veto juzga la página ENTERA, no
+    # el trozo que había en el contexto: en Aranda de Duero descartó el PDF de
+    # septiembre de una fiesta de septiembre —«habla de otros meses y no del de
+    # esta fiesta»— porque los fragmentos que habían sobrevivido al recorte
+    # citaban julio y agosto y no septiembre. La ficha salió sin programa.
     if urls_programa:
         urls_programa, vetadas = vetar_paginas_imposibles(
-            urls_programa, contexto, fiesta, anno)
+            urls_programa, contexto, fiesta, anno, indexed_chunks=indexed_chunks)
         for url, motivo in vetadas:
             logger.warning(
                 f"  [LOCATOR] '{nombre_fiesta}': descartada la elección del modelo "
@@ -3210,30 +3946,81 @@ async def enrich_festival_program(
     if not urls_programa and url_deterministe:
         urls_programa = [url_deterministe]
 
-    # Elegida la página o páginas, entran ENTERAS y por delante. Antes se
-    # quedaba lo que cupiera en el reparto general, que es como se perdieron los
-    # días 23 al 26 de Sinovas.
+    # Elegida la página, se deja de hacer RAG: el documento ES la fuente.
+    #
+    # Sus fragmentos entran ENTEROS y en orden, repartidos en tantos lotes como
+    # haga falta. Antes esto lo hacía `_contexto_con_las_paginas_enteras` contra
+    # un tope de 32.000 caracteres, y por eso en Aranda de Duero entraban 14 de
+    # los 82 fragmentos del PDF: seleccionar por relevancia es lo contrario de
+    # leer un documento entero y en orden.
+    lotes_ctx: list[list[dict]] = []
+    del_programa: list[dict] = []
     n_inyectados = n_disponibles = 0
     if urls_programa:
-        chunks_finales, n_inyectados, n_disponibles = _contexto_con_las_paginas_enteras(
-            chunks_finales, indexed_chunks, urls_programa, anno)
+        vistos: set[int] = set()
+        for u in urls_programa:
+            for it in pagina_entera(indexed_chunks, u):
+                if id(it) not in vistos:
+                    vistos.add(id(it))
+                    del_programa.append(it)
+        n_disponibles = len(del_programa)
+
+        # Y NADA MÁS. Ni el resto del pool ni el relleno mejor puntuado: para
+        # extraer los actos de un documento conocido, todo lo demás es ruido que
+        # estorba y que se paga caro.
+        #
+        # Medido el 2026-09-03, la primera vez que se probó con el relleno
+        # dentro: el documento eran 18 fragmentos y el contexto salió a 105.346
+        # tokens, así que las cuatro llamadas del enrichment de Aranda enviaron
+        # 106.124 tokens cada una y LAS CUATRO agotaron el timeout de 300 s. La
+        # ficha salió con 0 días y 0 actos teniendo el programa descargado y bien
+        # identificado. Con solo el documento son ~20.000 tokens.
+        #
+        # Si hicieran falta dos fuentes —el cartel con las fechas y la noticia
+        # con las horas—, el localizador puede elegir varias páginas: para eso
+        # `urls_programa` es una lista.
+        del_prog = set(urls_programa)
+        lotes_ctx = repartir_en_lotes(
+            del_programa, lote_tok, ensamblar_contexto, contar_tokens,
+        )
+        n_inyectados = sum(
+            1 for l in lotes_ctx for i in l if (i.get("url") or "") in del_prog
+        )
+        chunks_finales = [i for l in lotes_ctx for i in l]
         contexto = ensamblar_contexto(chunks_finales)
 
     # El modelo dice dónde, pero el material sigue teniendo que existir. Sin
     # actos con hora lo que devuelve no es un programa flojo, es uno inventado:
     # en Sierra salieron 39 actos con confianza alta y ni uno rastreable hasta
-    # su documento. Esta guarda no la levanta que el localizador se haya
-    # pronunciado; se mide sobre las páginas que él mismo eligió.
+    # su documento.
     n_actos_pagina = max(
         (contar_actos_horarios(t) for u, t in paginas_del_contexto(contexto)
          if u in set(urls_programa)), default=0)
-    hay_programa = n_actos_pagina >= ENRICHMENT_MIN_ACTOS_EN_PAGINA
     url_programa = urls_programa[0] if urls_programa else ""
+
+    # Lo mismo, pero contado sobre la página ENTERA y no sobre el trozo que
+    # sobrevivió al recorte. Es lo que distingue «este pueblo no publica
+    # programa» de «el programa existe y no se lo hemos enseñado al modelo»:
+    # dos resultados opuestos que hasta ahora salían con la misma bandera.
+    #
+    # Y es lo que decide si se pregunta. Antes decidía `n_actos_pagina`, contado
+    # sobre el contexto ya recortado: un programa que existía pero no cabía
+    # producía exactamente el mismo resultado que un pueblo sin programa.
+    n_actos_documento = actos_del_documento(indexed_chunks, urls_programa)
+    hay_programa = n_actos_documento >= ENRICHMENT_MIN_ACTOS_EN_PAGINA
+    # De dónde se copió el programa, guardado en la ficha. Lo necesita el juez de
+    # pertenencia del paso 8 —y su veto: si la página es la web del propio
+    # pueblo, la ficha no se tira aunque el modelo dude—. Además es trazabilidad
+    # que la base de datos agradecerá: hoy `fuentes` dice "busqueda_web", que no
+    # permite volver al documento.
+    if url_programa:
+        fiesta["url_programa"] = url_programa
     if hay_programa:
         logger.info(
             f"  [ENRICHMENT] '{nombre_fiesta}': el programa está en "
             + (f"{len(urls_programa)} páginas, la primera " if len(urls_programa) > 1 else "")
-            + f"{url_programa[:70]} ({n_actos_pagina} actos con hora). "
+            + f"{url_programa[:70]} ({n_actos_documento} actos con hora en el "
+            f"documento, {n_actos_pagina} visibles en el contexto). "
             f"Entran {n_inyectados} de {n_disponibles} fragmentos, enteros y en orden."
         )
         # Cuando la única página que parece un programa no nombra la advocación
@@ -3262,6 +4049,16 @@ async def enrich_festival_program(
 
         senas = tokens_distintivos(nombre_fiesta, localidad.get("nombre", ""))
         if senas and not cuenta_tokens(senas, pagina):
+            # Y baja de confianza, igual que el programa de otro año. Un
+            # programa que no nombra por ningún sitio la advocación de la fiesta
+            # que dice describir no puede sostener una ficha "alta". Medido en la
+            # ejecución del 2026-09-02: Aranda de Duero salió con unas "Fiestas
+            # Patronales (San Roque)" de veintinueve días y 166 actos, marcadas
+            # con esta bandera y aun así con `confianza: alta` —el patrón de
+            # Aranda es la Virgen de las Viñas, y San Roque no es fiesta suya—.
+            fiesta["programa_advocacion_dudosa"] = True
+            if fiesta.get("confianza") == "alta":
+                fiesta["confianza"] = "media"
             logger.warning(
                 f"  [ENRICHMENT/ADVOCACIÓN] La página elegida para "
                 f"'{nombre_fiesta}' de {localidad['nombre']} no nombra "
@@ -3281,13 +4078,28 @@ async def enrich_festival_program(
         contexto=contexto,
         candidatos=chunks_seleccionados_dias,
         seleccion=chunks_finales,
+        # En modo documento el material que debía llegar son los fragmentos de
+        # la página elegida, no el pool entero. Sin esto el volcado marcaba como
+        # pérdida lo que el localizador había descartado a propósito.
+        universo=del_programa if urls_programa else None,
         contar_tokens=contar_tokens,
-        presupuesto={"presupuesto_chars": ENRICHMENT_MAX_CHARS},
+        presupuesto={"lote_tokens": lote_tok},
         extra={
             "fiesta": nombre_fiesta,
             "dias_consultados": len(consultas_dias),
-            "dias_sin_presupuesto": max(0, len(chunks_seleccionados_dias) - len(chunks_finales)),
+            "fragmentos_sin_presupuesto": 0,  # ya no se descarta por presupuesto
+            # Numerador y denominador de la cobertura de actos: lo que el
+            # documento trae frente a lo que el contexto llegó a enseñar.
+            # En modo "documento" el pool NO se envía a propósito: su papel
+            # terminó cuando el localizador eligió la página. Lo que en discovery
+            # sería una pérdida, aquí es la decisión.
+            "modo": "documento" if urls_programa else "pool",
+            "url_programa": url_programa,
+            "actos_documento": n_actos_documento,
+            "actos_contexto": n_actos_pagina,
+            "tramos_documento": len(lotes_ctx) or 1,
         },
+        lotes=lotes_ctx or None,
     )
 
     # El corte va DESPUÉS del volcado, a propósito. Cuando estaba antes, las
@@ -3297,13 +4109,37 @@ async def enrich_festival_program(
     # volcados de ejecuciones de dos días antes. Es el mismo error que ya se
     # cometió con las descargas mudas: no se puede juzgar lo que no se ve.
     if not hay_programa:
+        # Ahora esto significa de verdad «no hay programa publicado»: se ha
+        # mirado la página ENTERA, no el trozo que cupo en el contexto. El caso
+        # contrario —el programa existe y no lo hemos recogido— se detecta al
+        # final, comparando la ficha con su documento.
         fiesta.setdefault("programa", [])
         fiesta["sin_programa_publicado"] = True
         return fiesta
 
-    texto_traducido = process_translation_pipeline(contexto, municipio)
-    for patron_str, reemplazo in DICCIONARIO_FESTIVO.items():
-        texto_traducido = re.sub(patron_str, reemplazo, texto_traducido, flags=re.IGNORECASE)
+    # Solo se interrogan los lotes de contexto donde ESTÁ el documento del
+    # programa. El resto del pool sirvió para encontrarlo y ahí acaba su papel:
+    # pedirle actos a la cola del ranking no da un programa incompleto, da uno
+    # inventado, que es de lo que salieron los 39 actos de Sierra.
+    _urls_prog = set(urls_programa)
+    lotes_con_programa = [
+        l for l in lotes_ctx if any((i.get("url") or "") in _urls_prog for i in l)
+    ]
+    if not lotes_con_programa:
+        lotes_con_programa = [chunks_finales]
+
+    # La traducción se hace por lote, no sobre el pool entero.
+    textos_ctx: list[str] = []
+    for _lote in lotes_con_programa:
+        _t = process_translation_pipeline(ensamblar_contexto(_lote), municipio)
+        for patron_str, reemplazo in DICCIONARIO_FESTIVO.items():
+            _t = re.sub(patron_str, reemplazo, _t, flags=re.IGNORECASE)
+        textos_ctx.append(_t)
+    if len(textos_ctx) > 1:
+        logger.info(
+            f"  [ENRICHMENT] '{nombre_fiesta}': el documento no cabe en un solo "
+            f"lote; se lee en {len(textos_ctx)} tramos."
+        )
 
     # El programa se pide POR LOTES DE DÍAS, no de una vez. Medido el 2026-08-21:
     # con los 118 actos del cartel de Amurrio en el contexto (verificado que
@@ -3328,31 +4164,54 @@ async def enrich_festival_program(
     # el contexto no nombra NINGÚN día de la fiesta en un formato reconocible
     # —los carteles escaneados suelen poner "DÍA 14" a secas—, no hay nada que
     # deducir de que falte uno: ahí se pregunta todo, como hasta ahora.
-    _plano_ctx = texto_traducido.lower()
+    _planos = [t.lower() for t in textos_ctx]
 
-    def _mencionado(dia: str) -> bool:
-        return any(v.lower() in _plano_ctx for v in _variantes_fecha(dia))
+    def _mencionado(dia: str, plano: str) -> bool:
+        return any(v.lower() in plano for v in _variantes_fecha(dia))
 
-    dias_reconocibles = sum(1 for f in fechas if _mencionado(f))
+    dias_reconocibles = sum(
+        1 for f in fechas if any(_mencionado(f, p) for p in _planos)
+    )
     # La guarda no depende de que el localizador haya acertado: depende de que
-    # el contexto deje leer sus fechas. Con la página entera inyectada, todos
+    # el contexto deje leer sus fechas. Con el documento entero delante, todos
     # sus días son reconocibles y la guarda no quita nada; solo salta en los
-    # lotes que de verdad no están, que es cuando el modelo los rellenaba con
+    # días que de verdad no están, que es cuando el modelo los rellenaba con
     # actos de los días vecinos cambiándoles la fecha.
+    #
+    # Antes se medía sobre el contexto RECORTADO, así que en Aranda de Duero
+    # descartó 5 de los 7 lotes de días de una fiesta cuyo programa completo
+    # estaba descargado: los días que faltaban eran justo los de los 68
+    # fragmentos que el presupuesto había dejado fuera.
     aplicar_guarda = dias_reconocibles >= 2
 
-    def _hay_material(dias: list[str]) -> bool:
-        return not aplicar_guarda or any(_mencionado(d) for d in dias)
-
-    programa_total: list[dict] = []
-    for n_lote, lote in enumerate(lotes, 1):
-        desde, hasta = lote[0], lote[-1]
-        if not _hay_material(lote):
+    # Los lotes se piden A LA VEZ. Cada uno cubre días distintos de la misma
+    # fiesta y no depende de lo que devuelvan los demás, así que encadenarlos
+    # con `await` era tiempo de reloj regalado: medido el 2026-09-03, el
+    # enrichment se lleva el 26% de la ejecución y una fiesta de quince días se
+    # pide en cinco lotes, uno detrás de otro.
+    #
+    # El orden del resultado se conserva —`gather` respeta el de entrada— y el
+    # número de llamadas en vuelo lo limita el semáforo remoto, no este bucle.
+    # Qué se pregunta y contra qué tramo del documento. Un lote de días se pide
+    # a cada tramo que nombre alguno de esos días; si ninguno los nombra, no se
+    # pregunta y el hueco se queda vacío a propósito.
+    peticiones: list[tuple[int, list[str], int, str]] = []
+    for _n_dias, _dias in enumerate(lotes, 1):
+        _tramos = [
+            (j, txt) for j, (txt, plano) in enumerate(zip(textos_ctx, _planos), 1)
+            if not aplicar_guarda or any(_mencionado(d, plano) for d in _dias)
+        ]
+        if not _tramos:
             logger.info(
-                f"  [ENRICHMENT] '{nombre_fiesta}': el contexto no menciona los días "
-                f"{desde} a {hasta}; no se preguntan (se dejan sin actos)."
+                f"  [ENRICHMENT] '{nombre_fiesta}': el documento no menciona los días "
+                f"{_dias[0]} a {_dias[-1]}; no se preguntan (se dejan sin actos)."
             )
             continue
+        for _j, _txt in _tramos:
+            peticiones.append((_n_dias, _dias, _j, _txt))
+
+    async def _pedir_lote(n_lote: int, lote: list[str], n_tramo: int, texto_ctx: str) -> list[dict]:
+        desde, hasta = lote[0], lote[-1]
         system_prompt = f"""Eres un API estricta especializada en estructurar el PROGRAMA DE ACTOS Y EVENTOS de una fiesta local en España.
 CONTEXTO: Municipio {municipio['nombre']} ({municipio.get('provincia', 'España')}), Localidad: {localidad['nombre']}.
 FIESTA: "{nombre_fiesta}" ({fecha_ini} a {fecha_fin}).
@@ -3394,10 +4253,11 @@ Devuelve SOLO JSON estricto con esta estructura:
   ]
 }}"""
 
+        etiqueta_tramo = f" tramo {n_tramo}" if len(textos_ctx) > 1 else ""
         user_prompt = (
             f"FIESTA: {nombre_fiesta}\n"
             f"DÍAS PEDIDOS: {desde} a {hasta}\n\n"
-            f"TEXTO RECUPERADO:\n{texto_traducido}\n\n"
+            f"TEXTO RECUPERADO:\n{texto_ctx}\n\n"
             f"Genera el programa SOLO de los días {desde} a {hasta}. "
             f"Responde SOLO con JSON:\n```json\n"
         )
@@ -3406,18 +4266,50 @@ Devuelve SOLO JSON estricto con esta estructura:
             parsed = await llm_chat_json(
                 system_prompt, user_prompt,
                 max_tokens=LMSTUDIO_CHAT_MAX_TOKENS,
-                etiqueta=f"ENRICHMENT {n_lote}/{len(lotes)}",
+                etiqueta=f"ENRICHMENT {n_lote}/{len(lotes)}{etiqueta_tramo}",
             )
         except Exception as e:
             logger.warning(
                 f"  [ENRICHMENT] Error en el lote {desde}..{hasta} de '{nombre_fiesta}': {e}"
             )
-            continue
+            return None
 
+        # `None` es "no se pudo preguntar"; `[]` es "se preguntó y no hay actos".
+        # Devolver lo mismo en los dos casos convertía un fallo pasajero en un
+        # dato erróneo: en Santa Marta de los Barros el 4.º de cuatro lotes se
+        # perdió por timeout, y el recorte de rango dio la fiesta por terminada
+        # el 28 de julio cuando el programa llega al 1 de agosto. Se perdió el
+        # 29, que es el día de la patrona.
         if not (parsed and isinstance(parsed, dict) and isinstance(parsed.get("programa"), list)):
-            continue
+            return None
         # Cada lote se acota a SUS días: el modelo tiende a colar los vecinos.
-        programa_total.extend(_recortar_programa_al_rango(parsed["programa"], desde, hasta))
+        return _recortar_programa_al_rango(parsed["programa"], desde, hasta)
+
+    resultados = await asyncio.gather(
+        *[_pedir_lote(i, dias, j, txt) for i, dias, j, txt in peticiones],
+        return_exceptions=True,
+    )
+    programa_total: list[dict] = []
+    lotes_fallidos = 0
+    for r in resultados:
+        if isinstance(r, BaseException):
+            logger.warning(f"  [ENRICHMENT] '{nombre_fiesta}': un lote falló: {r}")
+            lotes_fallidos += 1
+            continue
+        if r is None:
+            lotes_fallidos += 1
+            continue
+        programa_total.extend(r)
+
+    # Se deja dicho en la ficha para que el recorte de rango no dé por
+    # inexistentes los días que nadie llegó a preguntar.
+    if lotes_fallidos:
+        fiesta["lotes_incompletos"] = lotes_fallidos
+        logger.warning(
+            f"  [ENRICHMENT] '{nombre_fiesta}': {lotes_fallidos} de {len(peticiones)} "
+            f"lotes sin respuesta. El programa queda incompleto y el rango NO se recorta: "
+            f"los días que faltan no se han mirado, no es que no existan."
+        )
 
     programa_total = _fusionar_dias(programa_total)
     programa_total = _recortar_programa_al_rango(programa_total, fecha_ini, fecha_fin)
@@ -3425,8 +4317,47 @@ Devuelve SOLO JSON estricto con esta estructura:
     n_actos = sum(len(d.get("eventos", [])) for d in programa_total)
     logger.info(
         f"  [ENRICHMENT] '{nombre_fiesta}': {len(programa_total)} días y {n_actos} actos "
-        f"en {len(lotes)} llamada(s)."
+        f"en {len(peticiones)} llamada(s)."
     )
+
+    # Verificación de cobertura: qué parte de lo que el documento trae ha
+    # llegado a la ficha. Se mide por DÍAS, no por actos: el denominador son los
+    # días de la fiesta que el propio documento nombra, leídos con el mismo
+    # detector que la guarda de más arriba.
+    #
+    # En Aranda de Duero el documento nombraba los 10 días y la ficha salió con
+    # 4, con `confianza: alta` y sin que nada dijera que faltaban 6.
+    # PENDIENTE: este denominador cuenta como "día del documento" cualquier día
+    # cuya fecha aparezca en el texto, aunque el documento no le ponga ni un
+    # acto. En Tobarra eso hizo saltar «0 de 4 días del documento (0%) … no se ha
+    # recogido entero» sobre un documento que no programaba ninguno de los cuatro
+    # —eran el 24-abr y el 4-may de una venta de tickets y el 27-abr de la fecha
+    # del artículo—, es decir culpando a la extracción de un fallo que estaba en
+    # las fechas de la ficha.
+    #
+    # Se probó exigir una hora detrás de la fecha (ventana de 300 chars) y NO
+    # sirve: en un programa denso siempre hay una hora cerca, así que en Tobarra
+    # seguían contando los cuatro días, y en Aranda se perdía el 15-sep, que sí
+    # es un día programado. Hace falta detectar la CABECERA de un día ("Sábado,
+    # 9 de mayo" al principio de línea) y no una fecha cualquiera; hasta
+    # entonces se deja el criterio antiguo, que peca de ruidoso pero no calla.
+    dias_con_material = {d for d in fechas if any(_mencionado(d, p) for p in _planos)}
+    dias_con_actos = {
+        d.get("fecha") for d in programa_total if d.get("eventos")
+    } & dias_con_material
+    if dias_con_material:
+        cobertura = len(dias_con_actos) / len(dias_con_material)
+        fiesta["cobertura_dias"] = round(cobertura, 2)
+        if cobertura < COBERTURA_DIAS_MINIMA:
+            fiesta["programa_no_recuperado"] = True
+            faltan = sorted(dias_con_material - dias_con_actos)
+            logger.warning(
+                f"  [ENRICHMENT/COBERTURA] '{nombre_fiesta}' de {localidad['nombre']}: "
+                f"{len(dias_con_actos)} de {len(dias_con_material)} días del documento "
+                f"({100 * cobertura:.0f}%). Sin actos: {faltan[:6]}. "
+                f"El programa está en {url_programa[:60]} y no se ha recogido entero."
+            )
+
     return fiesta
 
 
@@ -3438,14 +4369,27 @@ async def retrieve_discovery_context(
     rag_processor: AsyncRAGProcessor | None = None,
     max_chars: int = DISCOVERY_MAX_CHARS,
     nombres_hermanas: list[str] = None,
-) -> tuple[str, set]:
-    """Recupera los top 10-15 chunks (~15,000 chars) para el contexto del Discovery Pass."""
-    if not indexed_chunks:
-        return "", set()
+    system_prompt: str = "",
+) -> tuple[str, set, int, list]:
+    """
+    Ordena TODO el material de la localidad y lo reparte en lotes.
 
-    comunidad = municipio.get("comunidad_autonoma", "")
-    provincia = municipio.get("provincia", "")
-    perfil_data = get_language_profile(comunidad, provincia)
+    Devuelve `(contexto, fuentes, n_documentos_directos, lotes)`.
+
+    `contexto` es ahora el pool ENTERO ensamblado, no un recorte. Lo consumen las
+    anclas —`ajustar_fechas_con_anclas`, `recuperar_fiestas_desde_anclas` y
+    `descartar_por_patron_ajeno`—, que son la red de seguridad que caza lo que el
+    modelo se deja. Hasta ahora leían los mismos 20.000 caracteres que el
+    discovery, o sea el 3,2% del material recopilado en Aranda de Duero: la pieza
+    que existe para recuperar lo perdido era la que menos material tenía delante.
+    No se traduce: las anclas leen expresiones de fecha, no prosa.
+
+    `lotes` es ese mismo material repartido para preguntar. Nada se descarta.
+    """
+    if not indexed_chunks:
+        return "", set(), 0, []
+
+    perfil_data = perfil_de_lugar(municipio)
     terminos_rag = perfil_data["perfil_principal"]["terminos_rag"]
 
     query_discovery = (
@@ -3490,11 +4434,20 @@ async def retrieve_discovery_context(
     ya = {id(i) for i in garantizados}
     garantizados = garantizados + [i for i in mejores if id(i) not in ya]
 
-    seleccion = seleccionar_chunks(items_copy, max_chars, umbral, garantizados=garantizados)
-    if not seleccion:
-        seleccion = sorted(items_copy, key=lambda i: (i["prioridad"], -i.get("score", 0.0)))[:15]
+    # El reparto sustituye a `seleccionar_chunks`. El umbral se sigue calculando
+    # —se vuelca, y sirve para ver si el orden es sano— pero ya no descarta a
+    # nadie: lo que no cabe en un lote va en el siguiente.
+    lote_tok = tokens_por_lote(system_prompt or _SYSTEM_DISCOVERY_TIPICO, RESERVA_SALIDA_DISCOVERY)
+    lotes = repartir_en_lotes(
+        items_copy, lote_tok, ensamblar_contexto, contar_tokens, fijos=garantizados,
+    )
+    seleccion = [i for lote in lotes for i in lote]
 
     contexto = ensamblar_contexto(seleccion)
+    logger.info(
+        f"  [REPARTO/discovery] {localidad['nombre']}: "
+        f"{resumen_reparto(lotes, contar_tokens, ensamblar_contexto)}"
+    )
 
     # Volcado de depuración: el contexto y la justificación de por qué es ese.
     volcar_contexto(
@@ -3506,11 +4459,15 @@ async def retrieve_discovery_context(
         seleccion=seleccion,
         contar_tokens=contar_tokens,
         presupuesto={
-            "presupuesto_chars": max_chars,
+            # `presupuesto_chars` era el tope que recortaba; ya no recorta nada
+            # y se deja solo por trazabilidad. Lo que dimensiona ahora es el lote.
+            "presupuesto_chars_historico": max_chars,
+            "lote_tokens": lote_tok,
             "query_embedding_ok": bool(query_emb),
-            "umbral": RAG_UMBRAL_SIMILITUD,
+            "umbral": umbral,
         },
         extra={"query_discovery": query_discovery},
+        lotes=lotes,
     )
 
     fuentes_contexto = {i["fuente"] for i in seleccion}
@@ -3532,7 +4489,7 @@ async def retrieve_discovery_context(
         and i.get("url") != "buscadores:snippets"
         and i.get("url")
     }
-    return contexto, fuentes_contexto, len(urls_directas)
+    return contexto, fuentes_contexto, len(urls_directas), lotes
 
 
 def descartar_copias_de_la_capital(
@@ -3726,7 +4683,15 @@ _RANGOS_FECHA = [
 _TRAMITE = re.compile(
     r"\binscri\w*|\bplazo\b|\bmatricul\w*|\bsolicitud\w*|\badmisi\w*|\bvotaci\w*"
     r"|\bpresentaci\w*\s+de\s+(?:obras|trabajos|proyectos|carteles|bocetos)"
-    r"|\brecepci\w*\s+de\b|\bbases\b",
+    r"|\brecepci\w*\s+de\b|\bbases\b"
+    # Comprar la entrada también es un trámite, y su ventana no son las fiestas.
+    # Medido el 2026-09-03 sobre el PDF cristo26-1.pdf de Tobarra: «Venta de
+    # tickets en Droguería Sila y Centro Médico Tobarra, del 24 de abril al 4 de
+    # mayo» fabricó una ficha entera —"Fiestas de Tobarra", 24-abr a 4-may— que
+    # además se llevó el mejor documento del municipio y salió con 0 actos,
+    # mientras las fiestas de verdad (8-24 de mayo) se quedaban con el PDF peor.
+    r"|\bventas?\b|\bcanje\w*|\babono\s+de\b"
+    r"|\b(?:recogida|retirada|reserva|adquisici\w*|compra)\s+(?:anticipada\s+)?de\b",
     re.IGNORECASE,
 )
 
@@ -3743,6 +4708,71 @@ def _es_rango_de_tramite(seg: str, ini: int, fin: int) -> bool:
     el concurso de tortilla…" no deja de ser el rango de la fiesta.
     """
     return bool(_TRAMITE.search(seg[max(0, ini - 130):ini]))
+
+
+# Un día seguido de una hora dentro de la misma línea o frase: "Viernes, 8 de
+# mayo 10:00h. POSTULACIÓN". La ventana es corta a propósito —el título del acto
+# va justo detrás de la hora, no a media página—.
+_VENTANA_DIA_HORA = 120
+
+# La hora TAL COMO LLEGA AQUÍ. `_plano()` deja el segmento en [a-z0-9 -], así
+# que los dos puntos ya no existen: "10:00h." llega como "10 00h". Por eso este
+# patrón no puede ser el de `senales_festivas`, que trabaja sobre texto crudo.
+#
+# Se exige la "h" final. Sin ella, "10 00" es indistinguible de dos números
+# cualesquiera del texto aplanado, y un programa escrito "10:00" sin hache se
+# queda fuera —falso negativo, que aquí solo significa no vetar nada—.
+_RE_HORA_APLANADA = re.compile(r"\b(?:[01]?\d|2[0-3])\s+[0-5]\d\s*h\b")
+
+
+def dias_con_acto_del_segmento(seg: str, anno: int) -> list[date]:
+    """
+    Días del segmento que llevan detrás un acto con hora, es decir: los días que
+    este texto documenta como programa.
+
+    `seg` es un segmento ya aplanado por `_plano()`; ver `_RE_HORA_APLANADA`.
+
+    Se devuelven ordenados y sin repetir. Si el segmento no es un programa
+    —ninguna fecha lleva hora— la lista sale vacía y nadie decide nada con ella.
+    """
+    dias: set[date] = set()
+    for m in re.finditer(rf"\b(\d{{1,2}})\s+de\s+({_MES_RE})\b", seg):
+        cola = seg[m.end():m.end() + _VENTANA_DIA_HORA]
+        if not _RE_HORA_APLANADA.search(cola):
+            continue
+        mes = _MES_A_NUMERO.get(m.group(2))
+        if not mes:
+            continue
+        try:
+            dias.add(date(anno, mes, int(m.group(1))))
+        except ValueError:
+            continue
+    return sorted(dias)
+
+
+def rango_contradice_al_programa(seg: str, ini: date, fin: date, anno: int) -> bool:
+    """
+    ¿El rango candidato cae fuera de los días que el propio segmento programa?
+
+    Cuando un texto ES un programa —varios días con sus actos y sus horas—, esos
+    días son la fiesta. Un rango que no toca ninguno de ellos habla de otra cosa
+    aunque esté en la misma página: una venta de entradas, una exposición previa,
+    la fiesta del pueblo de al lado en el pie del artículo.
+
+    Es la versión general del fallo que `_TRAMITE` ataca por vocabulario. En
+    Tobarra el segmento programaba el 8 y el 9 de mayo con sus horas, y el rango
+    que ganó la votación fue el 24-abr a 4-may de la venta de tickets: ningún
+    día en común. Con esta regla no habría hecho falta conocer la palabra
+    "venta" para descartarlo.
+
+    Se exigen DOS días programados antes de decidir: con uno solo, un texto que
+    menciona de pasada un acto con hora vetaría el rango bueno de su propia
+    fiesta, que es exactamente el error contrario.
+    """
+    dias = dias_con_acto_del_segmento(seg, anno)
+    if len(dias) < 2:
+        return False
+    return not any(ini <= d <= fin for d in dias)
 
 
 _DIAS_SEMANA = {
@@ -4000,13 +5030,36 @@ def anclas_de_fechas(
 
     for seg in re.split(r"(?=\btitulo\b)|---+|\n\n", _plano(contexto)):
         # Menciones de la localidad que NO son la cola de otro topónimo.
-        m_loc = next(
-            (m for m in re.finditer(rf"\b{loc}\b", seg)
-             if not _mencion_es_cola_de_otro_toponimo(seg, m.start(), loc)),
-            None,
-        )
-        if not m_loc or not re.search(r"fiestas?|jaiak|celebrar|patronal|programa", seg):
+        pos_loc_validas = [
+            m.start() for m in re.finditer(rf"\b{loc}\b", seg)
+            if not _mencion_es_cola_de_otro_toponimo(seg, m.start(), loc)
+        ]
+        m_loc = pos_loc_validas[0] if pos_loc_validas else None
+        if m_loc is None or not re.search(r"fiestas?|jaiak|celebrar|patronal|programa", seg):
             continue
+
+        def _cerca_de_la_localidad(pos: int) -> bool:
+            """
+            ¿La fecha está lo bastante cerca de donde se nombra al pueblo?
+
+            El segmento ya garantiza que las dos cosas salen de la misma página,
+            pero una página entera es una unidad demasiado grande. Medido el
+            2026-09-02: en el contexto de Mora de Santa Quiteria, el titular
+            «Mora de Santa Quiteria se prepara para un gran fin de semana de
+            fiestas en honor a su patrona» y la frase «El festival se celebrará
+            del 10 al 12 de septiembre en la Casa de la Cultura… tres referentes
+            de la narración y la literatura oral» están en el mismo segmento y a
+            noventa líneas de distancia. De ahí salió una fiesta entera que no
+            existe, con las fechas de un festival de narración oral de Tobarra,
+            mientras el propio contexto decía que las de Mora «arrancarán el 22
+            de mayo y se alargarán hasta el día 24».
+
+            No se vuelve a las ventanas de caracteres sueltas —que pegaban la
+            fecha de un pueblo al titular del siguiente—: esto se suma al
+            segmento, no lo sustituye.
+            """
+            return any(abs(pos - p) <= ANCLA_MAX_CHARS_A_LA_LOCALIDAD
+                       for p in pos_loc_validas)
         # La propia fuente puede estar situando la fiesta en otro pueblo del
         # mismo nombre. En España los homónimos son muchos.
         if _evidencia_situa_la_fiesta_en_otro_sitio(seg, localidad, municipio_nombre):
@@ -4064,6 +5117,8 @@ def anclas_de_fechas(
             for m in re.finditer(patron_fecha, seg):
                 if _es_rango_de_tramite(seg, m.start(), m.end()):
                     continue
+                if not _cerca_de_la_localidad(m.start()):
+                    continue
                 d1, mes1, d2, mes2 = m.groups()
                 mes_fin = _MES_A_NUMERO.get(mes2)
                 mes_ini = _MES_A_NUMERO.get(mes1) if mes1 else mes_fin
@@ -4080,6 +5135,10 @@ def anclas_de_fechas(
                     except ValueError:
                         continue
                 if (fin - ini).days > ANCLA_MAX_DIAS:
+                    continue
+                # Si el segmento es un programa, sus días mandan sobre cualquier
+                # rango suelto que aparezca dentro. Ver `rango_contradice_al_programa`.
+                if rango_contradice_al_programa(seg, ini, fin, anno):
                     continue
                 clave = (ini, fin)
                 votos[clave] = votos.get(clave, 0) + (2 if posesivo else 1) + (1 if str(anno) in seg else 0) + (1 if patronal else 0)
@@ -4105,6 +5164,8 @@ def anclas_de_fechas(
             if re.search(r"\b(?:del|al|a|hasta|entre|y)\s+(?:el\s+)?$", seg[:m.start()]):
                 continue
             if _es_rango_de_tramite(seg, m.start(), m.end()):
+                continue
+            if not _cerca_de_la_localidad(m.start()):
                 continue
             mes = _MES_A_NUMERO.get(m.group(2))
             if not mes:
@@ -4807,6 +5868,26 @@ def _dia_del_santo_de_la_fiesta(
         return None, ""
 
 
+def _anotar_ancla_propuesta(fiesta: dict, a: dict) -> None:
+    """
+    Guarda en la ficha el rango que proponía el contexto, sin aplicarlo.
+
+    Cuando una guarda frena al anclaje, la frase que lo respaldaba sigue siendo
+    información: dice que alguien publicó esas fechas. Tirarla obliga a volver al
+    log para saber por qué una ficha tiene el rango que tiene. Se anota la
+    primera propuesta frenada, que es la de más respaldo —los anclajes llegan
+    ordenados—, junto con su evidencia.
+    """
+    if fiesta.get("ancla_propuesta"):
+        return
+    fiesta["ancla_propuesta"] = {
+        "fecha_inicio": a["inicio"].isoformat(),
+        "fecha_fin": a["fin"].isoformat(),
+        "peso": a["peso"],
+        "evidencia": (a.get("evidencia") or "")[:ANCLA_EVIDENCIA_CHARS],
+    }
+
+
 def ajustar_fechas_con_anclas(
     fiestas: list[dict],
     contexto: str,
@@ -4865,30 +5946,58 @@ def ajustar_fechas_con_anclas(
                 continue  # no solapan: hablan de fiestas distintas
             if (a["inicio"], a["fin"]) == (ini, fin):
                 break
-            recorta = ini <= a["inicio"] and a["fin"] <= fin
-            if dia_santo and ini <= dia_santo <= fin and not recorta:
-                # Las fechas del modelo ya cubren el día del santo y el anclaje
-                # se sale de ellas: no está afinando esta fiesta, está trayendo
-                # otras fechas. Manda el modelo, que leyó el contexto entero.
-                #
-                # Medido el 2026-08-23, al subir el techo de descarga: en Tobarra
-                # entraron más copias de "las fiestas patronales de verano se
-                # celebran del 9 al 17 de agosto en La Caseta" —que es la
-                # temporada de conciertos, no San Roque— y con ese respaldo el
-                # anclaje movió San Roque del 14-21, que es su fecha real, al
-                # 9-17. Antes solo se frenaba si el ajuste dejaba al santo fuera,
-                # y el 9-17 también lo contiene, así que no bastaba.
-                #
-                # El recorte sí se deja pasar: un anclaje METIDO dentro de lo que
-                # dijo el modelo está hablando de la misma fiesta y la precisa.
-                # En Aloria el modelo dio 28-30 de agosto y el texto dice 29-30,
-                # que es lo correcto, con San Juan Degollado (29) dentro de los
-                # dos. Bloquear también eso rompía esa corrección.
+            dias_modelo = (fin - ini).days + 1
+            dias_ancla = (a["fin"] - a["inicio"]).days + 1
+
+            # Guarda 1: un anclaje no convierte una fiesta de varios días en una
+            # de un día. Afinar dónde empieza y acaba una fiesta es una cosa;
+            # decir que dura un día lo que el modelo leyó como diez es otra.
+            #
+            # Medido el 2026-09-02 sobre las dos ejecuciones completas: los dos
+            # colapsos a un día son los peores daños del pipeline. Aranda de
+            # Duero, cuyas fiestas mayores son del 11 al 20 de septiembre —el
+            # ayuntamiento lo repite seis veces en el propio contexto—, salió
+            # durando el 15 y sin programa; Los Mardos, del 16 al 19 de julio
+            # según su programa oficial, salió durando el 19. En las dos el
+            # modelo había dado el rango correcto.
+            if dias_modelo > 1 and dias_ancla < ANCLA_MIN_DIAS_TRAS_RECORTE:
+                _anotar_ancla_propuesta(f, a)
+                logger.info(
+                    f"  [ANCLA] '{f.get('nombre')}' de {localidad['nombre']}: se conservan "
+                    f"{f['fecha_inicio']}→{f['fecha_fin']}; el contexto proponía "
+                    f"{a['inicio']}→{a['fin']}, que dejaría la fiesta en un solo día. "
+                    f"Anotado como propuesta."
+                )
+                break
+
+            # Guarda 2: si las fechas del modelo ya cubren el día del santo, el
+            # rango es coherente y no lo mueve una frase del contexto —ni
+            # saliéndose de él ni recortándolo—.
+            #
+            # Medido el 2026-08-23, al subir el techo de descarga: en Tobarra
+            # entraron más copias de "las fiestas patronales de verano se
+            # celebran del 9 al 17 de agosto en La Caseta" —que es la temporada
+            # de conciertos, no San Roque— y con ese respaldo el anclaje movió
+            # San Roque del 14-21, que es su fecha real, al 9-17.
+            #
+            # Hasta el 2026-09-02 esta guarda tenía una excepción: si el anclaje
+            # caía DENTRO del rango del modelo se dejaba pasar, porque en Aloria
+            # recortaba 28-30 a 29-30 y acertaba. La excepción costaba más de lo
+            # que daba. Por ella pasaron el recorte de San Roque de Tobarra en la
+            # ejecución del 27B (08-08→08-22, que contiene el 16 de agosto,
+            # recortado a 08-09→08-17: se perdieron los cuatro últimos días,
+            # incluido el castillo de fin de fiestas) y el de La Aguilera en las
+            # dos ejecuciones (12-17 de mayo, que contiene el 13, día de San
+            # Pedro Regalado, recortado a 13-17). La precisión que daba en Aloria
+            # la recupera ahora `recortar_rango_al_programa`, que recorta con los
+            # días que de verdad tienen actos en vez de con una frase.
+            if dia_santo and ini <= dia_santo <= fin:
+                _anotar_ancla_propuesta(f, a)
                 logger.info(
                     f"  [ANCLA] '{f.get('nombre')}' de {localidad['nombre']}: se conservan "
                     f"{f['fecha_inicio']}→{f['fecha_fin']}, que ya cubren el día de "
                     f"{nombre_santo} ({dia_santo}); el contexto proponía "
-                    f"{a['inicio']}→{a['fin']}."
+                    f"{a['inicio']}→{a['fin']}. Anotado como propuesta."
                 )
                 break
             logger.info(
@@ -5197,6 +6306,92 @@ def sanear_programa(
     return fiesta
 
 
+def recortar_rango_al_programa(fiesta: dict) -> dict:
+    """
+    Recorta las fechas de la fiesta a los días que el programa llegó a cubrir.
+
+    Es el sustituto con datos del recorte que hacía el anclaje con una frase.
+    Cuando el enrichment ha construido un programa, sus días dicen hasta dónde
+    llega la fiesta según las fuentes; los días que quedan fuera de ese tramo son
+    los que el modelo añadió al declarar el rango y nadie respaldó después.
+
+    Frenos, todos por lo mismo —que recortar de más cuesta días reales—:
+
+    - Solo encoge. Si el programa se sale del rango declarado, el rango manda:
+      ampliar por esta vía sería inventar fiesta.
+
+    - Nunca deja la fiesta en un día. Igual que en el anclaje: convertir una
+      fiesta de varios días en una de un día no es afinar.
+
+    - Cuenta los días que el programa ABARCA, tengan actos o no, no los que
+      traen contenido. Medido el 2026-09-02 sobre Aljubé: su ficha salió del 13
+      al 24 de mayo cuando su programa dice "Del 13 al 17"; el esqueleto del
+      programa llega al 18 y a partir de ahí no hay ni día creado —esos seis
+      días no los miró nadie—, mientras que el 13 sí está y solo le faltan actos.
+      Recortando por días CON actos se perdía el 13, que es día de fiesta.
+
+    - El programa tiene que abarcar al menos RECORTE_PROGRAMA_MIN_DIAS días.
+      Uno de dos días no dice cuánto dura la fiesta, solo que esos dos días
+      existen. Medido en la ejecución del 2026-09-02, que es la que descubrió
+      este freno: con el recorte sin condición, Sierra pasó del 30 de julio al 2
+      de agosto —correcto— a durar dos días, y Santiago de Mora de cinco días a
+      dos, cuando lo suyo son once. Los dos programas tenían dos días. Los
+      recortes que sí acertaron (San Roque de Tobarra al 14 de agosto exacto,
+      Aljubé al 18 de mayo) venían de programas de cinco y seis días.
+
+    - Y no se recorta con un programa del que ya se sospecha: ni el de otro año
+      ni el que no nombra la advocación de esta fiesta. En esa misma ejecución,
+      las patronales de Aranda se recortaron al 13 de septiembre usando el
+      programa de 2025, el único publicado; y el programa de Sierra venía de una
+      página que el propio enrichment había avisado de que no nombra a San
+      Francisco Javier por ningún sitio.
+
+    - Y NO se recorta si algún lote del enrichment se quedó sin respuesta. Los
+      días que faltan no es que no existan: es que nadie llegó a preguntarlos.
+      Medido el 2026-09-04 en Santa Marta de los Barros: el 4.º de cuatro lotes
+      se perdió por timeout y el recorte dio la fiesta por terminada el 28 de
+      julio, cuando su programa llega al 1 de agosto. El día que se perdió era
+      el 29, el de la patrona. Un fallo pasajero no debe convertirse en un dato
+      erróneo y sin marcar.
+    """
+    if fiesta.get("lotes_incompletos"):
+        return fiesta
+
+    ini = _parse_fecha_con_fallback_bisiesto(fiesta.get("fecha_inicio"))
+    fin = _parse_fecha_con_fallback_bisiesto(fiesta.get("fecha_fin"))
+    programa = fiesta.get("programa") or []
+    if not (ini and fin) or ini == fin or not programa:
+        return fiesta
+    if not any(d.get("eventos") for d in programa):
+        return fiesta
+    if fiesta.get("programa_de_otro_anno") or fiesta.get("programa_advocacion_dudosa"):
+        return fiesta
+
+    dias = sorted(
+        d for d in (
+            _parse_fecha_con_fallback_bisiesto(x.get("fecha")) for x in programa
+        ) if d
+    )
+    if len(dias) < RECORTE_PROGRAMA_MIN_DIAS:
+        return fiesta
+
+    nuevo_ini, nuevo_fin = max(ini, dias[0]), min(fin, dias[-1])
+    if (nuevo_ini, nuevo_fin) == (ini, fin):
+        return fiesta
+    if (nuevo_fin - nuevo_ini).days + 1 < ANCLA_MIN_DIAS_TRAS_RECORTE:
+        return fiesta
+
+    logger.info(
+        f"  [PROGRAMA] '{fiesta.get('nombre')}': {fiesta['fecha_inicio']}→"
+        f"{fiesta['fecha_fin']} recortada a {nuevo_ini}→{nuevo_fin}; el programa "
+        f"no llega a los {(nuevo_ini - ini).days + (fin - nuevo_fin).days} día(s) "
+        f"que quedan fuera."
+    )
+    fiesta["fecha_inicio"] = nuevo_ini.isoformat()
+    fiesta["fecha_fin"] = nuevo_fin.isoformat()
+    return fiesta
+
+
 def marcar_estado_del_programa(fiesta: dict) -> dict:
     """
     Dice si el programa de la fiesta está completo, a medias o no se ha
@@ -5230,6 +6425,11 @@ def marcar_estado_del_programa(fiesta: dict) -> dict:
         # a quien lee la salida a comprobar las dos.
         fiesta["programa"] = []
     elif actos < dias:
+        fiesta["programa_estado"] = "parcial"
+    elif fiesta.get("lotes_incompletos"):
+        # Hay actos y salen las cuentas, pero uno de los lotes se quedó sin
+        # respuesta: de esos días no sabemos nada. "Completo" sería mentir en la
+        # única bandera que la base de datos va a mirar para fiarse.
         fiesta["programa_estado"] = "parcial"
     else:
         fiesta["programa_estado"] = "completo"
@@ -5291,7 +6491,13 @@ def limpiar_actos_compartidos_del_municipio(
                 if _normalizar_nombre(ev.get("descripcion", "")) not in compartidos
             ]
             if antes != len(dia["eventos"]):
-                quitados[f.get("nombre", "?")] = quitados.get(f.get("nombre", "?"), 0) + antes - len(dia["eventos"])
+                n = antes - len(dia["eventos"])
+                quitados[f.get("nombre", "?")] = quitados.get(f.get("nombre", "?"), 0) + n
+                # Queda en la ficha, no solo en el log. Es la señal de alarma de
+                # que una pedanía ha empezado a copiar de su capital, y con el
+                # triple de material en el contexto hay que poder vigilarla
+                # ejecución a ejecución sin releer los logs.
+                f["actos_compartidos_retirados"] = f.get("actos_compartidos_retirados", 0) + n
 
     if quitados:
         logger.warning(
@@ -5578,6 +6784,280 @@ async def buscar_programas_de_las_fiestas(
     return fuera
 
 
+def _contexto_alrededor_de(fiesta: dict, indexed_chunks: list[dict]) -> str:
+    """
+    El texto que rodea a esta fiesta, para que el juez pueda situarla.
+
+    Se priorizan, por este orden: los fragmentos de la página de la que se copió
+    el programa, los que nombran la fiesta, y los que caen en sus fechas. Es la
+    diferencia con el juez de documentos, que solo ve 1.200 caracteres de
+    cabecera: aquí lo que se pregunta es de dónde es la fiesta, y eso se decide
+    justo en el texto de alrededor —el «en Astorga» que delata a Santa Marta
+    aparece en el cuerpo, no en el titular—.
+    """
+    if not indexed_chunks:
+        return ""
+    url_prog = (fiesta.get("url_programa") or "").strip()
+    senas = {t for t in tokens_distintivos(fiesta.get("nombre", ""), "") if len(t) > 3}
+    fechas = {fiesta.get("fecha_inicio", ""), fiesta.get("fecha_fin", "")}
+    meses = {_MESES_EN_ORDEN[int(f[5:7]) - 1] for f in fechas if len(f) >= 7 and f[5:7].isdigit()}
+
+    def prioridad(item: dict) -> tuple:
+        url = item.get("url") or ""
+        texto = (item.get("chunk") or "").lower()
+        return (
+            0 if (url_prog and url == url_prog) else 1,
+            0 if senas and any(s in texto for s in senas) else 1,
+            0 if any(m and m in texto for m in meses) else 1,
+            -float(item.get("score", 0.0)),
+        )
+
+    elegidos, usados = [], 0
+    for item in sorted(indexed_chunks, key=prioridad):
+        trozo = item.get("chunk") or ""
+        coste = contar_tokens(trozo) + 12
+        if usados + coste > PERTENENCIA_CONTEXTO_TOKENS:
+            if usados:
+                break
+            trozo = trozo[:4000]
+            coste = contar_tokens(trozo) + 12
+        elegidos.append(f"--- [{item.get('url', '')}] ---\n{trozo}")
+        usados += coste
+    return "\n\n".join(elegidos)
+
+
+_PALABRAS_VACIAS_LUGAR = {
+    "de", "del", "la", "las", "el", "los", "y", "en", "provincia", "comunidad",
+    "municipio", "pedania", "localidad", "ayuntamiento", "espana",
+}
+
+
+def lugar_real_contradice(lugar_real: str, localidad: dict, municipio: dict) -> bool:
+    """
+    ¿El sitio que el modelo nombra es OTRO, aunque él haya contestado que sí?
+
+    Medido en la validación del 2026-09-04 sobre las 42 fichas reales: el juez
+    contestó "si" a las 'Fiestas de Arroyomolinos' y en el mismo JSON escribió
+    lugar_real: "Arroyomolinos de la Vera" —otro municipio de Cáceres—. Se
+    contradecía dentro de la misma respuesta, y el veredicto se llevaba la ficha.
+
+    La comprobación es por palabras, no por subcadena, justamente por ese caso:
+    "Arroyomolinos de la Vera" CONTIENE "Arroyomolinos", así que un `in` lo daría
+    por nuestro. Lo que delata a un pueblo distinto es la palabra que sobra —"Vera",
+    "Tormes", "Astorga", "Madrid"—. Si todo lo que nombra es nuestro pueblo, nuestro
+    municipio, nuestra provincia o nuestra comunidad, no contradice nada.
+    """
+    if not (lugar_real or "").strip():
+        return False
+
+    def palabras(texto: str) -> set[str]:
+        # La puntuación se quita aquí y no con `normalize_text`, que la conserva:
+        # el modelo escribe "Garrucha, Almería" y "Alcuéscar (Cáceres)", y sin
+        # esto los tokens salen como "garrucha," y "(caceres,", que no casan con
+        # nada. Medido: el veto tumbaba doce fichas legítimas por las comas.
+        return {p for p in re.split(r"[^\w]+", normalize_text(texto or "")) if p}
+
+    nuestros: set[str] = set()
+    for valor in (
+        localidad.get("nombre"), municipio.get("nombre"),
+        localidad.get("provincia"), municipio.get("provincia"),
+        localidad.get("comunidad"), municipio.get("comunidad"),
+    ):
+        nuestros |= palabras(valor)
+    nuestros -= _PALABRAS_VACIAS_LUGAR
+    suyas = palabras(lugar_real) - _PALABRAS_VACIAS_LUGAR
+    if not suyas:
+        return False
+    return bool(suyas - nuestros)
+
+
+_SYS_REPREGUNTA = """Antes dijiste que esta fiesta SÍ es de la localidad que buscamos, pero la situaste en
+un sitio cuyo nombre no coincide con el nuestro. Puede ser que sean el mismo sitio
+—muchos municipios españoles tienen un nombre largo y otro corto: "Santa Marta" es
+"Santa Marta de los Barros", "Aranda" es "Aranda de Duero"— o puede ser que sean
+pueblos distintos que se llaman parecido: "Arroyomolinos" y "Arroyomolinos de la
+Vera" son municipios diferentes.
+
+Mira la provincia, la comunidad, el municipio y la web oficial que se te dan, y
+responde una sola cosa: ¿es ese sitio NUESTRA localidad?
+
+Responde solo JSON:
+{"es_de_la_localidad": "si" | "no" | "no_se",
+ "razon": "una frase"}"""
+
+
+async def _repreguntar_pertenencia(
+    fiesta: dict,
+    localidad: dict,
+    municipio: dict,
+    nombres_hermanas: list[str] | None,
+    lugar_real: str,
+) -> dict:
+    """
+    Segunda pregunta cuando el modelo se contradice: ¿ese sitio somos nosotros?
+
+    Es deliberadamente estrecha —no repite el juicio entero, solo resuelve la
+    duda del topónimo— para que la respuesta no dependa otra vez de todo el
+    contexto. Cuesta una llamada, y solo en los casos raros: sobre las 42 fichas
+    de la tirada del 2026-09-04 habrían sido una o dos.
+    """
+    datos = await llm_chat_json(
+        _SYS_REPREGUNTA,
+        "LOCALIDAD QUE BUSCAMOS\n"
+        + _bloque_identidad(localidad, municipio, nombres_hermanas)
+        + f"\n\nSITIO QUE NOMBRASTE: {lugar_real}"
+        + f"\n\nFIESTA: {fiesta.get('nombre', '')} "
+          f"({fiesta.get('fecha_inicio', '')} a {fiesta.get('fecha_fin', '')})",
+        max_tokens=PERTENENCIA_MAX_TOKENS,
+        etiqueta="PERTENENCIA/REPREGUNTA",
+    )
+    return datos if isinstance(datos, dict) else {}
+
+
+async def filtrar_por_pertenencia(
+    fiestas: list[dict],
+    localidad: dict,
+    municipio: dict,
+    nombres_hermanas: list[str] | None,
+    indexed_chunks: list[dict],
+) -> list[dict]:
+    """
+    Quita las fichas que el modelo no reconoce como de esta localidad.
+
+    El veto del código se queda con la última palabra en un caso: si el programa
+    viene de la web oficial del propio pueblo o de su ayuntamiento, no se tira
+    aunque el modelo dude. Ahí el documento ES la prueba de pertenencia, y un
+    "no" en esas condiciones es un error del modelo, no un hallazgo.
+
+    Las descartadas no se borran en silencio: quedan en el log con el motivo y el
+    lugar al que el texto las manda, que es lo que permite medir después si el
+    juez acierta.
+    """
+    if not (PERTENENCIA_ENABLED and fiestas):
+        return fiestas
+
+    veredictos = await asyncio.gather(*[
+        veredicto_de_pertenencia(
+            f, localidad, municipio, nombres_hermanas,
+            _contexto_alrededor_de(f, indexed_chunks),
+        )
+        for f in fiestas
+    ], return_exceptions=True)
+
+    salvadas: list[dict] = []
+    for fiesta, v in zip(fiestas, veredictos):
+        nombre = fiesta.get("nombre", "")
+        if isinstance(v, BaseException) or not v:
+            logger.warning(
+                f"  [PERTENENCIA] '{nombre[:44]}': el modelo no contestó; se conserva."
+            )
+            salvadas.append(fiesta)
+            continue
+
+        de_aqui = str(v.get("es_de_la_localidad", "")).strip().lower()
+        es_fiesta = str(v.get("es_una_fiesta", "")).strip().lower() or "si"
+        razon = str(v.get("razon", ""))[:160]
+        lugar = (v.get("lugar_real") or "") or "sin decir dónde"
+        que_es = (v.get("que_es") or "").strip()
+
+        # ── Pregunta 2: ¿es una fiesta? ───────────────────────────────
+        #
+        # Se juzga primero porque su veto es distinto del de la procedencia: que
+        # el programa venga de la web del ayuntamiento demuestra de DÓNDE es,
+        # no que sea una fiesta. El "Concurso de Bailes Modernos" de Alcuéscar
+        # estaba publicado en el BOP por su propio ayuntamiento y no deja de ser
+        # un concurso.
+        if es_fiesta in ("no", "no_se"):
+            # Regla de oro del criterio del proyecto: orquesta, verbena, DJ o
+            # música nocturna en el programa y es una fiesta, diga lo que diga
+            # el modelo. Es la misma señal que usa `festival_filter`.
+            if tiene_senal_nocturna(fiesta):
+                logger.info(
+                    f"  [PERTENENCIA] '{nombre[:44]}': el modelo dice que no es fiesta, "
+                    f"pero su programa trae orquesta/verbena/música nocturna. Se conserva."
+                )
+            elif es_fiesta == "no" or PERTENENCIA_DESCARTAR_SI_DUDA:
+                logger.warning(
+                    f"  [PERTENENCIA] DESCARTADA '{nombre[:44]}' de {localidad.get('nombre','')}: "
+                    f"no es una fiesta{f' — es {que_es}' if que_es else ''}. {razon}"
+                )
+                continue
+            else:
+                fiesta["confianza"] = "baja"
+                fiesta["naturaleza_dudosa"] = True
+
+        # ── Pregunta 1: ¿es de aquí? ──────────────────────────────────
+        #
+        # Si dice "sí" y a la vez nombra un sitio que no reconocemos, NO se
+        # descarta: se le vuelve a preguntar señalándole la duda. El código
+        # detecta la incoherencia; quien decide sigue siendo el modelo.
+        #
+        # Antes esto era un veredicto del código y se llevó por delante 'Candelas
+        # 2026', la única ficha real de Santa Marta: el modelo la situó bien, en
+        # "Santa Marta de los Barros", y el código no reconoció ese nombre porque
+        # el dataset guarda el corto. Decidir si dos topónimos son el mismo sitio
+        # es un hecho del mundo, no una regla que se pueda escribir.
+        if de_aqui == "si" and lugar_real_contradice(v.get("lugar_real") or "", localidad, municipio):
+            v2 = await _repreguntar_pertenencia(
+                fiesta, localidad, municipio, nombres_hermanas, lugar,
+            )
+            de_aqui = str((v2 or {}).get("es_de_la_localidad", "")).strip().lower()
+            razon = str((v2 or {}).get("razon", ""))[:160] or razon
+            if de_aqui == "si":
+                logger.info(
+                    f"  [PERTENENCIA] '{nombre[:44]}': situaba la fiesta en «{lugar}»; "
+                    f"repreguntado, confirma que es de aquí. {razon}"
+                )
+                salvadas.append(fiesta)
+                continue
+            # Si a la segunda tampoco lo tiene claro, fuera. Decisión tomada.
+            logger.warning(
+                f"  [PERTENENCIA] DESCARTADA '{nombre[:44]}' de {localidad.get('nombre','')}: "
+                f"situaba la fiesta en «{lugar}» y al repreguntar dice '{de_aqui or 'nada'}'. {razon}"
+            )
+            continue
+
+        if de_aqui == "si":
+            salvadas.append(fiesta)
+            continue
+
+        # Veto del código: para la PROCEDENCIA, la web del propio pueblo manda
+        # sobre el modelo. Ahí el documento es la prueba.
+        if web_es_de_este_lugar(
+            fiesta.get("url_programa", ""), localidad.get("nombre", ""),
+            municipio.get("nombre", ""),
+        ):
+            logger.info(
+                f"  [PERTENENCIA] '{nombre[:44]}': el modelo dice '{de_aqui}' pero el "
+                f"programa viene de la web del propio lugar. Se conserva."
+            )
+            salvadas.append(fiesta)
+            continue
+
+        if de_aqui == "no_se" and not PERTENENCIA_DESCARTAR_SI_DUDA:
+            fiesta["confianza"] = "baja"
+            fiesta["pertenencia_dudosa"] = True
+            logger.info(
+                f"  [PERTENENCIA] '{nombre[:44]}': el modelo no puede situarla; "
+                f"se conserva con confianza baja. {razon}"
+            )
+            salvadas.append(fiesta)
+            continue
+
+        logger.warning(
+            f"  [PERTENENCIA] DESCARTADA '{nombre[:44]}' de {localidad.get('nombre','')}: "
+            f"{'no es de aquí' if de_aqui == 'no' else 'no se puede situar'} → {lugar}. {razon}"
+        )
+
+    quitadas = len(fiestas) - len(salvadas)
+    if quitadas:
+        logger.warning(
+            f"  [PERTENENCIA] {localidad.get('nombre','')}: {quitadas} de {len(fiestas)} "
+            f"fichas descartadas por no ser de esta localidad."
+        )
+    return salvadas
+
+
 async def analyze_festivals_multipass(
     municipio: dict,
     localidad: dict,
@@ -5610,7 +7090,7 @@ async def analyze_festivals_multipass(
     # comprobación de homónimos: sin ellas no se puede decir que un documento en
     # euskera delata otra región, y decirlo a ciegas arrasaría Amurrio.
     provincia = (municipio.get("provincia") or "").strip()
-    comunidad = (municipio.get("comunidad") or municipio.get("comunidad_autonoma") or "").strip()
+    comunidad = comunidad_de(municipio)
     try:
         idiomas = get_language_profile(comunidad, provincia).get("idiomas_a_detectar") or ["es"]
     except Exception:
@@ -5638,7 +7118,7 @@ async def analyze_festivals_multipass(
         return []
 
     # Paso 2: Obtener contexto de discovery
-    discovery_context, fuentes_contexto, n_directa = await retrieve_discovery_context(
+    discovery_context, fuentes_contexto, n_directa, discovery_lotes = await retrieve_discovery_context(
         indexed_chunks=indexed_chunks,
         municipio=municipio,
         localidad=localidad,
@@ -5666,7 +7146,7 @@ async def analyze_festivals_multipass(
             rag_processor=rag_processor,
             fecha_patron=fecha_patron,
             nombres_hermanas=nombres_hermanas,
-            contexto_precalculado=(discovery_context, fuentes_contexto),
+            contexto_precalculado=(discovery_context, fuentes_contexto, discovery_lotes),
         )
 
     # Aquí NO se sale aunque el modelo no haya encontrado nada: el rescate por
@@ -5768,6 +7248,10 @@ async def analyze_festivals_multipass(
         # ha reciclado de un día a otro y los que son del cartel de la capital,
         # y ajustar las fechas a los días que quedan con contenido propio.
         f_enriched = sanear_programa(f_enriched, fiestas_capital, localidad)
+        # Y recortar el rango a lo que el programa llegó a cubrir: es aquí, con
+        # los días ya construidos, donde se quitan los días de más que el modelo
+        # declaró y ninguna fuente respaldó.
+        f_enriched = recortar_rango_al_programa(f_enriched)
         # Dejar dicho, en la propia ficha, si el programa está o no está.
         f_enriched = marcar_estado_del_programa(f_enriched)
         fiestas_enriquecidas.append(f_enriched)
@@ -5790,6 +7274,14 @@ async def analyze_festivals_multipass(
     # fichas están vacías: la fiesta patronal por partida doble.
     fiestas_enriquecidas = descartar_patronales_duplicadas(
         fiestas_enriquecidas, patron, localidad, anno
+    )
+
+    # Paso 8: la última puerta. Con la ficha ya montada, se le pregunta al modelo
+    # si esa fiesta es de este pueblo, enseñándole quiénes somos y el texto de
+    # sus fuentes. Va al final a propósito: los pasos anteriores juzgan
+    # documentos y fragmentos, y lo que se guarda es la ficha.
+    fiestas_enriquecidas = await filtrar_por_pertenencia(
+        fiestas_enriquecidas, localidad, municipio, nombres_hermanas, indexed_chunks,
     )
 
     return fiestas_enriquecidas

@@ -9,7 +9,7 @@ Incluye URLs, parámetros LLM, timeouts y rutas de salida.
 # ============================================================================
 LMSTUDIO_API = "http://localhost:1234/v1/chat/completions"
 HEADERS = {"Content-Type": "application/json"}
-TIMEOUT = 1800  # Segundos para timeouts de llamadas al LLM
+TIMEOUT = 10800  # Segundos para timeouts de llamadas al LLM
 
 # ============================================================================
 # URLs DE WIKIPEDIA - NUEVAS CATEGORÍAS RAÍZ (LUGAR-CÉNTRICO)
@@ -37,7 +37,7 @@ ROOT_CATEGORY_URL = (
 # ============================================================================
 # PARÁMETROS DE LLM
 # ============================================================================
-LLM_MODEL_NAME = "qwen2.5-14b-instruct@q4_k_m"
+LLM_MODEL_NAME = "qwen/qwen3.8-27b"
 LLM_TEMPERATURE = 0.4
 # Máximo tokens de snippet que enviamos al LLM para evitar overflow de contexto
 MAX_SNIPPET_TOKENS = 7800

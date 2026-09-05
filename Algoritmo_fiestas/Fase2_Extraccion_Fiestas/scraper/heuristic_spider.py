@@ -47,7 +47,41 @@ URL_BLACKLIST = [
     "/transparencia", "/urbanismo", "/actas", "/plenos", "/perfil-contratante",
     "/sede-electronica", "/empleo", "/boe", "/bop", "/presupuestos",
     "/contratacion", "/ordenanzas", "/licencias", "/padron", "/censo",
-    "mailto:", "javascript:", "tel:", "#"
+    "mailto:", "javascript:", "tel:", "#",
+
+    # Sedes electrónicas. Hasta el 2026-09-02 aquí solo estaba la RUTA
+    # "/sede-electronica", y la mayoría de los ayuntamientos españoles tienen la
+    # suya en un SUBDOMINIO aparte, sobre una plataforma compartida de la
+    # diputación. Medido ese día sobre la ejecución de Tobarra: de las 66 URLs
+    # que la araña priorizó, 47 —el 71%— eran de `tobarra.sedipualba.es`, y las
+    # diez primeras por puntuación eran el tablón de anuncios, la carpeta
+    # ciudadana, el aviso legal y la página de accesibilidad. Solo 13 eran de
+    # tobarra.es, que es donde está el calendario de fiestas. Una sede
+    # electrónica publica licitaciones y ordenanzas; no publica programas de
+    # fiestas nunca.
+    "sedipualba.es",        # Diputación de Albacete
+    "sedelectronica.es",    # esPublico / Dipulink, la más extendida
+    "sedeelectronica.es",
+    "/tablondeanuncios", "/tablon-de-anuncios",
+    "/carpetaciudadana", "/carpeta-ciudadana",
+    "/catalogoservicios", "/catalogo-servicios",
+    "/perfilcontratante", "/tramite.aspx", "/incidencias.aspx",
+    "/factura", "/portalfactura",
+
+    # Páginas legales obligatorias. Son el falso positivo perfecto: vienen del
+    # dominio del propio ayuntamiento, así que superan todos los filtros de
+    # procedencia con nota máxima —son indiscutiblemente "de este pueblo"— y no
+    # contienen una sola palabra sobre fiestas. Además son casi idénticas entre
+    # municipios, de modo que no distinguen nada y solo diluyen.
+    #
+    # Medido el 2026-09-04 en El Fresno: 15 de los 60 chunks del contexto de
+    # discovery —el 25%— salían de `proteccion-de-datos.html` y `aviso-legal.html`
+    # de su propia web, y encabezaban el ranking.
+    "/aviso-legal", "/avisolegal", "/aviso_legal",
+    "/proteccion-de-datos", "/proteccion-datos", "/proteccion_de_datos",
+    "/politica-de-privacidad", "/politica-privacidad", "/privacidad",
+    "/politica-de-cookies", "/politica-cookies", "/cookies",
+    "/accesibilidad", "/mapa-web", "/mapaweb",
 ]
 
 # Dominios de RRSS que no se deben intentar scrapear en Pasada 2
@@ -195,6 +229,63 @@ class AsyncTwoPassSpider:
     @staticmethod
     def _is_internal(base_url: str, url: str) -> bool:
         return urllib.parse.urlparse(base_url).netloc == urllib.parse.urlparse(url).netloc
+
+    @staticmethod
+    def _nombre_de_dominio(url: str) -> str:
+        """
+        El nombre del dominio sin TLD ni `www`: de `www.tobarra.es` saca `tobarra`.
+
+        Se compara por el NOMBRE y no por el dominio entero a propósito. En el
+        histórico hay redirecciones legítimas que cambian de dominio registrable
+        y siguen siendo el mismo ayuntamiento: `villagarciadelatorre.es →
+        villagarciadelatorre.com` y `ayuntamientodeoyon.com →
+        ayuntamientodeoyon.eus`. Compararlas enteras las daría por saltos ajenos.
+        """
+        host = urllib.parse.urlparse(url if url.startswith("http") else "http://" + url).netloc
+        host = host.split(":")[0].lower().removeprefix("www.")
+        # Punycode a texto: `xn--alfozdequintanadueas-l7b.es` y
+        # `alfozdequintanadueñas.es` son el MISMO dominio, y sin decodificar
+        # parecían un salto a otro sitio. Es una redirección real del histórico.
+        partes = []
+        for p in host.split("."):
+            if not p:
+                continue
+            if p.startswith("xn--"):
+                try:
+                    p = p.encode("ascii").decode("idna")
+                except (UnicodeError, UnicodeDecodeError):
+                    pass
+            partes.append(p)
+        if not partes:
+            return ""
+        # Dominios de segundo nivel del tipo `.co.uk` o `.com.es`: el nombre está
+        # una posición más a la izquierda.
+        if len(partes) >= 3 and partes[-2] in ("co", "com", "org", "gob", "net"):
+            return partes[-3]
+        return partes[-2] if len(partes) >= 2 else partes[0]
+
+    @classmethod
+    def salta_a_otro_dominio(cls, url_original: str, url_final: str) -> bool:
+        """
+        ¿La redirección nos ha sacado de la web del municipio?
+
+        Medido el 2026-09-04: `santamartadelosbarros.com` redirige a `badajoz.es`
+        —el portal de la Diputación—, y la araña mapeó 77 páginas de la
+        Diputación que entraron como 76 documentos `web_municipio` de Santa Marta.
+        Ninguna hablaba de sus fiestas, y el contexto de discovery se llenó con
+        ellas y con el pueblo homónimo de Colombia.
+
+        Es el único caso de ~30 municipios del histórico, así que la regla es
+        deliberadamente conservadora: solo salta cuando el nombre del dominio
+        cambia por completo. Un falso positivo aquí cuesta el rastreo entero de
+        un municipio, que es bastante peor que el ruido que evita.
+        """
+        a, b = cls._nombre_de_dominio(url_original), cls._nombre_de_dominio(url_final)
+        if not a or not b or a == b:
+            return False
+        # Un nombre contenido en el otro es la misma entidad alargándose o
+        # acortándose: `amurrio` → `udala.amurrio`, `oyon` → `ayuntamientodeoyon`.
+        return not (a in b or b in a)
 
     @staticmethod
     async def resolver_url_final(url: str) -> str:
@@ -797,7 +888,17 @@ class AsyncTwoPassSpider:
         if target_year is not None:
             self.target_year = target_year
         # Fix 1: resolver redirecciones para partir del subdominio canónico correcto
+        url_pedida = start_url
         start_url = await self.resolver_url_final(start_url)
+        # …pero si la redirección nos ha sacado del municipio, no se rastrea:
+        # lo que hay al otro lado es otra web, y sus páginas entrarían etiquetadas
+        # como `web_municipio`. Ver `salta_a_otro_dominio`.
+        if self.salta_a_otro_dominio(url_pedida, start_url):
+            logger.warning(
+                f"  [Spider] {url_pedida} redirige a {start_url}, que es otra web. "
+                f"No se rastrea: se seguirá solo con la búsqueda web."
+            )
+            return []
         scored_pages = await self.pass_1_map_and_score(start_url, locality_names, visited_urls, target_year=self.target_year)
         if not scored_pages:
             logger.warning(f"No se encontraron páginas en {start_url}")

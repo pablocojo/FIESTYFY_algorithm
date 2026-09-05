@@ -135,7 +135,26 @@ def get_model_info(refrescar: bool = False) -> dict:
 
 
 def get_n_ctx(refrescar: bool = False) -> int:
-    """Ventana de contexto real (en tokens) del modelo cargado en LM Studio."""
+    """
+    Ventana de contexto con la que se dimensionan los prompts: la del modelo que
+    de verdad va a contestar.
+
+    Cuando el chat va a OpenRouter, ese modelo no es el de LM Studio, y preguntar
+    a LM Studio deja de tener sentido. Peor: si no está levantado —y no tiene por
+    qué estarlo, porque ya no contesta el chat—, `get_model_info` cae al valor de
+    seguridad de 8192 y todos los prompts se construyen con la cuarta parte del
+    material que deberían, en silencio. Comprobado el 2026-09-02 con LM Studio
+    descargado: `get_n_ctx()` devolvía 8192 con el modelo remoto de 131.072
+    esperando al otro lado.
+
+    LM Studio sigue siendo la red de seguridad de la cadena, así que un prompt
+    dimensionado para el remoto podría no caberle. No se fuerza a la baja por
+    eso: para ese caso ya está el reintento adaptativo por `ContextOverflowError`,
+    que reduce el prompt y vuelve a preguntar.
+    """
+    from config import OPENROUTER_ENABLED, OPENROUTER_API_KEY, OPENROUTER_N_CTX
+    if OPENROUTER_ENABLED and OPENROUTER_API_KEY:
+        return OPENROUTER_N_CTX
     return get_model_info(refrescar)["n_ctx"]
 
 
@@ -275,6 +294,42 @@ def presupuesto_contexto(
         )
         return 512
     return disponible
+
+
+def reserva_salida_real(reserva_declarada: int) -> int:
+    """
+    Sitio que hay que dejar de verdad para la respuesta.
+
+    Las reservas por etapa (1.536 en discovery, 4.096 en enrichment) se
+    calibraron con un modelo que no razonaba. Qwen3-32B sí razona, y el
+    razonamiento sale del MISMO presupuesto que la respuesta; además, el tope que
+    se le manda al proveedor cuando el llamante pide `max_tokens=-1` es
+    `OPENROUTER_MAX_TOKENS`, o sea 16.000. Reservar 4.096 mientras se le permite
+    emitir 16.000 es cómo se llega a `finish_reason=length` con el JSON a medias.
+
+    Con n_ctx = 131.072 esta reserva no aprieta: deja ~114.000 para el contexto.
+    """
+    try:
+        from config import OPENROUTER_ENABLED, OPENROUTER_API_KEY, OPENROUTER_MAX_TOKENS
+        if OPENROUTER_ENABLED and OPENROUTER_API_KEY:
+            return max(reserva_declarada, OPENROUTER_MAX_TOKENS)
+    except Exception:
+        pass
+    return reserva_declarada
+
+
+def tokens_por_lote(system_prompt: str, reserva_declarada: int) -> int:
+    """
+    Tamaño de UN lote de contexto, en tokens.
+
+    Sustituye a las constantes en caracteres (`DISCOVERY_MAX_CHARS = 20000`,
+    `ENRICHMENT_MAX_CHARS = 32000`) que no derivaban de nada: el arranque de la
+    ejecución imprimía «presupuesto disponible ≈ 102.458 chars» y acto seguido se
+    usaban 20.000, el 20%.
+
+    Ya no es un recorte: es el tamaño de cada trozo del reparto.
+    """
+    return presupuesto_contexto(system_prompt, reserva_salida_real(reserva_declarada))
 
 
 def resumen_presupuesto(system_prompt: str, reserva_salida: int) -> dict:

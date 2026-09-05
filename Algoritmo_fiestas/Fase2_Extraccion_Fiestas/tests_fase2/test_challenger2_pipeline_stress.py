@@ -90,7 +90,10 @@ async def test_edge_case_zero_documents(sample_locality, sample_municipio, mock_
         )
         assert len(fiestas) == 1
         assert fiestas[0]["es_estimada"] is True
-        assert fiestas[0]["nombre"] == "Fiesta de San Test"
+        assert fiestas[0]["nombre"] == "Fiestas de San Test (estimada)", (
+        "el nombre de la fiesta estimada lo pone integrar_patron; si cambia, "
+        "cambia también aquí"
+    )
 
 
 # ==============================================================================

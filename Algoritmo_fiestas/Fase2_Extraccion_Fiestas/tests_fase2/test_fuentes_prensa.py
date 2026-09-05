@@ -211,16 +211,26 @@ async def test_process_locality_fallback_prensa_sin_fuentes_oficiales():
     rag_mock = AsyncMock()
     rag_mock.saturate_context_docs.return_value = ("Texto contexto RAG", [doc_prensa_snippet])
 
+    # Se parchea `analyze_festivals_multipass`, que es la que `process_locality`
+    # llama de verdad: el test parcheaba `analyze_festivals_for_locality` y por
+    # eso corría el análisis real. Y `obtener_patron` sale a buscar a internet,
+    # así que también se sustituye: sin eso el test descargaba y hacía OCR de un
+    # PDF en cada ejecución, tardaba minuto y medio y fallaba según el día.
     with patch("main.AsyncTwoPassSpider.crawl", new_callable=AsyncMock) as mock_spider, \
          patch("main.cargar_documentos_rrss", return_value=[]), \
+         patch("main.obtener_patron", new_callable=AsyncMock) as mock_patron, \
          patch("main.search_locality_media", new_callable=AsyncMock) as mock_media_search, \
          patch("main.search_locality_web", new_callable=AsyncMock) as mock_web_search, \
-         patch("main.analyze_festivals_for_locality", new_callable=AsyncMock) as mock_llm:
+         patch("main.analyze_festivals_multipass", new_callable=AsyncMock) as mock_llm:
 
         mock_spider.return_value = []
+        mock_patron.return_value = None
         mock_media_search.return_value = [doc_prensa_snippet]
         mock_web_search.return_value = []
-        mock_llm.return_value = [{"nombre": "Fiestas de San Vitores", "fecha_inicio": "2026-09-01"}]
+        mock_llm.return_value = [{
+            "nombre": "Fiestas de San Vitores", "lugar_id": localidad["id"],
+            "fecha_inicio": "2026-09-01", "fecha_fin": "2026-09-03",
+        }]
 
         logger_test = logging.getLogger("test")
 

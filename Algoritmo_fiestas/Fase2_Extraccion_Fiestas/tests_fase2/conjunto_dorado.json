@@ -1,7 +1,7 @@
 {
   "_descripcion": "Conjunto dorado para medir el efecto de las fases 1-5 del plan de mejora del contexto. Cada entrada describe qué DEBERÍA encontrar el pipeline en esa localidad. Rellenar 'fuente_esperada' con fragmentos de URL que deban aparecer en el contexto de discovery (basta con un trozo distintivo; se compara por subcadena).",
   "_como_usarlo": "1) Ejecutar la Fase 2 sobre estas localidades. 2) py tests_fase2/evaluar_dorado.py. Compara debug_contexto/*_discovery_debug.json y fiestas_espana.json contra este fichero.",
-  "_estado": "PLANTILLA — Amurrio y sus pedanías están rellenas a partir de la ejecución del 2026-08-21. El resto son huecos a completar con casos de otras CCAA e idiomas.",
+  "_estado": "Amurrio y sus pedanias, de la ejecucion del 2026-08-21. Tobarra y Aranda de Duero con sus doce localidades, verificadas el 2026-09-02 contra programas oficiales (radiotobarra.es en PDF, tobarra.es, arandadeduero.es, enaranda.es) al contrastar las ejecuciones del 27B (28-30 ago) y del 9B (1 sep).",
   "anno": 2026,
   "localidades": [
     {
@@ -36,7 +36,10 @@
       "localidad": "Aloria",
       "tipo": "pedania",
       "fuente_esperada": [],
-      "fuente_prohibida": ["ANEXO_3_Ppto_2025.pdf", "Ppto_"],
+      "fuente_prohibida": [
+        "ANEXO_3_Ppto_2025.pdf",
+        "Ppto_"
+      ],
       "espera_fiestas": null,
       "fiestas_esperadas": [],
       "notas": "PENDIENTE de verificar manualmente si Aloria publica programa propio. `espera_fiestas: null` = no evaluado todavía; no cuenta ni a favor ni en contra."
@@ -47,24 +50,310 @@
       "localidad": "Baranbio",
       "tipo": "pedania",
       "fuente_esperada": [],
-      "fuente_prohibida": ["ANEXO_3_Ppto_2025.pdf", "Ppto_"],
+      "fuente_prohibida": [
+        "ANEXO_3_Ppto_2025.pdf",
+        "Ppto_"
+      ],
       "espera_fiestas": null,
       "fiestas_esperadas": [],
       "notas": "PENDIENTE. Patrón detectado: 'San Antón en la ermita de dicho santo' (17 de enero) — el nombre sugiere que patron_finder está arrastrando texto sobrante de Wikipedia, revisar aparte."
     },
     {
-      "_plantilla": true,
-      "lugar_id": "",
-      "municipio": "",
-      "localidad": "",
-      "tipo": "capital",
-      "fuente_esperada": ["fragmento-de-url-del-programa"],
+      "lugar_id": "02074000601",
+      "municipio": "Tobarra",
+      "localidad": "Tobarra",
+      "tipo": "pueblo",
+      "fuente_esperada": [
+        "tobarra.es/fiestas",
+        "radiotobarra.es/wp-content/uploads/sanroque26",
+        "radiotobarra.es/wp-content/uploads/cristo26"
+      ],
+      "fuente_prohibida": [
+        "sedipualba.es",
+        "tablondeanuncios",
+        "carpetaciudadana"
+      ],
+      "espera_fiestas": true,
+      "fiestas_esperadas": [
+        {
+          "nombre_contiene": "San Roque",
+          "fecha_inicio_aprox": "2026-08-14",
+          "tolerancia_dias": 6,
+          "espera_programa": true
+        },
+        {
+          "nombre_contiene": "Cristo",
+          "fecha_inicio_aprox": "2026-05-08",
+          "tolerancia_dias": 5,
+          "espera_programa": true
+        },
+        {
+          "nombre_contiene": "Tambor",
+          "fecha_inicio_aprox": "2026-04-01",
+          "tolerancia_dias": 3,
+          "espera_programa": false
+        },
+        {
+          "nombre_contiene": "San Ant",
+          "fecha_inicio_aprox": "2026-01-17",
+          "tolerancia_dias": 8,
+          "espera_programa": false
+        }
+      ],
+      "notas": "Fechas oficiales: San Roque 14-21 ago (tobarra.es), patronales del Cristo 8-23 may (radiotobarra: la frase del contexto es «Del 15 al 23 de mayo» y la Subida de los patronos es el 23). La Tamborada (Miercoles Santo a Domingo de Resurreccion, 1-5 abril de 2026; Interes Turistico Nacional y UNESCO 2018) y San Anton (1-17 ene) FALTAN en las dos ejecuciones completas del 2026-08-28 (27B) y del 2026-09-01 (9B). Dos causas, las dos independientes del modelo: sus fuentes no citan ningun mes, y la arana gasto 47 de sus 66 URLs en tobarra.sedipualba.es."
+    },
+    {
+      "lugar_id": "02074000101",
+      "municipio": "Tobarra",
+      "localidad": "Aljubé",
+      "tipo": "pueblo",
+      "fuente_esperada": [
+        "radiotobarra.es/aljube26",
+        "radiotobarra.es/wp-content/uploads/aljube26"
+      ],
+      "fuente_prohibida": [
+        "sedipualba.es"
+      ],
+      "espera_fiestas": true,
+      "fiestas_esperadas": [
+        {
+          "nombre_contiene": "San Isidro",
+          "fecha_inicio_aprox": "2026-05-13",
+          "tolerancia_dias": 1,
+          "espera_programa": true
+        }
+      ],
+      "notas": "Programa oficial: «Del 13 al 17 de Mayo», frase presente DOS veces en su propio contexto. La ejecucion del 9B la saco del 13 al 24."
+    },
+    {
+      "lugar_id": "02074000201",
+      "municipio": "Tobarra",
+      "localidad": "Cordovilla",
+      "tipo": "pueblo",
+      "fuente_esperada": [
+        "radiotobarra.es/cordovilla26verano"
+      ],
+      "fuente_prohibida": [
+        "cordovilla.es",
+        "besanavilloria.com",
+        "cendeadegalar.es"
+      ],
+      "espera_fiestas": true,
+      "fiestas_esperadas": [
+        {
+          "nombre_contiene": "Verano",
+          "fecha_inicio_aprox": "2026-06-27",
+          "tolerancia_dias": 1,
+          "espera_programa": true
+        }
+      ],
+      "notas": "PDF oficial: 27 de junio mas 3, 4 y 5 de julio. Patron San Diego de Alcala (13 nov). Ojo a los homonimos: hay Cordovilla en Salamanca y en la Cendea de Galar (Navarra); el 27B rescato las fiestas de Santiago del de Salamanca."
+    },
+    {
+      "lugar_id": "02074000301",
+      "municipio": "Tobarra",
+      "localidad": "Mora de Santa Quiteria",
+      "tipo": "pueblo",
+      "fuente_esperada": [
+        "radiotobarra.es/mora26",
+        "radiotobarra.es/wp-content/uploads/Mora26"
+      ],
+      "fuente_prohibida": [
+        "sedipualba.es"
+      ],
+      "espera_fiestas": true,
+      "fiestas_esperadas": [
+        {
+          "nombre_contiene": "Santa Quiteria",
+          "fecha_inicio_aprox": "2026-05-22",
+          "tolerancia_dias": 1,
+          "espera_programa": true
+        }
+      ],
+      "notas": "22-24 de mayo (Santa Quiteria es el 22). NO debe salir ninguna ficha del 10 al 12 de septiembre: esas fechas son de un festival de narracion oral en la Casa de la Cultura de Tobarra que convive en el mismo segmento del contexto, a noventa lineas del titular de las fiestas de Mora."
+    },
+    {
+      "lugar_id": "02074000401",
+      "municipio": "Tobarra",
+      "localidad": "Santiago de Mora",
+      "tipo": "pueblo",
+      "fuente_esperada": [
+        "radiotobarra.es/santiago2026",
+        "radiotobarra.es/wp-content/uploads/santiago2026"
+      ],
+      "fuente_prohibida": [
+        "santiagoturismo.com",
+        "elcorreogallego.es"
+      ],
+      "espera_fiestas": true,
+      "fiestas_esperadas": [
+        {
+          "nombre_contiene": "Santiago",
+          "fecha_inicio_aprox": "2026-07-20",
+          "tolerancia_dias": 2,
+          "espera_programa": true
+        }
+      ],
+      "notas": "«del 20 al 30 de Julio», en su propio contexto; el programa oficial tiene 12 paginas. El 9B guardo un solo dia de once. Patronos Santiago Apostol y Santa Ana."
+    },
+    {
+      "lugar_id": "02074000501",
+      "municipio": "Tobarra",
+      "localidad": "Sierra",
+      "tipo": "pueblo",
+      "fuente_esperada": [
+        "radiotobarra.es/sierra"
+      ],
+      "fuente_prohibida": [
+        "calasparra",
+        "elche-de-la-sierra"
+      ],
+      "espera_fiestas": true,
+      "fiestas_esperadas": [
+        {
+          "nombre_contiene": "San Francisco Javier",
+          "fecha_inicio_aprox": "2026-07-30",
+          "tolerancia_dias": 1,
+          "espera_programa": false
+        }
+      ],
+      "notas": "Fiestas de verano del 30 de julio al 2 de agosto en honor a San Francisco Javier, cuyo dia es el 3 de diciembre. Wikipedia apunta mal en el fichero de entrada: el lugar es pedania de Tobarra, no de Elche de la Sierra."
+    },
+    {
+      "lugar_id": "02074000701",
+      "municipio": "Tobarra",
+      "localidad": "Los Mardos",
+      "tipo": "pueblo",
+      "fuente_esperada": [
+        "radiotobarra.es/losmardos26",
+        "radiotobarra.es/wp-content/uploads/losmardos26"
+      ],
+      "fuente_prohibida": [
+        "sedipualba.es"
+      ],
+      "espera_fiestas": true,
+      "fiestas_esperadas": [
+        {
+          "nombre_contiene": "Carmen",
+          "fecha_inicio_aprox": "2026-07-16",
+          "tolerancia_dias": 1,
+          "espera_programa": true
+        }
+      ],
+      "notas": "Portada del programa oficial: «Del 16 al 19 de julio». El 27B lo dejo en un solo dia (el 19) porque el anclaje recorto un rango que el modelo tenia bien."
+    },
+    {
+      "lugar_id": "09018000201",
+      "municipio": "Aranda de Duero",
+      "localidad": "Aranda de Duero",
+      "tipo": "ciudad_pequena",
+      "fuente_esperada": [
+        "arandadeduero.es/concejalia/festejos",
+        "enaranda.es/evento/fiestas-patronales-de-aranda-de-duero",
+        "sonoramaribera.com"
+      ],
+      "fuente_prohibida": [
+        "sedelectronica",
+        "perfilcontratante"
+      ],
+      "espera_fiestas": true,
+      "fiestas_esperadas": [
+        {
+          "nombre_contiene": "Vinas",
+          "fecha_inicio_aprox": "2026-09-11",
+          "tolerancia_dias": 1,
+          "espera_programa": true
+        },
+        {
+          "nombre_contiene": "Sonorama",
+          "fecha_inicio_aprox": "2026-08-05",
+          "tolerancia_dias": 1,
+          "espera_programa": true
+        }
+      ],
+      "notas": "Del 11 al 20 de septiembre, repetido SEIS veces en su contexto por el propio ayuntamiento; las dos ejecuciones la dejaron durando el 15 y sin programa. Sonorama Ribera es del 5 al 9 de agosto y debe salir como ficha propia: en el 27B paso el filtro y acto seguido la fusion lo absorbio dentro de las patronales."
+    },
+    {
+      "lugar_id": "09018000101",
+      "municipio": "Aranda de Duero",
+      "localidad": "La Aguilera",
+      "tipo": "pueblo",
+      "fuente_esperada": [
+        "enaranda.es/evento/fiestas-patronales-de-la-aguilera"
+      ],
       "fuente_prohibida": [],
       "espera_fiestas": true,
       "fiestas_esperadas": [
-        {"nombre_contiene": "", "fecha_inicio_aprox": "2026-MM-DD", "tolerancia_dias": 3, "espera_programa": true}
+        {
+          "nombre_contiene": "Pedro Regalado",
+          "fecha_inicio_aprox": "2026-05-12",
+          "tolerancia_dias": 1,
+          "espera_programa": true
+        }
       ],
-      "notas": "Añadir: 2 municipios con web en catalán/valenciano, 2 en gallego, 1 pedanía SIN fiestas propias (caso negativo: el pipeline debe devolver lista vacía, no inventarse las del municipio) y 1 municipio grande (>50k hab) para probar el map-reduce de la Fase 5."
+      "notas": "12-17 de mayo (enaranda.es). El 12 es la imposicion de bandas a reina, damas y galanes; las dos ejecuciones lo acertaron y las dos lo perdieron por el anclaje. Patron San Pedro Regalado, 13 de mayo, que murio alli."
+    },
+    {
+      "lugar_id": "09018000301",
+      "municipio": "Aranda de Duero",
+      "localidad": "Sinovas",
+      "tipo": "pueblo",
+      "fuente_esperada": [
+        "enaranda.es/evento/fiestas-de-san-bartolome-sinovas"
+      ],
+      "fuente_prohibida": [],
+      "espera_fiestas": true,
+      "fiestas_esperadas": [
+        {
+          "nombre_contiene": "Bartolom",
+          "fecha_inicio_aprox": "2026-08-22",
+          "tolerancia_dias": 1,
+          "espera_programa": true
+        }
+      ],
+      "notas": "22-31 de agosto. Las dos ejecuciones la clavaron. Incluye los Premios Albillo y el concurso de pacharan casero."
+    },
+    {
+      "lugar_id": "09018000401",
+      "municipio": "Aranda de Duero",
+      "localidad": "La Calabaza",
+      "tipo": "pueblo",
+      "fuente_esperada": [
+        "enaranda.es/evento/fiestas-del-barrio"
+      ],
+      "fuente_prohibida": [],
+      "espera_fiestas": true,
+      "fiestas_esperadas": [
+        {
+          "nombre_contiene": "Calabaza",
+          "fecha_inicio_aprox": "2026-08-21",
+          "tolerancia_dias": 2,
+          "espera_programa": false
+        }
+      ],
+      "notas": "21-23 de agosto segun su contexto; sin fuente externa que confirme la edicion de 2026 (2025 fue el 2 de agosto y 2024 el 24). Es un barrio de Aranda, no un pueblo."
+    },
+    {
+      "lugar_id": "09018000501",
+      "municipio": "Aranda de Duero",
+      "localidad": "Monte Costaján",
+      "tipo": "pueblo",
+      "fuente_esperada": [
+        "enaranda.es/evento/semana-cultural-monte-costajan"
+      ],
+      "fuente_prohibida": [
+        "fiestasdepueblos.net"
+      ],
+      "espera_fiestas": true,
+      "fiestas_esperadas": [
+        {
+          "nombre_contiene": "Semana Cultural",
+          "fecha_inicio_aprox": "2026-06-26",
+          "tolerancia_dias": 1,
+          "espera_programa": true
+        }
+      ],
+      "notas": "Urbanizacion de Aranda, no pueblo. Lo real es la Semana Cultural del 26 al 28 de junio de la Asociacion de Vecinos, presente DOS veces en su contexto; el 9B se invento unas «Fiestas Patronales de San Roque» el 30 de agosto a partir de un agregador SEO sin fechas verificables. El 27B si acerto."
     }
   ]
 }

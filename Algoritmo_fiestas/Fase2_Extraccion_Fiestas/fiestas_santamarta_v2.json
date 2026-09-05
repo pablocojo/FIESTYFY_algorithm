@@ -1,0 +1,161 @@
+{
+  "version": 2,
+  "anno": 2026,
+  "ultimo_municipio_procesado": "06121000000",
+  "municipios_completados": [
+    "06121000000"
+  ],
+  "localidades_completadas": [
+    "06121000101"
+  ],
+  "fiestas": [
+    {
+      "id": "fiestas-patronales-santa-marta-2026",
+      "lugar_id": "06121000101",
+      "nombre": "Fiestas Patronales de Santa Marta de los Barros",
+      "fecha_inicio": "2026-07-23",
+      "fecha_fin": "2026-07-28",
+      "tamano": "grande",
+      "descripcion": "Celebración en honor a Santa Marta, con procesiones, verbenas, actividades deportivas y culturales, y eventos relacionados con la vitivinicultura local. Incluye actos centrales el 29 de julio, festividad de la patrona.",
+      "confianza": "baja",
+      "fuentes": [
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Santa Marta de los Barros",
+      "solo_fuentes_no_oficiales": true,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-07-23",
+          "eventos": [
+            {
+              "hora": "09:00",
+              "descripcion": "Tu comercio sale a la calle"
+            },
+            {
+              "hora": "11:00",
+              "descripcion": "Festival Calleojeando. Aventuras en la Isla del Soto. Piraguas, kayak, pádel surf"
+            },
+            {
+              "hora": "13:00",
+              "descripcion": "Salida III Vuelta Ciclista a Castilla y León Sub-23 y élite"
+            },
+            {
+              "hora": "17:30",
+              "descripcion": "Encierro infantil"
+            },
+            {
+              "hora": "19:00",
+              "descripcion": "Pregón infantil y fiesta de la espuma"
+            },
+            {
+              "hora": "22:30",
+              "descripcion": "XVIIII Feria de Noche de Hostelería. Punto Violeta"
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-07-24",
+          "eventos": [
+            {
+              "hora": "11:00",
+              "descripcion": "Festival Calleojeando. Aventuras en la Isla del Soto. Piraguas, rocódromo y tirolina"
+            },
+            {
+              "hora": "17:30",
+              "descripcion": "Charangazo"
+            },
+            {
+              "hora": "19:30",
+              "descripcion": "Chupinazo inicio de Fiestas lanzado por el alcalde"
+            },
+            {
+              "hora": "24:00",
+              "descripcion": "Espectáculo ‘Renovation Experience’"
+            }
+          ]
+        },
+        {
+          "dia": 3,
+          "fecha": "2026-07-25",
+          "eventos": [
+            {
+              "hora": "11:00",
+              "descripcion": "Festival Calleojeando. Aventuras en la Isla del Soto. En busca del Tesoro"
+            },
+            {
+              "hora": "12:00",
+              "descripcion": "Misa de los Mayores"
+            },
+            {
+              "hora": "14:00",
+              "descripcion": "Homenaje a los Mayores"
+            },
+            {
+              "hora": "17:00",
+              "descripcion": "Tardeo La Rivera (17:00 a 22:30)"
+            },
+            {
+              "hora": "19:30",
+              "descripcion": "Baile para los Mayores"
+            },
+            {
+              "hora": "19:30",
+              "descripcion": "Concurso de Cortes Charro de Oro"
+            },
+            {
+              "hora": "24:00",
+              "descripcion": "Verbena amenizada por la orquesta ‘Tango’"
+            }
+          ]
+        },
+        {
+          "dia": 4,
+          "fecha": "2026-07-26",
+          "eventos": [
+            {
+              "hora": "23:00",
+              "descripcion": "verbena amenizada por la orquesta ‘La Misión’"
+            }
+          ]
+        },
+        {
+          "dia": 5,
+          "fecha": "2026-07-27",
+          "eventos": [
+            {
+              "hora": "23:30",
+              "descripcion": "verbena amenizada por la orquesta ‘Panorama’"
+            }
+          ]
+        },
+        {
+          "dia": 6,
+          "fecha": "2026-07-28",
+          "eventos": [
+            {
+              "hora": "23:30",
+              "descripcion": "verbena amenizada por la orquesta ‘Olympus’"
+            }
+          ]
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "patron_trasladado": true,
+      "url_programa": "https://www.festivalesdeespana.com/festival/fiestas-patronales-de-santa-marta-de-los-barros",
+      "cobertura_dias": 0.6,
+      "programa_estado": "completo",
+      "patron": {
+        "nombre": "San Isidro",
+        "dia": 15,
+        "mes": 5,
+        "fuente": "wikipedia"
+      },
+      "lat": 38.61514418,
+      "lng": -6.625215597
+    }
+  ]
+}

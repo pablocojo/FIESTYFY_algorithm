@@ -21,3 +21,10 @@ Algoritmo_fiestas/Fase1_recogida_datos_wiki/munis_hasta1800_20_junio.json
 
 # Cache en disco de paginas descargadas (Fase 2): se regenera sola
 caches/
+
+# Claves de API: nunca deben entrar en el repositorio
+openrouter_key.txt
+.env
+
+# Volcados de depuracion de contexto (Fase 2): se regeneran en cada ejecucion
+debug_contexto*/

@@ -9,6 +9,7 @@ continúa con el resto de fuentes (webs + búsqueda browser), exactamente
 como hacía antes de esta integración.
 """
 
+import asyncio
 import logging
 
 import aiohttp
@@ -141,6 +142,32 @@ class RRSSClient:
                             )
                     return contenido
 
+        except (asyncio.TimeoutError, TimeoutError):
+            # El servidor no ha contestado a tiempo. Casi siempre significa que
+            # está EN PAUSA esperando a que la ventana de la app vuelva al primer
+            # plano —su guarda de seguridad, que está bien— porque alguien está
+            # usando el ordenador para otra cosa.
+            #
+            # Cuenta como aborto. Hasta el 2026-09-03 caía en el `except
+            # Exception` de abajo: se registraba como "error inesperado", no
+            # tocaba el contador y no marcaba nada, así que la siguiente
+            # localidad volvía a pedirlo y volvía a esperar el timeout entero.
+            # Medido: 300s por localidad × 12 localidades = una hora de espera
+            # muerta en una ejecución desatendida.
+            self._abortos_seguidos += 1
+            logger.warning(
+                f"    El servidor RRSS no contestó en {self.timeout}s "
+                f"({self._abortos_seguidos}/{self.MAX_ABORTOS_SEGUIDOS}). "
+                f"Suele ser que está en pausa esperando el primer plano de la app."
+            )
+            if self._abortos_seguidos >= self.MAX_ABORTOS_SEGUIDOS:
+                self._disponible = False
+                logger.error(
+                    f"    Servidor RRSS descartado para el resto de la ejecución. "
+                    f"Si la ejecución es desatendida, lánzala con --sin-rrss y no "
+                    f"se pierde tiempo aquí."
+                )
+            return {}
         except aiohttp.ClientError as e:
             logger.warning(f"Error de conexión con el servidor RRSS: {e}")
             # Marcar como no disponible para no reintentar en cada localidad

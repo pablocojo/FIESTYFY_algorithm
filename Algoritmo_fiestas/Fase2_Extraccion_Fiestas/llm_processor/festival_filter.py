@@ -52,6 +52,19 @@ SENALES_NOCTURNAS = [
     "correfoc", "revetlla", "foliada", "herri bazkaria",
 ]
 
+# Subconjunto de SENALES_NOCTURNAS para la regla de aceptación OBLIGATORIA del
+# criterio (§5.1): las que no admiten otra lectura. Se dejan fuera "concierto",
+# "festival" y "baile", que están en la lista general y sí la admiten —un
+# concierto suelto o un festival de música con nombre propio no son las fiestas
+# del pueblo, y con ellos dentro este veto rescataría justo las fichas que
+# queremos que caigan, como el Sonorama de Aranda—.
+SENALES_ACEPTACION_OBLIGATORIA = [
+    "orquesta", "verbena", "dj", "djs", "deejay",
+    "disco movil", "discomovil", "discoteca movil", "macrodiscoteca", "macro discoteca",
+    "charanga", "txaranga", "txosna", "txosnas", "chupinazo",
+    "correfoc", "revetlla", "musica en directo", "musica en vivo",
+]
+
 # Señal de que la celebración es una fiesta popular reconocible
 SENALES_TIPO_FIESTA = [
     "fiestas patronales", "fiesta patronal", "fiesta mayor", "fiestas mayores",
@@ -64,12 +77,21 @@ SENALES_TIPO_FIESTA = [
     "comida popular", "cena popular", "paella popular", "sardinada",
     "fiesta popular", "fiestas populares",
     "festa major", "festes patronals", "festas patronais", "cercavila", "kalejira", "hèsta major",
+    # Celebraciones de varios días que son la fiesta grande de su pueblo aunque
+    # no lleven la palabra "fiesta" en el nombre. Medido en la ejecución del
+    # 2026-09-02: con el barrido de meses ya arreglado, el modelo SÍ propuso
+    # 'Semana Santa de Tobarra' —104 horas de tambor ininterrumpido, Fiesta de
+    # Interés Turístico Nacional e inscrita por la UNESCO en 2018, lo más
+    # conocido del municipio— y este filtro la descartó por "multi-día sin
+    # ninguna señal festiva". La palabra estaba en la lista de señales negativas
+    # y en ninguna de las positivas.
+    "semana santa", "tamborada", "tamborrada",
 ]
 
 # Actos que por sí solos NO tienen carácter festivo (solo informativo para el motivo)
 SENALES_NEGATIVAS = [
     "procesion", "misa", "eucaristia", "novena", "triduo", "ofrenda",
-    "via crucis", "vigilia", "besamanos", "semana santa",
+    "via crucis", "vigilia", "besamanos",
     "exposicion", "conferencia", "charla", "coloquio", "jornada", "jornadas",
     "pleno", "homenaje", "inauguracion", "presentacion",
 ]
@@ -148,10 +170,25 @@ _RE_PRIVADAS = _compilar(SENALES_PRIVADAS)
 _RE_FESTIVOS_CAL = _compilar(FESTIVOS_CALENDARIO)
 _RE_SENALES_CAL = _compilar(SENALES_CALENDARIO)
 _RE_CELEBRACION_FUERTE = _compilar(TIPO_CELEBRACION_FUERTE)
+_RE_ACEPTACION_OBLIGATORIA = _compilar(SENALES_ACEPTACION_OBLIGATORIA)
 
 
 def _buscar_senales(texto_norm: str, patrones: list[tuple[str, re.Pattern]]) -> list[str]:
     return [nombre for nombre, patron in patrones if patron.search(texto_norm)]
+
+
+def tiene_senal_nocturna(fiesta: dict) -> bool:
+    """
+    ¿El programa de esta ficha trae una señal festiva que no admite discusión?
+
+    Es el veto de la regla de oro del criterio del proyecto: orquesta, verbena,
+    DJ, discomóvil, charanga o música en directo y la celebración se acepta
+    "obligatoriamente", diga lo que diga cualquier otro juicio. Aquí se usa para
+    que el veredicto del LLM sobre si algo es una fiesta no pueda tumbar una
+    verbena con orquesta.
+    """
+    texto = normalizar_texto(_texto_de_fiesta(fiesta))
+    return bool(_buscar_senales(texto, _RE_ACEPTACION_OBLIGATORIA))
 
 
 def _texto_de_fiesta(fiesta: dict) -> str:
@@ -329,11 +366,45 @@ def evaluar_fiesta(fiesta: dict, fecha_patron: date | None = None) -> tuple[bool
 # ──────────────────────────────────────────────────
 from datetime import timedelta
 
+# Palabras que convierten un nombre en el de unas fiestas del pueblo: o son
+# vocabulario festivo genérico, o son la advocación que las bautiza. Un nombre
+# que no lleva ninguna es el de un evento con marca propia.
+_RE_NOMBRE_DE_FIESTA = re.compile(
+    r"\b(?:fiesta|fiestas|festa|festas|festes|feria|ferias|romeria|verbena|"
+    r"carnaval|carnavales|hoguera|hogueras|encierro|encierros|vaquillas|"
+    r"patronal|patronales|semana grande|semana de fiestas|fiesta mayor|"
+    r"san|santa|santo|sant|virgen|cristo|nuestra senora|senora|"
+    r"moros y cristianos|vendimia|corpus|pascua|navidad)\b"
+)
+# Numeración de edición y año, que no distinguen a una fiesta de otra.
+_RE_RUIDO_DE_NOMBRE = re.compile(r"\b(?:[ivxlcdm]+|\d{1,4}|gran|magna|edicion)\b")
+
+
+def es_evento_con_nombre_propio(nombre: str) -> bool:
+    """
+    ¿El nombre es el de un evento con marca propia y no el de unas fiestas?
+
+    "Sonorama Ribera", "Tobarrock", "Semana Cultural Monte Costaján" no llevan
+    ni vocabulario festivo ni advocación: son eventos con nombre. "Fiestas
+    Patronales de la Virgen de las Viñas" lleva las dos cosas.
+    """
+    limpio = _RE_RUIDO_DE_NOMBRE.sub(" ", normalizar_texto(nombre or ""))
+    return bool(limpio.strip()) and not _RE_NOMBRE_DE_FIESTA.search(limpio)
+
+
 def fusionar_fiestas_proximas(fiestas: list[dict]) -> list[dict]:
     """
     Fusiona fiestas de la misma localidad que se solapen o tengan una diferencia
     de 7 días o menos entre sí, asumiendo que pertenecen al mismo ciclo festivo,
     excepto si tienen nombres forzadamente distintos.
+
+    Un evento con marca propia no se funde con nada que no se llame igual.
+    Medido el 2026-09-02 sobre la ejecución del 27B: 'Sonorama Ribera 2026' pasó
+    el filtro —"multi-día con actividad nocturna (conciertos)"— y acto seguido la
+    fusión lo absorbió dentro de 'Fiestas Patronales de Aranda de Duero 2026'
+    (3-11 de agosto). El festival indie más grande de España, con sus 135 actos,
+    desapareció como ficha y se llevó por delante las fechas de la otra. La lista
+    fija de excepciones no lo cubría porque nadie puede enumerar todas las marcas.
     """
     if not fiestas:
         return []
@@ -376,7 +447,20 @@ def fusionar_fiestas_proximas(fiestas: list[dict]) -> list[dict]:
                    (exc in nombre_act_norm and exc not in nombre_ant_norm):
                     es_excepcion = True
                     break
-                    
+
+            # Un evento con marca propia solo se funde con otra ficha que se
+            # llame igual; si no, se está borrando un evento distinto.
+            if not es_excepcion and nombre_ant_norm != nombre_act_norm and (
+                es_evento_con_nombre_propio(anterior.get("nombre", ""))
+                or es_evento_con_nombre_propio(actual.get("nombre", ""))
+            ):
+                es_excepcion = True
+                logger.info(
+                    f"  [FUSION] No se fusionan '{anterior.get('nombre')}' y "
+                    f"'{actual.get('nombre')}': una de las dos es un evento con "
+                    f"nombre propio."
+                )
+
             if not es_excepcion:
                 son_fusionables = True
                 
@@ -446,6 +530,67 @@ def _calcular_pascua(year: int) -> date:
     mes = (h + l - 7 * m + 114) // 31
     dia = ((h + l - 7 * m + 114) % 31) + 1
     return date(year, mes, dia)
+
+# Días móviles, en desplazamiento respecto al Domingo de Resurrección. Se usan
+# para saber EN QUÉ MES cae un texto que no nombra ningún mes.
+_DIAS_MOVILES = {
+    "jueves lardero": (-52, -52),
+    "miercoles de ceniza": (-46, -46),
+    "carnaval": (-52, -45),
+    "carnavales": (-52, -45),
+    "domingo de ramos": (-7, -7),
+    "lunes santo": (-6, -6),
+    "martes santo": (-5, -5),
+    "miercoles santo": (-4, -4),
+    "jueves santo": (-3, -3),
+    "viernes santo": (-2, -2),
+    "sabado santo": (-1, -1),
+    "sabado de gloria": (-1, -1),
+    "semana santa": (-7, 1),
+    "domingo de resurreccion": (0, 0),
+    "domingo de pascua": (0, 0),
+    "lunes de pascua": (1, 1),
+    "corpus christi": (60, 60),
+    "ascension": (39, 39),
+    "pentecostes": (49, 49),
+}
+
+
+def meses_de_fiestas_moviles(texto: str, anno: int) -> set[int]:
+    """
+    Meses en los que cae este año lo que el texto nombra como día móvil.
+
+    Existe porque el descubrimiento está indexado por nombre de mes, y hay
+    fiestas cuyas fuentes nunca escriben uno. La Tamborada de Tobarra —104 horas
+    de tambor ininterrumpido, Fiesta de Interés Turístico Nacional e inscrita por
+    la UNESCO en 2018— no aparece en ninguna de las dos ejecuciones completas del
+    2026-08-28 y del 2026-09-01, y no es un fallo de recall del modelo: sus
+    fuentes dicen "Miércoles Santo" y "Domingo de Resurrección", así que ningún
+    chunk suyo entraba en ningún cubo de mes y nunca se le llegó a preguntar. Lo
+    mismo le pasa al Carnaval ("martes de carnaval") y al Corpus.
+
+    El proyecto ya sabía calcular la Pascua; solo la usaba para CORREGIR fiestas
+    ya descubiertas, nunca para descubrirlas.
+    """
+    if not texto or not anno:
+        return set()
+    plano = normalizar_texto(texto)
+    try:
+        pascua = _calcular_pascua(anno)
+    except Exception:
+        return set()
+    meses: set[int] = set()
+    for expresion, (off_ini, off_fin) in _DIAS_MOVILES.items():
+        if expresion not in plano:
+            continue
+        d = pascua + timedelta(days=off_ini)
+        fin = pascua + timedelta(days=off_fin)
+        while d <= fin:
+            meses.add(d.month)
+            d += timedelta(days=1)
+        meses.add(fin.month)
+    return meses
+
 
 def validar_fechas_moviles(fiestas: list[dict], anno: int) -> list[dict]:
     """

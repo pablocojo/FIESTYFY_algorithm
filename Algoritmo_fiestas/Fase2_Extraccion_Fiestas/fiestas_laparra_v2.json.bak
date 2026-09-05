@@ -1,0 +1,132 @@
+{
+  "version": 2,
+  "anno": 2026,
+  "ultimo_municipio_procesado": null,
+  "municipios_completados": [],
+  "localidades_completadas": [
+    "06099000101"
+  ],
+  "fiestas": [
+    {
+      "id": "fiestas-nuestra-senora-de-la-asuncion-2026",
+      "lugar_id": "06099000101",
+      "nombre": "Fiestas Patronales en honor a Nuestra Señora de la Asunción",
+      "fecha_inicio": "2026-08-14",
+      "fecha_fin": "2026-08-16",
+      "tamano": "grande",
+      "descripcion": "Celebración religiosa y popular en honor a Nuestra Señora de la Asunción, incluyendo pasacalles, procesiones, música en directo, actividades infantiles y eventos nocturnos como verbenas y conciertos.",
+      "confianza": "media",
+      "fuentes": [
+        "web_municipio",
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "La Parra",
+      "solo_fuentes_no_oficiales": false,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-08-14",
+          "eventos": [
+            {
+              "hora": "09:00",
+              "descripcion": "Pasacalles con la Ronda Parreña"
+            },
+            {
+              "hora": "12:00",
+              "descripcion": "Cabezudos y toro ecológico"
+            },
+            {
+              "hora": "12:30",
+              "descripcion": "Fiesta de la Espuma"
+            },
+            {
+              "hora": "21:00",
+              "descripcion": "Apertura de barra y barbacoa"
+            },
+            {
+              "hora": "23:00",
+              "descripcion": "Pregón de las Fiestas a cargo de Rubén Miranda, El Mago Monchi Mandingo"
+            },
+            {
+              "hora": "23:30",
+              "descripcion": "MYA + MARKEEEL + CLASICAZOS"
+            },
+            {
+              "hora": "02:00",
+              "descripcion": "Discomovida Nostálgica"
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-08-15",
+          "eventos": [
+            {
+              "hora": "13:00",
+              "descripcion": "Santa Misa en honor a Nuestra Señora de la Asunción"
+            },
+            {
+              "hora": "13:00",
+              "descripcion": "La Ronda Parreña canta a la Virgen"
+            },
+            {
+              "hora": "17:00",
+              "descripcion": "Campeonato de Mus. Bar Poquita Cosa"
+            },
+            {
+              "hora": "20:30",
+              "descripcion": "Procesión de Nuestra Señora de la Asunción, acompañada por la Banda Municipal de Música"
+            },
+            {
+              "hora": "21:30",
+              "descripcion": "Apertura de barra y barbacoa"
+            },
+            {
+              "hora": "23:30",
+              "descripcion": "Orquesta Acuarela"
+            }
+          ]
+        },
+        {
+          "dia": 3,
+          "fecha": "2026-08-16",
+          "eventos": [
+            {
+              "hora": "13:00",
+              "descripcion": "Apertura de barra"
+            },
+            {
+              "hora": "13:30",
+              "descripcion": "Fiesta de la Espuma"
+            },
+            {
+              "hora": "17:00",
+              "descripcion": "Mercadillo del taller de ganchillo"
+            },
+            {
+              "hora": "17:00",
+              "descripcion": "Atracciones infantiles. Tren turístico y dos hinchables acuáticos"
+            },
+            {
+              "hora": "22:00",
+              "descripcion": "Espectáculo de copla con Antonio Bonal y Anael"
+            },
+            {
+              "hora": "00:00",
+              "descripcion": "DJ Elías"
+            }
+          ]
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "url_programa": "https://arenasdesanpedro.es/fiesta/nuestra-senora-de-la-asuncion-badajoz-provincia",
+      "programa_advocacion_dudosa": true,
+      "cobertura_dias": 1.0,
+      "programa_estado": "completo",
+      "lat": 38.52063811,
+      "lng": -6.624850511
+    }
+  ]
+}

@@ -325,6 +325,8 @@ def main() -> int:
     p.add_argument("--listar", action="store_true", help="Listar municipios disponibles y salir.")
     p.add_argument("--solo-preparar", action="store_true", help="Generar la entrada y no ejecutar.")
     p.add_argument("--solo-informe", action="store_true", help="Analizar la salida existente.")
+    p.add_argument("--sin-rrss", action="store_true",
+                   help="No usar el servidor de RRSS (ejecuciones desatendidas).")
     p.add_argument("--reiniciar", action="store_true",
                    help="Borrar la salida previa. Sin esto se reanuda donde se quedó.")
     args = p.parse_args()
@@ -387,6 +389,8 @@ def main() -> int:
     cmd = [sys.executable, os.path.join(_AQUI, "main.py"),
            "--input", ENTRADA_FILTRADA, "--output", args.salida,
            "--anno", str(args.anno), "--parallel", str(args.parallel)]
+    if args.sin_rrss:
+        cmd.append("--sin-rrss")
     print(f"\n  $ {' '.join(cmd)}\n")
 
     inicio = datetime.now()

@@ -229,7 +229,7 @@ def test_r5_adversarial_async_cache_high_concurrency():
                 await redes_cache.set(f"loc_{idx}", {"instagram": f"https://instagram.com/user_{idx}"})
 
             async def write_patron(idx):
-                await patron_cache.set(f"loc_{idx}", {"nombre": f"San {idx}", "dia": (idx % 28) + 1, "mes": 8})
+                await patron_cache.set(f"loc_{idx}", {"nombre": f"San {idx}", "ambito": "localidad", "dia": (idx % 28) + 1, "mes": 8})
 
             tasks = []
             for i in range(50):

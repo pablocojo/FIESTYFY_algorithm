@@ -28,6 +28,7 @@ Uso:
 """
 
 import argparse
+import glob
 import json
 import os
 import re
@@ -35,6 +36,16 @@ import sys
 from datetime import date, datetime
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+
+# La consola de Windows llega en cp1252 y el informe lleva flechas, comillas
+# angulares y nombres con tilde. Sin esto, el evaluador se cae a mitad de tabla
+# con UnicodeEncodeError en cuanto una localidad tiene una fiesta que enseñar
+# —justamente cuando empieza a ser útil—.
+for _flujo in (sys.stdout, sys.stderr):
+    try:
+        _flujo.reconfigure(encoding="utf-8")
+    except (AttributeError, ValueError):
+        pass
 
 BASE = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 DIR_DEBUG = os.path.join(BASE, "debug_contexto")
@@ -59,9 +70,48 @@ def _debug_de(localidad):
     return _cargar_json(os.path.join(DIR_DEBUG, f"{_slug(localidad)}_discovery_debug.json"))
 
 
+def _debugs_enrichment_de(localidad):
+    """
+    Todos los volcados de enrichment de una localidad, uno por fiesta.
+
+    El evaluador solo miraba el contexto de DISCOVERY, y ahí no es donde se
+    pierde el programa: en Aranda de Duero la página correcta estaba en los dos
+    contextos y aun así se perdió el 83 % del PDF en el de enrichment. La
+    métrica principal habría dado verde en el caso que peor salió.
+    """
+    patron = os.path.join(DIR_DEBUG, f"{_slug(localidad)}__*_enrichment_debug.json")
+    fuera = []
+    for ruta in sorted(glob.glob(patron)):
+        d = _cargar_json(ruta)
+        if d:
+            fuera.append(d)
+    return fuera
+
+
 def _urls_del_contexto(debug):
     """URLs de los chunks realmente seleccionados."""
     return [c.get("url", "") for c in debug.get("chunks", []) if c.get("seleccionado")]
+
+
+def _actos_de(fiesta):
+    return sum(len(d.get("eventos", []) or []) for d in (fiesta.get("programa") or []))
+
+
+def _descartados_de(metricas):
+    """
+    Chunks candidatos que no llegaron al modelo.
+
+    Los volcados escritos antes de que existiera el campo se reconstruyen
+    restando: así la línea base del reparto se puede calcular sobre las
+    ejecuciones que ya están en disco, sin volver a ejecutar la Fase 2.
+    """
+    if metricas.get("descartados") is not None:
+        return metricas["descartados"]
+    return max(0, (metricas.get("candidatos") or 0) - (metricas.get("seleccionados") or 0))
+
+
+def _norm_nombre(s):
+    return " ".join((s or "").lower().split())
 
 
 def _fecha(s):
@@ -71,13 +121,24 @@ def _fecha(s):
         return None
 
 
-def evaluar():
+def evaluar(salida_json=None):
     dorado = _cargar_json(DORADO)
     if not dorado:
         print(f"No se pudo leer {DORADO}")
         return None
 
-    salida = _cargar_json(os.path.join(BASE, "fiestas_espana.json"), {}) or {}
+    # La salida no siempre se llama igual: las ejecuciones sobre lugares sueltos
+    # escriben en fiestas_neutros.json. Se coge el primero que tenga fiestas para
+    # que el evaluador no informe de 0% cuando el fichero por defecto está vacío.
+    candidatos = [salida_json] if salida_json else ["fiestas_espana.json", "fiestas_neutros.json"]
+    salida = {}
+    for nombre in candidatos:
+        ruta = nombre if os.path.isabs(nombre) else os.path.join(BASE, nombre)
+        datos = _cargar_json(ruta, {}) or {}
+        if datos.get("fiestas"):
+            salida = datos
+            print(f"  (fiestas leídas de {os.path.basename(ruta)})\n")
+            break
     fiestas_por_lugar = {}
     for f in salida.get("fiestas", []):
         fiestas_por_lugar.setdefault(f.get("lugar_id"), []).append(f)
@@ -105,7 +166,12 @@ def evaluar():
         encontradas = [p for p in esperadas if p and p.lower() in urls.lower()]
         contaminantes = [p for p in prohibidas if p and p.lower() in urls.lower()]
 
-        presup_chars = (m.get("presupuesto") or {}).get("presupuesto_chars") or 0
+        # Cuánto del lote se llena. Antes se medía contra `presupuesto_chars`,
+        # el tope que recortaba; con el reparto ese número ya no existe como
+        # límite y compararse con él daba usos del 295%. Ahora se mide en
+        # tokens contra el tamaño del lote, que es lo que de verdad acota una
+        # llamada. Por debajo del 100% significa que cabía todo en una.
+        presup_tok = (m.get("presupuesto") or {}).get("lote_tokens") or 0
         fila.update(
             evaluado=True,
             recall_fuente=(len(encontradas) / len(esperadas)) if esperadas else None,
@@ -115,7 +181,7 @@ def evaluar():
             docs_distintos=m.get("documentos_distintos", 0),
             pct_unico=m.get("pct_unico", 0.0),
             tokens_contexto=m.get("tokens_contexto", 0),
-            uso_ventana=round(100 * m.get("chars_contexto", 0) / presup_chars, 1) if presup_chars else None,
+            uso_ventana=round(100 * m.get("tokens_contexto", 0) / presup_tok, 1) if presup_tok else None,
         )
 
         # ── Fiestas y programas ──
@@ -143,6 +209,44 @@ def evaluar():
             estimadas=sum(1 for g in obtenidas if g.get("es_estimada")),
             reales=sum(1 for g in obtenidas if not g.get("es_estimada")),
         )
+
+        # ── Contexto de ENRICHMENT: donde de verdad se pierde el programa ──
+        enr = _debugs_enrichment_de(nombre)
+        urls_enr = " | ".join(u for d in enr for u in _urls_del_contexto(d))
+        enc_enr = [p for p in esperadas if p and p.lower() in urls_enr.lower()]
+
+        # Cobertura: qué parte de los días que el documento nombra ha llegado a
+        # la ficha. La calcula el propio enrichment (`cobertura_dias`), que es
+        # quien tiene delante el documento; aquí solo se agrega.
+        #
+        # NO se mide por actos: `contar_actos_horarios` cuenta horas de reloj
+        # distintas, no actos, así que como denominador daría coberturas del
+        # 500% en cualquier programa con horas repetidas.
+        coberturas = [
+            g["cobertura_dias"] for g in obtenidas
+            if isinstance(g.get("cobertura_dias"), (int, float))
+        ]
+
+        # Chunks candidatos que no llegaron al modelo, en las dos etapas. Es la
+        # métrica del reparto: el objetivo es que llegue a 0.
+        # Solo del DISCOVERY. En el enrichment, desde que el documento elegido
+        # es la fuente, el pool no se envía a propósito: contarlo como descarte
+        # convertiría la decisión correcta en una alarma. Lo que se pierde en el
+        # enrichment lo miden `cobertura_dias` y `programa_no_recuperado`.
+        descartados = _descartados_de(m)
+        candidatos_tot = m.get("candidatos") or 0
+
+        fila.update(
+            recall_fuente_enrich=(len(enc_enr) / len(esperadas)) if esperadas else None,
+            cobertura_dias=round(sum(coberturas) / len(coberturas), 3) if coberturas else None,
+            programa_no_recuperado=sum(1 for g in obtenidas if g.get("programa_no_recuperado")),
+            # Señales de que el recall ha subido a costa de la precisión.
+            n_fiestas=len(obtenidas),
+            actos_compartidos=sum(g.get("actos_compartidos_retirados", 0) for g in obtenidas),
+            sin_programa_publicado=sum(1 for g in obtenidas if g.get("sin_programa_publicado")),
+            chunks_descartados=descartados,
+            chunks_candidatos=candidatos_tot,
+        )
         filas.append(fila)
 
     evaluadas = [f for f in filas if f.get("evaluado")]
@@ -153,9 +257,24 @@ def evaluar():
         vals = [v for v in vals if v is not None]
         return round(sum(vals) / len(vals), 1) if vals else None
 
+    con_recall_e = [f for f in evaluadas if f.get("recall_fuente_enrich") is not None]
+    cobs = [f["cobertura_dias"] for f in evaluadas if f.get("cobertura_dias") is not None]
+    desc_tot = sum(f.get("chunks_descartados", 0) for f in evaluadas)
+    cand_tot = sum(f.get("chunks_candidatos", 0) for f in evaluadas)
+
     resumen = {
         "localidades_evaluadas": len(evaluadas),
         "recall_fuente_pct": round(100 * sum(f["recall_fuente"] for f in con_recall) / len(con_recall), 1) if con_recall else None,
+        "recall_fuente_enrich_pct": round(100 * sum(f["recall_fuente_enrich"] for f in con_recall_e) / len(con_recall_e), 1) if con_recall_e else None,
+        "cobertura_dias_media": round(sum(cobs) / len(cobs), 3) if cobs else None,
+        "chunks_descartados": desc_tot,
+        "chunks_descartados_pct": round(100 * desc_tot / cand_tot, 1) if cand_tot else None,
+        "programa_no_recuperado": sum(f.get("programa_no_recuperado", 0) for f in evaluadas),
+        # Alarmas de precisión: una pedanía que pasa de 1 a 4 fiestas no ha
+        # mejorado el recall, ha empezado a copiar de su capital.
+        "fiestas_por_localidad_max": max((f.get("n_fiestas", 0) for f in evaluadas), default=0),
+        "actos_compartidos_retirados": sum(f.get("actos_compartidos", 0) for f in evaluadas),
+        "sin_programa_publicado": sum(f.get("sin_programa_publicado", 0) for f in evaluadas),
         "contaminacion_pct": round(100 * sum(1 for f in evaluadas if f.get("contaminado")) / len(evaluadas), 1) if evaluadas else None,
         "pct_unico_medio": media([f.get("pct_unico") for f in evaluadas]),
         "docs_distintos_medio": media([f.get("docs_distintos") for f in evaluadas]),
@@ -170,26 +289,33 @@ def evaluar():
 
 
 def imprimir(r):
-    print("\n" + "=" * 74)
-    print("  CONJUNTO DORADO — evaluación del contexto de discovery")
-    print("=" * 74)
+    print("\n" + "=" * 92)
+    print("  CONJUNTO DORADO — contexto de discovery Y de enrichment")
+    print("=" * 92)
 
     if not r["detalle"]:
         print("  Sin localidades evaluables.")
-    print(f"\n  {'Localidad':<16} {'recall':>7} {'docs':>5} {'únic%':>6} {'tok':>6} {'vent%':>6}  contaminado")
-    print("  " + "-" * 70)
+    print(
+        f"\n  {'Localidad':<16} {'rec.disc':>9} {'rec.enr':>8} {'cobert':>7} "
+        f"{'descart':>9} {'docs':>5} {'únic%':>6}  contaminado"
+    )
+    print("  " + "-" * 88)
     for f in r["detalle"]:
         if not f.get("evaluado"):
-            print(f"  {f['localidad']:<16} {'—':>7}  (sin volcado de debug)")
+            print(f"  {f['localidad']:<16} {'—':>9}  (sin volcado de debug)")
             continue
         rec = f.get("recall_fuente")
+        rec_e = f.get("recall_fuente_enrich")
+        cob = f.get("cobertura_dias")
+        desc, cand = f.get("chunks_descartados", 0), f.get("chunks_candidatos", 0)
         print(
             f"  {f['localidad']:<16} "
-            f"{(f'{100*rec:.0f}%' if rec is not None else 'n/a'):>7} "
+            f"{(f'{100*rec:.0f}%' if rec is not None else 'n/a'):>9} "
+            f"{(f'{100*rec_e:.0f}%' if rec_e is not None else 'n/a'):>8} "
+            f"{(f'{cob:.2f}' if cob is not None else '—'):>7} "
+            f"{(f'{desc}/{cand}' if cand else '—'):>9} "
             f"{f.get('docs_distintos', 0):>5} "
-            f"{f.get('pct_unico', 0):>6} "
-            f"{f.get('tokens_contexto', 0):>6} "
-            f"{(f.get('uso_ventana') if f.get('uso_ventana') is not None else '—'):>6}  "
+            f"{f.get('pct_unico', 0):>6}  "
             f"{'SÍ → ' + ', '.join(f['contaminantes']) if f.get('contaminado') else 'no'}"
         )
 
@@ -205,11 +331,12 @@ def imprimir(r):
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
+    ap.add_argument("--salida", help="JSON de fiestas a evaluar (por defecto, fiestas_espana.json y luego fiestas_neutros.json)")
     ap.add_argument("--guardar", help="Guardar el resultado como línea base (JSON)")
     ap.add_argument("--comparar", help="Comparar contra una línea base guardada")
     args = ap.parse_args()
 
-    r = evaluar()
+    r = evaluar(args.salida)
     if r is None:
         sys.exit(1)
     imprimir(r)

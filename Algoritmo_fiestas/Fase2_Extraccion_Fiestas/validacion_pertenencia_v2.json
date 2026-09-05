@@ -1,0 +1,548 @@
+[
+  {
+    "localidad": "Garrucha",
+    "fiesta": "Feria y Fiestas de San Joaquín de Garrucha",
+    "veredicto": "si",
+    "esperado": "si",
+    "respuesta": {
+      "es_de_la_localidad": "si",
+      "lugar_real": "Garrucha, Almería",
+      "es_una_fiesta": "si",
+      "que_es": null,
+      "razon": "El texto sitúa la fiesta en Garrucha (Almería) y menciona actividades como procesiones, cucaña marinera, gala de mises, conciertos y espectáculos pirotécnicos, que son elementos de una fiesta popular. Además, incluye música en directo (orquesta) y verbena, lo que confirma su naturaleza festiva según la regla de aceptación obligatoria."
+    }
+  },
+  {
+    "localidad": "Garrucha",
+    "fiesta": "Feria de la Gamba",
+    "veredicto": "si",
+    "esperado": "?",
+    "respuesta": {
+      "es_de_la_localidad": "si",
+      "lugar_real": "Garrucha, Almería",
+      "es_una_fiesta": "si",
+      "que_es": null,
+      "razon": "El texto confirma que se celebra en Garrucha (provincia de Almería) y menciona actividades como música en directo, stands gastronómicos y una degustación popular, características de una fiesta popular."
+    }
+  },
+  {
+    "localidad": "Garrucha",
+    "fiesta": "Fiestas de Garrucha",
+    "veredicto": "si",
+    "esperado": "no",
+    "respuesta": {
+      "es_de_la_localidad": "si",
+      "lugar_real": "Garrucha, Almería",
+      "es_una_fiesta": "si",
+      "que_es": null,
+      "razon": "El texto de las fuentes sitúa las fiestas en Garrucha (Almería) y describe actividades como procesiones, conciertos, gala de mises y espectáculos pirotécnicos, que cumplen con el criterio de fiesta popular por incluir música en directo y verbena."
+    }
+  },
+  {
+    "localidad": "Garrucha",
+    "fiesta": "Fiestas de San Joaquin en Garrucha Almeria",
+    "veredicto": "si",
+    "esperado": "no",
+    "respuesta": {
+      "es_de_la_localidad": "si",
+      "lugar_real": "Garrucha",
+      "es_una_fiesta": "si",
+      "que_es": null,
+      "razon": "El texto sitúa la fiesta en Garrucha (Almería) y la describe como una celebración patronal con verbena y orquesta, elementos típicos de fiestas populares."
+    }
+  },
+  {
+    "localidad": "Arroyomolinos",
+    "fiesta": "Fiesta en Honor a San Sebastián",
+    "veredicto": "si",
+    "esperado": "?",
+    "respuesta": {
+      "es_de_la_localidad": "si",
+      "lugar_real": "Arroyomolinos",
+      "es_una_fiesta": "si",
+      "que_es": null,
+      "razon": "El texto de las fuentes confirma que la fiesta se celebra en Arroyomolinos (menciona la Ermita de San Sebastián y la Iglesia de la Virgen de la Consolación del municipio) y describe actividades como verbenas, procesiones, el 'Ramo' y música tradicional, que son elementos de una fiesta popular."
+    }
+  },
+  {
+    "localidad": "Arroyomolinos",
+    "fiesta": "La Jira (Semana Santa)",
+    "veredicto": "no",
+    "esperado": "no",
+    "respuesta": {
+      "es_de_la_localidad": "no",
+      "lugar_real": "Arroyomolinos de León (Huelva)",
+      "es_una_fiesta": "si",
+      "que_es": null,
+      "razon": "El texto menciona 'Arroyomolinos de León' en la provincia de Huelva, distinto del municipio de Arroyomolinos en Cáceres. La descripción incluye verbena y actividades tradicionales, clasificándola como fiesta popular."
+    }
+  },
+  {
+    "localidad": "Arroyomolinos",
+    "fiesta": "Fiestas del Corpus Christi",
+    "veredicto": "no",
+    "esperado": "no",
+    "respuesta": {
+      "es_de_la_localidad": "no",
+      "lugar_real": "Madrid (28939)",
+      "es_una_fiesta": "si",
+      "que_es": null,
+      "razon": "El texto menciona Arroyomolinos pero sitúa la celebración en Madrid (código postal 28939), distinto de la provincia de Cáceres. La programación incluye verbena, DJ, orquestas y eventos familiares, cumpliendo la regla de aceptación obligatoria."
+    }
+  },
+  {
+    "localidad": "Arroyomolinos",
+    "fiesta": "Fiestas Patronales en honor a Nuestra Señora la Virgen del Rosario",
+    "veredicto": "si",
+    "esperado": "?",
+    "respuesta": {
+      "es_de_la_localidad": "si",
+      "lugar_real": "Arroyomolinos",
+      "es_una_fiesta": "si",
+      "que_es": null,
+      "razon": "El texto sitúa la celebración en Arroyomolinos y menciona fiestas patronales, que son consideradas fiestas populares por definición"
+    }
+  },
+  {
+    "localidad": "Arroyomolinos",
+    "fiesta": "Fiestas de Arroyomolinos",
+    "veredicto": "no",
+    "esperado": "no",
+    "respuesta": {
+      "es_de_la_localidad": "no",
+      "lugar_real": "Arroyomolinos de la Vera",
+      "es_una_fiesta": "si",
+      "que_es": null,
+      "razon": "El texto sitúa la fiesta en 'Arroyomolinos de la Vera', distinto del municipio 'Arroyomolinos' de la localidad buscada. El programa incluye verbena, DJ, charanga y procesión, elementos que la definen como fiesta popular."
+    }
+  },
+  {
+    "localidad": "Alborea",
+    "fiesta": "Romería 1 de Mayo",
+    "veredicto": "si",
+    "esperado": "?",
+    "respuesta": {
+      "es_de_la_localidad": "si",
+      "lugar_real": "Alborea",
+      "es_una_fiesta": "si",
+      "que_es": null,
+      "razon": "El texto de las fuentes menciona explícitamente que la romería se celebra en Alborea, y la descripción incluye actividades típicas de fiestas populares como procesiones, misas y convivencias con programación nocturna organizada por la juventud local."
+    }
+  },
+  {
+    "localidad": "Alborea",
+    "fiesta": "Fiesta de San Isidro Labrador",
+    "veredicto": "si",
+    "esperado": "si",
+    "respuesta": {
+      "es_de_la_localidad": "si",
+      "lugar_real": "Alborea, provincia de Albacete, Castilla-La Mancha",
+      "es_una_fiesta": "si",
+      "que_es": null,
+      "razon": "El texto sitúa la fiesta en Alborea (municipio objetivo) y menciona verbenas con orquesta, procesiones y actividades familiares típicas de fiestas populares"
+    }
+  },
+  {
+    "localidad": "Alborea",
+    "fiesta": "Fiestas Patronales de Alborea en honor a Nuestra Señora de la Natividad",
+    "veredicto": "si",
+    "esperado": "?",
+    "respuesta": {
+      "es_de_la_localidad": "si",
+      "lugar_real": "Alborea",
+      "es_una_fiesta": "si",
+      "que_es": null,
+      "razon": "El texto menciona explícitamente Alborea como sede y describe actos populares como verbena, conciertos con orquestas y DJ, cabalgata y castillo de fuegos artificiales, que son elementos definitorios de una fiesta popular según la regla de aceptación obligatoria."
+    }
+  },
+  {
+    "localidad": "Quintanadueñas",
+    "fiesta": "Fiestas Patronales de la Virgen del Rosario",
+    "veredicto": "si",
+    "esperado": "?",
+    "respuesta": {
+      "es_de_la_localidad": "si",
+      "lugar_real": "Alfoz de Quintanadueñas, Burgos",
+      "es_una_fiesta": "si",
+      "que_es": null,
+      "razon": "El texto sitúa la fiesta en Alfoz de Quintanadueñas, municipio al que pertenece Quintanadueñas, y menciona actividades típicas de fiestas populares como verbenas, comidas populares y pregón."
+    }
+  },
+  {
+    "localidad": "Quintanadueñas",
+    "fiesta": "Fiestas de Quintanadueñas",
+    "veredicto": "si",
+    "esperado": "no",
+    "respuesta": {
+      "es_de_la_localidad": "si",
+      "lugar_real": "Alfoz de Quintanadueñas",
+      "es_una_fiesta": "si",
+      "que_es": null,
+      "razon": "El texto menciona explícitamente 'Quintanadueñas' como sede y 'Alfoz de Quintanadueñas' como lugar, coincidiendo con el municipio de la localidad buscada. Aunque no hay programa detallado, se enmarca como 'dia del alfoz' con fechas fijas en septiembre, típico de fiestas populares locales."
+    }
+  },
+  {
+    "localidad": "Arroyal",
+    "fiesta": "Fiestas Patronales de San Cristóbal",
+    "veredicto": "no",
+    "esperado": "?",
+    "respuesta": {
+      "es_de_la_localidad": "no",
+      "lugar_real": "Palacios de la Sierra",
+      "es_una_fiesta": "no_se",
+      "que_es": null,
+      "razon": "El texto de las fuentes menciona fiestas en honor a la Virgen del Arroyal en Palacios de la Sierra, no en el Arroyal de Alfoz de Quintanadueñas. No se confirma si las fiestas patronales de San Cristóbal son populares por falta de programa detallado."
+    }
+  },
+  {
+    "localidad": "Arroyal",
+    "fiesta": "Fiestas de Arroyal",
+    "veredicto": "si",
+    "esperado": "no",
+    "respuesta": {
+      "es_de_la_localidad": "si",
+      "lugar_real": "Alfoz de Quintanadueñas",
+      "es_una_fiesta": "si",
+      "que_es": null,
+      "razon": "El texto sitúa la fiesta en Arroyal (municipio de Alfoz de Quintanadueñas) y menciona que forma parte del 'dia del alfoz' que rota la sede entre el municipio y sus pedanías, incluyendo Arroyal. Además, se asocia a celebraciones patronales tradicionales con procesiones y verbena, características de una fiesta popular."
+    }
+  },
+  {
+    "localidad": "Marmellar de Arriba",
+    "fiesta": "Fiestas de Marmellar de Arriba",
+    "veredicto": "si",
+    "esperado": "si",
+    "respuesta": {
+      "es_de_la_localidad": "si",
+      "lugar_real": "Marmellar de Arriba, Alfoz de Quintanadueñas (Burgos)",
+      "es_una_fiesta": "si",
+      "que_es": null,
+      "razon": "El texto de las fuentes confirma que Marmellar de Arriba celebra sus fiestas patronales el 25 de julio, y sitúa la sede en el municipio de Alfoz de Quintanadueñas (provincia de Burgos)."
+    }
+  },
+  {
+    "localidad": "Páramo del Arroyo",
+    "fiesta": "Fiestas patronales en honor a San Vicente Mártir",
+    "veredicto": "si",
+    "esperado": "?",
+    "respuesta": {
+      "es_de_la_localidad": "si",
+      "lugar_real": "Páramo del Arroyo",
+      "es_una_fiesta": "si",
+      "que_es": null,
+      "razon": "El texto menciona explícitamente que las fiestas patronales se celebran en Páramo del Arroyo, y el término 'fiestas patronales' indica una celebración popular por sí misma."
+    }
+  },
+  {
+    "localidad": "Villarmero",
+    "fiesta": "Fiestas Patronales de San Isidro",
+    "veredicto": "si",
+    "esperado": "?",
+    "respuesta": {
+      "es_de_la_localidad": "si",
+      "lugar_real": "Villarmero",
+      "es_una_fiesta": "si",
+      "que_es": null,
+      "razon": "El texto sitúa la celebración en Villarmero (Burgos) y menciona explícitamente que se trata de fiestas patronales, categoría que se considera fiesta popular por definición"
+    }
+  },
+  {
+    "localidad": "Villarmero",
+    "fiesta": "Fiesta de San Martín",
+    "veredicto": "si",
+    "esperado": "si",
+    "respuesta": {
+      "es_de_la_localidad": "si",
+      "lugar_real": "Villarmero, Burgos, Castilla y León",
+      "es_una_fiesta": "si",
+      "que_es": null,
+      "razon": "El texto sitúa la fiesta en Villarmero (provincia de Burgos) y menciona verbena y cocina tradicional, elementos que la clasifican como fiesta popular según las reglas."
+    }
+  },
+  {
+    "localidad": "Villarmero",
+    "fiesta": "Fiestas de Villarmero",
+    "veredicto": "si",
+    "esperado": "no",
+    "respuesta": {
+      "es_de_la_localidad": "si",
+      "lugar_real": "Villarmero, municipio de Alfoz de Quintanadueñas, Burgos",
+      "es_una_fiesta": "si",
+      "que_es": null,
+      "razon": "El texto sitúa las fiestas en Villarmero (municipio de Alfoz de Quintanadueñas) y menciona actividades típicas de fiestas populares como procesión, misa y comida popular"
+    }
+  },
+  {
+    "localidad": "Villagarcía de la Torre",
+    "fiesta": "Fiesta de San Isidro",
+    "veredicto": "si",
+    "esperado": "si",
+    "respuesta": {
+      "es_de_la_localidad": "si",
+      "lugar_real": "Villagarcía de la Torre",
+      "es_una_fiesta": "si",
+      "que_es": null,
+      "razon": "El texto de las fuentes menciona que la fiesta está en la web del Ayuntamiento de Villagarcía de la Torre y se clasifica como 'fiestas populares', incluyendo actividades como verbenas y trajes tradicionales."
+    }
+  },
+  {
+    "localidad": "Villagarcía de la Torre",
+    "fiesta": "Fiestas de San Juan",
+    "veredicto": "si",
+    "esperado": "?",
+    "respuesta": {
+      "es_de_la_localidad": "si",
+      "lugar_real": "Villagarcía de la Torre (Badajoz)",
+      "es_una_fiesta": "si",
+      "que_es": null,
+      "razon": "El texto de las fuentes menciona explícitamente que las fiestas de San Juan se celebran en Villagarcía de la Torre, incluyendo actuaciones musicales y eventos infantiles típicos de fiestas populares."
+    }
+  },
+  {
+    "localidad": "Villagarcía de la Torre",
+    "fiesta": "Villaembrujada Festival 2026",
+    "veredicto": "si",
+    "esperado": "?",
+    "respuesta": {
+      "es_de_la_localidad": "si",
+      "lugar_real": "Villagarcía de la Torre",
+      "es_una_fiesta": "si",
+      "que_es": null,
+      "razon": "El texto sitúa el festival en Villagarcía de la Torre y menciona conciertos en directo, mercado, food trucks y actividades lúdicas, características de una fiesta popular según las reglas."
+    }
+  },
+  {
+    "localidad": "Villagarcía de la Torre",
+    "fiesta": "Fiestas Mayores en Honor a la Virgen de los Dolores",
+    "veredicto": "si",
+    "esperado": "?",
+    "respuesta": {
+      "es_de_la_localidad": "si",
+      "lugar_real": "Villagarcía de la Torre",
+      "es_una_fiesta": "si",
+      "que_es": null,
+      "razon": "El texto sitúa la fiesta en Villagarcía de la Torre (Badajoz, Extremadura) y menciona actividades típicas de fiestas populares como verbenas, procesiones y fuegos artificiales."
+    }
+  },
+  {
+    "localidad": "La Roda",
+    "fiesta": "Carnaval de La Roda 2026",
+    "veredicto": "si",
+    "esperado": "si",
+    "respuesta": {
+      "es_de_la_localidad": "si",
+      "lugar_real": "La Roda",
+      "es_una_fiesta": "si",
+      "que_es": null,
+      "razon": "El texto sitúa el Carnaval de La Roda 2026 en el municipio de La Roda, provincia de Albacete, y describe actividades festivas como desfiles, bailes con orquesta y DJ, concursos de disfraces y verbena infantil, que cumplen el criterio de fiesta popular."
+    }
+  },
+  {
+    "localidad": "La Roda",
+    "fiesta": "Fiestas Patronales de La Roda",
+    "veredicto": "si",
+    "esperado": "?",
+    "respuesta": {
+      "es_de_la_localidad": "si",
+      "lugar_real": "La Roda",
+      "es_una_fiesta": "si",
+      "que_es": null,
+      "razon": "El texto sitúa las fiestas en La Roda (municipio objetivo) y menciona actividades como conciertos procesionales, procesiones, verbena acuática y eventos culturales, que son elementos típicos de una fiesta popular."
+    }
+  },
+  {
+    "localidad": "La Roda",
+    "fiesta": "Fiestas Patronales de La Roda en honor a El Salvador",
+    "veredicto": "si",
+    "esperado": "si",
+    "respuesta": {
+      "es_de_la_localidad": "si",
+      "lugar_real": "La Roda",
+      "es_una_fiesta": "si",
+      "que_es": null,
+      "razon": "El texto sitúa las fiestas en La Roda (provincia de Albacete) y menciona actividades como conciertos, verbena y presentación de la Corte de Honor, que son elementos de una fiesta popular según las reglas establecidas."
+    }
+  },
+  {
+    "localidad": "Santa Marta",
+    "fiesta": "Festival de Gaitas",
+    "veredicto": "no",
+    "esperado": "no",
+    "respuesta": {
+      "es_de_la_localidad": "no",
+      "lugar_real": "Santa Marta",
+      "es_una_fiesta": "no",
+      "que_es": "evento cultural con presentaciones en teatro",
+      "razon": "Las fuentes oficiales del municipio no mencionan el Festival de Gaitas, y el texto no confirma que sea una celebración popular con elementos típicos (música en directo, verbena, etc.)"
+    }
+  },
+  {
+    "localidad": "Santa Marta",
+    "fiesta": "Fiestas de Santa Marta en Astorga",
+    "veredicto": "no",
+    "esperado": "no",
+    "respuesta": {
+      "es_de_la_localidad": "no",
+      "lugar_real": "Astorga, León, Castilla y León",
+      "es_una_fiesta": "si",
+      "que_es": null,
+      "razon": "El texto sitúa las fiestas en Astorga (provincia de León, Castilla y León), distinto del municipio de La Roda (Albacete). El programa incluye verbena, procesiones, conciertos y la Vuelta Chapista, elementos típicos de una fiesta popular."
+    }
+  },
+  {
+    "localidad": "La Aldea del Obispo",
+    "fiesta": "Fiestas Patronales de San Bartolomé Apóstol",
+    "veredicto": "si",
+    "esperado": "?",
+    "respuesta": {
+      "es_de_la_localidad": "si",
+      "lugar_real": "La Aldea del Obispo",
+      "es_una_fiesta": "si",
+      "que_es": null,
+      "razon": "El texto de las fuentes menciona explícitamente que es la 'principal celebración religiosa y festiva de La Aldea del Obispo' y cita verbenas con orquesta, juegos infantiles y actividades deportivas, elementos que identifican una fiesta popular según la regla de aceptación obligatoria."
+    }
+  },
+  {
+    "localidad": "Alcuéscar",
+    "fiesta": "Semana Santa",
+    "veredicto": "si",
+    "esperado": "si",
+    "respuesta": {
+      "es_de_la_localidad": "si",
+      "lugar_real": "Alcuéscar",
+      "es_una_fiesta": "si",
+      "que_es": null,
+      "razon": "El texto de la fuente oficial del Ayuntamiento de Alcuéscar menciona explícitamente la Semana Santa como una celebración con procesiones y cofradías en la localidad, y la describe como una tradición religiosa arraigada del pueblo."
+    }
+  },
+  {
+    "localidad": "Alcuéscar",
+    "fiesta": "Cruces de Mayo",
+    "veredicto": "si",
+    "esperado": "si",
+    "respuesta": {
+      "es_de_la_localidad": "si",
+      "lugar_real": "Alcuéscar",
+      "es_una_fiesta": "si",
+      "que_es": null,
+      "razon": "El texto de la fuente oficial menciona explícitamente que las Cruces de Mayo se celebran en Alcuéscar, incluyendo procesiones con charanga y altares comunitarios, características de una fiesta popular."
+    }
+  },
+  {
+    "localidad": "Alcuéscar",
+    "fiesta": "Fiesta de la Tenca y el Vino",
+    "veredicto": "si",
+    "esperado": "si",
+    "respuesta": {
+      "es_de_la_localidad": "si",
+      "lugar_real": "Alcuéscar (Cáceres, Extremadura)",
+      "es_una_fiesta": "si",
+      "que_es": null,
+      "razon": "El texto de la fuente oficial menciona explícitamente que se trata de una fiesta celebrada en Alcuéscar, con animación de charanga y promoción de la gastronomía local."
+    }
+  },
+  {
+    "localidad": "Alcuéscar",
+    "fiesta": "Concurso de Bailes Modernos",
+    "veredicto": "si",
+    "esperado": "no",
+    "respuesta": {
+      "es_de_la_localidad": "si",
+      "lugar_real": "Alcuéscar",
+      "es_una_fiesta": "si",
+      "que_es": null,
+      "razon": "El texto menciona explícitamente que se celebra en el Auditorio del Parque Municipal de Alcuéscar y se describe como un evento con música, ilusión y talento, características de una fiesta popular según la regla de aceptación."
+    }
+  },
+  {
+    "localidad": "Alcuéscar",
+    "fiesta": "Fiestas del Emigrante",
+    "veredicto": "si",
+    "esperado": "si",
+    "respuesta": {
+      "es_de_la_localidad": "si",
+      "lugar_real": "Alcuéscar",
+      "es_una_fiesta": "si",
+      "que_es": null,
+      "razon": "El texto de la fuente oficial menciona explícitamente que las Fiestas del Emigrante se celebran en Alcuéscar, y la descripción incluye verbena y orquestas, elementos que identifican una fiesta popular según las reglas establecidas."
+    }
+  },
+  {
+    "localidad": "Alcuéscar",
+    "fiesta": "Día de Extremadura",
+    "veredicto": "si",
+    "esperado": "no",
+    "respuesta": {
+      "es_de_la_localidad": "si",
+      "lugar_real": "Alcuéscar",
+      "es_una_fiesta": "si",
+      "que_es": null,
+      "razon": "El texto menciona explícitamente que se celebra en Alcuéscar (Cáceres) y la descripción incluye una comida popular con animación de charanga, que según las reglas constituye una fiesta popular."
+    }
+  },
+  {
+    "localidad": "Alcuéscar",
+    "fiesta": "Fiestas Patronales en Honor a la Virgen del Rosario",
+    "veredicto": "si",
+    "esperado": "si",
+    "respuesta": {
+      "es_de_la_localidad": "si",
+      "lugar_real": "Alcuéscar",
+      "es_una_fiesta": "si",
+      "que_es": null,
+      "razon": "El texto de la fuente oficial del Ayuntamiento de Alcuéscar menciona explícitamente que se trata de las fiestas patronales en honor a la Virgen del Rosario, con actividades religiosas, procesiones, encierros, tiro al plato y verbena con orquestas y discotecas móviles, características de una fiesta popular."
+    }
+  },
+  {
+    "localidad": "El Barco de Ávila",
+    "fiesta": "Fiestas de Santiago — Los Quintos",
+    "veredicto": "si",
+    "esperado": "?",
+    "respuesta": {
+      "es_de_la_localidad": "si",
+      "lugar_real": "El Barco de Ávila, Ávila",
+      "es_una_fiesta": "si",
+      "que_es": null,
+      "razon": "El texto sitúa la fiesta en El Barco de Ávila y menciona verbenas, pasacalles con dulzaina y tamboril, y festejos taurinos como elementos de una celebración popular."
+    }
+  },
+  {
+    "localidad": "El Barco de Ávila",
+    "fiesta": "Fiestas en Honor de San Pedro del Barco",
+    "veredicto": "si",
+    "esperado": "si",
+    "respuesta": {
+      "es_de_la_localidad": "si",
+      "lugar_real": "El Barco de Ávila",
+      "es_una_fiesta": "si",
+      "que_es": null,
+      "razon": "El texto sitúa las fiestas en El Barco de Ávila y menciona procesiones, verbenas, conciertos y festejos taurinos, características de una fiesta popular."
+    }
+  },
+  {
+    "localidad": "El Barco de Ávila",
+    "fiesta": "Fiestas Patronales de San Bartolomé Apóstol",
+    "veredicto": "si",
+    "esperado": "si",
+    "respuesta": {
+      "es_de_la_localidad": "si",
+      "lugar_real": "El Barco de Ávila, Ávila",
+      "es_una_fiesta": "si",
+      "que_es": null,
+      "razon": "El texto menciona explícitamente que se celebran en El Barco de Ávila y detalla actividades como verbenas nocturnas, procesiones y concursos gastronómicos, que son elementos típicos de fiestas populares."
+    }
+  },
+  {
+    "localidad": "El Barco de Ávila",
+    "fiesta": "Fiestas en Honor al Santísimo Cristo del Caño",
+    "veredicto": "si",
+    "esperado": "?",
+    "respuesta": {
+      "es_de_la_localidad": "si",
+      "lugar_real": "El Barco de Ávila (provincia de Ávila)",
+      "es_una_fiesta": "si",
+      "que_es": null,
+      "razon": "El texto de las fuentes menciona explícitamente que las fiestas se celebran en El Barco de Ávila y citan la programación con verbenas nocturnas, procesiones y actos familiares típicos de fiestas populares"
+    }
+  }
+]

@@ -20,8 +20,10 @@ from scraper.google_search import search_locality_web, search_locality_media, ge
 from scraper.social_content import cargar_documentos_rrss, invalidar_cache as invalidar_cache_rrss
 from scraper.social_finder import registrar_perfiles_web
 from scraper.rrss_client import RRSSClient
+from nombre_oficial import nombre_oficial_del_municipio
 from llm_processor.text_analyzer import (
     AsyncRAGProcessor,
+    llm_chat_json,
     analyze_festivals_for_locality,
     analyze_festivals_multipass,
     limpiar_actos_compartidos_del_municipio,
@@ -325,6 +327,12 @@ async def process_municipio(
     # Procesar localidades secuencialmente (comparten el mismo sitio web municipal)
     todas_localidades = capitales + otros
 
+    # El nombre oficial completo, una vez por municipio y cacheado para siempre.
+    # Se deja en el propio dict porque de ahí lo leen tanto el constructor de
+    # consultas como el bloque de identidad del juez de pertenencia, y así no hay
+    # que pasarlo por media docena de firmas.
+    municipio["nombre_oficial"] = await nombre_oficial_del_municipio(municipio, llm_chat_json)
+
     # Pre-crawl del sitio municipal una sola vez para reutilizar en todas las pedanías
     docs_municipio_cache = None
     sitio_mun = municipio.get("sitio_web", "").strip()
@@ -498,14 +506,33 @@ async def async_main():
     parser.add_argument("--input", type=str, default="../Fase1_recogida_datos_wiki/lugares_espana.json", help="Ruta JSON de lugares")
     parser.add_argument("--output", type=str, default="fiestas_espana.json", help="Ruta JSON de salida")
     parser.add_argument("--parallel", type=int, default=PARALLEL_MUNICIPALITIES, help="Municipios en paralelo")
+    parser.add_argument("--sin-rrss", action="store_true",
+                        help="No usar el servidor de RRSS. Para ejecuciones desatendidas: "
+                             "la automatización necesita las ventanas de las apps en primer "
+                             "plano, y si nadie está delante cada localidad pierde el timeout "
+                             "entero esperando.")
     args = parser.parse_args()
 
     logger = setup_logging()
 
     logger.info(f"{'=' * 60}")
     logger.info(f"  FASE 2: EXTRACCIÓN DE FIESTAS ({args.anno})")
-    from config import LMSTUDIO_CHAT_MODEL
-    logger.info(f"  Modelo: {LMSTUDIO_CHAT_MODEL} | Paralelismo: {args.parallel} municipios")
+    from config import (
+        LMSTUDIO_CHAT_MODEL, OPENROUTER_ENABLED, OPENROUTER_API_KEY, OPENROUTER_MODELS,
+    )
+    if OPENROUTER_ENABLED and OPENROUTER_API_KEY:
+        from config import OPENROUTER_N_CTX
+        cuantos = len(OPENROUTER_MODELS)
+        cuales = (f"{OPENROUTER_MODELS[0]}" if cuantos == 1
+                  else f"{cuantos} modelos en cascada, 1º {OPENROUTER_MODELS[0]}")
+        logger.info(
+            f"  Chat: OpenRouter ({cuales}, n_ctx {OPENROUTER_N_CTX}) "
+            f"→ LM Studio/{LMSTUDIO_CHAT_MODEL} de reserva"
+        )
+    else:
+        motivo = "desactivado" if not OPENROUTER_ENABLED else "sin clave API"
+        logger.warning(f"  Chat: OpenRouter {motivo} — se usa solo LM Studio/{LMSTUDIO_CHAT_MODEL}")
+    logger.info(f"  Embeddings y visión: LM Studio | Paralelismo: {args.parallel} municipios")
 
     # Presupuesto de contexto real del modelo cargado en LM Studio.
     try:
@@ -574,7 +601,9 @@ async def async_main():
 
     # Inicializar cliente RRSS (servidor Windows)
     rrss_client = None
-    if RRSS_SERVER_ENABLED:
+    if args.sin_rrss:
+        logger.info("  RRSS: desactivadas por --sin-rrss (solo se usará la caché existente).")
+    elif RRSS_SERVER_ENABLED:
         rrss_client = RRSSClient()
         if await rrss_client.verificar_servidor():
             logger.info(f"Servidor RRSS disponible — las RRSS se procesarán en tiempo real")

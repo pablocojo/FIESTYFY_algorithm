@@ -53,6 +53,30 @@ PERFILES_IDIOMA = {
     }
 }
 
+def comunidad_de(lugar: Dict[str, Any]) -> str:
+    """
+    La comunidad autónoma de un lugar del dataset, se llame como se llame el campo.
+
+    El dataset de Fase 1 la guarda en `comunidad`; el código la leía en cuatro
+    sitios como `comunidad_autonoma`, que NINGUNO de sus 9.752 lugares tiene.
+    Resultado: la comunidad iba vacía en la construcción de consultas y en la
+    elección del perfil de idioma —el que decide con qué lengua se busca y se
+    filtra—, en todas las ejecuciones y para todos los municipios, incluidos los
+    vascos. Se conserva la clave larga como respaldo por si otra fuente la usa.
+
+    Existe como función para que el nombre del campo se decida en un solo sitio:
+    repetir el respaldo en cada llamada es como volvió a colarse la primera vez.
+    """
+    if not isinstance(lugar, dict):
+        return ""
+    return (lugar.get("comunidad") or lugar.get("comunidad_autonoma") or "").strip()
+
+
+def perfil_de_lugar(municipio: Dict[str, Any]) -> Dict[str, Any]:
+    """Perfil lingüístico de un municipio del dataset, sin equivocarse de campo."""
+    return get_language_profile(comunidad_de(municipio), (municipio or {}).get("provincia", ""))
+
+
 def get_language_profile(comunidad_autonoma: str, provincia: str = "") -> Dict[str, Any]:
     """
     Retorna el perfil lingüístico aplicable (o múltiples si hay complejidad regional).

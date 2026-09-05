@@ -40,6 +40,7 @@ from config import (
 from scraper.social_apps.runner import RunnerApps
 from scraper.social_apps.app_controller import localizar_app, PYWINAUTO_DISPONIBLE
 from scraper.social_apps.cola import REDES
+from state_manager import leer_json_con_respaldo, escribir_json_con_respaldo
 
 logger = logging.getLogger("rrss_server")
 
@@ -70,15 +71,10 @@ def _procesar_vlm(lugar_ids: list[str]) -> dict:
         logger.warning(f"No se pudo importar vision_analyzer: {e}")
         return {"procesadas": 0, "error": str(e)}
 
-    if not os.path.exists(RUTA_CACHE_CONTENIDO):
+    # Usar el state_manager para leer de forma segura con respaldo
+    data_completa = leer_json_con_respaldo(RUTA_CACHE_CONTENIDO)
+    if data_completa is None:
         return {"procesadas": 0}
-
-    try:
-        with open(RUTA_CACHE_CONTENIDO, "r", encoding="utf-8") as f:
-            data_completa = json.load(f)
-    except (json.JSONDecodeError, OSError) as e:
-        logger.error(f"Error leyendo caché de contenido: {e}")
-        return {"procesadas": 0, "error": str(e)}
 
     # Filtrar a los lugar_ids pedidos para no reprocesar todo
     ids_set = set(lugar_ids)
@@ -95,26 +91,15 @@ def _procesar_vlm(lugar_ids: list[str]) -> dict:
 
     # Merge de vuelta al archivo completo
     data_completa.update(data_filtrada)
-    _guardar_atomico(RUTA_CACHE_CONTENIDO, data_completa)
+    escribir_json_con_respaldo(RUTA_CACHE_CONTENIDO, data_completa)
 
     return resumen
 
 
-def _guardar_atomico(path: str, data: dict):
-    temp = f"{path}.tmp"
-    with open(temp, "w", encoding="utf-8") as f:
-        json.dump(data, f, ensure_ascii=False, indent=1)
-    os.replace(temp, path)
-
-
 def _leer_contenido(lugar_ids: list[str]) -> dict:
     """Lee el contenido de RRSS de la caché para los lugar_ids indicados."""
-    if not os.path.exists(RUTA_CACHE_CONTENIDO):
-        return {}
-    try:
-        with open(RUTA_CACHE_CONTENIDO, "r", encoding="utf-8") as f:
-            data = json.load(f)
-    except (json.JSONDecodeError, OSError):
+    data = leer_json_con_respaldo(RUTA_CACHE_CONTENIDO)
+    if not data:
         return {}
     ids_set = set(lugar_ids)
     return {k: v for k, v in data.items() if k in ids_set}

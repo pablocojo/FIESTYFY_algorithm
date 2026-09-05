@@ -1,0 +1,1008 @@
+{
+  "version": 2,
+  "anno": 2026,
+  "ultimo_municipio_procesado": null,
+  "municipios_completados": [],
+  "localidades_completadas": [
+    "09018000201",
+    "09018000101",
+    "09018000301",
+    "09018000401",
+    "09018000501"
+  ],
+  "fiestas": [
+    {
+      "id": "fiesta-cerveza-artesanal-aranda-2026",
+      "lugar_id": "09018000201",
+      "nombre": "Fiesta de la Cerveza Artesanal",
+      "fecha_inicio": "2026-06-20",
+      "fecha_fin": "2026-06-20",
+      "tamano": "pequeña",
+      "descripcion": "Primera edición de la Fiesta de la Cerveza Artesanal en los Jardines de Don Diego, con cervecerías locales e internacionales, food trucks y concierto de Arroz Catalana.",
+      "confianza": "alta",
+      "fuentes": [
+        "web_municipio",
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Aranda de Duero",
+      "solo_fuentes_no_oficiales": false,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-06-20",
+          "eventos": [
+            {
+              "hora": "19:00",
+              "descripcion": "Actuación de la charanga de la peña El Jarro"
+            },
+            {
+              "hora": "20:00",
+              "descripcion": "Presentación guiada por cerveceros (procesos de elaboración y características de cada cerveza)"
+            },
+            {
+              "hora": "23:00",
+              "descripcion": "Concierto en directo del grupo arandino Arroz Catalina"
+            }
+          ]
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "cobertura_dias": 1.0,
+      "programa_estado": "completo",
+      "lat": 41.67019102,
+      "lng": -3.689687939
+    },
+    {
+      "id": "fiestas-patronales-en-honor-de-la-virgen-de-las-vi-as-09018000201",
+      "lugar_id": "09018000201",
+      "nombre": "Fiestas Patronales en Honor de la Virgen de las Viñas",
+      "fecha_inicio": "2026-09-11",
+      "fecha_fin": "2026-09-20",
+      "tamano": "grande",
+      "descripcion": "Celebración anual dedicada a la Virgen de las Viñas, patrona de Aranda de Duero, que incluye cañonazo inaugural, procesiones, conciertos con artistas nacionales e internacionales (Barry B, Camela, Juan Magán), verbenas, fuegos artificiales, pasacalles de gigantes y cabezudos, actividades infantiles, deportivas y culturales, así como apertura de bodegas tradicionales.",
+      "confianza": "alta",
+      "fuentes": [
+        "web_municipio",
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Aranda de Duero",
+      "solo_fuentes_no_oficiales": false,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-09-11",
+          "eventos": [
+            {
+              "hora": "20:00",
+              "descripcion": "ACTO OFICIAL. FIESTAS PATRONALES 2026. Saluda del Sr. Concejal de Festejos, D. José Antonio Fuertes Escusol. Imposición de bandas a la Corte Real. Lectura del Pregón de las Fiestas a cargo de Miguel Martínez Delso. Saluda del Sr. Alcalde, D. Antonio Linaje Niño. Interpretación del Himno de Aranda por la Banda Municipal de Música 'Villa de Aranda'."
+            },
+            {
+              "hora": "22:30",
+              "descripcion": "Plaza Jardines de Don Diego. Gracias Raphael: recorrido por las canciones más impactantes del siempre admirado Raphael por Richard Sánchez"
+            },
+            {
+              "hora": "23:59",
+              "descripcion": "Inicio en el Bar El Barriles y continuando por las calles del centro. Pasabares Alternativo amenizado por Charanga Estraperlo"
+            },
+            {
+              "hora": "00:00",
+              "descripcion": "Plaza La Sal. Concierto Sorpresa"
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-09-12",
+          "eventos": [
+            {
+              "hora": "08:30",
+              "descripcion": "Ermita de la Virgen de las Viñas. Santa Misa"
+            },
+            {
+              "hora": "11:00",
+              "descripcion": "Plaza Mayor. FIESTA DEL CAÑONAZO. Animada por Ainhoa Amaro Portela"
+            },
+            {
+              "hora": "11:50",
+              "descripcion": "Disparo de 12 salvas precediendo al Cañonazo que da comienzo a las Fiestas Patronales 2026"
+            },
+            {
+              "hora": "12:00",
+              "descripcion": "Desde el balcón del Ayuntamiento. INAUGURACIÓN de las Fiestas Patronales 2026, con el disparo del CAÑONAZO, a cargo del Prof. Dr. Jan Werner (Alcalde de Langen, Alemania)"
+            },
+            {
+              "hora": "12:30",
+              "descripcion": "Calles del Centro. Desfile de Gigantes y Cabezudos, amenizados por alumnos de la Escuela Municipal de Folklore"
+            },
+            {
+              "hora": "18:30",
+              "descripcion": "Plaza Mayor. Concentración: Autoridades, Corte Real, Peñas, Asociaciones y público en general, para dirigirse a las ROMERÍA a la Ermita de la Virgen de las Viñas por las calles La Miel, Cascajar, Fuenteminaya y Paseo de la Virgen."
+            },
+            {
+              "hora": "18:45",
+              "descripcion": "ROMERÍA a la Ermita de la Virgen de las Viñas por las calles La Miel, Cascajar, Fuenteminaya y Paseo de la Virgen."
+            },
+            {
+              "hora": "19:30",
+              "descripcion": "OFRENDA DE FLORES a la Virgen de las Viñas en la explanada de la Ermita y actuación del grupo de danzas 'Alquería' de la Escuela Municipal de Folclore."
+            },
+            {
+              "hora": "20:15",
+              "descripcion": "Ermita de la Virgen de las Viñas. Santa Misa y Salve Popular."
+            },
+            {
+              "hora": "21:00",
+              "descripcion": "Explanada Virgen de las Viñas. Concentración y bajada de las Peñas por el paseo de la Virgen de las Viñas, con el recorrido de la ida."
+            },
+            {
+              "hora": "23:15",
+              "descripcion": "Junto al Instituto Tomás Pascual. FUEGOS ARTIFICIALES. Pirotecnia Vulcano."
+            },
+            {
+              "hora": "23:30",
+              "descripcion": "Plaza Mayor. verbena. Orquesta The Rollers Band."
+            },
+            {
+              "hora": "00:00",
+              "descripcion": "Plaza del Trigo. Concierto de la Charanga Peña La Ribera."
+            },
+            {
+              "hora": "00:30",
+              "descripcion": "Puerta de la bodega. Concierto de la Charanga Peña El Cubillo."
+            }
+          ]
+        },
+        {
+          "dia": 3,
+          "fecha": "2026-09-13",
+          "eventos": [
+            {
+              "hora": "11:00",
+              "descripcion": "Ermita Virgen de las Viñas. Misa Concelebrada presidida por el Excmo. y Rvdmo. Sr. D. Vicente Rebollo Mozos, Obispo de Tarazona. Con los cantos litúrgicos del Orfeón Arandino 'Corazón de María'."
+            },
+            {
+              "hora": "13:00",
+              "descripcion": "Plaza Obispo Acosta. Bailar agarrados (Baile Vermú)."
+            },
+            {
+              "hora": "13:30",
+              "descripcion": "Campo de Rugby Virgen de las Viñas. Exhibición de paracaidismo a cargo de la Patrulla Acrobática de Paracaidismo del Ejército del Aire y del Espacio (PAPEA)."
+            },
+            {
+              "hora": "18:00",
+              "descripcion": "Complejo Deportivo Juan Carlos Higuero. Partido de fútbol de liga 3ª RFEF (grupo VIII) Arandina C.F. - Almazán C.F. Con entrada."
+            },
+            {
+              "hora": "18:30",
+              "descripcion": "Pabellón Santiago Manguán. Partido de balonmano entre Tubos Aranda Villa de Aranda y BM Caserío Ciudad Real, correspondiente a la 1ª jornada de la Liga Nexus Energía Asobal 2026-2027. Con entrada."
+            },
+            {
+              "hora": "19:00",
+              "descripcion": "Parque María Pacheco. XIV Feria de la Música. Actuación de Akaldo (grupo de rock con temas propios y clásicos del rock español)."
+            },
+            {
+              "hora": "20:30",
+              "descripcion": "Pabellón Santiago Manguán (Avda. de Burgos). Concentración y Bajada de las Peñas; por calle Carrequemada, finalizada ésta, apertura de las bodegas al público en general."
+            },
+            {
+              "hora": "23:30",
+              "descripcion": "Plaza Mayor. verbena. Orquesta La Reina Show."
+            },
+            {
+              "hora": "23:45",
+              "descripcion": "C/ Isabel I de Castilla (junto a la estación El Montecillo). Concierto de BARRY B."
+            }
+          ]
+        },
+        {
+          "dia": 4,
+          "fecha": "2026-09-14",
+          "eventos": [
+            {
+              "hora": "10:30",
+              "descripcion": "Bodega Peña El Jarro. Concurso de puzle 50 aniversario. Modalidad por parejas."
+            },
+            {
+              "hora": "11:00",
+              "descripcion": "Visita a la residencia de las Hermanitas de los Ancianos Desamparados por la Peña El Alboroto."
+            },
+            {
+              "hora": "12:00",
+              "descripcion": "Iglesia Santa María. Santa Misa por los Cofrades fallecidos."
+            },
+            {
+              "hora": "12:00",
+              "descripcion": "Calles del Centro. Desfile de Gigantes y Cabezudos, amenizados por la Banda Municipal de Dulzainas y Tambores de Aranda de Duero."
+            },
+            {
+              "hora": "12:00",
+              "descripcion": "Calles del Centro. Pasacalle de la Charanga Peña La Amistad."
+            },
+            {
+              "hora": "12:00",
+              "descripcion": "Bodega Peña El Jarro. Talanquera popular, amenizada por la Charanga, cuya recaudación irá destinada a una asociación benéfica arandina."
+            },
+            {
+              "hora": "12:30",
+              "descripcion": "Calles del Centro. Pasacalle de la Charanga Peña El Cubillo."
+            },
+            {
+              "hora": "13:00",
+              "descripcion": "Calles del Centro. Pasacalle de la Charanga Peña La Capea."
+            },
+            {
+              "hora": "13:00",
+              "descripcion": "Plaza Mayor. Concierto de Música a cargo de la Unidad de Música de la Academia Básica del Aire y del Espacio de la Virgen del Camino (León)."
+            },
+            {
+              "hora": "13:00",
+              "descripcion": "Plaza Arco Pajarito. Bailar agarrados (Baile Vermú)."
+            },
+            {
+              "hora": "13:00",
+              "descripcion": "Plaza del Trigo. Concierto y talanquera popular \"Aranda en Dulzaina\"."
+            },
+            {
+              "hora": "18:00",
+              "descripcion": "Plaza Jardines de Don Diego. Concurso \"Tu Kara-oke me suena\"."
+            },
+            {
+              "hora": "18:30",
+              "descripcion": "Plaza Laguna Negra. Infantil y Familiar. Bichejos, con Bambalúa Teatro."
+            },
+            {
+              "hora": "19:00",
+              "descripcion": "Parque María Pacheco. XIV Feria de la Música. Actuación de Pink Cadillac (Pop-Rock nacional e internacional)."
+            },
+            {
+              "hora": "20:30",
+              "descripcion": "Plaza Dr. Costales. Concentración y Bajada de las Peñas; finalizada ésta, apertura de las bodegas al público en general."
+            },
+            {
+              "hora": "23:30",
+              "descripcion": "Plaza Mayor. verbena."
+            },
+            {
+              "hora": "23:45",
+              "descripcion": "C/ Isabel I de Castilla (junto a la estación El Montecillo). Concierto de CAMELA."
+            },
+            {
+              "hora": "00:00",
+              "descripcion": "Bodega Peña La Ribera. Concierto de la Charanga Peña La Ribera. Dentro de la bodega."
+            }
+          ]
+        },
+        {
+          "dia": 5,
+          "fecha": "2026-09-15",
+          "eventos": [
+            {
+              "hora": "11:00",
+              "descripcion": "Pasacalle a cargo de la Charanga Peña La Amistad."
+            },
+            {
+              "hora": "12:00",
+              "descripcion": "Visita a la residencia Ciudad del Bienestar por la Peña El Cubillo."
+            },
+            {
+              "hora": "12:00",
+              "descripcion": "Visita a la residencia de las Hermanitas de los Ancianos Desamparados por la Peña Tierra Aranda."
+            },
+            {
+              "hora": "12:00",
+              "descripcion": "Embarcadero El Barriles. Paseos en Barco Dragón. Actividad gratuita previa inscripción in situ (a partir de 9 años)."
+            },
+            {
+              "hora": "12:30",
+              "descripcion": "Peña La Ribera. Apertura de la bodega."
+            },
+            {
+              "hora": "13:00",
+              "descripcion": "Pasacalle de la Charanga Peña Tierra Aranda."
+            },
+            {
+              "hora": "13:00",
+              "descripcion": "Calle Isilla. Baile Vermú amenizado por la Charanga Peña El Jarro."
+            },
+            {
+              "hora": "13:30",
+              "descripcion": "Parque El Barriles. Baile Vermú a cargo de la Charanga Peña Tierra Aranda."
+            },
+            {
+              "hora": "16:30",
+              "descripcion": "Embarcadero El Barriles. Paseos en Barco Dragón. Actividad gratuita previa inscripción in situ (a partir de 9 años)."
+            },
+            {
+              "hora": "18:00",
+              "descripcion": "Parque de La Isla. III Mini Olimpiada Interpeñas y III Campeonato de futbolín humano Interpeñas."
+            },
+            {
+              "hora": "18:30",
+              "descripcion": "Parque La Huerta. Infantil y Familiar. Superfiesta infantil El payaso loco, con Agencia Artística."
+            },
+            {
+              "hora": "19:00",
+              "descripcion": "Parque María Pacheco. XIV Feria de la Música. Actuación de Hijos del Tercer Acorde (Fusión Rock con instrumentos tradicionales irlandeses, españoles y americanos)."
+            },
+            {
+              "hora": "20:00",
+              "descripcion": "Parque de La Isla. Concentración de Peñas para dirigirse con pasacalles a la Plaza Mayor (templete) donde tendrá lugar el Homenaje de las Peñas a la Corte Real."
+            },
+            {
+              "hora": "22:30",
+              "descripcion": "C/ Isabel I de Castilla (junto a la estación El Montecillo). Concierto de JUAN MAGÁN."
+            }
+          ]
+        },
+        {
+          "dia": 6,
+          "fecha": "2026-09-16",
+          "eventos": [
+            {
+              "hora": "10:00",
+              "descripcion": "Colegio Castilla. Mago Nicolás Chevalier."
+            },
+            {
+              "hora": "11:30",
+              "descripcion": "Colegio Vera Cruz. Edu el Mago."
+            },
+            {
+              "hora": "12:00",
+              "descripcion": "Colegio Simón de Colonia. Mago Nicolás Chevalier."
+            },
+            {
+              "hora": "11:00",
+              "descripcion": "Residencia Ciudad del Bienestar. Mago Yimis."
+            },
+            {
+              "hora": "12:00",
+              "descripcion": "Visita a la residencia de las Hermanitas de los Ancianos Desamparados. Asistirán Autoridades, acompañadas por la Corte Real, la Banda Municipal de Dulzainas y Tambores de Aranda de Duero y la Asociación de Gigantes y Cabezudos."
+            },
+            {
+              "hora": "17:00",
+              "descripcion": "Visita a la residencia Virgen de las Viñas por la Peña La Ribera."
+            },
+            {
+              "hora": "18:00",
+              "descripcion": "Visita a la residencia Río Duero por la Peña La Ribera."
+            },
+            {
+              "hora": "18:00",
+              "descripcion": "Ribera del Duero. Cucañas."
+            },
+            {
+              "hora": "18:00",
+              "descripcion": "Plaza del Trigo. Certamen de artistas callejeros. Wakamola, a cargo de la Cía. Chimichurri."
+            },
+            {
+              "hora": "18:00",
+              "descripcion": "Pabellón ADC Michelin. Partidos pelota mano profesional. Con entrada."
+            },
+            {
+              "hora": "18:30",
+              "descripcion": "Parque María Pacheco. Infantil y familiar. El aventulibro del Profesor Ludus, con Kamaru Teatro."
+            },
+            {
+              "hora": "18:30",
+              "descripcion": "Visita a la residencia Ciudad del Bienestar por la Peña La Ribera."
+            },
+            {
+              "hora": "18:30",
+              "descripcion": "Parque La Huerta. Tarde de Magia en la calle. Mago Nicolás y Mago Iván."
+            },
+            {
+              "hora": "19:00",
+              "descripcion": "Restaurante La Cantinaccia. Pesaje público de los púgiles de la velada de boxeo del día siguiente."
+            },
+            {
+              "hora": "19:30",
+              "descripcion": "Jardines de Don Diego. Certamen de artistas callejeros. Al Tran Tran, a cargo de la Cía. Al Tran Tran."
+            },
+            {
+              "hora": "19:30",
+              "descripcion": "Cultural Caja de Burgos. Obra teatral \"Un cura en apuros\", a cargo de Teatro Eslava. Con entrada."
+            },
+            {
+              "hora": "20:00",
+              "descripcion": "Calles Ricaposada, San Pelayo y Ronda, VII Carrera de Barricas \"Dominio de CAIR\", con la participación de las Peñas. Animada por DJ Ziry."
+            },
+            {
+              "hora": "23:00",
+              "descripcion": "Recinto Ferial. GRAN ESPECTÁCULO PARÍS DE NOIA SHOW. Sensacional combinación de música, luz y baile en un mismo evento."
+            }
+          ]
+        },
+        {
+          "dia": 10,
+          "fecha": "2026-09-20",
+          "eventos": [
+            {
+              "hora": "09:30",
+              "descripcion": "II Slalom KTR Villa de Aranda. Verificación técnica y exposición de vehículos."
+            },
+            {
+              "hora": "13:00",
+              "descripcion": "Plaza Laguna Negra. Bailar agarrados (Baile Vermú)."
+            },
+            {
+              "hora": "13:30",
+              "descripcion": "Polígono Prado Marina. II Slalom KTR Villa de Aranda. Prueba puntuable para el Campeonato de Castilla y León de Slalom. Al finalizar entrega de premios y trofeos."
+            },
+            {
+              "hora": "18:30",
+              "descripcion": "Plaza del Trigo. Encierros infantiles, con la Cía. Tirotateiro."
+            },
+            {
+              "hora": "20:00",
+              "descripcion": "Plaza Mayor. Concierto 30º Aniversario Abrojo Folk."
+            },
+            {
+              "hora": "23:00",
+              "descripcion": "Plaza Mayor. Animación Musical por la Banda Municipal de Dulzainas y Tambores de la Escuela Municipal de Folclore de Aranda de Duero."
+            },
+            {
+              "hora": "23:30",
+              "descripcion": "Plaza Mayor. Tradicional Baile de LA RUEDA con la Banda Municipal de Dulzainas y Tambores de la Escuela Municipal de Folklore de Aranda de Duero."
+            },
+            {
+              "hora": "00:00",
+              "descripcion": "Plaza Mayor. GRAN TRACA FIN DE FIESTAS. DESPEDIDA DE LAS FIESTAS 2026. Entierro de la sardina a cargo de la Charanga Estraperlo. El recorrido comienza en la Plaza Santa María, transita por calles céntricas y finaliza en la Plaza Mayor."
+            }
+          ]
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "cobertura_dias": 1.0,
+      "programa_estado": "completo",
+      "lat": 41.67019102,
+      "lng": -3.689687939
+    },
+    {
+      "id": "fiestas-patronales-la-aguilera-2026",
+      "lugar_id": "09018000101",
+      "nombre": "Fiestas Patronales de La Aguilera en honor a San Pedro Regalado",
+      "fecha_inicio": "2026-05-12",
+      "fecha_fin": "2026-05-17",
+      "tamano": "grande",
+      "descripcion": "Celebración de las fiestas patronales en honor a San Pedro Regalado, incluyendo misas solemnes, procesiones, verbenas con orquestas, juegos populares, concurso de disfraces y una traca final. Se desarrollan en torno al Convento del Domus Dei y la Plaza Mayor.",
+      "confianza": "baja",
+      "fuentes": [
+        "busqueda_web",
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "La Aguilera",
+      "solo_fuentes_no_oficiales": true,
+      "programa": [],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": true,
+      "ancla_propuesta": {
+        "fecha_inicio": "2026-05-13",
+        "fecha_fin": "2026-05-17",
+        "peso": 4,
+        "evidencia": "patronales de la aguilera 2026 san pedro regalado proponer una correccion fechas 13 may — 17 may 2026 lugar la aguilera 09 precios gratis estado confirmado presentacion de patronales la aguilera las fiestas patronales de la aguilera pedania del municipio de aranda de duero se celebran cada 13 de mayo en honor a su patron ligado tradicionalmente a la figura de san pedro regalado —cuyo celebre convento del domus dei se"
+      },
+      "sin_programa_publicado": true,
+      "programa_estado": "no_encontrado",
+      "patron": {
+        "nombre": "San Pedro Regalado",
+        "dia": 13,
+        "mes": 5,
+        "fuente": "wikipedia"
+      },
+      "lat": 41.73203347,
+      "lng": -3.770124402
+    },
+    {
+      "id": "sinovas-san-bartolome-2026",
+      "lugar_id": "09018000301",
+      "nombre": "Fiestas de San Bartolomé",
+      "fecha_inicio": "2026-08-22",
+      "fecha_fin": "2026-08-31",
+      "tamano": "grande",
+      "descripcion": "Fiestas patronales en honor a San Bartolomé con programación de 10 días que incluye pasacalles, charangas, pregón, concursos gastronómicos (Premios Albillo, Certamen de Pacharán), campeonatos deportivos, cenas populares, verbenas, teatro y actividades infantiles. Destacan la misa solemne, procesiones, la Carrera Urbana Doble Milla y la tradicional paella popular.",
+      "confianza": "alta",
+      "fuentes": [
+        "web_municipio",
+        "busqueda_web",
+        "rrss_municipio:enaranda.es"
+      ],
+      "sede_segun_el_texto": "Sinovas",
+      "solo_fuentes_no_oficiales": false,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-08-22",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "Pasacalles por el barrio con la charanga El Barreño."
+            },
+            {
+              "hora": "13:00",
+              "descripcion": "Inauguración de la exposición “Programas de las Fiestas de Aranda 1940-1980: Portadas y reinas”."
+            },
+            {
+              "hora": "19:00",
+              "descripcion": "Imposición de la banda a la reina y dama de las fiestas 2026. A continuación, pregón a cargo de Benjamín Martín Gayubo y cierre del acto por el alcalde."
+            },
+            {
+              "hora": "20:30",
+              "descripcion": "Subida a por el Santo y ofrenda de flores."
+            },
+            {
+              "hora": "22:00",
+              "descripcion": "Cena de hermandad."
+            },
+            {
+              "hora": "23:30",
+              "descripcion": "Concierto de Monos en Estéreo."
+            },
+            {
+              "hora": "01:30",
+              "descripcion": "DJ Luis Vela."
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-08-23",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "Misa de la fiesta principal con autoridades e invitados."
+            },
+            {
+              "hora": "13:00",
+              "descripcion": "Vino español con autoridades."
+            },
+            {
+              "hora": "13:30",
+              "descripcion": "Gigantes y cabezudos con dulzaineros."
+            },
+            {
+              "hora": "18:00",
+              "descripcion": "Campeonato de tanguilla femenino y masculino."
+            },
+            {
+              "hora": "21:00 a 23:00",
+              "descripcion": "Concierto de Cinco Bajo Cero."
+            }
+          ]
+        },
+        {
+          "dia": 3,
+          "fecha": "2026-08-24",
+          "eventos": [
+            {
+              "hora": "11:30",
+              "descripcion": "Misa en honor a nuestro patrón, San Bartolomé."
+            },
+            {
+              "hora": "12:00",
+              "descripcion": "Actividad infantil: juegos y festival de dibujos."
+            },
+            {
+              "hora": "12:30",
+              "descripcion": "Toboganes de agua infantiles y para adultos. Pistolas de agua."
+            },
+            {
+              "hora": "14:15",
+              "descripcion": "Fiesta de la espuma."
+            },
+            {
+              "hora": "17:00",
+              "descripcion": "Toboganes de agua infantiles y para adultos."
+            },
+            {
+              "hora": "22:30",
+              "descripcion": "Cine bajo las estrellas."
+            }
+          ]
+        },
+        {
+          "dia": 4,
+          "fecha": "2026-08-25",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "Actividad infantil: karts a pedales, taller de pompas y otras propuestas."
+            },
+            {
+              "hora": "16:00",
+              "descripcion": "Primera fase del 1.º Campeonato de mus."
+            },
+            {
+              "hora": "19:00",
+              "descripcion": "XXI Certamen de vino cosechero 'Premios Albillo'."
+            },
+            {
+              "hora": "22:00",
+              "descripcion": "Actuación de Kalipong."
+            }
+          ]
+        },
+        {
+          "dia": 5,
+          "fecha": "2026-08-26",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "Actividad infantil: Master Chef infantil."
+            },
+            {
+              "hora": "16:00",
+              "descripcion": "Segunda fase del 1.º Campeonato de mus."
+            },
+            {
+              "hora": "19:30",
+              "descripcion": "XVI Carrera urbana de Sinovas."
+            },
+            {
+              "hora": "21:00",
+              "descripcion": "Primer espectáculo del barrio."
+            },
+            {
+              "hora": "23:00",
+              "descripcion": "XXV Marcha nocturna."
+            }
+          ]
+        },
+        {
+          "dia": 6,
+          "fecha": "2026-08-27",
+          "eventos": [
+            {
+              "hora": "12:30",
+              "descripcion": "Actividad infantil: jugando con arcilla."
+            },
+            {
+              "hora": "17:30",
+              "descripcion": "VII Torneo de fútbol-sala."
+            },
+            {
+              "hora": "18:00",
+              "descripcion": "Campeonato de rana femenino."
+            },
+            {
+              "hora": "19:00",
+              "descripcion": "I Circuito Mountain Bike infantil."
+            },
+            {
+              "hora": "20:00",
+              "descripcion": "VI Circuito Mountain Bike adultos."
+            },
+            {
+              "hora": "22:30",
+              "descripcion": "Teatro: 'Dinero negro'."
+            }
+          ]
+        },
+        {
+          "dia": 7,
+          "fecha": "2026-08-28",
+          "eventos": [
+            {
+              "hora": "13:00",
+              "descripcion": "Almuerzo popular"
+            },
+            {
+              "hora": "13:00",
+              "descripcion": "Baile: Vermut Sax & DJ"
+            },
+            {
+              "hora": "18:00",
+              "descripcion": "Campeonato de rana masculino"
+            },
+            {
+              "hora": "18:00",
+              "descripcion": "Campeonato de bolos femenino"
+            },
+            {
+              "hora": "20:30",
+              "descripcion": "Bingo solidario"
+            },
+            {
+              "hora": "01:30",
+              "descripcion": "DJ"
+            }
+          ]
+        },
+        {
+          "dia": 8,
+          "fecha": "2026-08-29",
+          "eventos": [
+            {
+              "hora": "13:00",
+              "descripcion": "Baile vermut “Ecos musicales”"
+            },
+            {
+              "hora": "13:30",
+              "descripcion": "X Concurso de tortillas, con degustación para el público asistente"
+            },
+            {
+              "hora": "14:30",
+              "descripcion": "Paella popular"
+            },
+            {
+              "hora": "18:00",
+              "descripcion": "XIX Partido de fútbol: casados contra solteros"
+            },
+            {
+              "hora": "20:00",
+              "descripcion": "Desfile de disfraces"
+            },
+            {
+              "hora": "21:00",
+              "descripcion": "Verbena"
+            },
+            {
+              "hora": "01:00",
+              "descripcion": "DJ"
+            }
+          ]
+        },
+        {
+          "dia": 9,
+          "fecha": "2026-08-30",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "Misa de difuntos"
+            },
+            {
+              "hora": "12:40",
+              "descripcion": "Subida del Santo a la ermita con dulzaineros"
+            },
+            {
+              "hora": "14:00",
+              "descripcion": "Vino español en la carpa de la ermita"
+            },
+            {
+              "hora": "17:30",
+              "descripcion": "Campeonato de futbolín"
+            },
+            {
+              "hora": "20:00",
+              "descripcion": "Concurso de pacharán casero Ribera del Duero"
+            },
+            {
+              "hora": "21:00",
+              "descripcion": "XIX Campeonato de tirada de boina"
+            },
+            {
+              "hora": "22:00",
+              "descripcion": "Cena popular “Cada uno con su fardel”"
+            }
+          ]
+        },
+        {
+          "dia": 10,
+          "fecha": "2026-08-31",
+          "eventos": [
+            {
+              "hora": "19:00",
+              "descripcion": "Tanguilla por parejas."
+            },
+            {
+              "hora": "22:00",
+              "descripcion": "Merienda \"Fin de Fiesta\" a escote y entrega de premios a los ganadores de los campeonatos."
+            }
+          ]
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": true,
+      "cobertura_dias": 1.0,
+      "programa_estado": "completo",
+      "patron": {
+        "nombre": "San Bartolomé",
+        "dia": 24,
+        "mes": 8,
+        "fuente": "wikipedia"
+      },
+      "lat": 41.70171592,
+      "lng": -3.66450571
+    },
+    {
+      "id": "fiestas-del-barrio-de-la-calabaza-2026",
+      "lugar_id": "09018000401",
+      "nombre": "Fiestas del Barrio de La Calabaza 2026",
+      "fecha_inicio": "2026-08-21",
+      "fecha_fin": "2026-08-23",
+      "tamano": "pequeña",
+      "descripcion": "Celebración con actividades infantiles, concursos gastronómicos, comidas populares, magia y conciertos en directo, incluyendo un evento musical el viernes 21 de agosto.",
+      "confianza": "baja",
+      "fuentes": [
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "La Calabaza",
+      "solo_fuentes_no_oficiales": true,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-08-21",
+          "eventos": [
+            {
+              "hora": "19:00",
+              "descripcion": "Talleres infantiles y juegos de puntería"
+            },
+            {
+              "hora": "20:30",
+              "descripcion": "Cena popular con Food Truck El Majuelo"
+            },
+            {
+              "hora": "22:45",
+              "descripcion": "Concierto musical a cargo del grupo arandino SIMULACRO"
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-08-22",
+          "eventos": [
+            {
+              "hora": "11:00",
+              "descripcion": "Castillos hinchables y fiesta del agua"
+            },
+            {
+              "hora": "11:00",
+              "descripcion": "Parque infantil Saltimbanqui con atracciones para todas las edades y atracciones acuáticas"
+            },
+            {
+              "hora": "12:00",
+              "descripcion": "Gran concurso de tuta, III Torneo Vecinal Barrio La Calabaza. Competición por parejas, con premios sorpresa para el primer, segundo y tercer puesto"
+            },
+            {
+              "hora": "12:30",
+              "descripcion": "I Concurso de croquetas. La degustación se realizará antes del vermut y habrá premios para los cocineros y cocineras desde el primero hasta el quinto puesto"
+            },
+            {
+              "hora": "12:30",
+              "descripcion": "Baile vermut amenizado por Charanga Estraperlo"
+            },
+            {
+              "hora": "14:30",
+              "descripcion": "Fiesta de la espuma"
+            },
+            {
+              "hora": "15:15",
+              "descripcion": "Gran paellada popular"
+            },
+            {
+              "hora": "17:30",
+              "descripcion": "Bingo para toda la familia"
+            },
+            {
+              "hora": "19:00",
+              "descripcion": "Actuación del Mago Joyra"
+            },
+            {
+              "hora": "22:45",
+              "descripcion": "Verbena popular con actuación musical en directo del grupo local Los Trova"
+            }
+          ]
+        },
+        {
+          "dia": 3,
+          "fecha": "2026-08-23",
+          "eventos": []
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "cobertura_dias": 1.0,
+      "programa_estado": "completo",
+      "lat": 41.67543383,
+      "lng": -3.628462546
+    },
+    {
+      "id": "semana-cultura-monte-costajan-2026",
+      "lugar_id": "09018000501",
+      "nombre": "Semana Cultural Monte Costaján",
+      "fecha_inicio": "2026-06-26",
+      "fecha_fin": "2026-06-28",
+      "tamano": "pequeña",
+      "descripcion": "Celebración con hinchables, cata de cervezas, monólogo, comida popular, juegos infantiles, conciertos, baile vermut y actividades para todas las edades organizada por la Asociación de Vecinos Monte Costaján.",
+      "confianza": "baja",
+      "fuentes": [
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Monte Costaján",
+      "solo_fuentes_no_oficiales": true,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-06-26",
+          "eventos": [
+            {
+              "hora": "17:00",
+              "descripcion": "Parque infantil hinchables"
+            },
+            {
+              "hora": "20:00",
+              "descripcion": "Cata de cervezas artesanas"
+            },
+            {
+              "hora": "21:30",
+              "descripcion": "Monólogo con Sergio Olvidado"
+            },
+            {
+              "hora": "23:00",
+              "descripcion": "Discomóvil S.M.S"
+            },
+            {
+              "hora": "02:00",
+              "descripcion": "Partido España vs Uruguay"
+            },
+            {
+              "hora": "20:00",
+              "descripcion": "Food truck El Majuelo"
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-06-27",
+          "eventos": [
+            {
+              "hora": "15:00",
+              "descripcion": "Comida popular"
+            },
+            {
+              "hora": "18:00",
+              "descripcion": "Campeonato de tuta"
+            },
+            {
+              "hora": "20:00",
+              "descripcion": "Espectáculo Clown Talent"
+            },
+            {
+              "hora": "21:00",
+              "descripcion": "3º Concurso internacional de lanzamiento de gavillas"
+            },
+            {
+              "hora": "23:15",
+              "descripcion": "Concierto D-DOC"
+            }
+          ]
+        },
+        {
+          "dia": 3,
+          "fecha": "2026-06-28",
+          "eventos": [
+            {
+              "hora": "13:00",
+              "descripcion": "Baile vermut con Achilipop"
+            },
+            {
+              "hora": "18:30",
+              "descripcion": "Juegos infantiles"
+            },
+            {
+              "hora": "20:00",
+              "descripcion": "DJ local"
+            },
+            {
+              "hora": "21:00",
+              "descripcion": "3º Concurso de tortillas"
+            }
+          ]
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "cobertura_dias": 1.0,
+      "programa_estado": "completo",
+      "lat": 41.70528338,
+      "lng": -3.684459936
+    }
+  ]
+}

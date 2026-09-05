@@ -206,7 +206,7 @@ def test_challenger4_r5_high_concurrency_async_caches():
                 await rc.set(f"loc_{idx}", {"instagram": f"https://instagram.com/user{idx}"})
 
             async def do_write_p(idx):
-                await pc.set(f"loc_{idx}", {"nombre": f"San {idx}", "dia": 15, "mes": 8})
+                await pc.set(f"loc_{idx}", {"nombre": f"San {idx}", "ambito": "localidad", "dia": 15, "mes": 8})
 
             tasks = []
             for i in range(100):

@@ -55,14 +55,66 @@ def test_la_capital_no_repite_su_nombre_en_la_consulta():
     capital = {"nombre": "Tobarra", "sitio_web": "https://www.tobarra.es"}
     queries = _build_queries(capital, MUNICIPIO, 2026)
     assert not any("Tobarra Tobarra" in q for q in queries)
-    assert "fiestas patronales Tobarra 2026" in queries
+    assert "fiestas patronales Tobarra Albacete 2026" in queries
 
 
 def test_la_pedania_si_lleva_el_municipio():
     """Ahí el municipio desambigua, que es para lo que está."""
     pedania = {"nombre": "Cordovilla"}
     queries = _build_queries(pedania, MUNICIPIO, 2026)
-    assert "fiestas patronales Cordovilla Tobarra 2026" in queries
+    assert "fiestas patronales Cordovilla Tobarra Albacete 2026" in queries
+
+
+def test_toda_consulta_desambigua_geograficamente():
+    """
+    Medido el 2026-09-04: de 113 consultas de una ejecución, 80 —el 71%—
+    preguntaban el nombre del pueblo a secas. Con eso "Santa Marta" devuelve la
+    ciudad colombiana de 500.000 habitantes antes que el pueblo pacense de 4.199,
+    y el contexto de discovery acabó encabezado por Colombia y por Astorga.
+
+    Vale cualquiera de los desambiguadores; lo que no vale es ninguno. La
+    consulta del patrón cuenta como desambiguada por la advocación: "Stmo. Cristo
+    de la Antigua" es específico de un pueblo, y encadenarle además provincia y
+    comunidad producía trabalenguas que ningún motor casa.
+    """
+    def desambigua(q: str, loc: str, mun: dict) -> bool:
+        bajo = q.lower()
+        return (
+            (mun.get("provincia", "") or "").lower() in bajo
+            or (mun.get("comunidad_autonoma", "") or "").lower() in bajo
+            or "site:" in bajo
+            or (mun["nombre"].lower() in bajo and mun["nombre"].lower() != loc.lower())
+            or "cristo de la antigua" in bajo
+        )
+
+    casos = [
+        ("Tobarra", {"nombre": "Tobarra", "sitio_web": "https://www.tobarra.es"}),
+        ("Cordovilla", {"nombre": "Cordovilla"}),
+        ("Aljubé", {"nombre": "Aljubé", "patron_nombre": "San Isidro"}),
+    ]
+    for nombre, loc in casos:
+        for q in _build_queries(loc, MUNICIPIO, 2026):
+            assert desambigua(q, nombre, MUNICIPIO), f"consulta sin desambiguar: {q!r}"
+
+
+def test_se_usa_el_nombre_oficial_del_municipio_cuando_se_conoce():
+    """
+    'Santa Marta' es 'Santa Marta de los Barros'. Ninguna de las 14 consultas de
+    ese municipio usó el nombre completo, y el juez de pertenencia acabó
+    descartando su única ficha real por no reconocerlo.
+    """
+    mun = {"nombre": "Santa Marta", "provincia": "Badajoz",
+           "comunidad": "Extremadura", "sitio_web": "http://www.santamartadelosbarros.com",
+           "nombre_oficial": "Santa Marta de los Barros"}
+    queries = _build_queries(mun, mun, 2026)
+    assert any("Santa Marta de los Barros" in q for q in queries)
+
+
+def test_sin_nombre_oficial_no_se_rompe_nada():
+    """La inmensa mayoría de municipios no tiene apellido y no debe inventarse."""
+    queries = _build_queries({"nombre": "Tobarra"}, MUNICIPIO, 2026)
+    assert all("Tobarra" in q for q in queries)
+    assert not any("Tobarra Tobarra" in q for q in queries)
 
 
 def test_no_se_repiten_consultas():
@@ -112,7 +164,14 @@ def test_una_consulta_con_site_que_falla_se_reintenta_sin_el_operador():
     con_site = [q for q in lanzadas if "site:" in q]
     assert con_site, "el escenario no llegó a probar el operador site:"
     for q in con_site:
-        assert q.replace(f" site:www.tobarra.es", "") in lanzadas
+        base = q.replace(" site:www.tobarra.es", "")
+        # El reintento lleva además la provincia: al quitar el dominio la
+        # consulta se quedaba sin nada que la situara, y era el último agujero
+        # por el que entraba el pueblo homónimo —"fiestas patronales Santa Marta
+        # 2026" devuelve la ciudad colombiana—.
+        assert any(r.startswith(base) and "Albacete" in r for r in lanzadas), (
+            f"no se reintentó {base!r} con la provincia"
+        )
 
 
 def test_no_se_reintenta_si_la_consulta_con_site_funciona():
@@ -136,7 +195,7 @@ def test_se_busca_por_el_patron_cuando_se_conoce():
     loc = {"nombre": "Tobarra", "sitio_web": "https://www.tobarra.es",
            "patron_nombre": "Stmo. Cristo de la Antigua"}
     queries = _build_queries(loc, MUNICIPIO, 2026)
-    assert "fiestas patronales Stmo. Cristo de la Antigua Tobarra 2026" in queries
+    assert "fiestas patronales Stmo. Cristo de la Antigua Tobarra Albacete 2026" in queries
     assert "Tobarra fiestas patronales Stmo. Cristo de la Antigua" in queries
 
 

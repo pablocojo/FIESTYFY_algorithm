@@ -45,7 +45,7 @@ from fuentes import (
     FUENTE_PRENSA_REGIONAL,
     get_medios_prensa_por_provincia,
 )
-from config_idiomas import get_language_profile
+from config_idiomas import comunidad_de, get_language_profile, perfil_de_lugar
 import cache_paginas
 
 logger = logging.getLogger("search")
@@ -108,7 +108,7 @@ def _build_queries(localidad: dict, municipio: dict, anno: int) -> list[str]:
         nombre_mun = nombre_loc
 
     provincia = (municipio.get("provincia") or "").strip()
-    comunidad = (municipio.get("comunidad_autonoma") or "").strip()
+    comunidad = comunidad_de(municipio)
     sitio_web_mun = (municipio.get("sitio_web") or "").strip()
     sitio_web_loc = (localidad.get("sitio_web") or "").strip()
 
@@ -124,9 +124,40 @@ def _build_queries(localidad: dict, municipio: dict, anno: int) -> list[str]:
     # eran una de cada cinco consultas de la ejecución.
     donde = nombre_loc if _mismo_nombre(nombre_loc, nombre_mun) else f"{nombre_loc} {nombre_mun}"
 
+    # TODA consulta lleva un desambiguador. Medido el 2026-09-04: de 113
+    # consultas, 80 —el 71%— preguntaban el nombre del pueblo a secas, y con eso
+    # "Santa Marta" devuelve la ciudad colombiana de 500.000 habitantes antes que
+    # el pueblo pacense de 4.199. El contexto de discovery acabó encabezado por
+    # Colombia (23 chunks) y Astorga (12), y la fiesta real nunca llegó al modelo.
+    #
+    # Pero NO todas llevan el mismo, y esto importa: hay fuentes legítimas que no
+    # nombran la provincia jamás —la web del propio pueblo, la prensa comarcal—.
+    # Si todas las consultas la exigieran, arreglaríamos Santa Marta y romperíamos
+    # los municipios que hoy funcionan. Así que se reparten tres desambiguadores
+    # distintos: provincia, nombre oficial completo y el operador site:.
+    geo = provincia or comunidad
+
+    # El nombre oficial completo del municipio, si `main.py` lo ha resuelto:
+    # "Santa Marta" → "Santa Marta de los Barros". Para una pedanía se combina con
+    # el suyo, que es como lo escriben las fuentes: "Aljubé, Tobarra".
+    oficial_mun = (municipio.get("nombre_oficial") or "").strip() or nombre_mun
+    if _mismo_nombre(nombre_loc, nombre_mun):
+        donde_oficial = oficial_mun
+    else:
+        donde_oficial = f"{nombre_loc} {oficial_mun}"
+    # La mayoría de municipios no tiene apellido —"Tobarra" es "Tobarra"— y ahí
+    # esta consulta se quedaría sin desambiguar. Se le pone la COMUNIDAD, no la
+    # provincia: es más ancha, estrecha menos, y así las tres primeras consultas
+    # siguen usando tres criterios distintos en vez de repetir el mismo.
+    if _mismo_nombre(donde_oficial, donde) and comunidad:
+        donde_oficial = f"{donde_oficial} {comunidad}"
+
     queries = [
-        f"{kw1} {donde} {anno}",
-        f"{kw2} {nombre_loc} {anno}",
+        f"{kw1} {donde} {geo} {anno}",
+        # Esta va por el nombre oficial en vez de por la provincia: si el nombre
+        # largo ya distingue al pueblo, exigir además la provincia estrecharía de
+        # más y dejaría fuera a su propia web.
+        f"{kw2} {donde_oficial} {anno}",
         f"{kw3} {nombre_loc} {provincia} {anno}",
     ]
 
@@ -137,8 +168,13 @@ def _build_queries(localidad: dict, municipio: dict, anno: int) -> list[str]:
     # por su nombre, se encuentra siempre.
     patron = (localidad.get("patron_nombre") or "").strip()
     if patron:
-        queries.append(f"{kw1} {patron} {nombre_loc} {anno}")
-        queries.append(f"{nombre_loc} {kw1} {patron}")
+        queries.append(f"{kw1} {patron} {nombre_loc} {geo} {anno}")
+        # Esta se queda ANCHA a propósito: sin año y sin geografía. La advocación
+        # ("Stmo. Cristo de la Antigua") ya es muy específica, y encadenarle
+        # provincia y comunidad producía trabalenguas como "Aljubé Tobarra
+        # Castilla-La Mancha fiestas patronales San Isidro", que ningún motor
+        # casa. Es la vía de escape para las fuentes que no nombran la provincia.
+        queries.append(f"{donde} {kw1} {patron}")
 
     sitios_site = []
     if sitio_web_mun:
@@ -153,10 +189,13 @@ def _build_queries(localidad: dict, municipio: dict, anno: int) -> list[str]:
             queries.append(f"{kw1} {nombre_loc} {anno} site:{domain}")
 
     # Sin duplicados: dos plantillas distintas pueden producir la misma consulta.
+    # El espaciado se normaliza aquí porque las plantillas interpolan campos que
+    # pueden venir vacíos —provincia, comunidad— y dejan dobles espacios.
     vistas, unicas = set(), []
     for q in queries:
-        clave = " ".join(q.lower().split())
-        if clave not in vistas:
+        q = " ".join(q.split())
+        clave = q.lower()
+        if q and clave not in vistas:
             vistas.add(clave)
             unicas.append(q)
     return unicas
@@ -1141,9 +1180,18 @@ def build_fiesta_queries(fiesta: dict, localidad: dict, municipio: dict, anno: i
     limpio = re.sub(r"^\s*(fiestas?\s+(patronales\s+)?(de\s+|en\s+honor\s+a\s+)?)", "",
                     nombre_fiesta, flags=re.IGNORECASE).strip() or nombre_fiesta
 
+    # La provincia también aquí. El nombre de la fiesta suele ser específico,
+    # pero no siempre basta: "programa Carnaval de Santa Marta Santa Marta 2026"
+    # devolvió el carnaval de la ciudad colombiana, y de ahí salió una ficha.
+    # Se deja UNA consulta sin geografía —la del mes— porque el nombre de la
+    # fiesta más el mes ya acota mucho, y así queda una vía para las fuentes que
+    # no nombran nunca la provincia.
+    geo = (municipio.get("provincia") or comunidad_de(municipio) or "").strip()
+    donde = f"{nombre_loc} {geo}".strip()
+
     queries = [
-        f"programa {nombre_fiesta} {nombre_loc} {anno}",
-        f"{nombre_loc} {limpio} {anno} programa de actos",
+        f"programa {nombre_fiesta} {donde} {anno}",
+        f"{donde} {limpio} {anno} programa de actos",
     ]
 
     mes = ""
@@ -1250,6 +1298,15 @@ async def _buscar_y_descargar(
             # bueno suele salir igual entre los primeros.
             if not results and "site:" in query:
                 sin_site = re.sub(r"\s*site:\S+", "", query).strip()
+                # …pero al quitar el dominio, la consulta se queda sin nada que
+                # la sitúe, y era el último agujero por el que entraba el pueblo
+                # homónimo: el reintento de Santa Marta salía como "fiestas
+                # patronales Santa Marta 2026", que devuelve la ciudad colombiana.
+                # Se le pone la provincia, que es lo que el `site:` estaba
+                # haciendo de otra manera.
+                geo_reintento = (municipio.get("provincia") or comunidad_de(municipio) or "").strip()
+                if geo_reintento and geo_reintento.lower() not in sin_site.lower():
+                    sin_site = f"{sin_site} {geo_reintento}"
                 if sin_site and " ".join(sin_site.lower().split()) not in lanzadas:
                     logger.info(f"  Reintento sin el operador site: {sin_site}")
                     pendientes.insert(0, sin_site)
@@ -1428,8 +1485,7 @@ def build_media_queries(localidad: dict, municipio: dict, anno: int) -> list[str
     if not nombre_loc:
         return []
 
-    comunidad = (municipio.get("comunidad_autonoma") or "").strip()
-    perfil_data = get_language_profile(comunidad, provincia)
+    perfil_data = perfil_de_lugar(municipio)
     kws = perfil_data["perfil_principal"]["keywords_busqueda"]
     kw1 = kws[0] if kws else "fiestas"
 

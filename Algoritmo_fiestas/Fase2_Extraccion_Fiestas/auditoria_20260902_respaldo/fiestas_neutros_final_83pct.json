@@ -1,0 +1,2933 @@
+{
+  "version": 2,
+  "anno": 2026,
+  "ultimo_municipio_procesado": "09018000000",
+  "municipios_completados": [
+    "02074000000",
+    "09018000000"
+  ],
+  "localidades_completadas": [
+    "02074000601",
+    "02074000101",
+    "02074000201",
+    "02074000301",
+    "02074000401",
+    "02074000501",
+    "02074000701",
+    "09018000201",
+    "09018000101",
+    "09018000301",
+    "09018000401",
+    "09018000501"
+  ],
+  "fiestas": [
+    {
+      "id": "fiesta-patronales-tobarra-mayo-2026",
+      "lugar_id": "02074000601",
+      "nombre": "Fiestas Patronales de Tobarra (Cristo de la Antigua y Virgen de la Encarnación)",
+      "fecha_inicio": "2026-05-09",
+      "fecha_fin": "2026-05-17",
+      "tamano": "grande",
+      "descripcion": "Celebración en honor a los patronos de Tobarra: Santísimo Cristo de la Antigua y Santa Virgen de la Encarnación. Incluye procesiones (Bajada, Ofrenda Floral, Subida), novenarios, misas, conciertos nocturnos con orquesta y banda de música, comidas populares, pujas y castillos de fuegos artificiales.",
+      "confianza": "alta",
+      "fuentes": [
+        "web_municipio",
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Tobarra",
+      "solo_fuentes_no_oficiales": false,
+      "programa": [
+        {
+          "dia": 7,
+          "fecha": "2026-05-09",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "II Edición \"Camino a las Pujas 2026\". Inauguración audioguía del Santuario y de la sala de proyección. Acompañamiento musical: Dúo Musical Cadenza. Visita guiada por el Santuario de la Encarnación y su entorno, a cargo de Sebastián Sánchez García."
+            },
+            {
+              "hora": "14:00",
+              "descripcion": "Comida popular y sorteo solidario en el Santuario de la Encarnación. Donativo: 6 euros."
+            },
+            {
+              "hora": "18:00",
+              "descripcion": "Santo Rosario a la Virgen, Tradicionales Pujas y Bajada de los patronos. Procesión con acompañamiento de la Banda de Música de la S.U.M. Santa Cecilia. Itinerario: Calles Encarnación, Correos, Plaza de España, Daniel Chulvi, Arcos del Convento, Mayor y Plaza de España hasta la Parroquia de la Asunción."
+            }
+          ]
+        },
+        {
+          "dia": 8,
+          "fecha": "2026-05-10",
+          "eventos": []
+        },
+        {
+          "dia": 9,
+          "fecha": "2026-05-11",
+          "eventos": [
+            {
+              "hora": "9:30",
+              "descripcion": "Eucaristías por los difuntos de Tobarra y pedanías. Parroquia de la Asunción de Nuestra Señora."
+            },
+            {
+              "hora": "20:00",
+              "descripcion": "Novenario a los patronos con Eucaristía. Parroquia de la Asunción de Nuestra Señora."
+            }
+          ]
+        },
+        {
+          "dia": 13,
+          "fecha": "2026-05-15",
+          "eventos": [
+            {
+              "hora": "",
+              "descripcion": "Novenario a los patronos con Eucaristía. Parroquia de la Asunción de Nuestra Señora."
+            }
+          ]
+        },
+        {
+          "dia": 14,
+          "fecha": "2026-05-16",
+          "eventos": []
+        },
+        {
+          "dia": 15,
+          "fecha": "2026-05-17",
+          "eventos": [
+            {
+              "hora": "10:30",
+              "descripcion": "Eucaristía. Parroquia de San Roque."
+            },
+            {
+              "hora": "11:00",
+              "descripcion": "Ofrenda de flores a nuestra patrona la Stma. Virgen de la Encarnación. Salida desde la Parroquia de San Roque. Ofrenda de flores infantil: “Querida Virgen de la Encarnación, acepta esta flor como un gesto de amor”. Acto de ofrenda con flores realizadas en papel por los niños, niñas y jóvenes de nuestro pueblo. Acompañamiento musical del Grupo Voces y Guitarras de Tobarra, S.U.M. Santa Cecilia y Banda de Cornetas y Tambores de la Santa Cruz. Itinerario: Parroquia de San Roque, calles Francisco Cano Fontecha, Paseo Príncipe de Asturias, Mayor y Plaza de España hasta la Parroquia de la Asunción."
+            }
+          ]
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "patron_trasladado": true,
+      "programa_estado": "completo",
+      "patron": {
+        "nombre": "Stmo. Cristo de la Antigua",
+        "dia": 14,
+        "mes": 9,
+        "fuente": "wikipedia"
+      },
+      "lat": 38.58855057,
+      "lng": -1.692343591
+    },
+    {
+      "id": "fiesta-san-roque-tobarra-2026",
+      "lugar_id": "02074000601",
+      "nombre": "Fiestas de San Roque (Fiesta Mayor)",
+      "fecha_inicio": "2026-08-14",
+      "fecha_fin": "2026-08-22",
+      "tamano": "grande",
+      "descripcion": "Celebración principal del municipio en honor a San Roque. Incluye el programa oficial de festejos, la Caseta Municipal con conciertos (Camela, Mägo de Oz), ferias, verbenas nocturnas, procesiones y actividades culturales. Se fusionan los eventos desde el inicio de la feria hasta el final de las fiestas patronales.",
+      "confianza": "alta",
+      "fuentes": [
+        "web_municipio",
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Tobarra",
+      "solo_fuentes_no_oficiales": false,
+      "programa": [
+        {
+          "dia": 7,
+          "fecha": "2026-08-14",
+          "eventos": [
+            {
+              "hora": "09:00",
+              "descripcion": "Misa reencuentro con los tobarreños y tobarreñas ausentes. Presentación de la restauración Frescos y Pinturas murales. Santuario de la Encarnación. Colabora: Hdad. Cristo de la Antigua y Virgen de la Encarnación."
+            },
+            {
+              "hora": "18:30",
+              "descripcion": "Concentración de Carrozas y Cuadrillas. Avenida de La Mancha."
+            },
+            {
+              "hora": "19:30",
+              "descripcion": "Desfile de apertura Feria y Fiestas de San Roque 2026. Itinerario de costumbre."
+            },
+            {
+              "hora": "22:00",
+              "descripcion": "Apertura oficial de la Feria y Fiestas de San Roque 2026. Arcos de Príncipe de Asturias."
+            },
+            {
+              "hora": "00:00",
+              "descripcion": "«SUPERINDIES» Tributo al Indie Español + DJ's Session. Caseta Municipal. ENTRADA GRATUITA."
+            },
+            {
+              "hora": "00:00",
+              "descripcion": "My Lola Fest 2026: Noche verbena."
+            }
+          ]
+        },
+        {
+          "dia": 8,
+          "fecha": "2026-08-15",
+          "eventos": [
+            {
+              "hora": "10:00",
+              "descripcion": "Tradicional Postulación Fiesta de la Banderita de Cruz Roja. Acércate y colabora. La recaudación se destinará íntegramente a los proyectos locales de Cruz Roja. Mesas: Avda. Constitución, Plaza de España, La Granja y Restaurante La Parrilla."
+            },
+            {
+              "hora": "10:00",
+              "descripcion": "Procesión de la Asunción y misa a continuación. Itinerario de costumbre. Al término de la procesión se celebrará misa en la iglesia de la Asunción de Ntra. Señora."
+            },
+            {
+              "hora": "11:00",
+              "descripcion": "Bueyada infantil y Carretones. Plaza de Toros «El Ojo Manzano». Colabora: Asociación Encierros de Tobarra."
+            },
+            {
+              "hora": "11:30",
+              "descripcion": "Juegos Populares. Paseo Príncipe de Asturias. Gratuito."
+            },
+            {
+              "hora": "18:30",
+              "descripcion": "Batalla de Gallos. Placeta de la Casa de Cultura. Inscripción 3€."
+            },
+            {
+              "hora": "20:00",
+              "descripcion": "XLI Campeonato de baloncesto «Fiestas de San Roque 2026» (3º y 4º puesto). Pabellón Polideportivo. Organiza: Tobarra CB."
+            },
+            {
+              "hora": "21:15",
+              "descripcion": "XLI Campeonato de baloncesto «Fiestas de San Roque 2026» (Final). Pabellón Polideportivo. Organiza: Tobarra CB."
+            },
+            {
+              "hora": "00:00",
+              "descripcion": "UN VIAJE A LOS 90'S. Rebeca + K-Minerva + Viceversa + New Limit + Kriss Orue. Caseta Municipal. Entrada anticipada 12€ – taquilla 15€."
+            },
+            {
+              "hora": "00:00",
+              "descripcion": "My Lola Fest 2026: Single 4.0. RKA DJ."
+            }
+          ]
+        },
+        {
+          "dia": 9,
+          "fecha": "2026-08-16",
+          "eventos": [
+            {
+              "hora": "11:00",
+              "descripcion": "Procesión y misa en honor a San Roque. Itinerario de costumbre. Al término de la procesión se celebrará misa en la iglesia de San Roque."
+            },
+            {
+              "hora": "18:00",
+              "descripcion": "Becerrada de la Paloma. Plaza de Toros «El Ojo Manzano». Colabora: Asociación Encierros de Tobarra."
+            },
+            {
+              "hora": "21:00",
+              "descripcion": "VI Jornadas de la Paloma y la Cuerva. Paseo Príncipe de Asturias."
+            },
+            {
+              "hora": "22:00",
+              "descripcion": "Zarzuela «La Rosa del Azafrán». Caseta Municipal. Entrada anticipada 10€ – taquilla 12€. Organiza: Agrupación Coral y Ensemble Cristo de la Antigua."
+            },
+            {
+              "hora": "00:00",
+              "descripcion": "Concierto Rockola. Paseo Príncipe de Asturias."
+            }
+          ]
+        },
+        {
+          "dia": 13,
+          "fecha": "2026-08-20",
+          "eventos": [
+            {
+              "hora": "09:00",
+              "descripcion": "Torneo tenis «Fiestas de San Roque 2026». Pistas de tenis municipales «La Granja». Organiza: Club Palestra Olympus. Colabora: Concejalía de Deportes."
+            },
+            {
+              "hora": "11:00",
+              "descripcion": "Hinchables acuáticos. Paseo Príncipe de Asturias. Gratuito."
+            },
+            {
+              "hora": "19:30",
+              "descripcion": "Fiesta de la espuma. Avda. México. Para jóvenes entre 12 y 18 años. Inscripción previa: 3€. Organiza: Concejalía de Infancia y Juventud. Colabora: AMPA Cristóbal Pérez Pastor."
+            },
+            {
+              "hora": "21:00",
+              "descripcion": "Faüla (espectáculo de clown y danza aérea). Placeta de la Casa de Cultura. Compañía Dos en Vilo. Organiza: Concejalía de Cultura. Colabora: Cultural de Albacete y Red de Teatros y Artes Escénicas de CLM."
+            },
+            {
+              "hora": "22:00",
+              "descripcion": "Noche Temática. Plaza de Toros «El Ojo Manzano». Con la proyección de la Paloma de los años 80 y seguidamente el Encierro Campero grabado desde dron. Colabora: Asociación Encierros de Tobarra."
+            },
+            {
+              "hora": "23:30",
+              "descripcion": "Pedro y sus teclados. Paseo Príncipe de Asturias."
+            },
+            {
+              "hora": "00:00",
+              "descripcion": "Concierto DESPISTAOS + DJ's Session. Caseta Municipal. Entrada anticipada 12€ – taquilla 15€."
+            }
+          ]
+        },
+        {
+          "dia": 14,
+          "fecha": "2026-08-21",
+          "eventos": [
+            {
+              "hora": "11:00",
+              "descripcion": "Pasacalles Charanga Komo K-Brass. Por las calles de Tobarra."
+            },
+            {
+              "hora": "20:00",
+              "descripcion": "Gala de entrega de premios XLVIII Edición de los Juegos Florales «Villa de Tobarra». Casa de Cultura. A cargo de la mantenedora Irene Lorente Valero."
+            },
+            {
+              "hora": "23:30",
+              "descripcion": "En concierto «A lo Fito» (Tributo a Fito & Fitipaldis) – Límite. Entrada libre, aforo limitado. Al finalizar sesión DJ."
+            },
+            {
+              "hora": "00:00",
+              "descripcion": "Orquesta «Callejeros». Paseo Príncipe de Asturias."
+            },
+            {
+              "hora": "00:00",
+              "descripcion": "Festival REGGAE-TOB. Dj Ballesteros + Fiesta temática Sandungero (Macrodisco con animación). Caseta Municipal. Entrada anticipada: 7€ – taquilla: 10€."
+            },
+            {
+              "hora": "00:00",
+              "descripcion": "Castillo de fuegos artificiales «Fin de Fiestas». A cargo de Pirotecnia Valenciana."
+            },
+            {
+              "hora": "00:00",
+              "descripcion": "My Lola Fest 2026: Noche Remember. Jess DJ."
+            }
+          ]
+        },
+        {
+          "dia": 15,
+          "fecha": "2026-08-22",
+          "eventos": [
+            {
+              "hora": "10:00",
+              "descripcion": "Torneo de Petanca. Parque de las Culturas. Categorías: Profesional y Amateur. Inscripciones e información: 676 809 903. Organiza: Concejalía de Deportes."
+            },
+            {
+              "hora": "00:00",
+              "descripcion": "Tobarrock: PORRETAS + De Acero (Homenaje a Extremoduro) + DJ's Session. Caseta Municipal. Entrada anticipada 7€ – taquilla 10€."
+            },
+            {
+              "hora": "00:00",
+              "descripcion": "My Lola Fest 2026: Locomía Ibiza, Blanco. Paco Morella DJ."
+            }
+          ]
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "programa_estado": "completo",
+      "lat": 38.58855057,
+      "lng": -1.692343591
+    },
+    {
+      "id": "aljube-san-isidro-virgen-fatima-2026",
+      "lugar_id": "02074000101",
+      "nombre": "Fiestas de Aljubé en honor a San Isidro Labrador y la Virgen de Fátima",
+      "fecha_inicio": "2026-05-13",
+      "fecha_fin": "2026-05-18",
+      "tamano": "grande",
+      "descripcion": "Fiestas patronales de la pedanía de Aljubé celebradas en honor a sus protectores. Incluye ofrenda de flores, misas, pregón, verbena con DJ y música en directo (Trio Kalhima), talleres, comidas populares, juegos infantiles, subastas y mascletá.",
+      "confianza": "alta",
+      "fuentes": [
+        "busqueda_web",
+        "web_municipio"
+      ],
+      "sede_segun_el_texto": "Aljubé",
+      "solo_fuentes_no_oficiales": false,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-05-13",
+          "eventos": []
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-05-14",
+          "eventos": [
+            {
+              "hora": "",
+              "descripcion": "OFRENDA DE FLORES a nuestra patrona Ntra. Sra. de Fátima."
+            },
+            {
+              "hora": "18:00",
+              "descripcion": "MERIENDA POPULAR."
+            },
+            {
+              "hora": "18:30",
+              "descripcion": "JUEGOS INFANTILES para el disfrute de los más pequeños."
+            }
+          ]
+        },
+        {
+          "dia": 4,
+          "fecha": "2026-05-16",
+          "eventos": [
+            {
+              "hora": "11:00",
+              "descripcion": "Talleres comunitarios para adultos y niños"
+            },
+            {
+              "hora": "14:00",
+              "descripcion": "Comida popular. Aportación de 3€ por ración de arroz y pan (no colaboradores)"
+            },
+            {
+              "hora": "18:00",
+              "descripcion": "Masterclass de gimnasia a cargo de Tobafitness"
+            },
+            {
+              "hora": "18:00",
+              "descripcion": "Juegos populares para niños y colchonetas gratuitas"
+            },
+            {
+              "hora": "22:30",
+              "descripcion": "Verbena a cargo del Trío Kalhima. Subasta en el descanso a beneficio de la Asociación de Vecinos."
+            }
+          ]
+        },
+        {
+          "dia": 5,
+          "fecha": "2026-05-17",
+          "eventos": [
+            {
+              "hora": "18:00",
+              "descripcion": "Merienda popular. Aportación de 2€ por bocadillo (no colaboradores). Colchonetas gratuitas."
+            },
+            {
+              "hora": "19:30",
+              "descripcion": "II Edición 'Tu cara se parece' a cargo de Los artistas de la aldea"
+            },
+            {
+              "hora": "21:30",
+              "descripcion": "Baile con Paloma, Cuerva y Cascaruja."
+            }
+          ]
+        },
+        {
+          "dia": 6,
+          "fecha": "2026-05-18",
+          "eventos": []
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": true,
+      "programa_estado": "completo",
+      "patron": {
+        "nombre": "San Isidro",
+        "dia": 15,
+        "mes": 5,
+        "fuente": "wikipedia"
+      },
+      "lat": 38.60760117,
+      "lng": -1.63928259
+    },
+    {
+      "id": "fiesta-santisima-trinidad-cordovilla-2026",
+      "lugar_id": "02074000201",
+      "nombre": "Fiestas Patronales de la Santísima Trinidad",
+      "fecha_inicio": "2026-05-29",
+      "fecha_fin": "2026-06-01",
+      "tamano": "pequeña",
+      "descripcion": "Celebración festiva en honor a la Santísima Trinidad en la pedanía de Cordovilla.",
+      "confianza": "baja",
+      "fuentes": [
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Cordovilla",
+      "solo_fuentes_no_oficiales": true,
+      "programa": [],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "patron_trasladado": true,
+      "programa_advocacion_dudosa": true,
+      "programa_estado": "no_encontrado",
+      "patron": {
+        "nombre": "San Diego de Alcalá",
+        "dia": 13,
+        "mes": 11,
+        "fuente": "wikipedia"
+      },
+      "lat": 38.56439508,
+      "lng": -1.632449837
+    },
+    {
+      "id": "fiesta-verano-cordovilla-2026",
+      "lugar_id": "02074000201",
+      "nombre": "Fiestas de Verano de Cordovilla",
+      "fecha_inicio": "2026-07-03",
+      "fecha_fin": "2026-07-05",
+      "tamano": "pequeña",
+      "descripcion": "Celebración festiva de verano en la pedanía de Cordovilla con actividades nocturnas, música en directo y espectáculos.",
+      "confianza": "baja",
+      "fuentes": [
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Cordovilla",
+      "solo_fuentes_no_oficiales": true,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-07-03",
+          "eventos": []
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-07-04",
+          "eventos": [
+            {
+              "hora": "",
+              "descripcion": "Fiesta de la Espuma para todas las edades"
+            },
+            {
+              "hora": "19:00",
+              "descripcion": "Pedro y sus Teclados en directo"
+            },
+            {
+              "hora": "23:15",
+              "descripcion": "Noche de Magia y Humor con el Espectáculo Grandes Ilusiones con el increíble mago Lumaky"
+            },
+            {
+              "hora": "00:30",
+              "descripcion": "Noche Joven: DJ Ángel Díaz e Inmita Palmera"
+            }
+          ]
+        },
+        {
+          "dia": 3,
+          "fecha": "2026-07-05",
+          "eventos": [
+            {
+              "hora": "",
+              "descripcion": "Solemne Misa. Posteriormente, se realizará una ofrenda de flores en el interior de la Iglesia a Nuestro Patrón San Diego de Alcalá, Virgen de Fátima y Corazón de Jesús. Amenizada por Jesús y su Guitarra."
+            },
+            {
+              "hora": "",
+              "descripcion": "Animación infantil con colchonetas en la pista del Centro Social"
+            },
+            {
+              "hora": "18:30",
+              "descripcion": "El mejor tardeo, Fiesta años 80, 90 y 2000's con DJ Paco Morella"
+            },
+            {
+              "hora": "",
+              "descripcion": "Gran Noche de Baile con la Orquesta Shadow"
+            }
+          ]
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "programa_de_otro_anno": 2025,
+      "programa_estado": "completo",
+      "lat": 38.56439508,
+      "lng": -1.632449837
+    },
+    {
+      "id": "ancla-fiestas-de-san-diego-de-alcala-02074000201",
+      "lugar_id": "02074000201",
+      "nombre": "Fiestas de San Diego de Alcala",
+      "fecha_inicio": "2026-11-13",
+      "fecha_fin": "2026-11-16",
+      "tamano": "pequeña",
+      "descripcion": "Fiestas de San Diego de Alcala en Cordovilla, del 13 al 16 de noviembre de 2026. Fechas recuperadas del texto que las anuncia; sin descripción publicada.",
+      "evidencia": "misa en honor a san diego de alcala seguida de la procesion acompanada por la agrupacion musical santa mujer veronica de tobarra ya por la tarde se celebrara el campeonato de futbol amenizado por dj marmol sound mientras que la musica en directo llegara por la noche con el grupo a kompas la jornada finalizara con la sesion de dj nino las fiestas concluiran el domingo 16 comenzando con un motoalmuerzo y ruta motera po",
+      "confianza": "media",
+      "fuentes": [
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Cordovilla",
+      "solo_fuentes_no_oficiales": true,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-11-13",
+          "eventos": [
+            {
+              "hora": "21:00",
+              "descripcion": "Repique de campanas"
+            },
+            {
+              "hora": "21:15",
+              "descripcion": "Cena y tradicionales carretillas en el solar frente al centro social"
+            },
+            {
+              "hora": "21:15",
+              "descripcion": "Cena en la nave del centro social"
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-11-14",
+          "eventos": [
+            {
+              "hora": "17:00",
+              "descripcion": "Juegos tradicionales y merienda para los más pequeños"
+            },
+            {
+              "hora": "22:15",
+              "descripcion": "Pregón a cargo de Manuel Valero López"
+            },
+            {
+              "hora": "23:30",
+              "descripcion": "Noche mágica con Josema el Mago"
+            },
+            {
+              "hora": "01:00",
+              "descripcion": "Disco móvil con DJ Nasty"
+            }
+          ]
+        },
+        {
+          "dia": 3,
+          "fecha": "2026-11-15",
+          "eventos": [
+            {
+              "hora": "11:30",
+              "descripcion": "Misa en honor a San Diego de Alcalá y procesión con la Agrupación Musical Santa Mujer Verónica de Tobarra"
+            },
+            {
+              "hora": "17:00",
+              "descripcion": "Campeonato de fútbol amenizado por DJ Mármol Sound"
+            },
+            {
+              "hora": "22:00",
+              "descripcion": "Música en directo con el grupo A' Kompás"
+            },
+            {
+              "hora": "00:30",
+              "descripcion": "Disco móvil con DJ Nino"
+            }
+          ]
+        },
+        {
+          "dia": 4,
+          "fecha": "2026-11-16",
+          "eventos": [
+            {
+              "hora": "10:00",
+              "descripcion": "Motoalmuerzo en el centro social con ruta por Tobarra y pedanías"
+            },
+            {
+              "hora": "14:30",
+              "descripcion": "Comida popular"
+            },
+            {
+              "hora": "15:30",
+              "descripcion": "Colchonetas para los más pequeños"
+            },
+            {
+              "hora": "16:00",
+              "descripcion": "Bingo popular y comunicación del ganador de la rifa"
+            },
+            {
+              "hora": "17:30",
+              "descripcion": "Actuación de Pedro y sus Teclados"
+            },
+            {
+              "hora": "20:00",
+              "descripcion": "Fuegos artificiales y fin de fiestas"
+            }
+          ]
+        }
+      ],
+      "origen": "ancla_contexto",
+      "programa_estado": "completo",
+      "incluye_dia_patron": true,
+      "patron": {
+        "nombre": "San Diego de Alcalá",
+        "dia": 13,
+        "mes": 11,
+        "fuente": "wikipedia"
+      },
+      "lat": 38.56439508,
+      "lng": -1.632449837
+    },
+    {
+      "id": "mora-santa-quiteria-fiestas-patronales-2026",
+      "lugar_id": "02074000301",
+      "nombre": "Fiestas Patronales de Santa Quiteria",
+      "fecha_inicio": "2026-05-22",
+      "fecha_fin": "2026-05-24",
+      "tamano": "grande",
+      "descripcion": "Celebración en honor a la patrona Santa Quiteria con misa, pregón, romería a la Pilica, comidas populares, concursos y verbena nocturna con DJ.",
+      "confianza": "alta",
+      "fuentes": [
+        "web_municipio",
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Mora de Santa Quiteria",
+      "solo_fuentes_no_oficiales": false,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-05-22",
+          "eventos": [
+            {
+              "hora": "10:30",
+              "descripcion": "Disparo de cohetes."
+            },
+            {
+              "hora": "11:00",
+              "descripcion": "Misa en honor a Santa Quiteria."
+            },
+            {
+              "hora": "16:00",
+              "descripcion": "Concurso de dominó. Con premio para el vencedor."
+            },
+            {
+              "hora": "21:00",
+              "descripcion": "Pregón de Fiestas. A cargo de M.ª José Moreno Fernández, nieta del Chinarro, bibliotecaria de Caudete, influencer y escritora de la novela 'Leí que esto era amor'. Presenta Lourdes Guerrero. A continuación vino de honor con música ambiental."
+            },
+            {
+              "hora": "23:30",
+              "descripcion": "Noche Joven con DJ Ángel Díaz."
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-05-23",
+          "eventos": [
+            {
+              "hora": "9:30",
+              "descripcion": "Desayuno popular. Puerta del centro social de Mora de Sta. Quiteria."
+            },
+            {
+              "hora": "10:30",
+              "descripcion": "Concurso lanzamiento de legón. Inscripción 2€ (contactar con la comisión de fiestas). Almuerzo incluido y premio a los tres primeros."
+            },
+            {
+              "hora": "11:00",
+              "descripcion": "Juegos populares para niños. (Con animadores)."
+            },
+            {
+              "hora": "14:00",
+              "descripcion": "Comida popular. Arroz con costillas y lomo. Donativo 5€. Tickets: Comisión hasta el 19 de mayo."
+            },
+            {
+              "hora": "17:00",
+              "descripcion": "Colchonetas e hinchables para los más pequeños."
+            },
+            {
+              "hora": "17:30",
+              "descripcion": "Concurso de petanca. Premio para el equipo vencedor."
+            },
+            {
+              "hora": "18:00",
+              "descripcion": "Carrera de cintas con premios variados."
+            },
+            {
+              "hora": "19:00",
+              "descripcion": "Romería a la 'Pilica'. A continuación merienda, a cargo de Asociación Cultural La Pilica."
+            },
+            {
+              "hora": "23:00",
+              "descripcion": "Espectacular noche de baile con el Dúo Maxi."
+            },
+            {
+              "hora": "2:00",
+              "descripcion": "Seguimos de marcha con DJ Maxi hasta que el cuerpo aguante."
+            }
+          ]
+        },
+        {
+          "dia": 3,
+          "fecha": "2026-05-24",
+          "eventos": [
+            {
+              "hora": "10:30",
+              "descripcion": "Pasacalles. A cargo de Banda Hermandad Santa Cruz de la Toalla de Tobarra."
+            },
+            {
+              "hora": "11:00",
+              "descripcion": "Solemne misa en honor a Santa Quiteria. A continuación procesión y al finalizar nuestra tradicional puja dirigida por Juan Antonio Bleda García."
+            },
+            {
+              "hora": "18:30",
+              "descripcion": "Espectáculo de magia. A cargo del mago Josema."
+            },
+            {
+              "hora": "21:00",
+              "descripcion": "Noche de baile con Pedro y sus teclados."
+            },
+            {
+              "hora": "23:30",
+              "descripcion": "Gran castillo de fuegos artificiales de fin de fiestas."
+            }
+          ]
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "ancla_propuesta": {
+        "fecha_inicio": "2026-05-22",
+        "fecha_fin": "2026-05-22",
+        "peso": 8,
+        "evidencia": "mora de santa quiteria se prepara para un gran fin de semana de fiestas en honor a su patrona comarca monastrell envelope facebook instagram actualidad municipios albatana fuente alamo hellin ontur tobarra agricultura cultura deportes ocio opinion galeria la comarca desde el aire servicios locales publicidad portal de empresas actualidad municipios albatana fuente alamo hellin ontur tobarra agricultura cultura deport"
+      },
+      "programa_estado": "completo",
+      "lat": 38.5609628,
+      "lng": -1.586496401
+    },
+    {
+      "id": "santiago-de-mora-2026",
+      "lugar_id": "02074000401",
+      "nombre": "Fiestas de Santiago de Mora",
+      "fecha_inicio": "2026-07-21",
+      "fecha_fin": "2026-07-25",
+      "tamano": "grande",
+      "descripcion": "Celebración en honor al patrón Santiago Apóstol. Incluye desfile de carrozas, duchas de agua, conciertos nocturnos (Grupo Jema), verbena con DJ's y actividades populares como la Milla Cervejera.",
+      "confianza": "alta",
+      "fuentes": [
+        "web_municipio",
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Santiago de Mora",
+      "solo_fuentes_no_oficiales": false,
+      "programa": [
+        {
+          "dia": 4,
+          "fecha": "2026-07-24",
+          "eventos": [
+            {
+              "hora": "18:00",
+              "descripcion": "Colchonetas de agua en la Plaza del Pozo."
+            },
+            {
+              "hora": "19:30",
+              "descripcion": "II Milla Cervecera Villa de Santiago de Mora en la Plaza de la Iglesia (Inscripción: 5€)."
+            },
+            {
+              "hora": "20:00",
+              "descripcion": "Tarde de música y mojitos en la Plaza de la Iglesia a cargo de la Sala Límite."
+            },
+            {
+              "hora": "00:00",
+              "descripcion": "Gran noche de DJ's en la Plaza de la Iglesia con sonido, luces y música."
+            }
+          ]
+        },
+        {
+          "dia": 5,
+          "fecha": "2026-07-25",
+          "eventos": [
+            {
+              "hora": "09:00",
+              "descripcion": "Diana y pasacalles a cargo de la Agrupación Musical Inmaculada Concepción de Tobarra."
+            },
+            {
+              "hora": "10:00",
+              "descripcion": "Solemne procesión acompañando a las imágenes de Santiago Apóstol y Santísima Virgen María Inmaculada Concepción por el itinerario de costumbre."
+            },
+            {
+              "hora": "",
+              "descripcion": "Santa Misa y tradicionales pujas en la Plaza de la Iglesia (Pujas a cargo de Antonio Pinar Rubio)."
+            },
+            {
+              "hora": "13:00",
+              "descripcion": "Refrigerio por la placeta y dormir la mona."
+            },
+            {
+              "hora": "19:00",
+              "descripcion": "Tradicional carrera de cintas en la Plaza de la Iglesia (Empezará cuando acudan 'el Colores y el Pirri')."
+            },
+            {
+              "hora": "19:00",
+              "descripcion": "Concurso de tirachinas en el Callejón del Parque (Inscripción: 5€, Premio para el ganador)."
+            },
+            {
+              "hora": "20:30",
+              "descripcion": "Espectacular noche de verbena en la Plaza del Pozo a cargo de la gran Orquesta Nuevo Tango."
+            },
+            {
+              "hora": "",
+              "descripcion": "Continuación de la fiesta con DJ en la Plaza de la Iglesia."
+            }
+          ]
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "programa_estado": "completo",
+      "lat": 38.56889866,
+      "lng": -1.596941745
+    },
+    {
+      "id": "ancla-fiestas-de-san-francisco-javier-02074000501",
+      "lugar_id": "02074000501",
+      "nombre": "Fiestas de San Francisco Javier",
+      "fecha_inicio": "2026-07-30",
+      "fecha_fin": "2026-08-02",
+      "tamano": "pequeña",
+      "descripcion": "Fiestas de San Francisco Javier en Sierra, del 30 de julio al 2 de agosto de 2026. Fechas recuperadas del texto que las anuncia; sin descripción publicada.",
+      "evidencia": "titulo fiestas sierra verano 2026 - facebook contenido sierrase viste defiesta del 30 de julio al 2 de agosto celebramos lasfiestasdesierra2026en honor a san francisco javier",
+      "confianza": "media",
+      "fuentes": [
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Sierra",
+      "solo_fuentes_no_oficiales": true,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-07-30",
+          "eventos": [
+            {
+              "hora": "",
+              "descripcion": "Pregón de fiestas a cargo de Antonio S. Monreal Gómez"
+            },
+            {
+              "hora": "",
+              "descripcion": "Verbena amenizada por el dúo Tívoli"
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-07-31",
+          "eventos": []
+        }
+      ],
+      "origen": "ancla_contexto",
+      "programa_advocacion_dudosa": true,
+      "programa_estado": "completo",
+      "lat": 38.56061532,
+      "lng": -1.658647012
+    },
+    {
+      "id": "fiesta-patronales-los-mardos-virgen-carmen-2026",
+      "lugar_id": "02074000701",
+      "nombre": "Fiestas Patronales de Los Mardos en honor a la Virgen del Carmen",
+      "fecha_inicio": "2026-07-16",
+      "fecha_fin": "2026-07-19",
+      "tamano": "pequeña",
+      "descripcion": "Celebración de las fiestas patronales en honor a la Virgen del Carmen, con mezcla de actos religiosos, comidas populares y música y baile.",
+      "confianza": "media",
+      "fuentes": [
+        "busqueda_web",
+        "web_municipio"
+      ],
+      "sede_segun_el_texto": "Los Mardos",
+      "solo_fuentes_no_oficiales": false,
+      "programa": [],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "sin_programa_publicado": true,
+      "programa_estado": "no_encontrado",
+      "lat": 38.62082185,
+      "lng": -1.590775788
+    },
+    {
+      "id": "fiesta-patronales-san-roque-2026",
+      "lugar_id": "09018000201",
+      "nombre": "Fiestas Patronales de Aranda de Duero (San Roque)",
+      "fecha_inicio": "2026-08-03",
+      "fecha_fin": "2026-08-31",
+      "tamano": "grande",
+      "descripcion": "Celebración principal del municipio en honor a San Roque, con cartel oficial 'Splash Festivo', iluminación extraordinaria y ornamentación de calles. Incluye la Feria de excedentes de comercio el 19 de agosto y la Fiesta Gastronómica de la Cereza de las Caderechas el 28 de agosto.",
+      "confianza": "alta",
+      "fuentes": [
+        "web_municipio"
+      ],
+      "sede_segun_el_texto": "Aranda de Duero",
+      "solo_fuentes_no_oficiales": false,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-08-03",
+          "eventos": [
+            {
+              "hora": "19:00",
+              "descripcion": "Mesa de Expertos «Aranda ante el Eclipse» en el Auditorio Ibercaja de los Jardines de Don Diego. Charla divulgativa sobre el eclipse solar con ponentes Luis Fernando Oropesa Pinedo, Carlos Cuñado García y Juan José Gómez López."
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-08-04",
+          "eventos": []
+        },
+        {
+          "dia": 3,
+          "fecha": "2026-08-05",
+          "eventos": [
+            {
+              "hora": "19:00",
+              "descripcion": "Concierto de Nat Simons en el Escenario Aranda de Duero."
+            },
+            {
+              "hora": "20:40",
+              "descripcion": "Concierto de La Cabra Mecánica en el Escenario Aranda de Duero."
+            },
+            {
+              "hora": "22:20",
+              "descripcion": "Concierto de León Benavente en el Escenario Aranda de Duero."
+            },
+            {
+              "hora": "00:20",
+              "descripcion": "Concierto de La Pegatina en el Escenario Aranda de Duero."
+            },
+            {
+              "hora": "02:20",
+              "descripcion": "Concierto de Wally López en el Escenario Aranda de Duero."
+            },
+            {
+              "hora": "19:50",
+              "descripcion": "Concierto de Carlangas en el Escenario Ribera del Duero."
+            },
+            {
+              "hora": "21:30",
+              "descripcion": "Concierto de Bebe en el Escenario Ribera del Duero."
+            },
+            {
+              "hora": "23:20",
+              "descripcion": "Concierto de Iván Ferreiro en el Escenario Ribera del Duero."
+            },
+            {
+              "hora": "01:20",
+              "descripcion": "Concierto de Crystal Fighters en el Escenario Ribera del Duero."
+            },
+            {
+              "hora": "19:00",
+              "descripcion": "Concierto de Whisky Caravan en el Escenario Indexa."
+            },
+            {
+              "hora": "20:40",
+              "descripcion": "Concierto de Mafalda Cardenal en el Escenario Indexa."
+            },
+            {
+              "hora": "22:20",
+              "descripcion": "Concierto de Tu Otra Bonita en el Escenario Indexa."
+            },
+            {
+              "hora": "00:00",
+              "descripcion": "Concierto de D. Valentino en el Escenario Indexa."
+            },
+            {
+              "hora": "01:40",
+              "descripcion": "Concierto de Sofía Gabanna en el Escenario Indexa."
+            },
+            {
+              "hora": "19:50",
+              "descripcion": "Concierto de Yacaré en el Escenario Porklovers."
+            },
+            {
+              "hora": "21:30",
+              "descripcion": "Concierto de Pablopablo en el Escenario Porklovers."
+            },
+            {
+              "hora": "23:10",
+              "descripcion": "Concierto de Chiquita Movida en el Escenario Porklovers."
+            },
+            {
+              "hora": "00:50",
+              "descripcion": "Concierto de The Molotovs en el Escenario Porklovers."
+            },
+            {
+              "hora": "02:30",
+              "descripcion": "Concierto de Simulacro en el Escenario Porklovers."
+            },
+            {
+              "hora": "19:00",
+              "descripcion": "Fiesta de Disfraces en el Escenario Tierra de Sabor."
+            },
+            {
+              "hora": "21:00",
+              "descripcion": "Concierto de Salvana en el Escenario Tierra de Sabor."
+            },
+            {
+              "hora": "22:00",
+              "descripcion": "Concierto de Tigre y Diamante en el Escenario Tierra de Sabor."
+            },
+            {
+              "hora": "23:00",
+              "descripcion": "Concierto de Piti y Me Voy en el Escenario Tierra de Sabor."
+            },
+            {
+              "hora": "00:00",
+              "descripcion": "Concierto de Laia Acolea en el Escenario Tierra de Sabor."
+            },
+            {
+              "hora": "01:00",
+              "descripcion": "Concierto de Mal Sense en el Escenario Tierra de Sabor."
+            },
+            {
+              "hora": "02:00",
+              "descripcion": "DJ Set de DJ Filo en el Escenario Tierra de Sabor."
+            }
+          ]
+        },
+        {
+          "dia": 4,
+          "fecha": "2026-08-06",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "Concierto de Sobrezero en el Escenario Pza. Trigo Vibra Mahou"
+            },
+            {
+              "hora": "13:00",
+              "descripcion": "Concierto de Las Petunias en el Escenario Pza. Trigo Vibra Mahou"
+            },
+            {
+              "hora": "14:00",
+              "descripcion": "Concierto de Calequi y Las Panteras en el Escenario Pza. Trigo Vibra Mahou"
+            },
+            {
+              "hora": "15:00",
+              "descripcion": "Concierto Sorpresa en el Escenario Pza. Trigo Vibra Mahou"
+            },
+            {
+              "hora": "12:00",
+              "descripcion": "Concierto de We Are Mono en el Escenario Pza. La Sal Vibra Mahou"
+            },
+            {
+              "hora": "12:55",
+              "descripcion": "Concierto de Norte Perdido en el Escenario Pza. La Sal Vibra Mahou"
+            },
+            {
+              "hora": "13:50",
+              "descripcion": "Concierto de Soyla en el Escenario Pza. La Sal Vibra Mahou"
+            },
+            {
+              "hora": "14:45",
+              "descripcion": "Concierto de Hostia Pedagógica en el Escenario Pza. La Sal Vibra Mahou"
+            },
+            {
+              "hora": "15:30",
+              "descripcion": "Concierto de Go Cactus en el Escenario Pza. La Sal Vibra Mahou"
+            },
+            {
+              "hora": "16:20",
+              "descripcion": "DJ Set de Tardeo Cool DJ's en el Escenario Pza. La Sal Vibra Mahou"
+            },
+            {
+              "hora": "17:10",
+              "descripcion": "DJ Set de DJ Felipe en el Escenario Pza. La Sal Vibra Mahou"
+            },
+            {
+              "hora": "12:00",
+              "descripcion": "Concierto de Barbi Recanati en el Escenario Charco"
+            },
+            {
+              "hora": "13:00",
+              "descripcion": "Concierto de Ángela González en el Escenario Charco"
+            },
+            {
+              "hora": "14:00",
+              "descripcion": "Concierto de Mabu en el Escenario Charco"
+            },
+            {
+              "hora": "15:00",
+              "descripcion": "Concierto de La Delio Valdez en el Escenario Charco"
+            },
+            {
+              "hora": "16:00",
+              "descripcion": "Concierto de Los Vinagres en el Escenario Charco"
+            },
+            {
+              "hora": "17:00",
+              "descripcion": "Concierto de Tiburona en el Escenario Charco"
+            },
+            {
+              "hora": "13:00",
+              "descripcion": "Concierto de Winter & Torres en el Escenario Le Club / Café Central"
+            },
+            {
+              "hora": "19:00",
+              "descripcion": "Concierto de Karavana en el Escenario Aranda de Duero"
+            },
+            {
+              "hora": "19:50",
+              "descripcion": "Concierto de Nacho Vegas en el Escenario Ribera del Duero"
+            },
+            {
+              "hora": "19:00",
+              "descripcion": "Concierto de Galerna en el Escenario Indexa"
+            },
+            {
+              "hora": "19:50",
+              "descripcion": "Concierto de Alberto.Vela en el Escenario Porklovers"
+            },
+            {
+              "hora": "19:00",
+              "descripcion": "Concierto de Dani Leiva en el Escenario Tierra de Sabor"
+            },
+            {
+              "hora": "20:40",
+              "descripcion": "Concierto de Ramoncín en el Escenario Aranda de Duero"
+            },
+            {
+              "hora": "21:30",
+              "descripcion": "Concierto de Veintiuno en el Escenario Ribera del Duero"
+            },
+            {
+              "hora": "20:40",
+              "descripcion": "Concierto de Vera Fauna en el Escenario Indexa"
+            },
+            {
+              "hora": "21:30",
+              "descripcion": "Concierto de El Nido en el Escenario Porklovers"
+            },
+            {
+              "hora": "20:05",
+              "descripcion": "Concierto de Ona Mafalda en el Escenario Tierra de Sabor"
+            },
+            {
+              "hora": "22:25",
+              "descripcion": "Concierto de Rigoberta Bandini en el Escenario Aranda de Duero"
+            },
+            {
+              "hora": "23:35",
+              "descripcion": "Concierto de Guitarricadelafuente en el Escenario Ribera del Duero"
+            },
+            {
+              "hora": "22:20",
+              "descripcion": "Concierto de Ángeles Toledano en el Escenario Indexa"
+            },
+            {
+              "hora": "23:10",
+              "descripcion": "Concierto de We Are Scientists en el Escenario Porklovers"
+            },
+            {
+              "hora": "21:10",
+              "descripcion": "Concierto de Carencias Afectivas en el Escenario Tierra de Sabor"
+            },
+            {
+              "hora": "00:45",
+              "descripcion": "Concierto de Rusowsky en el Escenario Aranda de Duero"
+            },
+            {
+              "hora": "01:55",
+              "descripcion": "Concierto de RVFV en el Escenario Ribera del Duero"
+            },
+            {
+              "hora": "00:00",
+              "descripcion": "Concierto de Lablackie en el Escenario Indexa"
+            },
+            {
+              "hora": "00:50",
+              "descripcion": "Concierto de Egon Soda en el Escenario Porklovers"
+            },
+            {
+              "hora": "22:15",
+              "descripcion": "Concierto de Alberto & García en el Escenario Tierra de Sabor"
+            },
+            {
+              "hora": "03:00",
+              "descripcion": "Concierto de Peces Raros en el Escenario Aranda de Duero"
+            },
+            {
+              "hora": "03:50",
+              "descripcion": "Concierto de Serial Killerz en el Escenario Ribera del Duero"
+            },
+            {
+              "hora": "01:40",
+              "descripcion": "Concierto de Mi Vida Rosa en el Escenario Indexa"
+            },
+            {
+              "hora": "02:30",
+              "descripcion": "Concierto de Valira en el Escenario Porklovers"
+            },
+            {
+              "hora": "23:20",
+              "descripcion": "Concierto de Ortiga en el Escenario Tierra de Sabor"
+            },
+            {
+              "hora": "03:20",
+              "descripcion": "Concierto de Sobrinus en el Escenario Indexa"
+            },
+            {
+              "hora": "04:10",
+              "descripcion": "Concierto de Ale Acosta en el Escenario Porklovers"
+            }
+          ]
+        },
+        {
+          "dia": 5,
+          "fecha": "2026-08-07",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "Concierto de La Milagrosa en el Escenario Pza. Trigo Vibra Mahou"
+            },
+            {
+              "hora": "13:00",
+              "descripcion": "Concierto de Fontán en el Escenario Pza. Trigo Vibra Mahou"
+            },
+            {
+              "hora": "14:00",
+              "descripcion": "Concierto de Éxtasis en el Escenario Pza. Trigo Vibra Mahou"
+            },
+            {
+              "hora": "12:00",
+              "descripcion": "Concierto de Luback en el Escenario Pza. La Sal Vibra Mahou"
+            },
+            {
+              "hora": "12:55",
+              "descripcion": "Concierto de Volavent en el Escenario Pza. La Sal Vibra Mahou"
+            },
+            {
+              "hora": "13:50",
+              "descripcion": "Concierto de Nuevo Berlín en el Escenario Pza. La Sal Vibra Mahou"
+            },
+            {
+              "hora": "14:45",
+              "descripcion": "Concierto de Nuevos Vicios en el Escenario Pza. La Sal Vibra Mahou"
+            },
+            {
+              "hora": "15:30",
+              "descripcion": "Concierto de Aguacate y Mango en el Escenario Pza. La Sal Vibra Mahou"
+            },
+            {
+              "hora": "16:40",
+              "descripcion": "Concierto de Mr. Kitos en el Escenario Pza. La Sal Vibra Mahou"
+            },
+            {
+              "hora": "12:00",
+              "descripcion": "Concierto de Alonso en el Escenario Charco"
+            },
+            {
+              "hora": "13:00",
+              "descripcion": "Concierto de Las Migas en el Escenario Charco"
+            },
+            {
+              "hora": "14:00",
+              "descripcion": "Concierto de La Garfield en el Escenario Charco"
+            },
+            {
+              "hora": "15:00",
+              "descripcion": "Concierto de Siamés en el Escenario Charco"
+            },
+            {
+              "hora": "16:00",
+              "descripcion": "Concierto de Coti en el Escenario Charco"
+            },
+            {
+              "hora": "17:00",
+              "descripcion": "Concierto de Lucky Salvadori en el Escenario Charco"
+            },
+            {
+              "hora": "13:00",
+              "descripcion": "Concierto de La Azotea en el Escenario Le Club / Café Central"
+            },
+            {
+              "hora": "19:00",
+              "descripcion": "Concierto de La Sonrisa de Julia en el Escenario Aranda de Duero"
+            },
+            {
+              "hora": "21:00",
+              "descripcion": "Concierto de Carlos Ares en el Escenario Aranda de Duero"
+            },
+            {
+              "hora": "23:30",
+              "descripcion": "Concierto de Sexy Zebras en el Escenario Aranda de Duero"
+            },
+            {
+              "hora": "01:45",
+              "descripcion": "Concierto de Comandante Twin en el Escenario Aranda de Duero"
+            },
+            {
+              "hora": "03:45",
+              "descripcion": "Concierto de Ladilla Rusa en el Escenario Aranda de Duero"
+            },
+            {
+              "hora": "20:00",
+              "descripcion": "Concierto de Ángel Stanich en el Escenario Ribera del Duero"
+            },
+            {
+              "hora": "22:00",
+              "descripcion": "Concierto de Love of Lesbian en el Escenario Ribera del Duero"
+            },
+            {
+              "hora": "00:45",
+              "descripcion": "Concierto de Niña Polaca en el Escenario Ribera del Duero"
+            },
+            {
+              "hora": "02:45",
+              "descripcion": "Concierto de Samuraï en el Escenario Ribera del Duero"
+            },
+            {
+              "hora": "19:00",
+              "descripcion": "Concierto de Suzete en el Escenario Indexa"
+            },
+            {
+              "hora": "20:40",
+              "descripcion": "Concierto de Malmö 040 en el Escenario Indexa"
+            },
+            {
+              "hora": "22:20",
+              "descripcion": "Concierto de Soleá Morente en el Escenario Indexa"
+            },
+            {
+              "hora": "00:00",
+              "descripcion": "Concierto de Lucho RK en el Escenario Indexa"
+            },
+            {
+              "hora": "01:40",
+              "descripcion": "Concierto de StormyKid en el Escenario Indexa"
+            },
+            {
+              "hora": "03:20",
+              "descripcion": "Concierto de Marban en el Escenario Indexa"
+            },
+            {
+              "hora": "19:50",
+              "descripcion": "Concierto de Funambulista en el Escenario Porklovers"
+            },
+            {
+              "hora": "21:30",
+              "descripcion": "Concierto de Los Negativos en el Escenario Porklovers"
+            },
+            {
+              "hora": "23:10",
+              "descripcion": "Concierto de Xavibo en el Escenario Porklovers"
+            },
+            {
+              "hora": "00:50",
+              "descripcion": "Concierto de Depresión Sonora en el Escenario Porklovers"
+            },
+            {
+              "hora": "02:30",
+              "descripcion": "Concierto de Eladio y Los Seres Queridos en el Escenario Porklovers"
+            },
+            {
+              "hora": "04:10",
+              "descripcion": "Concierto de Bum Motion Club en el Escenario Porklovers"
+            },
+            {
+              "hora": "19:00",
+              "descripcion": "Concierto de Canciller en el Escenario Tierra de Sabor"
+            },
+            {
+              "hora": "20:05",
+              "descripcion": "Concierto de Da Igual en el Escenario Tierra de Sabor"
+            },
+            {
+              "hora": "21:10",
+              "descripcion": "Concierto de Memocracia en el Escenario Tierra de Sabor"
+            },
+            {
+              "hora": "22:15",
+              "descripcion": "Concierto de Alejo en el Escenario Tierra de Sabor"
+            },
+            {
+              "hora": "23:20",
+              "descripcion": "Concierto de Candela Gómez en el Escenario Tierra de Sabor"
+            },
+            {
+              "hora": "00:25",
+              "descripcion": "Concierto de Hoonine en el Escenario Tierra de Sabor"
+            },
+            {
+              "hora": "01:15",
+              "descripcion": "Concierto de Rialto en el Escenario Tierra de Sabor"
+            },
+            {
+              "hora": "02:20",
+              "descripcion": "Concierto de Varoc en el Escenario Tierra de Sabor"
+            },
+            {
+              "hora": "03:25",
+              "descripcion": "Concierto de Juanann_Deck en el Escenario Tierra de Sabor"
+            }
+          ]
+        },
+        {
+          "dia": 6,
+          "fecha": "2026-08-08",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "Concierto de El Verbo Odiado en el Escenario Pza. Trigo Vibra Mahou"
+            },
+            {
+              "hora": "13:00",
+              "descripcion": "Concierto de Modelo en el Escenario Pza. Trigo Vibra Mahou"
+            },
+            {
+              "hora": "14:00",
+              "descripcion": "Concierto de Oslo Ovnies en el Escenario Pza. Trigo Vibra Mahou"
+            },
+            {
+              "hora": "12:00",
+              "descripcion": "Concierto de La Juventud en el Escenario Pza. La Sal Vibra Mahou"
+            },
+            {
+              "hora": "12:55",
+              "descripcion": "Concierto de Ricardo Moya en el Escenario Pza. La Sal Vibra Mahou"
+            },
+            {
+              "hora": "13:50",
+              "descripcion": "Concierto de Mazu en el Escenario Pza. La Sal Vibra Mahou"
+            },
+            {
+              "hora": "14:45",
+              "descripcion": "Concierto de Daphne en el Escenario Pza. La Sal Vibra Mahou"
+            },
+            {
+              "hora": "15:30",
+              "descripcion": "DJ Set de Raúl Sanz DJ en el Escenario Pza. La Sal Vibra Mahou"
+            },
+            {
+              "hora": "16:20",
+              "descripcion": "Concierto de Fat Gordon en el Escenario Pza. La Sal Vibra Mahou"
+            },
+            {
+              "hora": "17:10",
+              "descripcion": "DJ Set de DJ Ziry en el Escenario Pza. La Sal Vibra Mahou"
+            },
+            {
+              "hora": "12:00",
+              "descripcion": "Concierto de Gauchito Club en el Escenario Charco (10º Aniversario)"
+            },
+            {
+              "hora": "13:00",
+              "descripcion": "Concierto de Vangoura en el Escenario Charco (10º Aniversario)"
+            },
+            {
+              "hora": "14:00",
+              "descripcion": "Concierto de Colectivo Da Silva en el Escenario Charco (10º Aniversario)"
+            },
+            {
+              "hora": "15:00",
+              "descripcion": "Concierto de Maruja Limón en el Escenario Charco (10º Aniversario)"
+            },
+            {
+              "hora": "16:00",
+              "descripcion": "Concierto de Arco en el Escenario Charco (10º Aniversario)"
+            },
+            {
+              "hora": "17:00",
+              "descripcion": "Concierto de De Ninghures en el Escenario Charco (10º Aniversario)"
+            },
+            {
+              "hora": "11:30",
+              "descripcion": "Concierto de Happening en el Escenario Sonorama Baby"
+            },
+            {
+              "hora": "13:00",
+              "descripcion": "Concierto de Caracolino en el Escenario Sonorama Baby"
+            },
+            {
+              "hora": "13:00",
+              "descripcion": "Concierto de Grama Agropunk en el Escenario Le Club / Café Central"
+            },
+            {
+              "hora": "19:00",
+              "descripcion": "Concierto de Repion en el Escenario Aranda de Duero"
+            },
+            {
+              "hora": "19:45",
+              "descripcion": "Concierto de Valeria Castro en el Escenario Aranda de Duero"
+            },
+            {
+              "hora": "19:00",
+              "descripcion": "Concierto de Vis Viva en el Escenario Indexa"
+            },
+            {
+              "hora": "19:50",
+              "descripcion": "Concierto de Pol 3.14 en el Escenario Porklovers"
+            },
+            {
+              "hora": "19:00",
+              "descripcion": "Concierto de Jaguayano en el Escenario Tierra de Sabor"
+            },
+            {
+              "hora": "20:35",
+              "descripcion": "Concierto de Belén Aguilera en el Escenario Ribera del Duero"
+            },
+            {
+              "hora": "21:35",
+              "descripcion": "Concierto de La M.O.D.A. en el Escenario Aranda de Duero"
+            },
+            {
+              "hora": "20:40",
+              "descripcion": "Concierto de Kitai en el Escenario Indexa"
+            },
+            {
+              "hora": "21:30",
+              "descripcion": "Concierto de Ruth en el Escenario Porklovers"
+            },
+            {
+              "hora": "20:05",
+              "descripcion": "Concierto de Los Chivatos en el Escenario Tierra de Sabor"
+            },
+            {
+              "hora": "23:00",
+              "descripcion": "Concierto de Leiva en el Escenario Ribera del Duero"
+            },
+            {
+              "hora": "00:30",
+              "descripcion": "Concierto de Xoel López en el Escenario Aranda de Duero"
+            },
+            {
+              "hora": "22:20",
+              "descripcion": "Concierto de Paul Alone en el Escenario Indexa"
+            },
+            {
+              "hora": "23:10",
+              "descripcion": "Concierto de Al Safir en el Escenario Porklovers"
+            },
+            {
+              "hora": "21:10",
+              "descripcion": "Concierto de Aluo en el Escenario Tierra de Sabor"
+            },
+            {
+              "hora": "01:40",
+              "descripcion": "Concierto de Ojete Calor en el Escenario Ribera del Duero"
+            },
+            {
+              "hora": "02:40",
+              "descripcion": "Concierto de Marlena en el Escenario Aranda de Duero"
+            },
+            {
+              "hora": "00:00",
+              "descripcion": "Concierto de Dollar Selmouni en el Escenario Indexa"
+            },
+            {
+              "hora": "00:50",
+              "descripcion": "Concierto de El Mato a un Policía Motorizado en el Escenario Porklovers"
+            },
+            {
+              "hora": "22:15",
+              "descripcion": "Concierto de Nacho Pistacho en el Escenario Tierra de Sabor"
+            },
+            {
+              "hora": "03:40",
+              "descripcion": "DJ Set de Eme DJ en el Escenario Aranda de Duero"
+            },
+            {
+              "hora": "01:40",
+              "descripcion": "Concierto de Puño Dragón en el Escenario Indexa"
+            },
+            {
+              "hora": "02:30",
+              "descripcion": "Concierto de The Rapants en el Escenario Porklovers"
+            },
+            {
+              "hora": "23:20",
+              "descripcion": "Concierto de Grande Amore en el Escenario Tierra de Sabor"
+            },
+            {
+              "hora": "03:20",
+              "descripcion": "Concierto de Raya Diplomática en el Escenario Indexa"
+            },
+            {
+              "hora": "04:10",
+              "descripcion": "Concierto de Lapili en el Escenario Porklovers"
+            }
+          ]
+        },
+        {
+          "dia": 7,
+          "fecha": "2026-08-09",
+          "eventos": [
+            {
+              "hora": "",
+              "descripcion": "Fin de fiesta Sonorama Ribera: Programación Diurna en Plaza del Trigo Vibra Mahou (Sarria, La Regadera, Niños Bravos) y Plaza de la Sal Vibra Mahou (Late Capital, Mañana Viernes, Drugos, Eyelet, Serrano Brothers, Popi & Sito)."
+            },
+            {
+              "hora": "",
+              "descripcion": "Sonorama Ribera: Sonorama Baby (Mago Luis Joyra) y Merakids."
+            },
+            {
+              "hora": "",
+              "descripcion": "Sonorama Ribera: Le Club / Café Central (She's a Star DJ y amigos desde las 18:00)."
+            }
+          ]
+        },
+        {
+          "dia": 8,
+          "fecha": "2026-08-10",
+          "eventos": []
+        },
+        {
+          "dia": 9,
+          "fecha": "2026-08-11",
+          "eventos": []
+        },
+        {
+          "dia": 10,
+          "fecha": "2026-08-12",
+          "eventos": []
+        },
+        {
+          "dia": 11,
+          "fecha": "2026-08-13",
+          "eventos": []
+        },
+        {
+          "dia": 12,
+          "fecha": "2026-08-14",
+          "eventos": []
+        },
+        {
+          "dia": 16,
+          "fecha": "2026-08-18",
+          "eventos": []
+        },
+        {
+          "dia": 17,
+          "fecha": "2026-08-19",
+          "eventos": []
+        },
+        {
+          "dia": 18,
+          "fecha": "2026-08-20",
+          "eventos": []
+        },
+        {
+          "dia": 19,
+          "fecha": "2026-08-21",
+          "eventos": []
+        },
+        {
+          "dia": 20,
+          "fecha": "2026-08-22",
+          "eventos": []
+        },
+        {
+          "dia": 21,
+          "fecha": "2026-08-23",
+          "eventos": []
+        },
+        {
+          "dia": 28,
+          "fecha": "2026-08-30",
+          "eventos": []
+        },
+        {
+          "dia": 29,
+          "fecha": "2026-08-31",
+          "eventos": []
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "programa_advocacion_dudosa": true,
+      "programa_estado": "completo",
+      "lat": 41.67019102,
+      "lng": -3.689687939
+    },
+    {
+      "id": "sonorama-ribera-2026",
+      "lugar_id": "09018000201",
+      "nombre": "Sonorama Ribera 2026",
+      "fecha_inicio": "2026-08-05",
+      "fecha_fin": "2026-08-09",
+      "tamano": "grande",
+      "descripcion": "Festival de música indie internacional con conciertos en la ciudad, combinando música y gastronomía. Incluye actuaciones de artistas como Leiva, Love of Lesbian, Iván Ferreiro, etc.",
+      "confianza": "alta",
+      "fuentes": [
+        "web_municipio"
+      ],
+      "sede_segun_el_texto": "Aranda de Duero",
+      "solo_fuentes_no_oficiales": false,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-08-05",
+          "eventos": [
+            {
+              "hora": "",
+              "descripcion": "Fiesta de Bienvenida"
+            },
+            {
+              "hora": "16:30",
+              "descripcion": "DJ Van Bylen"
+            },
+            {
+              "hora": "19:00",
+              "descripcion": "Nat Simons"
+            },
+            {
+              "hora": "20:40",
+              "descripcion": "La Cabra Mecánica"
+            },
+            {
+              "hora": "22:20",
+              "descripcion": "León Benavente"
+            },
+            {
+              "hora": "00:20",
+              "descripcion": "La Pegatina"
+            },
+            {
+              "hora": "02:20",
+              "descripcion": "Wally López"
+            },
+            {
+              "hora": "19:50",
+              "descripcion": "Carlangas"
+            },
+            {
+              "hora": "21:30",
+              "descripcion": "Bebe"
+            },
+            {
+              "hora": "23:20",
+              "descripcion": "Iván Ferreiro"
+            },
+            {
+              "hora": "01:20",
+              "descripcion": "Crystal Fighters"
+            },
+            {
+              "hora": "19:00",
+              "descripcion": "Whisky Caravan"
+            },
+            {
+              "hora": "20:40",
+              "descripcion": "Mafalda Cardenal"
+            },
+            {
+              "hora": "22:20",
+              "descripcion": "Tu Otra Bonita"
+            },
+            {
+              "hora": "00:00",
+              "descripcion": "D. Valentino"
+            },
+            {
+              "hora": "01:40",
+              "descripcion": "Sofía Gabanna"
+            },
+            {
+              "hora": "19:50",
+              "descripcion": "Yacaré"
+            },
+            {
+              "hora": "21:30",
+              "descripcion": "Pablopablo"
+            },
+            {
+              "hora": "23:10",
+              "descripcion": "Chiquita Movida"
+            },
+            {
+              "hora": "00:50",
+              "descripcion": "The Molotovs"
+            },
+            {
+              "hora": "02:30",
+              "descripcion": "Simulacro"
+            },
+            {
+              "hora": "19:00",
+              "descripcion": "Fiesta de Disfraces"
+            },
+            {
+              "hora": "21:00",
+              "descripcion": "Salvana"
+            },
+            {
+              "hora": "22:00",
+              "descripcion": "Tigre y Diamante"
+            },
+            {
+              "hora": "23:00",
+              "descripcion": "Pitty Me Voy"
+            },
+            {
+              "hora": "00:00",
+              "descripcion": "Lala Acolea"
+            },
+            {
+              "hora": "01:00",
+              "descripcion": "Mal Sense"
+            },
+            {
+              "hora": "02:00",
+              "descripcion": "DJ Filo"
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-08-06",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "Sobrezero"
+            },
+            {
+              "hora": "13:00",
+              "descripcion": "Las Petunias"
+            },
+            {
+              "hora": "14:00",
+              "descripcion": "Calequi y Las Panteras"
+            },
+            {
+              "hora": "15:00",
+              "descripcion": "Concierto Sorpresa"
+            },
+            {
+              "hora": "12:00",
+              "descripcion": "We Are Mono"
+            },
+            {
+              "hora": "12:55",
+              "descripcion": "Norte Perdido"
+            },
+            {
+              "hora": "13:50",
+              "descripcion": "Soyla"
+            },
+            {
+              "hora": "14:45",
+              "descripcion": "Hostia Pedagógica"
+            },
+            {
+              "hora": "15:30",
+              "descripcion": "Go Cactus"
+            },
+            {
+              "hora": "16:20",
+              "descripcion": "Tardeo Cool DJ's"
+            },
+            {
+              "hora": "17:10",
+              "descripcion": "DJ Felipe"
+            },
+            {
+              "hora": "12:00",
+              "descripcion": "Barbi Recanati"
+            },
+            {
+              "hora": "13:00",
+              "descripcion": "Ángela González"
+            },
+            {
+              "hora": "14:00",
+              "descripcion": "Mabu"
+            },
+            {
+              "hora": "15:00",
+              "descripcion": "La Delio Valdez"
+            },
+            {
+              "hora": "16:00",
+              "descripcion": "Los Vinagres"
+            },
+            {
+              "hora": "17:00",
+              "descripcion": "Tiburona"
+            },
+            {
+              "hora": "13:00",
+              "descripcion": "Winter & Torres"
+            },
+            {
+              "hora": "19:00",
+              "descripcion": "Karavana"
+            },
+            {
+              "hora": "20:40",
+              "descripcion": "Ramoncín"
+            },
+            {
+              "hora": "22:25",
+              "descripcion": "Rigoberta Bandini"
+            },
+            {
+              "hora": "00:45",
+              "descripcion": "Rusowsky"
+            },
+            {
+              "hora": "03:00",
+              "descripcion": "Peces Raros"
+            },
+            {
+              "hora": "19:50",
+              "descripcion": "Nacho Vegas"
+            },
+            {
+              "hora": "21:30",
+              "descripcion": "Veintiuno"
+            },
+            {
+              "hora": "23:35",
+              "descripcion": "Guitarricadelafuente"
+            },
+            {
+              "hora": "01:55",
+              "descripcion": "RVFV"
+            },
+            {
+              "hora": "03:50",
+              "descripcion": "Serial Killerz"
+            },
+            {
+              "hora": "19:00",
+              "descripcion": "Galerna"
+            },
+            {
+              "hora": "20:40",
+              "descripcion": "Vera Fauna"
+            },
+            {
+              "hora": "22:20",
+              "descripcion": "Ángeles Toledano"
+            },
+            {
+              "hora": "00:00",
+              "descripcion": "Lablackie"
+            },
+            {
+              "hora": "01:40",
+              "descripcion": "Mi Vida Rosa"
+            },
+            {
+              "hora": "03:20",
+              "descripcion": "Sobrinus"
+            },
+            {
+              "hora": "19:50",
+              "descripcion": "Alberto.Vela"
+            },
+            {
+              "hora": "21:30",
+              "descripcion": "El Nido"
+            },
+            {
+              "hora": "23:10",
+              "descripcion": "We Are Scientists"
+            },
+            {
+              "hora": "00:50",
+              "descripcion": "Egon Soda"
+            },
+            {
+              "hora": "02:30",
+              "descripcion": "Valira"
+            },
+            {
+              "hora": "04:10",
+              "descripcion": "Ale Acosta"
+            },
+            {
+              "hora": "19:00",
+              "descripcion": "Dani Leiva"
+            },
+            {
+              "hora": "20:05",
+              "descripcion": "Ona Mafalda"
+            },
+            {
+              "hora": "21:10",
+              "descripcion": "Carencias Afectivas"
+            },
+            {
+              "hora": "22:15",
+              "descripcion": "Alberto & García"
+            },
+            {
+              "hora": "23:20",
+              "descripcion": "Ortiga"
+            },
+            {
+              "hora": "00:25",
+              "descripcion": "Pirri Román"
+            }
+          ]
+        },
+        {
+          "dia": 3,
+          "fecha": "2026-08-07",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "La Milagrosa"
+            },
+            {
+              "hora": "13:00",
+              "descripcion": "Fontán"
+            },
+            {
+              "hora": "14:00",
+              "descripcion": "Éxtasis"
+            },
+            {
+              "hora": "12:00",
+              "descripcion": "Luback"
+            },
+            {
+              "hora": "12:55",
+              "descripcion": "Volavent"
+            },
+            {
+              "hora": "13:50",
+              "descripcion": "Nuevo Berlín"
+            },
+            {
+              "hora": "14:45",
+              "descripcion": "Nuevos Vicios"
+            },
+            {
+              "hora": "15:30",
+              "descripcion": "Aguacate y Mango"
+            },
+            {
+              "hora": "16:40",
+              "descripcion": "Mr. Kitos"
+            },
+            {
+              "hora": "12:00",
+              "descripcion": "Alonso"
+            },
+            {
+              "hora": "13:00",
+              "descripcion": "Las Migas"
+            },
+            {
+              "hora": "14:00",
+              "descripcion": "La Garfield"
+            },
+            {
+              "hora": "15:00",
+              "descripcion": "Siamés"
+            },
+            {
+              "hora": "16:00",
+              "descripcion": "Coti"
+            },
+            {
+              "hora": "17:00",
+              "descripcion": "Lucky Salvadori"
+            },
+            {
+              "hora": "13:00",
+              "descripcion": "La Azotea"
+            },
+            {
+              "hora": "19:00",
+              "descripcion": "La Sonrisa de Julia"
+            },
+            {
+              "hora": "21:00",
+              "descripcion": "Carlos Ares"
+            },
+            {
+              "hora": "23:30",
+              "descripcion": "Sexy Zebras"
+            },
+            {
+              "hora": "01:45",
+              "descripcion": "Comandante Twin"
+            },
+            {
+              "hora": "03:45",
+              "descripcion": "Ladilla Rusa"
+            },
+            {
+              "hora": "20:00",
+              "descripcion": "Ángel Stanich"
+            },
+            {
+              "hora": "22:00",
+              "descripcion": "Love of Lesbian"
+            },
+            {
+              "hora": "00:45",
+              "descripcion": "Niña Polaca"
+            },
+            {
+              "hora": "02:45",
+              "descripcion": "Samuraï"
+            },
+            {
+              "hora": "19:00",
+              "descripcion": "Suzete"
+            },
+            {
+              "hora": "20:40",
+              "descripcion": "Malmö 040"
+            },
+            {
+              "hora": "22:20",
+              "descripcion": "Soleá Morente"
+            },
+            {
+              "hora": "00:00",
+              "descripcion": "Lucho RK"
+            },
+            {
+              "hora": "01:40",
+              "descripcion": "StormyKid"
+            },
+            {
+              "hora": "03:20",
+              "descripcion": "Marban"
+            },
+            {
+              "hora": "19:50",
+              "descripcion": "Funambulista"
+            },
+            {
+              "hora": "21:30",
+              "descripcion": "Los Negativos"
+            },
+            {
+              "hora": "23:10",
+              "descripcion": "Xavibo"
+            },
+            {
+              "hora": "00:50",
+              "descripcion": "Depresión Sonora"
+            },
+            {
+              "hora": "02:30",
+              "descripcion": "Eladio y Los Seres Queridos"
+            },
+            {
+              "hora": "04:10",
+              "descripcion": "Bum Motion Club"
+            },
+            {
+              "hora": "19:00",
+              "descripcion": "Canciller"
+            },
+            {
+              "hora": "20:05",
+              "descripcion": "Da Igual"
+            },
+            {
+              "hora": "21:10",
+              "descripcion": "Memocracia"
+            },
+            {
+              "hora": "22:15",
+              "descripcion": "Alejo"
+            },
+            {
+              "hora": "23:20",
+              "descripcion": "Cándela Gómez"
+            },
+            {
+              "hora": "00:25",
+              "descripcion": "Hoonine"
+            },
+            {
+              "hora": "01:15",
+              "descripcion": "Rialto"
+            },
+            {
+              "hora": "02:20",
+              "descripcion": "Varoc"
+            },
+            {
+              "hora": "03:25",
+              "descripcion": "Juanann_Deck"
+            }
+          ]
+        },
+        {
+          "dia": 4,
+          "fecha": "2026-08-08",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "El Verbo Odiado"
+            },
+            {
+              "hora": "13:00",
+              "descripcion": "Modelo"
+            },
+            {
+              "hora": "14:00",
+              "descripcion": "Oslo Ovnies"
+            },
+            {
+              "hora": "12:00",
+              "descripcion": "La Juventud"
+            },
+            {
+              "hora": "12:55",
+              "descripcion": "Ricardo Moya"
+            },
+            {
+              "hora": "13:50",
+              "descripcion": "Mazu"
+            },
+            {
+              "hora": "14:45",
+              "descripcion": "Daphne"
+            },
+            {
+              "hora": "15:30",
+              "descripcion": "Raúl Sanz DJ"
+            },
+            {
+              "hora": "16:20",
+              "descripcion": "Fat Gordon"
+            },
+            {
+              "hora": "17:10",
+              "descripcion": "DJ Ziry"
+            },
+            {
+              "hora": "11:30",
+              "descripcion": "Happening"
+            },
+            {
+              "hora": "13:00",
+              "descripcion": "Caracolino"
+            },
+            {
+              "hora": "12:00",
+              "descripcion": "Gauchito Club"
+            },
+            {
+              "hora": "13:00",
+              "descripcion": "Vangoura"
+            },
+            {
+              "hora": "14:00",
+              "descripcion": "Colectivo Da Silva"
+            },
+            {
+              "hora": "15:00",
+              "descripcion": "Maruja Limón"
+            },
+            {
+              "hora": "16:00",
+              "descripcion": "Arco"
+            },
+            {
+              "hora": "17:00",
+              "descripcion": "De Ninghures"
+            },
+            {
+              "hora": "13:00",
+              "descripcion": "Grama Agropunk"
+            },
+            {
+              "hora": "19:00",
+              "descripcion": "Repion"
+            },
+            {
+              "hora": "19:45",
+              "descripcion": "Valeria Castro"
+            },
+            {
+              "hora": "19:00",
+              "descripcion": "Vis Viva"
+            },
+            {
+              "hora": "19:50",
+              "descripcion": "Pol 3.14"
+            },
+            {
+              "hora": "19:00",
+              "descripcion": "Jaguayano"
+            },
+            {
+              "hora": "20:35",
+              "descripcion": "Belén Aguilera"
+            },
+            {
+              "hora": "21:35",
+              "descripcion": "La M.O.D.A."
+            },
+            {
+              "hora": "20:40",
+              "descripcion": "Kitai"
+            },
+            {
+              "hora": "21:30",
+              "descripcion": "Ruth"
+            },
+            {
+              "hora": "20:05",
+              "descripcion": "Los Chivatos"
+            },
+            {
+              "hora": "23:00",
+              "descripcion": "Leiva"
+            },
+            {
+              "hora": "00:30",
+              "descripcion": "Xoel López"
+            },
+            {
+              "hora": "22:20",
+              "descripcion": "Paul Alone"
+            },
+            {
+              "hora": "23:10",
+              "descripcion": "Al Safir"
+            },
+            {
+              "hora": "21:10",
+              "descripcion": "Aluo"
+            },
+            {
+              "hora": "01:40",
+              "descripcion": "Ojete Calor"
+            },
+            {
+              "hora": "02:40",
+              "descripcion": "Marlena"
+            },
+            {
+              "hora": "00:00",
+              "descripcion": "Dollar Selmouni"
+            },
+            {
+              "hora": "00:50",
+              "descripcion": "El Columpio / Él Mató a un Policía Motorizado"
+            },
+            {
+              "hora": "22:15",
+              "descripcion": "Nacho Pistacho"
+            },
+            {
+              "hora": "03:40",
+              "descripcion": "Eme DJ"
+            },
+            {
+              "hora": "01:40",
+              "descripcion": "Puño Dragón"
+            },
+            {
+              "hora": "02:30",
+              "descripcion": "The Rapants"
+            },
+            {
+              "hora": "23:20",
+              "descripcion": "Grande Amore"
+            },
+            {
+              "hora": "03:20",
+              "descripcion": "Raya Diplomática"
+            },
+            {
+              "hora": "04:10",
+              "descripcion": "Lapili"
+            },
+            {
+              "hora": "00:25",
+              "descripcion": "Nøgen / DJs"
+            }
+          ]
+        },
+        {
+          "dia": 5,
+          "fecha": "2026-08-09",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "Sarria"
+            },
+            {
+              "hora": "13:00",
+              "descripcion": "La Regadera"
+            },
+            {
+              "hora": "14:00",
+              "descripcion": "Niños Bravos"
+            },
+            {
+              "hora": "15:00",
+              "descripcion": "Último Concierto Sorpresa"
+            },
+            {
+              "hora": "12:00",
+              "descripcion": "Late Capital"
+            },
+            {
+              "hora": "12:55",
+              "descripcion": "Mañana Viernes"
+            },
+            {
+              "hora": "13:50",
+              "descripcion": "Drugos"
+            },
+            {
+              "hora": "14:45",
+              "descripcion": "Eyelet"
+            },
+            {
+              "hora": "15:30",
+              "descripcion": "Serrano Brothers"
+            },
+            {
+              "hora": "16:45",
+              "descripcion": "Popi & Sito"
+            },
+            {
+              "hora": "11:30",
+              "descripcion": "Mago Luis Joyra (Baby)"
+            },
+            {
+              "hora": "13:00",
+              "descripcion": "Merakids (Baby)"
+            },
+            {
+              "hora": "18:00",
+              "descripcion": "She's a Star DJ"
+            }
+          ]
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "programa_estado": "completo",
+      "lat": 41.67019102,
+      "lng": -3.689687939
+    },
+    {
+      "id": "fiesta-vendimia-aranda-2026",
+      "lugar_id": "09018000201",
+      "nombre": "Fiestas Patronales en Honor de la Virgen de las Viñas",
+      "fecha_inicio": "2026-09-02",
+      "fecha_fin": "2026-09-20",
+      "tamano": "grande",
+      "descripcion": "Celebración principal de la localidad en honor a Nuestra Señora de las Viñas, patrona de Aranda de Duero. Incluye procesiones, desfiles de gigantes y cabezudos, ferias de música, conciertos internacionales (Barry B, Camela, Juan Magán), verbena nocturna con orquesta, fuegos artificiales, actividades deportivas y culturales.",
+      "confianza": "baja",
+      "fuentes": [
+        "busqueda_web",
+        "web_municipio"
+      ],
+      "sede_segun_el_texto": "Aranda de Duero",
+      "solo_fuentes_no_oficiales": false,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-09-02",
+          "eventos": []
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-09-03",
+          "eventos": []
+        },
+        {
+          "dia": 3,
+          "fecha": "2026-09-04",
+          "eventos": [
+            {
+              "hora": "18:30",
+              "descripcion": "Jardines de Don Diego. Exhibición tenis de mesa"
+            }
+          ]
+        },
+        {
+          "dia": 10,
+          "fecha": "2026-09-11",
+          "eventos": []
+        },
+        {
+          "dia": 11,
+          "fecha": "2026-09-12",
+          "eventos": [
+            {
+              "hora": "",
+              "descripcion": "Concentración en Plaza Mayor con autoridades, Reinas y Damas y peñas."
+            },
+            {
+              "hora": "",
+              "descripcion": "Procesión hasta la ermita por las calles La Miel, Cascajar y Fuenteminaya."
+            },
+            {
+              "hora": "",
+              "descripcion": "Ofrenda floral a los pies de la patrona."
+            },
+            {
+              "hora": "",
+              "descripcion": "Actuación del grupo de danzas Alquería con piezas tradicionales de la Ribera."
+            },
+            {
+              "hora": "",
+              "descripcion": "Salve popular cantada por todos los presentes en el atrio de la ermita."
+            }
+          ]
+        },
+        {
+          "dia": 12,
+          "fecha": "2026-09-13",
+          "eventos": []
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "programa_de_otro_anno": 2025,
+      "programa_estado": "completo",
+      "lat": 41.67019102,
+      "lng": -3.689687939
+    },
+    {
+      "id": "patronales-la-aguilera-san-pedro-regalado-2026",
+      "lugar_id": "09018000101",
+      "nombre": "Fiestas Patronales de La Aguilera en honor a San Pedro Regalado",
+      "fecha_inicio": "2026-05-12",
+      "fecha_fin": "2026-05-17",
+      "tamano": "pequeña",
+      "descripcion": "Celebración festiva en honor a San Pedro Regalado, patrón de La Aguilera. Incluye actos religiosos (misa solemne, procesión), verbenas nocturnas con orquesta y DJ, juegos populares, concursos infantiles y reencuentros vecinales.",
+      "confianza": "baja",
+      "fuentes": [
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "La Aguilera",
+      "solo_fuentes_no_oficiales": true,
+      "programa": [],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": true,
+      "ancla_propuesta": {
+        "fecha_inicio": "2026-05-13",
+        "fecha_fin": "2026-05-17",
+        "peso": 4,
+        "evidencia": "patronales de la aguilera 2026 san pedro regalado proponer una correccion fechas 13 may — 17 may 2026 lugar la aguilera 09 precios gratis estado confirmado presentacion de patronales la aguilera las fiestas patronales de la aguilera pedania del municipio de aranda de duero se celebran cada 13 de mayo en honor a su patron ligado tradicionalmente a la figura de san pedro regalado —cuyo celebre convento del domus dei se"
+      },
+      "sin_programa_publicado": true,
+      "programa_estado": "no_encontrado",
+      "patron": {
+        "nombre": "San Pedro Regalado",
+        "dia": 13,
+        "mes": 5,
+        "fuente": "wikipedia"
+      },
+      "lat": 41.73203347,
+      "lng": -3.770124402
+    },
+    {
+      "id": "sinovas-san-bartolome-2026",
+      "lugar_id": "09018000301",
+      "nombre": "Fiestas Patronales de San Bartolomé",
+      "fecha_inicio": "2026-08-22",
+      "fecha_fin": "2026-08-31",
+      "tamano": "grande",
+      "descripcion": "Celebración patronal en honor a San Bartolomé con un completo programa de actividades: pasacalles, charangas, pregón, exposiciones, concursos gastronómicos (Premios Albillo, tortillas, pacharán), verbenas nocturnas con DJ y orquesta, conciertos, teatro, campeonatos deportivos (fútbol-sala, mountain bike, bolos) y cenas populares.",
+      "confianza": "baja",
+      "fuentes": [
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Sinovas",
+      "solo_fuentes_no_oficiales": true,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-08-22",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "Pasacalles por el barrio con la charanga El Barreño"
+            },
+            {
+              "hora": "13:00",
+              "descripcion": "Inauguración de la exposición \"Programas de las Fiestas de Aranda 1940-1980: Portadas y reinas\""
+            },
+            {
+              "hora": "19:00",
+              "descripcion": "Imposición de la banda a la reina y dama de las fiestas 2026. A continuación, pregón a cargo de Benjamín Martín Gayubo"
+            },
+            {
+              "hora": "20:30",
+              "descripcion": "Subida a por el Santo y ofrenda de flores"
+            },
+            {
+              "hora": "22:00",
+              "descripcion": "Cena de hermandad"
+            },
+            {
+              "hora": "23:30",
+              "descripcion": "Concierto de Monos en Estéreo"
+            },
+            {
+              "hora": "01:30",
+              "descripcion": "DJ Luis Vela"
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-08-23",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "Misa de la fiesta principal con autoridades e invitados"
+            },
+            {
+              "hora": "13:00",
+              "descripcion": "Vino español con autoridades"
+            },
+            {
+              "hora": "13:30",
+              "descripcion": "Gigantes y cabezudos con dulzaineros"
+            },
+            {
+              "hora": "18:00",
+              "descripcion": "Campeonato de tanguilla femenino y masculino"
+            },
+            {
+              "hora": "21:00",
+              "descripcion": "Concierto de Cinco Bajo Cero"
+            }
+          ]
+        },
+        {
+          "dia": 3,
+          "fecha": "2026-08-24",
+          "eventos": [
+            {
+              "hora": "11:30",
+              "descripcion": "Misa en honor a nuestro patrón, San Bartolomé"
+            },
+            {
+              "hora": "12:00",
+              "descripcion": "Actividad infantil: juegos y festival de dibujos"
+            },
+            {
+              "hora": "12:30",
+              "descripcion": "Toboganes de agua infantiles y para adultos. Pistolas de agua"
+            },
+            {
+              "hora": "14:15",
+              "descripcion": "Fiesta de la espuma"
+            },
+            {
+              "hora": "17:00",
+              "descripcion": "Toboganes de agua infantiles y para adultos"
+            },
+            {
+              "hora": "22:30",
+              "descripcion": "Cine bajo las estrellas"
+            }
+          ]
+        },
+        {
+          "dia": 4,
+          "fecha": "2026-08-25",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "Actividad infantil: karts a pedales, taller de pompas y otras propuestas."
+            },
+            {
+              "hora": "16:00",
+              "descripcion": "Primera fase del 1.º Campeonato de mus."
+            },
+            {
+              "hora": "19:00",
+              "descripcion": "XXI Certamen de vino cosechero \"Premios Albillo\"."
+            },
+            {
+              "hora": "22:00",
+              "descripcion": "Actuación de Kalipong."
+            }
+          ]
+        },
+        {
+          "dia": 5,
+          "fecha": "2026-08-26",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "Actividad infantil: Master Chef infantil."
+            },
+            {
+              "hora": "16:00",
+              "descripcion": "Segunda fase del 1.º Campeonato de mus."
+            }
+          ]
+        },
+        {
+          "dia": 6,
+          "fecha": "2026-08-27",
+          "eventos": [
+            {
+              "hora": "12:30",
+              "descripcion": "Actividad infantil: jugando con arcilla."
+            },
+            {
+              "hora": "17:30",
+              "descripcion": "VII Torneo de fútbol-sala."
+            },
+            {
+              "hora": "18:00",
+              "descripcion": "Campeonato de rana femenino."
+            },
+            {
+              "hora": "19:00",
+              "descripcion": "I Circuito Mountain Bike infantil."
+            },
+            {
+              "hora": "20:00",
+              "descripcion": "VI Circuito Mountain Bike adultos."
+            },
+            {
+              "hora": "22:30",
+              "descripcion": "Teatro: \"Dinero negro\"."
+            }
+          ]
+        },
+        {
+          "dia": 7,
+          "fecha": "2026-08-28",
+          "eventos": [
+            {
+              "hora": "13:00",
+              "descripcion": "Almuerzo popular"
+            },
+            {
+              "hora": "13:00",
+              "descripcion": "Baile: Vermut Sax & DJ"
+            },
+            {
+              "hora": "18:00",
+              "descripcion": "Campeonato de rana masculino"
+            },
+            {
+              "hora": "18:00",
+              "descripcion": "Campeonato de bolos femenino"
+            },
+            {
+              "hora": "20:30",
+              "descripcion": "Bingo solidario"
+            },
+            {
+              "hora": "01:30",
+              "descripcion": "DJ"
+            }
+          ]
+        },
+        {
+          "dia": 8,
+          "fecha": "2026-08-29",
+          "eventos": [
+            {
+              "hora": "13:00",
+              "descripcion": "Baile vermut 'Ecos musicales'"
+            },
+            {
+              "hora": "13:30",
+              "descripcion": "X Concurso de tortillas, con degustación para el público asistente"
+            },
+            {
+              "hora": "14:30",
+              "descripcion": "Paella popular"
+            },
+            {
+              "hora": "18:00",
+              "descripcion": "XIX Partido de fútbol: casados contra solteros"
+            },
+            {
+              "hora": "20:00",
+              "descripcion": "Desfile de disfraces"
+            },
+            {
+              "hora": "21:00",
+              "descripcion": "Verbena"
+            },
+            {
+              "hora": "01:00",
+              "descripcion": "DJ"
+            }
+          ]
+        },
+        {
+          "dia": 9,
+          "fecha": "2026-08-30",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "Misa de difuntos"
+            },
+            {
+              "hora": "12:40",
+              "descripcion": "Subida del Santo a la ermita con dulzaineros"
+            },
+            {
+              "hora": "14:00",
+              "descripcion": "Vino español en la carpa de la ermita"
+            },
+            {
+              "hora": "17:30",
+              "descripcion": "Campeonato de futbolín"
+            },
+            {
+              "hora": "20:00",
+              "descripcion": "Concurso de pacharán casero Ribera del Duero"
+            },
+            {
+              "hora": "21:00",
+              "descripcion": "XIX Campeonato de tirada de boina"
+            },
+            {
+              "hora": "22:00",
+              "descripcion": "Cena popular 'Cada uno con su fardel'"
+            }
+          ]
+        },
+        {
+          "dia": 10,
+          "fecha": "2026-08-31",
+          "eventos": [
+            {
+              "hora": "19:00",
+              "descripcion": "Tanguilla por parejas"
+            },
+            {
+              "hora": "22:00",
+              "descripcion": "Merienda 'Fin de Fiesta' a escote y entrega de premios a los ganadores de los campeonatos"
+            }
+          ]
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": true,
+      "programa_estado": "completo",
+      "patron": {
+        "nombre": "San Bartolomé",
+        "dia": 24,
+        "mes": 8,
+        "fuente": "wikipedia"
+      },
+      "lat": 41.70171592,
+      "lng": -3.66450571
+    },
+    {
+      "id": "fiesta-barrio-la-calabaza-agosto-2026",
+      "lugar_id": "09018000401",
+      "nombre": "Fiestas del Barrio de La Calabaza",
+      "fecha_inicio": "2026-08-21",
+      "fecha_fin": "2026-08-23",
+      "tamano": "pequeña",
+      "descripcion": "Celebración festiva del barrio de La Calabaza con actividades infantiles, juegos tradicionales, concursos gastronómicos, comidas populares y música en directo.",
+      "confianza": "baja",
+      "fuentes": [
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "La Calabaza",
+      "solo_fuentes_no_oficiales": true,
+      "programa": [],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "sin_programa_publicado": true,
+      "programa_estado": "no_encontrado",
+      "lat": 41.67543383,
+      "lng": -3.628462546
+    }
+  ]
+}

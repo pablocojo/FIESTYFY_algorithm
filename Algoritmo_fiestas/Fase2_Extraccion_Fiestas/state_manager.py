@@ -71,6 +71,11 @@ def leer_json_con_respaldo(ruta: str, etiqueta: str = ""):
         datos = None
     if datos is not None:
         logger.warning(f"  Recuperado {nombre} desde su copia .bak.")
+        # Sobrescribir el archivo corrupto en disco con el backup para que otros procesos puedan leerlo
+        try:
+            shutil.copy2(f"{ruta}.bak", ruta)
+        except OSError as e:
+            logger.debug(f"No se pudo restaurar {ruta} desde .bak: {e}")
         return datos
     return None
 

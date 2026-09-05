@@ -60,5 +60,155 @@
  },
  "09018000401": null,
  "09018000501": null,
- "01004000101": null
+ "01004000101": null,
+ "04049000101": {
+  "nombre": "San Joaquín",
+  "dia": 26,
+  "mes": 7,
+  "fuente": "wikipedia",
+  "confianza": "alta",
+  "ambito": "localidad"
+ },
+ "10023000101": null,
+ "02005000101": null,
+ "09907000401": {
+  "nombre": "Virgen del Rosario",
+  "dia": 7,
+  "mes": 10,
+  "fuente": "wikipedia",
+  "confianza": "alta",
+  "ambito": "localidad"
+ },
+ "09907000101": null,
+ "09907000201": null,
+ "09907000301": null,
+ "09907000501": null,
+ "06150000101": {
+  "nombre": "Virgen de los Dolores",
+  "dia": 15,
+  "mes": 9,
+  "fuente": "wikipedia",
+  "confianza": "alta",
+  "ambito": "localidad"
+ },
+ "02069000101": null,
+ "02069000201": null,
+ "10013000101": null,
+ "10010000101": {
+  "nombre": "Virgen del Rosario",
+  "dia": 7,
+  "mes": 10,
+  "fuente": "wikipedia",
+  "confianza": "alta",
+  "ambito": "localidad"
+ },
+ "05021000101": {
+  "nombre": "Santiago y San Pedro",
+  "dia": 29,
+  "mes": 6,
+  "fuente": "wikipedia",
+  "confianza": "alta",
+  "ambito": "localidad"
+ },
+ "06121000101": {
+  "nombre": "San Isidro",
+  "dia": 15,
+  "mes": 5,
+  "fuente": "wikipedia",
+  "confianza": "alta",
+  "ambito": "localidad"
+ },
+ "06099000101": null,
+ "05076000101": null,
+ "02027000101": {
+  "nombre": "San Miguel",
+  "dia": 29,
+  "mes": 9,
+  "fuente": "wikipedia",
+  "confianza": "alta",
+  "ambito": "localidad"
+ },
+ "02027000201": null,
+ "02026000101": {
+  "nombre": "San Esteban",
+  "dia": 26,
+  "mes": 12,
+  "fuente": "wikipedia",
+  "confianza": "alta",
+  "ambito": "localidad"
+ },
+ "06036000101": {
+  "nombre": "Nª Sra. del Buensuceso",
+  "dia": null,
+  "mes": null,
+  "fuente": "wikipedia",
+  "confianza": "baja",
+  "ambito": "localidad"
+ },
+ "06036000201": null,
+ "05161000101": null,
+ "09056000101": {
+  "nombre": "San Roque",
+  "dia": 16,
+  "mes": 8,
+  "fuente": "wikipedia",
+  "confianza": "alta",
+  "ambito": "localidad"
+ },
+ "04097000101": {
+  "nombre": "San Roque",
+  "dia": 16,
+  "mes": 8,
+  "fuente": "wikipedia",
+  "confianza": "alta",
+  "ambito": "localidad"
+ },
+ "06064000101": null,
+ "05022000102": {
+  "nombre": "Santísimo Cristo de Gracia",
+  "dia": 14,
+  "mes": 9,
+  "fuente": "wikipedia",
+  "confianza": "media",
+  "ambito": "localidad"
+ },
+ "05022000101": null,
+ "05022000103": null,
+ "05022000201": null,
+ "05022000301": null,
+ "06158000501": {
+  "nombre": "Santa Brígida",
+  "dia": 23,
+  "mes": 7,
+  "fuente": "wikipedia",
+  "confianza": "alta",
+  "ambito": "localidad"
+ },
+ "04076000201": {
+  "nombre": "San Ginés",
+  "dia": 25,
+  "mes": 8,
+  "fuente": "wikipedia",
+  "confianza": "alta",
+  "ambito": "localidad"
+ },
+ "04076000101": null,
+ "04093000901": {
+  "nombre": "San Francisco de Asís",
+  "dia": 4,
+  "mes": 10,
+  "fuente": "wikipedia",
+  "confianza": "alta",
+  "ambito": "localidad"
+ },
+ "04093000301": null,
+ "04093000302": null,
+ "04093000303": null,
+ "04093000304": null,
+ "04093000602": null,
+ "09330000401": null,
+ "09330000101": null,
+ "09330000201": null,
+ "09330000301": null,
+ "09330000501": null
 }

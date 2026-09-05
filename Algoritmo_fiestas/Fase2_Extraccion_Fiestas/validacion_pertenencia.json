@@ -1,0 +1,464 @@
+[
+  {
+    "localidad": "Garrucha",
+    "fiesta": "Feria y Fiestas de San Joaquín de Garrucha",
+    "veredicto": "si",
+    "esperado": "si",
+    "respuesta": {
+      "es_de_la_localidad": "si",
+      "lugar_real": "Garrucha, Almería",
+      "razon": "El texto de las fuentes sitúa explícitamente la fiesta en Garrucha (04), mencionando su puerto pesquero, plaza del Ayuntamiento y contexto del Levante almeriense, coincidiendo con la localidad buscada."
+    }
+  },
+  {
+    "localidad": "Garrucha",
+    "fiesta": "Feria de la Gamba",
+    "veredicto": "si",
+    "esperado": "?",
+    "respuesta": {
+      "es_de_la_localidad": "si",
+      "lugar_real": "Garrucha",
+      "razon": "El texto de las fuentes confirma que el Festival de la Gamba Roja se celebra en Garrucha (provincia de Almería) y menciona explícitamente la participación del Ayuntamiento de Garrucha, la Diputación Provincial y la Junta de Andalucía."
+    }
+  },
+  {
+    "localidad": "Garrucha",
+    "fiesta": "Fiestas de Garrucha",
+    "veredicto": "si",
+    "esperado": "no",
+    "respuesta": {
+      "es_de_la_localidad": "si",
+      "lugar_real": "Garrucha, Almería",
+      "razon": "El texto de las fuentes menciona explícitamente que las fiestas se celebran en el municipio de Garrucha (provincia de Almería) y detalla actividades como la cucaña marinera en su puerto y la procesión de San Joaquín, características propias de esta localidad."
+    }
+  },
+  {
+    "localidad": "Garrucha",
+    "fiesta": "Fiestas de San Joaquin en Garrucha Almeria",
+    "veredicto": "si",
+    "esperado": "no",
+    "respuesta": {
+      "es_de_la_localidad": "si",
+      "lugar_real": "Garrucha",
+      "razon": "El texto de la fuente oficial del municipio menciona explícitamente que las fiestas de San Joaquín se celebran en Garrucha (Almería) como celebración patronal de la localidad."
+    }
+  },
+  {
+    "localidad": "Arroyomolinos",
+    "fiesta": "Fiesta en Honor a San Sebastián",
+    "veredicto": "si",
+    "esperado": "?",
+    "respuesta": {
+      "es_de_la_localidad": "si",
+      "lugar_real": "Arroyomolinos",
+      "razon": "El texto de la web oficial del municipio de Arroyomolinos describe detalladamente la celebración de la Fiesta en Honor a San Sebastián en esta localidad, mencionando específicamente sus espacios (Ermita, Iglesia, plaza) y características propias del pueblo."
+    }
+  },
+  {
+    "localidad": "Arroyomolinos",
+    "fiesta": "La Jira (Semana Santa)",
+    "veredicto": "no",
+    "esperado": "no",
+    "respuesta": {
+      "es_de_la_localidad": "no",
+      "lugar_real": "Arroyomolinos de León (Huelva, Andalucía)",
+      "razon": "El texto de las fuentes sitúa la Semana Santa en 'Arroyomolinos de León' (provincia de Huelva, Andalucía), distinto del municipio de Arroyomolinos (Cáceres, Extremadura) que buscamos."
+    }
+  },
+  {
+    "localidad": "Arroyomolinos",
+    "fiesta": "Fiestas del Corpus Christi",
+    "veredicto": "no",
+    "esperado": "si",
+    "respuesta": {
+      "es_de_la_localidad": "no",
+      "lugar_real": "Arroyomolinos (Madrid)",
+      "razon": "El texto sitúa las fiestas en Arroyomolinos, pero en la provincia de Madrid (28939), no en la localidad de Arroyomolinos (Cáceres, Extremadura) que se busca."
+    }
+  },
+  {
+    "localidad": "Arroyomolinos",
+    "fiesta": "Fiestas Patronales en honor a Nuestra Señora la Virgen del Rosario",
+    "veredicto": "no_se",
+    "esperado": "?",
+    "respuesta": {
+      "es_de_la_localidad": "no_se",
+      "lugar_real": null,
+      "razon": "El texto de las fuentes no menciona la celebración de las Fiestas Patronales en honor a la Virgen del Rosario en Arroyomolinos, solo se refiere a un programa de fiestas en honor a San Sebastián en 2024."
+    }
+  },
+  {
+    "localidad": "Arroyomolinos",
+    "fiesta": "Fiestas de Arroyomolinos",
+    "veredicto": "si",
+    "esperado": "no",
+    "respuesta": {
+      "es_de_la_localidad": "si",
+      "lugar_real": "Arroyomolinos de la Vera",
+      "razon": "El texto de las fuentes menciona claramente 'Arroyomolinos de la Vera' y el Ayuntamiento de Arroyomolinos de la Vera como organizador."
+    }
+  },
+  {
+    "localidad": "Alborea",
+    "fiesta": "Romería 1 de Mayo",
+    "veredicto": "si",
+    "esperado": "?",
+    "respuesta": {
+      "es_de_la_localidad": "si",
+      "lugar_real": "Alborea",
+      "razon": "El texto de las fuentes menciona explícitamente que la romería se celebra en Alborea, incluyendo actividades en la Cañada y la ermita de la localidad, y el programa está asociado al municipio según la URL de la fuente."
+    }
+  },
+  {
+    "localidad": "Alborea",
+    "fiesta": "Fiesta de San Isidro Labrador",
+    "veredicto": "si",
+    "esperado": "si",
+    "respuesta": {
+      "es_de_la_localidad": "si",
+      "lugar_real": "Alborea",
+      "razon": "El texto de las fuentes sitúa la fiesta en Alborea, municipio de la provincia de Albacete, comunidad de Castilla-La Mancha, coincidiendo con la localidad buscada."
+    }
+  },
+  {
+    "localidad": "Alborea",
+    "fiesta": "Fiestas Patronales de Alborea en honor a Nuestra Señora de la Natividad",
+    "veredicto": "si",
+    "esperado": "?",
+    "respuesta": {
+      "es_de_la_localidad": "si",
+      "lugar_real": "Alborea",
+      "razon": "El texto de las fuentes menciona repetidamente que las fiestas se celebran en Alborea, incluyendo actividades como la cabalgata que parte desde la Cooperativa del campo 'San Isidro' de Alborea y otros eventos en la plaza del Ayuntamiento y la iglesia de Alborea."
+    }
+  },
+  {
+    "localidad": "Quintanadueñas",
+    "fiesta": "Fiestas Patronales de la Virgen del Rosario",
+    "veredicto": "si",
+    "esperado": "?",
+    "respuesta": {
+      "es_de_la_localidad": "si",
+      "lugar_real": "Alfoz de Quintanadueñas, Burgos",
+      "razon": "El texto menciona explícitamente que las fiestas se celebran en el Alfoz de Quintanadueñas, que es el municipio al que pertenece la localidad de Quintanadueñas."
+    }
+  },
+  {
+    "localidad": "Quintanadueñas",
+    "fiesta": "Fiestas de Quintanadueñas",
+    "veredicto": "no",
+    "esperado": "no",
+    "respuesta": {
+      "es_de_la_localidad": "no",
+      "lugar_real": "Quintanadueñas (municipio de Alfoz de Quintanadueñas, Burgos)",
+      "razon": "El texto de las fuentes menciona las 'Fiestas de la virgen del Rosario' en Quintanadueñas del 2 al 7 de octubre, no las 'Fiestas de Quintanadueñas' del 12 de septiembre. La ficha parece confundir dos eventos distintos: uno mencionado en las fuentes (octubre) y otro (septiembre) que no aparece documentado en el texto proporcionado."
+    }
+  },
+  {
+    "localidad": "Arroyal",
+    "fiesta": "Fiestas Patronales de San Cristóbal",
+    "veredicto": "no_se",
+    "esperado": "?",
+    "respuesta": {
+      "es_de_la_localidad": "no_se",
+      "lugar_real": null,
+      "razon": "El texto de las fuentes menciona fiestas en Palacios de la Sierra (Burgos) con la Virgen del Arroyal, pero no confirma que las Fiestas Patronales de San Cristóbal se celebren en la localidad de Arroyal. La descripción de la ficha indica que se celebran en Arroyal, pero el texto no lo relaciona directamente con esa localidad."
+    }
+  },
+  {
+    "localidad": "Arroyal",
+    "fiesta": "Fiestas de Arroyal",
+    "veredicto": "no_se",
+    "esperado": "no",
+    "respuesta": {
+      "es_de_la_localidad": "no_se",
+      "lugar_real": null,
+      "razon": "El texto menciona \"FIESTAS DE SANTIAGO, SANTA ANA Y LA VIRGEN DEL ARROYAL\" pero se refiere claramente a las fiestas de Palacios de la Sierra, no a Arroyal (Burgos). No hay información suficiente para determinar con certeza si las fiestas mencionadas son las de la localidad buscada."
+    }
+  },
+  {
+    "localidad": "Marmellar de Arriba",
+    "fiesta": "Fiestas de Marmellar de Arriba",
+    "veredicto": "si",
+    "esperado": "si",
+    "respuesta": {
+      "es_de_la_localidad": "si",
+      "lugar_real": "Marmellar de Arriba, Alfoz de Quintanadueñas (Burgos)",
+      "razon": "El texto de las fuentes confirma que las fiestas se celebran en Marmellar de Arriba, dentro del municipio de Alfoz de Quintanadueñas, provincia de Burgos, y menciona explícitamente su dirección postal y vinculación con el ayuntamiento local."
+    }
+  },
+  {
+    "localidad": "Páramo del Arroyo",
+    "fiesta": "Fiestas patronales en honor a San Vicente Mártir",
+    "veredicto": "si",
+    "esperado": "?",
+    "respuesta": {
+      "es_de_la_localidad": "si",
+      "lugar_real": "Páramo del Arroyo",
+      "razon": "El texto de la ficha sitúa la celebración en Páramo del Arroyo, que es la localidad que buscamos, y las fuentes confirman que pertenece al municipio de Alfoz de Quintanadueñas (Burgos)."
+    }
+  },
+  {
+    "localidad": "Villarmero",
+    "fiesta": "Fiestas Patronales de San Isidro",
+    "veredicto": "si",
+    "esperado": "?",
+    "respuesta": {
+      "es_de_la_localidad": "si",
+      "lugar_real": "Villarmero, Burgos, Castilla y León",
+      "razon": "El texto de las fuentes menciona explícitamente que las fiestas se celebran en Villarmero (Burgos) dentro de Castilla y León, coincidiendo con la localidad que buscamos."
+    }
+  },
+  {
+    "localidad": "Villarmero",
+    "fiesta": "Fiesta de San Martín",
+    "veredicto": "si",
+    "esperado": "si",
+    "respuesta": {
+      "es_de_la_localidad": "si",
+      "lugar_real": "Villarmero (Burgos, Castilla y León)",
+      "razon": "El texto de las fuentes sitúa explícitamente la fiesta en Villarmero (Burgos) dentro de Castilla y León, coincidiendo con la localidad buscada."
+    }
+  },
+  {
+    "localidad": "Villarmero",
+    "fiesta": "Fiestas de Villarmero",
+    "veredicto": "si",
+    "esperado": "no",
+    "respuesta": {
+      "es_de_la_localidad": "si",
+      "lugar_real": "Villarmero",
+      "razon": "El texto confirma que Villarmero acogerá el Día del Alfoz de Quintanadueñas, mencionando actividades específicas en Villarmero como la recepción de autoridades y la misa en la Iglesia de San Isidro."
+    }
+  },
+  {
+    "localidad": "Villagarcía de la Torre",
+    "fiesta": "Fiesta de San Isidro",
+    "veredicto": "si",
+    "esperado": "si",
+    "respuesta": {
+      "es_de_la_localidad": "si",
+      "lugar_real": "Villagarcía de la Torre",
+      "razon": "El texto de las fuentes menciona explícitamente que la fiesta es organizada por el Ayuntamiento de Villagarcía de la Torre y se celebra en dicha localidad, incluyendo su código postal (06950) y provincia (Badajoz)."
+    }
+  },
+  {
+    "localidad": "Villagarcía de la Torre",
+    "fiesta": "Fiestas de San Juan",
+    "veredicto": "si",
+    "esperado": "?",
+    "respuesta": {
+      "es_de_la_localidad": "si",
+      "lugar_real": "Villagarcía de la Torre, Badajoz",
+      "razon": "El texto de las fuentes oficiales del Ayuntamiento de Villagarcía de la Torre menciona explícitamente las 'Fiestas de San Juan' celebradas en dicha localidad del 19 al 21 de junio de 2026, con actuaciones musicales y eventos incluidos en la descripción de la ficha."
+    }
+  },
+  {
+    "localidad": "Villagarcía de la Torre",
+    "fiesta": "Villaembrujada Festival 2026",
+    "veredicto": "si",
+    "esperado": "?",
+    "respuesta": {
+      "es_de_la_localidad": "si",
+      "lugar_real": "Villagarcía de la Torre",
+      "razon": "El texto de las fuentes indica explícitamente que el Villaembrujada Festival 2026 se celebra en Villagarcía de la Torre (provincia de Badajoz, Extremadura) en el Ejido Coriana, coincidiendo con la localidad buscada."
+    }
+  },
+  {
+    "localidad": "Villagarcía de la Torre",
+    "fiesta": "Fiestas Mayores en Honor a la Virgen de los Dolores",
+    "veredicto": "si",
+    "esperado": "?",
+    "respuesta": {
+      "es_de_la_localidad": "si",
+      "lugar_real": "Villagarcía de la Torre",
+      "razon": "El texto de las fuentes sitúa explícitamente la fiesta en Villagarcía de la Torre (Badajoz, Extremadura), coincidiendo con la localidad y municipio buscados, y describe actividades en espacios públicos del pueblo como la Plaza Mayor e iglesia parroquial."
+    }
+  },
+  {
+    "localidad": "La Roda",
+    "fiesta": "Carnaval de La Roda 2026",
+    "veredicto": "si",
+    "esperado": "si",
+    "respuesta": {
+      "es_de_la_localidad": "si",
+      "lugar_real": "La Roda",
+      "razon": "El texto menciona repetidamente que el Carnaval se celebra en La Roda, incluyendo actividades en el Centro Cultural San Sebastián, avenida Juan García y González, Plaza de Toros y Caja Blanca, todos ubicados en el municipio de La Roda (provincia de Albacete, Castilla-La Mancha)."
+    }
+  },
+  {
+    "localidad": "La Roda",
+    "fiesta": "Fiestas Patronales de La Roda",
+    "veredicto": "si",
+    "esperado": "?",
+    "respuesta": {
+      "es_de_la_localidad": "si",
+      "lugar_real": "La Roda (Albacete)",
+      "razon": "El texto de las fuentes sitúa explícitamente los eventos en La Roda, mencionando la Casa de la Cultura, la Biblioteca Municipal y la Plaza Mayor de La Roda, y coincide con la provincia y comunidad autónoma indicadas en la localidad buscada."
+    }
+  },
+  {
+    "localidad": "La Roda",
+    "fiesta": "Fiestas Patronales de La Roda en honor a El Salvador",
+    "veredicto": "si",
+    "esperado": "si",
+    "respuesta": {
+      "es_de_la_localidad": "si",
+      "lugar_real": "La Roda",
+      "razon": "El texto de las fuentes menciona explícitamente que las fiestas se celebran en La Roda, incluyendo localizaciones como el Claustro de Fuensanta (otra localidad del mismo municipio) y otros espacios del municipio, y no se menciona ninguna provincia o comunidad diferente a Castilla-La Mancha."
+    }
+  },
+  {
+    "localidad": "Santa Marta",
+    "fiesta": "Festival de Gaitas",
+    "veredicto": "no",
+    "esperado": "no",
+    "respuesta": {
+      "es_de_la_localidad": "no",
+      "lugar_real": null,
+      "razon": "El texto de las fuentes no menciona el Festival de Gaitas en Santa Marta, solo se indica en la ficha sin confirmación en las fuentes oficiales del municipio."
+    }
+  },
+  {
+    "localidad": "Santa Marta",
+    "fiesta": "Fiestas de Santa Marta en Astorga",
+    "veredicto": "no",
+    "esperado": "no",
+    "respuesta": {
+      "es_de_la_localidad": "no",
+      "lugar_real": "Astorga (León, Castilla y León)",
+      "razon": "El texto de las fuentes sitúa las fiestas en Astorga, provincia de León, y menciona actividades propias de esa localidad (como la Vuelta Chapista), no en Santa Marta (La Roda, Albacete)."
+    }
+  },
+  {
+    "localidad": "La Aldea del Obispo",
+    "fiesta": "Fiestas Patronales de San Bartolomé Apóstol",
+    "veredicto": "si",
+    "esperado": "?",
+    "respuesta": {
+      "es_de_la_localidad": "si",
+      "lugar_real": "La Aldea del Obispo",
+      "razon": "El texto de la fuente oficial del municipio menciona explícitamente que es la 'principal celebración religiosa y festiva de La Aldea del Obispo' y se celebra en el municipio, incluyendo actividades locales como misas, procesiones y verbenas."
+    }
+  },
+  {
+    "localidad": "Alcuéscar",
+    "fiesta": "Semana Santa",
+    "veredicto": "si",
+    "esperado": "si",
+    "respuesta": {
+      "es_de_la_localidad": "si",
+      "lugar_real": "Alcuéscar",
+      "razon": "El texto de la fuente oficial del Ayuntamiento de Alcuéscar describe detalladamente las procesiones y cofradías que operan en la localidad, mencionando explícitamente 'en el pueblo de Alcuéscar' y 'calles de Alcuéscar' como sede de la celebración."
+    }
+  },
+  {
+    "localidad": "Alcuéscar",
+    "fiesta": "Cruces de Mayo",
+    "veredicto": "si",
+    "esperado": "si",
+    "respuesta": {
+      "es_de_la_localidad": "si",
+      "lugar_real": "Alcuéscar",
+      "razon": "El texto de la web oficial del Ayuntamiento de Alcuéscar menciona explícitamente que las Cruces de Mayo se celebran en Alcuéscar, con altares en todo el pueblo y una procesión presidida por el alcalde."
+    }
+  },
+  {
+    "localidad": "Alcuéscar",
+    "fiesta": "Fiesta de la Tenca y el Vino",
+    "veredicto": "si",
+    "esperado": "si",
+    "respuesta": {
+      "es_de_la_localidad": "si",
+      "lugar_real": "Alcuéscar",
+      "razon": "El texto de la fuente oficial del Ayuntamiento de Alcuéscar menciona explícitamente que la fiesta promueve la gastronomía y artesanía típica del pueblo de Alcuéscar, y se refiere a los humedales locales como Charca del Cura y el Pantano, ubicados en el municipio."
+    }
+  },
+  {
+    "localidad": "Alcuéscar",
+    "fiesta": "Concurso de Bailes Modernos",
+    "veredicto": "si",
+    "esperado": "no",
+    "respuesta": {
+      "es_de_la_localidad": "si",
+      "lugar_real": "Alcuéscar",
+      "razon": "El texto de las fuentes menciona explícitamente que el concurso se celebra en el Auditorio del Parque Municipal de Alcuéscar y está publicado en el Boletín Provincial de Cáceres bajo la sección del Ayuntamiento de Alcuéscar."
+    }
+  },
+  {
+    "localidad": "Alcuéscar",
+    "fiesta": "Fiestas del Emigrante",
+    "veredicto": "si",
+    "esperado": "si",
+    "respuesta": {
+      "es_de_la_localidad": "si",
+      "lugar_real": "Alcuéscar (Cáceres, Extremadura)",
+      "razon": "El texto de la fuente oficial del Ayuntamiento de Alcuéscar menciona explícitamente que las fiestas se celebran en Alcuéscar, incluyendo su dirección postal completa (Plaza de España, 1 10160 Alcuéscar) y la provincia de Cáceres."
+    }
+  },
+  {
+    "localidad": "Alcuéscar",
+    "fiesta": "Día de Extremadura",
+    "veredicto": "si",
+    "esperado": "no",
+    "respuesta": {
+      "es_de_la_localidad": "si",
+      "lugar_real": "Alcuéscar (Cáceres)",
+      "razon": "El texto de semtayr.es menciona explícitamente que la celebración del Día de Extremadura en Alcuéscar se celebra el 8 de septiembre con actividades locales organizadas por el Ayuntamiento de Alcuéscar."
+    }
+  },
+  {
+    "localidad": "Alcuéscar",
+    "fiesta": "Fiestas Patronales en Honor a la Virgen del Rosario",
+    "veredicto": "si",
+    "esperado": "si",
+    "respuesta": {
+      "es_de_la_localidad": "si",
+      "lugar_real": "Alcuéscar",
+      "razon": "El texto de la web oficial del Ayuntamiento de Alcuéscar describe la celebración como fiestas del pueblo de Alcuéscar, con eventos típicos locales como la ofrenda floral y procesiones en la iglesia del municipio."
+    }
+  },
+  {
+    "localidad": "El Barco de Ávila",
+    "fiesta": "Fiestas de Santiago — Los Quintos",
+    "veredicto": "si",
+    "esperado": "?",
+    "respuesta": {
+      "es_de_la_localidad": "si",
+      "lugar_real": "El Barco de Ávila, Ávila",
+      "razon": "El texto de las fuentes menciona explícitamente que las fiestas se celebran en 'El Barco de Ávila, Ávila' y son organizadas por el Ayuntamiento de esta localidad, coincidiendo con la provincia y comunidad autónoma indicadas."
+    }
+  },
+  {
+    "localidad": "El Barco de Ávila",
+    "fiesta": "Fiestas en Honor de San Pedro del Barco",
+    "veredicto": "si",
+    "esperado": "si",
+    "respuesta": {
+      "es_de_la_localidad": "si",
+      "lugar_real": "El Barco de Ávila",
+      "razon": "El texto de las fuentes menciona explícitamente que las fiestas se celebran en El Barco de Ávila, incluyendo referencias a su Colegiata de la Asunción, Plaza de las Acacias y la Banda Municipal de Música de la localidad."
+    }
+  },
+  {
+    "localidad": "El Barco de Ávila",
+    "fiesta": "Fiestas Patronales de San Bartolomé Apóstol",
+    "veredicto": "si",
+    "esperado": "si",
+    "respuesta": {
+      "es_de_la_localidad": "si",
+      "lugar_real": "El Barco de Ávila",
+      "razon": "El texto de las fuentes menciona explícitamente que las fiestas se celebran en 'El Barco de Ávila, Ávila' y describe actividades en el casco histórico y la Plaza Mayor de esta localidad, coincidiendo con el patrón San Bartolomé Apóstol."
+    }
+  },
+  {
+    "localidad": "El Barco de Ávila",
+    "fiesta": "Fiestas en Honor al Santísimo Cristo del Caño",
+    "veredicto": "si",
+    "esperado": "?",
+    "respuesta": {
+      "es_de_la_localidad": "si",
+      "lugar_real": "El Barco de Ávila",
+      "razon": "El texto de las fuentes menciona explícitamente que las fiestas se celebran en El Barco de Ávila, incluyendo recomendaciones emitidas por el Ayuntamiento local y la firma de la Alcaldesa de dicha localidad."
+    }
+  }
+]

@@ -120,6 +120,17 @@ def test_resolver_vacio():
 def _con_cache_temporal(tmp_path, monkeypatch):
     cache = RedesCache(str(tmp_path / "redes_test.json"))
     monkeypatch.setattr(social_finder, "_cache", cache)
+
+    # Y sin salir a la red. `registrar_perfiles_web` llama a
+    # `buscar_perfiles_externos` cuando falta alguna red, y eso es una búsqueda
+    # web de verdad: el test fallaba de forma intermitente porque cada ejecución
+    # traía un Instagram distinto del buscador —"fiestaspueblo",
+    # "pueblosdefiestaoficial"—. Un test que depende de lo que devuelva hoy un
+    # motor de búsqueda no mide el código, y tapa las regresiones reales.
+    async def _sin_busqueda(_lugar):
+        return {}
+
+    monkeypatch.setattr(social_finder, "buscar_perfiles_externos", _sin_busqueda)
     return cache
 
 
@@ -131,7 +142,10 @@ def test_registrar_y_cache(tmp_path, monkeypatch):
     entrada = asyncio.run(registrar_perfiles_web(lugar, contador))
     assert entrada["facebook"] == "https://www.facebook.com/aytopueblo"
     assert entrada["instagram"] is None
-    assert entrada["verificado_por"] == "web_oficial"
+    # Faltan instagram y twitter, así que la entrada queda pendiente de que las
+    # apps la completen: la etiqueta lo dice. `web_oficial` a secas es para
+    # cuando la web trae las tres redes y no hay que buscar nada más.
+    assert entrada["verificado_por"] == "web_oficial_y_busqueda"
     assert entrada["pendiente_apps"] is True  # faltan instagram y twitter
 
     # Segunda llamada: cache hit, aunque el contador ahora esté vacío

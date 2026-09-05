@@ -94,3 +94,54 @@ def test_sin_senal_no_hay_meses():
     """Devolver vacío es lo que hace que el llamante caiga a la llamada única."""
     assert barrer_meses_con_senal([], "Tobarra") == {}
     assert barrer_meses_con_senal([chunk("texto cualquiera")], "") == {}
+
+
+# ── Ningún mes con señal se queda sin preguntar ──────────────────────────────
+
+def test_todos_los_meses_con_senal_se_preguntan():
+    """
+    Aranda de Duero tocaba el tope en la ejecución del 2026-09-03: «12 meses con
+    señal, 10 llamadas». Dos meses con material se quedaban sin preguntar y nada
+    lo señalaba como pérdida —el log lo decía a INFO, entre otras mil líneas—.
+
+    Se recorre la ruta de verdad, con el modelo fingido, y se comprueba que se
+    pregunta por los doce.
+    """
+    import asyncio
+    import llm_processor.text_analyzer as ta
+
+    MESES = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio",
+             "agosto", "septiembre", "octubre", "noviembre", "diciembre"]
+    chunks = []
+    for n, mes in enumerate(MESES):
+        for k in range(3):        # ≥ DISCOVERY_MIN_CHUNKS_MES_PROPIO
+            chunks.append({
+                "chunk": f"Fiestas de Tobarra en {mes}, con procesion y verbena. "
+                         f"Detalle {k}.",
+                "url": f"https://x.es/{mes}", "indice_chunk": k,
+                "score": 0.5, "fuente": "web_municipio", "es_calendario": False,
+                "prioridad": 2,
+            })
+
+    preguntados = []
+
+    async def falso_llm(system_prompt, user_prompt, max_tokens=-1, etiqueta="LLM"):
+        preguntados.append(etiqueta)
+        return {"fiestas": []}
+
+    original = ta.llm_chat_json
+    ta.llm_chat_json = falso_llm
+    try:
+        asyncio.run(ta._descubrir_por_meses(
+            chunks, {"nombre": "Tobarra"}, {"nombre": "Tobarra"}, 2026,
+            "system prompt de prueba",
+        ))
+    finally:
+        ta.llm_chat_json = original
+
+    assert len(preguntados) >= len(MESES), (
+        f"solo {len(preguntados)} llamadas para {len(MESES)} meses con señal: "
+        f"{preguntados}"
+    )
+    for mes in MESES:
+        assert any(mes[:8] in e for e in preguntados), f"nadie preguntó por {mes}"
