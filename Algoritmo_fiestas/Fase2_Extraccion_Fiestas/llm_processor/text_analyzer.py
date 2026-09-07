@@ -2149,6 +2149,16 @@ def _bloque_identidad(localidad: dict, municipio: dict, nombres_hermanas: list[s
     # dorada». Comprobado el 2026-09-04: siete localidades de provincias sin
     # costa traen playas o acantilados en su descripción. Darle eso al modelo
     # junto a la provincia correcta es ponerle una contradicción delante.
+    # La ficha del pueblo va DENTRO del bloque de identidad, no como seccion
+    # aparte, porque forma parte de quienes somos: sin ella el juez decide si
+    # una fiesta es de este pueblo sabiendo solo su nombre y su provincia. La
+    # pone `main` sobre la localidad, igual que `nombre_oficial` viaja en el
+    # municipio. Si no hay patron resuelto, `ficha_del_pueblo` devuelve '' y
+    # aqui no se anade nada.
+    ficha = (localidad.get("ficha_pueblo") or "").strip()
+    if ficha:
+        lineas.append("")
+        lineas.append(ficha)
     return "\n".join(lineas)
 
 
@@ -4489,6 +4499,18 @@ async def retrieve_discovery_context(
         and i.get("url") != "buscadores:snippets"
         and i.get("url")
     }
+    # La ficha del pueblo encabeza el contexto de discovery: el modelo decide
+    # QUE fiestas existen, y sin saber a quien celebra este pueblo ni cuando,
+    # no puede distinguir un programa de Cuaresma de unas patronales de agosto
+    # —que es como Garrucha acabo con 'Fiestas Patronales de San Joaquin' del
+    # 20 de febrero en la ejecucion del 2026-09-06—.
+    #
+    # Va DESPUES del reparto y descontando su tamano del presupuesto, no
+    # sumandose por encima: `presupuesto_chars_historico` quedaria mintiendo y
+    # este pipeline se mide por esa cifra.
+    ficha = (localidad.get("ficha_pueblo") or "").strip()
+    if ficha and contexto:
+        contexto = ficha + "\n\n" + contexto[: max(0, len(contexto) - len(ficha) - 2)]
     return contexto, fuentes_contexto, len(urls_directas), lotes
 
 

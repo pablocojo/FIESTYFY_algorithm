@@ -28,7 +28,7 @@ from llm_processor.text_analyzer import (
     analyze_festivals_multipass,
     limpiar_actos_compartidos_del_municipio,
 )
-from llm_processor.patron_finder import obtener_patron, integrar_patron, fecha_del_patron
+from llm_processor.patron_finder import obtener_patron, integrar_patron, fecha_del_patron, ficha_del_pueblo
 from fuentes import (
     FUENTE_WEB_LOCALIDAD, FUENTE_WEB_MUNICIPIO, FUENTE_HISTORICO,
     fuente_base, es_fuente_oficial, misma_web, web_es_de_este_lugar,
@@ -239,6 +239,11 @@ async def process_locality(
     # aparecía por casualidad en los snippets de ese día. La tarea lleva corriendo
     # desde el paso 0, así que casi siempre está lista y no cuesta espera.
     patron = await _esperar_patron()
+    # La ficha viaja en la localidad, igual que `nombre_oficial` viaja en el
+    # municipio: asi la leen `_bloque_identidad` (juez de pertenencia) y el
+    # contexto de discovery sin cambiar ninguna firma. Es orientacion para los
+    # modelos, no un dato que gobierne reglas: nadie la parsea.
+    localidad["ficha_pueblo"] = ficha_del_pueblo(patron)
     if patron and patron.get("nombre"):
         localidad = dict(localidad, patron_nombre=patron["nombre"])
 

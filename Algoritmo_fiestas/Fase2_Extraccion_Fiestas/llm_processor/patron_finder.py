@@ -815,14 +815,34 @@ async def _extraer_con_llm(texto: str, localidad: dict) -> dict | None:
     from llm_processor.text_analyzer import llm_chat_json
 
     system_prompt = (
-        "Eres una API estricta que identifica el santo patrón o la santa patrona de una localidad española.\n"
-        'Responde SOLO con JSON: {"patron": "Nombre del santo o null", "dia": numero o null, "mes": numero o null}\n'
-        "El día y mes son la fecha fija del calendario en que se celebra su festividad, solo si el texto la indica.\n"
-        "Si el texto no menciona ningún patrón de esa localidad concreta, devuelve {\"patron\": null}."
+        "Eres una API estricta que describe el calendario festivo de una localidad espanola.\n"
+        "Responde SOLO con JSON:\n"
+        '{"patron": "Nombre del santo o null", "dia": numero o null, "mes": numero o null,\n'
+        ' "celebra_dia": numero o null, "celebra_mes": numero o null,\n'
+        ' "fiestas_habituales": ["nombre de fiesta con su epoca", ...]}\n'
+        "\n"
+        "DISTINCION CRITICA entre dos fechas que casi nunca coinciden:\n"
+        "  - dia/mes: la fecha del SANTORAL, la del calendario liturgico.\n"
+        "  - celebra_dia/celebra_mes: cuando el PUEBLO celebra de verdad sus\n"
+        "    fiestas patronales, que suele desplazarse al verano o a un fin de\n"
+        "    semana. San Joaquin es el 26 de julio en el santoral, pero Garrucha\n"
+        "    lo celebra a mediados de agosto.\n"
+        "  Si el texto solo da una de las dos, rellena esa y deja la otra a null.\n"
+        "  NO copies la del santoral en celebra_* si el texto no la respalda.\n"
+        "\n"
+        "fiestas_habituales: celebraciones que este pueblo repite cada anno, con\n"
+        "su epoca, en frases cortas. Incluye romerias, ferias, carnavales y\n"
+        "patronales de barrios o pedanias si el texto las menciona. Ejemplo:\n"
+        '["Virgen del Carmen, 16 de julio, procesion maritima", "Carnaval, febrero"].\n'
+        "Lista vacia si el texto no dice ninguna.\n"
+        "\n"
+        "Solo lo que el TEXTO respalde. No completes con conocimiento general: una\n"
+        "fiesta inventada aqui contamina todo lo que venga despues.\n"
+        "Si el texto no menciona ningun patron de esa localidad, devuelve {\"patron\": null}."
     )
     user_prompt = (
         f"LOCALIDAD: {localidad['nombre']}\n\nTEXTO:\n{texto[:3500]}\n\n"
-        "¿Cuál es el santo patrón de esta localidad? Responde SOLO con JSON:"
+        "Patron, cuando lo celebra el pueblo y que otras fiestas tiene. SOLO JSON:"
     )
 
     parsed = await llm_chat_json(system_prompt, user_prompt, max_tokens=PATRON_LLM_MAX_TOKENS)
@@ -836,7 +856,27 @@ async def _extraer_con_llm(texto: str, localidad: dict) -> dict | None:
     mes = parsed.get("mes") if isinstance(parsed.get("mes"), int) else None
     if not (dia and mes and 1 <= dia <= 31 and 1 <= mes <= 12):
         dia, mes = None, None
-    return {"nombre": nombre, "dia": dia, "mes": mes}
+    celebra_dia = parsed.get("celebra_dia") if isinstance(parsed.get("celebra_dia"), int) else None
+    celebra_mes = parsed.get("celebra_mes") if isinstance(parsed.get("celebra_mes"), int) else None
+    if not (celebra_dia and celebra_mes and 1 <= celebra_dia <= 31 and 1 <= celebra_mes <= 12):
+        celebra_dia, celebra_mes = None, None
+
+    # Las habituales son TEXTO para el contexto, no datos: se acotan de longitud y
+    # de numero, pero no se validan contra nada. Quien decide si esas fiestas
+    # existen es el modelo que despues vea los documentos.
+    habituales = []
+    for item in (parsed.get("fiestas_habituales") or [])[:8]:
+        if isinstance(item, str) and 4 <= len(item.strip()) <= 120:
+            habituales.append(item.strip())
+
+    return {
+        "nombre": nombre,
+        "dia": dia,
+        "mes": mes,
+        "celebra_dia": celebra_dia,
+        "celebra_mes": celebra_mes,
+        "fiestas_habituales": habituales,
+    }
 
 
 # ──────────────────────────────────────────────────
@@ -860,9 +900,18 @@ async def obtener_patron(localidad: dict, municipio: dict) -> dict | None:
         # decapitado en el punto de la abreviatura), "Santiago de Mora 2026" (el
         # nombre del pueblo con el año) y "Santísimo Cristo del Consuelo\nSevilla"
         # (una hermandad sevillana). Se vuelve a resolver en vez de arrastrarlo.
-        if cacheado is None or nombre_de_patron_creible(
-            cacheado.get("nombre", ""), localidad.get("nombre", ""), municipio.get("nombre", "")
-        ):
+        # Y lo guardado antes del 2026-09-06 no trae `fiestas_habituales` ni la
+        # fecha en que el pueblo celebra de verdad. Devolverlo tal cual dejaria
+        # sin ficha justo a las 60 localidades ya resueltas —Garrucha entre
+        # ellas—, que son las que motivaron el cambio. Se vuelven a resolver una
+        # vez y quedan cacheadas con el esquema nuevo.
+        completo = cacheado is None or (
+            "fiestas_habituales" in cacheado
+            and nombre_de_patron_creible(
+                cacheado.get("nombre", ""), localidad.get("nombre", ""), municipio.get("nombre", "")
+            )
+        )
+        if completo:
             return cacheado
         logger.info(
             f"  [PATRON] {localidad.get('nombre')}: se tira lo cacheado "
@@ -985,19 +1034,80 @@ async def obtener_patron(localidad: dict, municipio: dict) -> dict | None:
 # ──────────────────────────────────────────────────
 
 def fecha_del_patron(patron: dict | None, anno: int) -> date | None:
-    """Día del patrón en el año objetivo, o None si no hay fecha fiable. Si es 29 de febrero y el año no es bisiesto, cae a 28 de febrero."""
-    if not patron or not patron.get("dia") or not patron.get("mes"):
-        return None
-    try:
-        return date(anno, patron["mes"], patron["dia"])
-    except ValueError:
-        if patron.get("mes") == 2 and patron.get("dia") == 29:
-            try:
-                return date(anno, 2, 28)
-            except ValueError:
-                return None
-        return None
+    """
+    Dia del patron en el anno objetivo, o None si no hay fecha fiable.
 
+    Prefiere la fecha en que el PUEBLO celebra sobre la del santoral. La
+    distincion no es academica: en la cache del 2026-09-06, Garrucha figuraba
+    como "San Joaquin, dia 26, mes 7" —la liturgica— cuando el pueblo lo celebra
+    del 14 al 18 de agosto. Como `_avales_de_patronal` usa esta fecha para su
+    primer criterio de desempate, ninguna ficha lo cumplia, el desempate cayo al
+    nombre, y una ficha de Cuaresma mal etiquetada como "Fiestas Patronales de
+    San Joaquin" expulso a la Virgen del Carmen del 16 de julio y a las
+    Patronales del 4 de septiembre. Dos fiestas reales perdidas por comparar
+    contra el santoral.
+
+    Si es 29 de febrero y el anno no es bisiesto, cae a 28 de febrero.
+    """
+    if not patron:
+        return None
+    for clave_dia, clave_mes in (("celebra_dia", "celebra_mes"), ("dia", "mes")):
+        dia, mes = patron.get(clave_dia), patron.get(clave_mes)
+        if not (dia and mes):
+            continue
+        try:
+            return date(anno, mes, dia)
+        except ValueError:
+            if mes == 2 and dia == 29:
+                try:
+                    return date(anno, 2, 28)
+                except ValueError:
+                    pass
+    return None
+
+
+def ficha_del_pueblo(patron: dict | None) -> str:
+    """
+    Lo que se sabe del calendario festivo del pueblo, como TEXTO para el contexto.
+
+    No la consume ninguna regla: se pega al contexto de discovery y del juez de
+    pertenencia para que los modelos sepan que fiestas encajan en este pueblo y
+    cuales son poco probables. Deliberadamente escrita como hipotesis y no como
+    hecho: la escribio un modelo y puede equivocarse, asi que dice expresamente
+    que los documentos mandan sobre ella. Cambiar una falsedad del codigo por una
+    falsedad del contexto no seria progreso.
+
+    Devuelve "" si no hay nada que decir, para no meter ruido.
+    """
+    if not patron:
+        return ""
+    lineas = []
+    nombre = (patron.get("nombre") or "").strip()
+    if nombre:
+        lineas.append(f"  Patron/a: {nombre}")
+    dia, mes = patron.get("dia"), patron.get("mes")
+    if dia and mes:
+        lineas.append(f"  Festividad en el santoral: {dia}/{mes}")
+    cdia, cmes = patron.get("celebra_dia"), patron.get("celebra_mes")
+    if cdia and cmes:
+        lineas.append(
+            f"  El pueblo lo celebra hacia el {cdia}/{cmes} (esta manda sobre la del santoral)"
+        )
+    habituales = patron.get("fiestas_habituales") or []
+    if habituales:
+        lineas.append("  Fiestas que este pueblo suele tener:")
+        lineas.extend(f"    - {h}" for h in habituales)
+    if not lineas:
+        return ""
+    return (
+        "LO QUE SE SABE DE ESTE PUEBLO (orientacion, NO es la verdad)\n"
+        + "\n".join(lineas)
+        + "\n  Es una hipotesis armada desde la web y puede estar equivocada o"
+          " incompleta.\n  Si un documento la contradice, MANDA EL DOCUMENTO."
+          " Sirve para juzgar que encaja en este pueblo y que es poco\n"
+          "  probable, no para dar nada por cierto ni para inventar fiestas\n"
+          "  que los documentos no respalden.\n"
+    )
 
 
 def crear_fiesta_estimada(patron: dict, fecha: date, localidad: dict) -> dict:

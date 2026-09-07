@@ -1,0 +1,2295 @@
+{
+  "version": 2,
+  "anno": 2026,
+  "ultimo_municipio_procesado": "06068000000",
+  "municipios_completados": [
+    "04049000000",
+    "04097000000",
+    "06064000000",
+    "05022000000",
+    "06158000000",
+    "04076000000",
+    "04093000000",
+    "09330000000",
+    "06068000000"
+  ],
+  "localidades_completadas": [
+    "04049000101",
+    "04097000101",
+    "06064000101",
+    "05022000102",
+    "05022000101",
+    "05022000103",
+    "05022000201",
+    "05022000301",
+    "06158000501",
+    "04076000201",
+    "04076000101",
+    "04093000901",
+    "04093000301",
+    "04093000302",
+    "04093000303",
+    "04093000304",
+    "04093000602",
+    "09330000401",
+    "09330000101",
+    "09330000201",
+    "09330000301",
+    "09330000501",
+    "06068000101"
+  ],
+  "fiestas": [
+    {
+      "id": "semana-santa-garrucha-2026",
+      "lugar_id": "04049000101",
+      "nombre": "Semana Santa de Garrucha 2026",
+      "fecha_inicio": "2026-03-29",
+      "fecha_fin": "2026-04-05",
+      "tamano": "grande",
+      "descripcion": "Celebración religiosa y cultural con procesiones cofrades, representaciones teatrales de la Pasión al aire libre en la Plaza del Ayuntamiento y la playa del Pósito, y actividades devocionales. Incluye la procesión del Señor de la Misericordia y la Virgen de la Amargura el Viernes Santo.",
+      "confianza": "baja",
+      "fuentes": [],
+      "sede_segun_el_texto": "Garrucha",
+      "solo_fuentes_no_oficiales": true,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-03-29",
+          "eventos": [
+            {
+              "hora": "10:15",
+              "descripcion": "Bendición de las Palmas y ramas de Olivo en la Capilla de la Virgen del Carmen y procesión hacia el Templo Parroquial"
+            },
+            {
+              "hora": "12:00",
+              "descripcion": "Santa Misa en el Templo Parroquial"
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-03-30",
+          "eventos": [
+            {
+              "hora": "39:00",
+              "descripcion": "Laudes + Santa Misa + Confesiones en la Capilla de la Virgen del Carmen"
+            }
+          ]
+        },
+        {
+          "dia": 3,
+          "fecha": "2026-03-31",
+          "eventos": [
+            {
+              "hora": "09:00",
+              "descripcion": "Laudes + Santa Misa en la Capilla de la Virgen del Carmen"
+            },
+            {
+              "hora": "18:00",
+              "descripcion": "Confesiones en la Capilla de la Virgen del Carmen"
+            },
+            {
+              "hora": "20:00",
+              "descripcion": "Confesiones en la Capilla de la Virgen del Carmen"
+            }
+          ]
+        },
+        {
+          "dia": 4,
+          "fecha": "2026-04-01",
+          "eventos": [
+            {
+              "hora": "21:30",
+              "descripcion": "Pasos. Cristo del Perdón, el Señor de la Misericordia y Santísima Virgen de la Amargura. Acompañamiento musical por bandas municipales. Itinerario: Cervantes, Méndez Núñez, Mayor, Espronceda, Malecón, Puerto, Méndez Núñez, Mayor, Darro, Cofradía."
+            }
+          ]
+        },
+        {
+          "dia": 5,
+          "fecha": "2026-04-02",
+          "eventos": [
+            {
+              "hora": "20:00",
+              "descripcion": "Solemne desfile procesional de la Hermandad con los pasos de Ntro. Padre Jesús Nazareno, San Juan Evangelista y Santísima Virgen de los Dolores. Acompañamiento musical por Banda de Música \"Ex Mari Orta\" y \"Villa de Alfacar\". Itinerario: Casa Hermandad, Obispo Orberá, Aristóteles, Colón, Mayor, Espronceda, Malecón, Méndez-Núñez, Mayor, Colón, Aristóteles, Obispo Orberá, Casa Hermandad."
+            }
+          ]
+        },
+        {
+          "dia": 6,
+          "fecha": "2026-04-03",
+          "eventos": [
+            {
+              "hora": "03:00",
+              "descripcion": "Santo Via-Crucis, subida al Calvario. Itinerario: Salida desde Cofradía Misericordia y Amargura, subida al Calvario de Garrucha en el Amanecer, colocación de Cruz y bajada a Iglesia."
+            },
+            {
+              "hora": "22:30",
+              "descripcion": "Procesión de La Soledad. La Stma. Virgen de la Amargura busca a su Hijo muerto. Itinerario: Cervantes, Castillejos, Colón, Mayor, Darro, Cofradía. Todos podrán llevar una vela encendida."
+            }
+          ]
+        },
+        {
+          "dia": 7,
+          "fecha": "2026-04-04",
+          "eventos": [
+            {
+              "hora": "20:00",
+              "descripcion": "Procesión de La Soledad. Pasos: Santísima Virgen de los Dolores. (Se repartirán velas a todas las mujeres asistentes). Itinerario: Casa Hermandad, Obispo Orberá, Aristóteles, Joaquín Escobar, Santo Domingo, Mayor, Colón, Aristóteles, Obispo Orberá, Casa Hermandad."
+            }
+          ]
+        },
+        {
+          "dia": 8,
+          "fecha": "2026-04-05",
+          "eventos": [
+            {
+              "hora": "10:00",
+              "descripcion": "Procesión de la Resurrección. Encuentro con Jesús Resucitado en la Plaza Pedro Gea. Pasos: Ntro. Padre Jesús Resucitado, San Juan Evangelista y María Stma. Reina de los Ángeles. Itinerario: Casa Hermandad, Obispo Orberá, Aristóteles, Colón, Mayor, Rambla, Plaza Pedro Gea (Encuentro), Malecón, Méndez-Núñez, Mayor, Colón, Aristóteles, Obispo Orberá, Casa Hermandad."
+            },
+            {
+              "hora": "12:30",
+              "descripcion": "Subasta de Regalos y Flores en la Plaza de la Iglesia. Tradicional subasta de regalos donados por los negocios de Garrucha y flores que han procesionado junto a nuestras Sagradas Imágenes."
+            }
+          ]
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "url_programa": "https://www.garrucha.es/Servicios/Teletipo/Teletipo.nsf/B6FCDBD6475153CCC1258DC3004563AD/$file/Programa%20Semana%20Santa%20Garrucha%202026_ok.pdf",
+      "cobertura_dias": 1.0,
+      "programa_estado": "completo",
+      "lat": 37.17939094,
+      "lng": -1.82188241
+    },
+    {
+      "id": "feria-y-fiestas-de-san-joaquin-2026",
+      "lugar_id": "04049000101",
+      "nombre": "Feria y Fiestas de San Joaquín",
+      "fecha_inicio": "2026-08-14",
+      "fecha_fin": "2026-08-18",
+      "tamano": "grande",
+      "descripcion": "Fiesta patronal en honor a San Joaquín, incluyendo cucaña marinera, procesión, gala de mises, conciertos de orquesta, espectáculo pirotécnico y actividades familiares. Se celebra del 14 al 18 de agosto con iluminación del recinto ferial y eventos nocturnos.",
+      "confianza": "baja",
+      "fuentes": [
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Garrucha",
+      "solo_fuentes_no_oficiales": true,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-08-14",
+          "eventos": [
+            {
+              "hora": "21:30",
+              "descripcion": "Inauguración del alumbrado del recinto ferial y presentación del pregonero José María Martínez de Haro"
+            },
+            {
+              "hora": "",
+              "descripcion": "Entrega de premios de la Ruta de la Tapa"
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-08-15",
+          "eventos": [
+            {
+              "hora": "22:00",
+              "descripcion": "Actuación del mago Pablo"
+            }
+          ]
+        },
+        {
+          "dia": 3,
+          "fecha": "2026-08-16",
+          "eventos": [
+            {
+              "hora": "10:00",
+              "descripcion": "Tradicional Día de la Bicicleta desde las pistas del Pósito"
+            },
+            {
+              "hora": "11:30",
+              "descripcion": "Concurso de la Cucaña Marinera en el puerto pesquero"
+            },
+            {
+              "hora": "19:30",
+              "descripcion": "Misa en honor a San Joaquín"
+            }
+          ]
+        },
+        {
+          "dia": 4,
+          "fecha": "2026-08-17",
+          "eventos": [
+            {
+              "hora": "",
+              "descripcion": "Concentración de las cinteras y la popular corrida de cintas"
+            }
+          ]
+        },
+        {
+          "dia": 5,
+          "fecha": "2026-08-18",
+          "eventos": []
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "url_programa": "https://www.facebook.com/GarruchaEnAlmeriaPuebloComercialCompetentePrecioso/posts/-fiestas-san-joaqu%C3%ADn-2026-garrucha-del-13-al-16-de-agosto-del-2026%E2%84%B9%EF%B8%8F-descargar-l/1475128124655375/",
+      "cobertura_dias": 1.0,
+      "programa_estado": "completo",
+      "patron": {
+        "nombre": "San Joaquín",
+        "dia": 26,
+        "mes": 7,
+        "fuente": "wikipedia"
+      },
+      "lat": 37.17939094,
+      "lng": -1.82188241
+    },
+    {
+      "id": "ancla-fiestas-de-garrucha-04049000101",
+      "lugar_id": "04049000101",
+      "nombre": "Fiestas de Garrucha",
+      "fecha_inicio": "2026-08-07",
+      "fecha_fin": "2026-08-10",
+      "tamano": "pequeña",
+      "descripcion": "Fiestas de Garrucha en Garrucha, del 7 al 10 de agosto de 2026. Fechas recuperadas del texto que las anuncia; sin descripción publicada.",
+      "evidencia": "titulo mercado de colores en garrucha almeria 2026 contenido el mercado de colores degarrucha2026 que se celebrara del 7 al 10 de agosto engarrucha en el paseo maritimo es una de las propuestas mas originales y llamativas del verano en la costa almeriense",
+      "confianza": "media",
+      "fuentes": [
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Garrucha",
+      "solo_fuentes_no_oficiales": true,
+      "programa": [],
+      "origen": "ancla_contexto",
+      "url_programa": "https://www.lavozdealmeria.com/provincia/302331/pistoletazo-salida-fiestas-garrucha-cadena.html",
+      "sin_programa_publicado": true,
+      "programa_estado": "no_encontrado",
+      "lat": 37.17939094,
+      "lng": -1.82188241
+    },
+    {
+      "id": "ancla-fiestas-de-san-joaquin-en-garrucha-almeria-04049000101",
+      "lugar_id": "04049000101",
+      "nombre": "Fiestas de San Joaquin en Garrucha Almeria",
+      "fecha_inicio": "2026-05-13",
+      "fecha_fin": "2026-05-15",
+      "tamano": "pequeña",
+      "descripcion": "Fiestas de San Joaquin en Garrucha Almeria en Garrucha, del 13 al 15 de mayo de 2026. Fechas recuperadas del texto que las anuncia; sin descripción publicada.",
+      "evidencia": "publicidad sobre la fiesta ia la fiesta de san joaquin en garrucha almeria es la celebracion patronal que combina tradicion religiosa y ambiente marinero misa solemne procesion por el casco urbano y noches de verbena con orquesta en el paseo maritimo es una ocasion para disfrutar de la musica popular andaluza las paellas y el pescaito fresco de la lonja local historia y tradicion su raiz es la devocion catolica hacia",
+      "confianza": "media",
+      "fuentes": [
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Garrucha",
+      "solo_fuentes_no_oficiales": true,
+      "programa": [],
+      "origen": "ancla_contexto",
+      "url_programa": "https://www.garrucha.es/Servicios/Fiestas/Fiestas.nsf/fa629f14c5c1143bc1256fc70052e335/6fe7104012d96cbdc1258df5003bc4e0/$FILE/Copia%20de%20%20SAN%20ISIDRO%202026%20(1).pdf",
+      "programa_advocacion_dudosa": true,
+      "programa_estado": "no_encontrado",
+      "patron": {
+        "nombre": "San Joaquín",
+        "dia": 26,
+        "mes": 7,
+        "fuente": "wikipedia"
+      },
+      "lat": 37.17939094,
+      "lng": -1.82188241
+    },
+    {
+      "id": "velefique-san-roque-2026",
+      "lugar_id": "04097000101",
+      "nombre": "Fiestas Patronales de San Roque",
+      "fecha_inicio": "2026-08-14",
+      "fecha_fin": "2026-08-17",
+      "tamano": "grande",
+      "descripcion": "Celebración en honor a San Roque y la Purísima Concepción con procesiones, representación de Moros y Cristianos, paella gigante, verbenas con orquestas y DJ, y actividades culturales y deportivas. Incluye la Semana Cultural con cine, magia y torneos.",
+      "confianza": "baja",
+      "fuentes": [
+        "prensa_regional",
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Velefique",
+      "solo_fuentes_no_oficiales": true,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-08-14",
+          "eventos": [
+            {
+              "hora": "10:30",
+              "descripcion": "Campeonato de juegos de mesa en el Teatro Municipal"
+            },
+            {
+              "hora": "21:30",
+              "descripcion": "Cena en homenaje a los jubilados"
+            },
+            {
+              "hora": "22:00",
+              "descripcion": "Lectura del pregón de las Fiestas Patronales por Neus Corbacho"
+            },
+            {
+              "hora": "22:30",
+              "descripcion": "Entrega de placa honorífica a un hijo del pueblo"
+            },
+            {
+              "hora": "22:30",
+              "descripcion": "Actuación de la coplera Rocío Durán"
+            },
+            {
+              "hora": "23:30",
+              "descripcion": "Actuación del grupo 'Mar Azul'"
+            },
+            {
+              "hora": "02:30",
+              "descripcion": "Primer bingo de fiestas"
+            },
+            {
+              "hora": "06:00",
+              "descripcion": "DJ Alca cierra la jornada"
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-08-15",
+          "eventos": [
+            {
+              "hora": "14:00",
+              "descripcion": "Degustación de una gran paella en la plaza del pueblo"
+            },
+            {
+              "hora": "18:30",
+              "descripcion": "Misa solemne en honor a la Virgen María"
+            },
+            {
+              "hora": "20:00",
+              "descripcion": "Primera representación de Moros y Cristianos"
+            },
+            {
+              "hora": "21:00",
+              "descripcion": "Procesión de la Santísima Virgen al templo"
+            },
+            {
+              "hora": "23:30",
+              "descripcion": "Velada musical con la Orquesta Classics Show"
+            },
+            {
+              "hora": "02:30",
+              "descripcion": "Bingo y elección de míster y reina de las fiestas 2026"
+            },
+            {
+              "hora": "03:00",
+              "descripcion": "'La Hora Loca' con Classics Show"
+            }
+          ]
+        },
+        {
+          "dia": 3,
+          "fecha": "2026-08-16",
+          "eventos": [
+            {
+              "hora": "18:30",
+              "descripcion": "Misa solemne en honor al Santísimo Patrón San Roque"
+            },
+            {
+              "hora": "20:00",
+              "descripcion": "Segunda representación de Moros y Cristianos"
+            },
+            {
+              "hora": "21:00",
+              "descripcion": "Procesión de San Roque al templo"
+            },
+            {
+              "hora": "23:30",
+              "descripcion": "Actuación de la Orquesta Classics Show"
+            },
+            {
+              "hora": "02:30",
+              "descripcion": "Bingo"
+            },
+            {
+              "hora": "03:00",
+              "descripcion": "'La Batalla de las Generaciones' con Classics Show"
+            },
+            {
+              "hora": "06:30",
+              "descripcion": "DJ Linares cierra la jornada"
+            }
+          ]
+        },
+        {
+          "dia": 4,
+          "fecha": "2026-08-17",
+          "eventos": [
+            {
+              "hora": "20:00",
+              "descripcion": "Tercera representación de Moros y Cristianos"
+            },
+            {
+              "hora": "22:30",
+              "descripcion": "Entrega de trofeos"
+            },
+            {
+              "hora": "23:30",
+              "descripcion": "Actuación de la Orquesta Valhalla"
+            },
+            {
+              "hora": "02:30",
+              "descripcion": "Bingo"
+            },
+            {
+              "hora": "06:00",
+              "descripcion": "DJ Alca"
+            }
+          ]
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": true,
+      "url_programa": "https://www.ideal.es/almeria/provincia-almeria/moros-cristianos-paella-gigante-baile-fiestas-velefique-20260728193937-nt.html",
+      "cobertura_dias": 1.0,
+      "programa_estado": "completo",
+      "patron": {
+        "nombre": "San Roque",
+        "dia": 16,
+        "mes": 8,
+        "fuente": "wikipedia"
+      },
+      "lat": 37.19342285,
+      "lng": -2.402731115
+    },
+    {
+      "id": "fiestas-patronales-higuera-de-la-serena-2026",
+      "lugar_id": "06064000101",
+      "nombre": "Fiestas Patronales de Higuera de la Serena (Festividad de los Ramos de la Virgen Inmaculada)",
+      "fecha_inicio": "2026-08-10",
+      "fecha_fin": "2026-08-13",
+      "tamano": "grande",
+      "descripcion": "Celebración patronal con procesión, misa solemne, diana floreada, verbenas nocturnas y actividades populares en honor a la Virgen Inmaculada.",
+      "confianza": "baja",
+      "fuentes": [
+        "busqueda_web",
+        "busqueda_web",
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Higuera de la Serena",
+      "solo_fuentes_no_oficiales": true,
+      "programa": [],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "url_programa": "https://www.festivalesdeespana.com/festival/fiestas-patronales-de-higuera-de-la-serena",
+      "sin_programa_publicado": true,
+      "programa_estado": "no_encontrado",
+      "lat": 38.64510847,
+      "lng": -5.741827208
+    },
+    {
+      "id": "ancla-fiestas-de-higuera-de-la-serena-06064000101",
+      "lugar_id": "06064000101",
+      "nombre": "Fiestas de Higuera de la Serena",
+      "fecha_inicio": "2026-06-19",
+      "fecha_fin": "2026-06-28",
+      "tamano": "pequeña",
+      "descripcion": "Fiestas de Higuera de la Serena en Higuera de la Serena, del 19 al 28 de junio de 2026. Fechas recuperadas del texto que las anuncia; sin descripción publicada.",
+      "evidencia": "se celebra del 19 al 28 de junio asi es el cartel de la feria de san juan 2026 de badajoz lo firma ismael tena de higuera de la serena el cartel de la feria de san juan 2026 a m r ya nos sigues marcanos como medio preferente anadenos en google ascension martinez romasanta badajoz 12 jun 2026 11 54 a una semana de que badajoz comience la celebracion de la feria que dedica a su patron la feria de san juan 2026 el conce",
+      "confianza": "media",
+      "fuentes": [
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Higuera de la Serena",
+      "solo_fuentes_no_oficiales": true,
+      "programa": [],
+      "origen": "ancla_contexto",
+      "sin_programa_publicado": true,
+      "programa_estado": "no_encontrado",
+      "lat": 38.64510847,
+      "lng": -5.741827208
+    },
+    {
+      "id": "festival-aureo-herrero-2026",
+      "lugar_id": "05022000102",
+      "nombre": "XXVIII Festival de Música 'Áureo Herrero'",
+      "fecha_inicio": "2026-08-15",
+      "fecha_fin": "2026-08-29",
+      "tamano": "grande",
+      "descripcion": "Festival cultural con conciertos de música clásica, ópera, música antigua e internacional, actividades deportivas y eventos solidarios. Incluye actuaciones de coros, tríos y dúos internacionales, así como torneos de fútbol playa y voleibol playa.",
+      "confianza": "baja",
+      "fuentes": [
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "El Barraco",
+      "solo_fuentes_no_oficiales": true,
+      "programa": [],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "url_programa": "http://www.elbarraco.org/wp-content/uploads/2026/07/XXVIII-FESTIVAL-AUREO-HERRERO-2026.pdf",
+      "sin_programa_publicado": true,
+      "programa_estado": "no_encontrado",
+      "lat": 40.4771933,
+      "lng": -4.643479848
+    },
+    {
+      "id": "santisimo-cristo-de-gracia-el-barraco",
+      "lugar_id": "05022000102",
+      "nombre": "Fiestas Patronales del Santísimo Cristo de Gracia",
+      "fecha_inicio": "2026-09-14",
+      "fecha_fin": "2026-09-17",
+      "tamano": "grande",
+      "descripcion": "Celebración en honor al Santísimo Cristo de Gracia, incluyendo alboreadas, procesión solemne, festejos taurinos (tentadero, novilladas y corrida de rejones), verbena nocturna con orquestas, bingo benéfico, caldereta de toro y actividades culturales y deportivas. Es el evento religioso y social más importante del año en El Barraco.",
+      "confianza": "baja",
+      "fuentes": [
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "El Barraco",
+      "solo_fuentes_no_oficiales": true,
+      "programa": [],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": true,
+      "url_programa": "https://pueblus.com/fiestas/el-barraco",
+      "sin_programa_publicado": true,
+      "programa_estado": "no_encontrado",
+      "patron": {
+        "nombre": "Santísimo Cristo de Gracia",
+        "dia": 14,
+        "mes": 9,
+        "fuente": "wikipedia"
+      },
+      "lat": 40.4771933,
+      "lng": -4.643479848
+    },
+    {
+      "id": "fiestas-de-san-antonio-de-padua-arroyo-de-la-parra-2026",
+      "lugar_id": "05022000101",
+      "nombre": "Fiestas de San Antonio de Padua",
+      "fecha_inicio": "2026-05-05",
+      "fecha_fin": "2026-05-10",
+      "tamano": "grande",
+      "descripcion": "Fiesta Mayor de Arroyo de la Parra con música, peñas, tradición y actividades comunitarias. Incluye baile de máscaras, DJ sets y eventos familiares.",
+      "confianza": "baja",
+      "fuentes": [],
+      "sede_segun_el_texto": "Arroyo de la Parra",
+      "solo_fuentes_no_oficiales": true,
+      "programa": [],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "programa_estado": "no_encontrado",
+      "lat": 40.43826415,
+      "lng": -4.549491587
+    },
+    {
+      "id": "fiestas-la-rinconada-2026",
+      "lugar_id": "05022000301",
+      "nombre": "Fiestas de La Rinconada 2026",
+      "fecha_inicio": "2026-08-14",
+      "fecha_fin": "2026-08-16",
+      "tamano": "pequeña",
+      "descripcion": "Fiestas locales celebradas en La Rinconada tras su aplazamiento, con actividades durante tres días en agosto.",
+      "confianza": "baja",
+      "fuentes": [
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "La Rinconada",
+      "solo_fuentes_no_oficiales": true,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-08-14",
+          "eventos": [
+            {
+              "hora": "22:30",
+              "descripcion": "Castillos hinchables"
+            },
+            {
+              "hora": "23:30",
+              "descripcion": "Gran discoteca móvil. Camión escenario"
+            },
+            {
+              "hora": "",
+              "descripcion": "En el descanso: bingo y rifa de jamón"
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-08-15",
+          "eventos": [
+            {
+              "hora": "11:30",
+              "descripcion": "Campeonato de tute"
+            },
+            {
+              "hora": "18:00",
+              "descripcion": "Campeonato de mus"
+            },
+            {
+              "hora": "19:00",
+              "descripcion": "Campeonato de poker"
+            },
+            {
+              "hora": "21:30",
+              "descripcion": "Fiesta de la espuma-gran cañón"
+            },
+            {
+              "hora": "23:30",
+              "descripcion": "Gran discoteca móvil con camión escenario"
+            },
+            {
+              "hora": "",
+              "descripcion": "En el descanso: bingo, rifa de jamón, entrega de trofeos y medallas"
+            }
+          ]
+        },
+        {
+          "dia": 3,
+          "fecha": "2026-08-16",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "Competiciones infantiles"
+            },
+            {
+              "hora": "13:00",
+              "descripcion": "Misa en la iglesia centro cultural La Rinconada"
+            },
+            {
+              "hora": "",
+              "descripcion": "Música para todos los públicos los días de las actuaciones musicales"
+            },
+            {
+              "hora": "",
+              "descripcion": "Servicio de bar, chiringuito, terraza, bebida y comida disponible todos los días"
+            }
+          ]
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "url_programa": "https://avilared.com/art/93658/programa-de-fiestas-de-la-rinconada-2026",
+      "cobertura_dias": 1.0,
+      "programa_estado": "completo",
+      "lat": 40.41451915,
+      "lng": -4.59837135
+    },
+    {
+      "id": "zafra-santa-brigida-2026",
+      "lugar_id": "06158000501",
+      "nombre": "Fiestas Patronales de Santa Brígida",
+      "fecha_inicio": "2026-02-01",
+      "fecha_fin": "2026-02-02",
+      "tamano": "pequeña",
+      "descripcion": "Celebración en honor a Santa Brígida, patrona de Zafra, con misa extremeña, desayuno saludable y actividades culturales. Organizada por el Ayuntamiento y asociaciones locales.",
+      "confianza": "baja",
+      "fuentes": [
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Zafra",
+      "solo_fuentes_no_oficiales": true,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-02-01",
+          "eventos": [
+            {
+              "hora": "20:00",
+              "descripcion": "Misa en honor de Santa Brígida en la Parroquia de Nuestra Señora de la Candelaria, cantada por la Asociación de Coros y Danzas 'El Castellar'"
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-02-02",
+          "eventos": [
+            {
+              "hora": "09:00",
+              "descripcion": "Desayuno saludable en la Plaza de Abastos para fomentar hábitos de vida saludables"
+            },
+            {
+              "hora": "09:00",
+              "descripcion": "Pruebas de glucosa realizadas por la Asociación de Diabéticos de Zafra (de 09:00 a 12:30 horas)"
+            }
+          ]
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "patron_trasladado": true,
+      "url_programa": "https://zafra.es/el-ayuntamiento-organiza-las-actividades-en-honor-a-santa-brigida-que-se-celebrara-los-dias-1-y-2-de-febrero/",
+      "cobertura_dias": 1.0,
+      "programa_estado": "completo",
+      "patron": {
+        "nombre": "Santa Brígida",
+        "dia": 23,
+        "mes": 7,
+        "fuente": "wikipedia"
+      },
+      "lat": 38.42634413,
+      "lng": -6.418558803
+    },
+    {
+      "id": "carnaval-zafra-2026",
+      "lugar_id": "06158000501",
+      "nombre": "Carnaval de Zafra",
+      "fecha_inicio": "2026-02-13",
+      "fecha_fin": "2026-02-17",
+      "tamano": "grande",
+      "descripcion": "Programa de actividades carnavalescas incluyendo pasacalles, concurso de disfraces y verbena. El lema es 'Zafra despega hacia su Carnaval más viajero'.",
+      "confianza": "baja",
+      "fuentes": [
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Zafra",
+      "solo_fuentes_no_oficiales": true,
+      "programa": [
+        {
+          "dia": 4,
+          "fecha": "2026-02-16",
+          "eventos": []
+        },
+        {
+          "dia": 5,
+          "fecha": "2026-02-17",
+          "eventos": [
+            {
+              "hora": "10:45",
+              "descripcion": "Desfile del Sepelio de la Bellota (salida del Centro de Plena Inclusión Zafra, recorrido tradicional con ambientación musical y lectura del discurso)"
+            },
+            {
+              "hora": "18:30",
+              "descripcion": "Concentración y velatorio en el Centro Sociocultural García de la Huerta (Casa de la Cultura) con el lema \"Contigo pan y sardinas\""
+            },
+            {
+              "hora": "20:00",
+              "descripcion": "Sardinada (degustación pública organizada por el Ayuntamiento de Zafra)"
+            }
+          ]
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "url_programa": "https://zafra.es/wp-content/uploads/2026/02/diptico_carnaval_2026.pdf",
+      "lotes_incompletos": 1,
+      "cobertura_dias": 0.33,
+      "programa_no_recuperado": true,
+      "programa_estado": "parcial",
+      "lat": 38.42634413,
+      "lng": -6.418558803
+    },
+    {
+      "id": "feria-primavera-zafra-2026",
+      "lugar_id": "06158000501",
+      "nombre": "Feria de Primavera",
+      "fecha_inicio": "2026-03-13",
+      "fecha_fin": "2026-03-15",
+      "tamano": "pequeña",
+      "descripcion": "Feria local con un variado catálogo de eventos para el fin de semana, incluyendo actividades comerciales y culturales.",
+      "confianza": "baja",
+      "fuentes": [
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Zafra",
+      "solo_fuentes_no_oficiales": true,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-03-13",
+          "eventos": [
+            {
+              "hora": "09:00",
+              "descripcion": "V Foro Ganadero en el Salón de Actos del Pabellón Central"
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-03-14",
+          "eventos": [
+            {
+              "hora": "10:00",
+              "descripcion": "Concurso Nacional de Equitación de Trabajo en el Recinto Hípico"
+            },
+            {
+              "hora": "11:30",
+              "descripcion": "Subasta Oficial de la Raza Merina en la Nave de Subastas"
+            },
+            {
+              "hora": "",
+              "descripcion": "Jornadas de convivencia y hermanamiento en el campo de césped artificial"
+            },
+            {
+              "hora": "17:00",
+              "descripcion": "Verificaciones técnicas de los vehículos participantes en la carrera II Tramo Cronometrado Dehesa Suroeste Zafra–DonTyre en la avenida de la Nave de Subastas"
+            },
+            {
+              "hora": "21:30",
+              "descripcion": "Concierto de la banda de rock Strenos (gira 40 aniversario) en la plazoleta de la caseta municipal del recinto ferial"
+            },
+            {
+              "hora": "00:30",
+              "descripcion": "Sesión de DJ Black con pop/rock, reggaetón y ritmos actuales en la plazoleta de la caseta municipal del recinto ferial"
+            }
+          ]
+        },
+        {
+          "dia": 3,
+          "fecha": "2026-03-15",
+          "eventos": [
+            {
+              "hora": "10:00",
+              "descripcion": "III Torneo de Hockey sobre Patines en el Pabellón Institucional"
+            },
+            {
+              "hora": "",
+              "descripcion": "Concurso Nacional de Equitación de Trabajo (continuación del sábado) en el Recinto Hípico"
+            }
+          ]
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "url_programa": "https://zafra.hoy.es/zafra-prepara-celebrar-feria-primavera-fin-semana-20260310182211-nt.html",
+      "cobertura_dias": 1.0,
+      "programa_estado": "completo",
+      "lat": 38.42634413,
+      "lng": -6.418558803
+    },
+    {
+      "id": "de-la-luna-al-fuego-2026",
+      "lugar_id": "06158000501",
+      "nombre": "De la Luna al Fuego",
+      "fecha_inicio": "2026-06-19",
+      "fecha_fin": "2026-06-28",
+      "tamano": "grande",
+      "descripcion": "Fiesta de Interés Turístico Regional que recrea el Siglo de Oro en Zafra, con actividades como mercado histórico, teatro, música, danza y eventos culturales. Incluye exposiciones, visitas guiadas y espectáculos teatrales.",
+      "confianza": "baja",
+      "fuentes": [],
+      "sede_segun_el_texto": "Zafra",
+      "solo_fuentes_no_oficiales": true,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-06-19",
+          "eventos": [
+            {
+              "hora": "19:00",
+              "descripcion": "Simultánea de ajedrez por el Gran Maestro D. Manuel Pérez Candelario. Lugar: Inmediaciones de la Calle Sevilla-Plaza Grande."
+            },
+            {
+              "hora": "20:15",
+              "descripcion": "Preludio musical a cargo del Aula de Viento de la Escuela Municipal de Música de Zafra. Cuarteto de flautas. Lugar: Salón-Capilla, Parador de Turismo."
+            },
+            {
+              "hora": "20:30",
+              "descripcion": "Primera jornada de historia: 'El Arcángel San Miguel' de La Roldana. Lugar: Salón-Capilla, Parador de Turismo."
+            },
+            {
+              "hora": "21:00",
+              "descripcion": "Desfile de la Corte Ducal y Auto Inaugural. Lugar: Plaza del Corazón de María."
+            },
+            {
+              "hora": "21:00",
+              "descripcion": "Muestra de teatro popular con obras 'Herederos' y 'La Médica a Palos'. Lugar: Plaza del Corazón de María."
+            },
+            {
+              "hora": "21:00",
+              "descripcion": "Apertura del Mercado del Siglo de Oro (Jornada I). Lugar: Plaza Grande y Chica."
+            },
+            {
+              "hora": "21:00",
+              "descripcion": "Actuación del grupo 'Saltinpunqui' con 'Danzas del Siglo XVII'. Lugar: Plaza del Corazón de María."
+            },
+            {
+              "hora": "21:30",
+              "descripcion": "Instalación 'Cabinas Literarias'. Lugar: Calle Sevilla."
+            },
+            {
+              "hora": "22:00",
+              "descripcion": "Ajedrez Viviente a cargo de las compañías de teatro Mutis por el Foro y Teatreando. Lugar: Plaza Grande."
+            },
+            {
+              "hora": "22:30",
+              "descripcion": "2º pase de 'Danzas del Siglo XVII'. Lugar: Plaza del Corazón de María."
+            },
+            {
+              "hora": "23:00",
+              "descripcion": "Pasacalle 'Aqui-Quimera' de la compañía La Fam Teatre SL. Lugar: Plaza Grande."
+            },
+            {
+              "hora": "23:55",
+              "descripcion": "Pasacalle Nocturno 'Los Hombres de Paja'. Lugar: Plaza del Corazón de María."
+            },
+            {
+              "hora": "00:00",
+              "descripcion": "2º pase de 'La Peste en els XVII'. Lugar: Plaza del Corazón de María."
+            },
+            {
+              "hora": "01:30",
+              "descripcion": "Pasacalle Nocturno 'La Santa Compaña'. Lugar: Plaza del Corazón de María."
+            },
+            {
+              "hora": "10:00",
+              "descripcion": "XI Torneo de Ajedrez 'De la Luna al Fuego'. Lugar: Plaza de Abastos."
+            },
+            {
+              "hora": "14:30",
+              "descripcion": "Entrega de premios del XI Torneo de Ajedrez. Lugar: Plaza de Abastos."
+            },
+            {
+              "hora": "19:00",
+              "descripcion": "XIV Concurso Social de Pesca Deportiva 'San Pedro'. Lugar: Embalse de Nogales."
+            },
+            {
+              "hora": "21:30",
+              "descripcion": "Desfile de la Corte Ducal y de los Trebejos del Ajedrez Viviente. Salida: Centro Sociocultural García de la Huerta."
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-06-20",
+          "eventos": [
+            {
+              "hora": "11:00",
+              "descripcion": "Ruta Turística: 'Personajes Ilustres del Siglo de Oro'. Lugar: Plaza del Corazón de María."
+            },
+            {
+              "hora": "19:00",
+              "descripcion": "Exposición de artillería y armaduras de la época, charla y demostración. Lugar: Parador de Turismo."
+            },
+            {
+              "hora": "19:00",
+              "descripcion": "Espectáculo de danza oriental y taller participativo. Lugar: Parador de Turismo."
+            },
+            {
+              "hora": "20:00",
+              "descripcion": "Ruta Temática: 'Detectives de Monumentos, Misión Historia de Zafra'. Lugar: Plaza del Corazón de María."
+            },
+            {
+              "hora": "21:00",
+              "descripcion": "Apertura del Mercado del Siglo de Oro (Jornada II). Lugar: Plaza Grande y Chica."
+            },
+            {
+              "hora": "21:00",
+              "descripcion": "Actuación del grupo 'Saltinpunqui' con 'Los Soldados del Duque'. Lugar: Plaza del Corazón de María."
+            },
+            {
+              "hora": "21:00",
+              "descripcion": "Representación de la obra 'Las Preciosas Ridículas'. Lugar: Espacio Centro Cultural Santa Marina."
+            },
+            {
+              "hora": "22:00",
+              "descripcion": "Nocbe del Museo Viviente (primer pase). Lugar: Plaza del Corazón de María."
+            },
+            {
+              "hora": "22:00",
+              "descripcion": "Ruta Nocturna de San Juan 'La Ruta de las Sombras'. Lugar: Plaza Ruiz López."
+            },
+            {
+              "hora": "23:00",
+              "descripcion": "2º pase de 'Los Soldados del Duque'. Lugar: Plaza del Corazón de María."
+            },
+            {
+              "hora": "23:00",
+              "descripcion": "Cena de Palacio Teatralizada. Lugar: Patio Renacentista, Parador de Turismo."
+            },
+            {
+              "hora": "23:50",
+              "descripcion": "Entrega de la Vara de Honor Gitana. Lugar: Plaza de Dulce Chacón."
+            },
+            {
+              "hora": "00:00",
+              "descripcion": "Mojá de la Vara y espectáculo de fuegos artificiales. Lugar: Plaza de Dulce Chacón."
+            }
+          ]
+        },
+        {
+          "dia": 3,
+          "fecha": "2026-06-21",
+          "eventos": [
+            {
+              "hora": "11:00",
+              "descripcion": "Ruta Turística: 'El Papel de la Mujer en la Casa de Feria'. Lugar: Plaza del Corazón de María."
+            },
+            {
+              "hora": "13:00",
+              "descripcion": "Entrega del Premio del II Certamen Literario Ruy López. Lugar: Plaza Chica."
+            },
+            {
+              "hora": "15:00",
+              "descripcion": "Entrega de trofeos del XIV Concurso Social de Pesca Deportiva 'San Pedro'. Lugar: Bar los Pescadores."
+            },
+            {
+              "hora": "19:00",
+              "descripcion": "Apertura de la exposición sobre la Mojá de la Vara. Lugar: Plaza del Alcázar."
+            },
+            {
+              "hora": "21:00",
+              "descripcion": "Representación de la obra 'La Loca Historia del Siglo de Oro'. Lugar: Patio del Ayuntamiento."
+            },
+            {
+              "hora": "23:00",
+              "descripcion": "Visitas guiadas en el Parador de Turismo. Lugar: Parador de Turismo."
+            }
+          ]
+        },
+        {
+          "dia": 4,
+          "fecha": "2026-06-22",
+          "eventos": [
+            {
+              "hora": "20:30",
+              "descripcion": "XXVII Jornadas de Historia de Zafra y el Estado de Feria. Tercera Jornada: 1936-2026. Noventa años de la República y la guerra en Zafra."
+            },
+            {
+              "hora": "21:00",
+              "descripcion": "Muestra de teatro popular con la representación de la obra \"La Ilustre Fregona\" a cargo de la compañía Mutis por el Foro."
+            }
+          ]
+        },
+        {
+          "dia": 5,
+          "fecha": "2026-06-23",
+          "eventos": [
+            {
+              "hora": "20:30",
+              "descripcion": "XXVII Jornadas de Historia de Zafra y el Estado de Feria. Cuarta Jornada: Arquitectura Aquí en Zafra: Una mirada hacia el patrimonio público del siglo XX."
+            },
+            {
+              "hora": "21:00",
+              "descripcion": "Muestra de teatro popular con la representación de la obra \"Las Infantas de Braga\" a cargo del grupo de teatro \"Semos Asina\"."
+            },
+            {
+              "hora": "16:30",
+              "descripcion": "Quedada de Juegos de Mesa del Siglo de Oro de Tierra de Barros."
+            },
+            {
+              "hora": "20:00",
+              "descripcion": "Apertura del Mercado del Siglo de Oro (Jornada I)."
+            }
+          ]
+        },
+        {
+          "dia": 6,
+          "fecha": "2026-06-24",
+          "eventos": [
+            {
+              "hora": "20:30",
+              "descripcion": "XXVII Jornadas de Historia de Zafra y el Estado de Feria. Quinta Jornada: Fuente de Cantos. Claves históricas y patrimoniales de una villa santiaguista."
+            },
+            {
+              "hora": "21:00",
+              "descripcion": "Representación de la obra \"Las Preciosas Ridículas\" de la compañía Arroz con Costilla Producciones."
+            },
+            {
+              "hora": "21:00",
+              "descripcion": "\"Saltinpunqui\", grupo de animación en el Mercado del Siglo de Oro con 5 artistas (Huelva). Pasacalle con música y danza: \"Danzas del Siglo XVII\"."
+            },
+            {
+              "hora": "22:30",
+              "descripcion": "\"Saltinpunqui\", 2º pase: \"Danzas del Siglo XVII\"."
+            },
+            {
+              "hora": "23:55",
+              "descripcion": "Pasacalle Nocturno: \"Los Hombres de Paja\"."
+            },
+            {
+              "hora": "11:00",
+              "descripcion": "Apertura del Mercado del Siglo de Oro (Jornada II)."
+            },
+            {
+              "hora": "21:30",
+              "descripcion": "Instalación en la calle \"Cabinas Literarias\" (Mérida)."
+            },
+            {
+              "hora": "23:00",
+              "descripcion": "Pasacalle \"Aquiél-Quimera\" de la compañía La Fam Teatre SL (Vila-real-Valencia)."
+            },
+            {
+              "hora": "11:00",
+              "descripcion": "Apertura del Mercado del Siglo de Oro (Jornada III)."
+            },
+            {
+              "hora": "13:30",
+              "descripcion": "\"Saltinpunqui\", 1º pase: \"Don Quijote de la Mancha\"."
+            },
+            {
+              "hora": "15:00",
+              "descripcion": "\"Saltinpunqui\", 2º pase: \"Don Quijote de la Mancha\"."
+            },
+            {
+              "hora": "18:00",
+              "descripcion": "Teatro de Calle y Personajes: \"La Duquesa del Siglo de Oro\"."
+            },
+            {
+              "hora": "20:00",
+              "descripcion": "\"Saltinpunqui\", 2º pase: \"La Duquesa del Siglo de Oro\"."
+            },
+            {
+              "hora": "21:30",
+              "descripcion": "Pasacalle Nocturno: \"Demonios Rojos\"."
+            },
+            {
+              "hora": "21:00",
+              "descripcion": "Representación de la obra \"La Loca Historia del Siglo de Oro\" de la compañía Zircus Animación S.L."
+            }
+          ]
+        },
+        {
+          "dia": 7,
+          "fecha": "2026-06-25",
+          "eventos": [
+            {
+              "hora": "11:00",
+              "descripcion": "RUTA TURÍSTICA: PERSONAJES ILUSTRES DEL SIGLO DE ORO"
+            },
+            {
+              "hora": "13:30",
+              "descripcion": "Pasacalle con música y personajes “Don Quijote de la Mancha”"
+            },
+            {
+              "hora": "15:00",
+              "descripcion": "“Don Quijote de la Mancha” 2º pase"
+            },
+            {
+              "hora": "20:00",
+              "descripcion": "“La Duquesa del Siglo de Oro” 2º pase"
+            },
+            {
+              "hora": "21:00",
+              "descripcion": "REPRESENTACIÓN DE LA OBRA “LA LOCA HISTORIA DEL SIGLO DE ORO”"
+            },
+            {
+              "hora": "22:00",
+              "descripcion": "RUTA NOCTURNA DE SAN JUAN “LA RUTA DE LAS SOMBRAS”"
+            }
+          ]
+        },
+        {
+          "dia": 8,
+          "fecha": "2026-06-26",
+          "eventos": [
+            {
+              "hora": "19:00",
+              "descripcion": "EXPOSICIÓN DE ARTILLERÍA Y ARMADURAS DE LA ÉPOCA, CHARLA Y DEMOSTRACIÓN"
+            },
+            {
+              "hora": "19:00",
+              "descripcion": "ESPECTÁCULO DE DANZA ORIENTAL Y TALLER PARTICIPATIVO"
+            }
+          ]
+        },
+        {
+          "dia": 9,
+          "fecha": "2026-06-27",
+          "eventos": [
+            {
+              "hora": "21:00",
+              "descripcion": "CENA DE PALACIO TEATRALIZADA"
+            }
+          ]
+        },
+        {
+          "dia": 10,
+          "fecha": "2026-06-28",
+          "eventos": [
+            {
+              "hora": "23:00",
+              "descripcion": "VISITAS GUIADAS EN EL PARADOR DE TURISMO"
+            }
+          ]
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "url_programa": "https://zafra.es/wp-content/uploads/2026/06/ProgramaDelaLunaalFuego2026.pdf",
+      "cobertura_dias": 1.0,
+      "programa_estado": "completo",
+      "lat": 38.42634413,
+      "lng": -6.418558803
+    },
+    {
+      "id": "festival-fuelligah-de-sacali-o-06158000501",
+      "lugar_id": "06158000501",
+      "nombre": "Festival Fuelligah de Sacaliño",
+      "fecha_inicio": "2026-08-01",
+      "fecha_fin": "2026-08-31",
+      "tamano": "grande",
+      "descripcion": "Festival cultural en Zafra celebrado en agosto con actuaciones musicales y eventos tradicionales.",
+      "confianza": "baja",
+      "fuentes": [],
+      "sede_segun_el_texto": "Zafra",
+      "solo_fuentes_no_oficiales": true,
+      "programa": [],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "url_programa": "https://www.disfrutazafra.com/fiestas/",
+      "sin_programa_publicado": true,
+      "programa_estado": "no_encontrado",
+      "lat": 38.42634413,
+      "lng": -6.418558803
+    },
+    {
+      "id": "feria-de-san-miguel-zafra-2026",
+      "lugar_id": "06158000501",
+      "nombre": "Feria Internacional Ganadera de San Miguel",
+      "fecha_inicio": "2026-10-01",
+      "fecha_fin": "2026-10-06",
+      "tamano": "grande",
+      "descripcion": "Feria ganadera de origen medieval y tradición histórica, con subastas de ganado, exposiciones, concursos morfológicos, espectáculos taurinos (clase práctica, corrida de rejones y corrida de toros) y actividades festivas nocturnas con casetas, música y gastronomía extremeña.",
+      "confianza": "baja",
+      "fuentes": [
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Zafra",
+      "solo_fuentes_no_oficiales": true,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-10-01",
+          "eventos": [
+            {
+              "hora": "20:30",
+              "descripcion": "Concierto de Pilar Boyero y Enrique Heredia 'El Negri'"
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-10-02",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "Inauguración Oficial de la FIG"
+            },
+            {
+              "hora": "22:00",
+              "descripcion": "Baile con 'Cuarteto Sonarte'"
+            }
+          ]
+        },
+        {
+          "dia": 3,
+          "fecha": "2026-10-03",
+          "eventos": [
+            {
+              "hora": "22:00",
+              "descripcion": "Baile con 'Quinteto Marhaba'"
+            }
+          ]
+        },
+        {
+          "dia": 4,
+          "fecha": "2026-10-04",
+          "eventos": [
+            {
+              "hora": "21:00",
+              "descripcion": "Concierto de Juan Salazar 'El Chunguito'"
+            },
+            {
+              "hora": "22:30",
+              "descripcion": "Baile con 'Gran Sureste Orquesta Show'"
+            }
+          ]
+        },
+        {
+          "dia": 5,
+          "fecha": "2026-10-05",
+          "eventos": [
+            {
+              "hora": "21:00",
+              "descripcion": "Baile con 'Quinteto Musical Géminis'"
+            }
+          ]
+        },
+        {
+          "dia": 6,
+          "fecha": "2026-10-06",
+          "eventos": [
+            {
+              "hora": "19:30",
+              "descripcion": "Concierto Diván du Don"
+            },
+            {
+              "hora": "20:30",
+              "descripcion": "Concierto Sanguijuelas del Guadiana"
+            },
+            {
+              "hora": "23:00",
+              "descripcion": "Baile con 'Cuarteto Nuevas Ilusiones'"
+            }
+          ]
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "url_programa": "https://www.disfrutazafra.com/feria-de-zafra-internacional-ganadera/",
+      "cobertura_dias": 1.0,
+      "programa_estado": "completo",
+      "lat": 38.42634413,
+      "lng": -6.418558803
+    },
+    {
+      "id": "feria-del-queso-artesano-zafra-2026",
+      "lugar_id": "06158000501",
+      "nombre": "Feria del Queso Artesano y V Torneo de Ajedrez 'Chess and Cheese'",
+      "fecha_inicio": "2026-11-20",
+      "fecha_fin": "2026-11-21",
+      "tamano": "pequeña",
+      "descripcion": "Celebración de la Feria del Queso Artesano y el V Torneo de Ajedrez 'Chess and Cheese' en la Plaza Grande de Zafra, incluyendo actividades culturales y gastronómicas.",
+      "confianza": "baja",
+      "fuentes": [],
+      "sede_segun_el_texto": "Zafra",
+      "solo_fuentes_no_oficiales": true,
+      "programa": [],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "url_programa": "https://zafra.es/la-ix-edicion-de-la-feria-del-queso-artesano-se-celebrara-los-dias-1-y-2-de-noviembre-en-la-plaza-grande-de-zafra/",
+      "sin_programa_publicado": true,
+      "programa_estado": "no_encontrado",
+      "lat": 38.42634413,
+      "lng": -6.418558803
+    },
+    {
+      "id": "ancla-fiestas-de-zafra-06158000501",
+      "lugar_id": "06158000501",
+      "nombre": "Fiestas de Zafra",
+      "fecha_inicio": "2026-01-19",
+      "fecha_fin": "2026-01-20",
+      "tamano": "pequeña",
+      "descripcion": "Fiestas de Zafra en Zafra, del 19 al 20 de enero de 2026. Fechas recuperadas del texto que las anuncia; sin descripción publicada.",
+      "evidencia": "fiestas en zafra calendario de las fiestas de zafra en badajoz extremadura fechas de 2026 que se celebra y que no perderte cuando son las fiestas de zafra la proxima cita es feria internacional ganadera de zafra en octubre del 1 al 6 de octubre 1–6 oct feria internacional ganadera de zafra en 26 dias las fiestas de zafra una a una feria internacional ganadera de zafra feria internacional ganadera de zafra 2026 del 1 ",
+      "confianza": "media",
+      "fuentes": [
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Zafra",
+      "solo_fuentes_no_oficiales": true,
+      "programa": [],
+      "origen": "ancla_contexto",
+      "url_programa": "https://www.grada.es/agenda/ii-feria-cofrade-de-zafra/",
+      "programa_estado": "no_encontrado",
+      "lat": 38.42634413,
+      "lng": -6.418558803
+    },
+    {
+      "id": "fiestas-san-gines-purchena-2026",
+      "lugar_id": "04076000201",
+      "nombre": "Fiestas Patronales y Romería de San Ginés de la Jara",
+      "fecha_inicio": "2026-08-21",
+      "fecha_fin": "2026-08-26",
+      "tamano": "grande",
+      "descripcion": "Celebración anual en honor a San Ginés de la Jara, patrón de Purchena, que incluye procesión, carrera de carromatos, verbenas musicales, actividades infantiles y deportivas, y la subida de la Virgen del Carmen. Se extiende del 21 al 26 de agosto con eventos nocturnos y tradicionales.",
+      "confianza": "baja",
+      "fuentes": [
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Purchena",
+      "solo_fuentes_no_oficiales": true,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-08-21",
+          "eventos": [
+            {
+              "hora": "22:00",
+              "descripcion": "DÍA DEL NIÑO - Mago Alex Navarro - Plaza"
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-08-22",
+          "eventos": [
+            {
+              "hora": "22:00",
+              "descripcion": "Lectura del pregón a cargo de Carmen Cano Fernández"
+            },
+            {
+              "hora": "23:00",
+              "descripcion": "Verbena musical amenizada por Orquesta Millenium y La Frontera. A continuación, DJ."
+            }
+          ]
+        },
+        {
+          "dia": 3,
+          "fecha": "2026-08-23",
+          "eventos": [
+            {
+              "hora": "23:00",
+              "descripcion": "Verbena musical amenizada por Orquesta Traveruras y La Edad de Oro Pop Español. A continuación, DJ."
+            }
+          ]
+        },
+        {
+          "dia": 4,
+          "fecha": "2026-08-24",
+          "eventos": [
+            {
+              "hora": "23:00",
+              "descripcion": "verbena musical amenizada por Orquesta Vintash y Dúo Golden Show"
+            }
+          ]
+        },
+        {
+          "dia": 5,
+          "fecha": "2026-08-25",
+          "eventos": [
+            {
+              "hora": "19:30",
+              "descripcion": "Misa y Procesión acompañada por la Banda Virgen del Carmen"
+            },
+            {
+              "hora": "23:00",
+              "descripcion": "verbena musical amenizada por Orquesta Revelion y Dúo Golden Show"
+            }
+          ]
+        },
+        {
+          "dia": 6,
+          "fecha": "2026-08-26",
+          "eventos": [
+            {
+              "hora": "18:30",
+              "descripcion": "Misa y romería de la Virgen del Carmen a la Ermita"
+            },
+            {
+              "hora": "22:00",
+              "descripcion": "verbena musical amenizada por Noche de Resaka y Antonio Alvarez"
+            }
+          ]
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": true,
+      "ancla_propuesta": {
+        "fecha_inicio": "2026-08-22",
+        "fecha_fin": "2026-08-26",
+        "peso": 24,
+        "evidencia": "titulo fiestas de san gines - purchena 2026 - interior de almeria - valle del contenido del 22 al 26 de agosto purchenacelebra su feria yfiestasen honor a san gines y queremos invitar a vivirlas a todos nuestros vecinos y vecinas visitantes y a los purcheneros sus hijos nietos y descendientes de purcheneros repartidos por todos los rincones del mundo"
+      },
+      "url_programa": "https://turismoalmanzora.com/wp-content/uploads/programa-San-Gines-purchena26.pdf",
+      "cobertura_dias": 1.0,
+      "programa_estado": "completo",
+      "patron": {
+        "nombre": "San Ginés",
+        "dia": 25,
+        "mes": 8,
+        "fuente": "wikipedia"
+      },
+      "lat": 37.34854852,
+      "lng": -2.361641447
+    },
+    {
+      "id": "ancla-fiestas-de-purchena-04076000201",
+      "lugar_id": "04076000201",
+      "nombre": "Fiestas de Purchena",
+      "fecha_inicio": "2026-07-30",
+      "fecha_fin": "2026-08-01",
+      "tamano": "pequeña",
+      "descripcion": "Fiestas de Purchena en Purchena, del 30 de julio al 1 de agosto de 2026. Fechas recuperadas del texto que las anuncia; sin descripción publicada.",
+      "evidencia": "fiestas en purchena 3 fiestas en 2026 – 2027 descubre las fiestas de purchena almeria en andalucia calendario completo de fiestas patronales ferias y celebraciones tradicionales para 2026 y 2027 san gines de la jara purchena andalucia 25 agosto 2026 un dia patronal virgen del carmen purchena andalucia 16 julio 2027 un dia patronal juegos moriscos de aben humeya purchena andalucia 30 jul – 1 ago 2027 2 dias historica ",
+      "confianza": "media",
+      "fuentes": [
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Purchena",
+      "solo_fuentes_no_oficiales": true,
+      "programa": [],
+      "origen": "ancla_contexto",
+      "url_programa": "https://demercadosmedievales.es/zoco-arabe/zoco-arabe-artesanal-de-purchena-almeria-30-de-julio-al-1-de-agosto-2026/",
+      "sin_programa_publicado": true,
+      "programa_estado": "no_encontrado",
+      "lat": 37.34854852,
+      "lng": -2.361641447
+    },
+    {
+      "id": "fiestas-el-campillo-2026",
+      "lugar_id": "04076000101",
+      "nombre": "Fiestas Patronales de El Campillo",
+      "fecha_inicio": "2026-08-10",
+      "fecha_fin": "2026-08-16",
+      "tamano": "grande",
+      "descripcion": "Celebración de verano con procesiones religiosas, verbenas con orquesta y DJ, juegos tradicionales, deportes, concursos, gastronomía andaluza y actividades para todos los públicos.",
+      "confianza": "baja",
+      "fuentes": [
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "El Campillo de Purchena",
+      "solo_fuentes_no_oficiales": true,
+      "programa": [],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "url_programa": "https://turismoalmanzora.com/event-pro/fiestas-del-campillo-de-purchena-2026/",
+      "sin_programa_publicado": true,
+      "programa_estado": "no_encontrado",
+      "lat": 37.44025737,
+      "lng": -2.357115994
+    },
+    {
+      "id": "fiestas-patronales-turre-agosto-2026",
+      "lugar_id": "04093000901",
+      "nombre": "Fiestas Patronales de Turre en honor a San Francisco de Asís",
+      "fecha_inicio": "2026-08-12",
+      "fecha_fin": "2026-08-17",
+      "tamano": "grande",
+      "descripcion": "Celebración de las Fiestas Patronales de Turre en agosto, incluyendo verbenas, procesiones, vaquillas, música en directo, deportes y actividades religiosas en honor a San Francisco de Asís. El recinto ferial y la Zona Joven serán epicentros de la programación.",
+      "confianza": "baja",
+      "fuentes": [
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Turre",
+      "solo_fuentes_no_oficiales": true,
+      "programa": [],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "patron_trasladado": true,
+      "url_programa": "https://www.festivalesdeespana.com/festival/fiestas-patronales-de-turre",
+      "sin_programa_publicado": true,
+      "programa_estado": "no_encontrado",
+      "patron": {
+        "nombre": "San Francisco de Asís",
+        "dia": 4,
+        "mes": 10,
+        "fuente": "wikipedia"
+      },
+      "lat": 37.15219777,
+      "lng": -1.89478231
+    },
+    {
+      "id": "fiesta-de-san-francisco-de-asis-en-turre-2026",
+      "lugar_id": "04093000901",
+      "nombre": "Fiesta Mayor y Feria en Honor a San Francisco de Asís",
+      "fecha_inicio": "2026-10-03",
+      "fecha_fin": "2026-10-07",
+      "tamano": "grande",
+      "descripcion": "Celebración patronal en honor a San Francisco de Asís con procesiones, verbenas, corridas de cintas, actos culturales y religiosos. Incluye la tradicional ofrenda floral, parrandas, y conciertos nocturnos.",
+      "confianza": "baja",
+      "fuentes": [
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Turre",
+      "solo_fuentes_no_oficiales": true,
+      "programa": [],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": true,
+      "url_programa": "https://www.defiestaenfiesta.es/fiestas/andalucia/almeria/turre/feria-y-fiestas-de-turre-03102026",
+      "sin_programa_publicado": true,
+      "programa_estado": "no_encontrado",
+      "patron": {
+        "nombre": "San Francisco de Asís",
+        "dia": 4,
+        "mes": 10,
+        "fuente": "wikipedia"
+      },
+      "lat": 37.15219777,
+      "lng": -1.89478231
+    },
+    {
+      "id": "fiesta-de-la-carrasca-2026",
+      "lugar_id": "04093000301",
+      "nombre": "Fiesta de la Carrasca",
+      "fecha_inicio": "2026-08-26",
+      "fecha_fin": "2026-08-28",
+      "tamano": "pequeña",
+      "descripcion": "Celebración con música, actividades infantiles, paella y otros eventos populares en la pedanía de La Carrasca (Turre).",
+      "confianza": "baja",
+      "fuentes": [
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "La Carrasca",
+      "solo_fuentes_no_oficiales": true,
+      "programa": [],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "url_programa": "https://www.facebook.com/TurreActivo/",
+      "sin_programa_publicado": true,
+      "programa_estado": "no_encontrado",
+      "lat": 37.09232791,
+      "lng": -1.94420124
+    },
+    {
+      "id": "ancla-fiestas-de-cortijo-cabrera-04093000302",
+      "lugar_id": "04093000302",
+      "nombre": "Fiestas de Cortijo Cabrera",
+      "fecha_inicio": "2026-06-27",
+      "fecha_fin": "2026-06-27",
+      "tamano": "pequeña",
+      "descripcion": "Fiestas de Cortijo Cabrera en Cortijo Cabrera, el 27 de junio de 2026. Fechas recuperadas del texto que las anuncia; sin descripción publicada.",
+      "evidencia": "titulo fiesta de cortijo cabrera sabado - ayuntamiento de turre - facebook contenido fiestadecortijocabrera sabado 27 de junio os dejamos elprogramacon todas las actividades y actuaciones recordamos que habra un servicio gratuito de autobus desde las 12 00 del mediodia hasta las 3 00 de la madrugada ininterrumpidamente desde las paradas - antiguo bar rodrigo - casa adelina",
+      "confianza": "media",
+      "fuentes": [
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Cortijo Cabrera",
+      "solo_fuentes_no_oficiales": true,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-06-27",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "Servicio gratuito de autobús desde las paradas: Antiguo Bar Rodrigo - Casa Adelina."
+            },
+            {
+              "hora": "03:00",
+              "descripcion": "Finalización del servicio gratuito de autobús."
+            }
+          ]
+        }
+      ],
+      "origen": "ancla_contexto",
+      "url_programa": "https://www.facebook.com/ayuntamiento.deturre/posts/fiesta-de-cortijo-cabrera-s%C3%A1bado-27-de-junioos-dejamos-el-programa-con-todas-las/429746083873941/",
+      "cobertura_dias": 1.0,
+      "programa_estado": "completo",
+      "lat": 37.1134984,
+      "lng": -1.919084691
+    },
+    {
+      "id": "ancla-fiestas-de-los-moralicos-04093000304",
+      "lugar_id": "04093000304",
+      "nombre": "Fiestas de Los Moralicos",
+      "fecha_inicio": "2026-01-26",
+      "fecha_fin": "2026-01-26",
+      "tamano": "pequeña",
+      "descripcion": "Fiestas de Los Moralicos en Los Moralicos, el 26 de enero de 2026. Fechas recuperadas del texto que las anuncia; sin descripción publicada.",
+      "evidencia": "titulo clubcarbonero com 2026 01 26 fiesta-de-los-moralicos-2026-sendero-cortijadasfiesta de los moralicos 2026 sendero cortijadas de sierra contenido 26 de ene de2026 el club montanero carbonero organizara el 8 de febrero de2026una ruta de senderismo por cortijadas de sierra cabrera en el marco de lafiestadelosmoralicos",
+      "confianza": "media",
+      "fuentes": [
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Los Moralicos",
+      "solo_fuentes_no_oficiales": true,
+      "programa": [],
+      "origen": "ancla_contexto",
+      "sin_programa_publicado": true,
+      "programa_estado": "no_encontrado",
+      "lat": 37.07929386,
+      "lng": -1.928850461
+    },
+    {
+      "id": "carnaval-salas-de-los-infantes-2026",
+      "lugar_id": "09330000401",
+      "nombre": "Carnaval 2026",
+      "fecha_inicio": "2026-02-12",
+      "fecha_fin": "2026-02-19",
+      "tamano": "pequeña",
+      "descripcion": "Carnaval tradicional con actividades familiares y programación de conciliación para menores, incluyendo eventos anunciados en el programa oficial del Ayuntamiento.",
+      "confianza": "baja",
+      "fuentes": [
+        "web_municipio"
+      ],
+      "sede_segun_el_texto": "Salas de los Infantes",
+      "solo_fuentes_no_oficiales": false,
+      "programa": [],
+      "origen": "extraccion",
+      "es_estimada": true,
+      "incluye_dia_patron": false,
+      "url_programa": "https://www.salasdelosinfantes.net/actualidad?page=1",
+      "sin_programa_publicado": true,
+      "programa_estado": "no_encontrado",
+      "lat": 42.02333673,
+      "lng": -3.286412843
+    },
+    {
+      "id": "fiestas-patronales-de-nuestra-se-ora-y-san-roque-09330000401",
+      "lugar_id": "09330000401",
+      "nombre": "Elección de la Reina y Damas de las Fiestas Patronales",
+      "fecha_inicio": "2026-08-14",
+      "fecha_fin": "2026-08-17",
+      "tamano": "grande",
+      "descripcion": "Evento de elección de la Reina y su Corte de Honor, incluyendo baile público con Orquesta Flamingo y ceremonia formal de proclamación.",
+      "confianza": "media",
+      "fuentes": [
+        "web_municipio",
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Salas de los Infantes",
+      "solo_fuentes_no_oficiales": false,
+      "programa": [],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "url_programa": "https://www.salasdelosinfantes.net/sites/default/files/file/Salas%20Programa%202026%20Web.pdf",
+      "sin_programa_publicado": true,
+      "programa_estado": "no_encontrado",
+      "lat": 42.02333673,
+      "lng": -3.286412843
+    },
+    {
+      "id": "ancla-fiestas-de-santa-cecilia-09330000401",
+      "lugar_id": "09330000401",
+      "nombre": "Fiestas de Santa Cecilia",
+      "fecha_inicio": "2026-11-22",
+      "fecha_fin": "2026-11-23",
+      "tamano": "pequeña",
+      "descripcion": "Fiestas de Santa Cecilia en Salas de los Infantes, del 22 al 23 de noviembre de 2026. Fechas recuperadas del texto que las anuncia; sin descripción publicada.",
+      "evidencia": "fiesta fiesta de santa cecilia barrio costana salas de los infantes 2026 el barrio costana de salas de los infantes en la provincia de burgos se prepara para celebrar con alegria sus fiestas patronales en honor a santa cecilia del 22 nov 2026 domingo al 23 nov 2026 lunes 2 dias de fiesta salas de los infantes burgos acerca de la fiesta el barrio costana de salas de los infantes en la provincia de burgos se prepara pa",
+      "confianza": "media",
+      "fuentes": [
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Salas de los Infantes",
+      "solo_fuentes_no_oficiales": true,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-11-22",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "Procesión con la Santa y desoués Misa Solemne en la Iglesia de Santa Cecilia"
+            },
+            {
+              "hora": "16:30",
+              "descripcion": "Campeonato de rana y tuta"
+            },
+            {
+              "hora": "17:30",
+              "descripcion": "Santo Rosario y Exposición con el Santísimo"
+            },
+            {
+              "hora": "18:30",
+              "descripcion": "Chocolatada"
+            },
+            {
+              "hora": "20:00",
+              "descripcion": "Bailes"
+            },
+            {
+              "hora": "24:00",
+              "descripcion": "Verbena (seguidamente chocolatada)"
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-11-23",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "Misa de Difuntos"
+            },
+            {
+              "hora": "20:00",
+              "descripcion": "Se ofrecerá pollo guisado, pan y vino a los asistentes"
+            },
+            {
+              "hora": "20:00",
+              "descripcion": "Bailes"
+            },
+            {
+              "hora": "24:00",
+              "descripcion": "Verbena"
+            }
+          ]
+        }
+      ],
+      "origen": "ancla_contexto",
+      "url_programa": "https://www.salasdelosinfantes.net/content/programa-de-santa-cecilia",
+      "cobertura_dias": 1.0,
+      "programa_estado": "completo",
+      "lat": 42.02333673,
+      "lng": -3.286412843
+    },
+    {
+      "id": "arroyo-de-salas-san-julian-san-miguel-2026",
+      "lugar_id": "09330000101",
+      "nombre": "Festividad de San Julián y San Miguel",
+      "fecha_inicio": "2026-08-22",
+      "fecha_fin": "2026-08-24",
+      "tamano": "grande",
+      "descripcion": "Celebración de San Julián y San Miguel con pregón, procesiones, misas, cena popular, juegos infantiles, verbenas con discomóvil y actividades populares como guerra de agua y rifa de jamón.",
+      "confianza": "media",
+      "fuentes": [
+        "web_municipio"
+      ],
+      "sede_segun_el_texto": "Arroyo de Salas",
+      "solo_fuentes_no_oficiales": false,
+      "programa": [],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "url_programa": "https://www.archiburgos.es/parroquias/parroquia-san-julian-martir-arroyo-de-salas/",
+      "sin_programa_publicado": true,
+      "programa_estado": "no_encontrado",
+      "lat": 42.07066793,
+      "lng": -3.270658024
+    },
+    {
+      "id": "castrovido-agosto-2026",
+      "lugar_id": "09330000201",
+      "nombre": "Fiestas de Castrovido",
+      "fecha_inicio": "2026-08-02",
+      "fecha_fin": "2026-08-19",
+      "tamano": "pequeña",
+      "descripcion": "Celebración con deportes autóctonos (Tuta-Rana-Bolos), exposición fotográfica, concierto de Zimmerband, yinkana por equipos y concurso de tortilla de patatas, organizada por la Asociación Amigos del Castillo de Castrovido.",
+      "confianza": "alta",
+      "fuentes": [
+        "web_municipio"
+      ],
+      "sede_segun_el_texto": "Castrovido",
+      "solo_fuentes_no_oficiales": false,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-08-02",
+          "eventos": [
+            {
+              "hora": "18:15",
+              "descripcion": "XXIII Jornadas de Deportes Autóctonos TUTA-RANA-BOLOS"
+            },
+            {
+              "hora": "22:00",
+              "descripcion": "Cena popular y concurso de tortillas"
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-08-03",
+          "eventos": [
+            {
+              "hora": "13:00",
+              "descripcion": "Vermút popular con cortador y Fiesta de la Espuma"
+            }
+          ]
+        },
+        {
+          "dia": 3,
+          "fecha": "2026-08-04",
+          "eventos": [
+            {
+              "hora": "20:00",
+              "descripcion": "Exposición de fotos del XIX Concurso de Fotografía de la Asociación Amigos del Castillo de Castrovido"
+            }
+          ]
+        },
+        {
+          "dia": 7,
+          "fecha": "2026-08-08",
+          "eventos": [
+            {
+              "hora": "20:00",
+              "descripcion": "Concierto del Grupo ZIMMERBAND"
+            }
+          ]
+        },
+        {
+          "dia": 8,
+          "fecha": "2026-08-09",
+          "eventos": [
+            {
+              "hora": "19:00",
+              "descripcion": "II Yinkana por Equipos (Organiza: Pedro Terrazas)"
+            }
+          ]
+        },
+        {
+          "dia": 9,
+          "fecha": "2026-08-10",
+          "eventos": []
+        },
+        {
+          "dia": 10,
+          "fecha": "2026-08-11",
+          "eventos": []
+        },
+        {
+          "dia": 11,
+          "fecha": "2026-08-12",
+          "eventos": []
+        },
+        {
+          "dia": 12,
+          "fecha": "2026-08-13",
+          "eventos": [
+            {
+              "hora": "19:45",
+              "descripcion": "Concentración en la Plaza Mayor, acompañados por la Banda \"Alfoz de Lara\" para subir a la Iglesia de Sta. María, donde tendrá lugar la Ofrenda Floral."
+            },
+            {
+              "hora": "21:00",
+              "descripcion": "Presentación de la Reina de las Fiestas y su Corte de Honor. Pregón de las Fiestas a cargo de la Asociación Cultural Serranomatiega. Intervención de la Banda de Música \"Alfoz de Lara\" y finalización con la interpretación del himno a Salas de los Infantes."
+            }
+          ]
+        },
+        {
+          "dia": 13,
+          "fecha": "2026-08-14",
+          "eventos": [
+            {
+              "hora": "13:00",
+              "descripcion": "Saludo de la Alcaldesa y disparo del chupinazo desde el balcón del Ayuntamiento"
+            },
+            {
+              "hora": "19:30",
+              "descripcion": "59° Concurso de Carrozas y Grupos de Animación, desfile acompañado por la Banda de Música 'Alfoz de Lara', Grupo de Majorettes, peñas y charangas"
+            },
+            {
+              "hora": "00:30",
+              "descripcion": "Verbena en la Plaza Mayor con la Orquesta Acero"
+            }
+          ]
+        },
+        {
+          "dia": 14,
+          "fecha": "2026-08-15",
+          "eventos": [
+            {
+              "hora": "08:00",
+              "descripcion": "Dianas acompañadas de la charanga de la Peña 'El Alboroto'"
+            },
+            {
+              "hora": "11:00",
+              "descripcion": "Dianas y pasacalles con la Asociación de Música 'Alfoz de Lara'"
+            },
+            {
+              "hora": "12:00",
+              "descripcion": "Santa Misa cantada por el Coro Parroquial"
+            },
+            {
+              "hora": "13:30",
+              "descripcion": "Gala Poético Musical en el Teatro Auditorio 'Gran Casino'"
+            },
+            {
+              "hora": "17:30",
+              "descripcion": "Desfile desde la Plaza Mayor hasta la Plaza de Toros con novillada de la ganadería Valdeflores"
+            },
+            {
+              "hora": "21:00",
+              "descripcion": "Baile público en la Plaza Mayor con la Orquesta Saudade"
+            },
+            {
+              "hora": "22:30",
+              "descripcion": "Toro de Luces para los más pequeños y Toro de Fuego. Castillos de fuegos artificiales"
+            },
+            {
+              "hora": "01:00",
+              "descripcion": "Verbena en la Plaza Mayor con la Orquesta Saudade"
+            }
+          ]
+        },
+        {
+          "dia": 15,
+          "fecha": "2026-08-16",
+          "eventos": [
+            {
+              "hora": "08:00",
+              "descripcion": "Dianas acompañadas de la charanga de la Peña 'El Chispazo'"
+            },
+            {
+              "hora": "12:00",
+              "descripcion": "Procesión desde la Ermita de San Roque con los Dulzaineros de Hacinas y el Grupo de Danzas de la Asociación de Amas de Casa 'Doña Sancha'. Santa Misa cantada por el Coro Parroquial"
+            },
+            {
+              "hora": "17:30",
+              "descripcion": "Desfile desde la Plaza Mayor hasta la Plaza de Toros con novillada de la ganadería de Ana Isabel Vicente"
+            },
+            {
+              "hora": "21:00",
+              "descripcion": "Baile público en la Plaza Mayor con la Orquesta Avatars"
+            },
+            {
+              "hora": "01:00",
+              "descripcion": "Verbena en la Plaza Mayor con la Orquesta Avatars"
+            }
+          ]
+        },
+        {
+          "dia": 16,
+          "fecha": "2026-08-17",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "Misa de Difuntos en la iglesia de Santa María."
+            },
+            {
+              "hora": "14:00",
+              "descripcion": "Concentración en la Plaza Mayor para trasladarse a la chopera de la Peña Rota. Degustación de guiso de carne con patatas, vino y pan (1€ por persona)."
+            },
+            {
+              "hora": "21:00",
+              "descripcion": "Baile público en la Plaza Mayor con la Orquesta Zumaque."
+            },
+            {
+              "hora": "22:30",
+              "descripcion": "Toro de Luces para los más pequeños, Toro de Fuego y tracas en la Plaza Mayor."
+            },
+            {
+              "hora": "00:30",
+              "descripcion": "Verbena en la Plaza Mayor con la Orquesta Zumaque."
+            }
+          ]
+        },
+        {
+          "dia": 17,
+          "fecha": "2026-08-18",
+          "eventos": []
+        },
+        {
+          "dia": 18,
+          "fecha": "2026-08-19",
+          "eventos": []
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "url_programa": "https://www.salasdelosinfantes.net/sites/default/files/file/Salas%20Programa%202025%20Web.pdf",
+      "cobertura_dias": 0.59,
+      "programa_no_recuperado": true,
+      "programa_estado": "completo",
+      "lat": 42.03988916,
+      "lng": -3.271773455
+    },
+    {
+      "id": "ancla-fiestas-de-virgen-del-carmen-aunque-tradicionalmente-09330000201",
+      "lugar_id": "09330000201",
+      "nombre": "Fiestas de Virgen del Carmen Aunque Tradicionalmente",
+      "fecha_inicio": "2026-07-16",
+      "fecha_fin": "2026-07-16",
+      "tamano": "pequeña",
+      "descripcion": "Fiestas de Virgen del Carmen Aunque Tradicionalmente en Castrovido, el 16 de julio de 2026. Fechas recuperadas del texto que las anuncia; sin descripción publicada.",
+      "evidencia": "fiestas virgen del carmen castrovido 2026 salas proponer una correccion fechas 16 jul — 16 jul 2026 lugar salas de los infantes 09 precios gratis estado confirmado presentacion de carmen castrovido el pequeno nucleo de castrovido anejo del municipio de salas de los infantes celebra cada 16 de julio sus fiestas en honor a la virgen del carmen aunque tradicionalmente patrona de los marineros la advocacion carmelitana s",
+      "confianza": "media",
+      "fuentes": [
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Castrovido",
+      "solo_fuentes_no_oficiales": true,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-07-16",
+          "eventos": [
+            {
+              "hora": "",
+              "descripcion": "Misa solemne y procesión en honor a la Virgen del Carmen"
+            },
+            {
+              "hora": "",
+              "descripcion": "Comida comunitaria y vermut"
+            }
+          ]
+        }
+      ],
+      "origen": "ancla_contexto",
+      "url_programa": "https://www.festivalesdeespana.com/festival/fiestas-virgen-del-carmen-castrovido-salas-de-los-infantes",
+      "cobertura_dias": 1.0,
+      "programa_estado": "completo",
+      "lat": 42.03988916,
+      "lng": -3.271773455
+    },
+    {
+      "id": "santa-eugenia-terrazas-2026",
+      "lugar_id": "09330000501",
+      "nombre": "Fiestas de Santa Eugenia",
+      "fecha_inicio": "2026-08-06",
+      "fecha_fin": "2026-08-07",
+      "tamano": "pequeña",
+      "descripcion": "Celebración patronal en honor a Santa Eugenia con misa, procesión, comida campestre, baile con dulzaineros y verbena. Incluye actividades como juegos populares y convite vecinal.",
+      "confianza": "media",
+      "fuentes": [
+        "web_municipio",
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Terrazas",
+      "solo_fuentes_no_oficiales": false,
+      "programa": [],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "url_programa": "https://www.festivalesdeespana.com/festival/fiestas-santa-eugenia-terrazas-salas-de-los-infantes",
+      "sin_programa_publicado": true,
+      "programa_estado": "no_encontrado",
+      "lat": 42.04731486,
+      "lng": -3.250035386
+    },
+    {
+      "id": "ancla-fiestas-de-santa-eugenia-martir-paleocristiana-tres-09330000501",
+      "lugar_id": "09330000501",
+      "nombre": "Fiestas de Santa Eugenia Martir Paleocristiana Tres",
+      "fecha_inicio": "2026-08-01",
+      "fecha_fin": "2026-08-02",
+      "tamano": "pequeña",
+      "descripcion": "Fiestas de Santa Eugenia Martir Paleocristiana Tres en Terrazas, del 1 al 2 de agosto de 2026. Fechas recuperadas del texto que las anuncia; sin descripción publicada.",
+      "evidencia": "fiestas de santa eugenia 2026 terrazas salas de los infantes proponer una correccion fechas 01 ago — 02 ago 2026 lugar salas de los infantes 09 precios gratis estado — presentacion de santa eugenia terrazas a principios de agosto el pequeno nucleo de terrazas anejo de salas de los infantes celebra sus fiestas patronales en honor a santa eugenia martir paleocristiana tres o cuatro dias de fin de semana en los que el p",
+      "confianza": "media",
+      "fuentes": [
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Terrazas",
+      "solo_fuentes_no_oficiales": true,
+      "programa": [],
+      "origen": "ancla_contexto",
+      "url_programa": "https://www.festivalesdeespana.com/festival/fiestas-santa-eugenia-terrazas-salas-de-los-infantes",
+      "sin_programa_publicado": true,
+      "programa_estado": "no_encontrado",
+      "lat": 42.04731486,
+      "lng": -3.250035386
+    },
+    {
+      "id": "carnaval-hinojosa-del-valle-2026",
+      "lugar_id": "06068000101",
+      "nombre": "Carnaval de Hinojosa del Valle 2026",
+      "fecha_inicio": "2026-02-12",
+      "fecha_fin": "2026-02-17",
+      "tamano": "grande",
+      "descripcion": "Celebración popular de invierno en Hinojosa del Valle, con disfraces, comparsas, charangas y actividades en la Plaza de España. Entrada gratuita.",
+      "confianza": "baja",
+      "fuentes": [
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Hinojosa del Valle",
+      "solo_fuentes_no_oficiales": true,
+      "programa": [],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "url_programa": "https://hinojosadelvalle.com/carnaval-2026/",
+      "sin_programa_publicado": true,
+      "programa_estado": "no_encontrado",
+      "lat": 38.48282136,
+      "lng": -6.185309623
+    },
+    {
+      "id": "semana-santa-hinojosa-del-valle-2026",
+      "lugar_id": "06068000101",
+      "nombre": "Semana Santa de Hinojosa del Valle",
+      "fecha_inicio": "2026-04-02",
+      "fecha_fin": "2026-04-03",
+      "tamano": "grande",
+      "descripcion": "Celebración de la Semana Santa en Hinojosa del Valle, incluyendo procesiones y música sacra.",
+      "confianza": "baja",
+      "fuentes": [
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Hinojosa del Valle",
+      "solo_fuentes_no_oficiales": true,
+      "programa": [],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "url_programa": "https://www.festivalesdeespana.com/festival/semana-santa-de-hinojosa-del-valle",
+      "sin_programa_publicado": true,
+      "programa_estado": "no_encontrado",
+      "lat": 38.48282136,
+      "lng": -6.185309623
+    },
+    {
+      "id": "hinojosa-festival-2026",
+      "lugar_id": "06068000101",
+      "nombre": "Hinojosa Festival 2026",
+      "fecha_inicio": "2026-07-18",
+      "fecha_fin": "2026-07-18",
+      "tamano": "grande",
+      "descripcion": "Festival de música en directo con actuaciones de Pablo Carrasco, Sweet Suarez, Barrio Fino, Combo Perfecto, Borja Moreno y Valeria Cruz. Celebración en la Plaza de Toros con entrada gratuita desde las 21:30 hasta las 07:00 horas.",
+      "confianza": "baja",
+      "fuentes": [
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Hinojosa del Valle",
+      "solo_fuentes_no_oficiales": true,
+      "programa": [],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "url_programa": "https://www.hinojosafestival.com/",
+      "sin_programa_publicado": true,
+      "programa_estado": "no_encontrado",
+      "lat": 38.48282136,
+      "lng": -6.185309623
+    },
+    {
+      "id": "fiestas-patronales-hinojosa-del-valle-2026",
+      "lugar_id": "06068000101",
+      "nombre": "Fiestas Patronales de Hinojosa del Valle",
+      "fecha_inicio": "2026-08-15",
+      "fecha_fin": "2026-08-18",
+      "tamano": "grande",
+      "descripcion": "Celebración principal de Hinojosa del Valle en agosto, incluyendo verbenas, casetas, actos religiosos, deportivos y la Fiesta Acuática. Incluye eventos como el partido Locales vs Emigrantes y concursos populares.",
+      "confianza": "alta",
+      "fuentes": [
+        "web_municipio",
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Hinojosa del Valle",
+      "solo_fuentes_no_oficiales": false,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-08-15",
+          "eventos": [
+            {
+              "hora": "14:00",
+              "descripcion": "DÚO ALWAYS"
+            },
+            {
+              "hora": "16:30",
+              "descripcion": "CHARANGA LOS DISONANTES"
+            },
+            {
+              "hora": "23:00",
+              "descripcion": "TRIBUTO A LA RUMBA POR CHAITO & PALO SANTO"
+            },
+            {
+              "hora": "23:00",
+              "descripcion": "JAVI SÁNCHEZ SOLO NOISE DJ"
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-08-16",
+          "eventos": [
+            {
+              "hora": "14:00",
+              "descripcion": "CHARANGA LOS PINTORES"
+            },
+            {
+              "hora": "16:30",
+              "descripcion": "SUSO SÁNCHEZ"
+            },
+            {
+              "hora": "23:00",
+              "descripcion": "DJ MESSI"
+            }
+          ]
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "url_programa": "https://www.bandomovil.com/hinojosadelvalle",
+      "cobertura_dias": 1.0,
+      "programa_estado": "completo",
+      "lat": 38.48282136,
+      "lng": -6.185309623
+    }
+  ]
+}
