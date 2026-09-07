@@ -1,0 +1,184 @@
+{
+ "02074000601": {
+  "nombre": "Stmo. Cristo de la Antigua",
+  "dia": 14,
+  "mes": 9,
+  "fuente": "wikipedia",
+  "confianza": "alta",
+  "ambito": "localidad"
+ },
+ "02074000101": {
+  "nombre": "San Isidro",
+  "dia": 15,
+  "mes": 5,
+  "fuente": "wikipedia",
+  "confianza": "alta",
+  "ambito": "localidad"
+ },
+ "02074000201": {
+  "nombre": "San Diego de Alcalá",
+  "dia": 13,
+  "mes": 11,
+  "fuente": "wikipedia",
+  "confianza": "alta",
+  "ambito": "localidad"
+ },
+ "02074000301": {
+  "nombre": "Santa Quiteria",
+  "dia": null,
+  "mes": null,
+  "fuente": "wikipedia",
+  "confianza": "baja",
+  "ambito": "localidad"
+ },
+ "09018000201": {
+  "nombre": "Virgen de las Viñas",
+  "dia": null,
+  "mes": null,
+  "fuente": "wikipedia",
+  "confianza": "baja",
+  "ambito": "localidad"
+ },
+ "09018000101": {
+  "nombre": "San Pedro Regalado",
+  "dia": 13,
+  "mes": 5,
+  "fuente": "wikipedia",
+  "confianza": "alta",
+  "ambito": "localidad"
+ },
+ "09018000301": {
+  "nombre": "San Bartolomé",
+  "dia": 24,
+  "mes": 8,
+  "fuente": "wikipedia",
+  "confianza": "alta",
+  "ambito": "localidad"
+ },
+ "09907000401": {
+  "nombre": "Virgen del Rosario",
+  "dia": 7,
+  "mes": 10,
+  "fuente": "wikipedia",
+  "confianza": "alta",
+  "ambito": "localidad"
+ },
+ "06150000101": {
+  "nombre": "Virgen de los Dolores",
+  "dia": 15,
+  "mes": 9,
+  "fuente": "wikipedia",
+  "confianza": "alta",
+  "ambito": "localidad"
+ },
+ "10010000101": {
+  "nombre": "Virgen del Rosario",
+  "dia": 7,
+  "mes": 10,
+  "fuente": "wikipedia",
+  "confianza": "alta",
+  "ambito": "localidad"
+ },
+ "05021000101": {
+  "nombre": "Santiago y San Pedro",
+  "dia": 29,
+  "mes": 6,
+  "fuente": "wikipedia",
+  "confianza": "alta",
+  "ambito": "localidad"
+ },
+ "06121000101": {
+  "nombre": "San Isidro",
+  "dia": 15,
+  "mes": 5,
+  "fuente": "wikipedia",
+  "confianza": "alta",
+  "ambito": "localidad"
+ },
+ "02027000101": {
+  "nombre": "San Miguel",
+  "dia": 29,
+  "mes": 9,
+  "fuente": "wikipedia",
+  "confianza": "alta",
+  "ambito": "localidad"
+ },
+ "02026000101": {
+  "nombre": "San Esteban",
+  "dia": 26,
+  "mes": 12,
+  "fuente": "wikipedia",
+  "confianza": "alta",
+  "ambito": "localidad"
+ },
+ "06036000101": {
+  "nombre": "Nª Sra. del Buensuceso",
+  "dia": null,
+  "mes": null,
+  "fuente": "wikipedia",
+  "confianza": "baja",
+  "ambito": "localidad"
+ },
+ "09056000101": {
+  "nombre": "San Roque",
+  "dia": 16,
+  "mes": 8,
+  "fuente": "wikipedia",
+  "confianza": "alta",
+  "ambito": "localidad"
+ },
+ "04097000101": {
+  "nombre": "San Roque",
+  "dia": 16,
+  "mes": 8,
+  "fuente": "wikipedia",
+  "confianza": "alta",
+  "ambito": "localidad"
+ },
+ "05022000102": {
+  "nombre": "Santísimo Cristo de Gracia",
+  "dia": 14,
+  "mes": 9,
+  "fuente": "wikipedia",
+  "confianza": "media",
+  "ambito": "localidad"
+ },
+ "06158000501": {
+  "nombre": "Santa Brígida",
+  "dia": 23,
+  "mes": 7,
+  "fuente": "wikipedia",
+  "confianza": "alta",
+  "ambito": "localidad"
+ },
+ "04076000201": {
+  "nombre": "San Ginés",
+  "dia": 25,
+  "mes": 8,
+  "fuente": "wikipedia",
+  "confianza": "alta",
+  "ambito": "localidad"
+ },
+ "04093000901": {
+  "nombre": "San Francisco de Asís",
+  "dia": 4,
+  "mes": 10,
+  "fuente": "wikipedia",
+  "confianza": "alta",
+  "ambito": "localidad"
+ },
+ "04049000101": {
+  "nombre": "San Joaquín",
+  "dia": 26,
+  "mes": 7,
+  "fuente": "busqueda",
+  "confianza": "media",
+  "ambito": "localidad",
+  "celebra_dia": 14,
+  "celebra_mes": 8,
+  "fiestas_habituales": [
+   "San Joaquín, agosto, procesiones y verbena",
+   "Virgen del Carmen, 16 de julio, procesión marítima"
+  ]
+ }
+}

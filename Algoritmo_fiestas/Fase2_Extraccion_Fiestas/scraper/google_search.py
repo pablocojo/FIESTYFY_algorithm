@@ -1070,9 +1070,9 @@ def _es_fallo_estable(motivo: str) -> bool:
 
 async def _fetch_page_content(
     session: aiohttp.ClientSession, url: str, registro: list | None = None,
-) -> tuple[str, list[str]]:
+) -> tuple[str, list[str], list[str]]:
     """
-    Descarga una URL con reintentos y devuelve (texto, pdfs_enlazados).
+    Descarga una URL con reintentos y devuelve (texto, pdfs_enlazados, enlaces).
 
     Los PDF salen con un timeout mayor y cada reintento lo amplía. Medido el
     2026-08-24 en Tobarra: de 33 PDF enlazados solo entraban 16, y las pérdidas

@@ -624,6 +624,7 @@ def extraer_patron_de_texto(texto: str) -> dict | None:
 def _resolver_fecha(resultado: dict, fuente: str, ambito: str = "localidad") -> dict:
     """Combina fecha explícita del texto con el santoral. El santoral prevalece."""
     nombre = resultado["nombre"]
+    celebra_del_texto = (None, None)
     dia_texto, mes_texto = resultado.get("dia"), resultado.get("mes")
     santoral = buscar_en_santoral(nombre)
 
@@ -633,6 +634,15 @@ def _resolver_fecha(resultado: dict, fuente: str, ambito: str = "localidad") -> 
         else:
             dia, mes = santoral
             confianza = "media"
+            # La fecha del texto no es un error que descartar: es CUANDO LO
+            # CELEBRA EL PUEBLO. Garrucha, 2026-09-07: el texto decia 14/8 —las
+            # patronales reales, del 14 al 18— y el santoral 26/7. Al quedarse
+            # solo con el santoral, `_avales_de_patronal` comparaba contra una
+            # fecha que ninguna ficha cubria, el desempate caia al nombre, y una
+            # ficha de Cuaresma mal etiquetada expulsaba a fiestas verdaderas.
+            # El santoral sigue mandando en `dia`/`mes`, que es el dato
+            # liturgico; la del texto se guarda donde corresponde.
+            celebra_del_texto = (dia_texto, mes_texto)
             logger.info(
                 f"  [PATRON] Fecha del texto ({dia_texto}/{mes_texto}) discrepa del "
                 f"santoral ({santoral[0]}/{santoral[1]}) para '{nombre}'. Prevalece el santoral."
@@ -649,9 +659,20 @@ def _resolver_fecha(resultado: dict, fuente: str, ambito: str = "localidad") -> 
     if ambito != "localidad" and confianza == "alta":
         confianza = "media"
 
+    # Los campos de la ficha se arrastran explicitamente. Este `return` monta un
+    # dict NUEVO, asi que sin estas lineas `celebra_*` y `fiestas_habituales` se
+    # perdian aqui aunque el LLM los hubiera extraido bien: el 2026-09-07 la
+    # ficha llegaba vacia a todas las localidades por este motivo.
+    #
+    # `fiestas_habituales` se pone SIEMPRE, aunque sea lista vacia: es la clave
+    # que mira la invalidacion de cache, y sin ella cada ejecucion volveria a
+    # re-resolver la misma localidad sin converger nunca.
     return {
         "nombre": nombre, "dia": dia, "mes": mes,
         "fuente": fuente, "confianza": confianza, "ambito": ambito,
+        "celebra_dia": resultado.get("celebra_dia") or celebra_del_texto[0],
+        "celebra_mes": resultado.get("celebra_mes") or celebra_del_texto[1],
+        "fiestas_habituales": resultado.get("fiestas_habituales") or [],
     }
 
 
@@ -791,7 +812,12 @@ async def _buscar_en_web(session: aiohttp.ClientSession, localidad: dict, munici
             # _fetch_page_content devuelve ahora (texto, pdfs_enlazados)
             if isinstance(resultado, BaseException) or not isinstance(resultado, tuple):
                 continue
-            contenido, _pdfs = resultado
+            # `_fetch_page_content` devuelve TRES valores (texto, pdfs, enlaces).
+            # Aqui se desempaquetaban dos, asi que esta fuente reventaba siempre
+            # con 'too many values to unpack' y el except de `obtener_patron` lo
+            # convertia en 'No se encontro patron'. El buscador de patrones
+            # llevaba degradado a solo-Wikipedia sin que nada lo dijera.
+            contenido, _pdfs, _enlaces = resultado
             if not (contenido and contenido.strip()):
                 continue
             # La página entera tiene que estar anclada a nuestro sitio, no solo
@@ -882,6 +908,82 @@ async def _extraer_con_llm(texto: str, localidad: dict) -> dict | None:
 # ──────────────────────────────────────────────────
 # FUNCIÓN PRINCIPAL
 # ──────────────────────────────────────────────────
+
+async def _extraer_ficha_con_llm(texto: str, localidad: dict, patron_nombre: str) -> dict:
+    """
+    Cuando celebra el pueblo y que otras fiestas tiene. SIEMPRE por LLM.
+
+    Va aparte de `_extraer_con_llm` por un fallo medido el 2026-09-07: aquella
+    es la Fuente 3, el fallback, y solo se ejecuta si Wikipedia y los buscadores
+    fallan. Para Garrucha, Wikipedia respondio con confianza alta en 0 segundos,
+    asi que al modelo no se le llego a preguntar y la ficha salio vacia
+    —precisamente en el pueblo que motivo todo el cambio—.
+
+    La identidad del patron la resuelve bien un infobox; CUANDO lo celebra el
+    pueblo y que otras fiestas tiene, no: eso hay que leerlo. Por eso esta
+    pregunta no es un fallback de nada.
+
+    Devuelve siempre un dict con las tres claves, aunque vengan vacias: si
+    faltase `fiestas_habituales`, la invalidacion de cache volveria a
+    re-resolver esta localidad en cada ejecucion sin converger nunca.
+    """
+    vacia = {"celebra_dia": None, "celebra_mes": None, "fiestas_habituales": []}
+    if not (texto or "").strip():
+        return vacia
+
+    from llm_processor.text_analyzer import llm_chat_json
+
+    system_prompt = (
+        "Eres una API estricta que describe el calendario festivo de un pueblo espanol.\n"
+        "Responde SOLO con JSON:\n"
+        '{"celebra_dia": numero o null, "celebra_mes": numero o null,\n'
+        ' "fiestas_habituales": ["nombre de fiesta con su epoca", ...]}\n'
+        "\n"
+        "`celebra_dia`/`celebra_mes`: cuando el PUEBLO celebra de verdad sus\n"
+        "fiestas patronales. NO es la fecha del santoral: suele desplazarse al\n"
+        "verano o a un fin de semana. San Joaquin es el 26 de julio en el\n"
+        "santoral, pero Garrucha lo celebra a mediados de agosto. Si el texto no\n"
+        "dice cuando las celebra el pueblo, deja las dos a null; NO copies la\n"
+        "fecha liturgica aqui.\n"
+        "\n"
+        "`fiestas_habituales`: celebraciones que este pueblo repite cada anno,\n"
+        "con su epoca, en frases cortas. Incluye romerias, ferias, carnavales y\n"
+        "patronales de barrios o pedanias. Ejemplo:\n"
+        '["Virgen del Carmen, 16 de julio, procesion maritima", "Carnaval, febrero"].\n'
+        "Lista vacia si el texto no menciona ninguna.\n"
+        "\n"
+        "Solo lo que el TEXTO respalde. No completes con conocimiento general:\n"
+        "esto se pega al contexto de otros modelos y una fiesta inventada aqui\n"
+        "contamina todo lo que venga despues."
+    )
+
+    user_prompt = (
+        f"PUEBLO: {localidad['nombre']}\n"
+        f"PATRON/A: {patron_nombre or 'desconocido'}\n\n"
+        f"TEXTO:\n{texto[:6000]}\n\n"
+        "Cuando lo celebra el pueblo y que otras fiestas tiene. SOLO JSON:"
+    )
+
+    try:
+        parsed = await llm_chat_json(system_prompt, user_prompt, max_tokens=PATRON_LLM_MAX_TOKENS)
+    except Exception as e:
+        logger.debug(f"  [PATRON/FICHA] {localidad.get('nombre')}: fallo el LLM ({e}).")
+        return vacia
+    if not isinstance(parsed, dict):
+        return vacia
+
+    dia = parsed.get("celebra_dia") if isinstance(parsed.get("celebra_dia"), int) else None
+    mes = parsed.get("celebra_mes") if isinstance(parsed.get("celebra_mes"), int) else None
+    if not (dia and mes and 1 <= dia <= 31 and 1 <= mes <= 12):
+        dia, mes = None, None
+
+    habituales = []
+    for item in (parsed.get("fiestas_habituales") or [])[:8]:
+        if isinstance(item, str) and 4 <= len(item.strip()) <= 120:
+            habituales.append(item.strip())
+
+    return {"celebra_dia": dia, "celebra_mes": mes, "fiestas_habituales": habituales}
+
 
 async def obtener_patron(localidad: dict, municipio: dict) -> dict | None:
     """
@@ -983,6 +1085,28 @@ async def obtener_patron(localidad: dict, municipio: dict) -> dict | None:
                 if resultado:
                     fuente = "busqueda"
                     ambito = "localidad"
+
+            # La FICHA se pide siempre, la resuelva quien la resuelva. Si el
+            # patron vino de Wikipedia o de un buscador, el modelo no ha
+            # opinado todavia y faltan la fecha real de celebracion y las
+            # fiestas habituales, que es lo unico que hace util a la ficha.
+            # Medido el 2026-09-07: Garrucha se resolvio por Wikipedia en 0 s
+            # con el 26 de julio del santoral, el LLM no llego a entrar y la
+            # ficha habria salido vacia en el pueblo que motivo el cambio.
+            if resultado and "fiestas_habituales" not in resultado:
+                # Un infobox no dice cuando celebra el pueblo ni que otras
+                # fiestas tiene, asi que si Wikipedia respondio hace falta
+                # ademas el texto de la web. Las busquedas van cacheadas.
+                if len(textos_acumulados) < 2:
+                    textos_acumulados.append(
+                        await _buscar_en_web(session, localidad, municipio)
+                    )
+                texto_ficha = "\n".join(t for t in textos_acumulados if t).strip()
+                resultado.update(
+                    await _extraer_ficha_con_llm(
+                        texto_ficha, localidad, resultado.get("nombre", "")
+                    )
+                )
 
         # Fuente 3 (fallback): LLM sobre todo lo acumulado. Desde que el artículo
         # del municipio ya no se lee para las pedanías, todo lo acumulado aquí es

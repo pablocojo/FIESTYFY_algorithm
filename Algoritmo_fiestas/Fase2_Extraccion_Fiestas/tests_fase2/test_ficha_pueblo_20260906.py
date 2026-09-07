@@ -176,3 +176,68 @@ def test_una_entrada_cacheada_antigua_se_considera_incompleta():
     assert "fiestas_habituales" in nueva
     # Y la vieja sigue dando una fecha usable mientras no se re-resuelva.
     assert fecha_del_patron(vieja, 2026) == date(2026, 7, 26)
+
+
+# ─────────────────────────────────────────────
+# El viaje de los campos hasta la caché
+# ─────────────────────────────────────────────
+# Añadidos el 2026-09-07, tras una ejecución que demostró que la ficha nunca
+# llegaba a existir. Dos fallos encadenados, ninguno detectado por los tests
+# anteriores porque todos probaban funciones sueltas:
+#
+#   1. `_resolver_fecha` monta un dict NUEVO de seis claves, así que descartaba
+#      `celebra_*` y `fiestas_habituales` aunque el LLM los hubiera extraído.
+#   2. `_extraer_con_llm` es la Fuente 3, el fallback. Garrucha se resolvió por
+#      Wikipedia en 0 segundos con el 26 de julio del santoral, así que al modelo
+#      no se le llegó a preguntar y la ficha salía vacía justo en el pueblo que
+#      motivó el cambio.
+
+def test_el_resolver_no_puede_tirar_los_campos_de_la_ficha():
+    """El fallo 1. Sin esto, la ficha muere entre la extracción y la caché."""
+    from llm_processor.patron_finder import _resolver_fecha
+
+    entrada = {
+        "nombre": "San Joaquín", "dia": 26, "mes": 7,
+        "celebra_dia": 16, "celebra_mes": 8,
+        "fiestas_habituales": ["Virgen del Carmen, 16 de julio"],
+    }
+    final = _resolver_fecha(entrada, "wikipedia", "localidad")
+
+    assert final["celebra_dia"] == 16
+    assert final["celebra_mes"] == 8
+    assert final["fiestas_habituales"] == ["Virgen del Carmen, 16 de julio"]
+
+
+def test_la_clave_de_invalidacion_existe_siempre():
+    """El fallo 2, en su version cronica.
+
+    `fiestas_habituales` es lo que mira la invalidacion de cache. Si una entrada
+    se guarda sin ella, esa localidad se re-resuelve en cada ejecucion para
+    siempre, sin converger. Tiene que estar aunque no haya nada que contar.
+    """
+    from llm_processor.patron_finder import _resolver_fecha
+
+    final = _resolver_fecha({"nombre": "San Roque", "dia": 16, "mes": 8}, "wikipedia", "localidad")
+
+    assert "fiestas_habituales" in final
+    assert final["fiestas_habituales"] == []
+    assert final["celebra_dia"] is None
+
+
+def test_la_ficha_no_es_un_fallback_de_wikipedia():
+    """El fallo 2 en su origen: quien resuelva el patron, la ficha se pide igual.
+
+    Un infobox de Wikipedia identifica bien al patron, pero no dice cuando lo
+    celebra el pueblo ni que otras fiestas tiene. Este test fija que la llamada
+    de la ficha viva FUERA de la cadena de fallbacks, comprobando que existe
+    como funcion propia y no colgando de `_extraer_con_llm`.
+    """
+    import inspect
+
+    from llm_processor import patron_finder as pf
+
+    assert hasattr(pf, "_extraer_ficha_con_llm")
+    fuente = inspect.getsource(pf.obtener_patron)
+    # Se invoca cuando ya hay resultado, no solo cuando no lo hay.
+    assert "_extraer_ficha_con_llm" in fuente
+    assert 'if resultado and "fiestas_habituales" not in resultado:' in fuente
