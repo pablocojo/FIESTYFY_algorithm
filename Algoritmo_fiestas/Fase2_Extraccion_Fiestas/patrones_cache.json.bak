@@ -242,21 +242,17 @@
    "Fiestas del Emigrante"
   ]
  },
- "04049000101": {
-  "nombre": "San Joaquín",
-  "dia": 26,
+ "01004000101": {
+  "nombre": "Magdalena",
+  "dia": 22,
   "mes": 7,
-  "fuente": "busqueda",
-  "confianza": "media",
+  "fuente": "llm",
+  "confianza": "alta",
   "ambito": "localidad",
-  "celebra_dia": 14,
-  "celebra_mes": 8,
+  "celebra_dia": 18,
+  "celebra_mes": 7,
   "fiestas_habituales": [
-   "Patronales - San Joaquín, agosto (procesiones, verbena y pescaito frito)",
-   "Carnaval - Carnaval de Garrucha, febrero (desfile de comparsas comarcales)",
-   "Semana Santa - Semana Santa de Garrucha, abril (procesiones y representaciones teatrales)",
-   "Romerías - Romería de Garrucha, último domingo de abril (procesión marítima)",
-   "Fiesta de la Virgen del Carmen, 16 de julio (procesión marítima y casetas)"
+   "Fiestas de la Magdalena, julio"
   ]
  }
 }

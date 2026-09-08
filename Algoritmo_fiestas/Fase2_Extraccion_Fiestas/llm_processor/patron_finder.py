@@ -806,6 +806,15 @@ async def _buscar_en_web(
             f"fiestas de {nombre_loc} {prov} calendario festivo todo el año",
             f"{nombre_loc} {prov} carnaval semana santa romería feria tradiciones",
             f"{nombre_loc} {municipio['nombre']} fiestas populares que se celebran",
+            # Las del calendario menor necesitan consulta propia. Medido el
+            # 2026-09-08 en Garrucha: con las tres consultas de arriba, "cruces
+            # de mayo" salia 0 veces en 23.732 caracteres de material y "san
+            # juan" una sola. Nombrarlas en una query generica junto a carnaval y
+            # romeria no basta: el buscador se queda con los terminos fuertes.
+            f"{nombre_loc} {prov} cruces de mayo san juan hogueras san isidro corpus",
+            # Y las gastronomicas y de producto, que en pueblos pequenos son de
+            # las principales y ninguna consulta anterior las nombra.
+            f"{nombre_loc} {prov} feria gastronomica verbena romeria fiesta del producto",
         ]
     else:
         queries = [
@@ -984,6 +993,14 @@ async def _extraer_ficha_con_llm(texto: str, localidad: dict, patron_nombre: str
         "ayuda para no dejarte fiestas, no casillas que haya que rellenar.\n"
         "en este pueblo. Es un barrido, no un resumen: no te quedes en las dos\n"
         "mas famosas.\n"
+        "\n"
+        "CADA FIESTA, UNA SOLA VEZ\n"
+        "Una fiesta puede encajar en dos tipos: la Virgen del Carmen es\n"
+        "patronal y romeria a la vez. Elige el tipo MAS ESPECIFICO y ponla\n"
+        "una sola vez. Repetirla con dos etiquetas no anade informacion y\n"
+        "produce fichas duplicadas mas adelante. Lo mismo si el texto la\n"
+        "nombra de dos maneras: \"San Joaquin\" y \"Fiestas de San Joaquin\"\n"
+        "son la misma.\n"
         "\n"
         "CADA ENTRADA ES UNA SOLA FIESTA\n"
         "No juntes dos en una linea. Las Cruces de Mayo y la Noche de San\n"
