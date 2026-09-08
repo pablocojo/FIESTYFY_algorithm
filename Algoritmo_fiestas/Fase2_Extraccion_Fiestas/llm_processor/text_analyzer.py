@@ -3541,6 +3541,48 @@ async def discover_festivals_for_locality(
             f'{localidad["nombre"]}, NO devuelvas nada.'
         )
 
+    # LA PUERTA DEL CATALOGO.
+    #
+    # La fase 1 ya dijo que fiestas celebra este pueblo. Aqui se deja de
+    # descubrir en abierto y se pasa a decidir cuales de ESAS sostiene el
+    # material. El motivo esta medido: en la ejecucion del 2026-09-07, El
+    # Barraco produjo unas 'Fiestas de Verano 2026' de 29 dias que salian de
+    # su PROGRAMA-CULTURAL-VERANO-2026.pdf —aquagym, torneos de petanca y
+    # presentaciones de libros—, y Garrucha unas patronales de San Joaquin en
+    # febrero con actos de Cuaresma. Contenido real, etiqueta falsa. Con el
+    # catalogo delante, ninguna de las dos tiene donde encajar.
+    #
+    # Sin catalogo NO se cierra nada: el bloque queda vacio y el prompt se
+    # comporta como antes. Cerrar la puerta con el catalogo vacio equivaldria
+    # a afirmar que el pueblo no celebra nada, que es peor que sobrar fiestas.
+    _ficha = (localidad.get("ficha_pueblo") or "").strip()
+    bloque_catalogo = (
+        f"\n\nCATALOGO DE ESTE PUEBLO — NO TE SALGAS DE AQUI\n"
+        f"{_ficha}\n"
+        "Esa lista es el UNIVERSO de fiestas de esta localidad. No inventes\n"
+        "ninguna que no este ahi, por mucho que el material hable de ella.\n"
+        "\n"
+        "EMPAREJAR, NO COPIAR\n"
+        "Las fechas del catalogo son ORIENTACION y pueden haber cambiado de un\n"
+        "anno a otro. Tu trabajo es reconocer la fiesta, no repetir su fecha:\n"
+        "si el material trae \"Fiestas del Cristo del Consuelo, 12 al 15 de\n"
+        "septiembre\" y el catalogo dice \"Patronales - Santisimo Cristo de\n"
+        "Gracia, 14-17 de septiembre\", es LA MISMA fiesta: devuelvela con el\n"
+        "nombre y las fechas REALES que trae el material, no con las del\n"
+        "catalogo. El nombre tambien puede cambiar: lo que empareja es de que\n"
+        "celebracion se trata, no como se escribe.\n"
+        "\n"
+        "SI NO ENCAJA CON NINGUNA, NO LA CREES\n"
+        "Decir que algo no corresponde a ninguna del catalogo es una respuesta\n"
+        "correcta y esperada. NO fuerces el encaje para no dejar casillas\n"
+        "vacias: una agenda cultural municipal, un concierto suelto o una feria\n"
+        "de otro pueblo no son ninguna de las del catalogo aunque caigan en las\n"
+        "mismas fechas.\n"
+        "Y no pasa nada por devolver menos fiestas de las que lista el catalogo:\n"
+        "el catalogo dice lo que el pueblo SUELE celebrar, no lo que este\n"
+        "material demuestra. Sin material que la sostenga, la fiesta no sale."
+    ) if _ficha else ""
+
     system_prompt = f"""Eres un API estricta especializada en identificar y catalogar las fiestas locales en España.
 CONTEXTO: Municipio {municipio['nombre']} ({municipio.get('provincia', 'España')}), Localidad: {localidad['nombre']}.
 
@@ -3552,6 +3594,7 @@ OBJETIVO CRÍTICO:
 {regla_exclusividad}
 RECUERDA: una lista vacía es una respuesta legítima. Es preferible no devolver ninguna fiesta que devolver una que no le corresponde a esta localidad.
 AÑO: {anno}. Identifica la lista de fiestas que se celebran en {anno}.
+{bloque_catalogo}
 
 REGLA DE AGRUPACIÓN CRÍTICA:
 Si encuentras varios eventos festivos cercanos en el tiempo (ej. "Día del Chupinazo el 12 de agosto" y "Día de San Roque el 16 de agosto"), FUSIONA TODOS en una ÚNICA fiesta global cuya `fecha_inicio` sea el primer evento (12 de agosto) y `fecha_fin` sea el último evento (16 de agosto). NO crees múltiples fiestas pequeñas si pertenecen al mismo ciclo festivo.
