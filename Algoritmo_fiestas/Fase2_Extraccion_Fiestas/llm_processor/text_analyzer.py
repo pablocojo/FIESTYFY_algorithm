@@ -47,6 +47,7 @@ from config import (
     PROCEDENCIA_MAX_TOKENS,
     PERTENENCIA_ENABLED,
     PERTENENCIA_MAX_TOKENS,
+    NUCLEO_MAX_TOKENS,
     PERTENENCIA_CONTEXTO_TOKENS,
     PERTENENCIA_DESCARTAR_SI_DUDA,
     ENRICHMENT_MIN_ACTOS_EN_PAGINA,
@@ -3794,6 +3795,103 @@ def _recortar_programa_al_rango(programa: list, fecha_ini: str, fecha_fin: str) 
     return dentro
 
 
+async def elegir_nucleo(fiesta: dict) -> None:
+    """
+    Marca el NUCLEO de la fiesta: el bloque de dias donde esta lo importante.
+
+    Una fiesta patronal no es un bloque homogeneo. Tiene unos dias centrales
+    —procesiones, desfiles, verbena— y una periferia de triduos, novenas y
+    pregones que pueden empezar semanas antes. Hasta ahora `fecha_inicio` y
+    `fecha_fin` salian del primer y el ultimo acto del documento, asi que la
+    periferia estiraba el rango: la Semana Santa de Garrucha 2026 se declaraba
+    del 18 de marzo al 6 de abril —diecisiete dias, tres de ellos sin un solo
+    acto— cuando va del Domingo de Ramos, el 29, al de Resurreccion, el 5.
+
+    Ningun acto se descarta: el rango completo sigue en `fecha_inicio`/`fecha_fin`
+    y el programa entero se conserva. Lo que se anade es un segundo dato,
+    `nucleo_inicio`/`nucleo_fin`, que dice cuando es la fiesta de verdad.
+
+    Sin programa no hay nucleo. Deducirlo de la nada seria inventar, y son la
+    mayoria de las fichas: 33 de 48 en la ejecucion del 2026-09-08.
+    """
+    programa = fiesta.get("programa") or []
+    dias = [d for d in programa if (d.get("eventos") or [])]
+    if not dias:
+        fiesta["nucleo_inicio"] = None
+        fiesta["nucleo_fin"] = None
+        return
+
+    # Un solo dia con actos es su propio nucleo; preguntar no aporta nada.
+    if len(dias) == 1:
+        fiesta["nucleo_inicio"] = fiesta["nucleo_fin"] = dias[0].get("fecha")
+        return
+
+    lineas = []
+    for d in dias:
+        actos = "; ".join(
+            f"{(e.get('hora') or '--:--')} {(e.get('descripcion') or '')[:70]}"
+            for e in (d.get("eventos") or [])[:6]
+        )
+        lineas.append(f"{d.get('fecha')}: {actos}")
+
+    system_prompt = (
+        "Eres una API estricta que delimita el NUCLEO de una fiesta popular.\n"
+        'Responde SOLO con JSON: {"nucleo_inicio": "YYYY-MM-DD", "nucleo_fin": "YYYY-MM-DD"}\n'
+        "\n"
+        "QUE ES EL NUCLEO\n"
+        "El bloque CONTIGUO de dias donde se concentra lo importante: procesiones,\n"
+        "desfiles, romerias, verbenas, orquesta, DJ, fuegos, actos taurinos, la\n"
+        "parte multitudinaria y nocturna. Es cuando el pueblo esta de fiesta.\n"
+        "\n"
+        "QUE NO ES\n"
+        "Los actos de preparacion o cierre: triduos, novenas, pregones, misas\n"
+        "sueltas, confesiones, presentaciones. Son reales y de esta misma fiesta,\n"
+        "pero rodean al nucleo, no son el nucleo.\n"
+        "\n"
+        "COMO ELEGIR\n"
+        "1. Un solo bloque contiguo. Si hay dos candidatos separados por dias\n"
+        "   vacios o flojos, quedate con el MAS DENSO en actos importantes.\n"
+        "2. Si dos bloques empatan en densidad, gana el que tenga MAS ACTOS\n"
+        "   NOCTURNOS: las horas de la tarde-noche son la senal mas fiable de\n"
+        "   donde esta la fiesta de verdad.\n"
+        "3. Si TODO el programa es nucleo —una fiesta corta y compacta—, devuelve\n"
+        "   el primer y el ultimo dia. Es una respuesta legitima.\n"
+        "4. Las dos fechas tienen que ser dias que aparezcan en el programa.\n"
+        "\n"
+        "No expliques nada. Solo el JSON."
+    )
+
+    user_prompt = (
+        f"FIESTA: {fiesta.get('nombre', '')}\n"
+        f"RANGO COMPLETO: {fiesta.get('fecha_inicio')} a {fiesta.get('fecha_fin')}\n\n"
+        "PROGRAMA:\n" + "\n".join(lineas) + "\n\n"
+        "Delimita el nucleo. SOLO JSON:"
+    )
+
+    datos = await llm_chat_json(
+        system_prompt, user_prompt, max_tokens=NUCLEO_MAX_TOKENS, etiqueta="NUCLEO",
+    )
+
+    fechas_validas = {d.get("fecha") for d in dias}
+    ini = (datos or {}).get("nucleo_inicio")
+    fin = (datos or {}).get("nucleo_fin")
+    # Se exige que ambas sean dias REALES del programa y esten en orden. Un
+    # nucleo inventado seria peor que no tenerlo: el rango completo al menos
+    # esta respaldado por actos.
+    if ini in fechas_validas and fin in fechas_validas and ini <= fin:
+        fiesta["nucleo_inicio"], fiesta["nucleo_fin"] = ini, fin
+        logger.info(
+            f"  [NUCLEO] '{fiesta.get('nombre', '')}': {ini} a {fin} "
+            f"(rango completo {fiesta.get('fecha_inicio')} a {fiesta.get('fecha_fin')})"
+        )
+    else:
+        fiesta["nucleo_inicio"] = fiesta["nucleo_fin"] = None
+        logger.info(
+            f"  [NUCLEO] '{fiesta.get('nombre', '')}': sin nucleo fiable "
+            f"(el modelo devolvio {ini!r} a {fin!r}); se deja vacio."
+        )
+
+
 async def enrich_festival_program(
     municipio: dict,
     localidad: dict,
@@ -4367,6 +4465,7 @@ Devuelve SOLO JSON estricto con esta estructura:
     programa_total = _fusionar_dias(programa_total)
     programa_total = _recortar_programa_al_rango(programa_total, fecha_ini, fecha_fin)
     fiesta["programa"] = programa_total
+    await elegir_nucleo(fiesta)
     n_actos = sum(len(d.get("eventos", [])) for d in programa_total)
     logger.info(
         f"  [ENRICHMENT] '{nombre_fiesta}': {len(programa_total)} días y {n_actos} actos "

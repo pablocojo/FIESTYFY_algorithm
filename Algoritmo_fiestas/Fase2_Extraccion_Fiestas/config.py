@@ -171,6 +171,11 @@ PROCEDENCIA_MAX_TOKENS = 1200
 PERTENENCIA_ENABLED = True
 PERTENENCIA_MAX_TOKENS = 1500         # Mismo motivo que arriba: los que razonan gastan de aquí
 
+# Delimitar el nucleo de una fiesta es una respuesta de dos fechas: 200 tokens
+# sobran. Va aparte del enriquecimiento porque se pregunta UNA vez por fiesta,
+# sobre el programa ya montado, y no por tramos de dias como aquel.
+NUCLEO_MAX_TOKENS = 200
+
 # Cuánto texto de las fuentes se le enseña. La medida del 2026-09-04: al juez de
 # procedencia se le daban entre 27 y 422 tokens con 130.000 libres en la ventana.
 # Aquí se va al otro extremo a propósito —decidir de dónde es una fiesta es

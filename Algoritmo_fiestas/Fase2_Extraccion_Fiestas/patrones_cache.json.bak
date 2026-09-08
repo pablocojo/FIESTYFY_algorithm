@@ -1,17 +1,76 @@
 {
+ "04049000101": {
+  "nombre": "San Joaquín",
+  "dia": 26,
+  "mes": 7,
+  "fuente": "wikipedia",
+  "confianza": "alta",
+  "ambito": "localidad",
+  "celebra_dia": 14,
+  "celebra_mes": 8,
+  "fiestas_habituales": [
+   "Patronales - San Joaquín, del 14 al 18 de agosto (feria, procesión y verbena)",
+   "Carnaval - Carnaval de Garrucha, febrero (desfile de comparsas)",
+   "Semana Santa - Semana Santa de Garrucha, marzo (procesiones religiosas)",
+   "Romeria - Virgen del Carmen, 16 de julio (procesión marítima y verbena)",
+   "Cruces de Mayo - Cruces de Mayo, mayo (actividades populares y verbena)",
+   "San Juan - Noche de San Juan, 23-24 de junio (hogueras, baño de medianoche y verbena)",
+   "Festival Gastronómico - Festival de la Gamba Roja, 24-26 de octubre (degustaciones, música y actividades culturales)"
+  ]
+ },
+ "04097000101": {
+  "nombre": "San Roque",
+  "dia": 16,
+  "mes": 8,
+  "fuente": "wikipedia",
+  "confianza": "alta",
+  "ambito": "localidad",
+  "celebra_dia": 16,
+  "celebra_mes": 8,
+  "fiestas_habituales": [
+   "Patronales - San Roque, agosto (procesión, verbena y actividades comunitarias)",
+   "Semana Santa - Semana Santa, marzo/abril (celebraciones religiosas y procesiones)",
+   "Fiestas locales - Día del Romero, 2 de febrero (celebración en honor al romero, planta típica de la zona)",
+   "Carnaval - Carnaval, febrero (desfile de comparsas y actividades festivas)",
+   "Fiestas tradicionales - Hogueras de San Antón, enero (rituales con fuego en honor a San Antón)",
+   "Fiestas tradicionales - Belén viviente, diciembre (representación teatral de la Navidad)",
+   "Fiestas de barrios - Relaciones de Moros y Cristianos, agosto (espectáculo teatral durante las Patronales)"
+  ]
+ },
  "06064000101": {
-  "nombre": "Virgen de la Inmaculada",
+  "nombre": "Virgen Inmaculada",
   "dia": 8,
   "mes": 12,
   "fuente": "llm",
   "confianza": "alta",
   "ambito": "localidad",
-  "celebra_dia": 8,
+  "celebra_dia": 10,
   "celebra_mes": 8,
   "fiestas_habituales": [
-   "Carnaval, febrero",
    "Semana Santa",
-   "San Isidro Labrador, 15 de mayo"
+   "Carnavales",
+   "San Isidro Labrador, 15 de mayo",
+   "Festividad de la Virgen Inmaculada, 8-12 de agosto",
+   "Fiesta de la Calle Pizarro, agosto"
+  ]
+ },
+ "05022000102": {
+  "nombre": "Santísimo Cristo de Gracia",
+  "dia": 14,
+  "mes": 9,
+  "fuente": "wikipedia",
+  "confianza": "media",
+  "ambito": "localidad",
+  "celebra_dia": 14,
+  "celebra_mes": 9,
+  "fiestas_habituales": [
+   "Patronales - Santísimo Cristo de Gracia, 14-17 de septiembre (procesión, festejos taurinos y verbena)",
+   "Carnaval - Carnaval de El Barraco, marzo (desfile y verbenas)",
+   "Romeria - Romería de San Marcos, abril (procesión y festejos)",
+   "Romeria - Romería de San Cristóbal, julio (procesión y festejos)",
+   "Semana Santa - Semana Santa de El Barraco, marzo-abril (misa, procesiones y actos religiosos)",
+   "Religiosa - Las Candelas, 2 de febrero (bendición de velas, hoguera y verbena)",
+   "Feria - Feria Agroalimentaria, fin de semana variable (puestos de productos locales)"
   ]
  },
  "05022000101": null,
@@ -37,8 +96,13 @@
   "celebra_dia": 15,
   "celebra_mes": 9,
   "fiestas_habituales": [
-   "San José, 19 de marzo, procesión",
-   "Virgen de los Dolores, 15 de septiembre, novena y procesión solemne"
+   "Patronales - Nuestra Señora de los Dolores, 15 de septiembre (procesión y novena)",
+   "Fiestas mayores - Fiestas de La Rinconada, 14, 15 y 16 de agosto (programa de actividades)",
+   "Carnaval - Carnaval de La Rinconada, febrero (concurso de disfraces y pasacalles)",
+   "Feria - Feria del Abrazo, 3 de junio (alumbrado y casetas)",
+   "Festival - Festival de Cante Flamenco El Búcaro, anual (cante flamenco)",
+   "San Fermínes Rinconeros - San Fermínes Rinconeros, 4 de agosto (charanga y paella popular)",
+   "Semana Santa - Semana Santa de La Rinconada, marzo (procesiones y hermandades)"
   ]
  },
  "06158000501": {
@@ -48,15 +112,21 @@
   "fuente": "wikipedia",
   "confianza": "alta",
   "ambito": "localidad",
-  "celebra_dia": 1,
-  "celebra_mes": 2,
+  "celebra_dia": null,
+  "celebra_mes": null,
   "fiestas_habituales": [
-   "Santa Brígida, 1 de febrero, misa y desayuno",
-   "Feria Internacional Ganadera, primera semana de octubre",
-   "Chaquetía, 1 de noviembre, casamientos (higo con nueces)",
-   "Festividad de la Esperancita, primer fin de semana de mayo",
-   "Fiestas de San Miguel, últimos días de septiembre",
-   "Fiestas de San Juan, junio"
+   "Patronales - Santa Brígida, sin fecha específica (romería)",
+   "Semana Santa - Semana Santa de Zafra, marzo (procesiones y recorridos)",
+   "Carnaval - Carnaval de Zafra, febrero (desfile y actividades)",
+   "Cruces de Mayo - Cruces de Mayo, mayo (decoración y rutas)",
+   "Fiestas de San Isidro - San Isidro, mayo (celebraciones tradicionales)",
+   "Feria - Feria Internacional Ganadera, sin fecha específica (evento ganadero)",
+   "Feria - Feria del Queso Artesano, noviembre (gastronomía y ajedrez)",
+   "Festival - Mercado Medieval, mayo (recreación histórica)",
+   "Fiestas de San Juan - De la Luna al Fuego, junio (fiesta declarada de Interés Turístico Regional)",
+   "Fiestas Patronales - Fiestas de San Juan Bautista, junio (misa y procesiones)",
+   "Fiesta - Bacanal de la Grasa, sin fecha específica (celebración popular)",
+   "Fiesta - Fiestas de San Miguel, sin fecha específica (eventos locales)"
   ]
  },
  "04076000201": {
@@ -66,9 +136,20 @@
   "fuente": "wikipedia",
   "confianza": "alta",
   "ambito": "localidad",
-  "celebra_dia": null,
-  "celebra_mes": null,
-  "fiestas_habituales": []
+  "celebra_dia": 25,
+  "celebra_mes": 8,
+  "fiestas_habituales": [
+   "Patronales - San Ginés de la Jara, 25 de agosto (procesión, verbena, carrera de carromatos)",
+   "Juegos Moriscos de Aben Humeya, tercera semana de agosto (competiciones atléticas y musicales, trajes andalusíes)",
+   "Romeria - Virgen del Carmen, 16 de julio (velación nocturna, verbena en la plaza)",
+   "Romeria - Virgen del Carmen, finales de agosto (procesión marítima a la Alcazaba, traje típico y fandanguillo)",
+   "Carnaval - Carnaval de Purchena, febrero (quema del muñeco, desfile en el parque)",
+   "Semana Santa - Semana Santa de Purchena, marzo (procesiones religiosas)",
+   "Cruces de Mayo - Cruces de Mayo, mayo (concurso de cruces, merienda al campo)",
+   "Fiestas de barrios - Fiestas de El Campillo, agosto (procesión, verbena, romería y gastronomía)",
+   "Fiestas de San Marcos, 25 de abril (merienda al campo, hornazos)",
+   "Feria y Fiestas en honor a San Ginés, 22-26 de agosto (carrera de carromatos, verbena)"
+  ]
  },
  "04076000101": {
   "nombre": "Virgen de la Asunción",
@@ -77,10 +158,12 @@
   "fuente": "busqueda",
   "confianza": "alta",
   "ambito": "localidad",
-  "celebra_dia": null,
-  "celebra_mes": null,
+  "celebra_dia": 10,
+  "celebra_mes": 8,
   "fiestas_habituales": [
-   "Virgen de la Asunción, agosto, procesiones religiosas, verbenas con orquesta, romería y gastronomía andaluza"
+   "Patronales - Virgen de la Asunción, 10 al 16 de agosto (procesiones, verbena y gastronomía)",
+   "Romería - Romería y Fiestas de El Campillo, 1 al 4 de mayo (actuaciones y actividades)",
+   "Romería - Romería de la Santa Cruz, primer fin de semana de mayo (procesión y tradición)"
   ]
  },
  "04093000901": {
@@ -93,14 +176,16 @@
   "celebra_dia": 4,
   "celebra_mes": 10,
   "fiestas_habituales": [
-   "Los Moralicos, 2 de febrero",
-   "Cabrera, junio",
-   "El Rollo Morera, finales de agosto",
-   "La Carrasca, principios de septiembre",
-   "San Juan Bautista, 24 de junio",
-   "Fiesta de Santiago, 25 de julio",
-   "Partir la Cuaresma, febrero/marzo",
-   "Semana Santa"
+   "Patronales - San Francisco de Asís, 4 de octubre (verbenas, carreras de cintas, actos religiosos)",
+   "Fiesta de la Candelaria - Virgen de la Candelaria, 2 de febrero",
+   "Carreras de San Juan - San Juan Bautista, 24 de junio (noche de San Juan)",
+   "Fiesta de Santiago - Turre Viejo, 25 de julio",
+   "Fiesta de la Carrasca - Moros y Cristianos, principios de septiembre",
+   "El Rollo Morera - Finales de agosto",
+   "Fiesta de los Moralicos - Virgen de la Candelaria, junio",
+   "Feria y Fiestas de Turre, 3-7 de octubre",
+   "Semana Santa - Procesiones cofrades, marzo/abril",
+   "Romería de San Isidro - 15 de mayo (procesión, bendición de animales, verbena)"
   ]
  },
  "04093000301": {
@@ -113,14 +198,26 @@
   "celebra_dia": 2,
   "celebra_mes": 9,
   "fiestas_habituales": [
-   "Virgen de los Dolores, 2 y 3 de septiembre",
-   "Inmaculada Concepción, fin de semana de septiembre",
-   "Moros y Cristianos, con manuscritos antiguos"
+   "Virgen de los Dolores, 2 y 3 de septiembre, procesión y actividades",
+   "Moros y Cristianos, antigua tradición con manuscritos"
   ]
  },
  "04093000302": null,
  "04093000303": null,
- "04093000304": null,
+ "04093000304": {
+  "nombre": "Virgen de la Candelaria",
+  "dia": 2,
+  "mes": 2,
+  "fuente": "llm",
+  "confianza": "alta",
+  "ambito": "localidad",
+  "celebra_dia": 8,
+  "celebra_mes": 12,
+  "fiestas_habituales": [
+   "Jornadas Gastronómicas de Cocina de Matanza, diciembre",
+   "Virgen de la Candelaria, 8 de diciembre, ruta de senderismo y comida fraterna"
+  ]
+ },
  "04093000602": null,
  "09330000401": {
   "nombre": "Nuestra Señora y San Roque",
@@ -129,13 +226,12 @@
   "fuente": "busqueda",
   "confianza": "media",
   "ambito": "localidad",
-  "celebra_dia": 15,
+  "celebra_dia": 17,
   "celebra_mes": 8,
   "fiestas_habituales": [
-   "Fiestas Patronales de Nuestra Señora y San Roque, 13-17 de agosto",
-   "Barrio de Costana, 22-23 de noviembre",
-   "San Mateo, domingo y lunes anterior a 21 de septiembre",
-   "Barrio de Santa María, 7-8 de diciembre"
+   "Patronales - Nuestra Señora y San Roque, agosto (chupinazo, peñas, toros, carrozas y verbenas)",
+   "Fiestas de Santa Cecilia, noviembre (chinada, muerte del gallo y actos populares)",
+   "Romería - Virgen del Carmen, septiembre (anterior a San Mateo)"
   ]
  },
  "09330000101": {
@@ -145,10 +241,10 @@
   "fuente": "llm",
   "confianza": "media",
   "ambito": "localidad",
-  "celebra_dia": 26,
+  "celebra_dia": 27,
   "celebra_mes": 7,
   "fiestas_habituales": [
-   "San Miguel y San Julián, penúltimo fin de semana de agosto"
+   "San Julián y San Miguel, penúltimo fin de semana de agosto"
   ]
  },
  "09330000201": {
@@ -171,10 +267,10 @@
   "fuente": "llm",
   "confianza": "alta",
   "ambito": "localidad",
-  "celebra_dia": 1,
-  "celebra_mes": 8,
+  "celebra_dia": null,
+  "celebra_mes": null,
   "fiestas_habituales": [
-   "Fiestas de San Esteban, primer fin de semana de agosto, con misa, procesión, comida y verbena"
+   "Fiestas de San Esteban, primer fin de semana de agosto, misa, procesión, comida y verbena"
   ]
  },
  "09330000501": {
@@ -184,10 +280,11 @@
   "fuente": "busqueda",
   "confianza": "baja",
   "ambito": "localidad",
-  "celebra_dia": 8,
-  "celebra_mes": 8,
+  "celebra_dia": null,
+  "celebra_mes": null,
   "fiestas_habituales": [
-   "Fiestas de Santa Eugenia, principios de agosto"
+   "Patronales - Santa Eugenia, principios de agosto (misa, procesión, comida vecinal y baile)",
+   "Romería - San Roque, sin fecha especificada (procesión marítima)"
   ]
  },
  "06068000101": {
@@ -197,69 +294,19 @@
   "fuente": "busqueda",
   "confianza": "alta",
   "ambito": "localidad",
-  "celebra_dia": null,
-  "celebra_mes": null,
-  "fiestas_habituales": [
-   "Santo Cristo del Arco Toral, agosto",
-   "Santo Cristo del Arco Toral, 13-16 de septiembre",
-   "San Isidro Labrador",
-   "Día de la Virgen",
-   "San José",
-   "Semana Santa",
-   "Todos los Santos",
-   "Fiestas del Emigrante"
-  ]
- },
- "01004000101": {
-  "nombre": "Magdalena",
-  "dia": 22,
-  "mes": 7,
-  "fuente": "llm",
-  "confianza": "alta",
-  "ambito": "localidad",
-  "celebra_dia": 18,
-  "celebra_mes": 7,
-  "fiestas_habituales": [
-   "Fiestas de la Magdalena, julio"
-  ]
- },
- "05022000102": {
-  "nombre": "Santísimo Cristo de Gracia",
-  "dia": 14,
-  "mes": 9,
-  "fuente": "busqueda",
-  "confianza": "media",
-  "ambito": "localidad",
   "celebra_dia": 14,
   "celebra_mes": 9,
   "fiestas_habituales": [
-   "Patronales - Santísimo Cristo de Gracia, 14-17 de septiembre (procesión, festejos taurinos y verbenas)",
-   "Carnaval - Carnaval de El Barraco, marzo (desfile y actividades)",
-   "Semana Santa - Semana Santa, abril (procesiones religiosas)",
-   "Romeria - Romería de San Marcos, abril (procesión y devoción)",
-   "Romeria - Romería de San Cristóbal, julio (procesión y festejo)",
-   "Feria - Feria Agroalimentaria Interprovincial, 27-28 de junio (degustaciones y actividades)",
-   "Fiestas mayores - Noche más larga, 14-15 de agosto (fiesta popular)",
-   "Religiosa - Las Candelas, 2 de febrero (celebración religiosa)"
-  ]
- },
- "04049000101": {
-  "nombre": "San Joaquín",
-  "dia": 26,
-  "mes": 7,
-  "fuente": "busqueda",
-  "confianza": "media",
-  "ambito": "localidad",
-  "celebra_dia": 14,
-  "celebra_mes": 8,
-  "fiestas_habituales": [
-   "Patronales - San Joaquín, mediados de agosto (procesión y verbena)",
-   "Carnaval - Carnaval de Garrucha, febrero (desfile de comparsas)",
-   "Semana Santa - Semana Santa de Garrucha, abril (procesiones y representaciones teatrales)",
-   "Romería - Virgen del Carmen, 16 de julio (procesión marítima)",
-   "Cruces de Mayo - Cruces de Mayo de Garrucha, mayo (actividades y verbena)",
-   "Noche de San Juan - Noche de San Juan en Garrucha, 23-24 de junio (hogueras y verbena)",
-   "Festival - Festival Gastronómico de la Gamba Roja, octubre (degustaciones y showcooking)"
+   "Patronales - Santo Cristo del Arco Toral, 14 de septiembre (procesión y verbena)",
+   "Carnaval - Carnaval de Hinojosa del Valle, febrero (desfile de comparsas)",
+   "Semana Santa - Semana Santa, marzo (procesiones religiosas)",
+   "Fiestas del Emigrante - Fiestas del Emigrante, sin fecha específica (celebración cultural)",
+   "Feria de la Cruz - Feria de la Cruz, primavera (desfiles y actividades familiares)",
+   "Día de las Candelas - Día de las Candelas, 2 de febrero (hogueras y celebración popular)",
+   "San Isidro Labrador - San Isidro, 15 de mayo (celebración religiosa y tradicional)",
+   "Día de la Virgen - Día de la Virgen, sin fecha específica (procesión y verbena)",
+   "San José - San José, 19 de marzo (celebración religiosa)",
+   "Todos los Santos - Todos los Santos, 1 de noviembre (celebración religiosa)"
   ]
  }
 }
