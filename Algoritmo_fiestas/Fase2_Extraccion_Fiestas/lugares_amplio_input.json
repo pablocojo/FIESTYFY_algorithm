@@ -1,42 +1,42 @@
 [
  {
-  "id": "04049000000",
+  "id": "06068000000",
   "tipo": "municipio",
-  "nombre": "Garrucha",
-  "provincia": "Almería",
-  "comunidad": "Andalucía",
-  "poblacion": 10823,
-  "lat": 37.17939094,
-  "lng": -1.82188241,
-  "descripcion_corta": "Descubre la belleza de Garrucha, un pueblo costero con ricas tradiciones y paisajes naturales impresionantes.",
-  "descripcion": "Garrucha se encuentra en la costa mediterránea, rodeada por ríos y playas de ensueño. Su historia minera y su puerto marítimo son testigos de su importancia económica y cultural. La gamba roja es su atractivo principal, pero también se puede disfrutar del paisaje natural y la arquitectura local.",
+  "nombre": "Hinojosa del Valle",
+  "provincia": "Badajoz",
+  "comunidad": "Extremadura",
+  "poblacion": 477,
+  "lat": 38.48282136,
+  "lng": -6.185309623,
+  "descripcion_corta": "Descubre la belleza de Hinojosa del Valle, un pueblo rodeado de naturaleza y rica en historia.",
+  "descripcion": "Hinojosa del Valle es un pueblo situado en una depresión del terreno recorrida por el arroyo Botoz, rodeado de montañas y valles. La villa tiene su nombre debido a la planta aromática hinojo que prolifera en la zona. En el pasado, Hinojosa del Valle perteneció al marquesado de Hinojosa y fue fundada en el siglo XIII por Don Pedro Pérez. El pueblo cuenta con una rica historia y patrimonio cultural, incluyendo la Casa de la Encomienda, que fue la residencia de los comendadores de la Orden de Santiago. La villa también es conocida como 'La Jina', un nombre que se debe a la aspiración del -h- y a la construcción en diminutivo femenino apocopado. Hinojosa del Valle ofrece una experiencia única para aquellos que buscan descubrir la naturaleza, la historia y la cultura de esta pequeña villa.",
   "imagenes": {
-   "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Garrucha_%28Almer%C3%ADa%29.jpg",
-   "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Escudo_de_Garrucha_%28Almer%C3%ADa%29_2.svg/120px-Escudo_de_Garrucha_%28Almer%C3%ADa%29_2.svg.png"
+   "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Nuestra_Se%C3%B1ora_de_los_%C3%81ngeles_en_Hinojosa_del_Valle.jpg",
+   "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Escudo_de_Hinojosa_del_Valle.svg/120px-Escudo_de_Hinojosa_del_Valle.svg.png"
   },
-  "sitio_web": "https://www.garrucha.es/",
-  "wikipedia_url": "https://es.wikipedia.org/wiki/Garrucha_(Almería)",
-  "original_id": "garrucha",
+  "sitio_web": "https://www.hinojosadelvalle.es",
+  "wikipedia_url": "https://es.wikipedia.org/wiki/Hinojosa_del_Valle",
+  "original_id": "hinojosa-del-valle",
   "es_capital": false
  },
  {
-  "id": "04049000101",
-  "padre_id": "04049000000",
-  "nombre": "Garrucha",
-  "provincia": "Almería",
-  "comunidad": "Andalucía",
-  "poblacion": 10809,
-  "lat": 37.17939094,
-  "lng": -1.82188241,
+  "id": "06068000101",
+  "padre_id": "06068000000",
+  "nombre": "Hinojosa del Valle",
+  "provincia": "Badajoz",
+  "comunidad": "Extremadura",
+  "poblacion": 471,
+  "lat": 38.48282136,
+  "lng": -6.185309623,
   "es_capital": true,
-  "tipo": "ciudad_pequena",
-  "sitio_web": "https://www.garrucha.es/",
-  "wikipedia_url": "https://es.wikipedia.org/wiki/Garrucha_(Almería)",
-  "descripcion_corta": "Garrucha, a orillas del Mediterráneo, es famosa por su gamba roja y puerto pesquero, ofreciendo turismo costero y natural.",
-  "descripcion": "A orillas del Mediterráneo, Garrucha destaca por su famosa gamba roja y puerto pesquero. Es un destino turístico con atractivos naturales, ideal para disfrutar de la costa almeriense.",
+  "tipo": "pueblo",
+  "sitio_web": "https://www.hinojosadelvalle.es",
+  "wikipedia_url": "https://es.wikipedia.org/wiki/Hinojosa_del_Valle",
+  "descripcion_corta": "Descubre un pueblo con encanto rodeado de naturaleza y riqueza histórica.",
+  "descripcion": "Hinojosa del Valle, conocida como 'La Jina', es un lugar donde la historia se mezcla con la belleza natural. Su nombre evoca el hinojo que crece en la zona y está situada cerca de arroyos y montañas. Explora su pasado medieval y disfruta de sus alrededores.",
   "imagenes": {
-   "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Garrucha_%28Almer%C3%ADa%29.jpg",
-   "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Escudo_de_Garrucha_%28Almer%C3%ADa%29_2.svg/120px-Escudo_de_Garrucha_%28Almer%C3%ADa%29_2.svg.png"
+   "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Nuestra_Se%C3%B1ora_de_los_%C3%81ngeles_en_Hinojosa_del_Valle.jpg",
+   "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Escudo_de_Hinojosa_del_Valle.svg/120px-Escudo_de_Hinojosa_del_Valle.svg.png"
   }
  }
 ]

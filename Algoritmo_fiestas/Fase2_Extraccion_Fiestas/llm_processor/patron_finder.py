@@ -780,15 +780,38 @@ def _ventanas_relevantes(texto: str, nombre_localidad: str, radio: int = 300, ma
     return "\n...\n".join(ventanas)
 
 
-async def _buscar_en_web(session: aiohttp.ClientSession, localidad: dict, municipio: dict) -> str:
-    """Busca el patrón en buscadores (reutiliza el scraper multi-motor de google_search)."""
+async def _buscar_en_web(
+    session: aiohttp.ClientSession, localidad: dict, municipio: dict,
+    calendario: bool = False,
+) -> str:
+    """Busca en buscadores (reutiliza el scraper multi-motor de google_search).
+
+    Con `calendario=True` cambia las consultas: en vez de preguntar por el santo
+    patron, barre el calendario festivo entero del pueblo. La distincion importa
+    y esta medida: con las dos consultas patronales de siempre, la fase 1 sacaba
+    catalogos de dos o tres fiestas para pueblos que tienen seis o nueve, porque
+    el material que veia el modelo no hablaba de carnavales ni de romerias. En la
+    ejecucion del 2026-09-07, 8 de 23 localidades salieron con catalogo vacio.
+    """
     from scraper.google_search import _fetch_search_results, _fetch_page_content
 
     nombre_loc = localidad["nombre"]
-    queries = [
-        f"santo patrón de {nombre_loc} {municipio['nombre']} {municipio.get('provincia', '')}",
-        f"fiestas patronales {nombre_loc} {municipio['nombre']} en honor",
-    ]
+    prov = municipio.get("provincia", "")
+    if calendario:
+        # Se barre por TIPOS a proposito. Una consulta generica de "fiestas de X"
+        # devuelve casi siempre la patronal y poco mas; nombrar carnaval, romeria
+        # y feria es lo que saca a la superficie las que el pueblo celebra y
+        # nadie destaca.
+        queries = [
+            f"fiestas de {nombre_loc} {prov} calendario festivo todo el año",
+            f"{nombre_loc} {prov} carnaval semana santa romería feria tradiciones",
+            f"{nombre_loc} {municipio['nombre']} fiestas populares que se celebran",
+        ]
+    else:
+        queries = [
+            f"santo patrón de {nombre_loc} {municipio['nombre']} {prov}",
+            f"fiestas patronales {nombre_loc} {municipio['nombre']} en honor",
+        ]
 
     texto = ""
     urls = []
@@ -891,7 +914,7 @@ async def _extraer_con_llm(texto: str, localidad: dict) -> dict | None:
     # de numero, pero no se validan contra nada. Quien decide si esas fiestas
     # existen es el modelo que despues vea los documentos.
     habituales = []
-    for item in (parsed.get("fiestas_habituales") or [])[:8]:
+    for item in (parsed.get("fiestas_habituales") or [])[:14]:
         if isinstance(item, str) and 4 <= len(item.strip()) <= 120:
             habituales.append(item.strip())
 
@@ -908,6 +931,15 @@ async def _extraer_con_llm(texto: str, localidad: dict) -> dict | None:
 # ──────────────────────────────────────────────────
 # FUNCIÓN PRINCIPAL
 # ──────────────────────────────────────────────────
+
+# Cuanto texto ve el catalogador. Estuvo en 12.000 y era la causa de que el
+# catalogo saliera corto: el 2026-09-08, Garrucha reunia 23.733 caracteres de
+# material y se descartaba el 49%. Las seis menciones del Carnaval —una fiesta
+# real, del 22 de febrero— caian ENTERAS en la mitad descartada, asi que ningun
+# ajuste del prompt podia rescatarla. 40.000 caracteres son ~12.600 tokens, que
+# caben de sobra en los modelos que se usan aqui.
+PATRON_FICHA_MAX_CHARS = 40000
+
 
 async def _extraer_ficha_con_llm(texto: str, localidad: dict, patron_nombre: str) -> dict:
     """
@@ -934,33 +966,65 @@ async def _extraer_ficha_con_llm(texto: str, localidad: dict, patron_nombre: str
     from llm_processor.text_analyzer import llm_chat_json
 
     system_prompt = (
-        "Eres una API estricta que describe el calendario festivo de un pueblo espanol.\n"
+        "Eres una API estricta que cataloga TODAS las fiestas de un pueblo espanol.\n"
         "Responde SOLO con JSON:\n"
         '{"celebra_dia": numero o null, "celebra_mes": numero o null,\n'
-        ' "fiestas_habituales": ["nombre de fiesta con su epoca", ...]}\n'
+        ' "fiestas_habituales": ["Tipo - Nombre, epoca (detalle)", ...]}\n'
         "\n"
-        "`celebra_dia`/`celebra_mes`: cuando el PUEBLO celebra de verdad sus\n"
-        "fiestas patronales. NO es la fecha del santoral: suele desplazarse al\n"
-        "verano o a un fin de semana. San Joaquin es el 26 de julio en el\n"
-        "santoral, pero Garrucha lo celebra a mediados de agosto. Si el texto no\n"
-        "dice cuando las celebra el pueblo, deja las dos a null; NO copies la\n"
-        "fecha liturgica aqui.\n"
+        "CUANDO CELEBRA EL PUEBLO SUS PATRONALES\n"
+        "`celebra_dia`/`celebra_mes` NO es la fecha del santoral: es cuando el\n"
+        "pueblo las celebra de verdad, que suele desplazarse al verano o a un\n"
+        "fin de semana. San Joaquin es el 26 de julio en el santoral, pero\n"
+        "Garrucha lo celebra a mediados de agosto. Si el texto no lo dice,\n"
+        "deja las dos a null; NO copies aqui la fecha liturgica.\n"
         "\n"
-        "`fiestas_habituales`: celebraciones que este pueblo repite cada anno,\n"
-        "con su epoca, en frases cortas. Incluye romerias, ferias, carnavales y\n"
-        "patronales de barrios o pedanias. Ejemplo:\n"
-        '["Virgen del Carmen, 16 de julio, procesion maritima", "Carnaval, febrero"].\n'
-        "Lista vacia si el texto no menciona ninguna.\n"
+        "EL CATALOGO: BARRE POR TIPOS, UNO A UNO\n"
+        "Recorre esta lista y por cada tipo mira si el texto menciona alguna\n"
+        "en este pueblo. Si de un tipo no dice nada, SALTALO: la lista es una\n"
+        "ayuda para no dejarte fiestas, no casillas que haya que rellenar.\n"
+        "en este pueblo. Es un barrido, no un resumen: no te quedes en las dos\n"
+        "mas famosas.\n"
         "\n"
-        "Solo lo que el TEXTO respalde. No completes con conocimiento general:\n"
-        "esto se pega al contexto de otros modelos y una fiesta inventada aqui\n"
-        "contamina todo lo que venga despues."
+        "CADA ENTRADA ES UNA SOLA FIESTA\n"
+        "No juntes dos en una linea. Las Cruces de Mayo y la Noche de San\n"
+        "Juan son fiestas distintas, en meses distintos: van en dos entradas\n"
+        "o en ninguna. Y no inventes la fecha para que cuadren.\n"
+        "\n"
+        "UN PROGRAMA CULTURAL NO ES UNA FIESTA\n"
+        "Si el texto describe una agenda municipal de actividades -talleres,\n"
+        "aquagym, torneos, presentaciones de libros repartidos por semanas-,\n"
+        "eso no es una fiesta y no va al catalogo. Una fiesta tiene nombre\n"
+        "propio y la celebra el pueblo en unas fechas concretas.\n"
+        "  - Patronales (en honor al patron o patrona)\n"
+        "  - Fiestas mayores o fiestas de verano del pueblo\n"
+        "  - Carnaval\n"
+        "  - Semana Santa\n"
+        "  - Romerias\n"
+        "  - Ferias (ganado, artesania, gastronomia, medieval)\n"
+        "  - Cruces de Mayo, San Juan, San Isidro y demas del calendario\n"
+        "  - Fiestas de barrios, pedanias o aldeas del municipio\n"
+        "  - Festivales o certamenes que se repitan cada anno\n"
+        "\n"
+        "FORMATO DE CADA ENTRADA\n"
+        "\"Tipo - Nombre, epoca (detalle breve)\". Ejemplos:\n"
+        '  "Patronales - San Joaquin, mediados de agosto (procesion y verbena)"\n'
+        '  "Romeria - Virgen del Carmen, 16 de julio (procesion maritima)"\n'
+        '  "Carnaval - Carnaval de Garrucha, febrero (desfile de comparsas)"\n'
+        "La epoca puede ser un mes o una fecha; si el texto no la da, escribe\n"
+        "el tipo y el nombre igualmente. Una fiesta sin fecha vale mas que una\n"
+        "fiesta ausente: quien la busque despues ya encontrara cuando es.\n"
+        "\n"
+        "LIMITE\n"
+        "Solo lo que el TEXTO respalde. No completes con conocimiento general\n"
+        "ni supongas que un pueblo tiene carnaval porque casi todos lo tienen.\n"
+        "Esto se pega al contexto de otros modelos: una fiesta inventada aqui\n"
+        "contamina todo lo que venga despues. Lista vacia si no hay nada."
     )
 
     user_prompt = (
         f"PUEBLO: {localidad['nombre']}\n"
         f"PATRON/A: {patron_nombre or 'desconocido'}\n\n"
-        f"TEXTO:\n{texto[:6000]}\n\n"
+        f"TEXTO:\n{texto[:PATRON_FICHA_MAX_CHARS]}\n\n"
         "Cuando lo celebra el pueblo y que otras fiestas tiene. SOLO JSON:"
     )
 
@@ -978,7 +1042,7 @@ async def _extraer_ficha_con_llm(texto: str, localidad: dict, patron_nombre: str
         dia, mes = None, None
 
     habituales = []
-    for item in (parsed.get("fiestas_habituales") or [])[:8]:
+    for item in (parsed.get("fiestas_habituales") or [])[:14]:
         if isinstance(item, str) and 4 <= len(item.strip()) <= 120:
             habituales.append(item.strip())
 
@@ -1094,14 +1158,22 @@ async def obtener_patron(localidad: dict, municipio: dict) -> dict | None:
             # con el 26 de julio del santoral, el LLM no llego a entrar y la
             # ficha habria salido vacia en el pueblo que motivo el cambio.
             if resultado and "fiestas_habituales" not in resultado:
-                # Un infobox no dice cuando celebra el pueblo ni que otras
-                # fiestas tiene, asi que si Wikipedia respondio hace falta
-                # ademas el texto de la web. Las busquedas van cacheadas.
-                if len(textos_acumulados) < 2:
-                    textos_acumulados.append(
-                        await _buscar_en_web(session, localidad, municipio)
-                    )
-                texto_ficha = "\n".join(t for t in textos_acumulados if t).strip()
+                # El barrido de calendario se hace SIEMPRE, aunque Wikipedia ya
+                # hubiera resuelto el patron. Un infobox identifica al santo pero
+                # no dice cuando lo celebra el pueblo ni que otras fiestas tiene,
+                # y las consultas patronales tampoco: por eso los catalogos
+                # salian de dos o tres entradas. Las busquedas van cacheadas, asi
+                # que repetir localidad no cuesta.
+                textos_acumulados.append(
+                    await _buscar_en_web(session, localidad, municipio, calendario=True)
+                )
+                # El barrido de calendario va DELANTE. Es el material que habla
+                # de carnavales, romerias y ferias; el patronal repite sobre el
+                # santo. Puesto detras se lo comia el recorte antes de que el
+                # modelo lo viera.
+                texto_ficha = "\n".join(
+                    t for t in reversed(textos_acumulados) if t
+                ).strip()
                 resultado.update(
                     await _extraer_ficha_con_llm(
                         texto_ficha, localidad, resultado.get("nombre", "")
