@@ -1,19 +1,4 @@
 {
- "04097000101": {
-  "nombre": "San Roque",
-  "dia": 16,
-  "mes": 8,
-  "fuente": "wikipedia",
-  "confianza": "alta",
-  "ambito": "localidad",
-  "celebra_dia": 14,
-  "celebra_mes": 8,
-  "fiestas_habituales": [
-   "San Roque, agosto",
-   "Purísima Concepción, diciembre",
-   "Moros y Cristianos, agosto"
-  ]
- },
  "06064000101": {
   "nombre": "Virgen de la Inmaculada",
   "dia": 8,
@@ -27,23 +12,6 @@
    "Carnaval, febrero",
    "Semana Santa",
    "San Isidro Labrador, 15 de mayo"
-  ]
- },
- "05022000102": {
-  "nombre": "Santísimo Cristo de Gracia",
-  "dia": 14,
-  "mes": 9,
-  "fuente": "wikipedia",
-  "confianza": "media",
-  "ambito": "localidad",
-  "celebra_dia": 14,
-  "celebra_mes": 9,
-  "fiestas_habituales": [
-   "Santísimo Cristo de Gracia, 14-17 de septiembre, procesión solemne y festejos taurinos",
-   "Exaltación de la Santa Cruz, 14 de septiembre, alboreadas y misa",
-   "Carrera ciclista, septiembre",
-   "Verbenas nocturnas con orquesta, septiembre",
-   "Romería, septiembre"
   ]
  },
  "05022000101": null,
@@ -255,6 +223,26 @@
    "Fiestas de la Magdalena, julio"
   ]
  },
+ "05022000102": {
+  "nombre": "Santísimo Cristo de Gracia",
+  "dia": 14,
+  "mes": 9,
+  "fuente": "busqueda",
+  "confianza": "media",
+  "ambito": "localidad",
+  "celebra_dia": 14,
+  "celebra_mes": 9,
+  "fiestas_habituales": [
+   "Patronales - Santísimo Cristo de Gracia, 14-17 de septiembre (procesión, festejos taurinos y verbenas)",
+   "Carnaval - Carnaval de El Barraco, marzo (desfile y actividades)",
+   "Semana Santa - Semana Santa, abril (procesiones religiosas)",
+   "Romeria - Romería de San Marcos, abril (procesión y devoción)",
+   "Romeria - Romería de San Cristóbal, julio (procesión y festejo)",
+   "Feria - Feria Agroalimentaria Interprovincial, 27-28 de junio (degustaciones y actividades)",
+   "Fiestas mayores - Noche más larga, 14-15 de agosto (fiesta popular)",
+   "Religiosa - Las Candelas, 2 de febrero (celebración religiosa)"
+  ]
+ },
  "04049000101": {
   "nombre": "San Joaquín",
   "dia": 26,
@@ -265,13 +253,31 @@
   "celebra_dia": 14,
   "celebra_mes": 8,
   "fiestas_habituales": [
-   "Patronales - San Joaquín, mediados de agosto (13 al 16) (procesión y verbena)",
-   "Romería - Virgen del Carmen, 16 de julio (procesión marítima)",
+   "Patronales - San Joaquín, mediados de agosto (procesión y verbena)",
    "Carnaval - Carnaval de Garrucha, febrero (desfile de comparsas)",
-   "Semana Santa - Semana Santa de Garrucha, abril (procesiones y teatro)",
-   "Feria - Festival de la Gamba Roja, octubre (festival gastronómico)",
-   "Calendario - Cruces de Mayo, mayo (programación cultural)",
-   "Calendario - Noche de San Juan, 23 de junio (hogueras en la playa)"
+   "Semana Santa - Semana Santa de Garrucha, abril (procesiones y representaciones teatrales)",
+   "Romería - Virgen del Carmen, 16 de julio (procesión marítima)",
+   "Cruces de Mayo - Cruces de Mayo de Garrucha, mayo (actividades y verbena)",
+   "Noche de San Juan - Noche de San Juan en Garrucha, 23-24 de junio (hogueras y verbena)",
+   "Festival - Festival Gastronómico de la Gamba Roja, octubre (degustaciones y showcooking)"
+  ]
+ },
+ "04097000101": {
+  "nombre": "San Roque",
+  "dia": 16,
+  "mes": 8,
+  "fuente": "busqueda",
+  "confianza": "media",
+  "ambito": "localidad",
+  "celebra_dia": 15,
+  "celebra_mes": 8,
+  "fiestas_habituales": [
+   "Patronales - San Roque y la Purísima Concepción, 15 al 17 de agosto (procesión, verbena y actos comunitarios)",
+   "Carnaval - Carnaval, febrero (desfile de comparsas)",
+   "Semana Santa - Semana Santa, marzo (procesiones religiosas)",
+   "Día del Romero - Día del Romero, 2 de febrero (celebración tradicional)",
+   "Belén Viviente - Belén Viviente, diciembre (escenificación)",
+   "Hogueras de San Antón - Hogueras de San Antón, enero (celebración)"
   ]
  }
 }
