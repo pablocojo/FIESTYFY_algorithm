@@ -217,3 +217,103 @@ def test_el_pdf_recoge_la_pagina_aunque_el_ocr_falle():
     assert "images_for_vlm.append(page_image)" in resto
     assert "PDF_MAX_PAGES_VLM" in resto
     assert fuente.count("images_for_vlm.append(page_image)") == 2
+
+
+# ─────────────────────────────────────────────
+# El cartel .jpg suelto que encuentra la araña
+# ─────────────────────────────────────────────
+# El camino de imágenes del spider corre el OCR en un subproceso aislado —el OCR
+# segfaultea, por eso vive allí— y las imágenes PIL no cruzan esa frontera. Pero
+# el método que lo llama es async y YA TIENE los bytes, así que la llamada al VLM
+# se hace ahí y el subproceso no se toca.
+#
+# Solo llegan imágenes que `is_promising_image` ya dio por probables carteles, así
+# que el filtrado por relevancia está hecho antes.
+
+import io as _io
+
+from PIL import Image
+
+import scraper.heuristic_spider as hs
+
+
+def _png_bytes(color=(120, 90, 160)):
+    buf = _io.BytesIO()
+    Image.new("RGB", (900, 600), color).save(buf, "PNG")
+    return buf.getvalue()
+
+
+def _spider():
+    return hs.AsyncTwoPassSpider.__new__(hs.AsyncTwoPassSpider)
+
+
+def _vlm_spider(monkeypatch, respuesta="20:00 Verbena con orquesta"):
+    llamadas = []
+
+    async def _fake(img):
+        llamadas.append(img)
+        return respuesta
+
+    import llm_processor.vision_analyzer as va
+    monkeypatch.setattr(va, "analizar_imagen_directa", _fake)
+    return llamadas
+
+
+def test_el_cartel_ilegible_se_lee_con_el_vlm_y_va_marcado(monkeypatch):
+    llamadas = _vlm_spider(monkeypatch)
+    s = _spider()
+    r = asyncio.run(s._leer_cartel_con_vlm(_png_bytes(), "https://x.es/cartel.jpg"))
+    assert len(llamadas) == 1
+    assert hs.MARCA_VISION in r
+    assert "Verbena" in r
+
+
+def test_el_tope_es_por_rastreo_entero(monkeypatch):
+    """Una galería de la fiesta del año pasado puede traer cuarenta candidatas."""
+    from config import VISION_MAX_IMAGES_SPIDER
+
+    llamadas = _vlm_spider(monkeypatch)
+    s = _spider()
+    for _ in range(VISION_MAX_IMAGES_SPIDER + 4):
+        asyncio.run(s._leer_cartel_con_vlm(_png_bytes(), "https://x.es/c.jpg"))
+    assert len(llamadas) == VISION_MAX_IMAGES_SPIDER
+
+
+def test_unos_bytes_que_no_son_imagen_no_revientan(monkeypatch):
+    llamadas = _vlm_spider(monkeypatch)
+    s = _spider()
+    assert asyncio.run(s._leer_cartel_con_vlm(b"esto no es un png", "https://x.es/c.jpg")) == ""
+    assert llamadas == []
+
+
+def test_si_el_vlm_falla_el_rastreo_sigue(monkeypatch):
+    async def _explota(img):
+        raise RuntimeError("VLM caido")
+
+    import llm_processor.vision_analyzer as va
+    monkeypatch.setattr(va, "analizar_imagen_directa", _explota)
+    s = _spider()
+    assert asyncio.run(s._leer_cartel_con_vlm(_png_bytes(), "https://x.es/c.jpg")) == ""
+
+
+def test_una_respuesta_vacia_no_deja_marca_huerfana(monkeypatch):
+    _vlm_spider(monkeypatch, respuesta="   ")
+    s = _spider()
+    assert asyncio.run(s._leer_cartel_con_vlm(_png_bytes(), "https://x.es/c.jpg")) == ""
+
+
+def test_el_vlm_solo_entra_si_el_ocr_no_saco_nada():
+    """El orden importa: el OCR es más barato y no gasta 180 s por imagen."""
+    import inspect
+
+    fuente = inspect.getsource(hs.AsyncTwoPassSpider)
+    i_ocr = fuente.index("_subprocess_extract_image, img_bytes")
+    resto = fuente[i_ocr:i_ocr + 1200]
+    assert 'if not (text or "").strip():' in resto
+    assert "_leer_cartel_con_vlm(img_bytes, img_url)" in resto
+
+
+def test_la_marca_es_la_misma_en_los_dos_caminos():
+    """PDF e imagen suelta escriben la misma marca. Si no coincidieran, filtrar
+    por procedencia dejaría fuera la mitad de los casos."""
+    assert hs.MARCA_VISION == gs.MARCA_VISION

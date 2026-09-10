@@ -6,6 +6,7 @@ Pasada 2: Extracción profunda (OCR + PDFs) del Top M, con filtrado inteligente.
 """
 
 import asyncio
+import io
 import urllib.parse
 import logging
 import re
@@ -22,10 +23,12 @@ from concurrent.futures import ProcessPoolExecutor
 
 from scraper.document_extractor import (
     is_promising_image,
+    MARCA_VISION,
     is_promising_pdf,
 )
 from fuentes import crear_documento
 from config import (
+    VISION_MAX_IMAGES_SPIDER,
     SPIDER_MAX_MAPPING_PAGES,
     SPIDER_MAX_EXTRACTION_PAGES,
     SPIDER_MAX_INTERNAL_DEPTH,
@@ -859,6 +862,19 @@ class AsyncTwoPassSpider:
         try:
             pool = _get_ocr_pool()
             text = await loop.run_in_executor(pool, _subprocess_extract_image, img_bytes)
+            if not (text or "").strip():
+                # El OCR no ha sacado nada de un cartel que `is_promising_image`
+                # ya dio por probable. Es el caso que mas necesita al VLM: una
+                # tipografia decorativa sobre un fondo con dibujos derrota a
+                # Tesseract. Y medido sobre texto negro limpio en fuente
+                # estandar, Tesseract leyo "2028" donde ponia 2026 y "20.00"
+                # donde ponia 20:00, asi que aqui no se pierde gran cosa.
+                #
+                # La llamada se hace AQUI y no en el subproceso: este metodo es
+                # async y ya tiene los bytes, mientras que el subproceso esta
+                # aislado a proposito —el OCR segfaultea y por eso vive alli— y
+                # las imagenes PIL no cruzan esa frontera.
+                text = await self._leer_cartel_con_vlm(img_bytes, img_url)
             return text
         except Exception as e:
             if "BrokenProcessPool" in type(e).__name__:
@@ -867,6 +883,51 @@ class AsyncTwoPassSpider:
             else:
                 logger.debug(f"  Error al extraer imagen {img_url}: {e}")
             return ""
+
+    async def _leer_cartel_con_vlm(self, img_bytes: bytes, img_url: str) -> str:
+        """Lee como cartel una imagen que el OCR no ha conseguido descifrar.
+
+        Solo llegan aqui las que `is_promising_image` ya considero probables
+        carteles de fiestas, asi que el filtrado por relevancia esta hecho antes.
+
+        El tope es por rastreo entero, no por imagen: una galeria de fotos de la
+        fiesta del ano pasado puede traer cuarenta candidatas, y cada llamada al
+        VLM tiene su timeout de 180 s.
+        """
+        if getattr(self, "_vlm_usados", 0) >= VISION_MAX_IMAGES_SPIDER:
+            return ""
+        try:
+            from config import VISION_ENABLED
+            if not VISION_ENABLED:
+                return ""
+            from PIL import Image
+            from llm_processor.vision_analyzer import analizar_imagen_directa
+        except Exception as e:
+            logger.debug(f"  [VISION] no disponible ({type(e).__name__}); se omite.")
+            return ""
+
+        try:
+            img = Image.open(io.BytesIO(img_bytes))
+            img.load()
+        except Exception as e:
+            logger.debug(f"  [VISION] imagen ilegible {img_url[:60]}: {type(e).__name__}")
+            return ""
+
+        self._vlm_usados = getattr(self, "_vlm_usados", 0) + 1
+        try:
+            texto = await analizar_imagen_directa(img)
+        except Exception as e:
+            logger.warning(f"  [VISION] fallo leyendo {img_url[:60]}: {type(e).__name__}")
+            return ""
+
+        if not (texto or "").strip():
+            return ""
+        logger.info(
+            f"  [VISION] cartel leido en {img_url[:70]} ({len(texto)} caracteres); "
+            f"el OCR no habia sacado nada."
+        )
+        return MARCA_VISION + chr(10) + texto.strip()
+
 
     # ───── Interfaz pública ─────
 

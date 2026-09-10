@@ -284,6 +284,14 @@ def is_promising_image(url: str, alt_text: str, locality_names: list[str]) -> bo
 # Extracción de texto
 # ─────────────────────────────────────────────
 
+# Marca que acompana a todo texto salido de una imagen. No es decorativa: un acto
+# leido de un cartel no tiene la misma fiabilidad que uno leido de HTML, y el juez
+# tiene que poder ser mas severo con el. Vive aqui, y no en quien la usa, porque
+# la escriben dos caminos distintos —el de PDF en google_search y el de imagenes
+# sueltas en heuristic_spider— y una marca que no coincide no sirve para filtrar.
+MARCA_VISION = "[LEIDO DE IMAGEN POR VLM]"
+
+
 def _run_ocr(image) -> str:
     """Intenta ejecutar OCR multilingüe, con fallback al idioma por defecto si falta el paquete."""
     if not pytesseract:

@@ -635,6 +635,12 @@ VISION_MAX_IMAGES_PER_PROFILE = 10    # Tope de imágenes por perfil y red
 # llamada al VLM con su timeout de 180 s. Con dos se cubre el caso normal —un
 # cartel de una cara, a veces dos— sin que una galeria se coma la ejecucion.
 VISION_MAX_IMAGES_DOC = 2
+
+# Tope de carteles leidos con el VLM por RASTREO ENTERO, no por imagen. Una
+# galeria de fotos de la fiesta del ano pasado puede traer cuarenta candidatas
+# que `is_promising_image` da por buenas, y cada llamada al VLM tiene su timeout
+# de 180 s. Con tres se cubre el cartel principal y algun anexo.
+VISION_MAX_IMAGES_SPIDER = 3
 VISION_MAX_DIM = 1280                 # Redimensionado máximo antes de enviar al VLM
 
 # ─────────────────────────────────────────────

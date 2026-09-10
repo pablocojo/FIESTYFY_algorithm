@@ -1074,7 +1074,7 @@ def _es_fallo_estable(motivo: str) -> bool:
 # era texto negro sobre blanco; los reales llevan tipografias decorativas sobre
 # fondos con dibujos, y un modelo de vision inventa fechas con la misma seguridad
 # con la que acierta.
-MARCA_VISION = "[LEIDO DE IMAGEN POR VLM]"
+from scraper.document_extractor import MARCA_VISION  # noqa: E402
 
 
 async def _leer_con_vision(imagenes: list, url: str) -> str:
