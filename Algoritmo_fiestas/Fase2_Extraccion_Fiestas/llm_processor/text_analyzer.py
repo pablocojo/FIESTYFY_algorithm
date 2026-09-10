@@ -3599,7 +3599,34 @@ AÑO: {anno}. Identifica la lista de fiestas que se celebran en {anno}.
 {bloque_catalogo}
 
 REGLA DE AGRUPACIÓN CRÍTICA:
-Si encuentras varios eventos festivos cercanos en el tiempo (ej. "Día del Chupinazo el 12 de agosto" y "Día de San Roque el 16 de agosto"), FUSIONA TODOS en una ÚNICA fiesta global cuya `fecha_inicio` sea el primer evento (12 de agosto) y `fecha_fin` sea el último evento (16 de agosto). NO crees múltiples fiestas pequeñas si pertenecen al mismo ciclo festivo.
+Si encuentras varios eventos festivos cercanos en el tiempo (ej. "Día del Chupinazo el 12 de agosto" y "Día de San Roque el 16 de agosto"), FUSIONA TODOS en una ÚNICA fiesta global. NO crees múltiples fiestas pequeñas si pertenecen al mismo ciclo festivo.
+
+PERO LA FUSIÓN TIENE UN LÍMITE, Y ES EL ERROR MÁS CARO DE ESTE PASO:
+`fecha_inicio` y `fecha_fin` NO son el primer y el último acto que veas en el
+documento. Son los días que dura la FIESTA.
+
+Una fiesta popular española dura entre uno y diez días. Si te sale un rango de
+tres semanas o de dos meses, no has encontrado una fiesta larguísima: has
+pegado cosas que no van juntas. Casos reales de este pipeline:
+  - "Fiestas de Festivarroyo", del 31 de julio al 27 de septiembre: 58 días.
+  - "Carnaval de Alcuéscar", 27 días. Un carnaval dura un fin de semana largo.
+  - "Semana Santa", del 18 de marzo al 6 de abril, con tres días seguidos sin
+    un solo acto por el medio. La Semana Santa va de Ramos a Resurrección.
+
+Antes de fijar el rango, comprueba estas tres cosas:
+1. HUECOS VACÍOS. Si entre dos actos hay varios días sin nada, casi seguro que
+   son dos cosas distintas, no una fiesta con pausa. Quédate con el bloque
+   donde se concentran los actos.
+2. ACTOS PREPARATORIOS. Triduos, novenas, pregones, misas de preparación y
+   presentaciones de cartel ocurren SEMANAS antes y son de esa fiesta, pero no
+   la alargan. La fiesta empieza cuando empieza lo festivo: procesión, desfile,
+   verbena, chupinazo, pasacalles.
+3. PROGRAMACIONES DE TEMPORADA. Un documento puede traer la agenda de todo un
+   verano o de un trimestre. Eso no es una fiesta de dos meses: son varias
+   celebraciones y actividades sueltas dentro de un mismo folleto.
+
+Ante la duda, ACORTA. Un rango corto que se queda sin unos actos periféricos es
+un dato correcto e incompleto; un rango de dos meses es un dato falso.
 
 Devuelve SOLO JSON estricto con esta estructura (NO incluyas el programa detallado de actos en este paso):
 {{

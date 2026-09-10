@@ -121,3 +121,51 @@ def test_el_prompt_nombra_los_casos_que_lo_motivaron(fuente):
     """
     assert "agenda cultural municipal" in fuente
     assert "concierto suelto" in fuente
+
+
+# ─────────────────────────────────────────────
+# El límite de la fusión
+# ─────────────────────────────────────────────
+# Añadidos el 2026-09-10, tras la ejecución de 20 municipios. La regla de
+# agrupación pedía fusionar eventos cercanos con `fecha_inicio` en el primero y
+# `fecha_fin` en el último, sin tope. Resultado:
+#
+#     Fiestas de Festivarroyo    31 jul → 27 sep    58 días
+#     Carnaval de Alcuéscar                         27 días
+#     Semana Santa de Garrucha   18 mar →  6 abr    17 días, 3 sin actos
+#
+# Al cerrar la puerta del catálogo el problema empeoró: antes ese material
+# fabricaba una ficha falsa propia, y ahora que no puede crear fiestas nuevas se
+# va a la casilla legítima más cercana y la estira.
+
+def test_la_fusion_tiene_un_limite_explicito(fuente):
+    """Sin tope, "fusiona lo cercano" produce fiestas de dos meses."""
+    assert "PERO LA FUSIÓN TIENE UN LÍMITE" in fuente
+    assert "entre uno y diez días" in fuente
+
+
+def test_el_rango_no_es_el_primer_y_ultimo_acto(fuente):
+    """La confusión de origen: los días con actos no son los días de fiesta."""
+    assert "NO son el primer y el último acto" in fuente
+    assert "Son los días que dura la FIESTA" in fuente
+
+
+def test_nombra_los_tres_modos_de_estirarse(fuente):
+    """Cada uno salió de un caso medido, no de un supuesto."""
+    assert "HUECOS VACÍOS" in fuente
+    assert "ACTOS PREPARATORIOS" in fuente
+    assert "PROGRAMACIONES DE TEMPORADA" in fuente
+
+
+def test_ante_la_duda_acorta(fuente):
+    """La asimetría importa: un rango corto es incompleto, uno de dos meses es
+    falso. Sin esta frase el modelo tiende a abarcar."""
+    assert "Ante la duda, ACORTA" in fuente
+    assert "un rango de dos meses es un dato falso" in fuente
+
+
+def test_la_agrupacion_original_sobrevive(fuente):
+    """Regresión: el límite no debe cargarse la regla que evita partir unas
+    patronales en cinco fichas de un día."""
+    assert "FUSIONA TODOS en una ÚNICA fiesta global" in fuente
+    assert "mismo ciclo festivo" in fuente
