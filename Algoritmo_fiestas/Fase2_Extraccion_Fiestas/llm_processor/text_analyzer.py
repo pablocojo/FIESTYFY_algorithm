@@ -48,6 +48,7 @@ from config import (
     PERTENENCIA_ENABLED,
     PERTENENCIA_MAX_TOKENS,
     NUCLEO_MAX_TOKENS,
+    DEDUP_MAX_TOKENS,
     PERTENENCIA_CONTEXTO_TOKENS,
     PERTENENCIA_DESCARTAR_SI_DUDA,
     ENRICHMENT_MIN_ACTOS_EN_PAGINA,
@@ -3892,6 +3893,129 @@ async def elegir_nucleo(fiesta: dict) -> None:
         )
 
 
+async def unificar_duplicados(fiestas: list[dict], localidad: dict) -> list[dict]:
+    """
+    La misma fiesta contada dos veces. Ultimo paso, con todo ya montado.
+
+    Los pasos anteriores comparan de dos en dos y con reglas: `descartar_duplicados_internos`
+    mira fichas vacias y `descartar_patronales_duplicadas` solo entiende de
+    patronales. Ninguno ve la lista entera de la localidad, que es donde el
+    duplicado se reconoce.
+
+    Medido en la ejecucion de 20 municipios del 2026-09-10: 9 pares duplicados,
+    frente a 1 en la de siete municipios del dia anterior. Fuentespina saco
+    cuatro fichas para un catalogo de tres, con el Padre Eterno por partida
+    doble; Arroyo de la Luz saco "FestivArroyo Verano 2026" y "Fiestas de
+    Festivarroyo", la misma cosa con dos rangos absurdos.
+
+    Por que ahora salen mas: estos pueblos tienen catalogos de dos o tres
+    entradas, no de siete o diez. Con el catalogo corto casi cualquier ficha
+    encaja en alguna casilla, y encaja VARIAS veces. La puerta protege bien con
+    catalogo rico y mal con catalogo pobre.
+
+    El modelo agrupa, el codigo aplica: devuelve que indices son la misma fiesta
+    y aqui se decide cual sobrevive. No reescribe fechas ni nombres.
+    """
+    if len(fiestas) < 2:
+        return fiestas
+
+    lineas = []
+    for i, f in enumerate(fiestas):
+        nuc = (
+            f"{f.get('nucleo_inicio')} a {f.get('nucleo_fin')}"
+            if f.get("nucleo_inicio") else "sin nucleo"
+        )
+        lineas.append(
+            f"[{i}] {f.get('nombre', '')}\n"
+            f"    completo: {f.get('fecha_inicio')} a {f.get('fecha_fin')}\n"
+            f"    nucleo: {nuc}\n"
+            f"    dias de programa: {len(f.get('programa') or [])}"
+        )
+
+    ficha = (localidad.get("ficha_pueblo") or "").strip()
+    bloque_cat = f"\n\n{ficha}" if ficha else ""
+
+    system_prompt = (
+        "Eres una API estricta que detecta fichas repetidas de la MISMA fiesta.\n"
+        'Responde SOLO con JSON: {"grupos": [[0, 2], [3, 5]]}\n'
+        "Cada grupo son los indices de fichas que son la misma celebracion. Las\n"
+        "fichas que no se repiten NO se mencionan.\n"
+        "\n"
+        "QUE ES EL MISMO DUPLICADO\n"
+        "La misma celebracion escrita de dos maneras: \"FestivArroyo Verano 2026\"\n"
+        "y \"Fiestas de Festivarroyo\"; o la misma con dos rangos distintos porque\n"
+        "cada fuente daba unas fechas. El nombre no tiene que coincidir.\n"
+        "\n"
+        "SENALES\n"
+        "  - Si los NUCLEOS se solapan, es duplicado casi seguro: el nucleo es\n"
+        "    donde esta la fiesta de verdad.\n"
+        "  - Si solo se solapan los rangos completos, NO basta. La periferia de\n"
+        "    unas patronales puede abarcar una romeria distinta.\n"
+        "  - Un pueblo no celebra dos veces a su mismo patron en el anno; si dos\n"
+        "    fichas lo nombran, casi siempre son una.\n"
+        "\n"
+        "QUE NO ES DUPLICADO\n"
+        "Dos fiestas distintas que caen cerca. Una romeria dentro del periodo de\n"
+        "las patronales, o dos advocaciones distintas del mismo pueblo, son dos\n"
+        "celebraciones. Fusionarlas pierde una fiesta real, que es peor que\n"
+        "dejar una repetida.\n"
+        "\n"
+        'Si ninguna se repite devuelve {"grupos": []}. Es la respuesta habitual.'
+    )
+
+    user_prompt = (
+        f"LOCALIDAD: {localidad.get('nombre', '')}{bloque_cat}\n\n"
+        "FICHAS EXTRAIDAS:\n" + ("\n\n".join(lineas)) + "\n\n"
+        "Que fichas son la misma fiesta. SOLO JSON:"
+    )
+
+    datos = await llm_chat_json(
+        system_prompt, user_prompt, max_tokens=DEDUP_MAX_TOKENS, etiqueta="DEDUP",
+    )
+
+    grupos = (datos or {}).get("grupos")
+    if not isinstance(grupos, list) or not grupos:
+        return fiestas
+
+    def _riqueza(i: int) -> tuple:
+        f = fiestas[i]
+        return (
+            len(f.get("programa") or []),
+            1 if f.get("nucleo_inicio") else 0,
+            -i,
+        )
+
+    descartados: set[int] = set()
+    for grupo in grupos:
+        idx = sorted({
+            i for i in grupo
+            if isinstance(i, int) and 0 <= i < len(fiestas) and i not in descartados
+        })
+        if len(idx) < 2:
+            continue
+        gana = max(idx, key=_riqueza)
+        for i in idx:
+            if i == gana:
+                continue
+            descartados.add(i)
+            # La fuente de la descartada se conserva. No se fusionan los
+            # programas a proposito: juntar actos de dos fichas que el modelo
+            # cree la misma pero pueden no serlo produce actos duplicados o de
+            # fechas incompatibles, y eso es peor que perder unos pocos.
+            url = fiestas[i].get("url_programa")
+            if url and url not in (fiestas[gana].get("fuentes") or []):
+                fiestas[gana].setdefault("fuentes", []).append(url)
+            logger.warning(
+                f"  [DEDUP] '{localidad.get('nombre', '')}': "
+                f"'{fiestas[i].get('nombre', '')}' ({fiestas[i].get('fecha_inicio')}) "
+                f"es la misma que '{fiestas[gana].get('nombre', '')}' "
+                f"({fiestas[gana].get('fecha_inicio')}); se conserva la de "
+                f"{len(fiestas[gana].get('programa') or [])} dias de programa."
+            )
+
+    return [f for i, f in enumerate(fiestas) if i not in descartados]
+
+
 async def enrich_festival_program(
     municipio: dict,
     localidad: dict,
@@ -7447,6 +7571,12 @@ async def analyze_festivals_multipass(
     fiestas_enriquecidas = await filtrar_por_pertenencia(
         fiestas_enriquecidas, localidad, municipio, nombres_hermanas, indexed_chunks,
     )
+
+
+    # Paso 9: la misma fiesta contada dos veces. Va el ultimo porque es el
+    # unico que ve la lista ENTERA de la localidad; los pasos anteriores
+    # comparan de dos en dos y con reglas.
+    fiestas_enriquecidas = await unificar_duplicados(fiestas_enriquecidas, localidad)
 
     return fiestas_enriquecidas
 

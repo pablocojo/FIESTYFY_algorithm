@@ -1,0 +1,225 @@
+{
+ "generado": "2026-09-09T20:52:07",
+ "origen": "patrones_cache.json tras la ejecucion del 2026-09-08",
+ "para_que": "Punto de comparacion: lo que la fase 1 dice que celebra cada localidad. Sin esto no se puede medir que falta en una ejecucion.",
+ "localidades": {
+  "01004000101": {
+   "patron": "Santa Magdalena",
+   "santoral": "22/7",
+   "celebra": "18/7",
+   "catalogo": [
+    "Fiestas de la Magdalena, julio (procesión, cetrería, circo, música en vivo, comida popular)",
+    "Pon ta Pa, julio (fiesta infantil con acrobacias y pompas de jabón)"
+   ]
+  },
+  "04049000101": {
+   "patron": "San Joaquín",
+   "santoral": "26/7",
+   "celebra": "14/8",
+   "catalogo": [
+    "Patronales - San Joaquín, del 14 al 18 de agosto (feria, procesión y verbena)",
+    "Carnaval - Carnaval de Garrucha, febrero (desfile de comparsas)",
+    "Semana Santa - Semana Santa de Garrucha, marzo (procesiones religiosas)",
+    "Romeria - Virgen del Carmen, 16 de julio (procesión marítima y verbena)",
+    "Cruces de Mayo - Cruces de Mayo, mayo (actividades populares y verbena)",
+    "San Juan - Noche de San Juan, 23-24 de junio (hogueras, baño de medianoche y verbena)",
+    "Festival Gastronómico - Festival de la Gamba Roja, 24-26 de octubre (degustaciones, música y actividades culturales)"
+   ]
+  },
+  "04076000101": {
+   "patron": "Virgen de la Asunción",
+   "santoral": "15/8",
+   "celebra": "10/8",
+   "catalogo": [
+    "Patronales - Virgen de la Asunción, 10 al 16 de agosto (procesiones, verbena y gastronomía)",
+    "Romería - Romería y Fiestas de El Campillo, 1 al 4 de mayo (actuaciones y actividades)",
+    "Romería - Romería de la Santa Cruz, primer fin de semana de mayo (procesión y tradición)"
+   ]
+  },
+  "04076000201": {
+   "patron": "San Ginés",
+   "santoral": "25/8",
+   "celebra": "25/8",
+   "catalogo": [
+    "Patronales - San Ginés de la Jara, 25 de agosto (procesión, verbena, carrera de carromatos)",
+    "Juegos Moriscos de Aben Humeya, tercera semana de agosto (competiciones atléticas y musicales, trajes andalusíes)",
+    "Romeria - Virgen del Carmen, 16 de julio (velación nocturna, verbena en la plaza)",
+    "Romeria - Virgen del Carmen, finales de agosto (procesión marítima a la Alcazaba, traje típico y fandanguillo)",
+    "Carnaval - Carnaval de Purchena, febrero (quema del muñeco, desfile en el parque)",
+    "Semana Santa - Semana Santa de Purchena, marzo (procesiones religiosas)",
+    "Cruces de Mayo - Cruces de Mayo, mayo (concurso de cruces, merienda al campo)",
+    "Fiestas de barrios - Fiestas de El Campillo, agosto (procesión, verbena, romería y gastronomía)",
+    "Fiestas de San Marcos, 25 de abril (merienda al campo, hornazos)",
+    "Feria y Fiestas en honor a San Ginés, 22-26 de agosto (carrera de carromatos, verbena)"
+   ]
+  },
+  "04093000301": {
+   "patron": "Virgen de los Dolores",
+   "santoral": "15/9",
+   "celebra": "2/9",
+   "catalogo": [
+    "Virgen de los Dolores, 2 y 3 de septiembre, procesión y actividades",
+    "Moros y Cristianos, antigua tradición con manuscritos"
+   ]
+  },
+  "04093000304": {
+   "patron": "Virgen de la Candelaria",
+   "santoral": "2/2",
+   "celebra": "8/12",
+   "catalogo": [
+    "Jornadas Gastronómicas de Cocina de Matanza, diciembre",
+    "Virgen de la Candelaria, 8 de diciembre, ruta de senderismo y comida fraterna"
+   ]
+  },
+  "04093000901": {
+   "patron": "San Francisco de Asís",
+   "santoral": "4/10",
+   "celebra": "4/10",
+   "catalogo": [
+    "Patronales - San Francisco de Asís, 4 de octubre (verbenas, carreras de cintas, actos religiosos)",
+    "Fiesta de la Candelaria - Virgen de la Candelaria, 2 de febrero",
+    "Carreras de San Juan - San Juan Bautista, 24 de junio (noche de San Juan)",
+    "Fiesta de Santiago - Turre Viejo, 25 de julio",
+    "Fiesta de la Carrasca - Moros y Cristianos, principios de septiembre",
+    "El Rollo Morera - Finales de agosto",
+    "Fiesta de los Moralicos - Virgen de la Candelaria, junio",
+    "Feria y Fiestas de Turre, 3-7 de octubre",
+    "Semana Santa - Procesiones cofrades, marzo/abril",
+    "Romería de San Isidro - 15 de mayo (procesión, bendición de animales, verbena)"
+   ]
+  },
+  "04097000101": {
+   "patron": "San Roque",
+   "santoral": "16/8",
+   "celebra": "16/8",
+   "catalogo": [
+    "Patronales - San Roque, agosto (procesión, verbena y actividades comunitarias)",
+    "Semana Santa - Semana Santa, marzo/abril (celebraciones religiosas y procesiones)",
+    "Fiestas locales - Día del Romero, 2 de febrero (celebración en honor al romero, planta típica de la zona)",
+    "Carnaval - Carnaval, febrero (desfile de comparsas y actividades festivas)",
+    "Fiestas tradicionales - Hogueras de San Antón, enero (rituales con fuego en honor a San Antón)",
+    "Fiestas tradicionales - Belén viviente, diciembre (representación teatral de la Navidad)",
+    "Fiestas de barrios - Relaciones de Moros y Cristianos, agosto (espectáculo teatral durante las Patronales)"
+   ]
+  },
+  "05022000102": {
+   "patron": "Santísimo Cristo de Gracia",
+   "santoral": "14/9",
+   "celebra": "14/9",
+   "catalogo": [
+    "Patronales - Santísimo Cristo de Gracia, 14-17 de septiembre (procesión, festejos taurinos y verbena)",
+    "Carnaval - Carnaval de El Barraco, marzo (desfile y verbenas)",
+    "Romeria - Romería de San Marcos, abril (procesión y festejos)",
+    "Romeria - Romería de San Cristóbal, julio (procesión y festejos)",
+    "Semana Santa - Semana Santa de El Barraco, marzo-abril (misa, procesiones y actos religiosos)",
+    "Religiosa - Las Candelas, 2 de febrero (bendición de velas, hoguera y verbena)",
+    "Feria - Feria Agroalimentaria, fin de semana variable (puestos de productos locales)"
+   ]
+  },
+  "05022000301": {
+   "patron": "Nuestra Señora de los Dolores en La Rinconada",
+   "santoral": "15/9",
+   "celebra": "15/9",
+   "catalogo": [
+    "Patronales - Nuestra Señora de los Dolores, 15 de septiembre (procesión y novena)",
+    "Fiestas mayores - Fiestas de La Rinconada, 14, 15 y 16 de agosto (programa de actividades)",
+    "Carnaval - Carnaval de La Rinconada, febrero (concurso de disfraces y pasacalles)",
+    "Feria - Feria del Abrazo, 3 de junio (alumbrado y casetas)",
+    "Festival - Festival de Cante Flamenco El Búcaro, anual (cante flamenco)",
+    "San Fermínes Rinconeros - San Fermínes Rinconeros, 4 de agosto (charanga y paella popular)",
+    "Semana Santa - Semana Santa de La Rinconada, marzo (procesiones y hermandades)"
+   ]
+  },
+  "06064000101": {
+   "patron": "Virgen Inmaculada",
+   "santoral": "8/12",
+   "celebra": "10/8",
+   "catalogo": [
+    "Semana Santa",
+    "Carnavales",
+    "San Isidro Labrador, 15 de mayo",
+    "Festividad de la Virgen Inmaculada, 8-12 de agosto",
+    "Fiesta de la Calle Pizarro, agosto"
+   ]
+  },
+  "06068000101": {
+   "patron": "Santo Cristo del Arco Toral",
+   "santoral": "14/9",
+   "celebra": "14/9",
+   "catalogo": [
+    "Patronales - Santo Cristo del Arco Toral, 14 de septiembre (procesión y verbena)",
+    "Carnaval - Carnaval de Hinojosa del Valle, febrero (desfile de comparsas)",
+    "Semana Santa - Semana Santa, marzo (procesiones religiosas)",
+    "Fiestas del Emigrante - Fiestas del Emigrante, sin fecha específica (celebración cultural)",
+    "Feria de la Cruz - Feria de la Cruz, primavera (desfiles y actividades familiares)",
+    "Día de las Candelas - Día de las Candelas, 2 de febrero (hogueras y celebración popular)",
+    "San Isidro Labrador - San Isidro, 15 de mayo (celebración religiosa y tradicional)",
+    "Día de la Virgen - Día de la Virgen, sin fecha específica (procesión y verbena)",
+    "San José - San José, 19 de marzo (celebración religiosa)",
+    "Todos los Santos - Todos los Santos, 1 de noviembre (celebración religiosa)"
+   ]
+  },
+  "06158000501": {
+   "patron": "Santa Brígida",
+   "santoral": "23/7",
+   "celebra": null,
+   "catalogo": [
+    "Patronales - Santa Brígida, sin fecha específica (romería)",
+    "Semana Santa - Semana Santa de Zafra, marzo (procesiones y recorridos)",
+    "Carnaval - Carnaval de Zafra, febrero (desfile y actividades)",
+    "Cruces de Mayo - Cruces de Mayo, mayo (decoración y rutas)",
+    "Fiestas de San Isidro - San Isidro, mayo (celebraciones tradicionales)",
+    "Feria - Feria Internacional Ganadera, sin fecha específica (evento ganadero)",
+    "Feria - Feria del Queso Artesano, noviembre (gastronomía y ajedrez)",
+    "Festival - Mercado Medieval, mayo (recreación histórica)",
+    "Fiestas de San Juan - De la Luna al Fuego, junio (fiesta declarada de Interés Turístico Regional)",
+    "Fiestas Patronales - Fiestas de San Juan Bautista, junio (misa y procesiones)",
+    "Fiesta - Bacanal de la Grasa, sin fecha específica (celebración popular)",
+    "Fiesta - Fiestas de San Miguel, sin fecha específica (eventos locales)"
+   ]
+  },
+  "09330000101": {
+   "patron": "San Julián",
+   "santoral": "28/1",
+   "celebra": "27/7",
+   "catalogo": [
+    "San Julián y San Miguel, penúltimo fin de semana de agosto"
+   ]
+  },
+  "09330000201": {
+   "patron": "Virgen del Carmen",
+   "santoral": "16/7",
+   "celebra": "16/7",
+   "catalogo": [
+    "Virgen del Carmen, 16 de julio, misa, procesión y comida comunitaria"
+   ]
+  },
+  "09330000301": {
+   "patron": "San Esteban",
+   "santoral": "26/12",
+   "celebra": null,
+   "catalogo": [
+    "Fiestas de San Esteban, primer fin de semana de agosto, misa, procesión, comida y verbena"
+   ]
+  },
+  "09330000401": {
+   "patron": "Nuestra Señora y San Roque",
+   "santoral": "16/8",
+   "celebra": "17/8",
+   "catalogo": [
+    "Patronales - Nuestra Señora y San Roque, agosto (chupinazo, peñas, toros, carrozas y verbenas)",
+    "Fiestas de Santa Cecilia, noviembre (chinada, muerte del gallo y actos populares)",
+    "Romería - Virgen del Carmen, septiembre (anterior a San Mateo)"
+   ]
+  },
+  "09330000501": {
+   "patron": "Santa Eugenia",
+   "santoral": null,
+   "celebra": null,
+   "catalogo": [
+    "Patronales - Santa Eugenia, principios de agosto (misa, procesión, comida vecinal y baile)",
+    "Romería - San Roque, sin fecha especificada (procesión marítima)"
+   ]
+  }
+ }
+}

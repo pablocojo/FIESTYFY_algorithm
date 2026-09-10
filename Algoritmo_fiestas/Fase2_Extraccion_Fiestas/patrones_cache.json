@@ -322,5 +322,569 @@
    "Fiestas de la Magdalena, julio (procesión, cetrería, circo, música en vivo, comida popular)",
    "Pon ta Pa, julio (fiesta infantil con acrobacias y pompas de jabón)"
   ]
+ },
+ "09141000101": {
+  "nombre": "San Miguel",
+  "dia": 29,
+  "mes": 9,
+  "fuente": "busqueda",
+  "confianza": "media",
+  "ambito": "localidad",
+  "celebra_dia": 25,
+  "celebra_mes": 9,
+  "fiestas_habituales": [
+   "Patronales - San Miguel Arcángel, último fin de semana de septiembre (procesiones, verbena y actividades populares)",
+   "Patronales - Padre Eterno, fin de semana siguiente a Pentecostés (movible, mayo/junio) (misa, danzas y verbena)",
+   "Carnaval - Carnaval de Fuentespina, marzo (desfile y actividades)"
+  ]
+ },
+ "06024000101": {
+  "nombre": "San Benito",
+  "dia": 11,
+  "mes": 7,
+  "fuente": "wikipedia",
+  "confianza": "alta",
+  "ambito": "localidad",
+  "celebra_dia": 11,
+  "celebra_mes": 7,
+  "fiestas_habituales": [
+   "Patronales - San Benito, 11 de julio (corridas de toros)",
+   "Semana Santa - Semana Santa, Semana Santa (celebración religiosa más importante)",
+   "Cruces de Mayo - Santa Cruz, 2 y 3 de mayo (Velada de la Cruz, fuegos artificiales, adorno de cruces)",
+   "Patronales - Virgen de Agosto, 15 de agosto (verbena y corrida de toros)",
+   "Romeria - San Isidro, 15 de mayo (fiesta campestre, recorrido en monturas y carrozas)",
+   "Feria - Feria de la Castaña, principios de noviembre (productos típicos, varios días)",
+   "Carnaval - Carnaval de Cabeza la Vaca, febrero (desfile de disfraces y comparsas)"
+  ]
+ },
+ "09074000102": {
+  "nombre": "Nuestra Señora de la Natividad",
+  "dia": 8,
+  "mes": 9,
+  "fuente": "llm",
+  "confianza": "alta",
+  "ambito": "localidad",
+  "celebra_dia": 8,
+  "celebra_mes": 9,
+  "fiestas_habituales": [
+   "Natividad de Nuestra Señora, 8 de septiembre, misa y procesión",
+   "Asunción de Nuestra Señora, 15 de agosto en San Medel (pedanía)"
+  ]
+ },
+ "09074000101": null,
+ "09074000201": {
+  "nombre": "San Emeterio y San Celedonio",
+  "dia": 3,
+  "mes": 3,
+  "fuente": "wikipedia",
+  "confianza": "alta",
+  "ambito": "localidad",
+  "celebra_dia": null,
+  "celebra_mes": null,
+  "fiestas_habituales": []
+ },
+ "05186000501": {
+  "nombre": "Virgen de la Vega",
+  "dia": 8,
+  "mes": 9,
+  "fuente": "wikipedia",
+  "confianza": "alta",
+  "ambito": "localidad",
+  "celebra_dia": null,
+  "celebra_mes": null,
+  "fiestas_habituales": [
+   "Ferias - Ferias de San Bartolomé, agosto (feria ganadera)",
+   "Carnaval - Carnaval, febrero (14-18 de febrero)",
+   "Semana Santa - Semana Santa, Semana Santa (procesiones y cofradías)",
+   "Romeria - Virgen de la Vega, primer lunes después del domingo de Pentecostés",
+   "Fiestas de barrios, pedanías o aldeas - Fiestas de Piedrahíta de Castro, 3-17 de agosto",
+   "Ferias - Piedrahíta Goyesca, verano (Feria del Ganado y Feria del Caballo)",
+   "Fiestas de barrios, pedanías o aldeas - Fiestas en Honor a Ntra. Sra. Virgen de la Vega, verano",
+   "Fiestas de barrios, pedanías o aldeas - Fiestas de El Soto, primavera",
+   "Fiestas de barrios, pedanías o aldeas - Casas de Sebastián Pérez y Pesquera, invierno"
+  ]
+ },
+ "05186000101": {
+  "nombre": "Inmaculada Concepción",
+  "dia": 8,
+  "mes": 12,
+  "fuente": "llm",
+  "confianza": "alta",
+  "ambito": "localidad",
+  "celebra_dia": 9,
+  "celebra_mes": 12,
+  "fiestas_habituales": []
+ },
+ "05186000201": {
+  "nombre": "San Miguel Arcángel",
+  "dia": 29,
+  "mes": 9,
+  "fuente": "busqueda",
+  "confianza": "alta",
+  "ambito": "localidad",
+  "celebra_dia": 14,
+  "celebra_mes": 8,
+  "fiestas_habituales": [
+   "Patronales - San Miguel Arcángel, 14-17 agosto (misa solemne, procesión y verbenas)",
+   "Fiestas de barrios, pedanías o aldeas del municipio - San Antonio, 13 de junio (festividad en honor a San Antonio)"
+  ]
+ },
+ "05186000301": {
+  "nombre": "Sebastián de Milán",
+  "dia": null,
+  "mes": null,
+  "fuente": "wikipedia",
+  "confianza": "baja",
+  "ambito": "localidad",
+  "celebra_dia": 20,
+  "celebra_mes": 1,
+  "fiestas_habituales": [
+   "Patronales - San Sebastián, 16 al 20 de enero (fiestas patronales en honor al santo patrón contra la peste de invierno)"
+  ]
+ },
+ "05186000401": {
+  "nombre": "San Blas",
+  "dia": 3,
+  "mes": 2,
+  "fuente": "busqueda",
+  "confianza": "media",
+  "ambito": "localidad",
+  "celebra_dia": 6,
+  "celebra_mes": 2,
+  "fiestas_habituales": [
+   "Patronales - San Blas, febrero (jornadas de celebración)"
+  ]
+ },
+ "05186000601": {
+  "nombre": "San Juan Bautista",
+  "dia": 24,
+  "mes": 6,
+  "fuente": "wikipedia",
+  "confianza": "alta",
+  "ambito": "localidad",
+  "celebra_dia": 21,
+  "celebra_mes": 6,
+  "fiestas_habituales": [
+   "Patronales - San Juan Bautista, 21 de junio (procesión y festejos)",
+   "Fiestas de El Soto, primavera (actividades populares)",
+   "Festival El Soto, sin fecha específica (inicio de vacaciones)"
+  ]
+ },
+ "05246000101": {
+  "nombre": "Santiago Apóstol",
+  "dia": 25,
+  "mes": 7,
+  "fuente": "busqueda",
+  "confianza": "alta",
+  "ambito": "localidad",
+  "celebra_dia": 25,
+  "celebra_mes": 7,
+  "fiestas_habituales": [
+   "Patronales - Santiago Apóstol, 25 de julio (procesión y verbena)",
+   "Patronales - San Sebastián, 20 de enero (procesión y verbena)",
+   "Patronales - San Pedro, finales de junio (desfiles, concursos, juegos tradicionales)",
+   "Patronales - San Bartolomé, 24 de agosto (eventos religiosos y culturales)"
+  ]
+ },
+ "02063000501": {
+  "nombre": "San Juan Bautista",
+  "dia": 24,
+  "mes": 6,
+  "fuente": "busqueda",
+  "confianza": "media",
+  "ambito": "localidad",
+  "celebra_dia": 21,
+  "celebra_mes": 6,
+  "fiestas_habituales": [
+   "Patronales - San Juan Bautista, 21-25 de junio (procesión, Danza del Zángano, verbena)",
+   "Fiestas del Rosario, 27 de septiembre al 6 de octubre (Mercado Artesanal, procesión)"
+  ]
+ },
+ "02063000101": {
+  "nombre": "San Ildefonso",
+  "dia": 23,
+  "mes": 1,
+  "fuente": "busqueda",
+  "confianza": "media",
+  "ambito": "localidad",
+  "celebra_dia": 23,
+  "celebra_mes": 1,
+  "fiestas_habituales": [
+   "Patronales - San Ildefonso, del 23 al 26 de enero (misa, procesión y verbena)"
+  ]
+ },
+ "02063000201": {
+  "nombre": "San Pascual Bailón",
+  "dia": 17,
+  "mes": 5,
+  "fuente": "busqueda",
+  "confianza": "alta",
+  "ambito": "localidad",
+  "celebra_dia": 17,
+  "celebra_mes": 5,
+  "fiestas_habituales": [
+   "Cruces de Mayo, San Isidro - San Isidro Labrador, mayo (encierros y actividades populares)"
+  ]
+ },
+ "02063000301": {
+  "nombre": "San Antonio",
+  "dia": 13,
+  "mes": 6,
+  "fuente": "wikipedia",
+  "confianza": "alta",
+  "ambito": "localidad",
+  "celebra_dia": null,
+  "celebra_mes": null,
+  "fiestas_habituales": [
+   "Fiestas patronales - Virgen del Pilar, 12 de octubre (misa, procesión con banda de música y aperitivo)"
+  ]
+ },
+ "02063000401": {
+  "nombre": "San Antonio de Padua",
+  "dia": 13,
+  "mes": 6,
+  "fuente": "busqueda",
+  "confianza": "media",
+  "ambito": "localidad",
+  "celebra_dia": 12,
+  "celebra_mes": 6,
+  "fiestas_habituales": [
+   "Patronales - San Antonio de Padua, del 12 al 14 de junio (misa, procesión y verbena)"
+  ]
+ },
+ "06054000101": {
+  "nombre": "Cristo de las Misericordias",
+  "dia": 15,
+  "mes": 5,
+  "fuente": "llm",
+  "confianza": "media",
+  "ambito": "localidad",
+  "celebra_dia": null,
+  "celebra_mes": null,
+  "fiestas_habituales": [
+   "Romería en honor al Cristo de las Misericordias, 15 de mayo",
+   "Fiesta de Santiago, 25 de julio, 4 días de celebración"
+  ]
+ },
+ "04101000201": {
+  "nombre": "Virgen de las Angustias",
+  "dia": null,
+  "mes": null,
+  "fuente": "wikipedia",
+  "confianza": "baja",
+  "ambito": "localidad",
+  "celebra_dia": null,
+  "celebra_mes": null,
+  "fiestas_habituales": [
+   "Patronales - Virgen de las Angustias, agosto (procesión, verbenas y actividades deportivas)",
+   "Romeria - Romería de San Marcos, epoca no especificada (celebración destacada)",
+   "Fiestas de la Longaniza, últimos días de octubre (reparto de longaniza y tradición matanza)",
+   "Semana Santa, marzo (procesión con borriquitas el Domingo de Ramos)",
+   "Noche de San Juan, junio (celebración tradicional)",
+   "Fiestas del Carmen, julio (mencionada en listado de festividades)"
+  ]
+ },
+ "04101000202": null,
+ "10010000101": {
+  "nombre": "Virgen del Rosario",
+  "dia": 7,
+  "mes": 10,
+  "fuente": "wikipedia",
+  "confianza": "alta",
+  "ambito": "localidad",
+  "celebra_dia": 1,
+  "celebra_mes": 10,
+  "fiestas_habituales": [
+   "Patronales - Virgen del Rosario, primer fin de semana de octubre (procesión y verbena)",
+   "Carnaval - Cabalgata de los Reyes Magos, 5 de enero (desfile y regalos)",
+   "Carnaval - Carnaval de Alcuéscar, febrero (desfile de comparsas)",
+   "Semana Santa - Semana Santa de Alcuéscar, Semana Santa (procesiones y cofradías)",
+   "Romeria - Jira, Lunes de Pascua (procesión y verbena)",
+   "Cruces de Mayo - Cruces de Mayo de Alcuéscar, 1 de mayo (ofrendas y convivencia)",
+   "Feria - Feria de Agosto, agosto (actividades y verbena)",
+   "Feria - Feria de la Tenca y el Vino, tercer fin de semana de mayo (degustaciones y verbena)",
+   "Fiesta - Fiesta del Emigrante, [no date] (homenaje y verbena)",
+   "Fiesta - Día de Extremadura, 8 de septiembre (actos conmemorativos)",
+   "Fiesta - La Chaquetía, [no date] (castañas y nueces)",
+   "Fiesta - La Rejira, domingo siguiente a la Romería (actividades en la finca)"
+  ]
+ },
+ "10021000101": {
+  "nombre": "Virgen de la Luz",
+  "dia": null,
+  "mes": null,
+  "fuente": "wikipedia",
+  "confianza": "baja",
+  "ambito": "localidad",
+  "celebra_dia": null,
+  "celebra_mes": null,
+  "fiestas_habituales": [
+   "Patronales - Virgen de la Luz, agosto (procesión, verbena en La Corredera y concurso de tiro al plato)",
+   "Feria de Septiembre, septiembre (concurso de pesca y actividades tradicionales)"
+  ]
+ },
+ "10012000101": {
+  "nombre": "Virgen de los Remedios",
+  "dia": 8,
+  "mes": 9,
+  "fuente": "wikipedia",
+  "confianza": "alta",
+  "ambito": "localidad",
+  "celebra_dia": 11,
+  "celebra_mes": 11,
+  "fiestas_habituales": [
+   "Patronales - San Martín, 11 de noviembre (misa matinal, procesión y novenas)",
+   "Patronales - Virgen de los Remedios, sin fecha (no se especifica en el texto)",
+   "Romería - Virgen de Fátima, segundo sábado de mayo (procesión y romería)",
+   "Festivales o certamenes - Festival del Tuero, finales de julio (actividades culturales)",
+   "Carnaval - Carnaval de Aldea del Cano, febrero (desfile de comparsas)"
+  ]
+ },
+ "06153000501": {
+  "nombre": "Santiago Apóstol",
+  "dia": 25,
+  "mes": 7,
+  "fuente": "wikipedia",
+  "confianza": "alta",
+  "ambito": "localidad",
+  "celebra_dia": 25,
+  "celebra_mes": 7,
+  "fiestas_habituales": [
+   "Patronales - Santiago y Santa Ana, 25 de julio (novilladas, feria, verbena y espectáculos pirotécnicos)",
+   "Carnaval - Carnaval de Villanueva de la Serena, febrero (desfile de comparsas y manteo del pelele)",
+   "Semana Santa - Semana Santa de Villanueva de la Serena, marzo (procesiones y actos religiosos)",
+   "Romeria - Fiestas de la Santa Cruz, 3 de mayo (procesión, romería y verbena)",
+   "Patronales - San Bartolomé, 24 de agosto (procesión, concurso de sandía y melones, y verbena)",
+   "Feria - Feria de la Tortilla de Patatas, 20 de septiembre (actividades gastronómicas y culturales)",
+   "Fiestas de barrios - Fiestas de la Plaza Salamanca, 8 de septiembre (actuaciones y celebraciones)",
+   "Fiestas de barrios - Fiestas del Corazón de Jesús, mediados de junio (actividades religiosas y culturales)",
+   "Fiestas de barrios - Fiestas de la Virgen del Pilar, 12 de octubre (celebración en el barrio del Pilar)"
+  ]
+ },
+ "06153000101": {
+  "nombre": "Santiago y Santa Ana en julio",
+  "dia": 26,
+  "mes": 7,
+  "fuente": "busqueda",
+  "confianza": "alta",
+  "ambito": "localidad",
+  "celebra_dia": null,
+  "celebra_mes": null,
+  "fiestas_habituales": [
+   "Patronales - Santiago y Santa Ana, julio (procesiones y celebraciones populares)",
+   "Romeria - San Isidro, mayo (romeria tradicional con participacion de vecinos)"
+  ]
+ },
+ "06153000201": null,
+ "06153000301": {
+  "nombre": "San Isidro Labrador",
+  "dia": 15,
+  "mes": 5,
+  "fuente": "wikipedia",
+  "confianza": "alta",
+  "ambito": "localidad",
+  "celebra_dia": null,
+  "celebra_mes": null,
+  "fiestas_habituales": [
+   "Fiestas patronales - Virgen de Begoña, (caldereta popular)"
+  ]
+ },
+ "06153000401": {
+  "nombre": "San Isidro Labrador",
+  "dia": 15,
+  "mes": 5,
+  "fuente": "wikipedia",
+  "confianza": "alta",
+  "ambito": "localidad",
+  "celebra_dia": null,
+  "celebra_mes": null,
+  "fiestas_habituales": [
+   "Patronales - San Isidro Labrador, sin fecha especificada (inauguración mencionada)",
+   "Carnaval - Carnaval de Valdivia, febrero (desfile de disfraces)",
+   "Semana Santa - Semana Santa, marzo (celebración tradicional)",
+   "Romeria - Día de la Gira, lunes de Pascua (romería al campo)"
+  ]
+ },
+ "06153000601": {
+  "nombre": "La Sagrada Familia",
+  "dia": null,
+  "mes": null,
+  "fuente": "wikipedia",
+  "confianza": "baja",
+  "ambito": "localidad",
+  "celebra_dia": null,
+  "celebra_mes": null,
+  "fiestas_habituales": [
+   "Patronales - Fiestas de la Sagrada Familia, última semana de agosto (verbena y actividades culturales)",
+   "Fiestas mayores - Fiestas Mayores, última semana de agosto (desfiles y conciertos)",
+   "Feria - Feria de Tapas, 23 de mayo (actividades gastronómicas)"
+  ]
+ },
+ "04028000101": {
+  "nombre": "San Lupo",
+  "dia": null,
+  "mes": null,
+  "fuente": "wikipedia",
+  "confianza": "baja",
+  "ambito": "localidad",
+  "celebra_dia": null,
+  "celebra_mes": null,
+  "fiestas_habituales": [
+   "Patronales - San Lupo, agosto (procesión y verbena)",
+   "Patronales - Inmaculada Concepción, diciembre (celebraciones)",
+   "Fiestas mayores - Feria de Agosto, agosto (conciertos y actividades comunitarias)",
+   "Semana Santa - Semana Santa, marzo (procesiones y eventos religiosos)",
+   "Cruces de Mayo - Cruces de Mayo, mayo (decoración y celebraciones)"
+  ]
+ },
+ "02076000102": {
+  "nombre": "San Sebastián",
+  "dia": 20,
+  "mes": 1,
+  "fuente": "wikipedia",
+  "confianza": "alta",
+  "ambito": "localidad",
+  "celebra_dia": 15,
+  "celebra_mes": 8,
+  "fiestas_habituales": [
+   "Patronales - Virgen de la Asunción, 15 de agosto (encierros, festivales taurinos y verbenas)",
+   "Fiesta Local - Reyes Magos, 5 de enero (Auto Sacramental)",
+   "Fiesta Local - San Isidro Labrador, 15 de mayo (procesión y migas)",
+   "Romería - San Isidro, 15 de mayo (procesión y migas)",
+   "Fiesta Local - San Francisco, 4 de octubre",
+   "Semana Santa - Semana Santa, marzo/abril (procesiones solemnes)"
+  ]
+ },
+ "02076000103": {
+  "nombre": "San Crispín",
+  "dia": 25,
+  "mes": 10,
+  "fuente": "llm",
+  "confianza": "media",
+  "ambito": "localidad",
+  "celebra_dia": 5,
+  "celebra_mes": 12,
+  "fiestas_habituales": []
+ },
+ "06030000101": {
+  "nombre": "Santiago Apóstol",
+  "dia": 25,
+  "mes": 7,
+  "fuente": "busqueda",
+  "confianza": "alta",
+  "ambito": "localidad",
+  "celebra_dia": 25,
+  "celebra_mes": 7,
+  "fiestas_habituales": [
+   "Patronales - Santiago Apóstol, 25 de julio (procesión y verbena)",
+   "Romeria - San Sebastián, 20 de enero",
+   "Semana Santa - Semana Santa, marzo (procesiones religiosas)",
+   "Fiesta de verano - Fiesta del Emigrante, 15 de agosto (vaquillas y orquestas)"
+  ]
+ },
+ "02009000101": {
+  "nombre": "Francisco de Asís",
+  "dia": null,
+  "mes": null,
+  "fuente": "wikipedia",
+  "confianza": "baja",
+  "ambito": "localidad",
+  "celebra_dia": 30,
+  "celebra_mes": 4,
+  "fiestas_habituales": [
+   "Patronales - Virgen de Belén, abril-mayo (fiestas mayores con moros y cristianos, embajada mora y verbena)",
+   "Feria - Feria de Almansa, agosto-septiembre (actividades agrícolas, ganaderas y de ocio)",
+   "Fiestas de barrios - San Isidro, mediados de mayo (procesiones y actos culturales)",
+   "Fiestas de barrios - San Juan, tercera semana de junio (hogueras y tradiciones)",
+   "Fiestas de barrios - San Juan, 24 de junio (procesión y verbena)",
+   "Semana Santa - Semana Santa de Almansa, marzo-abril (procesiones y cofradías)",
+   "Romería - Virgen de Belén, agosto (celebración en el Santuario de Nuestra Señora de Belén)"
+  ]
+ },
+ "04001000101": {
+  "nombre": "Santos Mártires",
+  "dia": null,
+  "mes": null,
+  "fuente": "wikipedia",
+  "confianza": "baja",
+  "ambito": "localidad",
+  "celebra_dia": 19,
+  "celebra_mes": 4,
+  "fiestas_habituales": [
+   "Patronales - Santos Mártires, 19-21 de abril (procesión y verbena)",
+   "Patronales - San Segundo, [epoca] (detalle)",
+   "Carnaval - Carnaval de Abla, febrero (desfile de comparsas)",
+   "Semana Santa - Semana Santa de Abla, marzo (procesiones)",
+   "Romerías - Las Lumbres, 16 y 19 de enero (celebraciones en plazas)",
+   "Ferias - La Merendica, [epoca] (verbena popular en Montagón)",
+   "Cruces de Mayo - Fiestas de la Candelaria, febrero (tradicionales)",
+   "Cruces de Mayo - Fiestas de San Isidro, mayo (agricultura)",
+   "Fiestas estivales - Verbena de la Asunción, agosto (bailes y fuegos artificiales)",
+   "Fiestas estivales - Santos Mártires, primer fin de semana de agosto (traslado procesional)"
+  ]
+ },
+ "04001000301": {
+  "nombre": "San Segundo y las celebraciones de Semana",
+  "dia": null,
+  "mes": null,
+  "fuente": "busqueda",
+  "confianza": "baja",
+  "ambito": "localidad",
+  "celebra_dia": null,
+  "celebra_mes": null,
+  "fiestas_habituales": [
+   "Patronales - San Segundo, sin fecha especificada",
+   "Semana Santa - Celebraciones de Semana Santa, marzo-abril (procesiones y actos religiosos)"
+  ]
+ },
+ "04001000901": null,
+ "05016000101": {
+  "nombre": "San Vitorino Mártir",
+  "dia": null,
+  "mes": null,
+  "fuente": "wikipedia",
+  "confianza": "baja",
+  "ambito": "localidad",
+  "celebra_dia": 7,
+  "celebra_mes": 7,
+  "fiestas_habituales": [
+   "Patronales - San Vitorino Mártir, 3 al 12 de julio (ferias, encierros, conciertos y corridas de toros)",
+   "Carnaval - Carnaval de Arévalo, 15 al 18 de febrero (desfile, concurso de disfraces y entierro de la sardina)",
+   "Semana Santa - Semana Santa de Arévalo, Semana Santa (procesiones y actos religiosos)",
+   "Patronales - Virgen de las Angustias, 9 de febrero (subasta de animales y verbena)",
+   "Ferias - Feria de Muestras, 1 de junio (actividades familiares y comerciales)",
+   "Festivales - Jornadas Ysabelinas, junio (memoria histórica de Isabel la Católica)",
+   "Festivales - ARTÉVALO, julio (artes escénicas en espacios públicos)",
+   "Patronales - San Pedro, 29 de junio (celebración religiosa y actividades)",
+   "Ferias - Ferias de San Victorino, 7 de julio (actividad destacada dentro de las fiestas patronales)"
+  ]
+ },
+ "02073000101": {
+  "nombre": "San Bartolomé",
+  "dia": 24,
+  "mes": 8,
+  "fuente": "wikipedia",
+  "confianza": "alta",
+  "ambito": "localidad",
+  "celebra_dia": 24,
+  "celebra_mes": 8,
+  "fiestas_habituales": [
+   "Patronales - San Bartolomé, finales de agosto (procesiones, verbena y actividades populares)",
+   "Patronales - San Blas, 3 de febrero (fiesta local)",
+   "Carnaval - Carnaval de Tarazona, febrero-marzo (desfiles, concursos de disfraces y verbena)"
+  ]
+ },
+ "09483000101": {
+  "nombre": "San Andrés",
+  "dia": 30,
+  "mes": 11,
+  "fuente": "wikipedia",
+  "confianza": "alta",
+  "ambito": "localidad",
+  "celebra_dia": 2,
+  "celebra_mes": 7,
+  "fiestas_habituales": [
+   "Patronales - Visitación de la Virgen a su prima Santa Isabel, 2 de julio (procesión y verbena)"
+  ]
  }
 }

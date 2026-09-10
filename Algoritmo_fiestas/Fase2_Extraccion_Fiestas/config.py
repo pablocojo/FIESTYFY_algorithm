@@ -176,6 +176,11 @@ PERTENENCIA_MAX_TOKENS = 1500         # Mismo motivo que arriba: los que razonan
 # sobre el programa ya montado, y no por tramos de dias como aquel.
 NUCLEO_MAX_TOKENS = 200
 
+# Agrupar fichas repetidas devuelve listas de indices, no texto: con 400 tokens
+# sobra hasta para una localidad con muchas fiestas. Se pregunta UNA vez por
+# localidad, al final, cuando ya estan todas montadas.
+DEDUP_MAX_TOKENS = 400
+
 # Cuánto texto de las fuentes se le enseña. La medida del 2026-09-04: al juez de
 # procedencia se le daban entre 27 y 422 tokens con 130.000 libres en la ventana.
 # Aquí se va al otro extremo a propósito —decidir de dónde es una fiesta es

@@ -1,42 +1,42 @@
 [
  {
-  "id": "06068000000",
+  "id": "09483000000",
   "tipo": "municipio",
-  "nombre": "Hinojosa del Valle",
-  "provincia": "Badajoz",
-  "comunidad": "Extremadura",
-  "poblacion": 477,
-  "lat": 38.48282136,
-  "lng": -6.185309623,
-  "descripcion_corta": "Descubre la belleza de Hinojosa del Valle, un pueblo rodeado de naturaleza y rica en historia.",
-  "descripcion": "Hinojosa del Valle es un pueblo situado en una depresión del terreno recorrida por el arroyo Botoz, rodeado de montañas y valles. La villa tiene su nombre debido a la planta aromática hinojo que prolifera en la zona. En el pasado, Hinojosa del Valle perteneció al marquesado de Hinojosa y fue fundada en el siglo XIII por Don Pedro Pérez. El pueblo cuenta con una rica historia y patrimonio cultural, incluyendo la Casa de la Encomienda, que fue la residencia de los comendadores de la Orden de Santiago. La villa también es conocida como 'La Jina', un nombre que se debe a la aspiración del -h- y a la construcción en diminutivo femenino apocopado. Hinojosa del Valle ofrece una experiencia única para aquellos que buscan descubrir la naturaleza, la historia y la cultura de esta pequeña villa.",
+  "nombre": "Zazuar",
+  "provincia": "Burgos",
+  "comunidad": "Castilla y León",
+  "poblacion": 198,
+  "lat": 41.69596181,
+  "lng": -3.553979924,
+  "descripcion_corta": "Descubre la belleza natural de Zazuar en la Ribera del Duero",
+  "descripcion": "Zazuar se encuentra en un valle rodeado de montañas y ríos, con una gran variedad de flora y fauna. Pasea por las calles empedradas y descubre su rica historia y cultura. El municipio es conocido por sus paisajes naturales, como el Alto de la Casa y el río Arandilla.",
   "imagenes": {
-   "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Nuestra_Se%C3%B1ora_de_los_%C3%81ngeles_en_Hinojosa_del_Valle.jpg",
-   "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Escudo_de_Hinojosa_del_Valle.svg/120px-Escudo_de_Hinojosa_del_Valle.svg.png"
+   "banner": "https://picsum.photos/seed/zazuar/1200/400",
+   "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Escudo_de_Zazuar_%28Burgos%29.svg/120px-Escudo_de_Zazuar_%28Burgos%29.svg.png"
   },
-  "sitio_web": "https://www.hinojosadelvalle.es",
-  "wikipedia_url": "https://es.wikipedia.org/wiki/Hinojosa_del_Valle",
-  "original_id": "hinojosa-del-valle",
+  "sitio_web": "http://www.zazuar.es",
+  "wikipedia_url": "https://es.wikipedia.org/wiki/Zazuar_(Burgos)",
+  "original_id": "zazuar",
   "es_capital": false
  },
  {
-  "id": "06068000101",
-  "padre_id": "06068000000",
-  "nombre": "Hinojosa del Valle",
-  "provincia": "Badajoz",
-  "comunidad": "Extremadura",
-  "poblacion": 471,
-  "lat": 38.48282136,
-  "lng": -6.185309623,
+  "id": "09483000101",
+  "padre_id": "09483000000",
+  "nombre": "Zazuar",
+  "provincia": "Burgos",
+  "comunidad": "Castilla y León",
+  "poblacion": 197,
+  "lat": 41.69596181,
+  "lng": -3.553979924,
   "es_capital": true,
   "tipo": "pueblo",
-  "sitio_web": "https://www.hinojosadelvalle.es",
-  "wikipedia_url": "https://es.wikipedia.org/wiki/Hinojosa_del_Valle",
-  "descripcion_corta": "Descubre un pueblo con encanto rodeado de naturaleza y riqueza histórica.",
-  "descripcion": "Hinojosa del Valle, conocida como 'La Jina', es un lugar donde la historia se mezcla con la belleza natural. Su nombre evoca el hinojo que crece en la zona y está situada cerca de arroyos y montañas. Explora su pasado medieval y disfruta de sus alrededores.",
+  "sitio_web": "http://www.zazuar.es",
+  "wikipedia_url": "https://es.wikipedia.org/wiki/Zazuar",
+  "descripcion_corta": "Zazuar, un pueblo encaramado en colinas con vistas al río Arandilla.",
+  "descripcion": "Ubicado junto a la Ribera del Duero, Zazuar ofrece paisajes montañosos y campos de viñedos. Su entorno natural es ideal para senderismo y disfrutar de la tranquilidad rural.",
   "imagenes": {
-   "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Nuestra_Se%C3%B1ora_de_los_%C3%81ngeles_en_Hinojosa_del_Valle.jpg",
-   "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Escudo_de_Hinojosa_del_Valle.svg/120px-Escudo_de_Hinojosa_del_Valle.svg.png"
+   "banner": "https://commons.wikimedia.org/wiki/Special:FilePath/Bodegas_Zazuar.jpg",
+   "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Escudo_de_Zazuar_%28Burgos%29.svg/120px-Escudo_de_Zazuar_%28Burgos%29.svg.png"
   }
  }
 ]
