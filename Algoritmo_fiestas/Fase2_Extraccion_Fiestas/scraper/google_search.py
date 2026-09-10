@@ -1068,6 +1068,62 @@ def _es_fallo_estable(motivo: str) -> bool:
     return motivo not in _MOTIVOS_REINTENTABLES and not motivo.startswith("http_403")
 
 
+# Marca que acompana a todo texto salido de un cartel. No es decorativa: un acto
+# leido de una imagen no tiene la misma fiabilidad que uno leido de HTML, y el
+# juez tiene que poder ser mas severo con el. El cartel de prueba del 2026-09-06
+# era texto negro sobre blanco; los reales llevan tipografias decorativas sobre
+# fondos con dibujos, y un modelo de vision inventa fechas con la misma seguridad
+# con la que acierta.
+MARCA_VISION = "[LEIDO DE IMAGEN POR VLM]"
+
+
+async def _leer_con_vision(imagenes: list, url: str) -> str:
+    """Ultimo recurso cuando un PDF no suelta texto: leerlo como cartel.
+
+    Las dos mitades de esto ya existian y no estaban conectadas. El extractor
+    renderiza las paginas candidatas —filtrando por palabras clave festivas y
+    respetando PDF_MAX_PAGES_VLM— y devuelve las imagenes en el segundo valor de
+    `extract_text_from_pdf`. Aqui se hacia `texto_pdf, _ = ...` y se tiraban.
+    Enfrente, `vision_analyzer.analizar_imagen_directa()` sabia leerlas y no la
+    llamaba nadie.
+
+    Medido en la ejecucion de 20 municipios del 2026-09-10: 6 fichas de 81
+    senalan un PDF o una imagen como programa y devuelven cero actos. Son
+    programas publicados, que el pipeline localiza bien, y de los que no saca
+    nada.
+    """
+    if not imagenes:
+        return ""
+    try:
+        from config import VISION_ENABLED, VISION_MAX_IMAGES_DOC
+        if not VISION_ENABLED:
+            return ""
+        from llm_processor.vision_analyzer import analizar_imagen_directa
+    except Exception as e:
+        logger.debug(f"  [VISION] no disponible ({type(e).__name__}); se omite.")
+        return ""
+
+    trozos = []
+    for img in imagenes[:VISION_MAX_IMAGES_DOC]:
+        try:
+            t = await analizar_imagen_directa(img)
+        except Exception as e:
+            logger.warning(f"  [VISION] fallo leyendo {url[:60]}: {type(e).__name__}")
+            continue
+        if t and t.strip():
+            trozos.append(t.strip())
+
+    if not trozos:
+        return ""
+    logger.info(
+        f"  [VISION] {len(trozos)} pagina(s) leidas como cartel en {url[:70]} "
+        f"({sum(len(t) for t in trozos)} caracteres)."
+    )
+    # La marca va DELANTE de cada trozo, no una sola vez al principio: el texto
+    # se trocea despues en chunks y un encabezado suelto se perderia en el primero.
+    return (chr(10) + chr(10)).join(MARCA_VISION + chr(10) + t for t in trozos)
+
+
 async def _fetch_page_content(
     session: aiohttp.ClientSession, url: str, registro: list | None = None,
 ) -> tuple[str, list[str], list[str]]:
@@ -1161,11 +1217,16 @@ async def _descargar_una_vez(
             if es_pdf:
                 try:
                     from scraper.document_extractor import extract_text_from_pdf
-                    texto_pdf, _ = extract_text_from_pdf(body)
+                    texto_pdf, _imgs_vlm = extract_text_from_pdf(body)
                 except Exception as e:
                     logger.debug(f"No se pudo extraer texto del PDF {url[:80]}: {e}")
                     _anotar(registro, url, f"pdf_ilegible_{type(e).__name__}")
                     return "", [], []
+                if not (texto_pdf or "").strip():
+                    # El PDF es un cartel: ni texto embebido ni OCR aprovechable.
+                    # Antes se devolvia vacio y la fiesta se quedaba sin programa
+                    # aunque estuviera publicado.
+                    texto_pdf = await _leer_con_vision(_imgs_vlm, url)
                 if not (texto_pdf or "").strip():
                     _anotar(registro, url, "pdf_sin_texto")
                 return (texto_pdf or "")[:DDG_CONTENT_MAX_CHARS], [], []

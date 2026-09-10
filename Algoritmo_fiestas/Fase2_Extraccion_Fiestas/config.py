@@ -630,6 +630,11 @@ VISION_MODEL = "qwen_qwen2.5-vl-7b-instruct"   # Identificador del modelo de vis
 VISION_TIMEOUT = 180                  # Timeout por imagen (segundos)
 VISION_MAX_TOKENS = 1200              # Respuesta máxima (los programas largos necesitan espacio)
 VISION_MAX_IMAGES_PER_PROFILE = 10    # Tope de imágenes por perfil y red
+# Tope de paginas de un documento que se leen como cartel. Va bajo a proposito:
+# es el ultimo recurso para un PDF que no ha soltado texto, y cada imagen es una
+# llamada al VLM con su timeout de 180 s. Con dos se cubre el caso normal —un
+# cartel de una cara, a veces dos— sin que una galeria se coma la ejecucion.
+VISION_MAX_IMAGES_DOC = 2
 VISION_MAX_DIM = 1280                 # Redimensionado máximo antes de enviar al VLM
 
 # ─────────────────────────────────────────────
