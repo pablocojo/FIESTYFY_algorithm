@@ -626,7 +626,11 @@ VISION_ENABLED = True
 # leer un cartel.
 #
 # Reparto que queda: chat en OpenRouter, embeddings y visión en LM Studio.
-VISION_MODEL = "qwen_qwen2.5-vl-7b-instruct"   # Identificador del modelo de visión en LM Studio
+# El 2026-09-10 pasa al 9B, que ya esta cargado para el chat y trae su propio
+# mmproj. Antes apuntaba al qwen2.5-vl-7b, que habria que cargar aparte: con
+# 8 GB de VRAM y el modelo de chat dentro, esa segunda carga era justo el
+# tipo de trampa que ya costo una noche con el 27B.
+VISION_MODEL = "lmstudio-community/qwen3.5-9b-nothink"
 VISION_TIMEOUT = 180                  # Timeout por imagen (segundos)
 VISION_MAX_TOKENS = 1200              # Respuesta máxima (los programas largos necesitan espacio)
 VISION_MAX_IMAGES_PER_PROFILE = 10    # Tope de imágenes por perfil y red
