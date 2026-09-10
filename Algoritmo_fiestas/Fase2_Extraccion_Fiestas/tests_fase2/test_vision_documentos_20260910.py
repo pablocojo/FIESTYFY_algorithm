@@ -147,3 +147,73 @@ def test_solo_se_intenta_cuando_el_pdf_no_dio_texto():
     i_guarda = fuente.index('if not (texto_pdf or "").strip():')
     i_vision = fuente.index("_leer_con_vision(")
     assert i_guarda < i_vision, "la visión debe ir DENTRO de la guarda de texto vacío"
+
+
+# ─────────────────────────────────────────────
+# La imagen tiene que llegar al VLM
+# ─────────────────────────────────────────────
+# Añadidos el 2026-09-10, al descubrir que `_leer_con_vision` no podía ejecutarse
+# nunca. Se dispara cuando el texto del PDF está vacío, pero `images_for_vlm`
+# solo se llenaba si el OCR YA había leído más de 20 caracteres con palabras
+# festivas. Texto vacío implicaba lista vacía: la caída a visión era código
+# muerto.
+#
+# El filtro tenía sentido para su propósito original —recoger páginas que el OCR
+# identificó como festivas para que un VLM las relea mejor, porque Tesseract en
+# un cartel a tres columnas lee las palabras y las desordena— pero dejaba fuera
+# justo el caso que más lo necesita.
+
+def test_una_imagen_que_el_ocr_no_lee_se_devuelve_igual():
+    """El caso que motivó el arreglo: un cartel con tipografía decorativa sobre
+    fondo con dibujos derrota a Tesseract pero no a un modelo de visión."""
+    import io as _io
+
+    from PIL import Image
+
+    from scraper.document_extractor import extract_text_from_image
+
+    plana = Image.new("RGB", (900, 600), (120, 90, 160))
+    buf = _io.BytesIO()
+    plana.save(buf, "PNG")
+
+    texto, imagenes = extract_text_from_image(buf.getvalue())
+    assert texto == ""
+    assert len(imagenes) == 1, "sin imagen, el VLM no tiene nada que leer"
+
+
+def test_una_imagen_demasiado_pequena_sigue_descartandose():
+    """El filtro de tamaño es anterior y debe sobrevivir: un icono de 40px no es
+    un cartel, y mandarlo al VLM es gastar una llamada de 180 s en un adorno."""
+    import io as _io
+
+    from PIL import Image
+
+    from scraper.document_extractor import extract_text_from_image
+
+    icono = Image.new("RGB", (40, 40), "white")
+    buf = _io.BytesIO()
+    icono.save(buf, "PNG")
+
+    texto, imagenes = extract_text_from_image(buf.getvalue())
+    assert (texto, imagenes) == ("", [])
+
+
+def test_el_pdf_recoge_la_pagina_aunque_el_ocr_falle():
+    """Misma corrección en la rama de PDF escaneado.
+
+    Comprobado sobre el fuente: construir un PDF ilegible en un test es frágil y
+    lo que importa es que la rama exista, con su tope de páginas como único
+    freno —sin texto no hay palabras clave que filtrar—.
+    """
+    import inspect
+
+    from scraper import document_extractor as de
+
+    fuente = inspect.getsource(de.extract_text_from_pdf)
+    i_ok = fuente.index("if page_text_ocr and len(page_text_ocr.strip()) > 20:")
+    resto = fuente[fuente.index("else:", i_ok):]
+    # El `append` de la rama del fallo, que es el segundo del bloque: el primero
+    # es el de la rama en que el OCR sí leyó.
+    assert "images_for_vlm.append(page_image)" in resto
+    assert "PDF_MAX_PAGES_VLM" in resto
+    assert fuente.count("images_for_vlm.append(page_image)") == 2

@@ -315,7 +315,11 @@ def extract_text_from_image(image_bytes: bytes) -> tuple[str, list]:
         text = text.strip()
 
         if len(text) < 20:
-            return "", []
+            # Sin texto no se puede decidir si la imagen es festiva, pero
+            # tampoco hay nada que perder: se devuelve para que la lea el VLM
+            # si alguien la pide. Devolver la lista vacia dejaba fuera
+            # precisamente los carteles que el OCR no sabe leer.
+            return "", [image.copy()]
             
         images_for_vlm = []
         text_lower = text.lower()
@@ -401,6 +405,21 @@ def extract_text_from_pdf(pdf_bytes: bytes) -> tuple[str, list]:
                             if any(kw in page_text_ocr.lower() for kw in _FIESTA_KEYWORDS):
                                 if len(images_for_vlm) < PDF_MAX_PAGES_VLM:
                                     images_for_vlm.append(page_image)
+                        else:
+                            # El OCR no ha sacado nada de esta pagina. Antes se
+                            # descartaba entera y era justo el caso que mas
+                            # necesitaba al VLM: un cartel con tipografia
+                            # decorativa sobre fondo con dibujos derrota a
+                            # Tesseract pero no a un modelo de vision.
+                            #
+                            # Aqui no se puede filtrar por palabras clave —no hay
+                            # texto donde buscarlas—, asi que el unico freno es el
+                            # tope de paginas. Anadido el 2026-09-10, al descubrir
+                            # que la caida a vision de `_leer_con_vision` no podia
+                            # ejecutarse nunca: se disparaba con el texto vacio, y
+                            # con el texto vacio esta lista tambien lo estaba.
+                            if len(images_for_vlm) < PDF_MAX_PAGES_VLM:
+                                images_for_vlm.append(page_image)
                     except Exception as e:
                         logger.warning(f"Error OCR en página {page_num} del PDF: {e}")
 
