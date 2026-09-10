@@ -4043,6 +4043,59 @@ async def unificar_duplicados(fiestas: list[dict], localidad: dict) -> list[dict
     return [f for i, f in enumerate(fiestas) if i not in descartados]
 
 
+def reconciliar_procedencia(fiesta: dict, indexed_chunks: list[dict]) -> None:
+    """
+    La pagina de la que salio el programa CUENTA como fuente.
+
+    `solo_fuentes_no_oficiales` se calcula en `_validar_fuentes_fiesta`, que corre
+    en discovery y solo mira las fuentes que el LLM declara. Pero `url_programa`
+    —la pagina que el localizador eligio como programa, la prueba mas directa de
+    procedencia que tiene la ficha— se asigna despues, en el enriquecimiento. El
+    campo se decidia antes de existir el dato que mas dice sobre el.
+
+    Resultado medido en la ejecucion de 20 municipios del 2026-09-10: 10 de 81
+    fichas marcaban `solo_fuentes_no_oficiales: True` teniendo su programa en un
+    dominio oficial. En la auditoria del 2026-09-06 eran 15 de 52. Es el campo con
+    el que se filtraria lo dudoso, asi que equivocarse en el 12% de los casos hace
+    mas dano que no tenerlo.
+
+    No se infiere oficialidad por el dominio. La etiqueta se toma de los chunks,
+    que ya la traen del documento: dos criterios que pueden discrepar es peor que
+    uno imperfecto, y si un documento esta mal etiquetado el fallo esta en quien lo
+    etiqueto.
+    """
+    url = (fiesta.get("url_programa") or "").strip()
+    if not url:
+        return
+
+    fuente_doc = next(
+        (c.get("fuente") for c in (indexed_chunks or [])
+         if c.get("url") == url and c.get("fuente")),
+        None,
+    )
+    if not fuente_doc or not es_fuente_oficial(fuente_doc):
+        return
+
+    declaradas = fiesta.get("fuentes")
+    if not isinstance(declaradas, list):
+        declaradas = []
+    if fuente_doc not in declaradas:
+        declaradas.append(fuente_doc)
+        fiesta["fuentes"] = declaradas
+
+    if fiesta.get("solo_fuentes_no_oficiales"):
+        fiesta["solo_fuentes_no_oficiales"] = False
+        # `confianza` NO se toca. `_validar_fuentes_fiesta` la fuerza a baja
+        # cuando no hay fuente oficial, pero pudo bajarla tambien por otros
+        # motivos y aqui no hay forma de saberlo. Subirla a ciegas seria
+        # afirmar una seguridad que nadie ha comprobado.
+        logger.info(
+            f"  [FUENTES] '{fiesta.get('nombre', '')}': el programa sale de "
+            f"{fuente_doc} ({url[:60]}), que es oficial. Se corrige "
+            f"solo_fuentes_no_oficiales, que estaba a True."
+        )
+
+
 async def enrich_festival_program(
     municipio: dict,
     localidad: dict,
@@ -4317,6 +4370,7 @@ async def enrich_festival_program(
     # permite volver al documento.
     if url_programa:
         fiesta["url_programa"] = url_programa
+        reconciliar_procedencia(fiesta, indexed_chunks)
     if hay_programa:
         logger.info(
             f"  [ENRICHMENT] '{nombre_fiesta}': el programa está en "
