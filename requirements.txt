@@ -1,0 +1,52 @@
+# Dependencias de FIESTYFY_algorithm
+#
+# Versiones fijadas a las que funcionan en la máquina de desarrollo
+# (Python 3.11.9, Windows 11). Instalar con:
+#
+#     pip install -r requirements.txt
+#
+# Los extras opcionales están al final, comentados y explicados.
+
+# ─── Núcleo: sin esto no arranca Fase 2 ────────────────────────────────
+aiohttp==3.11.11            # Todo el scraping y las llamadas al LLM son async
+beautifulsoup4==4.13.3      # Parseo de HTML
+soupsieve==2.6              # Selectores CSS de BeautifulSoup
+lxml==5.3.1                 # Backend de parseo de bs4
+fasttext-wheel==0.9.2       # Detección de idioma. OJO: el paquete `fasttext`
+                            # (sin -wheel) necesita compilador C++ en Windows.
+                            # El modelo lid.176.ftz ya viene en el repo.
+
+# ─── Documentos: PDF, OCR e imágenes ───────────────────────────────────
+pdfplumber==0.11.7          # Extracción de PDF con disposición (columnas)
+pdfminer.six==20250506      # Backend de pdfplumber
+pytesseract==0.3.13         # Envoltorio de Tesseract; el BINARIO se instala aparte
+pillow==11.1.0              # Manejo de imágenes para OCR y para el VLM
+
+# ─── Páginas que exigen JavaScript ─────────────────────────────────────
+playwright==1.62.0          # Respaldo cuando aiohttp recibe una página vacía.
+                            # Tras instalarlo: python -m playwright install chromium
+
+# ─── Fase 1 (recogida de datos del INE y Wikipedia) ────────────────────
+requests==2.32.3
+
+# ─── Tests ─────────────────────────────────────────────────────────────
+pytest==9.1.1
+pytest-asyncio==1.4.0
+
+# ─── Opcionales ────────────────────────────────────────────────────────
+#
+# Traducción Opus-MT para comunidades con lengua cooficial. Son ~2,5 GB y NO
+# hacen falta para el trabajo actual: `ejecutar_neutros.py` y `ejecutar_amplio.py`
+# se limitan a comunidades monolingües (COMUNIDADES_MONOLINGUES en
+# ejecutar_neutros.py). Si falta, translate_chunk devuelve el texto sin tocar.
+#
+# transformers==4.48.3
+# torch==2.5.1
+# sentencepiece==0.2.1
+#
+# Módulo de redes sociales. SOLO WINDOWS: automatiza aplicaciones de escritorio.
+# Se evita con la opción --sin-rrss, que es la que usan todas las ejecuciones
+# desatendidas. En Linux no se puede instalar ni hace falta.
+#
+# pywinauto==0.6.9
+# PyAutoGUI==0.9.54
