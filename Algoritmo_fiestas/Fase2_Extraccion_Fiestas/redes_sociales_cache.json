@@ -390,5 +390,21 @@
   "verificado_por": "web_oficial_y_busqueda",
   "fecha_verificacion": "2026-09-10",
   "pendiente_apps": true
+ },
+ "04099000000": {
+  "instagram": null,
+  "facebook": null,
+  "twitter": null,
+  "verificado_por": "web_oficial_y_busqueda",
+  "fecha_verificacion": "2026-09-15",
+  "pendiente_apps": true
+ },
+ "05014000000": {
+  "instagram": "https://www.instagram.com/aytoarenasdesanpedro",
+  "facebook": "https://www.facebook.com/ayuntamiento-arenas-de-san-pedro-662416157177564",
+  "twitter": null,
+  "verificado_por": "web_oficial_y_busqueda",
+  "fecha_verificacion": "2026-09-16",
+  "pendiente_apps": true
  }
 }

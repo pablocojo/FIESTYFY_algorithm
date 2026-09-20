@@ -1,0 +1,5080 @@
+{
+  "version": 2,
+  "anno": 2026,
+  "ultimo_municipio_procesado": "02073000000",
+  "municipios_completados": [
+    "09141000000",
+    "06024000000",
+    "09074000000",
+    "05246000000",
+    "02063000000",
+    "06054000000",
+    "04101000000",
+    "10010000000",
+    "10021000000",
+    "10012000000",
+    "06153000000",
+    "04028000000",
+    "02076000000",
+    "06030000000",
+    "02009000000",
+    "04001000000",
+    "05016000000",
+    "02073000000"
+  ],
+  "localidades_completadas": [
+    "09141000101",
+    "06024000101",
+    "09074000102",
+    "09074000101",
+    "09074000201",
+    "05186000501",
+    "05186000101",
+    "05186000201",
+    "05186000301",
+    "05246000101",
+    "02063000501",
+    "02063000101",
+    "02063000201",
+    "02063000301",
+    "02063000401",
+    "06054000101",
+    "04101000201",
+    "04101000202",
+    "10010000101",
+    "10021000101",
+    "10012000101",
+    "06153000501",
+    "06153000101",
+    "06153000201",
+    "06153000301",
+    "06153000401",
+    "06153000601",
+    "04028000101",
+    "02076000102",
+    "02076000103",
+    "06030000101",
+    "02009000101",
+    "04001000101",
+    "04001000301",
+    "04001000901",
+    "05016000101",
+    "02073000101",
+    "09483000101"
+  ],
+  "fiestas": [
+    {
+      "id": "fuentespina-padre-eterno-2026",
+      "lugar_id": "09141000101",
+      "nombre": "Fiestas de Fuentespina en honor al Padre Eterno",
+      "fecha_inicio": "2026-05-29",
+      "fecha_fin": "2026-06-02",
+      "tamano": "grande",
+      "descripcion": "Celebración en honor al Padre Eterno con chupinazo, procesiones, misas, veladas musicales con orquestas y discomóviles, partidos de fútbol, festival de pelota a mano y actividades infantiles como parques hinchables y juegos tradicionales.",
+      "confianza": "alta",
+      "fuentes": [
+        "busqueda_web",
+        "web_municipio"
+      ],
+      "sede_segun_el_texto": "Fuentespina",
+      "solo_fuentes_no_oficiales": false,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-05-29",
+          "eventos": [
+            {
+              "hora": "20:30",
+              "descripcion": "Chupinazo · Inicio de fiestas. Lanzamiento de cohetes. Amenizado por la Charanga de Fuentespina 'Los Chupitos'"
+            },
+            {
+              "hora": "21:30",
+              "descripcion": "Baile de tarde. Con la Orquesta LA ESTAMPIDA"
+            },
+            {
+              "hora": "01:00",
+              "descripcion": "Gran velada. Con la Orquesta LA ESTAMPIDA"
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-05-30",
+          "eventos": [
+            {
+              "hora": "08:00",
+              "descripcion": "Dianas. Con la charanga 'Los Chupitos'"
+            },
+            {
+              "hora": "12:00",
+              "descripcion": "Pasacalles y Cabezudos. Amenizado por la Charanga 'Los Chupitos'"
+            },
+            {
+              "hora": "16:30",
+              "descripcion": "Parque infantil Salitimbanci. En la explanada de la Ermita"
+            },
+            {
+              "hora": "18:00",
+              "descripcion": "Partido de fútbol. En el estadio municipal de 'La Olmeda'. FUENTESPINA C.F. - TORREGALINDO C.F."
+            },
+            {
+              "hora": "19:30",
+              "descripcion": "Misa y final de la novena a la Santísima Trinidad. En la Ermita del Padre Eterno"
+            },
+            {
+              "hora": "21:30",
+              "descripcion": "Baile de tarde. En la Plaza Mayor. Con la Orquesta KRONOS"
+            },
+            {
+              "hora": "01:00",
+              "descripcion": "Gran velada. En la Plaza Mayor. Con la Orquesta KRONOS"
+            }
+          ]
+        },
+        {
+          "dia": 3,
+          "fecha": "2026-05-31",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "Procesión. Desde la Iglesia hasta la Ermita. Amenizado por dulzaineros"
+            },
+            {
+              "hora": "12:30",
+              "descripcion": "Misa. En la Ermita del Padre Eterno, con la actuación del Coro de Fuentespina, y el grupo de danzas de Fuentespina 'El Carpio'. A continuación, Vino español en el Frontón del Caño"
+            },
+            {
+              "hora": "17:00",
+              "descripcion": "Parque infantil Hamelin. En la explanada de la Ermita"
+            },
+            {
+              "hora": "18:00",
+              "descripcion": "Gran festival de pelota mano. En el Polideportivo Municipal de Fuentespina. PRIMER PARTIDO: SANCHO I - NANCLARES. SEGUNDO PARTIDO: MARÍN V - GARCÍA II. ALTUNA IV - LABAKA. CESTAU - CARRERA"
+            },
+            {
+              "hora": "21:30",
+              "descripcion": "Baile de tarde. En la Plaza Mayor. Con la Orquesta SONIDO"
+            },
+            {
+              "hora": "01:00",
+              "descripcion": "Gran velada. En la Plaza Mayor. Con la Orquesta SONIDO"
+            }
+          ]
+        },
+        {
+          "dia": 4,
+          "fecha": "2026-06-01",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "MISA POR LOS DIFUNTOS DE LA PARROQUIA"
+            },
+            {
+              "hora": "11:30",
+              "descripcion": "DÍA DEL NIÑO - JUEGOS AUTÓCTONOS"
+            },
+            {
+              "hora": "14:00",
+              "descripcion": "BAILE VERMOUT"
+            },
+            {
+              "hora": "21:00",
+              "descripcion": "BAILE DE TARDE"
+            }
+          ]
+        },
+        {
+          "dia": 5,
+          "fecha": "2026-06-02",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "MISA DE ACCION DE GRACIAS"
+            },
+            {
+              "hora": "12:30",
+              "descripcion": "CHOCOLATADA"
+            },
+            {
+              "hora": "14:00",
+              "descripcion": "BAILE VERMOUT Y CONCURSO BAILE DEL LIMON"
+            },
+            {
+              "hora": "21:00",
+              "descripcion": "VELADA FIN DE FIESTA"
+            },
+            {
+              "hora": "00:00",
+              "descripcion": "TRACA FIN DE FIESTAS"
+            }
+          ]
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "url_programa": "https://fuentespina.es/sites/fuentespina/files/Programa Fiestas Padre Eterno 2026_web.pdf",
+      "nucleo_inicio": "2026-05-29",
+      "nucleo_fin": "2026-06-02",
+      "cobertura_dias": 1.0,
+      "programa_estado": "completo",
+      "lat": 41.63166514,
+      "lng": -3.686045376
+    },
+    {
+      "id": "fuentespina-san-miguel-2026",
+      "lugar_id": "09141000101",
+      "nombre": "Fiestas Patronales de San Miguel",
+      "fecha_inicio": "2026-09-25",
+      "fecha_fin": "2026-09-27",
+      "tamano": "grande",
+      "descripcion": "Celebración en honor al patrón San Miguel Arcángel, con procesiones, partidos de fútbol, actividades culturales, verbenas nocturnas con orquesta y traca final. Incluye talleres, juegos autóctonos y eventos religiosos.",
+      "confianza": "media",
+      "fuentes": [
+        "web_municipio",
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Fuentespina",
+      "solo_fuentes_no_oficiales": false,
+      "programa": [],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": true,
+      "patron_trasladado": true,
+      "url_programa": "https://www.fuentespina.es/sites/fuentespina/files/out1462178595449.jpg",
+      "sin_programa_publicado": true,
+      "programa_estado": "no_encontrado",
+      "patron": {
+        "nombre": "San Miguel",
+        "dia": 29,
+        "mes": 9,
+        "fuente": "busqueda"
+      },
+      "lat": 41.63166514,
+      "lng": -3.686045376
+    },
+    {
+      "id": "ancla-fiestas-de-fuentespina-09141000101",
+      "lugar_id": "09141000101",
+      "nombre": "Fiestas de Fuentespina",
+      "fecha_inicio": "2026-07-21",
+      "fecha_fin": "2026-07-22",
+      "tamano": "pequeña",
+      "descripcion": "Fiestas de Fuentespina en Fuentespina, del 21 al 22 de julio de 2026. Fechas recuperadas del texto que las anuncia; sin descripción publicada.",
+      "evidencia": "inicio fuentespina el tiempo max 24o min 6o bienvenido a la web de tu ayuntamiento alojamientos rutas lugares de interes imagenes ultimas noticias 17 07 2026 situacion de alerta por riesgo meteorologico de incendios 19 a 22 de julio 2026 resolucion del director general de prevencion y extincion de incendios forestales por la que se declara situacion de alerta por riesgo meteorologico de incendios forestales para los ",
+      "confianza": "media",
+      "fuentes": [
+        "busqueda_web",
+        "web_municipio"
+      ],
+      "sede_segun_el_texto": "Fuentespina",
+      "solo_fuentes_no_oficiales": false,
+      "programa": [],
+      "origen": "ancla_contexto",
+      "url_programa": "https://www.fuentespina.es/noticia/vuelve-el-otono-cultural-de-fuentespina",
+      "sin_programa_publicado": true,
+      "programa_estado": "no_encontrado",
+      "lat": 41.63166514,
+      "lng": -3.686045376
+    },
+    {
+      "id": "carnaval-de-cabeza-la-vaca-2026",
+      "lugar_id": "06024000101",
+      "nombre": "Carnaval 2026 en Cabeza la Vaca",
+      "fecha_inicio": "2026-02-12",
+      "fecha_fin": "2026-02-19",
+      "tamano": "pequeña",
+      "descripcion": "Carnaval con desfile de la comparsa Batalá, concurso de disfraces y cierre nocturno con DJ Mario Muñoz. Celebración incluye actividades familiares y musicales.",
+      "confianza": "baja",
+      "fuentes": [],
+      "sede_segun_el_texto": "Cabeza la Vaca",
+      "solo_fuentes_no_oficiales": true,
+      "programa": [],
+      "origen": "extraccion",
+      "es_estimada": true,
+      "incluye_dia_patron": false,
+      "url_programa": "https://www.viralagenda.com/es/p/v-FiestadeInteresTuristico",
+      "nucleo_inicio": null,
+      "nucleo_fin": null,
+      "programa_estado": "no_encontrado",
+      "lat": 38.08645081,
+      "lng": -6.420934185
+    },
+    {
+      "id": "cabezalavaca-san-benito-2026",
+      "lugar_id": "06024000101",
+      "nombre": "Feria de San Benito 2026",
+      "fecha_inicio": "2026-07-09",
+      "fecha_fin": "2026-07-12",
+      "tamano": "grande",
+      "descripcion": "Fiesta patronal en honor a San Benito Abad con corridas de toros, procesiones, verbena y discoteca móvil. Combina tradición religiosa y actividades populares.",
+      "confianza": "media",
+      "fuentes": [
+        "web_municipio",
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Cabeza la Vaca",
+      "solo_fuentes_no_oficiales": false,
+      "programa": [],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": true,
+      "url_programa": "https://www.tentudiadirecto.com/agenda/2026-07-09/actividades/10079/7/san-benito-2026-en-cabeza-la-vaca-programacin.html",
+      "sin_programa_publicado": true,
+      "programa_estado": "no_encontrado",
+      "patron": {
+        "nombre": "San Benito",
+        "dia": 11,
+        "mes": 7,
+        "fuente": "wikipedia"
+      },
+      "lat": 38.08645081,
+      "lng": -6.420934185
+    },
+    {
+      "id": "tentu-sound-2026",
+      "lugar_id": "06024000101",
+      "nombre": "Tentu Sound 2026",
+      "fecha_inicio": "2026-08-08",
+      "fecha_fin": "2026-08-08",
+      "tamano": "pequeña",
+      "descripcion": "Concierto musical en el Campo de Fútbol con un cartel que incluye ENYGMA, PEDRÁ, Tributo a Manolo García y otros artistas.",
+      "confianza": "alta",
+      "fuentes": [
+        "web_municipio"
+      ],
+      "sede_segun_el_texto": "Cabeza la Vaca",
+      "solo_fuentes_no_oficiales": false,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-08-08",
+          "eventos": [
+            {
+              "hora": "23:00",
+              "descripcion": "Tentu Sound 2026 - Campo de Fútbol de Cabeza la Vaca. Noche llena de música y entretenimiento organizada por el Ayuntamiento de Cabeza la Vaca en colaboración con Yellow Duck."
+            }
+          ]
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "url_programa": "https://www.viralagenda.com/es/events/1811973/tentu-sound-2026",
+      "nucleo_inicio": "2026-08-08",
+      "nucleo_fin": "2026-08-08",
+      "cobertura_dias": 1.0,
+      "programa_estado": "completo",
+      "lat": 38.08645081,
+      "lng": -6.420934185
+    },
+    {
+      "id": "fiestas-patronales-virgen-agosto-2026",
+      "lugar_id": "06024000101",
+      "nombre": "Fiestas Patronales de la Virgen de Agosto",
+      "fecha_inicio": "2026-08-14",
+      "fecha_fin": "2026-08-18",
+      "tamano": "grande",
+      "descripcion": "Celebración en honor a la Virgen de Agosto con verbena, corrida de toros y otros actos festivos.",
+      "confianza": "baja",
+      "fuentes": [
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Cabeza la Vaca",
+      "solo_fuentes_no_oficiales": true,
+      "programa": [],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "patron_trasladado": true,
+      "url_programa": "https://www.facebook.com/AytoCabezaLaVaca/videos/festival-de-m%C3%BAsica-joven-tentusound%EF%B8%8Fentradas-ya-a-la-venta%EF%B8%8Fya-puedes-adquirir-la/428010839239153/",
+      "sin_programa_publicado": true,
+      "programa_estado": "no_encontrado",
+      "patron": {
+        "nombre": "San Benito",
+        "dia": 11,
+        "mes": 7,
+        "fuente": "wikipedia"
+      },
+      "lat": 38.08645081,
+      "lng": -6.420934185
+    },
+    {
+      "id": "feria-de-la-castana-2026",
+      "lugar_id": "06024000101",
+      "nombre": "Feria de la Castaña 2026",
+      "fecha_inicio": "2026-10-31",
+      "fecha_fin": "2026-11-02",
+      "tamano": "grande",
+      "descripcion": "Fiesta de gran interés gastronómico y cultural centrada en la castaña, celebrada en Cabeza la Vaca. Incluye actividades alrededor del producto local y atrae a visitantes de la región.",
+      "confianza": "media",
+      "fuentes": [
+        "web_municipio",
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Cabeza la Vaca",
+      "solo_fuentes_no_oficiales": false,
+      "programa": [],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "url_programa": "https://cabezalavaca.es/ver.php?pag=94",
+      "nucleo_inicio": null,
+      "nucleo_fin": null,
+      "cobertura_dias": 0.0,
+      "programa_no_recuperado": true,
+      "programa_estado": "no_encontrado",
+      "lat": 38.08645081,
+      "lng": -6.420934185
+    },
+    {
+      "id": "nuestra-senora-de-la-natividad-cardenajimeno-2026",
+      "lugar_id": "09074000102",
+      "nombre": "Nuestra Señora de la Natividad",
+      "fecha_inicio": "2026-09-08",
+      "fecha_fin": "2026-09-08",
+      "tamano": "grande",
+      "descripcion": "Fiesta patronal en honor a Nuestra Señora de la Natividad, incluyendo misa, procesión y verbenas. Celebrada el 8 de septiembre en Cardeñajimeno.",
+      "confianza": "baja",
+      "fuentes": [
+        "web_municipio",
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Cardeñajimeno",
+      "solo_fuentes_no_oficiales": false,
+      "programa": [],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": true,
+      "url_programa": "https://www.defiestaenfiesta.es/fiestas/castilla-y-leon/burgos/cardenajimeno/nuestra-senora-de-la-natividad-08092026",
+      "sin_programa_publicado": true,
+      "programa_estado": "no_encontrado",
+      "patron": {
+        "nombre": "Nuestra Señora de la Natividad",
+        "dia": 8,
+        "mes": 9,
+        "fuente": "llm"
+      },
+      "lat": 42.33091948,
+      "lng": -3.621778053
+    },
+    {
+      "id": "san-emeterio-y-san-celedonio-2026",
+      "lugar_id": "09074000201",
+      "nombre": "Fiestas de San Emeterio y San Celedonio",
+      "fecha_inicio": "2026-03-08",
+      "fecha_fin": "2026-03-08",
+      "tamano": "grande",
+      "descripcion": "Fiesta patronal de San Medel dedicada a San Emeterio y San Celedonio, incluyendo un programa de actos religiosos y populares.",
+      "confianza": "baja",
+      "fuentes": [
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "San Medel",
+      "solo_fuentes_no_oficiales": true,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-03-08",
+          "eventos": [
+            {
+              "hora": "10:00",
+              "descripcion": "Pasacalles a cargo de “Grupo de Gaitas Principado”."
+            },
+            {
+              "hora": "11:00",
+              "descripcion": "Procesión desde la iglesia parroquial de San Roque hasta la ermita de San Emeterio."
+            },
+            {
+              "hora": "12:00",
+              "descripcion": "Misa solemne de campaña en la capilla de San Emeterio, oficiada por el párroco don Ignacio y cantada por el “Ochote Cantos del Fontán”."
+            },
+            {
+              "hora": "12:45",
+              "descripcion": "Actuación de grupos folclóricos: Grupo de Gaitas Principado, Grupo de Baile Tradicional del Suroccidente Asturiano Perendengue (Asociación cultural El Bail.le), Grupo de Danzas Santa Justa (Ubiarco-Cantabria)."
+            },
+            {
+              "hora": "13:30",
+              "descripcion": "Procesión con el Santu hasta la Ermita. Ofrenda del Ramu."
+            },
+            {
+              "hora": "14:00",
+              "descripcion": "Concierto en la Ermita del Ochote Cantos del Fontán."
+            },
+            {
+              "hora": "14:30",
+              "descripcion": "Remate y subasta del Ramu en la plaza de San Emeterio."
+            },
+            {
+              "hora": "",
+              "descripcion": "Comida campestre, con diferentes puestos de comida (parrilla, paella) y bar."
+            },
+            {
+              "hora": "",
+              "descripcion": "Música y bailes tradicionales astur-cántabros."
+            }
+          ]
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "url_programa": "https://www.pimiango.es/single-post/programa-de-fiestas-de-san-emeterio-y-san-celedonio",
+      "nucleo_inicio": "2026-03-08",
+      "nucleo_fin": "2026-03-08",
+      "cobertura_dias": 1.0,
+      "programa_estado": "completo",
+      "patron": {
+        "nombre": "San Emeterio y San Celedonio",
+        "dia": 3,
+        "mes": 3,
+        "fuente": "wikipedia"
+      },
+      "lat": 42.33039807,
+      "lng": -3.600906112
+    },
+    {
+      "id": "san-medel-asuncion-2026",
+      "lugar_id": "09074000201",
+      "nombre": "Fiestas Patronales de Nuestra Señora de la Asunción",
+      "fecha_inicio": "2026-08-28",
+      "fecha_fin": "2026-08-29",
+      "tamano": "pequeña",
+      "descripcion": "Celebración en honor a Nuestra Señora de la Asunción con misa, convite municipal, actuación del mago-humorista Guille Barru y verbena con el grupo Noches de Luna.",
+      "confianza": "media",
+      "fuentes": [
+        "web_municipio",
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "San Medel",
+      "solo_fuentes_no_oficiales": false,
+      "programa": [],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "patron_trasladado": true,
+      "url_programa": "https://www.xn--cardeajimeno-ehb.es/node/892",
+      "sin_programa_publicado": true,
+      "programa_estado": "no_encontrado",
+      "patron": {
+        "nombre": "San Emeterio y San Celedonio",
+        "dia": 3,
+        "mes": 3,
+        "fuente": "wikipedia"
+      },
+      "lat": 42.33039807,
+      "lng": -3.600906112
+    },
+    {
+      "id": "piedrahita-goyesca-2026",
+      "lugar_id": "05186000501",
+      "nombre": "Piedrahíta Goyesca 2026",
+      "fecha_inicio": "2026-06-26",
+      "fecha_fin": "2026-06-28",
+      "tamano": "grande",
+      "descripcion": "Feria agroalimentaria y de artesanía ambientada en el siglo XVIII, con trajes goyescos y actividades culturales. Se celebra siempre el último fin de semana de junio.",
+      "confianza": "alta",
+      "fuentes": [
+        "web_municipio",
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Piedrahíta",
+      "solo_fuentes_no_oficiales": false,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-06-26",
+          "eventos": [
+            {
+              "hora": "17:00",
+              "descripcion": "Inauguración de la exposición Acuarelas de Carlos Madrid en el Espacio Cultural"
+            },
+            {
+              "hora": "20:00",
+              "descripcion": "Apertura de mercado de artesanía y agroalimentario"
+            },
+            {
+              "hora": "20:30",
+              "descripcion": "Concierto en la Plaza Mayor del grupo de dulzaina Filigranas"
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-06-27",
+          "eventos": [
+            {
+              "hora": "09:30",
+              "descripcion": "Inscripción en el Certamen de Pintura Rápida"
+            },
+            {
+              "hora": "11:30",
+              "descripcion": "Apertura de Mercado de Artesanía y Agroalimentario, amenizado con dulzaina Filigranas"
+            },
+            {
+              "hora": "12:00",
+              "descripcion": "Pasacalles goyesco desde el Mascarón del Parque hasta la Plaza Mayor"
+            },
+            {
+              "hora": "12:30",
+              "descripcion": "Pregón, seguido de visita institucional al mercado"
+            },
+            {
+              "hora": "17:00",
+              "descripcion": "Recogida de cuadros del Certamen de Pintura Rápida"
+            },
+            {
+              "hora": "17:45",
+              "descripcion": "Entrega de premios Certamen Pintura Rápida en la Plaza Mayor"
+            },
+            {
+              "hora": "18:00",
+              "descripcion": "Cuenta Cuentos con Natalia Vallejo, en el Espacio Cultural"
+            },
+            {
+              "hora": "19:30",
+              "descripcion": "Bailes goyescos del Grupo Folklórico \"Villa de Madrid\" en el Teatro Somoza"
+            },
+            {
+              "hora": "22:30",
+              "descripcion": "Representación teatral \"Maribel y la extraña familia\", a cargo de la Compañía de Teatro \"Somoza\" en el Patio de Armas del Palacio de los Duques de Alba"
+            }
+          ]
+        },
+        {
+          "dia": 3,
+          "fecha": "2026-06-28",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "Juegos artesanales de madera en la Plaza de España"
+            },
+            {
+              "hora": "13:30",
+              "descripcion": "Clausura del Mercado y de Piedrahíta Goyesca"
+            }
+          ]
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "url_programa": "https://avilared.com/art/92179/xxii-edicion-de-piedrahita-goyesca-2026",
+      "nucleo_inicio": "2026-06-26",
+      "nucleo_fin": "2026-06-27",
+      "cobertura_dias": 1.0,
+      "programa_estado": "completo",
+      "lat": 40.46363354,
+      "lng": -5.327327226
+    },
+    {
+      "id": "feria-del-caballo-2026",
+      "lugar_id": "05186000501",
+      "nombre": "Feria del Caballo",
+      "fecha_inicio": "2026-08-03",
+      "fecha_fin": "2026-08-17",
+      "tamano": "grande",
+      "descripcion": "Feria ganadera centrada en el caballo con actividades como desfiles, concursos y verbena nocturna.",
+      "confianza": "media",
+      "fuentes": [
+        "web_municipio",
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Piedrahíta",
+      "solo_fuentes_no_oficiales": false,
+      "programa": [],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "url_programa": "https://www.aytopiedrahita.com/calendar/action~agenda/page_offset~-1/request_format~html",
+      "programa_advocacion_dudosa": true,
+      "nucleo_inicio": null,
+      "nucleo_fin": null,
+      "programa_estado": "no_encontrado",
+      "lat": 40.46363354,
+      "lng": -5.327327226
+    },
+    {
+      "id": "dia-de-las-penas-2026",
+      "lugar_id": "05186000501",
+      "nombre": "Día de las Peñas",
+      "fecha_inicio": "2026-08-19",
+      "fecha_fin": "2026-08-21",
+      "tamano": "pequeña",
+      "descripcion": "Evento dentro de la Feria del Ganado centrado en las peñas locales con juegos, pasacalles y fiesta nocturna.",
+      "confianza": "media",
+      "fuentes": [
+        "web_municipio"
+      ],
+      "sede_segun_el_texto": "Piedrahíta",
+      "solo_fuentes_no_oficiales": false,
+      "programa": [],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "url_programa": "https://www.aytopiedrahita.com/calendar/action~agenda/page_offset~-1/request_format~html/",
+      "nucleo_inicio": null,
+      "nucleo_fin": null,
+      "programa_estado": "no_encontrado",
+      "lat": 40.46363354,
+      "lng": -5.327327226
+    },
+    {
+      "id": "feria-del-ganado-2026",
+      "lugar_id": "05186000501",
+      "nombre": "Feria del Ganado",
+      "fecha_inicio": "2026-08-24",
+      "fecha_fin": "2026-08-26",
+      "tamano": "grande",
+      "descripcion": "Feria ganadera con actividades como subasta de ganado, verbena, festejo de rejones y degustación de hamburguesas de avileña.",
+      "confianza": "alta",
+      "fuentes": [
+        "web_municipio",
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Piedrahíta",
+      "solo_fuentes_no_oficiales": false,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-08-24",
+          "eventos": [
+            {
+              "hora": "23:30",
+              "descripcion": "Estrella Disco Show: noche de música y animación"
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-08-25",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "Inauguración de la feria con desfile de gigantes y cabezudos"
+            },
+            {
+              "hora": "12:30",
+              "descripcion": "Jornada técnica: ¿Por qué tener vacas avileñas?"
+            },
+            {
+              "hora": "18:30",
+              "descripcion": "Festejo de Rejones"
+            },
+            {
+              "hora": "23:30",
+              "descripcion": "Verbena con la Orquesta Compás"
+            }
+          ]
+        },
+        {
+          "dia": 3,
+          "fecha": "2026-08-26",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "Desfile de gigantes y cabezudos"
+            },
+            {
+              "hora": "12:30",
+              "descripcion": "Subasta-Concurso de Ganado de Raza Avileña y entrega de premios"
+            },
+            {
+              "hora": "12:30",
+              "descripcion": "Degustación de hamburguesas de avileña"
+            },
+            {
+              "hora": "18:30",
+              "descripcion": "Gran Prix para las Peñas"
+            },
+            {
+              "hora": "23:30",
+              "descripcion": "Verbena con la Orquesta SMS"
+            }
+          ]
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "url_programa": "https://avilared.com/art/93840/programa-feria-ganado-piedrahita-2026-tradicion-cultura-agosto",
+      "nucleo_inicio": null,
+      "nucleo_fin": null,
+      "cobertura_dias": 1.0,
+      "programa_estado": "completo",
+      "lat": 40.46363354,
+      "lng": -5.327327226
+    },
+    {
+      "id": "piedrahita-fiestas-patronales-2026",
+      "lugar_id": "05186000501",
+      "nombre": "Fiestas Patronales en Honor a la Virgen de la Vega",
+      "fecha_inicio": "2026-09-13",
+      "fecha_fin": "2026-09-16",
+      "tamano": "grande",
+      "descripcion": "Celebración anual en honor a la Virgen de la Vega, incluyendo procesiones, misas, verbenas con orquestas, y actividades tradicionales como el Salve en El Alamillo y bailes de jotas. Incluye eventos como el pregón, chupinazo, y conciertos nocturnos.",
+      "confianza": "media",
+      "fuentes": [
+        "web_municipio",
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Piedrahíta",
+      "solo_fuentes_no_oficiales": false,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-09-13",
+          "eventos": [
+            {
+              "hora": "20:00",
+              "descripcion": "Pregón de fiestas a cargo de Mónica Gabriel y Galán y chupinazo desde el balcón del Ayuntamiento"
+            },
+            {
+              "hora": "24:00",
+              "descripcion": "Orquesta D-Shalom"
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-09-14",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "Santa Misa con Procesión, amenizada por la Banda de Música de Piedrahíta. Ofrenda floral y bailes tradicionales en la Plaza de España"
+            },
+            {
+              "hora": "20:00",
+              "descripcion": "Actuación de Carlos Gloria 'Los mejores pasodobles' en el Teatro Somoza"
+            },
+            {
+              "hora": "22:00",
+              "descripcion": "Concierto de la Banda de Música de Piedrahita, en el Teatro Somoza"
+            },
+            {
+              "hora": "24:00",
+              "descripcion": "Orquesta Musical Compás"
+            }
+          ]
+        },
+        {
+          "dia": 3,
+          "fecha": "2026-09-15",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "Santa Misa con Procesión y bailes tradicionales"
+            },
+            {
+              "hora": "23:00",
+              "descripcion": "Orquesta Flamingo"
+            }
+          ]
+        },
+        {
+          "dia": 4,
+          "fecha": "2026-09-16",
+          "eventos": []
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "patron_trasladado": true,
+      "url_programa": "https://avilared.com/art/84482/romeria-de-la-virgen-de-la-vega-en-piedrahita",
+      "nucleo_inicio": "2026-09-14",
+      "nucleo_fin": "2026-09-15",
+      "cobertura_dias": 0.75,
+      "programa_estado": "completo",
+      "patron": {
+        "nombre": "Virgen de la Vega",
+        "dia": 8,
+        "mes": 9,
+        "fuente": "wikipedia"
+      },
+      "lat": 40.46363354,
+      "lng": -5.327327226
+    },
+    {
+      "id": "inmaculada-concepcion-la-almohalla-2026",
+      "lugar_id": "05186000101",
+      "nombre": "Fiesta patronal en honor a la Inmaculada Concepción",
+      "fecha_inicio": "2026-12-09",
+      "fecha_fin": "2026-12-09",
+      "tamano": "pequeña",
+      "descripcion": "Celebración de la festividad de la Inmaculada Concepción en La Almohalla, incluida en el calendario local.",
+      "confianza": "baja",
+      "fuentes": [],
+      "sede_segun_el_texto": "La Almohalla",
+      "solo_fuentes_no_oficiales": true,
+      "programa": [],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": true,
+      "patron_trasladado": true,
+      "url_programa": "https://www.facebook.com/ayuntamientopiedrahita/posts/el-pr%C3%B3ximo-9-de-diciembre-la-almohalla-celebrara-su-festividad-en-honor-a-la-inm/734147695411286/",
+      "sin_programa_publicado": true,
+      "programa_estado": "no_encontrado",
+      "patron": {
+        "nombre": "Inmaculada Concepción",
+        "dia": 8,
+        "mes": 12,
+        "fuente": "llm"
+      },
+      "lat": 40.4596891,
+      "lng": -5.372640513
+    },
+    {
+      "id": "fiesta-en-honor-a-san-antonio-05186000201",
+      "lugar_id": "05186000201",
+      "nombre": "Fiesta en honor a San Antonio",
+      "fecha_inicio": "2026-06-13",
+      "fecha_fin": "2026-06-13",
+      "tamano": "pequeña",
+      "descripcion": "Fiesta de barrio o pedanía en honor a San Antonio, celebrada el 13 de junio según el calendario local.",
+      "confianza": "baja",
+      "fuentes": [
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "La Cañada",
+      "solo_fuentes_no_oficiales": true,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-06-13",
+          "eventos": [
+            {
+              "hora": "",
+              "descripcion": "Pregón de las fiestas."
+            },
+            {
+              "hora": "",
+              "descripcion": "Cabalgata."
+            },
+            {
+              "hora": "",
+              "descripcion": "Concierto tributo a ABBA."
+            }
+          ]
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "url_programa": "https://herradondepinares.blogspot.com/2026/06/fiesta-de-san-antonio-2026.html",
+      "nucleo_inicio": "2026-06-13",
+      "nucleo_fin": "2026-06-13",
+      "cobertura_dias": 1.0,
+      "programa_estado": "completo",
+      "lat": 40.45743282,
+      "lng": -5.322623512
+    },
+    {
+      "id": "patron-san-miguel-arcangel-05186000201",
+      "lugar_id": "05186000201",
+      "nombre": "Fiestas de San Miguel Arcángel (estimada)",
+      "fecha_inicio": "2026-08-14",
+      "fecha_fin": "2026-08-14",
+      "tamano": "pequeña",
+      "descripcion": "Fiesta anual estimada a partir del día del santo patrón de La Cañada (San Miguel Arcángel, 29 de septiembre). No se encontró programa ni confirmación para este año.",
+      "confianza": "baja",
+      "origen": "santo_patron",
+      "es_estimada": true,
+      "incluye_dia_patron": true,
+      "fuentes": [],
+      "solo_fuentes_no_oficiales": false,
+      "patron": {
+        "nombre": "San Miguel Arcángel",
+        "dia": 29,
+        "mes": 9,
+        "fuente": "busqueda"
+      },
+      "programa": [],
+      "lat": 40.45743282,
+      "lng": -5.322623512
+    },
+    {
+      "id": "casas-de-sebastian-perez-san-sebastian-2026",
+      "lugar_id": "05186000301",
+      "nombre": "Fiestas Patronales en honor a San Sebastián",
+      "fecha_inicio": "2026-01-16",
+      "fecha_fin": "2026-01-20",
+      "tamano": "pequeña",
+      "descripcion": "Celebración en honor a San Sebastián, patrón de Casas de Sebastián Pérez, con actividades como verbena, tapas, pinchos, cuentacuentos y música en directo.",
+      "confianza": "baja",
+      "fuentes": [
+        "busqueda_web",
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Casas de Sebastián Pérez",
+      "solo_fuentes_no_oficiales": true,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-01-16",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "Inauguración de la carpa con tapas y música para todos los gustos"
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-01-17",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "Botellín y pinchos. Disfruta de una buena caña y un buen pincho en la carpa"
+            },
+            {
+              "hora": "17:30",
+              "descripcion": "Cuentacuentos con un punto curioso para que disfruten los más pequeños"
+            },
+            {
+              "hora": "23:30",
+              "descripcion": "Verbena con Timanfaya y sorpresas hasta el amanecer"
+            },
+            {
+              "hora": "23:30",
+              "descripcion": "Bingo con premio de 70 € y línea con premio de 20 €"
+            }
+          ]
+        },
+        {
+          "dia": 3,
+          "fecha": "2026-01-18",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "Misa, procesión y paella con enredos en la carpa"
+            }
+          ]
+        },
+        {
+          "dia": 5,
+          "fecha": "2026-01-20",
+          "eventos": [
+            {
+              "hora": "13:30",
+              "descripcion": "Misa y procesión en honor a San Sebastián"
+            }
+          ]
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": true,
+      "url_programa": "https://navadebejarnet.blogspot.com/2026/01/programa-de-las-fiestas-patronales-de.html",
+      "nucleo_inicio": "2026-01-17",
+      "nucleo_fin": "2026-01-18",
+      "cobertura_dias": 1.0,
+      "programa_estado": "completo",
+      "patron": {
+        "nombre": "Sebastián de Milán",
+        "dia": null,
+        "mes": null,
+        "fuente": "wikipedia"
+      },
+      "lat": 40.47031742,
+      "lng": -5.355763495
+    },
+    {
+      "id": "torcoles-santiago-apostol-2026",
+      "lugar_id": "05246000101",
+      "nombre": "Fiestas en Honor a Santiago Apóstol",
+      "fecha_inicio": "2026-07-22",
+      "fecha_fin": "2026-07-25",
+      "tamano": "grande",
+      "descripcion": "Celebración patronal en honor a Santiago Apóstol con actividades como puesta del chopo, misas, juegos para niños, concursos, discoteca móvil, orquesta en directo y procesiones. Incluye eventos nocturnos con música y premios.",
+      "confianza": "baja",
+      "fuentes": [
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Tórtoles",
+      "solo_fuentes_no_oficiales": true,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-07-22",
+          "eventos": [
+            {
+              "hora": "20:00",
+              "descripcion": "Puesta del chopo (Lugar de encuentro: La Sindical). Iremos a por el chopo acompañados de la charanga posteriormente procederemos a la puesta del chopo y amenizaremos la noche y la madrugada poniendo la enramada por el pueblo acompañados de la charanga y de sangría para todo el que desee acompañarnos."
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-07-23",
+          "eventos": [
+            {
+              "hora": "12:30",
+              "descripcion": "Misa castellana."
+            },
+            {
+              "hora": "17:30",
+              "descripcion": "CAMPEONATO DE MUS Y TUTE: La inscripción será de 5 euros por pareja (se ruega a los participantes que estén a las 17h en la sindical para proceder a la inscripción y a la lectura de normas), esa misma tarde tendrá lugar la final y por la noche se procederá a la entrega de premios los cuales serán: 1ª pareja clasificada: una paletilla y una botella de vino; 2ª pareja clasificada: Lomo; 3ª pareja clasificada: Chorizo y queso."
+            },
+            {
+              "hora": "18:30",
+              "descripcion": "JUEGOS PARA NIÑOS: Atracciones para los más pequeños, castillo hinchable, espuma, etc, tendrá lugar en el puente."
+            },
+            {
+              "hora": "00:00",
+              "descripcion": "Discoteca móvil hasta la madrugada, el que lo desee podrá disfrazarse y habrá 3 premios para los mejores disfraces, durante los descansos se procederá a la entrega de premios de los disfraces y daremos un detalle a los quintos 2011. De madrugada degustaremos el chocolate a cargo de la Asociación."
+            }
+          ]
+        },
+        {
+          "dia": 3,
+          "fecha": "2026-07-24",
+          "eventos": [
+            {
+              "hora": "12:30",
+              "descripcion": "Santa Misa y procesión acompañados por LOS CASTELLANOS. Posteriormente tendrá lugar un aperitivo en el salón."
+            },
+            {
+              "hora": "20:30",
+              "descripcion": "Partido de fútbol entre jóvenes de Tórtoles, al equipo ganador se le entregará una paletilla."
+            },
+            {
+              "hora": "00:00",
+              "descripcion": "Amenizará la noche hasta la madrugada la orquesta DENVER."
+            }
+          ]
+        },
+        {
+          "dia": 4,
+          "fecha": "2026-07-25",
+          "eventos": [
+            {
+              "hora": "12:30",
+              "descripcion": "SANTA MISA: Estáis todos invitados a acompañarnos en la subida a misa y además quien lo desee podrá ir ataviado/a con el traje típico. Saldremos desde el puente."
+            },
+            {
+              "hora": "",
+              "descripcion": "Después de misa le bailaremos a Santiago Apóstol durante la procesión acompañados por el grupo ALTOZANO."
+            },
+            {
+              "hora": "",
+              "descripcion": "Posteriormente procederemos a degustar las típicas patatas revolconas en el aperitivo que tendrá lugar en el salón."
+            }
+          ]
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": true,
+      "url_programa": "https://www.portalfiestas.com/fichafiesta.php?id_fiesta=121537",
+      "nucleo_inicio": "2026-07-23",
+      "nucleo_fin": "2026-07-24",
+      "cobertura_dias": 1.0,
+      "programa_estado": "completo",
+      "patron": {
+        "nombre": "Santiago Apóstol",
+        "dia": 25,
+        "mes": 7,
+        "fuente": "busqueda"
+      },
+      "lat": 40.56060318,
+      "lng": -5.261256884
+    },
+    {
+      "id": "ancla-fiestas-de-tórtoles-05246000101",
+      "lugar_id": "05246000101",
+      "nombre": "Fiestas de Tórtoles",
+      "fecha_inicio": "2026-09-26",
+      "fecha_fin": "2026-09-26",
+      "tamano": "pequeña",
+      "descripcion": "Fiestas de Tórtoles en Tórtoles, el 26 de septiembre de 2026. Fechas recuperadas del texto que las anuncia; sin descripción publicada.",
+      "evidencia": "columna 1 de 3 bop en el ano 2026 son dias inhabiles a efectos laborales retribuidos y no recuperables de conformidad con lo dispuesto en el decreto 9 2025 de 29 de mayo de la junta de castilla y leon b o c y l del dia 2 de junio en el ambito de dicha comunidad los siguientes 1 de enero ano nuevo 6 de enero epifania del senor 2 de abril jueves santo 3 de abril viernes santo 23 de abril fiesta de la comunidad autonoma",
+      "confianza": "media",
+      "fuentes": [
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Tórtoles",
+      "solo_fuentes_no_oficiales": true,
+      "programa": [],
+      "origen": "ancla_contexto",
+      "url_programa": "https://www.portalfiestas.com/fichapoblacion.php?id_fiesta=121537&id_pueblo=12613",
+      "sin_programa_publicado": true,
+      "programa_estado": "no_encontrado",
+      "lat": 40.56060318,
+      "lng": -5.261256884
+    },
+    {
+      "id": "pozohondo-san-juan-bautista-2026",
+      "lugar_id": "02063000501",
+      "nombre": "Fiestas en honor a San Juan Bautista",
+      "fecha_inicio": "2026-06-20",
+      "fecha_fin": "2026-07-04",
+      "tamano": "grande",
+      "descripcion": "Fiestas patronales de Pozohondo en honor a San Juan Bautista, con actividades como dianas, Danza del Zángano, encierros, procesiones, verbenas y comidas populares. Incluye eventos para todos los públicos.",
+      "confianza": "media",
+      "fuentes": [
+        "web_municipio",
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Pozohondo",
+      "solo_fuentes_no_oficiales": true,
+      "programa": [],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": true,
+      "ancla_propuesta": {
+        "fecha_inicio": "2026-06-24",
+        "fecha_fin": "2026-06-25",
+        "peso": 9,
+        "evidencia": "fiestas – pozohondo fiestas las fiestas que se realizan en son muchas y variadas al unir tambien las fiestas de las pedanias podriamos decir que casi todos los meses del ano estos municipios se visten de colorido para celebrar dichas fiestas empezaremos en el mes de enero donde la pedania de campillo de la virgen se viste de gala para cerebrar la festividad de san ildefonso el 23 de enero en febrero es costumbre sali"
+      },
+      "url_programa": "https://objetivosierradealbacete.es/encierro-pozohondo-27-junio-2026/",
+      "sin_programa_publicado": true,
+      "programa_estado": "no_encontrado",
+      "patron": {
+        "nombre": "San Juan Bautista",
+        "dia": 24,
+        "mes": 6,
+        "fuente": "busqueda"
+      },
+      "lat": 38.721017,
+      "lng": -1.910308386
+    },
+    {
+      "id": "pozohondo-virgen-del-rosario-2026",
+      "lugar_id": "02063000501",
+      "nombre": "Fiestas de la Virgen del Rosario",
+      "fecha_inicio": "2026-10-04",
+      "fecha_fin": "2026-10-04",
+      "tamano": "grande",
+      "descripcion": "Fiesta patronal dedicada a la Virgen del Rosario, con novenario, procesión, misa y actos populares. Incluye luminarias, verbena y ofrenda de flores.",
+      "confianza": "media",
+      "fuentes": [
+        "web_municipio",
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Pozohondo",
+      "solo_fuentes_no_oficiales": false,
+      "programa": [],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "url_programa": "https://horariosmisas.com/albacete/pozohondo/parroquia-de-san-juan-bautista-pozohondo/",
+      "sin_programa_publicado": true,
+      "programa_estado": "no_encontrado",
+      "lat": 38.721017,
+      "lng": -1.910308386
+    },
+    {
+      "id": "santa-cecilia-noviembre",
+      "lugar_id": "02063000501",
+      "nombre": "Santa Cecilia",
+      "fecha_inicio": "2026-11-22",
+      "fecha_fin": "2026-11-22",
+      "tamano": "pequeña",
+      "descripcion": "Celebración con luminaria, patatas y concierto en honor a Santa Cecilia, patrona de la música en la Iglesia católica.",
+      "confianza": "baja",
+      "fuentes": [
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Pozohondo",
+      "solo_fuentes_no_oficiales": true,
+      "programa": [],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "url_programa": "https://horariosmisas.com/albacete/pozohondo/parroquia-de-san-juan-bautista-pozohondo/",
+      "sin_programa_publicado": true,
+      "programa_estado": "no_encontrado",
+      "lat": 38.721017,
+      "lng": -1.910308386
+    },
+    {
+      "id": "campillo-de-la-virgen-san-ildefonso-2026",
+      "lugar_id": "02063000101",
+      "nombre": "Fiestas Patronales de San Ildefonso",
+      "fecha_inicio": "2026-01-23",
+      "fecha_fin": "2026-01-26",
+      "tamano": "pequeña",
+      "descripcion": "Celebración en honor a San Ildefonso, patrón de Campillo de la Virgen, con misas, procesiones, verbenas, conciertos y actividades populares.",
+      "confianza": "baja",
+      "fuentes": [
+        "web_municipio",
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Campillo de la Virgen",
+      "solo_fuentes_no_oficiales": false,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-01-23",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "Santa Misa en Honor a San Ildefonso, oficiada por nuestro Párroco Carlos Esparcia Sánchez. A continuación, procesión de nuestro Patrón acompañada de la Banda de Música de Pozohondo."
+            },
+            {
+              "hora": "13:30",
+              "descripcion": "Invitación popular en el Salón del hogar."
+            },
+            {
+              "hora": "18:00",
+              "descripcion": "Actuación de la Cantante Nieves Navarro, que participó en el concurso 'A tu Vera'."
+            },
+            {
+              "hora": "22:00",
+              "descripcion": "Pregón de fiestas en honor a San Ildefonso a cargo de nuestro vecino Pedro Martínez Casas y saluda de la Alcaldesa."
+            },
+            {
+              "hora": "22:30",
+              "descripcion": "Castillo de fuegos artificiales."
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-01-24",
+          "eventos": [
+            {
+              "hora": "17:30",
+              "descripcion": "Degustación de postres (Los vecinos que lo deseen podrán llevar un postre de casa para disfrutar de una merienda juntos)."
+            },
+            {
+              "hora": "22:30",
+              "descripcion": "Verbena popular a cargo del grupo 'DUO LATINO'."
+            }
+          ]
+        },
+        {
+          "dia": 3,
+          "fecha": "2026-01-25",
+          "eventos": [
+            {
+              "hora": "18:30",
+              "descripcion": "Santa Misa."
+            },
+            {
+              "hora": "23:00",
+              "descripcion": "Verbena popular a cargo del grupo 'DÚO LA NOCHE'. En el descanso habrá chocolatada para todos/as, ofrecida por la Asociación Cultural Campillo de la Virgen."
+            }
+          ]
+        },
+        {
+          "dia": 4,
+          "fecha": "2026-01-26",
+          "eventos": []
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": true,
+      "url_programa": "https://www.bandomovil.com/archivos/pozohondo/220120215750_Programa_Campillo_de_la_Virgen_2020.pdf",
+      "programa_de_otro_anno": 2020,
+      "nucleo_inicio": "2026-01-23",
+      "nucleo_fin": "2026-01-25",
+      "cobertura_dias": 0.5,
+      "programa_no_recuperado": true,
+      "programa_estado": "completo",
+      "patron": {
+        "nombre": "San Ildefonso",
+        "dia": 23,
+        "mes": 1,
+        "fuente": "busqueda"
+      },
+      "lat": 38.75979869,
+      "lng": -1.890982552
+    },
+    {
+      "id": "san-pascual-bailon-nava-de-abajo-2026",
+      "lugar_id": "02063000201",
+      "nombre": "Fiestas en honor a San Pascual Bailón",
+      "fecha_inicio": "2026-05-13",
+      "fecha_fin": "2026-05-18",
+      "tamano": "grande",
+      "descripcion": "Celebración patronal de San Pascual Bailón con ofrenda floral, encierros, novillada taurina, feria infantil, verbenas, concursos gastronómicos y actividades populares. Incluye encierros el 16 y 17 de mayo y una novillada sin picadores el 18 de mayo.",
+      "confianza": "media",
+      "fuentes": [
+        "web_municipio",
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Nava de Abajo",
+      "solo_fuentes_no_oficiales": false,
+      "programa": [],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": true,
+      "url_programa": "https://www.facebook.com/profile.php/?id=100091554380746",
+      "sin_programa_publicado": true,
+      "programa_estado": "no_encontrado",
+      "patron": {
+        "nombre": "San Pascual Bailón",
+        "dia": 17,
+        "mes": 5,
+        "fuente": "busqueda"
+      },
+      "lat": 38.66752285,
+      "lng": -1.870593799
+    },
+    {
+      "id": "virgen-del-pilar-nava-de-abajo",
+      "lugar_id": "02063000201",
+      "nombre": "Fiestas en honor a la Virgen del Pilar",
+      "fecha_inicio": "2026-10-11",
+      "fecha_fin": "2026-10-13",
+      "tamano": "pequeña",
+      "descripcion": "Celebración con música, baile y actividades populares los días 11, 12 y 13 de octubre.",
+      "confianza": "baja",
+      "fuentes": [],
+      "sede_segun_el_texto": "Nava de Abajo",
+      "solo_fuentes_no_oficiales": true,
+      "programa": [],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "sin_programa_publicado": true,
+      "programa_estado": "no_encontrado",
+      "lat": 38.66752285,
+      "lng": -1.870593799
+    },
+    {
+      "id": "nava-de-arriba-san-pascual-bailon",
+      "lugar_id": "02063000301",
+      "nombre": "Fiesta de San Pascual Bailón",
+      "fecha_inicio": "2026-05-17",
+      "fecha_fin": "2026-05-17",
+      "tamano": "pequeña",
+      "descripcion": "Celebración religiosa con procesión de niños portando cruces adornadas y posterior merienda comunitaria.",
+      "confianza": "baja",
+      "fuentes": [
+        "web_municipio"
+      ],
+      "sede_segun_el_texto": "Nava de Arriba",
+      "solo_fuentes_no_oficiales": false,
+      "programa": [],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "url_programa": "https://orkestas.es/fiestas/nava-de-arriba-albacete",
+      "sin_programa_publicado": true,
+      "programa_estado": "no_encontrado",
+      "lat": 38.6742699,
+      "lng": -1.918574448
+    },
+    {
+      "id": "nava-de-arriba-san-antonio-padua",
+      "lugar_id": "02063000301",
+      "nombre": "Fiestas Patronales de San Antonio",
+      "fecha_inicio": "2026-06-07",
+      "fecha_fin": "2026-06-15",
+      "tamano": "grande",
+      "descripcion": "Celebración en honor a San Antonio, patrón de la localidad. Incluye pregón de peñas, coronación de reinas y damas, verbena y actos festivos populares.",
+      "confianza": "baja",
+      "fuentes": [
+        "web_municipio",
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Nava de Arriba",
+      "solo_fuentes_no_oficiales": true,
+      "programa": [],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": true,
+      "url_programa": "https://orkestas.es/fiestas/nava-de-arriba-albacete",
+      "sin_programa_publicado": true,
+      "programa_estado": "no_encontrado",
+      "patron": {
+        "nombre": "San Antonio",
+        "dia": 13,
+        "mes": 6,
+        "fuente": "wikipedia"
+      },
+      "lat": 38.6742699,
+      "lng": -1.918574448
+    },
+    {
+      "id": "nava-de-arriba-virgen-del-rosario",
+      "lugar_id": "02063000301",
+      "nombre": "Fiesta de la Virgen del Rosario",
+      "fecha_inicio": "2026-10-04",
+      "fecha_fin": "2026-10-04",
+      "tamano": "pequeña",
+      "descripcion": "Celebración religiosa el primer domingo de octubre, con actividades comunitarias y tradicionales.",
+      "confianza": "baja",
+      "fuentes": [
+        "web_municipio"
+      ],
+      "sede_segun_el_texto": "Nava de Arriba",
+      "solo_fuentes_no_oficiales": false,
+      "programa": [],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "url_programa": "https://orkestas.es/fiestas/nava-de-arriba-albacete",
+      "sin_programa_publicado": true,
+      "programa_estado": "no_encontrado",
+      "lat": 38.6742699,
+      "lng": -1.918574448
+    },
+    {
+      "id": "san-antonio-de-padua-2026",
+      "lugar_id": "02063000401",
+      "nombre": "Fiestas Patronales en honor a San Antonio de Padua",
+      "fecha_inicio": "2026-06-12",
+      "fecha_fin": "2026-06-14",
+      "tamano": "grande",
+      "descripcion": "Celebración de tres días con actos religiosos, música en directo, verbenas, actividades infantiles, procesiones y una alfombra floral en honor al patrón. Incluye fuegos artificiales, conciertos de flamenco y una gazpachada popular.",
+      "confianza": "media",
+      "fuentes": [
+        "web_municipio",
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Los Pocicos",
+      "solo_fuentes_no_oficiales": false,
+      "programa": [],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": true,
+      "url_programa": "https://objetivosierradealbacete.es/fiestas-los-pocicos-pozohondo-2026/",
+      "sin_programa_publicado": true,
+      "programa_estado": "no_encontrado",
+      "patron": {
+        "nombre": "San Antonio de Padua",
+        "dia": 13,
+        "mes": 6,
+        "fuente": "busqueda"
+      },
+      "lat": 38.75231028,
+      "lng": -1.953654354
+    },
+    {
+      "id": "fiestas-patronales-santisimo-cristo-2026",
+      "lugar_id": "06054000101",
+      "nombre": "Fiestas Patronales del Santísimo Cristo de las Misericordias",
+      "fecha_inicio": "2026-09-11",
+      "fecha_fin": "2026-09-15",
+      "tamano": "grande",
+      "descripcion": "Celebración patronal en honor al Santísimo Cristo de las Misericordias, incluyendo actos religiosos, novilladas, verbenas nocturnas con orquestas y DJ, quema de la estampa, y actividades culturales y deportivas. El alcalde anunció el cambio de fechas de 13-17 a 11-15 de septiembre para adaptarse a la participación de los emigrantes.",
+      "confianza": "alta",
+      "fuentes": [
+        "web_municipio",
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Fuente del Maestre",
+      "solo_fuentes_no_oficiales": false,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-09-11",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "Repique General de Campanas anunciando las Fiestas, a cargo de Enrique Simón Fuentes"
+            },
+            {
+              "hora": "23:00",
+              "descripcion": "Discurso Institucional del alcalde D. Juan Antonio Barrios García"
+            },
+            {
+              "hora": "23:00",
+              "descripcion": "Pregón de las Fiestas a cargo de Dña. María José Caleya Zambrano"
+            },
+            {
+              "hora": "23:00",
+              "descripcion": "Proclamación de Reinas, Míster y Damas de las Fiestas"
+            },
+            {
+              "hora": "23:00",
+              "descripcion": "Entrega de Premios a los Mejores Expedientes Académicos y a los Deportistas Fontaneses"
+            },
+            {
+              "hora": "23:00",
+              "descripcion": "Quema de la Estampa del Santísimo Cristo de las Misericordias"
+            },
+            {
+              "hora": "23:00",
+              "descripcion": "Primera Gran verbena amenizada por la Orquesta 'Medievo Tour – Gran Rockset'"
+            },
+            {
+              "hora": "03:00",
+              "descripcion": "Fiesta con Dj Álvaro Lavado, Tuggo y Dj Saavedra (calle El Rascón)"
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-09-12",
+          "eventos": [
+            {
+              "hora": "14:30",
+              "descripcion": "Actuación musical del artista 'Aurelio Gallardo'"
+            },
+            {
+              "hora": "19:30",
+              "descripcion": "Concurso de Camisetas en la calle Corredera"
+            },
+            {
+              "hora": "22:00",
+              "descripcion": "Tributo a Camela en la Plaza Gran Maestre"
+            },
+            {
+              "hora": "23:30",
+              "descripcion": "Verbena amenizada por la Orquesta 'Alejandría The Show' en la Plaza de España"
+            },
+            {
+              "hora": "03:00",
+              "descripcion": "Fiesta con Dj César Pérez, Dj Jacobo Ostos y Dj Óscar Amaya (Caseta de la Juventud)"
+            }
+          ]
+        },
+        {
+          "dia": 3,
+          "fecha": "2026-09-13",
+          "eventos": [
+            {
+              "hora": "14:00",
+              "descripcion": "Degustación de Caldereta para pensionistas en la Plaza de Abastos"
+            },
+            {
+              "hora": "14:00",
+              "descripcion": "Actuación de la Orquesta 'Musical Bahía' en la Plaza Gran Maestre"
+            },
+            {
+              "hora": "18:30",
+              "descripcion": "Corrida Mixta del Arte del Rejoneo en la Plaza de Toros"
+            },
+            {
+              "hora": "21:30",
+              "descripcion": "Tributo a Queen en la Plaza Gran Maestre"
+            },
+            {
+              "hora": "23:00",
+              "descripcion": "Verbena amenizada por la Orquesta 'Nuevo Versalles' en la Plaza de España"
+            },
+            {
+              "hora": "03:00",
+              "descripcion": "Fiesta con Damián Sánchez, Rufino García y Pablo Barroso (calle El Rascón)"
+            }
+          ]
+        },
+        {
+          "dia": 4,
+          "fecha": "2026-09-14",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "Función Religiosa en Honor al Santísimo Cristo de las Misericordias en la Parroquia Nuestra Señora de la Candelaria"
+            },
+            {
+              "hora": "",
+              "descripcion": "Concierto de la Banda de Música de Fuente del Maestre en la Plaza de España (tras finalizar la función religiosa)"
+            },
+            {
+              "hora": "14:00",
+              "descripcion": "Actuación del grupo flamenquito sevillano 'Los Niños de Sevilla' en la Plaza de España"
+            },
+            {
+              "hora": "14:00",
+              "descripcion": "Degustación de 'Paella Valenciana' en la Plaza D. Luis Zambrano"
+            },
+            {
+              "hora": "18:30",
+              "descripcion": "Festejo taurino popular 'Gran Prix' en la Plaza de Toros (lidia de dos vaquillas)"
+            },
+            {
+              "hora": "21:00",
+              "descripcion": "Tributo a Estopa en la Plaza Gran Maestre"
+            },
+            {
+              "hora": "22:30",
+              "descripcion": "Verbena amenizada por la Orquesta 'Museum' en la Plaza de España"
+            }
+          ]
+        },
+        {
+          "dia": 5,
+          "fecha": "2026-09-15",
+          "eventos": [
+            {
+              "hora": "18:30",
+              "descripcion": "Tributo a Luli Pampín en la Plaza Gran Maestre (especial para niños)"
+            },
+            {
+              "hora": "",
+              "descripcion": "Talleres infantiles en la Plaza Gran Maestre"
+            },
+            {
+              "hora": "21:30",
+              "descripcion": "Verbena amenizada por la Orquesta 'Musical Marhaba' en la Plaza de España"
+            },
+            {
+              "hora": "23:00",
+              "descripcion": "Gran Espectáculo de Fuegos Artificiales con Música en el Campo de Fútbol del Polideportivo"
+            }
+          ]
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "patron_trasladado": true,
+      "url_programa": "https://www.fuentedelmaestre.es/ver_noticia.php?id_noticia=10520",
+      "nucleo_inicio": "2026-09-12",
+      "nucleo_fin": "2026-09-14",
+      "cobertura_dias": 1.0,
+      "programa_estado": "completo",
+      "patron": {
+        "nombre": "Cristo de las Misericordias",
+        "dia": 15,
+        "mes": 5,
+        "fuente": "llm"
+      },
+      "lat": 38.52825708,
+      "lng": -6.449292797
+    },
+    {
+      "id": "feria-de-muestras-fuente-del-maestre-2026",
+      "lugar_id": "06054000101",
+      "nombre": "II Feria de Muestras",
+      "fecha_inicio": "2026-11-30",
+      "fecha_fin": "2026-12-02",
+      "tamano": "pequeña",
+      "descripcion": "Feria gastronómica y comercial con stands de productos locales y actividades culturales.",
+      "confianza": "media",
+      "fuentes": [
+        "web_municipio",
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Fuente del Maestre",
+      "solo_fuentes_no_oficiales": false,
+      "programa": [],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "url_programa": "https://www.fuentedelmaestre.es/intranet/sitios/fotos/16.jpg",
+      "sin_programa_publicado": true,
+      "programa_estado": "no_encontrado",
+      "lat": 38.52825708,
+      "lng": -6.449292797
+    },
+    {
+      "id": "viator-virgen-de-las-angustias-2026",
+      "lugar_id": "04101000201",
+      "nombre": "Fiestas Patronales en honor a la Virgen de las Angustias",
+      "fecha_inicio": "2026-10-20",
+      "fecha_fin": "2026-10-24",
+      "tamano": "grande",
+      "descripcion": "Celebración religiosa y popular en honor a la patrona de Viator, incluyendo procesión, verbena, actividades deportivas, exposición y degustación de longaniza tradicional, y conciertos. La fiesta se enmarca en la devoción histórica a la Virgen de las Angustias, con eventos como la bajada de la imagen y el pregón.",
+      "confianza": "media",
+      "fuentes": [
+        "web_municipio",
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Viator",
+      "solo_fuentes_no_oficiales": false,
+      "programa": [],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "url_programa": "https://diocesisalmeria.org/viator-vive-su-semana-grande/",
+      "sin_programa_publicado": true,
+      "programa_estado": "no_encontrado",
+      "lat": 36.88963854,
+      "lng": -2.426531551
+    },
+    {
+      "id": "fiestas-campamento-2026",
+      "lugar_id": "04101000202",
+      "nombre": "Fiestas de Campamento 2026",
+      "fecha_inicio": "2026-06-08",
+      "fecha_fin": "2026-06-14",
+      "tamano": "grande",
+      "descripcion": "Celebración anual organizada por la Asociación Vecinal de Campamento, incluyendo un concurso de carteles, pregón inaugural el 12 de junio y una programación de actividades del 8 al 14 de junio. Se destacan eventos culturales y sociales en el barrio.",
+      "confianza": "baja",
+      "fuentes": [
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Campamento",
+      "solo_fuentes_no_oficiales": true,
+      "programa": [],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "url_programa": "https://avcampamento.org/wp-content/uploads/2026/04/CARTEL_d.pdf",
+      "sin_programa_publicado": true,
+      "programa_estado": "no_encontrado",
+      "lat": 36.89976778,
+      "lng": -2.40647409
+    },
+    {
+      "id": "carnaval-alcuescar-2026",
+      "lugar_id": "10010000101",
+      "nombre": "Carnaval de Alcuéscar",
+      "fecha_inicio": "2026-02-01",
+      "fecha_fin": "2026-02-28",
+      "tamano": "grande",
+      "descripcion": "Celebración del Carnaval con desfile de comparsas, disfraces originales y concurso de chirigotas en el Salón de Actos de la Casa de Cultura. Incluye actividades para todos los públicos.",
+      "confianza": "media",
+      "fuentes": [
+        "web_municipio"
+      ],
+      "sede_segun_el_texto": "Alcuéscar",
+      "solo_fuentes_no_oficiales": false,
+      "programa": [],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "url_programa": "https://www.alcuescar.es/instalaciones-municipales/-/asset_publisher/Q0tD3tJJPFpv/content/id/1849844",
+      "sin_programa_publicado": true,
+      "programa_estado": "no_encontrado",
+      "lat": 39.18018191,
+      "lng": -6.228295545
+    },
+    {
+      "id": "feria-de-la-tenca-y-el-vino-2026",
+      "lugar_id": "10010000101",
+      "nombre": "Feria de la Tenca y el Vino",
+      "fecha_inicio": "2026-05-16",
+      "fecha_fin": "2026-05-17",
+      "tamano": "grande",
+      "descripcion": "Feria alimentaria que promueve la gastronomía y artesanía típica de Alcuéscar, con degustaciones de tenca y vino local, acompañada de animación con charanga.",
+      "confianza": "media",
+      "fuentes": [
+        "web_municipio",
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Alcuéscar",
+      "solo_fuentes_no_oficiales": false,
+      "programa": [],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "url_programa": "https://www.alcuescar.es/fiestas/-/asset_publisher/meAdUnz2AdLb/content/id/1849437",
+      "sin_programa_publicado": true,
+      "programa_estado": "no_encontrado",
+      "lat": 39.18018191,
+      "lng": -6.228295545
+    },
+    {
+      "id": "alcuescar-concurso-bailes-modernos-2026",
+      "lugar_id": "10010000101",
+      "nombre": "Concurso de Bailes Modernos",
+      "fecha_inicio": "2026-08-11",
+      "fecha_fin": "2026-08-13",
+      "tamano": "pequeña",
+      "descripcion": "Competición de baile con categorías infantil, adulta y profesional, celebrada en el auditorio municipal con actuaciones de bailarines locales y nacionales.",
+      "confianza": "media",
+      "fuentes": [
+        "web_municipio"
+      ],
+      "sede_segun_el_texto": "Alcuéscar",
+      "solo_fuentes_no_oficiales": false,
+      "programa": [],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "url_programa": "https://www.bandomovil.com/alcuescar/1597486/0",
+      "sin_programa_publicado": true,
+      "programa_estado": "no_encontrado",
+      "lat": 39.18018191,
+      "lng": -6.228295545
+    },
+    {
+      "id": "dia-de-extremadura-2026",
+      "lugar_id": "10010000101",
+      "nombre": "Día de Extremadura",
+      "fecha_inicio": "2026-09-08",
+      "fecha_fin": "2026-09-08",
+      "tamano": "pequeña",
+      "descripcion": "Celebración del Día de Extremadura con comida popular organizada por el Ayuntamiento y actuación de charanga en las calles del pueblo.",
+      "confianza": "media",
+      "fuentes": [
+        "web_municipio",
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Alcuéscar",
+      "solo_fuentes_no_oficiales": false,
+      "programa": [],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "url_programa": "https://www.alcuescar.es/fiestas/-/asset_publisher/meAdUnz2AdLb/content/id/1849470",
+      "sin_programa_publicado": true,
+      "programa_estado": "no_encontrado",
+      "lat": 39.18018191,
+      "lng": -6.228295545
+    },
+    {
+      "id": "virgen-del-rosario-alcuescar",
+      "lugar_id": "10010000101",
+      "nombre": "Fiestas Patronales en Honor a la Virgen del Rosario",
+      "fecha_inicio": "2026-10-03",
+      "fecha_fin": "2026-10-04",
+      "tamano": "grande",
+      "descripcion": "Celebración patronal principal de Alcuéscar en honor a la Virgen del Rosario. Incluye actos religiosos (ofrenda floral, procesión), festivos tradicionales (rajo) y actividades populares con orquesta y encierros de vaquillas.",
+      "confianza": "media",
+      "fuentes": [
+        "web_municipio",
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Alcuéscar",
+      "solo_fuentes_no_oficiales": false,
+      "programa": [],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "patron_trasladado": true,
+      "url_programa": "https://www.alcuescar.es/fiestas/-/asset_publisher/meAdUnz2AdLb/content/id/1849481",
+      "sin_programa_publicado": true,
+      "programa_estado": "no_encontrado",
+      "patron": {
+        "nombre": "Virgen del Rosario",
+        "dia": 7,
+        "mes": 10,
+        "fuente": "wikipedia"
+      },
+      "lat": 39.18018191,
+      "lng": -6.228295545
+    },
+    {
+      "id": "arroyo-de-la-luz-san-sebastian-2026",
+      "lugar_id": "10021000101",
+      "nombre": "Fiestas Patronales de San Sebastián",
+      "fecha_inicio": "2026-01-18",
+      "fecha_fin": "2026-01-22",
+      "tamano": "grande",
+      "descripcion": "Celebración en honor a San Sebastián, patrón de Arroyo de la Luz, con misa solemne, procesión, hogueras, capeas, dulces típicos y verbenas. Incluye actos del 18 al 22 de enero, con el día central el 20 de enero.",
+      "confianza": "baja",
+      "fuentes": [
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Arroyo de la Luz",
+      "solo_fuentes_no_oficiales": true,
+      "programa": [],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "url_programa": "https://www.festivalesdeespana.com/festival/fiestas-patronales-san-sebastian-arroyo-de-la-luz",
+      "sin_programa_publicado": true,
+      "programa_estado": "no_encontrado",
+      "lat": 39.48368628,
+      "lng": -6.584809566
+    },
+    {
+      "id": "arroyo-de-la-luz-candelas-2026",
+      "lugar_id": "10021000101",
+      "nombre": "Fiestas de Las Candelas",
+      "fecha_inicio": "2026-01-31",
+      "fecha_fin": "2026-02-01",
+      "tamano": "pequeña",
+      "descripcion": "Celebración tradicional con Santa Misa, Luminaria de las Candelas, reparto de chocolate con rosquillas, Bendición de Velas, procesión y actuación musical. Incluye actos el 31 de enero y 1 de febrero.",
+      "confianza": "baja",
+      "fuentes": [
+        "prensa_regional"
+      ],
+      "sede_segun_el_texto": "Arroyo de la Luz",
+      "solo_fuentes_no_oficiales": true,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-01-31",
+          "eventos": [
+            {
+              "hora": "19:00",
+              "descripcion": "Santa Misa"
+            },
+            {
+              "hora": "20:00",
+              "descripcion": "Luminaria de las Candelas y reparto de chocolate con rosquillas"
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-02-01",
+          "eventos": [
+            {
+              "hora": "11:30",
+              "descripcion": "Bendición de Velas seguida de la procesión de Las Candelas"
+            },
+            {
+              "hora": "11:30",
+              "descripcion": "Misa Solemne cantada por el Coro de las Amas de Casa"
+            },
+            {
+              "hora": "11:30",
+              "descripcion": "Subasta de Ofrendas"
+            },
+            {
+              "hora": "11:30",
+              "descripcion": "Actuación de 'El Harriero'"
+            }
+          ]
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "url_programa": "https://www.hoy.es/prov-caceres/tradicionales-fiestas-candelas-celebraran-sabado-20260130081727-nt.html",
+      "nucleo_inicio": "2026-01-31",
+      "nucleo_fin": "2026-02-01",
+      "cobertura_dias": 1.0,
+      "programa_estado": "completo",
+      "lat": 39.48368628,
+      "lng": -6.584809566
+    },
+    {
+      "id": "arroyo-de-la-luz-coles-con-buche-2026",
+      "lugar_id": "10021000101",
+      "nombre": "Fiesta Gastronómica de las Coles con Buche",
+      "fecha_inicio": "2026-02-28",
+      "fecha_fin": "2026-03-01",
+      "tamano": "grande",
+      "descripcion": "Celebración gastronómica dedicada al plato tradicional extremeño, con actividades que combinan cocina, folclore y patrimonio. Reconocida como Fiesta de Interés Turístico de Extremadura.",
+      "confianza": "baja",
+      "fuentes": [
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Arroyo de la Luz",
+      "solo_fuentes_no_oficiales": true,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-02-28",
+          "eventos": [
+            {
+              "hora": "11:00",
+              "descripcion": "Salida de gigantes y cabezudos. Plaza de la Constitución."
+            },
+            {
+              "hora": "12:00",
+              "descripcion": "Talleres de sensaciones: alfarería, artesanía de cuero y castillo hinchable. Plaza de la Constitución."
+            },
+            {
+              "hora": "13:00",
+              "descripcion": "Show cooking: Entre coles y vinos. Degustación de tapas de Justi Díaz y vinos de Bodegas Vachán. Corral de Comedias."
+            },
+            {
+              "hora": "20:00",
+              "descripcion": "Festival Nacional Folclórico Coles con Buche. Cine Teatro Municipal."
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-03-01",
+          "eventos": [
+            {
+              "hora": "11:00",
+              "descripcion": "Ruta sabores con historia. Guiada por la ribera de Huertas. Salida desde el Convento de San Francisco."
+            },
+            {
+              "hora": "13:00",
+              "descripcion": "Pasacalles y animación del grupo folclórico local “El Pandero”. Plaza de la Constitución."
+            },
+            {
+              "hora": "13:30",
+              "descripcion": "Degustación popular de coles con buche. Menú Coles con Buche, pan, bebida y postre. Territorio Joven, c/ Escuelas Graduadas."
+            },
+            {
+              "hora": "16:30",
+              "descripcion": "Baile de las coles con orquesta. Sorteo de 3 cestas de productos. Corral de Comedias."
+            },
+            {
+              "hora": "19:00",
+              "descripcion": "Cine gastronómico: El sabor de las cosas simples. Cine Municipal."
+            }
+          ]
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "url_programa": "https://arroyodelaluz.es/wp-content/uploads/2026/02/Programa-Fiesta-Gastronomica-Coles-con-Buche-2026.pdf",
+      "nucleo_inicio": "2026-02-28",
+      "nucleo_fin": "2026-03-01",
+      "cobertura_dias": 1.0,
+      "programa_estado": "completo",
+      "lat": 39.48368628,
+      "lng": -6.584809566
+    },
+    {
+      "id": "dia-de-la-luz-2026",
+      "lugar_id": "10021000101",
+      "nombre": "Día de la Luz",
+      "fecha_inicio": "2026-04-06",
+      "fecha_fin": "2026-04-06",
+      "tamano": "grande",
+      "descripcion": "Fiesta de Interés Turístico Regional en honor a la Virgen de la Luz, con procesión, carreras de caballos por La Corredera, diana floreada y verbena. Incluye actos religiosos y culturales como la procesión desde la Parroquia de la Asunción hasta el Santuario de Nuestra Señora de la Luz.",
+      "confianza": "baja",
+      "fuentes": [
+        "prensa_regional",
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Arroyo de la Luz",
+      "solo_fuentes_no_oficiales": true,
+      "programa": [],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "url_programa": "https://arroyodelaluz.es/programa-de-fiestas-del-dia-de-la-luz-y-semana-santa-2026/",
+      "sin_programa_publicado": true,
+      "programa_estado": "no_encontrado",
+      "lat": 39.48368628,
+      "lng": -6.584809566
+    },
+    {
+      "id": "festivarroyo-2026",
+      "lugar_id": "10021000101",
+      "nombre": "FestivArroyo 2026",
+      "fecha_inicio": "2026-07-31",
+      "fecha_fin": "2026-08-30",
+      "tamano": "grande",
+      "descripcion": "Programación festiva de verano con actividades culturales, deportivas, musicales y tradicionales, incluyendo procesiones, conciertos, proyecciones de cine de terror, concursos y verbenas.",
+      "confianza": "baja",
+      "fuentes": [
+        "prensa_regional",
+        "https://arroyodelaluz.es/wp-content/uploads/2026/07/Festivarroyo2026.pdf"
+      ],
+      "sede_segun_el_texto": "Arroyo de la Luz",
+      "solo_fuentes_no_oficiales": true,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-07-31",
+          "eventos": [
+            {
+              "hora": "10:00",
+              "descripcion": "Recorrido por diferentes calles de la localidad. Lugar Salida: Plaza de la Constitución."
+            },
+            {
+              "hora": "19:00",
+              "descripcion": "BAILE DE MAYORES. Lugar: Corral de Comedias."
+            },
+            {
+              "hora": "21:00",
+              "descripcion": "PRESENTACIÓN DEL LIBRO LA NIÑA DEL PELO ROJO. Autora: Ana María Rodríguez. Presenta: Eladio Sanjuan. Lugar: Corral de Comedias."
+            },
+            {
+              "hora": "22:30",
+              "descripcion": "RINE DE VERAN. Selección especial de cortometrajes \"Terror en el Castillo\". Proyección del Cortometraje: GIZAKI. Proyección de la Película: LOS PECADORES. Entrada: 3 €. Entrada por la puerta principal del Cine Teatro Municipal."
+            },
+            {
+              "hora": "22:30",
+              "descripcion": "ETERROR EN EL EI. Selección especial de cortometrajes \"Terror en el Castillo\". Proyección del Cortometraje: LA SILLA VACÍA. Proyección de la Película: DEVUÉLVEMELA. Entrada: 3 €. Entrada por la puerta principal del Cine Teatro Municipal."
+            },
+            {
+              "hora": "23:00",
+              "descripcion": "XXII NOCHE DEL TERROR EN EL CONVENTO. Nuevo y mejorado pase de Terror que hará que disfrutes del miedo en primera persona. Entradas del 27 al 31 de julio, en la Universidad Popular de 10:00 a 13:30 horas. Dos turnos de entrada: \"Primer pase: 23:00 h.: Jóvenes entre 10/17 años. \"Segundo Pase: 24:00 h.: Mayores de 17 años. Lugar: Convento de San Francisco. Entradas: 2€."
+            },
+            {
+              "hora": "00:30",
+              "descripcion": "Plaza Constitución."
+            }
+          ]
+        },
+        {
+          "dia": 3,
+          "fecha": "2026-08-02",
+          "eventos": [
+            {
+              "hora": "21:30",
+              "descripcion": "XXXIX FESTIVAL FOLCLÓRICO INTERNACIONAL DE LOS \"PUEBLOS DEL MUNDO\". Grupo Internacional de Kazajistan y Grupo Municipal \"EL HARRIERO\". Lugar: Plaza de la Constitución."
+            },
+            {
+              "hora": "22:30",
+              "descripcion": "CINE. Selección especial de cortometrajes \"Terror en el Castillo\". Proyección del Cortometraje: LAS PUERTAS DE LA ILUSIÓN. Proyección de la Película: NO HABLES CON EXTRAÑOS. Entrada: 3 €. Entrada por la puerta principal del Cine Teatro Municipal."
+            },
+            {
+              "hora": "22:30",
+              "descripcion": "XX EDICIÓN FESTIVAL DE CINE DE TERROR EN EL CINE DE VERANO. Selección especial de cortometrajes \"Terror en el Castillo\". Proyección del Cortometraje: EZPELUZNANTE ACCIÓN A DISTANCIA. Proyección de la Película: 28 ANOS DESPUES EL TEMPLO DE LOS HUESOS. Entrada: 3 €. Entrada por la puerta principal del Cine Teatro Municipal."
+            }
+          ]
+        },
+        {
+          "dia": 7,
+          "fecha": "2026-08-06",
+          "eventos": []
+        },
+        {
+          "dia": 8,
+          "fecha": "2026-08-07",
+          "eventos": [
+            {
+              "hora": "08:00",
+              "descripcion": "CONCURSO DE PESCA INFANTIL EMBALSE DE MOLANO"
+            },
+            {
+              "hora": "10:00",
+              "descripcion": "PASACALLES DE GIGANTES Y CABEZUDOS"
+            },
+            {
+              "hora": "13:00",
+              "descripcion": "CONCURSO DE TAPAS (2 € cada una)"
+            },
+            {
+              "hora": "19:00",
+              "descripcion": "E PETAN"
+            },
+            {
+              "hora": "21:30",
+              "descripcion": "ENTRADA GRATUITA (evento nocturno en Plaza de la Constitución)"
+            },
+            {
+              "hora": "23:30",
+              "descripcion": "CONCIERTO TRIBUTO AL POP ROCK DE LOS 80, 90 Y 00 (Grupo: AGENCIA TRIBUTARIA)"
+            }
+          ]
+        },
+        {
+          "dia": 9,
+          "fecha": "2026-08-08",
+          "eventos": [
+            {
+              "hora": "08:00",
+              "descripcion": "CONCURSO DE PESCA ADULTOS EMBALSE DE MOLANO"
+            },
+            {
+              "hora": "19:00",
+              "descripcion": "BAILE DE MAYORES"
+            },
+            {
+              "hora": "21:30",
+              "descripcion": "RECORRIDO NOCTURNO POR LA VILLA DE ARROYO (Salida: Oficina de Turismo)"
+            },
+            {
+              "hora": "22:30",
+              "descripcion": "CINE RONDALLAS (Entrada Gratuita hasta completar aforo)"
+            }
+          ]
+        },
+        {
+          "dia": 10,
+          "fecha": "2026-08-09",
+          "eventos": [
+            {
+              "hora": "08:00",
+              "descripcion": "CONCURSO DE PESCA INFANTIL Y ADULTOS CHARCA GRANDE Y CHICA"
+            },
+            {
+              "hora": "11:00",
+              "descripcion": "DÍA DE LOS OLLEROS"
+            }
+          ]
+        },
+        {
+          "dia": 11,
+          "fecha": "2026-08-10",
+          "eventos": [
+            {
+              "hora": "10:00",
+              "descripcion": "Recorrido por diferentes calles de la localidad"
+            }
+          ]
+        },
+        {
+          "dia": 12,
+          "fecha": "2026-08-11",
+          "eventos": []
+        },
+        {
+          "dia": 13,
+          "fecha": "2026-08-12",
+          "eventos": []
+        },
+        {
+          "dia": 14,
+          "fecha": "2026-08-13",
+          "eventos": []
+        },
+        {
+          "dia": 15,
+          "fecha": "2026-08-14",
+          "eventos": [
+            {
+              "hora": "09:30",
+              "descripcion": "IV TORNEO 4X4 MIXTO FESTIVOLEY ARROYO. Lugar: Pabellón Polideportivo. Organiza: Club de Voleibol Ntra. Sra. de la Luz. Colabora: Excmo. Ayto. de Arroyo de la Luz."
+            },
+            {
+              "hora": "22:00",
+              "descripcion": "SÍ LO SÉ NO BINGO CON Djs Y MÚSICA. Fiesta musical interactiva que reinventa el bingo tradicional convirtiéndolo en un evento dinámico, combinando cartones para cantar líneas y bingos, un DJ en directo, música de baile, animadores y humor. Lugar: Plaza de la Constitución. Colabora: Excmo. Ayuntamiento de Arroyo de la Luz."
+            }
+          ]
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "url_programa": "https://arroyodelaluz.es/wp-content/uploads/2026/07/Festivarroyo2026.pdf",
+      "programa_advocacion_dudosa": true,
+      "nucleo_inicio": "2026-08-07",
+      "nucleo_fin": "2026-08-11",
+      "cobertura_dias": 0.8,
+      "programa_estado": "completo",
+      "lat": 39.48368628,
+      "lng": -6.584809566
+    },
+    {
+      "id": "festival-del-tuero-2026",
+      "lugar_id": "10012000101",
+      "nombre": "Festival del Tuero",
+      "fecha_inicio": "2026-07-23",
+      "fecha_fin": "2026-07-26",
+      "tamano": "pequeña",
+      "descripcion": "Festival cultural y lúdico centrado en la tradición del Tuero, incluyendo actividades gastronómicas y la preparación de la encina que será quemada en Nochebuena.",
+      "confianza": "media",
+      "fuentes": [
+        "web_municipio",
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Aldea del Cano",
+      "solo_fuentes_no_oficiales": false,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-07-23",
+          "eventos": [
+            {
+              "hora": "19:30",
+              "descripcion": "Actividad 'Abrazar un árbol' organizada por la Asociación de Mujeres de Aldea del Cano en el atrio de la iglesia, calles y plazas"
+            },
+            {
+              "hora": "20:30",
+              "descripcion": "Inauguración en el Museo del Tuero de la exposición de fotografías antiguas 'La nostalgia que deja un emigrante' y la muestra sobre la restauración del reloj de la torre"
+            },
+            {
+              "hora": "21:00",
+              "descripcion": "Taller infantil 'Crea tu Tuero' en el patio del Museo del Tuero"
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-07-24",
+          "eventos": [
+            {
+              "hora": "21:00",
+              "descripcion": "Actividad gastronómica a cargo de la Escuela de Aprendizaje Laboral 'Escala Empleando 24' en el patio del Museo del Tuero (aforo limitado a 150 personas)"
+            },
+            {
+              "hora": "23:00",
+              "descripcion": "Actuación del Grupo Municipal de Coros 'El Trigal' en la plaza Mayor"
+            }
+          ]
+        },
+        {
+          "dia": 3,
+          "fecha": "2026-07-25",
+          "eventos": [
+            {
+              "hora": "20:00",
+              "descripcion": "Tómbola en la plaza Mayor organizada por los mayordomos de la Virgen de los Remedios"
+            }
+          ]
+        },
+        {
+          "dia": 4,
+          "fecha": "2026-07-26",
+          "eventos": [
+            {
+              "hora": "23:00",
+              "descripcion": "Representación de la obra 'La Leyenda del Tuero. El destino de María de Mayorazgo' en el atrio de la iglesia"
+            },
+            {
+              "hora": "00:30",
+              "descripcion": "Fiesta con DJ en la explanada del Centro Cultural, dentro de la Fiesta del Tuero de los Quintos y Quintas 2026"
+            }
+          ]
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "url_programa": "https://www.grada.es/agenda/xi-festival-del-tuero-de-aldea-del-cano/",
+      "nucleo_inicio": "2026-07-24",
+      "nucleo_fin": "2026-07-26",
+      "cobertura_dias": 1.0,
+      "programa_estado": "completo",
+      "lat": 39.28742649,
+      "lng": -6.318676977
+    },
+    {
+      "id": "virgen-de-los-remedios-2026",
+      "lugar_id": "10012000101",
+      "nombre": "Fiestas en Honor a la Virgen de los Remedios y XLIV Semana Cultural",
+      "fecha_inicio": "2026-08-06",
+      "fecha_fin": "2026-08-15",
+      "tamano": "grande",
+      "descripcion": "Celebración patronal en honor a la Virgen de los Remedios, incluyendo la bajada de la Virgen el 6 de agosto, novenas, procesiones, verbenas, festejos taurinos (vaquillas), el tradicional 'Ramo' y la traída del 'Tuero' el 15 de agosto. Actividades culturales, deportivas y musicales durante todo el periodo.",
+      "confianza": "alta",
+      "fuentes": [
+        "web_municipio",
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Aldea del Cano",
+      "solo_fuentes_no_oficiales": false,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-08-06",
+          "eventos": [
+            {
+              "hora": "20:00",
+              "descripcion": "Bajada de Nuestra Señora La Virgen de los Remedios desde la Ermita al Templo Parroquial. A continuación comienzo de solemne novenario."
+            },
+            {
+              "hora": "20:30",
+              "descripcion": "Entrega de Bastón de mando de alcaldía a Nuestra Señora Virgen de los Remedios, en la plaza mayor."
+            },
+            {
+              "hora": "22:00",
+              "descripcion": "Torneo de TUTE, en la Bandeja de la Plaza Mayor. Inscripciones 30 minutos antes de iniciarse las partidas o en el Ayuntamiento (programa aparte)."
+            },
+            {
+              "hora": "22:00",
+              "descripcion": "Proyección de Película para todos los públicos. Lugar: Patio del Museo (programa aparte)."
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-08-07",
+          "eventos": [
+            {
+              "hora": "20:00",
+              "descripcion": "Santa misa. Novena."
+            },
+            {
+              "hora": "21:00",
+              "descripcion": "Torneo de petanca 'XIII memorial de Justiniano Santos' (programa aparte)."
+            },
+            {
+              "hora": "22:00",
+              "descripcion": "Torneo de MUS, en la Bandeja de la Plaza Mayor. Inscripciones 30 minutos antes de iniciarse las partidas o en el Ayuntamiento (programa aparte)."
+            }
+          ]
+        },
+        {
+          "dia": 3,
+          "fecha": "2026-08-08",
+          "eventos": [
+            {
+              "hora": "10:00",
+              "descripcion": "Torneo de fútbol infantil para niños y niñas nacidos/as entre 2013 a 2014 (programa aparte)."
+            },
+            {
+              "hora": "21:00",
+              "descripcion": "Final Torneo de petanca 'XIII Memorial de Justiniano Santos'."
+            },
+            {
+              "hora": "23:00",
+              "descripcion": "Relevo de quintos y quintas 2025. Elección de la Reina y las Damas."
+            },
+            {
+              "hora": "00:30",
+              "descripcion": "Actuación de Tamara Alegre en la plaza mayor."
+            },
+            {
+              "hora": "02:00",
+              "descripcion": "Dj Alti en el campo de fútbol."
+            }
+          ]
+        },
+        {
+          "dia": 4,
+          "fecha": "2026-08-09",
+          "eventos": [
+            {
+              "hora": "07:00",
+              "descripcion": "Charanga los Pintores"
+            },
+            {
+              "hora": "10:30",
+              "descripcion": "Torneo de ping-pong para todas las edades. Lugar: Pabellón deportivo Adrián Manzano"
+            },
+            {
+              "hora": "19:00",
+              "descripcion": "Juegos en el Patio de Museo. Para niños/as con edades de 9 a 11 años (ambos inclusive)"
+            },
+            {
+              "hora": "22:30",
+              "descripcion": "Bingo Solidario. Organizado por Cáritas en la Plaza Mayor"
+            }
+          ]
+        },
+        {
+          "dia": 5,
+          "fecha": "2026-08-10",
+          "eventos": [
+            {
+              "hora": "09:00",
+              "descripcion": "Ruta en bicicleta, a partir de 14 años. Salida desde la Plaza Mayor"
+            },
+            {
+              "hora": "11:30",
+              "descripcion": "Ruta en bicicleta para el resto de edades, por las inmediaciones del pueblo. Salida desde la Plaza Mayor"
+            },
+            {
+              "hora": "19:00",
+              "descripcion": "Juegos en el Patio de Museo. Edades comprendidas entre 3 y 9 años"
+            },
+            {
+              "hora": "22:30",
+              "descripcion": "Actuación del Grupo de Coros el Trigal de Aldea del Cano. En la plaza mayor"
+            }
+          ]
+        },
+        {
+          "dia": 6,
+          "fecha": "2026-08-11",
+          "eventos": [
+            {
+              "hora": "11:30",
+              "descripcion": "Duatlón (atletismo + natación). Inscripción de los participantes, en el ayuntamiento"
+            },
+            {
+              "hora": "20:00",
+              "descripcion": "Gymkana deportiva familiar. Hasta 12 años. Lugar en la Plaza Mayor"
+            },
+            {
+              "hora": "22:30",
+              "descripcion": "Mini-Disco infantil en la Plaza Mayor"
+            },
+            {
+              "hora": "00:00",
+              "descripcion": "Tributo al Loco que Canta, en la Plaza Mayor"
+            }
+          ]
+        },
+        {
+          "dia": 7,
+          "fecha": "2026-08-12",
+          "eventos": [
+            {
+              "hora": "09:00",
+              "descripcion": "Concurso de Pesca Infantil (edades 2 a 17 años) en la Charca del Horno Tejero"
+            },
+            {
+              "hora": "17:00",
+              "descripcion": "Diversión acuática: hinchables y fiesta de la espuma en las inmediaciones de la piscina municipal"
+            },
+            {
+              "hora": "23:00",
+              "descripcion": "Tributo a Fito 8: Fitipaldis en la Plaza Mayor"
+            }
+          ]
+        },
+        {
+          "dia": 8,
+          "fecha": "2026-08-13",
+          "eventos": [
+            {
+              "hora": "10:00",
+              "descripcion": "Torneo de Petanca Infantil (programa aparte)"
+            },
+            {
+              "hora": "19:30",
+              "descripcion": "Juegos populares/tradicionales y Gran Chocolatada en la Plaza Mayor"
+            },
+            {
+              "hora": "21:00",
+              "descripcion": "Placa de la quinta 2016 en el paseo de los Quintos y Quintas"
+            },
+            {
+              "hora": "23:30",
+              "descripcion": "NOCHE TEMÁTICA Typical Spanish (disfraces) amenizada por DJ Miguel Saavedra"
+            }
+          ]
+        },
+        {
+          "dia": 9,
+          "fecha": "2026-08-14",
+          "eventos": [
+            {
+              "hora": "19:00",
+              "descripcion": "Santa Misa. Novena y besamanto"
+            },
+            {
+              "hora": "20:00",
+              "descripcion": "Ramo en Honor a Nuestra Señora la Virgen de los Remedios en el atrio de la Iglesia"
+            },
+            {
+              "hora": "22:00",
+              "descripcion": "Juego, BÚSQUEDA DEL TUERO PERDIDO (inicio en la Plaza Mayor)"
+            },
+            {
+              "hora": "23:00",
+              "descripcion": "Actuación Cuarteto Musical 'Manacor'"
+            }
+          ]
+        },
+        {
+          "dia": 10,
+          "fecha": "2026-08-15",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "Procesión de Ntra. Sra. Virgen de los Remedios."
+            },
+            {
+              "hora": "13:00",
+              "descripcion": "Santa Misa solemne cantada por el Coro el “Trigal”."
+            },
+            {
+              "hora": "13:30",
+              "descripcion": "TRAÍDA DEL TUERO, con sangría para todos en la Plaza Mayor."
+            },
+            {
+              "hora": "22:30",
+              "descripcion": "Gran verbena Popular, amenizada por el cuarteto “Sonarte”."
+            }
+          ]
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "ancla_propuesta": {
+        "fecha_inicio": "2026-08-15",
+        "fecha_fin": "2026-08-15",
+        "peso": 15,
+        "evidencia": "virgen de los remedios - ayuntamiento de aldea del cano - ayuntamiento de aldea del cano version accesible contacto buscador del portal buscar mostrar ayuntamiento languageutil get request show bienvenida del alcalde corporacion municipal actualidad municipal organizacion departamental directorio de personal telefonos de interes servicios municipales organizacion y patrimonio instalaciones municipales enlaces de inte"
+      },
+      "url_programa": "https://www.bandomovil.com/userFiles/YG/YGcdBPROGRAMAFIESTAS.pdf",
+      "nucleo_inicio": null,
+      "nucleo_fin": null,
+      "cobertura_dias": 1.0,
+      "programa_estado": "completo",
+      "patron": {
+        "nombre": "Virgen de los Remedios",
+        "dia": 8,
+        "mes": 9,
+        "fuente": "wikipedia"
+      },
+      "lat": 39.28742649,
+      "lng": -6.318676977
+    },
+    {
+      "id": "san-martin-aldea-del-cano",
+      "lugar_id": "10012000101",
+      "nombre": "Fiestas en Honor a San Martín",
+      "fecha_inicio": "2026-11-11",
+      "fecha_fin": "2026-11-11",
+      "tamano": "pequeña",
+      "descripcion": "Celebración patronal de San Martín con novenas, misa matinal, procesión y verbenas populares. Incluye actividades para niños y la tradicional Ruta del Pincho del Guarrino.",
+      "confianza": "baja",
+      "fuentes": [
+        "web_municipio"
+      ],
+      "sede_segun_el_texto": "Aldea del Cano",
+      "solo_fuentes_no_oficiales": false,
+      "programa": [],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": true,
+      "url_programa": "https://www.festivalesdeespana.com/festival/fiestas-san-martin-aldea-del-cano",
+      "sin_programa_publicado": true,
+      "programa_estado": "no_encontrado",
+      "patron": {
+        "nombre": "Virgen de los Remedios",
+        "dia": 8,
+        "mes": 9,
+        "fuente": "wikipedia"
+      },
+      "lat": 39.28742649,
+      "lng": -6.318676977
+    },
+    {
+      "id": "ancla-fiestas-de-virgen-de-los-remedios-10012000101",
+      "lugar_id": "10012000101",
+      "nombre": "Fiestas de Virgen de los Remedios",
+      "fecha_inicio": "2026-09-08",
+      "fecha_fin": "2026-09-08",
+      "tamano": "pequeña",
+      "descripcion": "Fiestas de Virgen de los Remedios en Aldea del Cano, el 8 de septiembre de 2026. Fechas recuperadas del texto que las anuncia; sin descripción publicada.",
+      "evidencia": "aldea del cano informa - servicio de comunicacion via web proporcionado por bandomovil servicio aldea del cano informa descarga la app vias de comunicacion alternativas correo electronico aldea del cano informa cambio ubicacion mercadillo dia 10 de septiembre publicado ayer a las 10 47 info general se informa a los vecinos y vecinas de la localidad que el mercado del dia 10 de septiembre jueves se cambiara de ubicaci",
+      "confianza": "media",
+      "fuentes": [
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Aldea del Cano",
+      "solo_fuentes_no_oficiales": true,
+      "programa": [],
+      "origen": "ancla_contexto",
+      "url_programa": "https://www.facebook.com/ayuntamientoaldeadelcano/posts/programa-de-fiestas-en-honor-de-la-virgen-de-los-remedios-y-xliv-semana-cultural/1537254914532392/",
+      "sin_programa_publicado": true,
+      "programa_estado": "no_encontrado",
+      "patron": {
+        "nombre": "Virgen de los Remedios",
+        "dia": 8,
+        "mes": 9,
+        "fuente": "wikipedia"
+      },
+      "lat": 39.28742649,
+      "lng": -6.318676977
+    },
+    {
+      "id": "villanueva-de-la-serena-fiestas-patronales-santiago-santa-ana-2026",
+      "lugar_id": "06153000501",
+      "nombre": "Fiestas Patronales de Santiago y Santa Ana",
+      "fecha_inicio": "2026-07-22",
+      "fecha_fin": "2026-07-26",
+      "tamano": "grande",
+      "descripcion": "Celebración de las fiestas patronales en honor a Santiago Apóstol (25 de julio) y Santa Ana (26 de julio), con procesiones, conciertos, feria de día, novilladas, suelta de vaquillas, espectáculos pirotécnicos y actividades culturales. Incluye el encendido oficial del recinto ferial el 22 de julio con la orquesta La Misión.",
+      "confianza": "alta",
+      "fuentes": [
+        "web_municipio",
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Villanueva de la Serena",
+      "solo_fuentes_no_oficiales": false,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-07-22",
+          "eventos": [
+            {
+              "hora": "22:00",
+              "descripcion": "Encendido oficial del recinto ferial y actuación de la orquesta La Misión"
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-07-23",
+          "eventos": [
+            {
+              "hora": "20:00",
+              "descripcion": "Actividades culturales y concierto"
+            },
+            {
+              "hora": "23:00",
+              "descripcion": "Verbena popular"
+            }
+          ]
+        },
+        {
+          "dia": 3,
+          "fecha": "2026-07-24",
+          "eventos": [
+            {
+              "hora": "17:30",
+              "descripcion": "Fiesta del agua infantil con hinchables y espuma"
+            },
+            {
+              "hora": "20:00",
+              "descripcion": "Vísperas solemnes de Santiago Apóstol"
+            },
+            {
+              "hora": "22:00",
+              "descripcion": "Hoguera en la ermita de Santiago"
+            },
+            {
+              "hora": "23:00",
+              "descripcion": "Gran verbena y concierto de víspera"
+            }
+          ]
+        },
+        {
+          "dia": 4,
+          "fecha": "2026-07-25",
+          "eventos": [
+            {
+              "hora": "11:00",
+              "descripcion": "Misa y procesión en honor a Santiago Apóstol"
+            },
+            {
+              "hora": "18:00",
+              "descripcion": "Feria de Día con actuaciones de Nancys Rubias, Manny Calavera, Tomasito y Los Primos Djs"
+            },
+            {
+              "hora": "20:00",
+              "descripcion": "Espectáculo ecuestre en la plaza de toros"
+            },
+            {
+              "hora": "22:30",
+              "descripcion": "Actuación de José Gallardo en la caseta municipal"
+            },
+            {
+              "hora": "20:00",
+              "descripcion": "Feria sin ruido (20:00-23:00)"
+            }
+          ]
+        },
+        {
+          "dia": 5,
+          "fecha": "2026-07-26",
+          "eventos": [
+            {
+              "hora": "08:00",
+              "descripcion": "Suelta de vaquillas en la plaza de toros"
+            },
+            {
+              "hora": "11:00",
+              "descripcion": "Misa y procesión en honor a Santa Ana"
+            },
+            {
+              "hora": "19:00",
+              "descripcion": "Feria de Día con actuaciones de Aurelio Gallardo, Las Ketchup, Ladilla Rusa y DJ Brisa Play"
+            },
+            {
+              "hora": "20:30",
+              "descripcion": "Novillada en la plaza de toros"
+            },
+            {
+              "hora": "23:00",
+              "descripcion": "Verbena de clausura y fin de fiestas"
+            }
+          ]
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": true,
+      "url_programa": "https://lavozext.es/cultura/villanueva-de-la-serena-se-prepara-para-cinco-dias-de-fiesta-por-santiago-y-santa-ana/",
+      "nucleo_inicio": "2026-07-23",
+      "nucleo_fin": "2026-07-26",
+      "cobertura_dias": 1.0,
+      "programa_estado": "completo",
+      "patron": {
+        "nombre": "Santiago Apóstol",
+        "dia": 25,
+        "mes": 7,
+        "fuente": "wikipedia"
+      },
+      "lat": 38.97413341,
+      "lng": -5.80071674
+    },
+    {
+      "id": "san-bartolome-2026",
+      "lugar_id": "06153000501",
+      "nombre": "San Bartolomé",
+      "fecha_inicio": "2026-08-24",
+      "fecha_fin": "2026-08-24",
+      "tamano": "grande",
+      "descripcion": "Fiesta patronal de San Bartolomé con procesión, concurso de sandía y melones, y verbena.",
+      "confianza": "baja",
+      "fuentes": [
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Villanueva de la Serena",
+      "solo_fuentes_no_oficiales": true,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-08-24",
+          "eventos": [
+            {
+              "hora": "",
+              "descripcion": "Misa y posterior procesión del santo"
+            }
+          ]
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "url_programa": "https://villanuevadelaserena.es/eventos/fiestas-de-san-bartolome-apostol-2/",
+      "nucleo_inicio": "2026-08-24",
+      "nucleo_fin": "2026-08-24",
+      "cobertura_dias": 1.0,
+      "programa_estado": "completo",
+      "lat": 38.97413341,
+      "lng": -5.80071674
+    },
+    {
+      "id": "feria-tortilla-2026",
+      "lugar_id": "06153000501",
+      "nombre": "XIII Feria de la Tortilla de Patatas",
+      "fecha_inicio": "2026-09-16",
+      "fecha_fin": "2026-09-19",
+      "tamano": "grande",
+      "descripcion": "Feria gastronómica con concurso regional, conciertos, talleres infantiles y degustaciones. Villanueva de la Serena se convierte en capital gastronómica del 16 al 19 de septiembre.",
+      "confianza": "alta",
+      "fuentes": [
+        "web_municipio"
+      ],
+      "sede_segun_el_texto": "Villanueva de la Serena",
+      "solo_fuentes_no_oficiales": false,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-09-16",
+          "eventos": [
+            {
+              "hora": "20:30",
+              "descripcion": "IV Campeonato Regional Tortilla de Patatas"
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-09-17",
+          "eventos": [
+            {
+              "hora": "21:00",
+              "descripcion": "Gala gastronómica en el restaurante Casa Blanca con amenización musical de Aida&Davide"
+            }
+          ]
+        },
+        {
+          "dia": 3,
+          "fecha": "2026-09-18",
+          "eventos": [
+            {
+              "hora": "21:00",
+              "descripcion": "Inauguración de stands en el Parque de la Constitución con actuación musical del grupo 'Entre notas'"
+            }
+          ]
+        },
+        {
+          "dia": 4,
+          "fecha": "2026-09-19",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "Celebración del pequechef y talleres infantiles"
+            },
+            {
+              "hora": "",
+              "descripcion": "Actuación musical del grupo 'Café al compás'"
+            },
+            {
+              "hora": "16:30",
+              "descripcion": "Concierto del grupo 'La pólvora de la Calle'"
+            },
+            {
+              "hora": "16:30",
+              "descripcion": "Concierto de Miguel Campello"
+            },
+            {
+              "hora": "16:30",
+              "descripcion": "Concierto de Afónica Naranjo"
+            },
+            {
+              "hora": "16:30",
+              "descripcion": "Concierto de Alba Dreid"
+            }
+          ]
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "url_programa": "https://villanuevadelaserena.es/concejalias-ayv/xiii-edicion-feria-de-la-tortilla-de-patatas/",
+      "nucleo_inicio": "2026-09-17",
+      "nucleo_fin": "2026-09-18",
+      "cobertura_dias": 1.0,
+      "programa_estado": "completo",
+      "lat": 38.97413341,
+      "lng": -5.80071674
+    },
+    {
+      "id": "semana-personas-mayores-2026",
+      "lugar_id": "06153000501",
+      "nombre": "Semana de las Personas Mayores 'El mejor momento es ahora'",
+      "fecha_inicio": "2026-09-25",
+      "fecha_fin": "2026-10-03",
+      "tamano": "grande",
+      "descripcion": "Programación con excursiones, talleres, conciertos y una gran convivencia final. Incluye actividades como el taller de queso artesano, teatro y concierto de Tamara Jerez.",
+      "confianza": "media",
+      "fuentes": [
+        "web_municipio",
+        "https://villanuevadelaserena.es/eventos/semana-de-las-personas-mayores-el-mejor-momento-es-ahora/"
+      ],
+      "sede_segun_el_texto": "Villanueva de la Serena",
+      "solo_fuentes_no_oficiales": false,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-09-25",
+          "eventos": [
+            {
+              "hora": "",
+              "descripcion": "Excursión al País Vasco (Vitoria, Bilbao, San Sebastián y más)"
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-09-26",
+          "eventos": []
+        },
+        {
+          "dia": 3,
+          "fecha": "2026-09-27",
+          "eventos": []
+        },
+        {
+          "dia": 4,
+          "fecha": "2026-09-28",
+          "eventos": []
+        },
+        {
+          "dia": 5,
+          "fecha": "2026-09-29",
+          "eventos": []
+        },
+        {
+          "dia": 6,
+          "fecha": "2026-09-30",
+          "eventos": []
+        },
+        {
+          "dia": 7,
+          "fecha": "2026-10-01",
+          "eventos": [
+            {
+              "hora": "10:30",
+              "descripcion": "Taller y degustación de queso artesano"
+            },
+            {
+              "hora": "19:00",
+              "descripcion": "Teatro con el grupo 'Alas de Libertad'"
+            }
+          ]
+        },
+        {
+          "dia": 8,
+          "fecha": "2026-10-02",
+          "eventos": [
+            {
+              "hora": "20:30",
+              "descripcion": "Concierto de Tamara Jerez en el Cine Las Vegas"
+            }
+          ]
+        },
+        {
+          "dia": 9,
+          "fecha": "2026-10-03",
+          "eventos": [
+            {
+              "hora": "",
+              "descripcion": "Gran Convivencia de Mayores con la Orquesta 'Las Vegas' en el Pabellón Juan Hidalgo"
+            }
+          ]
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "url_programa": "https://villanuevadelaserena.es/eventos/semana-de-las-personas-mayores-el-mejor-momento-es-ahora/",
+      "nucleo_inicio": "2026-10-01",
+      "nucleo_fin": "2026-10-03",
+      "cobertura_dias": 0.8,
+      "programa_estado": "parcial",
+      "lat": 38.97413341,
+      "lng": -5.80071674
+    },
+    {
+      "id": "patron-santiago-y-santa-ana-en-julio-06153000101",
+      "lugar_id": "06153000101",
+      "nombre": "Fiestas de Santiago y Santa Ana en julio (estimada)",
+      "fecha_inicio": "2026-07-26",
+      "fecha_fin": "2026-07-26",
+      "tamano": "pequeña",
+      "descripcion": "Fiesta anual estimada a partir del día del santo patrón de Casas del Castillo (Santiago y Santa Ana en julio, 26 de julio). No se encontró programa ni confirmación para este año.",
+      "confianza": "baja",
+      "origen": "santo_patron",
+      "es_estimada": true,
+      "incluye_dia_patron": true,
+      "fuentes": [],
+      "solo_fuentes_no_oficiales": false,
+      "patron": {
+        "nombre": "Santiago y Santa Ana en julio",
+        "dia": 26,
+        "mes": 7,
+        "fuente": "busqueda"
+      },
+      "programa": [],
+      "lat": 39.0243783,
+      "lng": -5.77415784
+    },
+    {
+      "id": "ancla-fiestas-de-san-isidro-labrador-06153000301",
+      "lugar_id": "06153000301",
+      "nombre": "Fiestas de San Isidro Labrador",
+      "fecha_inicio": "2026-05-15",
+      "fecha_fin": "2026-05-15",
+      "tamano": "pequeña",
+      "descripcion": "Fiestas de San Isidro Labrador en Entrerríos, el 15 de mayo de 2026. Fechas recuperadas del texto que las anuncia; sin descripción publicada.",
+      "evidencia": "calendario laboral oficial de fiestas locales de extremadura en 2026 estos son todos los festivos locales que ha elegido cada municipio para 2026 regala esta noticia anadenos en google irene toribio 23 10 2025 actualizado a las 12 34h el gobierno de extremadura a traves de la direccion general de trabajo ha aprobado y publicado el calendario oficial de fiestas locales de 2026 para todos los municipios de la comunidad",
+      "confianza": "media",
+      "fuentes": [
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Entrerríos",
+      "solo_fuentes_no_oficiales": true,
+      "programa": [],
+      "origen": "ancla_contexto",
+      "url_programa": "https://www.hoy.es/prov-badajoz/agricultores-celebran-festividad-san-isidro-villanueva-serena-20260516204043-nt.html",
+      "sin_programa_publicado": true,
+      "programa_estado": "no_encontrado",
+      "incluye_dia_patron": true,
+      "patron": {
+        "nombre": "San Isidro Labrador",
+        "dia": 15,
+        "mes": 5,
+        "fuente": "wikipedia"
+      },
+      "lat": 38.99478442,
+      "lng": -5.72082162
+    },
+    {
+      "id": "valdivia-san-isidro-2026",
+      "lugar_id": "06153000401",
+      "nombre": "Fiestas Patronales de San Isidro Labrador",
+      "fecha_inicio": "2026-05-14",
+      "fecha_fin": "2026-05-19",
+      "tamano": "grande",
+      "descripcion": "Celebración en honor a San Isidro Labrador, patrón de Valdivia, con actividades que incluyen la inauguración el 14 de mayo, una gran romería el 15 de mayo y eventos culturales y musicales (como el concierto de Manuel Picon) que se prolongan hasta el 19 de mayo. Incluye verbena, cantinas y actos religiosos.",
+      "confianza": "baja",
+      "fuentes": [
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Valdivia",
+      "solo_fuentes_no_oficiales": true,
+      "programa": [],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": true,
+      "ancla_propuesta": {
+        "fecha_inicio": "2026-05-14",
+        "fecha_fin": "2026-05-14",
+        "peso": 4,
+        "evidencia": "titulo el proximo dia 14 de mayo se - ayuntamiento valdivia - facebook contenido el proximo dia 14 de mayo se inauguraran las fiestas patronales en honor de san isidro labrador que se prolongaran hasta el domingo 19 de mayo"
+      },
+      "url_programa": "https://www.guadianatelevision.com/index.php/comarca/valdivia-presenta-los-actos-con-motivo-de-sus-fiestas-patronales-de-san-isidro",
+      "sin_programa_publicado": true,
+      "programa_estado": "no_encontrado",
+      "patron": {
+        "nombre": "San Isidro Labrador",
+        "dia": 15,
+        "mes": 5,
+        "fuente": "wikipedia"
+      },
+      "lat": 39.03251706,
+      "lng": -5.7105787
+    },
+    {
+      "id": "zurbaran-fiestas-mayores-agosto-2026",
+      "lugar_id": "06153000601",
+      "nombre": "Fiestas Mayores de Zurbarán",
+      "fecha_inicio": "2026-08-23",
+      "fecha_fin": "2026-08-29",
+      "tamano": "grande",
+      "descripcion": "Celebración de las Fiestas Mayores de Zurbarán en la última semana de agosto, incluyendo actividades culturales, verbenas, conciertos y la fiesta patronal de la Sagrada Familia.",
+      "confianza": "media",
+      "fuentes": [
+        "web_localidad"
+      ],
+      "sede_segun_el_texto": "Zurbarán",
+      "solo_fuentes_no_oficiales": false,
+      "programa": [],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "sin_programa_publicado": true,
+      "programa_estado": "no_encontrado",
+      "lat": 39.06594322,
+      "lng": -5.723560172
+    },
+    {
+      "id": "bentarique-fiestas-patronales-2026",
+      "lugar_id": "04028000101",
+      "nombre": "Fiestas Patronales de Bentarique",
+      "fecha_inicio": "2026-08-10",
+      "fecha_fin": "2026-08-13",
+      "tamano": "pequeña",
+      "descripcion": "Celebración en honor al patrón local con procesión, verbena y actividades comunitarias. Reúne a vecinos y emigrantes en el Valle del Andarax.",
+      "confianza": "baja",
+      "fuentes": [
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Bentarique",
+      "solo_fuentes_no_oficiales": true,
+      "programa": [],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "sin_programa_publicado": true,
+      "programa_estado": "no_encontrado",
+      "lat": 36.98653178,
+      "lng": -2.619423387
+    },
+    {
+      "id": "vianos-2026-fiestas-virgen-asuncion",
+      "lugar_id": "02076000102",
+      "nombre": "Fiestas de la Virgen de la Asunción",
+      "fecha_inicio": "2026-08-12",
+      "fecha_fin": "2026-08-16",
+      "tamano": "grande",
+      "descripcion": "Celebración patronal en honor a la Virgen de la Asunción con procesiones, suelta de reses, conciertos, verbenas, actividades infantiles y comidas populares. Incluye apertura oficial, desfile de carrozas, concurso de gazpachos y cierre con tardeo musical.",
+      "confianza": "alta",
+      "fuentes": [
+        "web_municipio",
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Vianos",
+      "solo_fuentes_no_oficiales": false,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-08-12",
+          "eventos": [
+            {
+              "hora": "22:30",
+              "descripcion": "Recogida de Damas y Míster con la Banda de Música Santos Villar Maroto"
+            },
+            {
+              "hora": "23:00",
+              "descripcion": "Gala inaugural en la Plaza del Caño (presentación de Damas y Míster, reconocimientos y menciones)"
+            },
+            {
+              "hora": "00:00",
+              "descripcion": "Espectáculo de Kike Navas y el Ballet Víctor Campos"
+            },
+            {
+              "hora": "02:00",
+              "descripcion": "DJ Edu en la pista polideportiva"
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-08-13",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "Atracción infantil El Trencete en la Plaza del Caño (12:00 a 14:00 horas)"
+            },
+            {
+              "hora": "18:30",
+              "descripcion": "Desfile de Carrozas (acompañado por El Trencete y las charangas Los Serranos de Bogarra y A To Pastilla)"
+            },
+            {
+              "hora": "01:00",
+              "descripcion": "Alocao – Disco Móvil en la pista polideportiva"
+            }
+          ]
+        },
+        {
+          "dia": 3,
+          "fecha": "2026-08-14",
+          "eventos": [
+            {
+              "hora": "11:00",
+              "descripcion": "Taller de cuchillería tradicional en El Jardín"
+            },
+            {
+              "hora": "12:00",
+              "descripcion": "Fiesta de la Espuma en la pista polideportiva"
+            },
+            {
+              "hora": "14:00",
+              "descripcion": "Concurso de Gazpachos Manchegos (peñas del municipio)"
+            },
+            {
+              "hora": "16:00",
+              "descripcion": "Radiofusión en El Jardín (música para el tardeo)"
+            },
+            {
+              "hora": "01:00",
+              "descripcion": "Octoplus Fest Coco-Loco (macrodiscomóvil en la pista polideportiva)"
+            }
+          ]
+        },
+        {
+          "dia": 4,
+          "fecha": "2026-08-15",
+          "eventos": [
+            {
+              "hora": "12:30",
+              "descripcion": "misa y posterior procesión en honor a la Virgen de la Asunción"
+            },
+            {
+              "hora": "18:00",
+              "descripcion": "suelta de reses"
+            },
+            {
+              "hora": "23:00",
+              "descripcion": "Guateque Club Band"
+            },
+            {
+              "hora": "02:00",
+              "descripcion": "DJ Pablo Calleja"
+            }
+          ]
+        },
+        {
+          "dia": 5,
+          "fecha": "2026-08-16",
+          "eventos": [
+            {
+              "hora": "10:00",
+              "descripcion": "colchonetas e hinchables"
+            },
+            {
+              "hora": "13:00",
+              "descripcion": "entrega de premios de las competiciones deportivas"
+            },
+            {
+              "hora": "14:30",
+              "descripcion": "comida popular de convivencia"
+            },
+            {
+              "hora": "16:00",
+              "descripcion": "tardeo de Al Son de la Luna"
+            }
+          ]
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": true,
+      "url_programa": "https://objetivosierradealbacete.es/fiestas-vianos-2026-programa-agosto/",
+      "nucleo_inicio": "2026-08-12",
+      "nucleo_fin": "2026-08-15",
+      "cobertura_dias": 1.0,
+      "programa_estado": "completo",
+      "patron": {
+        "nombre": "San Sebastián",
+        "dia": 20,
+        "mes": 1,
+        "fuente": "wikipedia"
+      },
+      "lat": 38.63304195,
+      "lng": -2.499809493
+    },
+    {
+      "id": "ancla-fiestas-de-nuestra-senora-de-la-asuncion-02076000102",
+      "lugar_id": "02076000102",
+      "nombre": "Fiestas de Nuestra Senora de la Asuncion",
+      "fecha_inicio": "2026-08-23",
+      "fecha_fin": "2026-08-28",
+      "tamano": "pequeña",
+      "descripcion": "Fiestas de Nuestra Senora de la Asuncion en Vianos, del 23 al 28 de agosto de 2026. Fechas recuperadas del texto que las anuncia; sin descripción publicada.",
+      "evidencia": "publicidad sobre la fiesta ia las fiestas de nuestra senora de la asuncion en vianos son la celebracion patronal por excelencia del pueblo manchego misa mayor procesion de la virgen ofrenda floral verbena con orquesta y actos populares que mezclan devocion y fiesta es una oportunidad para descubrir la hospitalidad rural las melodias de dulzaina y la gastronomia manchega en un entorno de tradicion historia y tradicion",
+      "confianza": "media",
+      "fuentes": [
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Vianos",
+      "solo_fuentes_no_oficiales": true,
+      "programa": [],
+      "origen": "ancla_contexto",
+      "url_programa": "https://objetivosierradealbacete.es/fiestas-vianos-2026-programa-agosto/",
+      "nucleo_inicio": null,
+      "nucleo_fin": null,
+      "programa_estado": "no_encontrado",
+      "lat": 38.63304195,
+      "lng": -2.499809493
+    },
+    {
+      "id": "patron-san-crispin-02076000103",
+      "lugar_id": "02076000103",
+      "nombre": "Fiestas de San Crispín (estimada)",
+      "fecha_inicio": "2026-12-05",
+      "fecha_fin": "2026-12-05",
+      "tamano": "pequeña",
+      "descripcion": "Fiesta anual estimada a partir del día del santo patrón de Zapateros (San Crispín, 25 de octubre). No se encontró programa ni confirmación para este año.",
+      "confianza": "baja",
+      "origen": "santo_patron",
+      "es_estimada": true,
+      "incluye_dia_patron": true,
+      "fuentes": [],
+      "solo_fuentes_no_oficiales": false,
+      "patron": {
+        "nombre": "San Crispín",
+        "dia": 25,
+        "mes": 10,
+        "fuente": "llm"
+      },
+      "programa": [],
+      "lat": 38.54624956,
+      "lng": -2.50289054
+    },
+    {
+      "id": "romeria-san-sebastian-capilla",
+      "lugar_id": "06030000101",
+      "nombre": "Romería de San Sebastián",
+      "fecha_inicio": "2026-01-20",
+      "fecha_fin": "2026-01-20",
+      "tamano": "pequeña",
+      "descripcion": "Celebración religiosa con Santa Misa, procesión y romería alrededor de la ermita. Incluye orquesta amenizando el día con música y baile.",
+      "confianza": "media",
+      "fuentes": [
+        "web_municipio",
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Capilla",
+      "solo_fuentes_no_oficiales": false,
+      "programa": [],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "url_programa": "https://fsspx.es/sites/default/files/documents/SS%20Capilla%20Santiago%20Ap%C3%B3stol%202026.pdf",
+      "programa_advocacion_dudosa": true,
+      "nucleo_inicio": null,
+      "nucleo_fin": null,
+      "programa_estado": "no_encontrado",
+      "lat": 38.82064933,
+      "lng": -5.084431892
+    },
+    {
+      "id": "semana-santa-capilla-2026",
+      "lugar_id": "06030000101",
+      "nombre": "Semana Santa",
+      "fecha_inicio": "2026-03-27",
+      "fecha_fin": "2026-04-08",
+      "tamano": "grande",
+      "descripcion": "Celebración religiosa con procesiones destacadas el Jueves y Viernes Santo, incluyendo luces de farolas nocturnas. Destaca la devoción de los vecinos hacia las imágenes procesionales.",
+      "confianza": "alta",
+      "fuentes": [
+        "web_municipio",
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Capilla",
+      "solo_fuentes_no_oficiales": false,
+      "programa": [
+        {
+          "dia": 10,
+          "fecha": "2026-03-27",
+          "eventos": []
+        },
+        {
+          "dia": 11,
+          "fecha": "2026-03-28",
+          "eventos": []
+        },
+        {
+          "dia": 12,
+          "fecha": "2026-03-29",
+          "eventos": [
+            {
+              "hora": "11:30",
+              "descripcion": "Bendición y Distribución de Ramos, y Misa cantada"
+            }
+          ]
+        },
+        {
+          "dia": 19,
+          "fecha": "2026-04-05",
+          "eventos": [
+            {
+              "hora": "",
+              "descripcion": "Procesión al Monumento"
+            },
+            {
+              "hora": "",
+              "descripcion": "Denudación de los altares"
+            },
+            {
+              "hora": "24:00",
+              "descripcion": "Adoración hasta las 24:00 hrs."
+            }
+          ]
+        },
+        {
+          "dia": 20,
+          "fecha": "2026-04-06",
+          "eventos": []
+        },
+        {
+          "dia": 21,
+          "fecha": "2026-04-07",
+          "eventos": []
+        },
+        {
+          "dia": 22,
+          "fecha": "2026-04-08",
+          "eventos": [
+            {
+              "hora": "",
+              "descripcion": "Bendición del fuego nuevo"
+            },
+            {
+              "hora": "",
+              "descripcion": "Bendición Cirio Pascual"
+            },
+            {
+              "hora": "",
+              "descripcion": "Pregón Pascual"
+            },
+            {
+              "hora": "",
+              "descripcion": "Santa Misa de Gloria"
+            }
+          ]
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "url_programa": "https://fsspx.es/sites/default/files/documents/SS%20Capilla%20Santiago%20Ap%C3%B3stol%202026.pdf",
+      "nucleo_inicio": "2026-04-05",
+      "nucleo_fin": "2026-04-08",
+      "programa_estado": "completo",
+      "lat": 38.82064933,
+      "lng": -5.084431892
+    },
+    {
+      "id": "santiago-apostol-capilla-2026",
+      "lugar_id": "06030000101",
+      "nombre": "Fiestas patronales de Santiago Apóstol",
+      "fecha_inicio": "2026-07-24",
+      "fecha_fin": "2026-07-27",
+      "tamano": "grande",
+      "descripcion": "Celebración en honor a Santiago Apóstol, patrón de Capilla, con procesión, misa solemne, actividades populares y verbena. Incluye el muñeco de Judas y el arco simbólico para el Domingo de Resurrección.",
+      "confianza": "media",
+      "fuentes": [
+        "web_municipio"
+      ],
+      "sede_segun_el_texto": "Capilla",
+      "solo_fuentes_no_oficiales": false,
+      "programa": [],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": true,
+      "url_programa": "https://fsspx.es/sites/default/files/documents/SS%20Capilla%20Santiago%20Ap%C3%B3stol%202026.pdf",
+      "nucleo_inicio": null,
+      "nucleo_fin": null,
+      "programa_estado": "no_encontrado",
+      "patron": {
+        "nombre": "Santiago Apóstol",
+        "dia": 25,
+        "mes": 7,
+        "fuente": "busqueda"
+      },
+      "lat": 38.82064933,
+      "lng": -5.084431892
+    },
+    {
+      "id": "fiesta-del-emigrante-2026",
+      "lugar_id": "06030000101",
+      "nombre": "Fiesta del Emigrante",
+      "fecha_inicio": "2026-08-15",
+      "fecha_fin": "2026-08-15",
+      "tamano": "pequeña",
+      "descripcion": "Celebración con verbena y actuaciones musicales en el recinto de San Sebastián. Incluye comidas populares y actividades para todos los públicos.",
+      "confianza": "media",
+      "fuentes": [
+        "web_municipio",
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Capilla",
+      "solo_fuentes_no_oficiales": false,
+      "programa": [],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "url_programa": "https://defiestaenfiesta.es/fiestas/extremadura/badajoz/capilla/fiesta-del-emigrante-15082026",
+      "sin_programa_publicado": true,
+      "programa_estado": "no_encontrado",
+      "lat": 38.82064933,
+      "lng": -5.084431892
+    },
+    {
+      "id": "virgen-del-rosario-capilla",
+      "lugar_id": "06030000101",
+      "nombre": "Fiestas Virgen del Rosario",
+      "fecha_inicio": "2026-10-03",
+      "fecha_fin": "2026-10-05",
+      "tamano": "grande",
+      "descripcion": "Celebración en honor a la Virgen del Rosario, patrona de Capilla, con procesión, misas, verbena nocturna y tradición del Rosario cantado. Se celebra el primer fin de semana de octubre.",
+      "confianza": "media",
+      "fuentes": [
+        "web_municipio",
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Capilla",
+      "solo_fuentes_no_oficiales": false,
+      "programa": [],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "url_programa": "https://fsspx.es/sites/default/files/documents/SS%20Capilla%20Santiago%20Ap%C3%B3stol%202026.pdf",
+      "nucleo_inicio": null,
+      "nucleo_fin": null,
+      "programa_estado": "no_encontrado",
+      "lat": 38.82064933,
+      "lng": -5.084431892
+    },
+    {
+      "id": "almansa-fiestas-mayores-2026",
+      "lugar_id": "02009000101",
+      "nombre": "Fiestas Mayores de Almansa 2026",
+      "fecha_inicio": "2026-03-13",
+      "fecha_fin": "2026-03-29",
+      "tamano": "grande",
+      "descripcion": "Celebración de las Fiestas Mayores de Almansa con actividades tradicionales de Moros y Cristianos, presentaciones oficiales de cargos festeros y eventos culturales. Incluye la proclamación de la Reina Infantil y la Junta Festeras.",
+      "confianza": "alta",
+      "fuentes": [
+        "web_municipio",
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Almansa",
+      "solo_fuentes_no_oficiales": false,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-03-13",
+          "eventos": [
+            {
+              "hora": "20:00",
+              "descripcion": "CAMBIO DE CAPITANÍAS. Acto de intercambio del testigo de las Capitanías 2026, que serán llevadas a cabo por la Comparsa Almohades y la Comparsa Almogávares. Lugar: Teatro Principal"
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-03-14",
+          "eventos": []
+        },
+        {
+          "dia": 3,
+          "fecha": "2026-03-15",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "XIV CONCIERTO DE EXALTACIÓN DE MÚSICA FESTERA. Interpretado por la Banda Sinfónica de la Sociedad Unión Musical de Almansa. Organizado por la Agrupación de Comparsas de Moros y Cristianos. Lugar: Auditorio de la Sociedad Unión Musical de Almansa"
+            },
+            {
+              "hora": "19:30",
+              "descripcion": "PRESENTACIÓN OFICIAL INFANTIL DE LA JUNTA FESTERA DE CALLES. Acto de proclamación de la Abanderada y Abanderado Mayores Infantiles, y Abanderadas y Abanderados Infantiles de los Grupos Festeros. Lugar: Teatro Regio"
+            }
+          ]
+        },
+        {
+          "dia": 7,
+          "fecha": "2026-03-19",
+          "eventos": []
+        },
+        {
+          "dia": 8,
+          "fecha": "2026-03-20",
+          "eventos": []
+        },
+        {
+          "dia": 9,
+          "fecha": "2026-03-21",
+          "eventos": [
+            {
+              "hora": "17:30",
+              "descripcion": "RECEPCIÓN DE LAS AUTORIDADES MUNICIPALES A LAS Y LOS REPRESENTANTES DE LA JUNTA FESTERA DE CALLES"
+            },
+            {
+              "hora": "19:30",
+              "descripcion": "PRESENTACIÓN OFICIAL DE LA JUNTA FESTERA DE CALLES. Acto de proclamación de la Abanderada y Abanderado Mayores y Abanderadas y Abanderados de los Grupos Festeros"
+            }
+          ]
+        },
+        {
+          "dia": 10,
+          "fecha": "2026-03-22",
+          "eventos": [
+            {
+              "hora": "17:30",
+              "descripcion": "RECEPCIÓN DE LAS AUTORIDADES MUNICIPALES A LAS Y LOS REPRESENTANTES DE LA JUNTA FESTERA DE CALLES. Lugar: Ayuntamiento"
+            }
+          ]
+        },
+        {
+          "dia": 16,
+          "fecha": "2026-03-28",
+          "eventos": [
+            {
+              "hora": "21:00",
+              "descripcion": "RECEPCIÓN DE LAS AUTORIDADES MUNICIPALES A LAS Y LOS REPRESENTANTES DE LA AGRUPACIÓN DE COMPARSAS. Lugar: Ayuntamiento"
+            },
+            {
+              "hora": "23:00",
+              "descripcion": "PRESENTACIÓN OFICIAL DE LA AGRUPACIÓN DE COMPARSAS. Acto de proclamación de la Abanderada y Alférez Mayores, y Abanderadas y Alféreces de Comparsas y Embajadores. Lugar: Teatro Regio"
+            }
+          ]
+        },
+        {
+          "dia": 17,
+          "fecha": "2026-03-29",
+          "eventos": [
+            {
+              "hora": "18:00",
+              "descripcion": "RECEPCIÓN DE LAS AUTORIDADES MUNICIPALES A LAS Y LOS REPRESENTANTES INFANTILES DE LA AGRUPACIÓN DE COMPARSAS. Lugar: Ayuntamiento"
+            },
+            {
+              "hora": "20:00",
+              "descripcion": "PRESENTACIÓN OFICIAL INFANTIL DE LA AGRUPACIÓN DE COMPARSAS. Acto de proclamación de la Abanderada y Alférez Mayores Infantiles, Abanderadas y Alféreces Infantiles de Comparsas y Embajadores Infantiles. Lugar: Teatro Regio"
+            }
+          ]
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "url_programa": "https://almansaturistica.es/wp-content/uploads/2026/04/PROGRAMA-DE-FIESTAS-2026.pdf",
+      "nucleo_inicio": "2026-03-28",
+      "nucleo_fin": "2026-03-29",
+      "cobertura_dias": 1.0,
+      "programa_estado": "completo",
+      "lat": 38.87007032,
+      "lng": -1.093666988
+    },
+    {
+      "id": "fiestas-mayores-almansa-2026",
+      "lugar_id": "02009000101",
+      "nombre": "Fiestas Mayores de Almansa en honor a la Virgen de Belén",
+      "fecha_inicio": "2026-04-30",
+      "fecha_fin": "2026-05-06",
+      "tamano": "grande",
+      "descripcion": "Celebración de Interés Turístico Internacional con desfiles de Moros y Cristianos, embajadas históricas, procesiones religiosas, mascletás, actos infantiles y pirotecnia. Incluye la Embajada Mora Nocturna el 2 de mayo y la Procesión Mayor el 6 de mayo.",
+      "confianza": "alta",
+      "fuentes": [
+        "busqueda_web",
+        "web_municipio"
+      ],
+      "sede_segun_el_texto": "Almansa",
+      "solo_fuentes_no_oficiales": false,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-04-30",
+          "eventos": [
+            {
+              "hora": "09:00",
+              "descripcion": "Degustación de gachamigas. Ofrecida por el Centro de Mayores. Lugar: Plaza de Santa María."
+            },
+            {
+              "hora": "11:30",
+              "descripcion": "Ofrenda a las personas festeras difuntas. Visita y ofrenda floral a las festeras y festeros desaparecidos. El pasacalles partirá desde el Ayuntamiento al Cementerio Municipal. Organiza: Agrupación de Comparsas."
+            },
+            {
+              "hora": "13:00",
+              "descripcion": "Volteo general de campanas. La Reina de las Fiestas Mayores y la Reina Infantil de Fiestas encenderán las tracas que anuncian el comienzo de las Fiestas Mayores. Lugar: Plaza de Santa María."
+            },
+            {
+              "hora": "19:30",
+              "descripcion": "Cabalgata del Pregón. Itinerario: Calle Aniceto Coloma, Pasaje del Coronel Arteaga, calle Rambla de la Mancha y Plaza de Santa María. Al finalizar, la Reina de las Fiestas Mayores dará lectura al Pregón desde el Ayuntamiento."
+            },
+            {
+              "hora": "20:00",
+              "descripcion": "Novena a la Virgen de Belén. «María, madre del Salvador», por la intención de las Sociedades Marianas. Lugar: Iglesia de la Asunción."
+            },
+            {
+              "hora": "21:00",
+              "descripcion": "Mayos en honor a Nuestra Señora de Belén. El grupo de Coros y Danzas Castillo de Almansa interpretará los tradicionales Mayos. Lugar: puerta de la Iglesia de la Asunción. Al finalizar, la Reina de las Fiestas Mayores y la Reina Infantil realizarán la entrega de las llaves de nuestra ciudad a nuestra Patrona, la Virgen de Belén, en el interior de la Iglesia de la Asunción."
+            },
+            {
+              "hora": "00:00",
+              "descripcion": "Retreta popular. Desfile abierto a la participación de festeras y festeros, pueblo en general y visitantes. Recorrido: Desde la Avenida de Madrid hasta la Carpa Municipal."
+            },
+            {
+              "hora": "01:00",
+              "descripcion": "Fiesta de la Retreta en la Carpa Municipal."
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-05-01",
+          "eventos": [
+            {
+              "hora": "08:30",
+              "descripcion": "XVII Edición del Encuentro de Gachamigueros. Mañana de convivencia alrededor de la elaboración de uno de nuestros platos típicos: la gachamiga. Lugar: Paseo de Néstor Almendros «Batallódromo». Organiza: Junta Festera de Calles."
+            },
+            {
+              "hora": "09:30",
+              "descripcion": "Degustación de gachamigas. Elaboradas en el Encuentro Gachamiguero. Lugar: Paseo de Néstor Almendros «Batallódromo»."
+            },
+            {
+              "hora": "11:00",
+              "descripcion": "Pasacalles de gigantes y cabezudos, que junto a la Comisión Infantil recorrerá las calles más céntricas de Almansa. Organiza: Grupo Festero El Rincón y patrocina el Ayuntamiento de Almansa."
+            },
+            {
+              "hora": "12:00",
+              "descripcion": "Entrada de bandas. Con participación de las bandas de música que acompañan a las comparsas de nuestra ciudad. Itinerario: Plaza de Santa María, calle Rambla de la Mancha, calle San Francisco y Templete del Jardín de los Reyes Católicos. Al finalizar se interpretarán los pasodobles «Salvador Hernández» y «Almansa». Organiza: Agrupación de Moros y Cristianos."
+            },
+            {
+              "hora": "13:30",
+              "descripcion": "Degustación popular de patatas sanjuaneras. Ofrecidas por el Excmo. Ayuntamiento de Almansa. Lugar: Carpa Municipal."
+            },
+            {
+              "hora": "14:00",
+              "descripcion": "Mascletá. La Abanderada Mayor e Infantil de la Agrupación de Comparsas de Moros y Cristianos serán las encargadas de encenderla. Lugar: Carpa Municipal."
+            },
+            {
+              "hora": "14:15",
+              "descripcion": "Homenaje al almanseño ausente. Recepción oficial por parte de las autoridades municipales y festeras a los y las almanseñas que residen fuera de la ciudad y que nos visitan durante estos días. Lugar: Jardín del Ayuntamiento. Organiza: Ayuntamiento de Almansa con la colaboración de la Denominación de Origen Almansa."
+            },
+            {
+              "hora": "17:45",
+              "descripcion": "Entrada mora. Escuadras, cabos, boatos y música forman parte de la llegada del bando cristiano y bando moro a la ciudad. La comparsa Beduinos se encargará de cerrar el desfile llevando la capitanía mora. Itinerario: Desde el cruce de las calles Rambla de la Mancha y Avenida de Madrid, calle Aniceto Coloma, Pasaje del Coronel Arteaga, calle Rambla de la Mancha y Plaza de Santa María."
+            }
+          ]
+        },
+        {
+          "dia": 3,
+          "fecha": "2026-05-02",
+          "eventos": [
+            {
+              "hora": "09:00",
+              "descripcion": "Visita a sedes festeras. Organiza: Junta Festera de Calles."
+            },
+            {
+              "hora": "11:00",
+              "descripcion": "Atracciones infantiles. Con hinchables y otras actividades para las niñas y niños que quieran disfrutar de una mañana de diversión. Lugar: Jardín de los Reyes Católicos. Organiza: Ayuntamiento de Almansa y El Rincón. Patrocina: Ayuntamiento de Almansa."
+            },
+            {
+              "hora": "11:30",
+              "descripcion": "Diana infantil. Las y los componentes infantiles de las diferentes comparsas realizarán una diana infantil. Organiza: Agrupación de Comparsas de Moros y Cristianos. Lugar: Convento de los Padres Franciscanos."
+            },
+            {
+              "hora": "11:30",
+              "descripcion": "XXXIII Encuentro de Pintura Infantil. Actividad para niñas y niños que quieran participar en la realización de un dibujo que tenga relación con nuestras Fiestas Mayores. Quienes participen recibirán un obsequio y el dibujo seleccionado será la portada del programa infantil del año 2027. Organiza: Grupo Festero El Rincón. Patrocina: Ayuntamiento de Almansa. Lugar: Templete del Jardín de los Reyes Católicos."
+            },
+            {
+              "hora": "14:00",
+              "descripcion": "Mascletá. Las Reinas de San Isidro y San Francisco serán las encargadas de encenderla. Lugar: Carpa Municipal."
+            },
+            {
+              "hora": "17:45",
+              "descripcion": "Entrada infantil de Moros y Cristianos. En esta ocasión es el colectivo festero infantil de la Agrupación de Comparsas el que se convierte en el protagonista con esta Entrada. Organiza: Agrupación de Comparsas. Itinerario: Calle Aniceto Coloma (esquina con calle Calvario), Pasaje del Coronel Arteaga y calle Rambla de la Mancha."
+            },
+            {
+              "hora": "19:00",
+              "descripcion": "Embadada mora infantil. Gran espectáculo de sonido, efectos especiales y derroche de imaginación y grandes interpretaciones de embajadores, centinelas, luchadores y luchadoras infantiles. Organiza: Jóvenes de la Agrupación de Comparsas de Moros y Cristianos. Lugar: Plaza de Santa María."
+            },
+            {
+              "hora": "23:00",
+              "descripcion": "Desfile de arcabucería. Itinerario: Desde el Paseo de la Libertad hasta la calle Rambla de la Mancha."
+            },
+            {
+              "hora": "23:55",
+              "descripcion": "Embadada mora nocturna. La Plaza de Santa María y el Castillo de Almansa se convierten en el escenario donde se escenifica la Embajada. Con efectos especiales de pirotecnia, luz, sonido y representación escénica de los Embajadores y Centinelas y escuadras. Organiza: Agrupación de Comparsas. Lugar: Plaza de Santa María."
+            }
+          ]
+        },
+        {
+          "dia": 4,
+          "fecha": "2026-05-03",
+          "eventos": [
+            {
+              "hora": "09:00",
+              "descripcion": "DIANA MORA DE ARCABUCERÍA. En honor a la Abanderada Mayor de la Agrupación de Comparsas. Lugar: Plaza de Santa María."
+            },
+            {
+              "hora": "10:00",
+              "descripcion": "DESPERTÁ. En honor a la Abanderada Mayor Infantil de la Junta Festera de Calles."
+            },
+            {
+              "hora": "12:30",
+              "descripcion": "DESFILE FESTERO INFANTIL DE LA JUNTA FESTERA DE CALLES. Itinerario: Plaza Santa María, calle Rambla de la Mancha, calle San Francisco y Templete del Jardín de los Reyes Católicos."
+            },
+            {
+              "hora": "14:00",
+              "descripcion": "MASCLETÁ. Las Reinas de San Juan y de San Roque serán las encargadas de encenderla. Lugar: Carpa Municipal."
+            },
+            {
+              "hora": "17:00",
+              "descripcion": "OFRENDA INFANTIL. Niñas y niños vestidos con el traje manchego ofrecerán sus presentes. Itinerario: Jardín de los Reyes Católicos, calle San Francisco, calle Rambla de la Mancha y Plaza de Santa María."
+            },
+            {
+              "hora": "17:45",
+              "descripcion": "ENTRADA CRISTIANA. Las escuadras y los boatos del bando moro y cristiano llegan a la ciudad. Itinerario: calle Aniceto Coloma, Pasaje del coronel Arteaga, calle Rambla de la Mancha y Plaza de Santa María."
+            },
+            {
+              "hora": "23:55",
+              "descripcion": "PASACALLES FESTERO NOCTURNO. Itinerario: Desde la calle Salvador Allende hasta la Plaza de Santa María."
+            }
+          ]
+        },
+        {
+          "dia": 5,
+          "fecha": "2026-05-04",
+          "eventos": [
+            {
+              "hora": "09:00",
+              "descripcion": "DESPERTÁ. En honor a la Abanderada Mayor de la Junta Festera de Calles."
+            },
+            {
+              "hora": "11:00",
+              "descripcion": "EMBAJADA CRISTIANA INFANTIL. Escenificada por jóvenes de la Agrupación de Comparsas. Lugar: Plaza de Santa María."
+            },
+            {
+              "hora": "11:45",
+              "descripcion": "DESFILE DE ARCABUCERÍA. Itinerario: Desde la calle Aniceto Coloma hasta la calle Rambla de la Mancha."
+            },
+            {
+              "hora": "12:30",
+              "descripcion": "EMBAJADA CRISTIANA Y CONVERSIÓN DEL MORO. Acto protagonizado por pólvora y Embajadores. Lugar: Plaza de Santa María."
+            },
+            {
+              "hora": "13:30",
+              "descripcion": "PASACALLES. Itinerario: Desde el Convento de los Franciscanos hasta la Carpa Municipal."
+            },
+            {
+              "hora": "14:00",
+              "descripcion": "MASCLETÁ. La Abanderada Mayor e Infantil de la Junta Festera de Calles encenderán la mascletá. Lugar: Carpa Municipal."
+            },
+            {
+              "hora": "14:30",
+              "descripcion": "PAELLA GIGANTE POPULAR. Ofrecida por el Ayuntamiento. Lugar: Carpa Municipal."
+            },
+            {
+              "hora": "17:00",
+              "descripcion": "GRAN DESFILE FESTERO. Participan todos los Grupos Festeros. Itinerario: calle Aniceto Coloma, Pasaje del coronel Arteaga y calle Rambla de la Mancha."
+            }
+          ]
+        },
+        {
+          "dia": 6,
+          "fecha": "2026-05-05",
+          "eventos": [
+            {
+              "hora": "11:00",
+              "descripcion": "SOLEMNE FUNCIÓN RELIGIOSA. Ofrecida por la Sociedad de la Virgen. Lugar: Iglesia de la Asunción."
+            },
+            {
+              "hora": "11:00",
+              "descripcion": "VISITA A LAS RESIDENCIAS DE MAYORES. Homenaje a personas mayores. Lugar: Residencias San José y el Castillo."
+            },
+            {
+              "hora": "11:30",
+              "descripcion": "VISITA INFANTIL A LAS SEDES FESTERAS. Representantes infantiles visitan sedes de comparsas."
+            },
+            {
+              "hora": "12:30",
+              "descripcion": "VISITA A LAS RESIDENCIAS DE MAYORES. Protocolos del Ayuntamiento y Comparsas visitan residencias."
+            },
+            {
+              "hora": "14:00",
+              "descripcion": "MASCLETÁ. La Reina Infantil y Presidente de la Comisión Infantil encenderán la mascletá. Lugar: Carpa Municipal."
+            },
+            {
+              "hora": "15:00",
+              "descripcion": "DEGUSTACIÓN DE GACHAMIGA. Organizada por el Grupo Festero «La Estrella». Lugar: Avenida de Madrid."
+            },
+            {
+              "hora": "17:00",
+              "descripcion": "TRADICIONAL RIFA DE CORDEROS. Con música de pasodobles. Lugar: Capilla del Rosario."
+            },
+            {
+              "hora": "20:00",
+              "descripcion": "OFRENDA DE FLORES A NUESTRA PATRONA. Itinerario: Avenida de Madrid, calle Aniceto Coloma, Pasaje del coronel Arteaga, calle Rambla de la Mancha y Plaza de Santa María."
+            },
+            {
+              "hora": "00:00",
+              "descripcion": "SERENATA A LA VIRGEN DE BELÉN. Con fuegos artificiales y chocolatada popular. Lugar: Plaza Santa María y Carpa Municipal."
+            }
+          ]
+        },
+        {
+          "dia": 7,
+          "fecha": "2026-05-06",
+          "eventos": [
+            {
+              "hora": "10:00",
+              "descripcion": "DIANA CRISTIANA DE ARCABUCERÍA. En honor a nuestra Patrona, María Santísima de Belén. La pólvora y la música vuelven a ser los principales componentes. Organizado por la Agrupación de Comparsas de Moros y Cristianos. Lugar: Plaza de Santa María."
+            },
+            {
+              "hora": "11:00",
+              "descripcion": "SOLEMNE FUNCIÓN RELIGIOSA. Ofrecida por la Sociedad de Pastores y con la intervención del Coro de la Sociedad Unión Musical de Almansa. Lugar: Iglesia de la Asunción."
+            },
+            {
+              "hora": "14:00",
+              "descripcion": "MASCLETÁ. La Reina de las Fiestas Mayores y su acompañante serán quienes se encarguen de encenderla. Lugar: Carpa Municipal."
+            },
+            {
+              "hora": "17:00",
+              "descripcion": "BATALLA DE FLORES. Con la participación de todos los colectivos festeros de nuestra ciudad. Itinerario: calle Aniceto Coloma, Pasaje del coronel Arteaga, calle Rambla de la Mancha y Plaza de Santa María."
+            },
+            {
+              "hora": "20:00",
+              "descripcion": "PROCESIÓN MAYOR DE NUESTRA PATRONA, MARÍA SANTÍSIMA DE BELÉN. Partiendo y finalizando en la Iglesia de la Asunción. Itinerario: Plaza de Santa María, calle Aragón, calle Pascual María Cuenca, calle del Campo, calle Calvario, calle Aniceto Coloma y calle Virgen de Belén."
+            },
+            {
+              "hora": "00:00",
+              "descripcion": "CASTILLO DE FUEGOS ARTIFICIALES PIROMUSICAL que pondrá el broche de oro a las Fiestas Mayores de Almansa 2026. Lugar: escaleras del Castillo."
+            }
+          ]
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": true,
+      "url_programa": "https://almansaturistica.es/wp-content/uploads/2026/04/PROGRAMA-DE-FIESTAS-2026.pdf",
+      "nucleo_inicio": null,
+      "nucleo_fin": null,
+      "cobertura_dias": 1.0,
+      "programa_estado": "completo",
+      "patron": {
+        "nombre": "Francisco de Asís",
+        "dia": null,
+        "mes": null,
+        "fuente": "wikipedia"
+      },
+      "lat": 38.87007032,
+      "lng": -1.093666988
+    },
+    {
+      "id": "almansa-san-juan-2026",
+      "lugar_id": "02009000101",
+      "nombre": "Fiesta de San Juan",
+      "fecha_inicio": "2026-06-24",
+      "fecha_fin": "2026-06-24",
+      "tamano": "pequeña",
+      "descripcion": "Celebración patronal de San Juan con procesión y verbena, incluida en el calendario tradicional de Almansa.",
+      "confianza": "media",
+      "fuentes": [
+        "web_municipio"
+      ],
+      "sede_segun_el_texto": "Almansa",
+      "solo_fuentes_no_oficiales": false,
+      "programa": [],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "url_programa": "https://latintadealmansa.com/fiestas/programacion-completa-de-las-fiestas-de-san-juan-de-almansa-2026/",
+      "sin_programa_publicado": true,
+      "programa_estado": "no_encontrado",
+      "lat": 38.87007032,
+      "lng": -1.093666988
+    },
+    {
+      "id": "feria-de-almansa-2026",
+      "lugar_id": "02009000101",
+      "nombre": "Feria de Almansa 2026",
+      "fecha_inicio": "2026-08-28",
+      "fecha_fin": "2026-09-04",
+      "tamano": "grande",
+      "descripcion": "Feria local con actividades agrícolas, ganaderas y de ocio, incluyendo verbenas, conciertos, talleres artísticos y eventos culturales. Destaca la apuesta por el talento local y la inclusión de nuevos elementos como el concurso de charangas.",
+      "confianza": "alta",
+      "fuentes": [
+        "busqueda_web",
+        "web_municipio"
+      ],
+      "sede_segun_el_texto": "Almansa",
+      "solo_fuentes_no_oficiales": false,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-08-28",
+          "eventos": [
+            {
+              "hora": "20:30",
+              "descripcion": "Desfile de apertura de Feria. Desfile inaugural que incluye la lectura del Pregón a cargo de la Reina de Fiestas Mayores 2026 junto a la alcaldesa de Almansa, Pilar Callado. Recorrido: Plaza de Santa María, Avda. José Rodríguez Ruano, Pío Baroja, hasta el Recinto Ferial."
+            },
+            {
+              "hora": "21:00",
+              "descripcion": "Punto Violeta. Espacio de información, prevención y atención ante agresiones machistas. Lugar: Recinto Ferial. Organizado por la concejalía de Igualdad, Derechos de la Mujeres y de las Personas LGTBI."
+            },
+            {
+              "hora": "23:00",
+              "descripcion": "Concierto Tokyo Band. Actuación de la orquesta española de pop-rock. Lugar: Recinto Ferial. Precio: Gratuito."
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-08-29",
+          "eventos": [
+            {
+              "hora": "08:30",
+              "descripcion": "XX 12 horas de Petanca Ciudad de Almansa. Competición deportiva de 12 horas. Lugar: Centro Social de San Juan."
+            },
+            {
+              "hora": "14:00",
+              "descripcion": "Mascletá y Paella Popular. Espectáculo pirotécnico y comida multitudinaria gratuita. Lugar: Recinto Ferial. Precio: Gratuito."
+            },
+            {
+              "hora": "18:30",
+              "descripcion": "Almansa Summer Sound Vol. 2. Festival de DJs con Alberto Lázaro, Space Elephants, Simétrica, Sael, Elephant, Ele DJ y un artista secreto. Lugar: Recinto Ferial. Precio: Gratuito."
+            },
+            {
+              "hora": "19:00",
+              "descripcion": "Visita guiada por la colección del escultor José Luis Sánchez. Recorrido cultural. Lugar: Salida desde la Oficina de Turismo. Precio: 1€ (Inscripción previa)."
+            },
+            {
+              "hora": "19:30",
+              "descripcion": "XXXIV Festival de Folklore «Testigo de Tradición». Organizado por Coros y Danzas. Lugar: Teatro Regio. Precio: Gratuito (Hasta completar aforo)."
+            },
+            {
+              "hora": "21:00",
+              "descripcion": "Tradicional Chocolate con Tortas Fritas. Degustación gastronómica. Lugar: Caseta AARFAL en el Recinto Ferial."
+            }
+          ]
+        },
+        {
+          "dia": 3,
+          "fecha": "2026-08-30",
+          "eventos": [
+            {
+              "hora": "",
+              "descripcion": "Durante el día: XXIII Certamen de Pintura Rápida. Artistas plasmarán rincones de la ciudad. Lugar: Salón de Plenos de la Casa Grande (Ayuntamiento). Precio: Gratuito."
+            },
+            {
+              "hora": "19:30",
+              "descripcion": "Entrega de premios del XXIII Certamen de Pintura Rápida. Lugar: Salón de Plenos de la Casa Grande (Ayuntamiento)."
+            },
+            {
+              "hora": "19:00",
+              "descripcion": "Visita guiada al Centro Histórico de la ciudad. Recorrido turístico. Lugar: Salida desde la Oficina de Turismo. Precio: 1€ (Inscripción previa)."
+            },
+            {
+              "hora": "19:00",
+              "descripcion": "Concierto «Amores de Barra» (Tributo a Ella Baila Sola). Espectáculo musical. Lugar: Teatro Regio. Precio: 15€."
+            },
+            {
+              "hora": "20:00",
+              "descripcion": "Cuenti Dance. Espectáculo de música y baile infantil. Lugar: Templete del Jardín de los Reyes Católicos."
+            },
+            {
+              "hora": "23:00",
+              "descripcion": "IA Tour: La Rebelión de las Máquinas (The Kraken Monster Party). Macro fiesta con montaje escénico. Lugar: Recinto Ferial."
+            }
+          ]
+        },
+        {
+          "dia": 4,
+          "fecha": "2026-08-31",
+          "eventos": [
+            {
+              "hora": "09:30",
+              "descripcion": "Degustación popular de Gachamigas"
+            },
+            {
+              "hora": "",
+              "descripcion": "Campeonato de parchís, secayó y dominó"
+            },
+            {
+              "hora": "19:00",
+              "descripcion": "Visita guiada por la colección del escultor José Luis Sánchez"
+            },
+            {
+              "hora": "19:00",
+              "descripcion": "I Concurso Nacional de Charangas «Feria de Almansa»"
+            },
+            {
+              "hora": "20:00",
+              "descripcion": "Exhibición de Trial"
+            },
+            {
+              "hora": "",
+              "descripcion": "Taller de pulseras de macramé y gomitas"
+            }
+          ]
+        },
+        {
+          "dia": 5,
+          "fecha": "2026-09-01",
+          "eventos": [
+            {
+              "hora": "20:00",
+              "descripcion": "Terapia de Puertas Abiertas AARFAL"
+            },
+            {
+              "hora": "21:45",
+              "descripcion": "Lectura del Manifiesto por la Inclusión"
+            },
+            {
+              "hora": "22:00",
+              "descripcion": "Entrega de premios del Campeonato de Mayores"
+            },
+            {
+              "hora": "22:15",
+              "descripcion": "Espectáculo «Lorca es Flamenco» (Pedro Fernández Embrujo)"
+            }
+          ]
+        },
+        {
+          "dia": 6,
+          "fecha": "2026-09-02",
+          "eventos": [
+            {
+              "hora": "19:00",
+              "descripcion": "Visita guiada al Centro Histórico de la ciudad"
+            },
+            {
+              "hora": "20:00",
+              "descripcion": "Cata de Feria Solidaria D.O. Almansa"
+            },
+            {
+              "hora": "20:00",
+              "descripcion": "Espectáculo Infantil «Somos unos Piratas»"
+            }
+          ]
+        },
+        {
+          "dia": 7,
+          "fecha": "2026-09-03",
+          "eventos": [
+            {
+              "hora": "20:00",
+              "descripcion": "Espectáculo de Circo «Playtime». Circo contemporáneo familiar que combina acrobacias, humor e improvisación a partir del juego libre."
+            },
+            {
+              "hora": "22:30",
+              "descripcion": "Monólogo «Piensa en Wilbur». Espectáculo plagado de acrobacias, humor y riesgo, no recomendado a menores de 4 años."
+            }
+          ]
+        },
+        {
+          "dia": 8,
+          "fecha": "2026-09-04",
+          "eventos": [
+            {
+              "hora": "22:30",
+              "descripcion": "3ª Edición «Almansa Suena». Festival con bandas locales que reúne el tributo a Extremoduro por Me Cago en Tó, Los Gringos y la presentación solista de Jorge Orión."
+            }
+          ]
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "url_programa": "https://latintadealmansa.com/destacado/programacion-completa-feria-almansa-2026/",
+      "nucleo_inicio": "2026-08-28",
+      "nucleo_fin": "2026-08-30",
+      "cobertura_dias": 1.0,
+      "programa_estado": "completo",
+      "lat": 38.87007032,
+      "lng": -1.093666988
+    },
+    {
+      "id": "semana-santa-abla-2026",
+      "lugar_id": "04001000101",
+      "nombre": "Semana Santa de Abla",
+      "fecha_inicio": "2026-03-31",
+      "fecha_fin": "2026-04-05",
+      "tamano": "grande",
+      "descripcion": "Celebración religiosa con procesiones, misas y eventos culturales durante la Semana Santa. Incluye itinerarios y horarios detallados de cofradías.",
+      "confianza": "baja",
+      "fuentes": [
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Abla",
+      "solo_fuentes_no_oficiales": true,
+      "programa": [],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "url_programa": "https://www.facebook.com/AblaCiudadRomana/posts/%EF%B8%8Fcartel-de-semana-santa-de-abla-2026/1375266981305033/",
+      "sin_programa_publicado": true,
+      "programa_estado": "no_encontrado",
+      "lat": 37.14148402,
+      "lng": -2.779619244
+    },
+    {
+      "id": "abla-santos-martires-2026",
+      "lugar_id": "04001000101",
+      "nombre": "Fiestas Patronales de los Santos Mártires",
+      "fecha_inicio": "2026-04-25",
+      "fecha_fin": "2026-04-27",
+      "tamano": "grande",
+      "descripcion": "Celebración religiosa y popular en honor a los Santos Mártires Apolo, Isacio y Crotato, la Virgen del Buen Suceso y San Segundo. Incluye procesiones, misas, verbena con orquesta y DJ, y actividades culturales.",
+      "confianza": "baja",
+      "fuentes": [
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Abla",
+      "solo_fuentes_no_oficiales": true,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-04-25",
+          "eventos": [
+            {
+              "hora": "19:30",
+              "descripcion": "Formación de la comitiva con Hermanos Mayores, sacerdotes, autoridades, vecinos y visitantes para la procesión de la Traída de los Santos Mártires"
+            },
+            {
+              "hora": "21:30",
+              "descripcion": "Procesión de la Traída de los Santos Mártires (San Segundo, Apolo, Isacio, Crotato y la Virgen del Buen Suceso) desde la ermita exterior hasta la Iglesia parroquial"
+            },
+            {
+              "hora": "23:00",
+              "descripcion": "Verbena popular amenizada por el Trío Sabor a Menta y Orquesta El Norte en la Carpa Municipal del Paseo San Segundo"
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-04-26",
+          "eventos": [
+            {
+              "hora": "13:00",
+              "descripcion": "Misa rociera en honor a la Virgen del Buen Suceso en la Iglesia Parroquial de la Anunciación"
+            },
+            {
+              "hora": "14:00",
+              "descripcion": "Procesión de los Patrones con la vuelta a la Plaza Mayor y regreso a la Iglesia"
+            },
+            {
+              "hora": "15:00",
+              "descripcion": "Pasacalles hasta el Paseo San Segundo"
+            },
+            {
+              "hora": "16:00",
+              "descripcion": "Convite con paella solidaria (1 €) en el Paseo San Segundo"
+            },
+            {
+              "hora": "23:00",
+              "descripcion": "Verbena popular amenizada por Orquesta El Norte en el Paseo San Segundo"
+            }
+          ]
+        },
+        {
+          "dia": 3,
+          "fecha": "2026-04-27",
+          "eventos": [
+            {
+              "hora": "13:00",
+              "descripcion": "Cambio de insignias de la Hermandad de los Santos Mártires presidido por el reverendo Manuel Herrería"
+            },
+            {
+              "hora": "14:00",
+              "descripcion": "Pasacalles hasta el Paseo San Segundo"
+            },
+            {
+              "hora": "15:00",
+              "descripcion": "Convite en el día de los Hermanos Mayores"
+            },
+            {
+              "hora": "16:00",
+              "descripcion": "Subasta del Agua de los Santos (agua del Barranco de Sierra Nevada)"
+            },
+            {
+              "hora": "21:00",
+              "descripcion": "Procesión de los Patronos para poner el punto final a los festejos"
+            }
+          ]
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "url_programa": "https://cofradiasyhermandades.es/semanasantae.php?ss=1&cc=101",
+      "programa_advocacion_dudosa": true,
+      "nucleo_inicio": "2026-04-25",
+      "nucleo_fin": "2026-04-27",
+      "programa_estado": "completo",
+      "patron": {
+        "nombre": "Santos Mártires",
+        "dia": null,
+        "mes": null,
+        "fuente": "wikipedia"
+      },
+      "lat": 37.14148402,
+      "lng": -2.779619244
+    },
+    {
+      "id": "abla-verano-2026",
+      "lugar_id": "04001000101",
+      "nombre": "XLIX Fiestas de Verano de Abla",
+      "fecha_inicio": "2026-08-01",
+      "fecha_fin": "2026-08-02",
+      "tamano": "grande",
+      "descripcion": "Celebración veraniega con ofrenda floral, triduo religioso, misa, verbena con orquesta y DJ, y homenaje a un jugador local. Incluye actividades culturales y tradicionales.",
+      "confianza": "baja",
+      "fuentes": [
+        "busqueda_web",
+        "prensa_regional"
+      ],
+      "sede_segun_el_texto": "Abla",
+      "solo_fuentes_no_oficiales": true,
+      "programa": [],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "url_programa": "https://www.lavozdealmeria.com/vivir/turismo/turismo-rural/611979/toque-diana-abla-programacion-todas-fiestas-verano.html",
+      "sin_programa_publicado": true,
+      "programa_estado": "no_encontrado",
+      "lat": 37.14148402,
+      "lng": -2.779619244
+    },
+    {
+      "id": "ferias-y-fiestas-san-victorino-2026",
+      "lugar_id": "05016000101",
+      "nombre": "Ferias y Fiestas de San Victorino",
+      "fecha_inicio": "2026-07-03",
+      "fecha_fin": "2026-07-12",
+      "tamano": "grande",
+      "descripcion": "Fiesta patronal en honor a San Victorino Mártir, incluyendo encierros, corridas de toros, conciertos, teatro, procesiones y actividades familiares durante 10 días.",
+      "confianza": "baja",
+      "fuentes": [
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Arévalo",
+      "solo_fuentes_no_oficiales": true,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-07-03",
+          "eventos": [
+            {
+              "hora": "21:30",
+              "descripcion": "Concentración de peñas y pasacalles hasta el pregón. Amenizado por la charanga 'El Meneíto'."
+            },
+            {
+              "hora": "23:00",
+              "descripcion": "Pregón y chupinazo de inicio de las Ferias y Fiestas de San Victorino 2026, a cargo de Nacho Gay. Se utilizarán artificios de pirotecnia."
+            },
+            {
+              "hora": "00:00",
+              "descripcion": "Actuación de la orquesta 'Panorama City' en la Plaza del Arrabal."
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-07-04",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "Salida de los tradicionales gigantes y cabezudos de Arévalo, acompañados por las dulzainas y tamboriles de 'Al pan pan'."
+            },
+            {
+              "hora": "19:00",
+              "descripcion": "Tardeo especial con DJ's locales y nacionales en la Plaza Ángela Muñoz. Organiza: El Desván y Teteo Sesion."
+            },
+            {
+              "hora": "19:30",
+              "descripcion": "XXIX Concurso de Cortes y Quiebros 'Ciudad de Arévalo' en la Plaza de Toros."
+            },
+            {
+              "hora": "22:30",
+              "descripcion": "Obra teatral 'Vamos a contar mentiras' por la Compañía Teatro Eslava en el Teatro Castilla. Venta de entradas: 14€."
+            },
+            {
+              "hora": "00:30",
+              "descripcion": "Actuación del Grupo 'La Misión' en la Plaza del Arrabal. En el descanso y finalización, discomóvil Black Box con DJ 'Gonch'."
+            },
+            {
+              "hora": "00:00",
+              "descripcion": "Charanga 'El Meneíto' desde la Plaza del Arrabal hasta la Plaza de Toros."
+            }
+          ]
+        },
+        {
+          "dia": 3,
+          "fecha": "2026-07-05",
+          "eventos": [
+            {
+              "hora": "07:00",
+              "descripcion": "Encierro de reses bravas con la suelta del 'Novillo del alba enguantado'. Seguidamente, capea popular en la Plaza de Toros. Amenizado por la Charanga 'El Meneíto'."
+            },
+            {
+              "hora": "08:00",
+              "descripcion": "Degustación de sopas de ajo y chocolate en el patio del Colegio 'La Moraña'. Colabora: Asociación Cultural 'La Queda'."
+            },
+            {
+              "hora": "17:00",
+              "descripcion": "Parque infantil acuático con hinchables y fiesta de la espuma en las Instalaciones Deportivas (Campo de Fútbol)."
+            },
+            {
+              "hora": "20:00",
+              "descripcion": "I Toro de Cajón en Honor a San Victorino. Suelta de dos toros desde un cajón por las calles. Seguidamente, capea en la Plaza de Toros (2 toros y 2 vacas). Durante la capea, concurso de la 'Vaca del pañuelo', premio de 50€ a quien quite el pañuelo a la vaca. Colaboran: Asociación Taurina Arevalense y Asociación Taurina 'El Albero'. Amenizado por la Charanga 'El Meneíto'."
+            },
+            {
+              "hora": "22:30",
+              "descripcion": "Obra teatral 'Un cura en apuros' por la Compañía Teatro Eslava en el Teatro Castilla. Venta de entradas: 14€."
+            },
+            {
+              "hora": "00:00",
+              "descripcion": "Actuación de la orquesta 'Marsella' en la Plaza del Arrabal."
+            }
+          ]
+        },
+        {
+          "dia": 4,
+          "fecha": "2026-07-06",
+          "eventos": [
+            {
+              "hora": "11:00",
+              "descripcion": "Campeonato de Juegos Autóctonos (bolos de madera, calva, etc.) en el Parque Gómez Pamo. Organiza: Club Deportivo Federado Arevalense de Petanca y Juegos Autóctonos."
+            },
+            {
+              "hora": "16:30",
+              "descripcion": "VI Campeonato de Petanca en el Parque Gómez Pamo. Organiza: Club Deportivo Federado Arevalense de Petanca y Juegos Autóctonos."
+            },
+            {
+              "hora": "17:00",
+              "descripcion": "Carrera ciclista, LXXIV Edición Trofeo \"Ferias y Fiestas\". Memorial Enrique Duarte Sarabia. Categoría: élite-sub 23. (Salida y Meta en la Avenida de Emilio Romero)."
+            },
+            {
+              "hora": "18:00",
+              "descripcion": "Actividades infantiles para los más pequeños en el Parque Gómez Pamo. Organiza: Asociación Cultural La Queda."
+            },
+            {
+              "hora": "20:00",
+              "descripcion": "Actuación de Coral \"La Moraña\" en el Teatro Castilla. (Entrada libre hasta completar el aforo)."
+            },
+            {
+              "hora": "22:00",
+              "descripcion": "Encierro de reses bravas, por el recorrido de costumbre. Seguidamente en la plaza de toros, capea popular. Amenizado por la Charanga \"La Complutense\"."
+            },
+            {
+              "hora": "00:00",
+              "descripcion": "Actuación del grupo \"Top Líder\" noche de pop-rock desde los años 60 hasta nuestros días en la Plaza del Arrabal."
+            }
+          ]
+        },
+        {
+          "dia": 5,
+          "fecha": "2026-07-07",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "Misa solemne en honor de San Victorino Mártir e imposición de medallas a los nuevos cofrades en la Iglesia de Santo Domingo de Silos."
+            },
+            {
+              "hora": "12:00",
+              "descripcion": "Procesión de la reliquia del Patrón, amenizada por la Banda Municipal de Música."
+            },
+            {
+              "hora": "18:00",
+              "descripcion": "Festival de Pelota a Mano (dos partidos de parejas \"profesionales\") en el Frontón Municipal. Venta de entrada en taquilla 10€. 1º Partido: Etxebarria II - Oliden Vs. Victor - Garmendia. 2º Partido: Fernández - Cuairan. Vs. Labaka - Arbizu."
+            },
+            {
+              "hora": "20:00",
+              "descripcion": "Salida de los tradicionales gigantes y cabezudos de Arévalo, acompañados por las dulzainas y tamboriles de \"Armusinme\" desde la Casa Consistorial."
+            },
+            {
+              "hora": "22:00",
+              "descripcion": "Actuación de la obra \"Casado de día, soltero de noche\" en el Teatro Castilla. La Compañía Teatro Eslava. Venta de entradas en taquilla: 14€. (Abono para las tres representaciones del ciclo: 32 €)."
+            },
+            {
+              "hora": "00:00",
+              "descripcion": "Macro Disco \"Gramola\" en la calle Isabel de Portugal (zona de los Muleteros)."
+            }
+          ]
+        },
+        {
+          "dia": 6,
+          "fecha": "2026-07-08",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "Concurso de dibujo infantil (edades de 0 a 14 años) en el Parque Gómez Pamo."
+            },
+            {
+              "hora": "18:00",
+              "descripcion": "Fiesta para nuestros mayores en el Hogar de la Tercera Edad (Plaza del Real). Amenizada por las dulzainas y tamboriles de \"Al pan pan\"."
+            },
+            {
+              "hora": "19:00",
+              "descripcion": "Peque-Encierro con carretones por el recorrido del encierro desde los toriles de la calle de Los Descalzos. Organizado por la Peña Taurina Arevalense y la Asociación Taurina El Albero."
+            },
+            {
+              "hora": "21:30",
+              "descripcion": "Encierro de reses bravas, por el recorrido de costumbre. Seguidamente en la plaza de toros, capea popular. Amenizado por la charanga \"La Vareta\"."
+            },
+            {
+              "hora": "23:00",
+              "descripcion": "'II Concurso de Jóvenes Dj's' en la calle del Teso Nuevo, junto al Colegio Los Arévacos. Contaremos con la presencia del DJ y productor de música urbana y electrónica \"Javi Guzmán\" & \"Gabry López\" dj ganador del concurso del año 2025."
+            }
+          ]
+        },
+        {
+          "dia": 7,
+          "fecha": "2026-07-09",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "Seminario de taekwondo en el Pabellón Polideportivo Municipal. Organiza: Club de Taekwondo Han-Arévalo."
+            },
+            {
+              "hora": "12:00",
+              "descripcion": "Entrega de premios a las personas ganadoras del Concurso de Dibujo Infantil en el Salón de Plenos del Ayuntamiento."
+            },
+            {
+              "hora": "12:00",
+              "descripcion": "Entrega de premios del XXIII Concurso de Redacción Taurina y XVII Concurso de Dibujo Taurino en el Salón de Plenos del Ayuntamiento."
+            },
+            {
+              "hora": "13:00",
+              "descripcion": "Vermú musical de peñas 'Hippie Edition' (Dress code: Hippie) amenizado por la Charanga 'La Clave' y la 'Electrocharanga Motociclones'. Organizado por Arévalo Se Mueve con la colaboración de los bares participantes."
+            },
+            {
+              "hora": "19:30",
+              "descripcion": "Encierro de promoción con mini bueyes desde los toriles de la calle de Los Descalzos."
+            },
+            {
+              "hora": "22:00",
+              "descripcion": "Actuación del grupo 'Free Folk' en la Plaza de la Villa."
+            },
+            {
+              "hora": "00:00",
+              "descripcion": "Actuación de la Orquesta 'Vulkano Show' en la Huerta del Marqués."
+            }
+          ]
+        },
+        {
+          "dia": 8,
+          "fecha": "2026-07-10",
+          "eventos": [
+            {
+              "hora": "11:00",
+              "descripcion": "Parque infantil con atracciones hinchables y fiesta de la espuma en la calle Isabel de Portugal (zona de los Muleteros)."
+            },
+            {
+              "hora": "15:30",
+              "descripcion": "'Rodeo' By Teteo Sesion (pasacalles, tardeo con Dj's sobre ruedas). Colaboran los bares participantes: Pavero Fusión, Alcocer, Perotas, El Desván, La Nota, The Aura, La Tabernita, Myrjos y Alexis."
+            },
+            {
+              "hora": "19:30",
+              "descripcion": "Espectáculo infantil 'Peke Open 2026' (Dj y animación con personajes animados a tamaño natural) en la Plaza de la Constitución."
+            },
+            {
+              "hora": "20:00",
+              "descripcion": "Encierro de reses bravas por el recorrido de costumbre. Seguidamente en la plaza de toros, capea popular. Amenizado por la Charanga 'Patxarán'."
+            },
+            {
+              "hora": "23:30",
+              "descripcion": "Concierto de 'La Década Prodigiosa' en la Plaza del Arrabal. A continuación, actuación del grupo 'La Huella'."
+            }
+          ]
+        },
+        {
+          "dia": 9,
+          "fecha": "2026-07-11",
+          "eventos": [
+            {
+              "hora": "11:00",
+              "descripcion": "Parque infantil acuático con hinchables y fiesta de la espuma en la Plaza de La Constitución. (Recomendable llevar ropa de baño y toalla)"
+            },
+            {
+              "hora": "19:00",
+              "descripcion": "Actuación del grupo de pop rock en castellano 'Esparadrapo' en la Avenida de los Deportes (zona parada de autobús). A continuación, discomóvil con Dj Chema y Dany Arv. Organiza: The Aura y Black Box."
+            },
+            {
+              "hora": "19:30",
+              "descripcion": "Excepcional Corrida de Toros en la Plaza de Toros. (Más información en programa aparte)."
+            },
+            {
+              "hora": "00:30",
+              "descripcion": "Actuación del grupo 'Cañón' en la Plaza del Arrabal. En el descanso, actuación del Dj Álvaro Tardón. Seguidamente, desde la Plaza del Arrabal hasta la Plaza de Toros, amenizará las calles de Arévalo la charanga 'Los Imparables'."
+            }
+          ]
+        },
+        {
+          "dia": 10,
+          "fecha": "2026-07-12",
+          "eventos": [
+            {
+              "hora": "07:00",
+              "descripcion": "Encierro de reses bravas por el recorrido de costumbre, con la tradicional suelta del tradicional 'Novillo del alba enguantado'. Seguidamente, en la Plaza de Toros, capea popular. Amenizado por la charanga 'Los Imparables'."
+            },
+            {
+              "hora": "08:00",
+              "descripcion": "En el patio del Colegio 'La Moraña', degustación de sopas de ajo y chocolate, con la colaboración de la Asociación Cultural 'La Queda'."
+            },
+            {
+              "hora": "21:00",
+              "descripcion": "En la Avenida Emilio Romero, desfile de carrozas y variedades, con la presencia de los gigantes y cabezudos de Arévalo, acompañados por las dulzainas y tamboriles de 'Armusinme', charanga 'El Meneíto', Banda Municipal de Música, Asociación Cultural La Queda, Comparsa El Color del Carnaval... y Peñas de Arévalo."
+            },
+            {
+              "hora": "23:50",
+              "descripcion": "Encierro de reses bravas, por el recorrido de costumbre. Seguidamente en la Plaza de Toros, capea popular. Amenizado por la charanga 'El Meneíto'."
+            }
+          ]
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": true,
+      "url_programa": "https://avilared.com/art/92704/programa-ferias-fiestas-san-victorino-2026-arevalo",
+      "nucleo_inicio": "2026-07-04",
+      "nucleo_fin": "2026-07-11",
+      "cobertura_dias": 1.0,
+      "programa_estado": "completo",
+      "patron": {
+        "nombre": "San Vitorino Mártir",
+        "dia": null,
+        "mes": null,
+        "fuente": "wikipedia"
+      },
+      "lat": 41.06485913,
+      "lng": -4.720155153
+    },
+    {
+      "id": "fiestas-virgen-mercedes-arevalo-2026",
+      "lugar_id": "05016000101",
+      "nombre": "Fiestas de la Virgen de las Mercedes de Arévalo",
+      "fecha_inicio": "2026-09-19",
+      "fecha_fin": "2026-09-26",
+      "tamano": "grande",
+      "descripcion": "Fiestas patronales en honor a la Virgen de las Mercedes con encierros por el casco histórico, festejos taurinos, verbena nocturna, procesión solemne y fuegos artificiales. Incluye actividades como conciertos, parrilladas y juegos infantiles.",
+      "confianza": "baja",
+      "fuentes": [
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Arévalo",
+      "solo_fuentes_no_oficiales": true,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-09-19",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "Pregón y cohete inaugural"
+            },
+            {
+              "hora": "23:00",
+              "descripcion": "Concierto de apertura"
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-09-20",
+          "eventos": [
+            {
+              "hora": "09:00",
+              "descripcion": "Encierro por el casco histórico"
+            },
+            {
+              "hora": "18:30",
+              "descripcion": "Festejo taurino"
+            },
+            {
+              "hora": "23:00",
+              "descripcion": "verbena"
+            }
+          ]
+        },
+        {
+          "dia": 3,
+          "fecha": "2026-09-21",
+          "eventos": [
+            {
+              "hora": "09:00",
+              "descripcion": "Encierro"
+            },
+            {
+              "hora": "23:00",
+              "descripcion": "verbena"
+            }
+          ]
+        },
+        {
+          "dia": 4,
+          "fecha": "2026-09-22",
+          "eventos": [
+            {
+              "hora": "09:00",
+              "descripcion": "Encierro"
+            },
+            {
+              "hora": "23:00",
+              "descripcion": "Concierto"
+            }
+          ]
+        },
+        {
+          "dia": 5,
+          "fecha": "2026-09-23",
+          "eventos": [
+            {
+              "hora": "09:00",
+              "descripcion": "Encierro"
+            },
+            {
+              "hora": "23:00",
+              "descripcion": "verbena"
+            }
+          ]
+        },
+        {
+          "dia": 6,
+          "fecha": "2026-09-24",
+          "eventos": [
+            {
+              "hora": "12:00",
+              "descripcion": "Misa solemne y procesión de la Virgen de las Mercedes"
+            },
+            {
+              "hora": "23:00",
+              "descripcion": "Gran verbena"
+            }
+          ]
+        },
+        {
+          "dia": 7,
+          "fecha": "2026-09-25",
+          "eventos": [
+            {
+              "hora": "09:00",
+              "descripcion": "Encierro"
+            },
+            {
+              "hora": "23:00",
+              "descripcion": "verbena"
+            }
+          ]
+        },
+        {
+          "dia": 8,
+          "fecha": "2026-09-26",
+          "eventos": [
+            {
+              "hora": "09:00",
+              "descripcion": "Encierro final"
+            },
+            {
+              "hora": "23:00",
+              "descripcion": "Fuegos artificiales y cierre"
+            }
+          ]
+        }
+      ],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "url_programa": "https://pueblosdefiesta.com/fiestas/fiestas-virgen-mercedes-arevalo-2026",
+      "nucleo_inicio": "2026-09-20",
+      "nucleo_fin": "2026-09-26",
+      "cobertura_dias": 1.0,
+      "programa_estado": "completo",
+      "lat": 41.06485913,
+      "lng": -4.720155153
+    },
+    {
+      "id": "ancla-fiestas-de-arévalo-05016000101",
+      "lugar_id": "05016000101",
+      "nombre": "Fiestas de Arévalo",
+      "fecha_inicio": "2026-06-20",
+      "fecha_fin": "2026-06-22",
+      "tamano": "pequeña",
+      "descripcion": "Fiestas de Arévalo en Arévalo, del 20 al 22 de junio de 2026. Fechas recuperadas del texto que las anuncia; sin descripción publicada.",
+      "evidencia": "fiestas virgen del camino 2026 en arevalo - programa completo avilared noticias de avila buscar iniciar sesion registrate jueves 10 de septiembre de 2026 el diario digital de avila el tiempo en avila jueves 10 de septiembre de 2026 portada avila provincia sociedad casos economia ocio y cultura fiestas exposiciones cyl miradas escaparate guia de avila mas contenidos hemeroteca agenda guia de avila fotos de los lectore",
+      "confianza": "media",
+      "fuentes": [
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Arévalo",
+      "solo_fuentes_no_oficiales": true,
+      "programa": [
+        {
+          "dia": 1,
+          "fecha": "2026-06-20",
+          "eventos": [
+            {
+              "hora": "19:30",
+              "descripcion": "Salida de los Cofrades para trasladar a la Virgen desde la Ermita"
+            },
+            {
+              "hora": "20:45",
+              "descripcion": "Llegada de la Virgen a la Iglesia de San Juan"
+            }
+          ]
+        },
+        {
+          "dia": 2,
+          "fecha": "2026-06-21",
+          "eventos": [
+            {
+              "hora": "10:45",
+              "descripcion": "Salida de los Cofrades para asistir a la Santa Misa en la Iglesia de San Juan"
+            },
+            {
+              "hora": "11:00",
+              "descripcion": "Santa Misa de Hermandad e imposición de la medalla a los nuevos cofrades"
+            },
+            {
+              "hora": "19:45",
+              "descripcion": "Desde la Iglesia de San Juan, traslado de la Virgen hasta la Ermita"
+            },
+            {
+              "hora": "20:15",
+              "descripcion": "Concierto didáctico a cargo de Espigar Folk (Asociación de Folclore 'Entre Rios')"
+            },
+            {
+              "hora": "20:30",
+              "descripcion": "Parrillada elaborada por Carnicería Jesús"
+            },
+            {
+              "hora": "22:00",
+              "descripcion": "Sorteo del Ramo de la Virgen"
+            }
+          ]
+        },
+        {
+          "dia": 3,
+          "fecha": "2026-06-22",
+          "eventos": [
+            {
+              "hora": "07:45",
+              "descripcion": "Salida de los Cofrades hacia la Ermita para asistir a la Misa en memoria de los Cofrades Difuntos"
+            },
+            {
+              "hora": "08:00",
+              "descripcion": "Santa Misa en la explanada de la Ermita, a continuación, jotas delante de la Virgen"
+            },
+            {
+              "hora": "15:00",
+              "descripcion": "Comida de Hermandad"
+            },
+            {
+              "hora": "20:00",
+              "descripcion": "Juegos tradicionales infantiles con chuches (Asociación Cultural 'La Queda') y bailes en la explanada"
+            },
+            {
+              "hora": "22:00",
+              "descripcion": "Salve y fin de fiestas"
+            }
+          ]
+        }
+      ],
+      "origen": "ancla_contexto",
+      "url_programa": "https://avilared.com/art/92170/fiestas-virgen-del-camino-2026-arevalo-programa-completo",
+      "nucleo_inicio": "2026-06-21",
+      "nucleo_fin": "2026-06-22",
+      "cobertura_dias": 1.0,
+      "programa_estado": "completo",
+      "lat": 41.06485913,
+      "lng": -4.720155153
+    },
+    {
+      "id": "carnaval-tarazona-2026",
+      "lugar_id": "02073000101",
+      "nombre": "Carnaval de Tarazona de la Mancha 2026",
+      "fecha_inicio": "2026-02-14",
+      "fecha_fin": "2026-02-22",
+      "tamano": "grande",
+      "descripcion": "Celebración del Carnaval en Tarazona de la Mancha con desfiles, comparsas, charangas, concursos de disfraces y verbenas. Incluye actos preparatorios y días clave del evento.",
+      "confianza": "media",
+      "fuentes": [
+        "web_municipio",
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Tarazona de la Mancha",
+      "solo_fuentes_no_oficiales": false,
+      "programa": [],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "url_programa": "https://www.albaceteabierto.es/noticia/72962/provincia/tarazona-de-la-mancha-da-inicio-a-su-carnaval-con-la-entrega-de-premios-del-concurso-nacional-del-cartel.html",
+      "sin_programa_publicado": true,
+      "programa_estado": "no_encontrado",
+      "lat": 39.26533717,
+      "lng": -1.912846935
+    },
+    {
+      "id": "tarazona-de-la-mancha-san-bartolome-2026",
+      "lugar_id": "02073000101",
+      "nombre": "Fiestas de San Bartolomé",
+      "fecha_inicio": "2026-08-21",
+      "fecha_fin": "2026-08-26",
+      "tamano": "grande",
+      "descripcion": "Fiestas patronales en honor a San Bartolomé, declaradas de Interés Turístico Nacional. Incluyen procesiones, verbenas con orquesta, actos religiosos, actividades lúdicas y la tradicional Feria de Agosto.",
+      "confianza": "baja",
+      "fuentes": [
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Tarazona de la Mancha",
+      "solo_fuentes_no_oficiales": true,
+      "programa": [],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": true,
+      "url_programa": "https://fiestas.net/tarazona-mancha/feria-2026/",
+      "sin_programa_publicado": true,
+      "programa_estado": "no_encontrado",
+      "patron": {
+        "nombre": "San Bartolomé",
+        "dia": 24,
+        "mes": 8,
+        "fuente": "wikipedia"
+      },
+      "lat": 39.26533717,
+      "lng": -1.912846935
+    },
+    {
+      "id": "festival-folclorico-septiembre",
+      "lugar_id": "02073000101",
+      "nombre": "12º Festival Folclórico",
+      "fecha_inicio": "2026-09-12",
+      "fecha_fin": "2026-09-12",
+      "tamano": "pequeña",
+      "descripcion": "Festival folclórico con concentración de grupos en la Plaza Mayor y actuaciones en el Teatro Cine Sanchiz.",
+      "confianza": "media",
+      "fuentes": [
+        "web_municipio"
+      ],
+      "sede_segun_el_texto": "Tarazona de la Mancha",
+      "solo_fuentes_no_oficiales": false,
+      "programa": [],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "url_programa": "https://tarazonadelamancha.es/festival-folclorico/",
+      "sin_programa_publicado": true,
+      "programa_estado": "no_encontrado",
+      "lat": 39.26533717,
+      "lng": -1.912846935
+    },
+    {
+      "id": "visitacion-de-la-virgen-2026",
+      "lugar_id": "09483000101",
+      "nombre": "Fiestas patronales de la Visitación de la Virgen a su prima Santa Isabel",
+      "fecha_inicio": "2026-07-02",
+      "fecha_fin": "2026-07-02",
+      "tamano": "pequeña",
+      "descripcion": "Celebración en honor a la Visitación de la Virgen, patrona del municipio, incluyendo misas, procesiones y actividades culturales.",
+      "confianza": "baja",
+      "fuentes": [
+        "busqueda_web",
+        "web_municipio"
+      ],
+      "sede_segun_el_texto": "Zazuar",
+      "solo_fuentes_no_oficiales": false,
+      "programa": [],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": true,
+      "patron_trasladado": true,
+      "url_programa": "https://www.zazuar.es/fiestas-y-tradiciones/fiestas-patronales-visitacion-de-la-virgen-su-prima-santa-isabel",
+      "sin_programa_publicado": true,
+      "programa_estado": "no_encontrado",
+      "patron": {
+        "nombre": "San Andrés",
+        "dia": 30,
+        "mes": 11,
+        "fuente": "wikipedia"
+      },
+      "lat": 41.69596181,
+      "lng": -3.553979924
+    },
+    {
+      "id": "san-andres-2026",
+      "lugar_id": "09483000101",
+      "nombre": "Fiestas de San Andrés",
+      "fecha_inicio": "2026-11-30",
+      "fecha_fin": "2026-11-30",
+      "tamano": "pequeña",
+      "descripcion": "Celebración patronal en honor a San Andrés, incluyendo procesión, misa, pan de anís, chocolatada y juegos para todos.",
+      "confianza": "baja",
+      "fuentes": [
+        "web_municipio",
+        "busqueda_web"
+      ],
+      "sede_segun_el_texto": "Zazuar",
+      "solo_fuentes_no_oficiales": false,
+      "programa": [],
+      "origen": "extraccion",
+      "es_estimada": false,
+      "incluye_dia_patron": false,
+      "url_programa": "https://www.laboral-social.com/sites/laboral-social.com/files/fiestas-locales-burgos-2026.pdf",
+      "sin_programa_publicado": true,
+      "programa_estado": "no_encontrado",
+      "patron": {
+        "nombre": "San Andrés",
+        "dia": 30,
+        "mes": 11,
+        "fuente": "wikipedia"
+      },
+      "lat": 41.69596181,
+      "lng": -3.553979924
+    }
+  ]
+}

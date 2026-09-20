@@ -382,5 +382,21 @@
   "verificado_por": "web_oficial_y_busqueda",
   "fecha_verificacion": "2026-09-10",
   "pendiente_apps": true
+ },
+ "09483000000": {
+  "instagram": null,
+  "facebook": null,
+  "twitter": null,
+  "verificado_por": "web_oficial_y_busqueda",
+  "fecha_verificacion": "2026-09-10",
+  "pendiente_apps": true
+ },
+ "04099000000": {
+  "instagram": null,
+  "facebook": null,
+  "twitter": null,
+  "verificado_por": "web_oficial_y_busqueda",
+  "fecha_verificacion": "2026-09-15",
+  "pendiente_apps": true
  }
 }

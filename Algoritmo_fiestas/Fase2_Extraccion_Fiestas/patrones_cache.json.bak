@@ -873,5 +873,242 @@
    "Patronales - San Blas, 3 de febrero (fiesta local)",
    "Carnaval - Carnaval de Tarazona, febrero-marzo (desfiles, concursos de disfraces y verbena)"
   ]
+ },
+ "09483000101": {
+  "nombre": "San Andrés",
+  "dia": 30,
+  "mes": 11,
+  "fuente": "wikipedia",
+  "confianza": "alta",
+  "ambito": "localidad",
+  "celebra_dia": 2,
+  "celebra_mes": 7,
+  "fiestas_habituales": [
+   "Patronales - Visitación de la Virgen a su prima Santa Isabel, 2 de julio (procesión y verbena)"
+  ]
+ },
+ "09018000201": {
+  "nombre": "Nuestra Señora de las Viñas",
+  "dia": 8,
+  "mes": 9,
+  "fuente": "busqueda",
+  "confianza": "media",
+  "ambito": "localidad",
+  "celebra_dia": 11,
+  "celebra_mes": 9,
+  "fiestas_habituales": [
+   "Patronales - Nuestra Señora de las Viñas, septiembre (del 11 al 20 de septiembre con cañonazo, verbena y procesión)",
+   "Semana Santa - Semana Santa de Aranda de Duero, marzo-abril (procesiones y actos religiosos)",
+   "Cruces de Mayo - Cruz de Mayo, mayo (procesión y adornos florales)",
+   "Feria - Feria de la Vendimia, septiembre (celebración del vino Ribera del Duero)",
+   "Fiestas de barrios - San Isidro Labrador, mayo (15 de mayo, con actividades locales)"
+  ]
+ },
+ "09018000101": {
+  "nombre": "San Pedro Regalado",
+  "dia": 13,
+  "mes": 5,
+  "fuente": "busqueda",
+  "confianza": "alta",
+  "ambito": "localidad",
+  "celebra_dia": 12,
+  "celebra_mes": 5,
+  "fiestas_habituales": [
+   "Patronales - San Pedro Regalado, 12-17 mayo (procesiones, verbena y juegos populares)",
+   "Fiestas de Mayo - Cruces de Mayo, 1-15 mayo (puesta del Mayo y actos tradicionales)"
+  ]
+ },
+ "09018000301": {
+  "nombre": "San Bartolomé",
+  "dia": 24,
+  "mes": 8,
+  "fuente": "busqueda",
+  "confianza": "media",
+  "ambito": "localidad",
+  "celebra_dia": 22,
+  "celebra_mes": 8,
+  "fiestas_habituales": [
+   "Patronales - San Bartolomé, 22-31 de agosto (misa solemne, procesión, concursos, verbena)",
+   "Romería - San Isidro, 15 de mayo (procesión, misa, bendición de campos)",
+   "Romería - San Marcos, abril (procesión, misa)",
+   "Fiesta del Corazón de María, finales de mayo o principios de junio (misa, procesión, comida popular)",
+   "Carnaval - Carnaval, febrero (desfile, actividades)",
+   "Fiestas de barrios - Las Marzas, 28 de febrero (actividades tradicionales)"
+  ]
+ },
+ "09018000401": null,
+ "09018000501": {
+  "nombre": "Virgen de las Viñas",
+  "dia": null,
+  "mes": null,
+  "fuente": "llm",
+  "confianza": "baja",
+  "ambito": "localidad",
+  "celebra_dia": 30,
+  "celebra_mes": 8,
+  "fiestas_habituales": [
+   "Romería, Verbena y Gastronomía Tradicional, agosto"
+  ]
+ },
+ "02074000601": {
+  "nombre": "Cristo de la Antigua y Virgen de la Encarnación",
+  "dia": 25,
+  "mes": 3,
+  "fuente": "llm",
+  "confianza": "media",
+  "ambito": "localidad",
+  "celebra_dia": null,
+  "celebra_mes": null,
+  "fiestas_habituales": [
+   "Tamborada de Tobarra, Semana Santa",
+   "Fiestas patronales en honor a Cristo de la Antigua y Virgen de la Encarnación, mayo"
+  ]
+ },
+ "02074000101": {
+  "nombre": "San Isidro Labrador",
+  "dia": 15,
+  "mes": 5,
+  "fuente": "busqueda",
+  "confianza": "media",
+  "ambito": "localidad",
+  "celebra_dia": 13,
+  "celebra_mes": 5,
+  "fiestas_habituales": [
+   "Patronales - San Isidro Labrador y la Virgen de Fátima, mayo (13 al 18 de mayo)"
+  ]
+ },
+ "02074000201": {
+  "nombre": "San Diego de Alcalá",
+  "dia": 13,
+  "mes": 11,
+  "fuente": "busqueda",
+  "confianza": "media",
+  "ambito": "localidad",
+  "celebra_dia": 13,
+  "celebra_mes": 11,
+  "fiestas_habituales": [
+   "Patronales - San Diego de Alcalá, segundo fin de semana de noviembre (del 13 al 16)",
+   "Fiestas de verano - Fiestas de Verano, primera semana de julio (sin fecha específica)"
+  ]
+ },
+ "02074000301": {
+  "nombre": "SANTA QUITERIA",
+  "dia": null,
+  "mes": null,
+  "fuente": "busqueda",
+  "confianza": "baja",
+  "ambito": "localidad",
+  "celebra_dia": 22,
+  "celebra_mes": 5,
+  "fiestas_habituales": [
+   "Patronales - Santa Quiteria, 22 de mayo (procesión y verbena)"
+  ]
+ },
+ "02074000401": {
+  "nombre": "Santiago Apóstol",
+  "dia": 25,
+  "mes": 7,
+  "fuente": "busqueda",
+  "confianza": "alta",
+  "ambito": "localidad",
+  "celebra_dia": 25,
+  "celebra_mes": 7,
+  "fiestas_habituales": [
+   "Patronales - Santiago Apóstol y Santa Ana, julio (procesiones, juegos populares como Bolea y Carrera de Cintas)"
+  ]
+ },
+ "02074000501": {
+  "nombre": "San Francisco Javier",
+  "dia": 3,
+  "mes": 12,
+  "fuente": "busqueda",
+  "confianza": "media",
+  "ambito": "localidad",
+  "celebra_dia": 2,
+  "celebra_mes": 8,
+  "fiestas_habituales": [
+   "Patronales - San Francisco Javier, 30 de julio al 2 de agosto (procesiones y verbena)",
+   "Carnaval - Carnaval de Sierra, febrero (desfile de comparsas)",
+   "Semana Santa - Sierra de Albacete, marzo (procesiones y tradición)",
+   "Cruces de Mayo - Cruces de Mayo, 2 de mayo (jornada de fe y convivencia)",
+   "Corpus Christi - Corpus Christi, junio (alfombras y recorridos procesionales)",
+   "Fiestas mayores - Fiestas de Sierra, noviembre-diciembre (XI Carrera Popular y actividades vecinales)"
+  ]
+ },
+ "02074000701": {
+  "nombre": "VIRGEN DEL CARMEN",
+  "dia": 16,
+  "mes": 7,
+  "fuente": "busqueda",
+  "confianza": "alta",
+  "ambito": "localidad",
+  "celebra_dia": 16,
+  "celebra_mes": 7,
+  "fiestas_habituales": [
+   "Patronales - Virgen del Carmen, 16 al 19 de julio (actos religiosos, comidas populares y música y baile)",
+   "Cruces de Mayo, 3 de mayo (antes se celebraban aquí)"
+  ]
+ },
+ "04099000101": {
+  "nombre": "San Indalecio",
+  "dia": null,
+  "mes": null,
+  "fuente": "busqueda",
+  "confianza": "baja",
+  "ambito": "localidad",
+  "celebra_dia": null,
+  "celebra_mes": null,
+  "fiestas_habituales": [
+   "Patronales - San Blas, mediados de agosto (procesion y verbena)",
+   "Semana Santa - Cristo del Perdón y de los Afligidos, Semana Santa (procesiones y eventos religiosos)",
+   "Fiestas mayores - Fiestas de Agosto, agosto (pregón, verbena y actividades populares)"
+  ]
+ },
+ "04099010201": {
+  "nombre": "San José",
+  "dia": 19,
+  "mes": 3,
+  "fuente": "llm",
+  "confianza": "alta",
+  "ambito": "localidad",
+  "celebra_dia": 20,
+  "celebra_mes": 8,
+  "fiestas_habituales": [
+   "San José, 20-22 de agosto, con barra, parrandas, cuadrillas y aguilandos",
+   "Fiestas en honor al, 8 de enero, con barra, parrandas, cuadrillas y aguilandos"
+  ]
+ },
+ "04099030301": {
+  "nombre": "San José",
+  "dia": 19,
+  "mes": 3,
+  "fuente": "busqueda",
+  "confianza": "alta",
+  "ambito": "localidad",
+  "celebra_dia": null,
+  "celebra_mes": null,
+  "fiestas_habituales": [
+   "Patronales - San José, [epoca]"
+  ]
+ },
+ "04099040201": null,
+ "04099040601": null,
+ "05014000101": {
+  "nombre": "San Pedro de Alcántara",
+  "dia": 29,
+  "mes": 6,
+  "fuente": "busqueda",
+  "confianza": "media",
+  "ambito": "localidad",
+  "celebra_dia": 19,
+  "celebra_mes": 10,
+  "fiestas_habituales": [
+   "Patronales - San Pedro de Alcántara, octubre (procesión, verbena y espectáculos taurinos)",
+   "Patronales - Virgen del Pilar, septiembre (verbena y ofrenda floral)",
+   "Fiestas tradicionales - Fiestas de la Parra, 7 de octubre (actos populares)",
+   "Ferias - Ferias, 27 de agosto (actividades tradicionales)",
+   "Carnaval - Carnaval, febrero (desfile y actividades)",
+   "Patronales - Cristo de la Luz, mayo (celebración religiosa)"
+  ]
  }
 }
