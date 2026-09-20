@@ -112,8 +112,42 @@ def test_la_fuente_de_la_descartada_se_conserva(monkeypatch):
         _f("B", "2026-08-02", "2026-08-05", 0, url="https://b.es/otro"),
     ]
     r = asyncio.run(ta.unificar_duplicados(fs, LOC))
-    assert "https://b.es/otro" in r[0]["fuentes"]
+    assert "https://b.es/otro" in r[0]["urls_programa_fusionadas"]
     assert len(r[0]["programa"]) == 5
+
+
+def test_la_url_de_la_descartada_no_entra_en_fuentes(monkeypatch):
+    """`fuentes` son etiquetas de categoría, no URLs.
+
+    Hasta el 2026-09-12 la URL de la descartada se metía ahí, y en la ejecución
+    de 20 municipios del 2026-09-11 salieron dos fichas con una URL entera
+    dentro de `fuentes`. No se queda quieta: `festival_filter` une las `fuentes`
+    de dos fichas como conjuntos, así que el valor roto viaja a partir de ahí.
+    """
+    _responde(monkeypatch, {"grupos": [[0, 1]]})
+    fs = [
+        _f("A", "2026-08-01", "2026-08-04", 5, url="https://a.es/programa"),
+        _f("B", "2026-08-02", "2026-08-05", 0, url="https://b.es/otro"),
+    ]
+    fs[0]["fuentes"] = ["web_municipio"]
+    fs[1]["fuentes"] = ["busqueda_web"]
+    r = asyncio.run(ta.unificar_duplicados(fs, LOC))
+    assert not [s for s in r[0]["fuentes"] if str(s).startswith("http")]
+    assert r[0]["fuentes"] == ["web_municipio"]
+
+
+def test_no_se_duplica_la_url_si_las_dos_fichas_comparten_programa(monkeypatch):
+    """El caso de Almansa: dos fichas de la misma fiesta enriquecidas con el
+    MISMO documento. No tiene sentido apuntarse a uno mismo como fusionado."""
+    _responde(monkeypatch, {"grupos": [[0, 1]]})
+    misma = "https://almansaturistica.es/PROGRAMA-DE-FIESTAS.pdf"
+    fs = [
+        _f("A", "2026-04-30", "2026-05-06", 5, url=misma),
+        _f("B", "2026-03-13", "2026-03-29", 0, url=misma),
+    ]
+    r = asyncio.run(ta.unificar_duplicados(fs, LOC))
+    assert len(r) == 1
+    assert r[0].get("urls_programa_fusionadas", []) == []
 
 
 # ─────────────────────────────────────────────

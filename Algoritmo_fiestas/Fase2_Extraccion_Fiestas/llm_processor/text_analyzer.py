@@ -60,6 +60,7 @@ from config import (
     ANCLA_MIN_DIAS_TRAS_RECORTE,
     ANCLA_MAX_CHARS_A_LA_LOCALIDAD,
     LLM_FACTOR_REINTENTO_TRUNCADO,
+    LLM_REINTENTOS_TRUNCADO,
     LLM_TOPE_REINTENTO,
     LLM_REINTENTOS_429,
     LLM_BACKOFF_429,
@@ -2745,15 +2746,27 @@ async def llm_chat_json(
         # sí terminaron necesitaron entre 275 y 749. Cada corte apagaba en
         # silencio el filtro de homónimos para ese documento, porque una
         # comprobación fallida conserva el documento.
-        if estado == "truncado" and max_tokens and 0 < max_tokens < LLM_TOPE_REINTENTO:
-            ampliado = min(max_tokens * LLM_FACTOR_REINTENTO_TRUNCADO, LLM_TOPE_REINTENTO)
+        #
+        # Se reintenta mas de una vez porque una sola no basta: el 2026-09-11
+        # hubo 3 llamadas cuyo reintento tambien se corto, y ahi el bucle se
+        # rendia devolviendo el JSON a medias al parseador, que fallaba con
+        # "Expecting value: line 1 column 1". Una de ellas dejo sin nucleo a la
+        # "Feria del Ganado" de Piedrahita.
+        presupuesto = max_tokens
+        for _ in range(LLM_REINTENTOS_TRUNCADO):
+            if estado != "truncado" or not presupuesto:
+                break
+            if not (0 < presupuesto < LLM_TOPE_REINTENTO):
+                break
+            ampliado = min(presupuesto * LLM_FACTOR_REINTENTO_TRUNCADO, LLM_TOPE_REINTENTO)
             logger.info(
                 f"  [CTX/{etiqueta}] Reintento con {ampliado} tokens de salida "
-                f"(antes {max_tokens}), que no daban para cerrar el JSON."
+                f"(antes {presupuesto}), que no daban para cerrar el JSON."
             )
             estado, contenido = await _pedir_a_proveedor(
                 prov, system_prompt, user_prompt, ampliado, etiqueta, chars_prompt,
             )
+            presupuesto = ampliado
 
         if estado in ("ok", "truncado"):
             if prov["remoto"]:
@@ -4025,13 +4038,29 @@ async def unificar_duplicados(fiestas: list[dict], localidad: dict) -> list[dict
             if i == gana:
                 continue
             descartados.add(i)
-            # La fuente de la descartada se conserva. No se fusionan los
-            # programas a proposito: juntar actos de dos fichas que el modelo
-            # cree la misma pero pueden no serlo produce actos duplicados o de
-            # fechas incompatibles, y eso es peor que perder unos pocos.
+            # La procedencia de la descartada se conserva, pero NO en `fuentes`:
+            # ese campo son ETIQUETAS de categoria ("web_municipio",
+            # "busqueda_web"...), no URLs. Medido en la ejecucion de 20
+            # municipios del 2026-09-11: dos fichas salieron con una URL entera
+            # dentro de `fuentes` —"FestivArroyo 2026" y "Semana de las Personas
+            # Mayores"—, y el valor roto no se queda quieto: `festival_filter`
+            # (:479) une las `fuentes` de dos fichas como conjuntos, asi que la
+            # URL viaja a partir de ahi.
+            #
+            # La etiqueta oficial de la pagina del programa ya la pone
+            # `reconciliar_procedencia` durante el enriquecimiento, que es quien
+            # tiene los chunks delante para leerla del documento. Aqui no hay
+            # chunks, asi que inventarla seria adivinar.
+            #
+            # No se fusionan los programas a proposito: juntar actos de dos
+            # fichas que el modelo cree la misma pero pueden no serlo produce
+            # actos duplicados o de fechas incompatibles, y eso es peor que
+            # perder unos pocos.
             url = fiestas[i].get("url_programa")
-            if url and url not in (fiestas[gana].get("fuentes") or []):
-                fiestas[gana].setdefault("fuentes", []).append(url)
+            if url and url != fiestas[gana].get("url_programa"):
+                fusionadas = fiestas[gana].setdefault("urls_programa_fusionadas", [])
+                if url not in fusionadas:
+                    fusionadas.append(url)
             logger.warning(
                 f"  [DEDUP] '{localidad.get('nombre', '')}': "
                 f"'{fiestas[i].get('nombre', '')}' ({fiestas[i].get('fecha_inicio')}) "

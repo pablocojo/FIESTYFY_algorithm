@@ -297,22 +297,55 @@ def main() -> int:
             dur = time.time() - t0
 
             estado = leer_salida(args.salida)
+            ids_locs = [l["id"] for l in locs]
             fiestas_m = [f for f in estado.get("fiestas", [])
                          if any(f.get("lugar_id") == l["id"] for l in [m] + list(locs))]
             loc_con = {f.get("lugar_id") for f in fiestas_m}
+
+            # Una resta no sabe si el municipio se cortó a la mitad. Hasta el
+            # 2026-09-12 esto era `n_loc - len(loc_con)`, y Piedrahíta —cortada
+            # por tope en la localidad 5 de 6— salió con "3 sin fiesta"
+            # mezclando 1 que se miró y no tenía con 2 que nadie llegó a abrir.
+            # La bitácora es el único sitio donde se vería un run truncado, y era
+            # justo donde se disimulaba.
+            #
+            # El segundo defecto del mismo campo: `n_loc` cuenta la cabecera de
+            # municipio como si fuera una localidad más, pero esa cabecera se
+            # apunta en `municipios_completados`, nunca en
+            # `localidades_completadas`. Así que sobraba 1 por municipio SIEMPRE,
+            # incluso en un run perfecto. Medido: en la tirada del 2026-09-09,
+            # con los 20 municipios completos, la bitácora sumaba 60 localidades
+            # y la salida 40 completadas —desfase de 20, uno por municipio—.
+            # En la del 2026-09-11, 22: esos 20 más las 2 de Piedrahíta.
+            #
+            # `localidades` y `min_por_localidad` siguen contando la cabecera: es
+            # lo que se le entrega a main.py y lo que cuesta tiempo, así que es la
+            # base correcta para estimar. Lo que se separa es el recuento de
+            # cobertura, que es otra pregunta.
+            completadas = set(estado.get("localidades_completadas") or [])
+            procesadas = [i for i in ids_locs if i in completadas]
+            no_alcanzadas = [i for i in ids_locs if i not in completadas]
             bitacora.append({
                 "municipio": m["nombre"], "id": m["id"], "provincia": m.get("provincia"),
                 "poblacion": m.get("poblacion"), "localidades": n_loc,
                 "minutos": round(dur / 60, 1), "min_por_localidad": round(dur / 60 / n_loc, 1),
                 "fiestas": len(fiestas_m),
+                "localidades_reales": len(ids_locs),
+                "localidades_procesadas": len(procesadas),
                 "localidades_con_fiesta": len(loc_con),
-                "localidades_sin_fiesta": n_loc - len(loc_con),
+                "localidades_sin_fiesta": max(0, len(procesadas) - len(loc_con)),
+                "localidades_no_alcanzadas": len(no_alcanzadas),
+                "ids_no_alcanzadas": no_alcanzadas,
                 "cortado_por_tope": cortado, "codigo_salida": codigo,
             })
             hechos += 1
             print(f"  -> {m['nombre']}: {len(fiestas_m)} fiestas, "
-                  f"{len(loc_con)}/{n_loc} localidades con ficha, {dur / 60:.1f} min "
+                  f"{len(loc_con)}/{len(procesadas)} localidades con ficha de las "
+                  f"{len(procesadas)} miradas, {dur / 60:.1f} min "
                   f"({dur / 60 / n_loc:.1f} min/localidad)")
+            if no_alcanzadas:
+                print(f"     [!] {len(no_alcanzadas)} localidades de {len(ids_locs)} "
+                      f"sin mirar: {', '.join(no_alcanzadas)}")
 
             # Recalibración: la media real de lo que llevamos, que es mejor
             # estimador que una constante escrita a mano hace semanas.
@@ -337,19 +370,31 @@ def main() -> int:
     print(f"{'=' * 78}")
     if bitacora:
         print(f"\n  {'MUNICIPIO':24s}{'PROV':12s}{'loc':>4}{'fiestas':>8}"
-              f"{'sin ficha':>10}{'min':>7}{'min/loc':>8}")
+              f"{'sin ficha':>10}{'sin mirar':>10}{'min':>7}{'min/loc':>8}")
         for b in bitacora:
             corte = " CORTADO" if b["cortado_por_tope"] else ""
             print(f"  {b['municipio'][:23]:24s}{(b['provincia'] or '')[:11]:12s}"
-                  f"{b['localidades']:>4}{b['fiestas']:>8}{b['localidades_sin_fiesta']:>10}"
+                  f"{b['localidades_reales']:>4}{b['fiestas']:>8}"
+                  f"{b['localidades_sin_fiesta']:>10}{b['localidades_no_alcanzadas']:>10}"
                   f"{b['minutos']:>7.0f}{b['min_por_localidad']:>8.1f}{corte}")
-        n_loc = sum(b["localidades"] for b in bitacora)
+        # Denominador honesto: lo que se miró, no lo que estaba en la lista. Un
+        # porcentaje de cobertura calculado sobre localidades que nadie abrió
+        # dice que el pipeline falla donde en realidad no llegó.
+        procesadas = sum(b["localidades_procesadas"] for b in bitacora)
         sin = sum(b["localidades_sin_fiesta"] for b in bitacora)
-        print(f"\n  Localidades procesadas: {n_loc} | sin ninguna ficha: {sin} "
-              f"({sin / max(n_loc, 1):.0%})")
+        sin_mirar = sum(b["localidades_no_alcanzadas"] for b in bitacora)
+        print(f"\n  Localidades miradas: {procesadas} | sin ninguna ficha: {sin} "
+              f"({sin / max(procesadas, 1):.0%})")
+        if sin_mirar:
+            print(f"  Localidades que no se llegaron a mirar: {sin_mirar} "
+                  f"(municipios cortados por tope; no cuentan como 'sin ficha')")
         print(f"  Fiestas nuevas en esta tirada: "
               f"{len(estado.get('fiestas', [])) - n_fiestas_previo}")
-        print(f"  Ritmo medio: {transcurrido / 60 / max(n_loc, 1):.1f} min/localidad")
+        # Mismo denominador que la recalibración de `min_por_loc`: lo que se le
+        # entrega a main.py, cabecera de municipio incluida, que es lo que cuesta
+        # el tiempo que estamos repartiendo.
+        entregadas = sum(b["localidades"] for b in bitacora)
+        print(f"  Ritmo medio: {transcurrido / 60 / max(entregadas, 1):.1f} min/localidad")
         print(f"  Bitácora: {os.path.basename(BITACORA)}")
 
     informe(args.salida, elegidos)

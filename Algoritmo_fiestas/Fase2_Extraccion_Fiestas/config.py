@@ -171,15 +171,25 @@ PROCEDENCIA_MAX_TOKENS = 1200
 PERTENENCIA_ENABLED = True
 PERTENENCIA_MAX_TOKENS = 1500         # Mismo motivo que arriba: los que razonan gastan de aquí
 
-# Delimitar el nucleo de una fiesta es una respuesta de dos fechas: 200 tokens
-# sobran. Va aparte del enriquecimiento porque se pregunta UNA vez por fiesta,
-# sobre el programa ya montado, y no por tramos de dias como aquel.
-NUCLEO_MAX_TOKENS = 200
+# Delimitar el nucleo de una fiesta es una respuesta de dos fechas, y va aparte
+# del enriquecimiento porque se pregunta UNA vez por fiesta, sobre el programa ya
+# montado, y no por tramos de dias como aquel.
+#
+# Los 200 tokens que sobraban para escribir dos fechas no sobran para PENSARLAS.
+# Mismo efecto que en PROCEDENCIA, y medido igual: en la ejecucion de 20
+# municipios del 2026-09-11, con qwen3-32b, 20 de las 30 llamadas de NUCLEO se
+# cortaron en el primer intento (67%) y las que terminaron necesitaron entre 532
+# y 1043 tokens. Cada corte era una ida y vuelta entera tirada, mas el reintento.
+# Y tres se perdieron del todo: el reintento tambien se corto y el JSON llego
+# roto, dejando sin nucleo a fichas como la "Feria del Ganado" de Piedrahita
+# —justo el dato con el que DEDUP reconoce los duplicados—.
+NUCLEO_MAX_TOKENS = 1200
 
-# Agrupar fichas repetidas devuelve listas de indices, no texto: con 400 tokens
-# sobra hasta para una localidad con muchas fiestas. Se pregunta UNA vez por
-# localidad, al final, cuando ya estan todas montadas.
-DEDUP_MAX_TOKENS = 400
+# Agrupar fichas repetidas devuelve listas de indices, no texto. Mismo caso que
+# el de arriba: en esa misma ejecucion, 13 de las 21 llamadas de DEDUP (62%) se
+# cortaron en sus 400 tokens y la respuesta mas larga que llego a terminar gasto
+# 1790. Es el valor al que el reintento ya sube (x6), pagado de una vez.
+DEDUP_MAX_TOKENS = 2400
 
 # Cuánto texto de las fuentes se le enseña. La medida del 2026-09-04: al juez de
 # procedencia se le daban entre 27 y 422 tokens con 130.000 libres en la ventana.
@@ -509,11 +519,19 @@ OPENROUTER_MAX_TOKENS = 16000
 OPENROUTER_N_CTX = 131072
 
 # Reintento cuando la respuesta se corta por longitud. El presupuesto se
-# multiplica por este factor y se vuelve a preguntar UNA vez, en vez de dar por
-# perdido un JSON que llegó a medias. Protege a cualquier llamada de tope fino
-# frente a un modelo que razone más de lo previsto, sin tener que adivinar el
-# número exacto para cada una.
+# multiplica por este factor y se vuelve a preguntar, en vez de dar por perdido
+# un JSON que llegó a medias. Protege a cualquier llamada de tope fino frente a
+# un modelo que razone más de lo previsto, sin tener que adivinar el número
+# exacto para cada una.
 LLM_FACTOR_REINTENTO_TRUNCADO = 6
+
+# Cuántas veces se reintenta. Estuvo en 1 hasta el 2026-09-12, y una sola vuelta
+# deja pérdidas definitivas: en la ejecución del 2026-09-11 hubo 3 llamadas cuyo
+# reintento TAMBIÉN se cortó, y ahí el bucle se rendía devolviendo un JSON roto
+# —«JSON malformado del LLM: Expecting value: line 1 column 1»—. Con dos vueltas
+# y el factor de arriba, un tope de 200 llega a 7200 y luego al techo, que es
+# donde terminan hasta las respuestas más largas medidas.
+LLM_REINTENTOS_TRUNCADO = 2
 # Techo del reintento. Medido el 2026-09-03 sobre las llamadas que SÍ terminaron
 # en esa ejecución, con qwen3-32b (razonamiento incluido en la cuenta):
 #     DISCOVERY    max 1344   ENRICHMENT   max 3259
